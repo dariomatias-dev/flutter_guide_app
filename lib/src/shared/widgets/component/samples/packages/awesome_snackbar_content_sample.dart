@@ -93,7 +93,7 @@ class _AwesomeSnackbarContentSampleState
         top: 20.0,
       ),
       elevation: 0.0,
-      behavior: SnackBarBehavior.floating,
+      behavior: SnackBarBehavior.fixed,
       backgroundColor: Colors.transparent,
       content: AwesomeSnackbarContent(
         inMaterialBanner: true,

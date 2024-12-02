@@ -38,14 +38,17 @@ class _SalomonBottomBarSampleState extends State<SalomonBottomBarSample> {
           SalomonBottomBarItem(
             icon: const Icon(Icons.home),
             title: const Text('Home'),
+            selectedColor: Colors.blue,
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.person),
             title: const Text('Profile'),
+            selectedColor: Colors.blue,
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.settings),
             title: const Text('Settings'),
+            selectedColor: Colors.blue,
           ),
         ],
       ),

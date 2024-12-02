@@ -18,6 +18,9 @@ class _DottedBorderSampleState extends State<DottedBorderSample> {
     return Scaffold(
       body: Center(
         child: DottedBorder(
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.black
+              : Colors.white,
           strokeWidth: _lineWidth,
           dashPattern: <double>[
             _lineSize,

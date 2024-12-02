@@ -17,7 +17,8 @@ class _UrlLauncherSampleState extends State<UrlLauncherSample> {
   BuildContext _getContext() => context;
 
   Future<void> _openUrl() async {
-    _url = _urlController.text.trim() == '' ? _standardUrl : _urlController.text;
+    _url =
+        _urlController.text.trim() == '' ? _standardUrl : _urlController.text;
 
     if (!_url.startsWith('https://') || !await launchUrl(Uri.parse(_url))) {
       showDialog(
@@ -54,22 +55,20 @@ class _UrlLauncherSampleState extends State<UrlLauncherSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
+          horizontal: 12.0,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextFormField(
               controller: _urlController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: _standardUrl,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey.shade400,
-                  ),
-                ),
                 filled: true,
               ),
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
             const SizedBox(height: 12.0),
             ElevatedButton(

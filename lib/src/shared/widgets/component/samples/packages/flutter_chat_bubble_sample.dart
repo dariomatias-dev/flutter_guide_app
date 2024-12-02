@@ -34,6 +34,9 @@ class FlutterChatBubbleSample extends StatelessWidget {
                 backGroundColor: Colors.grey.shade300,
                 child: const Text(
                   'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ],

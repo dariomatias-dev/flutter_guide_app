@@ -97,8 +97,9 @@ class FlutterSlidableTemplate extends StatelessWidget {
                   children: endActions!,
                 )
               : null,
-          child: const ListTile(
-            title: Text('Flutter Slidable'),
+          child: ListTile(
+            tileColor: Colors.grey.shade100,
+            title: const Text('Flutter Slidable'),
           ),
         ),
       ],

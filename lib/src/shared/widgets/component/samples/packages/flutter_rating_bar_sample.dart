@@ -12,6 +12,12 @@ class _FlutterRatingBarSampleState extends State<FlutterRatingBarSample> {
   Axis _direction = Axis.horizontal;
   bool _allowHalfRating = true;
 
+  void _updateAllowHalfRating() {
+    setState(() {
+      _allowHalfRating = !_allowHalfRating;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,14 +69,12 @@ class _FlutterRatingBarSampleState extends State<FlutterRatingBarSample> {
                 scale: 0.8,
                 child: Switch(
                   value: _allowHalfRating,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    _updateAllowHalfRating();
+                  },
                 ),
               ),
-              onTap: () {
-                setState(() {
-                  _allowHalfRating = !_allowHalfRating;
-                });
-              },
+              onTap: _updateAllowHalfRating,
             ),
           ],
         ),

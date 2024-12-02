@@ -20,6 +20,10 @@ class _InfiniteScrollPaginationSampleState
   int _quantityOfItems = 0;
 
   Future<void> _fecthNumberOfItems() async {
+    if (mounted) {
+      return;
+    }
+
     await Future.delayed(
       const Duration(
         seconds: 3,
@@ -36,22 +40,22 @@ class _InfiniteScrollPaginationSampleState
     );
   }
 
+  void pageRequestListener(
+    int pageKey,
+  ) {
+    _fecthNumberOfItems();
+  }
+
   @override
   void initState() {
-    _controller.addPageRequestListener((pageKey) {
-      _fecthNumberOfItems();
-    });
+    _controller.addPageRequestListener(pageRequestListener);
 
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller.removePageRequestListener(
-      (pageKey) {
-        _fecthNumberOfItems();
-      },
-    );
+    _controller.removePageRequestListener(pageRequestListener);
     _controller.dispose();
 
     super.dispose();

@@ -12,6 +12,11 @@ class CircularCountdownTimerSample extends StatelessWidget {
           width: 200.0,
           height: 200.0,
           duration: 10,
+          textStyle: TextStyle(
+            color: Theme.of(context).brightness == Brightness.light
+                ? Colors.black
+                : Colors.white,
+          ),
           fillColor: Colors.blue,
           ringColor: Colors.blue.shade100,
           strokeCap: StrokeCap.round,

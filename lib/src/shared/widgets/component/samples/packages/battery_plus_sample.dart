@@ -20,13 +20,19 @@ class _BatteryPlusSampleState extends State<BatteryPlusSample> {
     _isInBatterySaveMode = await _battery.isInBatterySaveMode;
   }
 
-  @override
-  void initState() {
-    _battery.onBatteryStateChanged.listen((BatteryState state) {
+  void onBatteryStateChanged(
+    BatteryState state,
+  ) {
+    if (mounted) {
       setState(() {
         _batteryState = state;
       });
-    });
+    }
+  }
+
+  @override
+  void initState() {
+    _battery.onBatteryStateChanged.listen(onBatteryStateChanged);
 
     super.initState();
   }
@@ -54,33 +60,35 @@ class _BatteryPlusSampleState extends State<BatteryPlusSample> {
                 ),
               );
             }
-        
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Battery Level: ${_batteryLevel!}%',
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
+
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Battery Level: ${_batteryLevel!}%',
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-                Text(
-                  'Device in battery saving mode: ${_isInBatterySaveMode! ? 'Yes' : 'No'}.',
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
+                  Text(
+                    'Device in battery saving mode: ${_isInBatterySaveMode! ? 'Yes' : 'No'}.',
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-                Text(
-                  'Battery State: ${_batteryState?.name}',
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                )
-              ],
+                  Text(
+                    'Battery State: ${_batteryState?.name}',
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+                ],
+              ),
             );
           },
         ),
