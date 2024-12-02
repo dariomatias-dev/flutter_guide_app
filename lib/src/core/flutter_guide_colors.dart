@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FlutterGuideColors {
+  // Black Tons
+
+  static const black = Color(0xFF000000);
   // White Tons
   static const white = Color(0xFFFFFFFF);
 

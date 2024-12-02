@@ -53,7 +53,7 @@ class _ElementsScreenState extends State<ElementsScreen> {
                     : ComponentType.function,
                 components: _tabIndex == 0 ? widgets : functions,
               ),
-            )
+            ),
           ],
         ),
       ),

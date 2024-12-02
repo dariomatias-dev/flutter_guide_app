@@ -67,6 +67,9 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
                     const SizedBox(height: 12.0),
                   ],
                 ),
+                padding: const EdgeInsets.only(
+                  bottom: 100.0,
+                ),
                 maxItems: 18,
                 disableInitialRequest: true,
                 initialPageIndex: 1,
