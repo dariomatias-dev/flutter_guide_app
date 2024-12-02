@@ -25,22 +25,30 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: const MainAppBarWidget(),
-      body: screenSelected.screen,
-      bottomNavigationBar: BottomNavigationBarWidget(
-        key: GlobalKey(),
-        screenIndex: _controller.screenIndex,
-        updateScreenIndex: (value) {
-          _controller.updateScreenIndex(
-            () => setState(() {}),
-            value,
-          );
-        },
-        screenNames: List.generate(
-          screens.length,
-          (index) {
-            return screens[index].bottomNavigationBarName;
-          },
-        ),
+      body: Stack(
+        children: <Widget>[
+          screenSelected.screen,
+          Positioned(
+            right: 16.0,
+            left: 16.0,
+            bottom: 12.0,
+            child: BottomNavigationBarWidget(
+              screenIndex: _controller.screenIndex,
+              updateScreenIndex: (value) {
+                _controller.updateScreenIndex(
+                  () => setState(() {}),
+                  value,
+                );
+              },
+              screenNames: List.generate(
+                screens.length,
+                (index) {
+                  return screens[index].bottomNavigationBarName;
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
