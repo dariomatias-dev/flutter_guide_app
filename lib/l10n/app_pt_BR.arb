@@ -58,5 +58,6 @@
     "save": "Salvar",
     "remove": "Remover",
     "copy": "Copiar",
-    "copyToClipboard": "Código copiado para a área de transferência"
+    "copyToClipboard": "Código copiado para a área de transferência",
+    "aboutDescription": "Aplicativo desenvolvido em Flutter para demonstrar os principais recursos e funcionalidades da tecnologia."
 }

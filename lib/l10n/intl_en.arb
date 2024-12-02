@@ -58,5 +58,6 @@
     "save": "Save",
     "remove": "Remove",
     "copy": "Copy",
-    "copyToClipboard": "Code copied to the clipboard"
+    "copyToClipboard": "Code copied to the clipboard",
+    "aboutDescription": "App developed in Flutter to showcase the main features and functionalities of the technology."
 }

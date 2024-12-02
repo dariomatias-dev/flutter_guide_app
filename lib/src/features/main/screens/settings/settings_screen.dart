@@ -61,7 +61,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ListTileItemWidget(
                 title: _controller.appLocalizations.about,
                 icon: Icons.info_outline,
-                onTap: null,
+                onTap: _controller.showAboutDialog,
               ),
               const SocialNetworksWidget(),
             ],

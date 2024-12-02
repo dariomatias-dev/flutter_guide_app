@@ -8,19 +8,23 @@ part 'custom_dialog_screen_widget.dart';
 
 class CustomDialog {
   static DialogWidget dialog({
-    required String title,
+    bool? showLine,
+    String? title,
     String? description,
     TextAlign descriptionTextAlign = TextAlign.center,
     double? spacingAction,
     required List<ActionButtonWidget> actions,
+    bool? isActionFullWidth,
     required List<Widget> children,
   }) {
     return DialogWidget(
+      showLine: showLine ?? true,
       title: title,
       description: description,
+      descriptionTextAlign: descriptionTextAlign,
       spacingAction: spacingAction ?? 8.0,
       actions: actions,
-      descriptionTextAlign: descriptionTextAlign,
+      isActionFullWidth: isActionFullWidth ?? false,
       children: children,
     );
   }
