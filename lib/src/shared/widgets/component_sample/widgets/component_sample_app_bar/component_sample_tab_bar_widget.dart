@@ -8,11 +8,11 @@ class ComponentSampleTabBarWidget extends StatelessWidget
   const ComponentSampleTabBarWidget({
     super.key,
     required this.currentTabIndexNotifier,
-    required this.showFloatingActionsNotifier,
+    required this.tabController,
   });
 
   final ValueNotifier<int> currentTabIndexNotifier;
-  final ValueNotifier<bool> showFloatingActionsNotifier;
+  final TabController tabController;
 
   @override
   Size get preferredSize => const Size.fromHeight(
@@ -24,12 +24,11 @@ class ComponentSampleTabBarWidget extends StatelessWidget
     final applocalizations = AppLocalizations.of(context)!;
 
     return DefaultTabBarWidget(
+      controller: tabController,
       onTap: (value) {
         currentTabIndexNotifier.value = value;
 
         FocusManager.instance.primaryFocus?.unfocus();
-
-        showFloatingActionsNotifier.value = value == 1;
       },
       tabs: <Tab>[
         Tab(

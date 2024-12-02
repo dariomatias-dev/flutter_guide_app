@@ -26,11 +26,20 @@ class ComponentSampleScreen extends StatefulWidget {
   State<ComponentSampleScreen> createState() => _ComponentSampleScreenState();
 }
 
-class _ComponentSampleScreenState extends State<ComponentSampleScreen> {
-  final _controller = ComponentSampleController();
+class _ComponentSampleScreenState extends State<ComponentSampleScreen>
+    with TickerProviderStateMixin {
+  late final ComponentSampleController _controller;
+
+  @override
+  void didChangeDependencies() {
+    _controller = ComponentSampleController(vsync: this);
+    
+    super.didChangeDependencies();
+  }
 
   @override
   void dispose() {
+
     _controller.dispose();
 
     super.dispose();
@@ -47,9 +56,12 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen> {
           appBar: ComponentSampleAppBarWidget(
             title: widget.title,
             popupMenuItems: widget.popupMenuItems,
-            showFloatingActionsNotifier: _controller.showFloatingActionsNotifier,
+            currentTabIndexNotifier: _controller.currentTabIndexNotifier,
+            tabController: _controller.tabController,
           ),
-          body: TabBarView(
+          body: PageView(
+            controller: _controller.pageController,
+            onPageChanged: _controller.onPageChanged,
             children: <Widget>[
               AnimatedBuilder(
                 animation:

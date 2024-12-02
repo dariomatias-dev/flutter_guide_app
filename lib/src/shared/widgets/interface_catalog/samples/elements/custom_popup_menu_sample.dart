@@ -124,45 +124,50 @@ class CcustoPpopuMmenSsampleState extends State<CustomPopupMenuSample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Align(
-              alignment: _buttonAlignment,
-              child: ElevatedButton(
-                key: _buttonKey,
-                onPressed: _showMenu,
-                child: const Text('Open'),
+    return PopScope(
+      onPopInvoked: (didPop) {
+        _removeOverlay();
+      },
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child: Align(
+                alignment: _buttonAlignment,
+                child: ElevatedButton(
+                  key: _buttonKey,
+                  onPressed: _showMenu,
+                  child: const Text('Open'),
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 12.0,
-            ),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton(
-                value: _buttonAlignment,
-                items: List.generate(alignments.length, (index) {
-                  final alignment = alignments[index];
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 12.0,
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  value: _buttonAlignment,
+                  items: List.generate(alignments.length, (index) {
+                    final alignment = alignments[index];
 
-                  return DropdownMenuItem(
-                    value: alignment.value,
-                    child: Text(
-                      alignment.name,
-                    ),
-                  );
-                }),
-                onChanged: (value) {
-                  setState(() {
-                    _buttonAlignment = value!;
-                  });
-                },
+                    return DropdownMenuItem(
+                      value: alignment.value,
+                      child: Text(
+                        alignment.name,
+                      ),
+                    );
+                  }),
+                  onChanged: (value) {
+                    setState(() {
+                      _buttonAlignment = value!;
+                    });
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
