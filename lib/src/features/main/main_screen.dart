@@ -40,12 +40,9 @@ class _MainScreenState extends State<MainScreen> {
                   value,
                 );
               },
-              screenNames: List.generate(
-                screens.length,
-                (index) {
-                  return screens[index].bottomNavigationBarName;
-                },
-              ),
+              getBottomNavigationBarName: (index) {
+                return screens[index].bottomNavigationBarName;
+              },
             ),
           ),
         ],
