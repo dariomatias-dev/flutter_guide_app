@@ -6,14 +6,14 @@ class ThemeController extends ValueNotifier {
     this.themeMode = ThemeMode.system,
     required SharedPreferences sharedPreferences,
   }) : super(themeMode) {
-    initialize(sharedPreferences);
+    _initialize(sharedPreferences);
   }
 
   ThemeMode themeMode;
 
   late SharedPreferences _sharedPreferences;
 
-  void initialize(
+  void _initialize(
     SharedPreferences sharedPreferencesInstance,
   ) {
     _sharedPreferences = sharedPreferencesInstance;

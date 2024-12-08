@@ -20,6 +20,7 @@ class _SideSheetSampleState extends State<SideSheetSample> {
     direction == _Direction.left
         ? SideSheet.left(
             context: context,
+            sheetColor: Theme.of(context).scaffoldBackgroundColor,
             body: const Center(
               child: Text('Content'),
             ),
