@@ -117,6 +117,7 @@ flutter:
     - assets/images/
     - assets/images/nature/
     - assets/icons/
+    - assets/videos/
 
     - lib/src/shared/widgets/component/samples/widgets/
     - lib/src/shared/widgets/component/samples/functions/

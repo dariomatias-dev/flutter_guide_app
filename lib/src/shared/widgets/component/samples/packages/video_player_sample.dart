@@ -9,20 +9,32 @@ class VideoPlayerSample extends StatefulWidget {
 }
 
 class _VideoPlayerSampleState extends State<VideoPlayerSample> {
+  bool _isLoading = true;
   late VideoPlayerController _controller;
+  bool _isNetworkUrl = true;
 
   Future<void> _initializeVideoPlayer() async {
-    _controller = VideoPlayerController.networkUrl(
-      Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-      ),
-    );
+    setState(() {
+      _isLoading = true;
+    });
+
+    _controller = _isNetworkUrl
+        ? VideoPlayerController.networkUrl(
+            Uri.parse(
+              'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+            ),
+          )
+        : VideoPlayerController.asset(
+            'assets/videos/bee.mp4',
+          );
 
     await _controller.initialize();
 
     _controller.addListener(_setListeners);
 
-    setState(() {});
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   void _setListeners() {
@@ -50,10 +62,19 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _controller.value.isInitialized
-            ? Column(
+        child: _isLoading
+            ? const CircularProgressIndicator()
+            : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Text(
+                    'Video Origin: ${_isNetworkUrl ? 'Network' : 'Asset'}',
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 12.0),
                   AspectRatio(
                     aspectRatio: _controller.value.aspectRatio,
                     child: VideoPlayer(_controller),
@@ -73,9 +94,19 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                           : Icons.play_arrow,
                     ),
                   ),
+                  const SizedBox(height: 12.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      _isNetworkUrl = !_isNetworkUrl;
+
+                      _initializeVideoPlayer();
+                    },
+                    child: Text(
+                      _isNetworkUrl ? 'Asset Video' : 'Network Video',
+                    ),
+                  ),
                 ],
-              )
-            : const CircularProgressIndicator(),
+              ),
       ),
     );
   }
