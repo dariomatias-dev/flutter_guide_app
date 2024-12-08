@@ -32,4 +32,5 @@ class PackageNames {
   static const toastificationPackage = 'toastification';
   static const urlLauncherPackage = 'url_launcher';
   static const uuidPackage = 'uuid';
+  static const videoPlayerPackage = 'video_player';
 }

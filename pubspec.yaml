@@ -80,6 +80,7 @@ dependencies:
   flutter_animate: ^4.5.1
   network_info_plus: ^6.1.1
   icons_launcher: ^3.0.0
+  video_player: ^2.9.2
 
 dev_dependencies:
   flutter_test:

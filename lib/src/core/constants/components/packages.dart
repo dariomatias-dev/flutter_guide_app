@@ -40,6 +40,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/packages/smoo
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/toastification_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/url_launcher_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/uuid_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/packages/video_player_sample.dart';
 
 const packages = <PackageModel>[
   PackageModel(
@@ -213,6 +214,11 @@ const packages = <PackageModel>[
     name: PackageNames.uuidPackage,
     icon: Icons.vpn_key,
     sample: UuidSample(),
+  ),
+  PackageModel(
+    name: PackageNames.videoPlayerPackage,
+    icon: Icons.image_outlined,
+    sample: VideoPlayerSample(),
   ),
 ];
 
