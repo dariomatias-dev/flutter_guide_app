@@ -80,19 +80,37 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                     child: VideoPlayer(_controller),
                   ),
                   const SizedBox(height: 20.0),
-                  FloatingActionButton(
-                    onPressed: () {
-                      setState(() {
-                        _controller.value.isPlaying
-                            ? _controller.pause()
-                            : _controller.play();
-                      });
-                    },
-                    child: Icon(
-                      _controller.value.isPlaying
-                          ? Icons.pause
-                          : Icons.play_arrow,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      FloatingActionButton(
+                        onPressed: () {
+                          setState(() {
+                            _controller.value.isPlaying
+                                ? _controller.pause()
+                                : _controller.play();
+                          });
+                        },
+                        child: Icon(
+                          _controller.value.isPlaying
+                              ? Icons.pause
+                              : Icons.play_arrow,
+                        ),
+                      ),
+                      const SizedBox(width: 12.0),
+                      FloatingActionButton.small(
+                        onPressed: () {
+                          setState(() {
+                            _controller.setLooping(
+                              !_controller.value.isLooping,
+                            );
+                          });
+                        },
+                        child: Icon(
+                          _controller.value.isLooping ? Icons.stop : Icons.loop,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 12.0),
                   ElevatedButton(
