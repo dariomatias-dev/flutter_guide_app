@@ -83,6 +83,23 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      FloatingActionButton.small(
+                        onPressed: () {
+                          setState(() {
+                            _controller.seekTo(
+                              const Duration(
+                                seconds: 0,
+                              ),
+                            );
+
+                            _controller.pause();
+                          });
+                        },
+                        child: const Icon(
+                          Icons.restore,
+                        ),
+                      ),
+                      const SizedBox(width: 12.0),
                       FloatingActionButton(
                         onPressed: () {
                           setState(() {
