@@ -84,6 +84,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       FloatingActionButton.small(
+                        heroTag: 'restoreButton',
                         onPressed: () {
                           setState(() {
                             _controller.seekTo(
@@ -101,6 +102,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                       ),
                       const SizedBox(width: 12.0),
                       FloatingActionButton(
+                        heroTag: 'playPauseButton',
                         onPressed: () {
                           setState(() {
                             _controller.value.isPlaying
@@ -116,6 +118,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                       ),
                       const SizedBox(width: 12.0),
                       FloatingActionButton.small(
+                        heroTag: 'loopButton',
                         onPressed: () {
                           setState(() {
                             _controller.setLooping(
