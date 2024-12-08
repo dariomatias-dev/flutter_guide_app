@@ -186,12 +186,14 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
 
   BorderRadius get _defaultBorderRadius => BorderRadius.circular(20.0);
 
-  BoxShadow get _boxShadow => BoxShadow(
-        color: Colors.black.withOpacity(0.3),
-        blurRadius: 6.0,
-        spreadRadius: 0.0,
-        offset: const Offset(0, 1),
-      );
+  BoxShadow get _boxShadow {
+    return BoxShadow(
+      color: Colors.black.withOpacity(0.3),
+      blurRadius: 6.0,
+      spreadRadius: 0.0,
+      offset: const Offset(0, 1),
+    );
+  }
 
   void _showMenu() {
     final renderBox =
@@ -252,41 +254,46 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _isOpen = !_isOpen;
-        _showMenu();
-
-        setState(() {});
+    return PopScope(
+      onPopInvoked: (didPop) {
+        _removeMenu();
       },
-      child: Container(
-        key: _dropdownButtonKey,
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(
-          vertical: 10.0,
-          horizontal: 12.0,
-        ),
-        decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.light
-              ? Colors.white
-              : Colors.grey.shade900,
-          borderRadius: _defaultBorderRadius,
-          boxShadow: <BoxShadow>[
-            _boxShadow,
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              _selectedValue?.name ?? widget.title,
-            ),
-            Icon(
-              _isOpen
-                  ? Icons.keyboard_arrow_up_rounded
-                  : Icons.keyboard_arrow_down_rounded,
-            ),
-          ],
+      child: GestureDetector(
+        onTap: () {
+          _isOpen = !_isOpen;
+          _showMenu();
+
+          setState(() {});
+        },
+        child: Container(
+          key: _dropdownButtonKey,
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+            vertical: 10.0,
+            horizontal: 12.0,
+          ),
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.light
+                ? Colors.white
+                : Colors.grey.shade900,
+            borderRadius: _defaultBorderRadius,
+            boxShadow: <BoxShadow>[
+              _boxShadow,
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                _selectedValue?.name ?? widget.title,
+              ),
+              Icon(
+                _isOpen
+                    ? Icons.keyboard_arrow_up_rounded
+                    : Icons.keyboard_arrow_down_rounded,
+              ),
+            ],
+          ),
         ),
       ),
     );

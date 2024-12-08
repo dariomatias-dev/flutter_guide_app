@@ -26,7 +26,7 @@ class _ImageLoaderSampleState extends State<ImageLoaderSample> {
               child: ImageLoader(
                 key: GlobalKey(),
                 url:
-                    'https://raw.githubusercontent.com/dariomatias-dev/flutter_guide/refs/heads/main/assets/icons/flutter_icon.png',
+                    'https://storage.googleapis.com/cms-storage-bucket/4fd0db61df0567c0f352.png',
               ),
             ),
             const SizedBox(height: 24.0),

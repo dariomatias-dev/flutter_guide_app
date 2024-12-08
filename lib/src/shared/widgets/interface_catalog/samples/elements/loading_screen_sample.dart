@@ -8,9 +8,11 @@ class LoadingScreenSample extends StatefulWidget {
 }
 
 class _LoadingScreenSampleState extends State<LoadingScreenSample> {
+  bool _openScreen = true;
   OverlayEntry? _overlayEntry;
 
   Future<void> _showLoading() async {
+    _openScreen = true;
     final color = Theme.of(context).colorScheme.primary;
 
     _overlayEntry = OverlayEntry(
@@ -37,17 +39,30 @@ class _LoadingScreenSampleState extends State<LoadingScreenSample> {
       ),
     );
 
-    _overlayEntry?.remove();
+    _removeLoadingScreen();
+  }
+
+  void _removeLoadingScreen() {
+    if (_openScreen) {
+      _overlayEntry?.remove();
+      _openScreen = false;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: _showLoading,
-          child: const Text(
-            'Show Loading',
+    return PopScope(
+      onPopInvoked: (didPop) {
+        _removeLoadingScreen();
+        _openScreen = false;
+      },
+      child: Scaffold(
+        body: Center(
+          child: ElevatedButton(
+            onPressed: _showLoading,
+            child: const Text(
+              'Show Loading',
+            ),
           ),
         ),
       ),

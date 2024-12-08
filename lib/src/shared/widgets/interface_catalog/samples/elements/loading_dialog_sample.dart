@@ -8,14 +8,23 @@ class LoadingDialogSample extends StatefulWidget {
 }
 
 class _LoadingDialogSampleState extends State<LoadingDialogSample> {
+  bool _openDialog = true;
+
   Future<void> _showLoading() async {
+    _openDialog = true;
+
     showDialog(
       context: context,
       barrierDismissible: false,
       barrierColor: Colors.black.withOpacity(0.8),
       builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
+        return PopScope(
+          onPopInvoked: (didPop) {
+            _openDialog = false;
+          },
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
         );
       },
     );
@@ -30,7 +39,9 @@ class _LoadingDialogSampleState extends State<LoadingDialogSample> {
   }
 
   void _closeLoading() {
-    Navigator.pop(context);
+    if (_openDialog) {
+      Navigator.pop(context);
+    }
   }
 
   @override
