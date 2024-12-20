@@ -13,8 +13,11 @@ class _FilePickerSampleState extends State<FilePickerSample> {
 
   final _filePaths = <String>[];
   bool _allowMultiple = false;
+  String? _directoryPath;
 
   Future<void> _pickFiles() async {
+    _directoryPath = null;
+
     final result = await _filePicker.pickFiles(
       allowMultiple: _allowMultiple,
     );
@@ -30,6 +33,14 @@ class _FilePickerSampleState extends State<FilePickerSample> {
         }
       });
     }
+  }
+
+  Future<void> _getDirectoryPath() async {
+    _filePaths.clear();
+
+    _directoryPath = await _filePicker.getDirectoryPath();
+
+    setState(() {});
   }
 
   @override
@@ -54,6 +65,12 @@ class _FilePickerSampleState extends State<FilePickerSample> {
               onPressed: _pickFiles,
               child: const Text(
                 'Choose File',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _getDirectoryPath,
+              child: const Text(
+                'Choose Folder',
               ),
             ),
             if (_filePaths.isNotEmpty)
@@ -92,27 +109,9 @@ class _FilePickerSampleState extends State<FilePickerSample> {
                             ),
                             child: Column(
                               children: <Widget>[
-                                RichText(
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.light
-                                          ? Colors.black
-                                          : Colors.white,
-                                    ),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: 'Path ${currentIndex + 1}: ',
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: filePath,
-                                      ),
-                                    ],
-                                  ),
+                                PathTextWidget(
+                                  title: 'Path ${currentIndex + 1}: ',
+                                  path: filePath,
                                 ),
                                 if (isImage)
                                   Padding(
@@ -140,9 +139,55 @@ class _FilePickerSampleState extends State<FilePickerSample> {
                   const Divider(),
                   const SizedBox(height: 12.0),
                 ],
+              )
+            else if (_directoryPath != null)
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 12.0,
+                ),
+                child: PathTextWidget(
+                  title: 'Directory Path',
+                  path: _directoryPath!,
+                ),
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PathTextWidget extends StatelessWidget {
+  const PathTextWidget({
+    super.key,
+    required this.title,
+    required this.path,
+  });
+
+  final String title;
+  final String path;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.black
+              : Colors.white,
+        ),
+        children: <TextSpan>[
+          TextSpan(
+            text: title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          TextSpan(
+            text: path,
+          ),
+        ],
       ),
     );
   }
