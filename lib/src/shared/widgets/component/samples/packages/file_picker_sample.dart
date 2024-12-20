@@ -56,49 +56,90 @@ class _FilePickerSampleState extends State<FilePickerSample> {
                 'Choose File',
               ),
             ),
-            const SizedBox(height: 28.0),
             if (_filePaths.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 20.0,
-                  bottom: 32.0,
-                  left: 20.0,
-                ),
-                child: Column(
-                  children: List.generate(
-                    _filePaths.length * 2 - 1,
-                    (index) {
-                      if (index % 2 == 1) {
-                        return const SizedBox(height: 12.0);
-                      }
-
-                      final currentIndex = index ~/ 2;
-
-                      return RichText(
-                        text: TextSpan(
-                          style: TextStyle(
-                            color:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Path ${currentIndex + 1}: ',
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            TextSpan(
-                              text: _filePaths[currentIndex],
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+              Column(
+                children: <Widget>[
+                  const SizedBox(height: 12.0),
+                  const Divider(
+                    height: 0.0,
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                    ),
+                    child: Column(
+                      children: List.generate(
+                        _filePaths.length * 2 - 1,
+                        (index) {
+                          if (index % 2 == 1) {
+                            return const Divider(
+                              height: 0.0,
+                            );
+                          }
+
+                          final currentIndex = index ~/ 2;
+                          final filePath = _filePaths[currentIndex];
+                          final isImage = <String>['png', 'jpeg', 'jpg'].any(
+                            (imageExtension) {
+                              return filePath.endsWith(imageExtension);
+                            },
+                          );
+
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              top: 20.0,
+                              bottom: 24.0,
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                RichText(
+                                  text: TextSpan(
+                                    style: TextStyle(
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: 'Path ${currentIndex + 1}: ',
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: filePath,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                if (isImage)
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 12.0,
+                                    ),
+                                    child: ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        maxHeight:
+                                            MediaQuery.sizeOf(context).height /
+                                                3,
+                                      ),
+                                      child: Image.asset(
+                                        filePath,
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 12.0),
+                ],
               ),
           ],
         ),
