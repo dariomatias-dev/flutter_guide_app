@@ -15,6 +15,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/packages/circ
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/device_info_plus_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/dio_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/dotted_border_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/packages/file_picker_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/flutter_animate_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/flutter_chat_bubble_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/flutter_rating_bar_sample.dart';
@@ -82,6 +83,11 @@ const packages = <PackageModel>[
     name: PackageNames.dottedBorderPackage,
     icon: Icons.border_clear_outlined,
     sample: DottedBorderSample(),
+  ),
+  PackageModel(
+    name: PackageNames.filePickerPackage,
+    icon: Icons.file_open_outlined,
+    sample: FilePickerSample(),
   ),
   PackageModel(
     name: PackageNames.flutterAnimatePackage,
