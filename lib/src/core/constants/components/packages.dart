@@ -32,6 +32,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/packages/load
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/loading_indicator_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/msh_checkbox_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/network_info_plus_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/packages/photo_view_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/salomon_bottom_bar_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/share_plus_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/shared_preferences_sample.dart';
@@ -171,6 +172,11 @@ const packages = <PackageModel>[
     name: PackageNames.networkInfoPlusPackage,
     icon: Icons.wifi_outlined,
     sample: NetworkInfoPlusSample(),
+  ),
+  PackageModel(
+    name: PackageNames.photoViewPackage,
+    icon: Icons.photo_outlined,
+    sample: PhotoViewSample(),
   ),
   PackageModel(
     name: PackageNames.salomonBottomBarPackage,
