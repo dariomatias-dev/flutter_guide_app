@@ -81,7 +81,6 @@ dependencies:
   network_info_plus: ^6.1.1
   icons_launcher: ^3.0.0
   video_player: ^2.9.2
-  file_picker: ^8.0.7
 
 dev_dependencies:
   flutter_test:
