@@ -21,14 +21,6 @@ class HomeScreen extends StatelessWidget {
         ),
         child: ListView(
           children: <Widget>[
-            // const ProjectShowcaseCarouselWidget(),
-            // const SizedBox(height: 12.0),
-            // Divider(
-            //   color: Theme.of(context).brightness == Brightness.light
-            //       ? Colors.grey.shade200
-            //       : Colors.grey.shade800,
-            // ),
-            const SizedBox(height: 12.0),
             BorderListTileItemWidget(
               title: 'UIs',
               icon: Icons.web,
