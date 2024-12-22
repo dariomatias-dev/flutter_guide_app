@@ -12,6 +12,7 @@ import 'package:flutter_guide/src/shared/models/widget_infos_model/component_inf
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showbottomsheet_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showdialog_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showmodalbottomsheet_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showtimepicker_sample.dart';
 
 const functions = <FunctionModel>[
   FunctionModel(
@@ -30,6 +31,12 @@ const functions = <FunctionModel>[
     name: FunctionNames.showModalBottomSheetMaterial,
     icon: Icons.keyboard_arrow_up,
     sample: ShowModalBottomSheetSample(),
+    type: ComponentType.function,
+  ),
+  FunctionModel(
+    name: FunctionNames.showTimePickerMaterial,
+    icon: Icons.access_time_outlined,
+    sample: ShowTimePickerSample(),
     type: ComponentType.function,
   ),
 ];
