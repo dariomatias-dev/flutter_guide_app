@@ -27,6 +27,7 @@ class _SideSheetSampleState extends State<SideSheetSample> {
           )
         : SideSheet.right(
             context: context,
+            sheetColor: Theme.of(context).scaffoldBackgroundColor,
             body: const Center(
               child: Text('Content'),
             ),

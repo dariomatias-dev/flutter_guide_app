@@ -37,6 +37,7 @@ class _SharedPreferencesSampleState extends State<SharedPreferencesSample> {
   ) async {
     if (value.length > 100) {
       _fieldController.text = value.substring(0, 100);
+
       return;
     }
 

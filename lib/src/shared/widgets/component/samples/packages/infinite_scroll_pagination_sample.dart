@@ -15,15 +15,12 @@ class _InfiniteScrollPaginationSampleState
   final _controller = PagingController(
     firstPageKey: 0,
   );
+  bool _isDisposed = false;
 
   int _page = 0;
   int _quantityOfItems = 0;
 
   Future<void> _fecthNumberOfItems() async {
-    if (mounted) {
-      return;
-    }
-
     await Future.delayed(
       const Duration(
         seconds: 3,
@@ -34,6 +31,10 @@ class _InfiniteScrollPaginationSampleState
           return _quantityOfItems;
         });
         _page++;
+
+        if (_isDisposed) {
+          return;
+        }
 
         _controller.appendPage(items, _page);
       },
@@ -57,6 +58,7 @@ class _InfiniteScrollPaginationSampleState
   void dispose() {
     _controller.removePageRequestListener(pageRequestListener);
     _controller.dispose();
+    _isDisposed = true;
 
     super.dispose();
   }

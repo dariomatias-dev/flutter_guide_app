@@ -212,7 +212,6 @@ class _SmoothPageIndicatorSampleState extends State<SmoothPageIndicatorSample> {
           top: 20.0,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
               height: 200.0,
@@ -225,35 +224,30 @@ class _SmoothPageIndicatorSampleState extends State<SmoothPageIndicatorSample> {
               ),
             ),
             Expanded(
-              child: ScrollConfiguration(
-                behavior: ScrollConfiguration.of(context).copyWith(
-                  scrollbars: false,
+              child: ListView.builder(
+                padding: const EdgeInsets.only(
+                  top: 20.0,
+                  bottom: 20.0,
                 ),
-                child: ListView.builder(
-                  itemCount: _smoothPageIndicators.length,
-                  padding: const EdgeInsets.only(
-                    top: 20.0,
-                    bottom: 20.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    final smoothPageIndicator = _smoothPageIndicators[index];
+                itemCount: _smoothPageIndicators.length,
+                itemBuilder: (context, index) {
+                  final smoothPageIndicator = _smoothPageIndicators[index];
 
-                    return Column(
-                      children: <Widget>[
-                        Text(
-                          smoothPageIndicator.title,
-                        ),
-                        const SizedBox(height: 6.0),
-                        SmoothPageIndicator(
-                          controller: _pageViewController,
-                          count: _pages.length,
-                          effect: smoothPageIndicator.effect,
-                        ),
-                        const SizedBox(height: 16.0),
-                      ],
-                    );
-                  },
-                ),
+                  return Column(
+                    children: <Widget>[
+                      Text(
+                        smoothPageIndicator.title,
+                      ),
+                      const SizedBox(height: 6.0),
+                      SmoothPageIndicator(
+                        controller: _pageViewController,
+                        count: _pages.length,
+                        effect: smoothPageIndicator.effect,
+                      ),
+                      const SizedBox(height: 16.0),
+                    ],
+                  );
+                },
               ),
             ),
           ],

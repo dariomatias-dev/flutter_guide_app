@@ -9,7 +9,7 @@ class LikeButtonSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: LikeButton(
-          likeBuilder: (bool isLiked) {
+          likeBuilder: (isLiked) {
             return Icon(
               Icons.thumb_up,
               color: isLiked ? Colors.blue : Colors.grey,
