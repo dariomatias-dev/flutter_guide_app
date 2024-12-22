@@ -19,29 +19,29 @@ class CupertinoSliderSample extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                CupertinoSliderTemplate(
+                _CupertinoSliderTemplate(
                   title: 'Standard',
                 ),
                 Divider(),
-                CupertinoSliderTemplate(
+                _CupertinoSliderTemplate(
                   title: '0 to 100 without divisions',
                   max: 100.0,
                 ),
                 Divider(),
-                CupertinoSliderTemplate(
+                _CupertinoSliderTemplate(
                   title: '50 to 100 with 50 divisions',
                   min: 50.0,
                   max: 100.0,
                   divisions: 50,
                 ),
                 Divider(),
-                CupertinoSliderTemplate(
+                _CupertinoSliderTemplate(
                   title: '0 to 100 with 20 divisions',
                   max: 100.0,
                   divisions: 20,
                 ),
                 Divider(),
-                CupertinoSliderTemplate(
+                _CupertinoSliderTemplate(
                   title: '0 to 100 with 100 divisions',
                   max: 100.0,
                   divisions: 100,
@@ -55,9 +55,8 @@ class CupertinoSliderSample extends StatelessWidget {
   }
 }
 
-class CupertinoSliderTemplate extends StatefulWidget {
-  const CupertinoSliderTemplate({
-    super.key,
+class _CupertinoSliderTemplate extends StatefulWidget {
+  const _CupertinoSliderTemplate({
     required this.title,
     this.min = 0.0,
     this.max = 1.0,
@@ -70,11 +69,11 @@ class CupertinoSliderTemplate extends StatefulWidget {
   final int? divisions;
 
   @override
-  State<CupertinoSliderTemplate> createState() =>
-      _CupertinoSliderTemplateState();
+  State<_CupertinoSliderTemplate> createState() =>
+      __CupertinoSliderTemplateState();
 }
 
-class _CupertinoSliderTemplateState extends State<CupertinoSliderTemplate> {
+class __CupertinoSliderTemplateState extends State<_CupertinoSliderTemplate> {
   bool _showFloatingPoint = true;
   double _value = 0.0;
 

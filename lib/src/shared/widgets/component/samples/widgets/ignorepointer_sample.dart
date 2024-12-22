@@ -25,7 +25,7 @@ class _IgnorePointerSampleState extends State<IgnorePointerSample> {
               ),
             ),
             const SizedBox(height: 20.0),
-            ElevatedButton(
+            TextButton(
               onPressed: () {
                 setState(() {
                   _isIgnoring = !_isIgnoring;

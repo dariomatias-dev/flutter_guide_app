@@ -11,13 +11,6 @@ class _MenuAnchorSampleState extends State<MenuAnchorSample> {
   final _menuController = MenuController();
 
   @override
-  void dispose() {
-    _menuController.close();
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(

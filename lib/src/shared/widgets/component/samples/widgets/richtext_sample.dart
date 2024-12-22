@@ -7,24 +7,22 @@ class RichTextSample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          color: Colors.white,
-          padding: const EdgeInsets.all(60.0),
-          child: RichText(
-            text: const TextSpan(
-              text: 'Text ',
-              style: TextStyle(
-                color: Colors.black,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Text',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
+        child: RichText(
+          text: TextSpan(
+            text: 'Text ',
+            style: TextStyle(
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white,
             ),
+            children: const <TextSpan>[
+              TextSpan(
+                text: 'Text',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
         ),
       ),
