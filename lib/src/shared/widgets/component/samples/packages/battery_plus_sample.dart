@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:battery_plus/battery_plus.dart';
+import 'package:logger/logger.dart';
 
 final _battery = Battery();
 
@@ -11,16 +12,26 @@ class BatteryPlusSample extends StatefulWidget {
 }
 
 class _BatteryPlusSampleState extends State<BatteryPlusSample> {
+  final _logger = Logger();
+
   int? _batteryLevel;
   bool? _isInBatterySaveMode;
   BatteryState? _batteryState;
 
-  Future<void> getBatteryInfos() async {
-    _batteryLevel = await _battery.batteryLevel;
-    _isInBatterySaveMode = await _battery.isInBatterySaveMode;
+  Future<void> _getBatteryInfos() async {
+    try {
+      _batteryLevel = await _battery.batteryLevel;
+      _isInBatterySaveMode = await _battery.isInBatterySaveMode;
+    } catch (err, stackTrace) {
+      _logger.e(
+        'Error Log',
+        error: err,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
-  void onBatteryStateChanged(
+  void _onBatteryStateChanged(
     BatteryState state,
   ) {
     if (mounted) {
@@ -32,22 +43,20 @@ class _BatteryPlusSampleState extends State<BatteryPlusSample> {
 
   @override
   void initState() {
-    _battery.onBatteryStateChanged.listen(onBatteryStateChanged);
+    _battery.onBatteryStateChanged.listen(_onBatteryStateChanged);
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    getBatteryInfos();
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 8.0,
         ),
         child: FutureBuilder(
-          future: getBatteryInfos(),
+          future: _getBatteryInfos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
