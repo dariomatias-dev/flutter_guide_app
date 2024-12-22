@@ -10,27 +10,21 @@ class DropdownButtonSample extends StatefulWidget {
 class _DropdownButtonSampleState extends State<DropdownButtonSample> {
   int _value = 1;
 
-  void _updateValue(dynamic value) {
+  void _updateValue(int? value) {
     setState(() {
-      _value = value;
+      _value = value!;
     });
   }
 
-  DropdownButton _dropdownButton({
-    bool disabled = false,
-  }) {
-    return DropdownButton(
-      value: _value,
-      items: List.generate(5, (index) {
-        return DropdownMenuItem(
-          value: index + 1,
-          child: Text(
-            'Item ${index + 1}',
-          ),
-        );
-      }),
-      onChanged: disabled ? null : _updateValue,
-    );
+  List<DropdownMenuItem<int>> _getDropdownMenuItems() {
+    return List.generate(5, (index) {
+      return DropdownMenuItem(
+        value: index + 1,
+        child: Text(
+          'Item ${index + 1}',
+        ),
+      );
+    });
   }
 
   @override
@@ -46,9 +40,17 @@ class _DropdownButtonSampleState extends State<DropdownButtonSample> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                _dropdownButton(),
+                DropdownButton<int>(
+                  value: _value,
+                  items: _getDropdownMenuItems(),
+                  onChanged: _updateValue,
+                ),
                 const SizedBox(width: 12.0),
-                _dropdownButton(disabled: true),
+                DropdownButton<int>(
+                  value: _value,
+                  items: _getDropdownMenuItems(),
+                  onChanged: null,
+                ),
               ],
             ),
             const SizedBox(height: 20.0),
@@ -59,12 +61,18 @@ class _DropdownButtonSampleState extends State<DropdownButtonSample> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 DropdownButtonHideUnderline(
-                  child: _dropdownButton(),
+                  child: DropdownButton<int>(
+                    value: _value,
+                    items: _getDropdownMenuItems(),
+                    onChanged: _updateValue,
+                  ),
                 ),
                 const SizedBox(width: 12.0),
                 DropdownButtonHideUnderline(
-                  child: _dropdownButton(
-                    disabled: true,
+                  child: DropdownButton<int>(
+                    value: _value,
+                    items: _getDropdownMenuItems(),
+                    onChanged: null,
                   ),
                 ),
               ],
