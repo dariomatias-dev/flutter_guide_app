@@ -5,11 +5,8 @@ class CupertinoNavigationBarBackButtonSample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        leading: CupertinoNavigationBarBackButton(),
-      ),
-      child: Container(),
+    return const CupertinoPageScaffold(
+      child: CupertinoNavigationBarBackButton(),
     );
   }
 }
