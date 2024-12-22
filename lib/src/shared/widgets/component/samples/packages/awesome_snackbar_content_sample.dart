@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
-class AwesomeSnackBarModel {
-  const AwesomeSnackBarModel({
+class _AwesomeSnackBarModel {
+  const _AwesomeSnackBarModel({
     required this.title,
     required this.description,
     required this.contentType,
@@ -13,32 +13,32 @@ class AwesomeSnackBarModel {
   final ContentType contentType;
 }
 
-final awesomeSnackBars = <AwesomeSnackBarModel>[
-  AwesomeSnackBarModel(
+final _awesomeSnackBars = <_AwesomeSnackBarModel>[
+  _AwesomeSnackBarModel(
     title: 'Failure',
     description: 'Something went wrong. Please try again.',
     contentType: ContentType.failure,
   ),
-  AwesomeSnackBarModel(
+  _AwesomeSnackBarModel(
     title: 'Help',
     description: 'Need help? Check out our guide or contact support.',
     contentType: ContentType.help,
   ),
-  AwesomeSnackBarModel(
+  _AwesomeSnackBarModel(
     title: 'Success',
     description:
         'Action completed successfully! Everything is working perfectly.',
     contentType: ContentType.success,
   ),
-  AwesomeSnackBarModel(
+  _AwesomeSnackBarModel(
     title: 'Warning',
     description: 'Warning! Check the details and proceed with caution.',
     contentType: ContentType.warning,
   ),
 ];
 
-class AwesomeMaterialBannerModel {
-  const AwesomeMaterialBannerModel({
+class _AwesomeMaterialBannerModel {
+  const _AwesomeMaterialBannerModel({
     required this.title,
     required this.description,
     required this.contentType,
@@ -49,24 +49,24 @@ class AwesomeMaterialBannerModel {
   final ContentType contentType;
 }
 
-final awesomeMaterialBanners = <AwesomeMaterialBannerModel>[
-  AwesomeMaterialBannerModel(
+final _awesomeMaterialBanners = <_AwesomeMaterialBannerModel>[
+  _AwesomeMaterialBannerModel(
     title: 'Failure',
     description: 'Something went wrong. Please try again.',
     contentType: ContentType.failure,
   ),
-  AwesomeMaterialBannerModel(
+  _AwesomeMaterialBannerModel(
     title: 'Help',
     description: 'Need help? Check out our guide or contact support.',
     contentType: ContentType.help,
   ),
-  AwesomeMaterialBannerModel(
+  _AwesomeMaterialBannerModel(
     title: 'Success',
     description:
         'Action completed successfully! Everything is working perfectly.',
     contentType: ContentType.success,
   ),
-  AwesomeMaterialBannerModel(
+  _AwesomeMaterialBannerModel(
     title: 'Warning',
     description: 'Warning! Check the details and proceed with caution.',
     contentType: ContentType.warning,
@@ -83,9 +83,9 @@ class AwesomeSnackbarContentSample extends StatefulWidget {
 
 class _AwesomeSnackbarContentSampleState
     extends State<AwesomeSnackbarContentSample> {
-  AwesomeSnackBarModel _awesomeSnackBar = awesomeSnackBars.first;
-  AwesomeMaterialBannerModel _awesomeMaterialBanner =
-      awesomeMaterialBanners.first;
+  _AwesomeSnackBarModel _awesomeSnackBar = _awesomeSnackBars.first;
+  _AwesomeMaterialBannerModel _awesomeMaterialBanner =
+      _awesomeMaterialBanners.first;
 
   void _showAwesomeSnackBar() {
     final awesomeSnackBar = SnackBar(
@@ -148,12 +148,12 @@ class _AwesomeSnackbarContentSampleState
             ),
             const SizedBox(height: 8.0),
             DropdownButtonHideUnderline(
-              child: DropdownButton<AwesomeSnackBarModel>(
+              child: DropdownButton<_AwesomeSnackBarModel>(
                 value: _awesomeSnackBar,
-                items: List.generate(awesomeSnackBars.length, (index) {
-                  final awesomeSnackBar = awesomeSnackBars[index];
+                items: List.generate(_awesomeSnackBars.length, (index) {
+                  final awesomeSnackBar = _awesomeSnackBars[index];
 
-                  return DropdownMenuItem<AwesomeSnackBarModel>(
+                  return DropdownMenuItem<_AwesomeSnackBarModel>(
                     value: awesomeSnackBar,
                     child: Text(
                       awesomeSnackBar.title,
@@ -176,12 +176,12 @@ class _AwesomeSnackbarContentSampleState
             ),
             const SizedBox(height: 8.0),
             DropdownButtonHideUnderline(
-              child: DropdownButton<AwesomeMaterialBannerModel>(
+              child: DropdownButton<_AwesomeMaterialBannerModel>(
                 value: _awesomeMaterialBanner,
-                items: List.generate(awesomeMaterialBanners.length, (index) {
-                  final awesomeMaterialBanner = awesomeMaterialBanners[index];
+                items: List.generate(_awesomeMaterialBanners.length, (index) {
+                  final awesomeMaterialBanner = _awesomeMaterialBanners[index];
 
-                  return DropdownMenuItem<AwesomeMaterialBannerModel>(
+                  return DropdownMenuItem<_AwesomeMaterialBannerModel>(
                     value: awesomeMaterialBanner,
                     child: Text(
                       awesomeMaterialBanner.title,

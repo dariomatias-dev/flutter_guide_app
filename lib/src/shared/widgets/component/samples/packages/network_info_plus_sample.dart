@@ -9,34 +9,34 @@ class NetworkInfoPlusSample extends StatefulWidget {
 }
 
 class _NetworkInfoPlusSampleState extends State<NetworkInfoPlusSample> {
-  final info = NetworkInfo();
+  final _info = NetworkInfo();
 
-  String? wifiName;
-  String? wifiBSSID;
-  String? wifiIP;
-  String? wifiIPv6;
-  String? wifiSubmask;
-  String? wifiBroadcast;
-  String? wifiGateway;
+  String? _wifiName;
+  String? _wifiBSSID;
+  String? _wifiIP;
+  String? _wifiIPv6;
+  String? _wifiSubmask;
+  String? _wifiBroadcast;
+  String? _wifiGateway;
 
   Future<void> _fetchData() async {
     final result = await Future.wait([
-      info.getWifiName(),
-      info.getWifiBSSID(),
-      info.getWifiIP(),
-      info.getWifiIPv6(),
-      info.getWifiSubmask(),
-      info.getWifiBroadcast(),
-      info.getWifiGatewayIP(),
+      _info.getWifiName(),
+      _info.getWifiBSSID(),
+      _info.getWifiIP(),
+      _info.getWifiIPv6(),
+      _info.getWifiSubmask(),
+      _info.getWifiBroadcast(),
+      _info.getWifiGatewayIP(),
     ]);
 
-    wifiName = result[0];
-    wifiBSSID = result[1];
-    wifiIP = result[2];
-    wifiIPv6 = result[3];
-    wifiSubmask = result[4];
-    wifiBroadcast = result[5];
-    wifiGateway = result[6];
+    _wifiName = result[0];
+    _wifiBSSID = result[1];
+    _wifiIP = result[2];
+    _wifiIPv6 = result[3];
+    _wifiSubmask = result[4];
+    _wifiBroadcast = result[5];
+    _wifiGateway = result[6];
 
     setState(() {});
   }
@@ -52,37 +52,32 @@ class _NetworkInfoPlusSampleState extends State<NetworkInfoPlusSample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
+          direction: Axis.vertical,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 12.0,
           children: <Widget>[
             Text(
-              'Wifi Name: $wifiName',
+              'Wifi Name: $_wifiName',
             ),
-            const SizedBox(height: 12.0),
             Text(
-              'Wifi BSSID: $wifiBSSID',
+              'Wifi BSSID: $_wifiBSSID',
             ),
-            const SizedBox(height: 12.0),
             Text(
-              'Wifi IP: $wifiIP',
+              'Wifi IP: $_wifiIP',
             ),
-            const SizedBox(height: 12.0),
             Text(
-              'Wifi IPv6: $wifiIPv6',
+              'Wifi IPv6: $_wifiIPv6',
             ),
-            const SizedBox(height: 12.0),
             Text(
-              'Wifi Submask: $wifiSubmask',
+              'Wifi Submask: $_wifiSubmask',
             ),
-            const SizedBox(height: 12.0),
             Text(
-              'Wifi Broadcast: $wifiBroadcast',
+              'Wifi Broadcast: $_wifiBroadcast',
             ),
-            const SizedBox(height: 12.0),
             Text(
-              'Wifi Gateway: $wifiGateway',
+              'Wifi Gateway: $_wifiGateway',
             ),
-            const SizedBox(height: 12.0),
           ],
         ),
       ),

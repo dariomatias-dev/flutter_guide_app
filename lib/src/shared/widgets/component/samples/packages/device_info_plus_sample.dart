@@ -19,7 +19,7 @@ class _DeviceModel {
   final _Device device;
 }
 
-const devices = <_DeviceModel>[
+const _devices = <_DeviceModel>[
   _DeviceModel(
     name: 'Android',
     device: _Device.android,
@@ -42,8 +42,8 @@ const devices = <_DeviceModel>[
   ),
 ];
 
-class DeviceInfo {
-  const DeviceInfo({
+class _DeviceInfo {
+  const _DeviceInfo({
     required this.id,
     required this.name,
   });
@@ -60,10 +60,11 @@ class DeviceInfoPlusSample extends StatefulWidget {
 }
 
 class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
-  _DeviceModel _selectDevice = devices.first;
+  _DeviceModel _selectDevice = _devices.first;
 
-  Future<DeviceInfo?> _getDeviceInfo() async {
+  Future<_DeviceInfo?> _getDeviceInfo() async {
     final deviceInfo = DeviceInfoPlugin();
+
     String deviceId = '';
     String deviceName = '';
 
@@ -96,7 +97,7 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
           break;
       }
 
-      return DeviceInfo(
+      return _DeviceInfo(
         id: deviceId,
         name: deviceName,
       );
@@ -126,8 +127,8 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
                 DropdownButtonHideUnderline(
                   child: DropdownButton(
                     value: _selectDevice,
-                    items: List.generate(devices.length, (index) {
-                      final device = devices[index];
+                    items: List.generate(_devices.length, (index) {
+                      final device = _devices[index];
 
                       return DropdownMenuItem(
                         value: device,

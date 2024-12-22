@@ -41,7 +41,7 @@ class _InfiniteScrollPaginationSampleState
     );
   }
 
-  void pageRequestListener(
+  void _pageRequestListener(
     int pageKey,
   ) {
     _fecthNumberOfItems();
@@ -49,14 +49,14 @@ class _InfiniteScrollPaginationSampleState
 
   @override
   void initState() {
-    _controller.addPageRequestListener(pageRequestListener);
+    _controller.addPageRequestListener(_pageRequestListener);
 
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller.removePageRequestListener(pageRequestListener);
+    _controller.removePageRequestListener(_pageRequestListener);
     _controller.dispose();
     _isDisposed = true;
 

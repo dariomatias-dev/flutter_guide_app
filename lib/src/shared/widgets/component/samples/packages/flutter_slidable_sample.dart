@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-const _actions = <SlidableActionTemplate>[
-  SlidableActionTemplate(
+const _actions = <_SlidableActionTemplate>[
+  _SlidableActionTemplate(
     backgroundColor: Colors.blue,
     icon: Icons.edit,
   ),
-  SlidableActionTemplate(
+  _SlidableActionTemplate(
     backgroundColor: Colors.red,
     icon: Icons.delete,
   ),
@@ -24,29 +24,29 @@ class FlutterSlidableSample extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            FlutterSlidableTemplate(
+            _FlutterSlidableTemplate(
               title: 'Flutter Slidable Motion: Scroll',
               startActions: _actions,
             ),
-            FlutterSlidableDividir(),
-            FlutterSlidableTemplate(
+            _FlutterSlidableDividir(),
+            _FlutterSlidableTemplate(
               title: 'Flutter Slidable Motion: Drawer',
               motion: DrawerMotion(),
               startActions: _actions,
             ),
-            FlutterSlidableDividir(),
-            FlutterSlidableTemplate(
+            _FlutterSlidableDividir(),
+            _FlutterSlidableTemplate(
               title: 'Flutter Slidable Motion: Stretch',
               motion: StretchMotion(),
               startActions: _actions,
             ),
-            FlutterSlidableDividir(),
-            FlutterSlidableTemplate(
+            _FlutterSlidableDividir(),
+            _FlutterSlidableTemplate(
               title: 'Flutter Slidable With End Actions',
               endActions: _actions,
             ),
-            FlutterSlidableDividir(),
-            FlutterSlidableTemplate(
+            _FlutterSlidableDividir(),
+            _FlutterSlidableTemplate(
               title: 'Flutter Slidable With Start And End Actions',
               startActions: _actions,
               endActions: _actions,
@@ -58,9 +58,8 @@ class FlutterSlidableSample extends StatelessWidget {
   }
 }
 
-class FlutterSlidableTemplate extends StatelessWidget {
-  const FlutterSlidableTemplate({
-    super.key,
+class _FlutterSlidableTemplate extends StatelessWidget {
+  const _FlutterSlidableTemplate({
     required this.title,
     this.motion,
     this.startActions,
@@ -69,8 +68,8 @@ class FlutterSlidableTemplate extends StatelessWidget {
 
   final String title;
   final Widget? motion;
-  final List<SlidableActionTemplate>? startActions;
-  final List<SlidableActionTemplate>? endActions;
+  final List<_SlidableActionTemplate>? startActions;
+  final List<_SlidableActionTemplate>? endActions;
 
   @override
   Widget build(BuildContext context) {
@@ -109,9 +108,8 @@ class FlutterSlidableTemplate extends StatelessWidget {
   }
 }
 
-class SlidableActionTemplate extends StatelessWidget {
-  const SlidableActionTemplate({
-    super.key,
+class _SlidableActionTemplate extends StatelessWidget {
+  const _SlidableActionTemplate({
     required this.backgroundColor,
     required this.icon,
   });
@@ -129,8 +127,8 @@ class SlidableActionTemplate extends StatelessWidget {
   }
 }
 
-class FlutterSlidableDividir extends StatelessWidget {
-  const FlutterSlidableDividir({super.key});
+class _FlutterSlidableDividir extends StatelessWidget {
+  const _FlutterSlidableDividir();
 
   @override
   Widget build(BuildContext context) {

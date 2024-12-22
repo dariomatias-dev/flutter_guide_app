@@ -14,7 +14,7 @@ class PhotoViewSample extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return const PhotoViewScreen();
+                  return const _PhotoViewScreen();
                 },
               ),
             );
@@ -28,8 +28,8 @@ class PhotoViewSample extends StatelessWidget {
   }
 }
 
-class PhotoViewScreen extends StatelessWidget {
-  const PhotoViewScreen({super.key});
+class _PhotoViewScreen extends StatelessWidget {
+  const _PhotoViewScreen();
 
   @override
   Widget build(BuildContext context) {

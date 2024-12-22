@@ -13,7 +13,7 @@ class _UuidVersionModel {
 
 const _uuid = Uuid();
 
-final uuidVersions = <_UuidVersionModel>[
+final _uuidVersions = <_UuidVersionModel>[
   _UuidVersionModel(
     version: 1,
     generator: () {
@@ -68,7 +68,7 @@ class _UuidSampleState extends State<UuidSample> {
 
   void _generateUuid() {
     setState(() {
-      _uuid = uuidVersions[_uuidVersionIndex].generator();
+      _uuid = _uuidVersions[_uuidVersionIndex].generator();
     });
   }
 
@@ -91,8 +91,8 @@ class _UuidSampleState extends State<UuidSample> {
             DropdownButtonHideUnderline(
               child: DropdownButton(
                 value: _uuidVersionIndex,
-                items: List.generate(uuidVersions.length, (index) {
-                  final uuidVersion = uuidVersions[index];
+                items: List.generate(_uuidVersions.length, (index) {
+                  final uuidVersion = _uuidVersions[index];
 
                   return DropdownMenuItem(
                     value: index,

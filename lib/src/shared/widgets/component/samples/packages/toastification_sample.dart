@@ -30,8 +30,8 @@ const _toastificationTypes = <_ToastificationTypeModel>[
   ),
 ];
 
-class ToastificationStyleModel {
-  const ToastificationStyleModel({
+class _ToastificationStyleModel {
+  const _ToastificationStyleModel({
     required this.title,
     required this.style,
   });
@@ -40,24 +40,24 @@ class ToastificationStyleModel {
   final ToastificationStyle style;
 }
 
-const toastificationStyles = <ToastificationStyleModel>[
-  ToastificationStyleModel(
+const _toastificationStyles = <_ToastificationStyleModel>[
+  _ToastificationStyleModel(
     title: 'FillColored',
     style: ToastificationStyle.fillColored,
   ),
-  ToastificationStyleModel(
+  _ToastificationStyleModel(
     title: 'Flat',
     style: ToastificationStyle.flat,
   ),
-  ToastificationStyleModel(
+  _ToastificationStyleModel(
     title: 'FlatColored',
     style: ToastificationStyle.flatColored,
   ),
-  ToastificationStyleModel(
+  _ToastificationStyleModel(
     title: 'Minimal',
     style: ToastificationStyle.minimal,
   ),
-  ToastificationStyleModel(
+  _ToastificationStyleModel(
     title: 'Simple',
     style: ToastificationStyle.simple,
   ),
@@ -121,9 +121,9 @@ class _ToastificationSampleState extends State<ToastificationSample> {
               child: DropdownButton(
                 value: _toastificationStyle,
                 items: List.generate(
-                  toastificationStyles.length,
+                  _toastificationStyles.length,
                   (index) {
-                    final toastificationStyle = toastificationStyles[index];
+                    final toastificationStyle = _toastificationStyles[index];
 
                     return DropdownMenuItem(
                       value: toastificationStyle.style,
