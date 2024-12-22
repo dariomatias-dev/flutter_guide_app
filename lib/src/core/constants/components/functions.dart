@@ -10,6 +10,7 @@ import 'package:flutter_guide/src/shared/models/widget_infos_model/component_inf
 
 // Functions
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showbottomsheet_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showdatepicker_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showdialog_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showmodalbottomsheet_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showtimepicker_sample.dart';
@@ -19,6 +20,12 @@ const functions = <FunctionModel>[
     name: FunctionNames.showBottomSheetMaterial,
     icon: Icons.keyboard_arrow_up,
     sample: ShowBottomSheetSample(),
+    type: ComponentType.function,
+  ),
+  FunctionModel(
+    name: FunctionNames.showDatePickerMaterial,
+    icon: Icons.event_outlined,
+    sample: ShowDatePickerSample(),
     type: ComponentType.function,
   ),
   FunctionModel(
