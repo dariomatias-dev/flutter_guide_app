@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
         ),
         child: ListView(
           children: <Widget>[
+            const SizedBox(height: 20.0),
             BorderListTileItemWidget(
               title: 'UIs',
               icon: Icons.web,
@@ -48,6 +49,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20.0),
             const ComponentGroupsWidget(),
+            const SizedBox(height: 92.0),
           ],
         ),
       ),
