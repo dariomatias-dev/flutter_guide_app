@@ -52,6 +52,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/dismi
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/divider_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/drawer_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/dropdownbutton_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/editabletext_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/elevatedbutton_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/expanded_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/expansiontile_sample.dart';
@@ -390,6 +391,12 @@ const widgets = <WidgetModel>[
     videoId: 'ZzQ_PWrFihg',
     sample: DropdownButtonSample(),
     type: ComponentType.material,
+  ),
+  WidgetModel(
+    name: WidgetNames.editableTextWidget,
+    icon: Icons.edit_outlined,
+    sample: EditabletextSample(),
+    type: ComponentType.widget,
   ),
   WidgetModel(
     name: WidgetNames.elevatedButtonMaterial,

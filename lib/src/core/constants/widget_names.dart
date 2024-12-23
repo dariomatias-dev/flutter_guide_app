@@ -44,6 +44,7 @@ class WidgetNames {
   static const dividerMaterial = 'Divider';
   static const drawerMaterial = 'Drawer';
   static const dropdownButtonMaterial = 'DropdownButton';
+  static const editableTextWidget = 'EditableText';
   static const elevatedButtonMaterial = 'ElevatedButton';
   static const expandedWidget = 'Expanded';
   static const expansionTileMaterial = 'ExpansionTile';
