@@ -51,6 +51,7 @@ class WidgetNames {
   static const filterChipMaterial = 'FilterChip';
   static const floatingActionButtonMaterial = 'FloatingActionButton';
   static const flutterLogoMaterial = 'FlutterLogo';
+  static const formWidget = 'Form';
   static const futureBuilderWidget = 'FutureBuilder';
   static const gestureDetectorWidget = 'GestureDetector';
   static const gridViewWidget = 'GridView';

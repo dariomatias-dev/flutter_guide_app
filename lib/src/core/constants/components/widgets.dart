@@ -59,6 +59,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/fille
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/filterchip_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/floatingactionbutton_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/flutterlogo_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/form_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/futurebuilder_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/gesturedetector_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/gridview_sample.dart';
@@ -433,6 +434,13 @@ const widgets = <WidgetModel>[
     videoId: 'aAmP-WcI6dg',
     sample: FlutterLogoSample(),
     type: ComponentType.material,
+  ),
+  WidgetModel(
+    name: WidgetNames.formWidget,
+    icon: Icons.assignment_outlined,
+    videoId: 'aAmP-WcI6dg',
+    sample: FormSample(),
+    type: ComponentType.widget,
   ),
   WidgetModel(
     name: WidgetNames.futureBuilderWidget,
