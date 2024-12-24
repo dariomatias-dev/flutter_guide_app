@@ -45,7 +45,6 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cuper
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinonavigationbarbackbutton_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinopagescaffold_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinoradio_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinoslider_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/decoratedbox_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/dialog_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/dismissible_sample.dart';
@@ -345,13 +344,13 @@ const widgets = <WidgetModel>[
     sample: CupertinoRadioSample(),
     type: ComponentType.cupertino,
   ),
-  WidgetModel(
-    name: WidgetNames.cupertinoSliderCupertino,
-    icon: Icons.tune,
-    videoId: 'ufb4gIPDmEs',
-    sample: CupertinoSliderSample(),
-    type: ComponentType.cupertino,
-  ),
+  // WidgetModel(
+  //   name: WidgetNames.cupertinoSliderCupertino,
+  //   icon: Icons.tune,
+  //   videoId: 'ufb4gIPDmEs',
+  //   sample: CupertinoSliderSample(),
+  //   type: ComponentType.cupertino,
+  // ),
   WidgetModel(
     name: WidgetNames.decoratedBoxWidget,
     icon: Icons.image,

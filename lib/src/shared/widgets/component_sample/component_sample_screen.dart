@@ -85,7 +85,7 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
             valueListenable: _controller.showFloatingActionsNotifier,
             builder: (context, value, child) {
               if (!value) {
-                return Container();
+                return const SizedBox.shrink();
               }
 
               return ValueListenableBuilder(
