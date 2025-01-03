@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_guide/src/core/theme/theme.dart';
+
 class ThemeController extends ValueNotifier {
   ThemeController({
     this.themeMode = ThemeMode.system,
@@ -10,6 +12,8 @@ class ThemeController extends ValueNotifier {
   }
 
   ThemeMode themeMode;
+  late bool isLight;
+  late ThemeData theme;
 
   late SharedPreferences _sharedPreferences;
 
@@ -18,13 +22,16 @@ class ThemeController extends ValueNotifier {
   ) {
     _sharedPreferences = sharedPreferencesInstance;
 
-    final theme = _sharedPreferences.getString('theme');
+    final themeName = _sharedPreferences.getString('theme');
 
-    if (theme == ThemeMode.light.name) {
+    if (themeName == ThemeMode.light.name) {
       themeMode = ThemeMode.light;
-    } else if (theme == ThemeMode.dark.name) {
+    } else if (themeName == ThemeMode.dark.name) {
       themeMode = ThemeMode.dark;
     }
+
+    isLight = themeMode == ThemeMode.light;
+    theme = isLight ? ligthMode : darkMode;
 
     notifyListeners();
   }
@@ -43,6 +50,9 @@ class ThemeController extends ValueNotifier {
     } else {
       themeMode = ThemeMode.light;
     }
+
+    isLight = themeMode == ThemeMode.light;
+    theme = isLight ? ligthMode : darkMode;
 
     _saveTheme();
 

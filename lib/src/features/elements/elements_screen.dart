@@ -5,6 +5,8 @@ import 'package:flutter_guide/src/core/constants/components/functions.dart';
 import 'package:flutter_guide/src/core/constants/components/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 
@@ -20,13 +22,22 @@ class _ElementsScreenState extends State<ElementsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         body: Column(
           children: <Widget>[
-            Container(
-              color: Theme.of(context).colorScheme.secondary,
+            ValueListenableBuilder(
+              valueListenable: themeController,
+              builder: (context, value, child) {
+                return Container(
+                  color: themeController.theme.colorScheme.secondary,
+                  child: child,
+                );
+              },
               child: DefaultTabBarWidget(
                 onTap: (value) {
                   setState(() {

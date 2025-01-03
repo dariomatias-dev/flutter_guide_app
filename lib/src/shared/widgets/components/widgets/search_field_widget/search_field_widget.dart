@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/widgets/components/widgets/search_field_widget/search_field_controller.dart';
 
@@ -60,44 +61,52 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
         hintText = appLocalizations.package;
     }
 
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return Container(
       width: double.infinity,
       height: 44.0,
       margin: const EdgeInsets.symmetric(
         horizontal: 8.0,
       ),
-      child: TextFormField(
-        controller: _controller.searchFieldController,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: (Theme.of(context).brightness == Brightness.light
-                  ? Colors.grey.shade200
-                  : FlutterGuideColors.darkNeutral200)
-              .withOpacity(0.8),
-          prefixIcon: Icon(
-            Icons.search,
-            color: Theme.of(context).colorScheme.tertiary,
-            size: 20.0,
-          ),
-          suffixIcon: GestureDetector(
-            onTap: _controller.searchFieldClear,
-            child: Icon(
-              Icons.close,
-              color: Theme.of(context).colorScheme.tertiary,
-              size: 20.0,
+      child: ValueListenableBuilder(
+        valueListenable: themeController,
+        builder: (context, value, child) {
+          return TextFormField(
+            controller: _controller.searchFieldController,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: (themeController.isLight
+                      ? Colors.grey.shade200
+                      : FlutterGuideColors.darkNeutral200)
+                  .withOpacity(0.8),
+              prefixIcon: Icon(
+                Icons.search,
+                color: themeController.theme.colorScheme.tertiary,
+                size: 20.0,
+              ),
+              suffixIcon: GestureDetector(
+                onTap: _controller.searchFieldClear,
+                child: Icon(
+                  Icons.close,
+                  color: themeController.theme.colorScheme.tertiary,
+                  size: 20.0,
+                ),
+              ),
+              hintText: '$hintText...',
+              hintStyle: TextStyle(
+                color: Colors.grey.shade600,
+                fontSize: 14.0,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide.none,
+              ),
             ),
-          ),
-          hintText: '$hintText...',
-          hintStyle: TextStyle(
-            color: Colors.grey.shade600,
-            fontSize: 14.0,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            borderSide: BorderSide.none,
-          ),
-        ),
-        onChanged: widget.onChange,
+            onChanged: widget.onChange,
+          );
+        },
       ),
     );
   }

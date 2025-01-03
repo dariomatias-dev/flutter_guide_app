@@ -40,59 +40,61 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ValueListenableBuilder(
-        valueListenable:
-            UserPreferencesInheritedWidget.of(context)!.themeController,
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
+    return ValueListenableBuilder(
+      valueListenable: themeController,
+      builder: (context, value, child) {
+        return Scaffold(
+          backgroundColor: themeController.theme.scaffoldBackgroundColor,
+          body: child,
+        );
+      },
+      child: ValueListenableBuilder(
+        valueListenable: _controller.initialItemsNotifier,
         builder: (context, value, child) {
-          _controller.favoritesService.getWidgets();
-
-          return ValueListenableBuilder(
-            valueListenable: _controller.initialItemsNotifier,
-            builder: (context, value, child) {
-              return ScrollInfinity<ComponentModel?>(
-                header: Column(
-                  children: <Widget>[
-                    const SizedBox(height: 20.0),
-                    SearchFieldWidget(
-                      componentType: widget.componentType,
-                      onChange: (value) {
-                        _controller.searchComponents(value, () {
-                          setState(() {});
-                        });
-                      },
-                      searchClear: _controller.searchClear,
-                    ),
-                    const SizedBox(height: 12.0),
-                  ],
+          return ScrollInfinity<ComponentModel?>(
+            header: Column(
+              children: <Widget>[
+                const SizedBox(height: 20.0),
+                SearchFieldWidget(
+                  componentType: widget.componentType,
+                  onChange: (value) {
+                    _controller.searchComponents(value, () {
+                      setState(() {});
+                    });
+                  },
+                  searchClear: _controller.searchClear,
                 ),
-                padding: const EdgeInsets.only(
-                  bottom: 100.0,
-                ),
-                maxItems: 18,
-                disableInitialRequest: true,
-                initialPageIndex: 1,
-                initialItems: value,
-                interval: _controller.adInterval,
-                loadData: _controller.loadData,
-                itemBuilder: (value, index) {
-                  if (value == null) {
-                    return Container();
-                    // return const AdItemWidget();
-                  }
+                const SizedBox(height: 12.0),
+              ],
+            ),
+            padding: const EdgeInsets.only(
+              bottom: 100.0,
+            ),
+            maxItems: 18,
+            disableInitialRequest: true,
+            initialPageIndex: 1,
+            initialItems: value,
+            interval: _controller.adInterval,
+            loadData: _controller.loadData,
+            itemBuilder: (value, index) {
+              if (value == null) {
+                return Container();
+                // return const AdItemWidget();
+              }
 
-                  return SizedBox(
-                    height: 44.0,
-                    child: CardWidget(
-                      componentType: widget.componentType,
-                      icon: value.icon,
-                      componentName: value.name,
-                      videoId: value.videoId,
-                      favoritesService: _controller.favoritesService,
-                      favoriteNotifier: _controller.favoriteNotifier,
-                    ),
-                  );
-                },
+              return SizedBox(
+                height: 44.0,
+                child: CardWidget(
+                  componentType: widget.componentType,
+                  icon: value.icon,
+                  componentName: value.name,
+                  videoId: value.videoId,
+                  favoritesService: _controller.favoritesService,
+                  favoriteNotifier: _controller.favoriteNotifier,
+                ),
               );
             },
           );

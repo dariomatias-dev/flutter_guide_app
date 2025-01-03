@@ -50,6 +50,10 @@ class ComponentsController {
     favoritesService =
         userPreferencesInheritedWidget.getFavoriteService(componentType);
 
+    UserPreferencesInheritedWidget.of(context)!
+        .themeController
+        .addListener(favoritesService.getWidgets);
+
     initialItemsNotifier.setComponents(
       await loadData(0),
     );

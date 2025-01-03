@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 import 'package:flutter_guide/src/shared/widgets/back_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/change_theme_button/change_theme_button_widget.dart';
 
@@ -28,24 +30,32 @@ class StandardAppBarWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      surfaceTintColor: Theme.of(context).colorScheme.secondary,
-      backgroundColor: Theme.of(context).colorScheme.secondary,
-      leading: showBackButton ? const BackButtonWidget() : null,
-      title: title ??
-          Text(
-            titleName!,
-            style: const TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-      actions: <Widget>[
-        const ChangeThemeButtonWidget(),
-        const SizedBox(width: 4.0),
-        if (actions != null) ...actions!,
-      ],
-      bottom: bottom,
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
+    return ValueListenableBuilder(
+      valueListenable: themeController,
+      builder: (context, value, child) {
+        return AppBar(
+          surfaceTintColor: themeController.theme.colorScheme.secondary,
+          backgroundColor: themeController.theme.colorScheme.secondary,
+          leading: showBackButton ? const BackButtonWidget() : null,
+          title: title ??
+              Text(
+                titleName!,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+          actions: <Widget>[
+            const ChangeThemeButtonWidget(),
+            const SizedBox(width: 4.0),
+            if (actions != null) ...actions!,
+          ],
+          bottom: bottom,
+        );
+      },
     );
   }
 }
