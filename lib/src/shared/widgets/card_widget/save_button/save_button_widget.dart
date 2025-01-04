@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.dart';
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
 
@@ -41,11 +42,16 @@ class _SaveButtonWidgetState extends State<SaveButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return IconButtonWidget(
-      onTap: () => _controller.ontap(
-        context,
-        widget.componentName,
-      ),
+      onTap: () {
+        _controller.ontap(
+          context,
+          widget.componentName,
+        );
+      },
       child: ValueListenableBuilder(
         valueListenable: widget.favoriteNotifier,
         builder: (context, value, child) {
@@ -53,10 +59,15 @@ class _SaveButtonWidgetState extends State<SaveButtonWidget> {
             widget.componentName,
           );
 
-          return Icon(
-            _controller.saved ? Icons.bookmark : Icons.bookmark_border,
-            color: Theme.of(context).colorScheme.primary,
-            size: 20.0,
+          return ValueListenableBuilder(
+            valueListenable: themeController,
+            builder: (context, value, child) {
+              return Icon(
+                _controller.saved ? Icons.bookmark : Icons.bookmark_border,
+                color: themeController.theme.colorScheme.primary,
+                size: 20.0,
+              );
+            },
           );
         },
       ),

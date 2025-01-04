@@ -28,9 +28,11 @@ class _ChangeThemeButtonWidgetState extends State<ChangeThemeButtonWidget> {
     return GestureDetector(
       onLongPress: _controller.showThemeSelectorDialog,
       child: IconButtonWidget(
-        onTap: () => _controller.toggleTheme(() {
-          setState(() {});
-        }),
+        onTap: () {
+          _controller.toggleTheme(() {
+            setState(() {});
+          });
+        },
         icon: _controller.isBrightnessMode
             ? Icons.light_mode_outlined
             : Icons.dark_mode_outlined,

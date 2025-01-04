@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 import 'package:flutter_guide/src/shared/widgets/ink_well_button_widget.dart';
 
 class IconButtonWidget extends StatelessWidget {
@@ -19,6 +21,9 @@ class IconButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return InkWellButtonWidget(
       onTap: onTap,
       borderRadius: 100.0,
@@ -27,10 +32,15 @@ class IconButtonWidget extends StatelessWidget {
         height: 40.0,
         child: Center(
           child: child ??
-              Icon(
-                icon,
-                color: Theme.of(context).colorScheme.primary,
-                size: 24.0,
+              ValueListenableBuilder(
+                valueListenable: themeController,
+                builder: (context, value, child) {
+                  return Icon(
+                    icon,
+                    color: themeController.theme.colorScheme.primary,
+                    size: 24.0,
+                  );
+                },
               ),
         ),
       ),

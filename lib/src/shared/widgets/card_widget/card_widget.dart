@@ -38,7 +38,6 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTileItemWidget(
-      padding: padding,
       onTap: () {
         Navigator.push(
           context,
@@ -52,6 +51,7 @@ class CardWidget extends StatelessWidget {
           ),
         );
       },
+      padding: padding,
       title: componentName,
       icon: icon,
       trailingWidgets: <Widget>[

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 import 'package:flutter_guide/src/shared/widgets/ink_well_button_widget.dart';
 
 class ListTileItemWidget extends StatelessWidget {
@@ -24,6 +26,9 @@ class ListTileItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return InkWellButtonWidget(
       onTap: onTap,
       borderRadius: borderRadius,
@@ -40,42 +45,46 @@ class ListTileItemWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: 12.0,
                   ),
-                  child: Row(
-                    children: <Widget>[
-                      if (icon != null)
-                        Icon(
-                          icon,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(onTap == null ? 0.5 : 1.0),
-                          size: 20.0,
-                        ),
-                      const SizedBox(width: 12.0),
-                      Text(
-                        title,
-                        style: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(onTap == null ? 0.6 : 1.0),
-                          fontSize: 14.0,
-                        ),
-                      ),
-                    ],
+                  child: ValueListenableBuilder(
+                    valueListenable: themeController,
+                    builder: (context, value, child) {
+                      return Row(
+                        children: <Widget>[
+                          if (icon != null)
+                            Icon(
+                              icon,
+                              color: themeController.theme.colorScheme.primary
+                                  .withOpacity(onTap == null ? 0.5 : 1.0),
+                              size: 20.0,
+                            ),
+                          const SizedBox(width: 12.0),
+                          Text(
+                            title,
+                            style: TextStyle(
+                              color: themeController.theme.colorScheme.primary
+                                  .withOpacity(onTap == null ? 0.6 : 1.0),
+                              fontSize: 14.0,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
               ),
               Row(
                 children: <Widget>[
                   if (openInBrowser)
-                    Icon(
-                      Icons.open_in_new_rounded,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withOpacity(onTap == null ? 0.5 : 1.0),
-                      size: 18.0,
+                    ValueListenableBuilder(
+                      valueListenable: themeController,
+                      builder: (context, value, child) {
+                        return Icon(
+                          Icons.open_in_new_rounded,
+                          color: themeController.theme.colorScheme.primary
+                              .withOpacity(onTap == null ? 0.5 : 1.0),
+                          size: 18.0,
+                        );
+                      },
                     ),
                   if (trailingWidgets != null) ...trailingWidgets!,
                 ],
