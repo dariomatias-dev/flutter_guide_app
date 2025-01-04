@@ -10,6 +10,9 @@ class SocialNetworkButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return IconButton(
       onPressed: () {
         openUrl(
@@ -19,10 +22,15 @@ class SocialNetworkButtonWidget extends StatelessWidget {
       },
       highlightColor: Colors.blue.withOpacity(0.07),
       hoverColor: Colors.blue.withOpacity(0.08),
-      icon: FaIcon(
-        socialNetwork.icon,
-        color: Theme.of(context).colorScheme.primary,
-        size: 24.0,
+      icon: ValueListenableBuilder(
+        valueListenable: themeController,
+        builder: (context, value, child) {
+          return FaIcon(
+            socialNetwork.icon,
+            color: themeController.theme.colorScheme.primary,
+            size: 24.0,
+          );
+        },
       ),
     );
   }
