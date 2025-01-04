@@ -14,44 +14,42 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context).copyWith(
-          scrollbars: false,
-        ),
-        child: ListView(
-          children: <Widget>[
-            const SizedBox(height: 20.0),
-            BorderListTileItemWidget(
-              title: 'UIs',
-              icon: Icons.web,
-              onTap: () {
-                navigateTo(
-                  context,
-                  const InterfaceCatalogScreen(
-                    elementType: InterfaceTypeEnum.ui,
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 8.0),
-            BorderListTileItemWidget(
-              title: AppLocalizations.of(context)!.elements,
-              icon: Icons.list_alt,
-              onTap: () {
-                navigateTo(
-                  context,
-                  const InterfaceCatalogScreen(
-                    elementType: InterfaceTypeEnum.element,
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 20.0),
-            const ComponentGroupsWidget(),
-            const SizedBox(height: 92.0),
-          ],
-        ),
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        scrollbars: false,
+      ),
+      child: ListView(
+        children: <Widget>[
+          const SizedBox(height: 20.0),
+          BorderListTileItemWidget(
+            title: 'UIs',
+            icon: Icons.web,
+            onTap: () {
+              navigateTo(
+                context,
+                const InterfaceCatalogScreen(
+                  elementType: InterfaceTypeEnum.ui,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 8.0),
+          BorderListTileItemWidget(
+            title: AppLocalizations.of(context)!.elements,
+            icon: Icons.list_alt,
+            onTap: () {
+              navigateTo(
+                context,
+                const InterfaceCatalogScreen(
+                  elementType: InterfaceTypeEnum.element,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 20.0),
+          const ComponentGroupsWidget(),
+          const SizedBox(height: 92.0),
+        ],
       ),
     );
   }

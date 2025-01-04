@@ -6,6 +6,8 @@ import 'package:flutter_guide/src/features/main/main_controller.dart';
 import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/main_app_bar_widget.dart';
 
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -23,11 +25,23 @@ class _MainScreenState extends State<MainScreen> {
     );
     final screenSelected = screens[_controller.screenIndex];
 
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return Scaffold(
       appBar: const MainAppBarWidget(),
       body: Stack(
         children: <Widget>[
-          screenSelected.screen,
+          ValueListenableBuilder(
+            valueListenable: themeController,
+            builder: (context, value, child) {
+              return Scaffold(
+                backgroundColor: themeController.theme.scaffoldBackgroundColor,
+                body: child,
+              );
+            },
+            child: screenSelected.screen,
+          ),
           Positioned(
             right: 16.0,
             left: 16.0,

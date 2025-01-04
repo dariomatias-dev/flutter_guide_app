@@ -28,44 +28,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context).copyWith(
-          scrollbars: false,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: 36.0),
-              const AppInfoWidget(),
-              const SizedBox(height: 20.0),
-              ListTileItemWidget(
-                title: _controller.appLocalizations.docsAndResources,
-                icon: Icons.description_outlined,
-                onTap: _controller.showDocsAndResourcesDialog,
-              ),
-              SelectLanguageWidget(
-                title: _controller.appLocalizations.language,
-              ),
-              ListTileItemWidget(
-                title: _controller.appLocalizations.myWebsite,
-                icon: Icons.public,
-                openInBrowser: true,
-                onTap: null,
-              ),
-              // ListTileItemWidget(
-              //   title: 'Buy Me a Coffee',
-              //   icon: Icons.local_cafe_outlined,
-              //   onTap: _controller.showDonateDialog,
-              // ),
-              ListTileItemWidget(
-                title: _controller.appLocalizations.about,
-                icon: Icons.info_outline,
-                onTap: _controller.showAboutDialog,
-              ),
-              const SocialNetworksWidget(),
-            ],
-          ),
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        scrollbars: false,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 36.0),
+            const AppInfoWidget(),
+            const SizedBox(height: 20.0),
+            ListTileItemWidget(
+              title: _controller.appLocalizations.docsAndResources,
+              icon: Icons.description_outlined,
+              onTap: _controller.showDocsAndResourcesDialog,
+            ),
+            SelectLanguageWidget(
+              title: _controller.appLocalizations.language,
+            ),
+            ListTileItemWidget(
+              title: _controller.appLocalizations.myWebsite,
+              icon: Icons.public,
+              openInBrowser: true,
+              onTap: null,
+            ),
+            // ListTileItemWidget(
+            //   title: 'Buy Me a Coffee',
+            //   icon: Icons.local_cafe_outlined,
+            //   onTap: _controller.showDonateDialog,
+            // ),
+            ListTileItemWidget(
+              title: _controller.appLocalizations.about,
+              icon: Icons.info_outline,
+              onTap: _controller.showAboutDialog,
+            ),
+            const SocialNetworksWidget(),
+          ],
         ),
       ),
     );

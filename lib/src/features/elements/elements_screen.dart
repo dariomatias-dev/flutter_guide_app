@@ -5,8 +5,6 @@ import 'package:flutter_guide/src/core/constants/components/functions.dart';
 import 'package:flutter_guide/src/core/constants/components/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 
@@ -22,51 +20,37 @@ class _ElementsScreenState extends State<ElementsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        body: Column(
-          children: <Widget>[
-            ValueListenableBuilder(
-              valueListenable: themeController,
-              builder: (context, value, child) {
-                return Container(
-                  color: themeController.theme.colorScheme.secondary,
-                  child: child,
-                );
-              },
-              child: DefaultTabBarWidget(
-                onTap: (value) {
-                  setState(() {
-                    _tabIndex = value;
-                  });
-                },
-                tabs: <Tab>[
-                  const Tab(
-                    child: Text('Widgets'),
-                  ),
-                  Tab(
-                    child: Text(
-                      AppLocalizations.of(context)!.functions,
-                    ),
-                  ),
-                ],
+      child: Column(
+        children: <Widget>[
+          DefaultTabBarWidget(
+            onTap: (value) {
+              setState(() {
+                _tabIndex = value;
+              });
+            },
+            tabs: <Tab>[
+              const Tab(
+                child: Text('Widgets'),
               ),
-            ),
-            Expanded(
-              child: ComponentsScreen(
-                key: GlobalKey(),
-                componentType: _tabIndex == 0
-                    ? ComponentType.widget
-                    : ComponentType.function,
-                components: _tabIndex == 0 ? widgets : functions,
+              Tab(
+                child: Text(
+                  AppLocalizations.of(context)!.functions,
+                ),
               ),
+            ],
+          ),
+          Expanded(
+            child: ComponentsScreen(
+              key: GlobalKey(),
+              componentType: _tabIndex == 0
+                  ? ComponentType.widget
+                  : ComponentType.function,
+              components: _tabIndex == 0 ? widgets : functions,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
