@@ -208,7 +208,6 @@ const packages = <PackageModel>[
   PackageModel(
     name: PackageNames.smoothPageIndicatorPackage,
     icon: Icons.view_carousel,
-    videoId: 'sa_U0jffQII',
     sample: SmoothPageIndicatorSample(),
   ),
   PackageModel(

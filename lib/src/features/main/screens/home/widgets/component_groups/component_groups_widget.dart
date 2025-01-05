@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/component_groups.dart';
 
-import 'package:flutter_guide/src/features/main/screens/home/widgets/component_groups/component_group_widgetcomponent_group/component_group_widget.dart';
+import 'package:flutter_guide/src/features/main/screens/home/widgets/component_groups/component_group/component_group_widget.dart';
 
 class ComponentGroupsWidget extends StatelessWidget {
   const ComponentGroupsWidget({super.key});

@@ -138,7 +138,6 @@ const widgets = <WidgetModel>[
   WidgetModel(
     name: WidgetNames.animatedAlignWidget,
     icon: Icons.center_focus_strong,
-    videoId: 'g2E7yl3MwMk',
     sample: AnimatedAlignSample(),
     type: ComponentType.widget,
   ),
@@ -444,7 +443,6 @@ const widgets = <WidgetModel>[
   WidgetModel(
     name: WidgetNames.formWidget,
     icon: Icons.assignment_outlined,
-    videoId: 'aAmP-WcI6dg',
     sample: FormSample(),
     type: ComponentType.widget,
   ),

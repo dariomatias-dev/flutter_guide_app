@@ -23,14 +23,11 @@ List<ScreenModel> getBottomAppBarScreens(
     ),
     ScreenModel(
       bottomNavigationBarName: appLocalizations.elements,
-      screen: ElementsScreen(
-        key: GlobalKey(),
-      ),
+      screen: const ElementsScreen(),
     ),
     ScreenModel(
       bottomNavigationBarName: appLocalizations.packages,
-      screen: ComponentsScreen(
-        key: GlobalKey(),
+      screen: const ComponentsScreen(
         componentType: ComponentType.package,
         components: packages,
       ),

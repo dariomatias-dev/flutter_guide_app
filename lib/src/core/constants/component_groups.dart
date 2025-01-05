@@ -34,7 +34,7 @@ const componentGroups = <ComponentGroupModel>[
     components: <String>[
       WidgetNames.checkboxListTileMaterial,
       WidgetNames.checkboxMaterial,
-      WidgetNames.cupertinoSliderCupertino,
+      // WidgetNames.cupertinoSliderCupertino,
       WidgetNames.dropdownButtonMaterial,
       WidgetNames.formWidget,
       WidgetNames.rangeSliderMaterial,
