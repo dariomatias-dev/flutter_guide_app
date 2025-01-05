@@ -57,11 +57,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //   icon: Icons.local_cafe_outlined,
             //   onTap: _controller.showDonateDialog,
             // ),
-            ListTileItemWidget(
-              title: _controller.appLocalizations.about,
-              icon: Icons.info_outline,
-              onTap: _controller.showAboutDialog,
-            ),
+            // ListTileItemWidget(
+            //   title: _controller.appLocalizations.about,
+            //   icon: Icons.info_outline,
+            //   onTap: _controller.showAboutDialog,
+            // ),
             const SocialNetworksWidget(),
           ],
         ),

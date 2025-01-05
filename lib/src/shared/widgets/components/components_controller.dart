@@ -105,10 +105,8 @@ class ComponentsController {
     final componentsLength = _components.length;
 
     return _components.sublist(
-      pageIndex * maxItems,
-      endIndex > componentsLength
-          ? componentsLength - startIndex + startIndex
-          : endIndex,
+      startIndex,
+      endIndex > componentsLength ? componentsLength : endIndex,
     );
   }
 }

@@ -70,7 +70,7 @@ class _AlignSampleState extends State<AlignSample> {
           Expanded(
             child: Align(
               alignment: _alignment.alignment,
-              child: const Text('Widget Align'),
+              child: const Text('Content'),
             ),
           ),
           Container(

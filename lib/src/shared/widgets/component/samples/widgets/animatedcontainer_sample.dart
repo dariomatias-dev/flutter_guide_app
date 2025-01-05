@@ -12,7 +12,7 @@ class AnimatedContainerSample extends StatefulWidget {
 
 class _AnimatedContainerSampleState extends State<AnimatedContainerSample> {
   Timer? _periodicTime;
-  bool _isTimerRunning = true;
+  bool _isTimerRunning = false;
   double _size = 120;
 
   void _setTimer() {
@@ -42,13 +42,6 @@ class _AnimatedContainerSampleState extends State<AnimatedContainerSample> {
     _periodicTime?.cancel();
 
     setState(() {});
-  }
-
-  @override
-  void initState() {
-    _startTimer();
-
-    super.initState();
   }
 
   @override

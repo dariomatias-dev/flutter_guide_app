@@ -67,7 +67,7 @@ dependencies:
   side_sheet: ^1.0.4
   validatorless: ^1.2.3
   device_info_plus: ^10.1.0
-  scroll_infinity: ^0.3.3
+  scroll_infinity: ^0.4.0
   flutter_chat_bubble: ^2.0.2
   intl: ^0.19.0
   logger: ^2.3.0
@@ -124,7 +124,7 @@ flutter:
     - lib/src/shared/widgets/component/samples/widgets/
     - lib/src/shared/widgets/component/samples/functions/
     - lib/src/shared/widgets/component/samples/packages/
-    
+
     - lib/src/shared/widgets/interface_catalog/samples/elements/
     - lib/src/shared/widgets/interface_catalog/samples/uis/
 

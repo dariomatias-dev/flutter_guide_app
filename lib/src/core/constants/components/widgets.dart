@@ -22,7 +22,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/backd
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/badge_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/banner_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/bottomappbar_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/bottomnavigationbar_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/bottomnavigationbar_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/card_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/center_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/checkbox_sample.dart';
@@ -38,7 +38,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/colum
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/constrainedbox_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/container_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinoactivityindicator_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinoalertdialog.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinoalertdialog_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinobutton_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinolisttile_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/widgets/cupertinonavigationbar_sample.dart';

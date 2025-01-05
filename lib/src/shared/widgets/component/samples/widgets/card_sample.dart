@@ -14,7 +14,12 @@ class CardSample extends StatelessWidget {
               vertical: 120.0,
               horizontal: 80.0,
             ),
-            child: Text('Card'),
+            child: Text(
+              'Card',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
           ),
         ),
       ),

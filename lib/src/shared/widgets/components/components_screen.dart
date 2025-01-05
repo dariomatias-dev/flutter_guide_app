@@ -74,10 +74,9 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
               bottom: 100.0,
             ),
             maxItems: 18,
-            disableInitialRequest: true,
             initialPageIndex: 1,
             initialItems: value,
-            interval: _controller.adInterval,
+            // interval: _controller.adInterval,
             loadData: _controller.loadData,
             itemBuilder: (value, index) {
               if (value == null) {
