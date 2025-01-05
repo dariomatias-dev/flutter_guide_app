@@ -3,6 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
+import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
 
 class CodeTabController {
@@ -18,6 +22,7 @@ class CodeTabController {
 
   final _logger = Logger();
 
+  late ThemeController themeController;
   TextSpan code = const TextSpan(
     text: '',
   );
@@ -26,8 +31,11 @@ class CodeTabController {
     BuildContext context,
     VoidCallback setStateCallback,
   ) {
+    themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     final filePath = ComponentSampleScreenInheritedWidget.of(context)!.file;
-    final brightness = Theme.of(context).colorScheme.brightness;
+    final brightness = themeController.theme.colorScheme.brightness;
 
     _loadCode(
       filePath,

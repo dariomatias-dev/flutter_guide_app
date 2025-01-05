@@ -33,13 +33,12 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
   @override
   void didChangeDependencies() {
     _controller = ComponentSampleController(vsync: this);
-    
+
     super.didChangeDependencies();
   }
 
   @override
   void dispose() {
-
     _controller.dispose();
 
     super.dispose();
@@ -47,6 +46,9 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
 
   @override
   Widget build(BuildContext context) {
+    final themeController =
+        UserPreferencesInheritedWidget.of(context)!.themeController;
+
     return ComponentSampleScreenInheritedWidget(
       file: widget.filePath,
       child: DefaultTabController(
@@ -63,17 +65,11 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
             controller: _controller.pageController,
             onPageChanged: _controller.onPageChanged,
             children: <Widget>[
-              AnimatedBuilder(
-                animation:
-                    UserPreferencesInheritedWidget.of(context)!.themeController,
-                builder: (context, child) {
-                  return Theme(
-                    data: Theme.of(context).brightness == Brightness.light
-                        ? ThemeData.light()
-                        : ThemeData.dark(),
-                    child: widget.sample,
-                  );
-                },
+              Theme(
+                data: themeController.isLight
+                    ? ThemeData.light()
+                    : ThemeData.dark(),
+                child: widget.sample,
               ),
               CodeTab(
                 fontSizeNotifier: _controller.fontSizeNotifier,
