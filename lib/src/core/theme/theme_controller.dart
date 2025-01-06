@@ -18,48 +18,36 @@ class ThemeController extends ValueNotifier {
   late SharedPreferences _sharedPreferences;
 
   void _initialize(
-    SharedPreferences sharedPreferencesInstance,
+    SharedPreferences sharedPreferences,
   ) {
-    _sharedPreferences = sharedPreferencesInstance;
+    _sharedPreferences = sharedPreferences;
 
     final themeName = _sharedPreferences.getString('theme');
 
-    if (themeName == ThemeMode.light.name) {
-      themeMode = ThemeMode.light;
-    } else if (themeName == ThemeMode.dark.name) {
-      themeMode = ThemeMode.dark;
-    }
+    themeMode =
+        themeName == ThemeMode.light.name ? ThemeMode.light : ThemeMode.dark;
 
+    _setTheme();
+
+    notifyListeners();
+  }
+
+  Future<void> toggleTheme() async {
+    themeMode = isLight ? ThemeMode.dark : ThemeMode.light;
+
+    await _saveTheme();
+
+    notifyListeners();
+  }
+
+  void _setTheme() {
     isLight = themeMode == ThemeMode.light;
     theme = isLight ? ligthMode : darkMode;
-
-    notifyListeners();
   }
 
-  void setTheme(ThemeMode value) {
-    themeMode = value;
+  Future<void> _saveTheme() async {
+    _setTheme();
 
-    _saveTheme();
-
-    notifyListeners();
-  }
-
-  void toggleTheme() {
-    if (themeMode == ThemeMode.light) {
-      themeMode = ThemeMode.dark;
-    } else {
-      themeMode = ThemeMode.light;
-    }
-
-    isLight = themeMode == ThemeMode.light;
-    theme = isLight ? ligthMode : darkMode;
-
-    _saveTheme();
-
-    notifyListeners();
-  }
-
-  void _saveTheme() async {
     await _sharedPreferences.setString(
       'theme',
       themeMode.name,
