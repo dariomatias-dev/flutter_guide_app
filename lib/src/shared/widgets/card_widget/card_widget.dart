@@ -7,7 +7,7 @@ import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
 
-import 'package:flutter_guide/src/shared/utils/open_url.dart';
+import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/save_button/save_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';

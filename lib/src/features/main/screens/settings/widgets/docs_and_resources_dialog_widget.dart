@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/docs_and_resources_widget.dart';
 
-import 'package:flutter_guide/src/shared/utils/open_url.dart';
+import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
