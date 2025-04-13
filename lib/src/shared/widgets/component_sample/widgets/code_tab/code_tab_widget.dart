@@ -15,19 +15,12 @@ class CodeTab extends StatefulWidget {
 }
 
 class _CodeTabState extends State<CodeTab> {
-  late CodeTabController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = CodeTabController(
-      context: context,
-      setStateCallback: () {
-        setState(() {});
-      },
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = CodeTabController(
+    getContext: () => context,
+    setStateCallback: () {
+      setState(() {});
+    },
+  );
 
   @override
   Widget build(BuildContext context) {

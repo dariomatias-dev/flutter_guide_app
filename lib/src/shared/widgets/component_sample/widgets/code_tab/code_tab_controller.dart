@@ -10,14 +10,15 @@ import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.da
 import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
 
 class CodeTabController {
+  late final BuildContext Function() _getContext;
+
   CodeTabController({
-    required BuildContext context,
+    required BuildContext Function() getContext,
     required VoidCallback setStateCallback,
   }) {
-    _init(
-      context,
-      setStateCallback,
-    );
+    _getContext = getContext;
+
+    _init(setStateCallback);
   }
 
   final _logger = Logger();
@@ -28,13 +29,13 @@ class CodeTabController {
   );
 
   void _init(
-    BuildContext context,
     VoidCallback setStateCallback,
   ) {
     themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
+        UserPreferencesInheritedWidget.of(_getContext())!.themeController;
 
-    final filePath = ComponentSampleScreenInheritedWidget.of(context)!.file;
+    final filePath =
+        ComponentSampleScreenInheritedWidget.of(_getContext())!.file;
     final brightness = themeController.theme.colorScheme.brightness;
 
     _loadCode(

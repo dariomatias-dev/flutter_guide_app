@@ -19,6 +19,7 @@ import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.da
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
+import 'package:syntax_highlight/syntax_highlight.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,11 @@ Future<void> main() async {
   // Application Language
   final language = sharedPreferences.getString(
     SharedPreferencesKeys.languageKey,
+  );
+
+  // Highlighter Initialization
+  await Highlighter.initialize(
+    <String>['dart', 'yaml'],
   );
 
   // Theme
