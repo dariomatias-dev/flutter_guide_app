@@ -67,7 +67,7 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
                     : ThemeData.dark(),
                 child: widget.sample,
               ),
-              CodeTab(
+              CodeTabWidget(
                 getChunck: _controller.getChunck,
                 fontSizeNotifier: _controller.fontSizeNotifier,
               ),

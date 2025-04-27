@@ -27,11 +27,8 @@ class CodeTabController {
   Highlighter? _highlighter;
 
   final _logger = Logger();
-  final codeNotifier = ValueNotifier<TextSpan>(
-    const TextSpan(
-      text: '',
-    ),
-  );
+
+  final chunksNotifier = ValueNotifier(<TextSpan>[]);
 
   int _currentIndex = 0;
   bool _isLoading = false;
@@ -84,13 +81,12 @@ class CodeTabController {
         nextChunk.join('\n'),
       );
 
-      codeNotifier.value = TextSpan(
-        children: <InlineSpan>[
-          if (codeNotifier.value.children != null)
-            ...codeNotifier.value.children!,
-          if (highlightedChunk != null) highlightedChunk,
-        ],
-      );
+      if (highlightedChunk != null) {
+        chunksNotifier.value = <TextSpan>[
+          ...chunksNotifier.value,
+          highlightedChunk,
+        ];
+      }
     } catch (err, stackTrace) {
       _logger.e(
         'Error loading next chunk',
