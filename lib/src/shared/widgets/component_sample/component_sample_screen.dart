@@ -28,14 +28,10 @@ class ComponentSampleScreen extends StatefulWidget {
 
 class _ComponentSampleScreenState extends State<ComponentSampleScreen>
     with TickerProviderStateMixin {
-  late final ComponentSampleController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = ComponentSampleController(vsync: this);
-
-    super.didChangeDependencies();
-  }
+  late final _controller = ComponentSampleController(
+    vsync: this,
+    filePath: widget.filePath
+  );
 
   @override
   void dispose() {
@@ -72,6 +68,7 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
                 child: widget.sample,
               ),
               CodeTab(
+                getChunck: _controller.getChunck,
                 fontSizeNotifier: _controller.fontSizeNotifier,
               ),
             ],

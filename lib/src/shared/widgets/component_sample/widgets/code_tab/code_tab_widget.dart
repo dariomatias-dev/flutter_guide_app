@@ -5,9 +5,13 @@ import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_t
 class CodeTab extends StatefulWidget {
   const CodeTab({
     super.key,
+    required this.getChunck,
     required this.fontSizeNotifier,
   });
 
+  final List<String> Function(
+    int index,
+  ) getChunck;
   final ValueNotifier<double> fontSizeNotifier;
 
   @override
@@ -17,10 +21,15 @@ class CodeTab extends StatefulWidget {
 class _CodeTabState extends State<CodeTab> {
   late final _controller = CodeTabController(
     getContext: () => context,
-    setStateCallback: () {
-      setState(() {});
-    },
+    getChunck: widget.getChunck,
   );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,19 +44,25 @@ class _CodeTabState extends State<CodeTab> {
           scrollbars: false,
         ),
         child: SingleChildScrollView(
+          controller: _controller.scrollController,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 16.0,
               horizontal: 6.0,
             ),
-            child: ValueListenableBuilder(
-              valueListenable: widget.fontSizeNotifier,
-              builder: (context, value, child) {
-                return SelectableText.rich(
-                  _controller.code,
-                  style: TextStyle(
-                    fontSize: value,
-                  ),
+            child: ValueListenableBuilder<TextSpan>(
+              valueListenable: _controller.codeNotifier,
+              builder: (context, code, child) {
+                return ValueListenableBuilder<double>(
+                  valueListenable: widget.fontSizeNotifier,
+                  builder: (context, value, child) {
+                    return SelectableText.rich(
+                      code,
+                      style: TextStyle(
+                        fontSize: value,
+                      ),
+                    );
+                  },
                 );
               },
             ),

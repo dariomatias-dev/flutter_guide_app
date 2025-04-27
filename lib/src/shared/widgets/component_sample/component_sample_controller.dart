@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ComponentSampleController {
   ComponentSampleController({
     required TickerProvider vsync,
+    required String filePath,
   }) {
     tabController = TabController(
       length: 2,
@@ -10,6 +12,8 @@ class ComponentSampleController {
     );
 
     currentTabIndexNotifier.addListener(_tabOnChange);
+
+    _splitCode(filePath);
   }
 
   static const minFontSize = 10.0;
@@ -21,6 +25,30 @@ class ComponentSampleController {
   late final TabController tabController;
   final pageController = PageController();
   final currentTabIndexNotifier = ValueNotifier(0);
+
+  static const _linesPerChunk = 50;
+  final _chunks = <List<String>>[];
+
+  Future<void> _splitCode(
+    String filePath,
+  ) async {
+    final codeString = await rootBundle.loadString(filePath);
+
+    final lines = codeString.split('\n');
+
+    for (var i = 0; i < lines.length; i += _linesPerChunk) {
+      final end = (i + _linesPerChunk < lines.length)
+          ? i + _linesPerChunk
+          : lines.length;
+      _chunks.add(
+        lines.sublist(i, end),
+      );
+    }
+  }
+
+  List<String> getChunck(int index) {
+    return _chunks[index];
+  }
 
   void _tabOnChange() {
     final currentTabIndex = currentTabIndexNotifier.value;
