@@ -9,7 +9,9 @@ class CodeTabWidget extends StatefulWidget {
     required this.fontSizeNotifier,
   });
 
-  final List<String> Function(int index) getChunck;
+  final List<String> Function(
+    int index,
+  ) getChunck;
   final ValueNotifier<double> fontSizeNotifier;
 
   @override

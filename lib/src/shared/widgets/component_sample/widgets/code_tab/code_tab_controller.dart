@@ -22,19 +22,17 @@ class CodeTabController {
     _init();
   }
 
-  late final themeController =
-      UserPreferencesInheritedWidget.of(_getContext())!.themeController;
-  Highlighter? _highlighter;
-
   final _logger = Logger();
 
+  late final themeController =
+      UserPreferencesInheritedWidget.of(_getContext())!.themeController;
+  final scrollController = ScrollController();
   final chunksNotifier = ValueNotifier(<TextSpan>[]);
 
   int _currentIndex = 0;
   bool _isLoading = false;
   bool _hasMore = true;
-
-  final scrollController = ScrollController();
+  Highlighter? _highlighter;
 
   Future<void> _init() async {
     scrollController.addListener(onScroll);
