@@ -51,8 +51,11 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
   }) {
     return SalomonBottomBarItem(
       unselectedColor: widget.themeController.theme.colorScheme.primary,
-      icon: Icon(
-        icon,
+      icon: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Icon(
+          icon,
+        ),
       ),
       title: ValueListenableBuilder(
         valueListenable:
@@ -90,6 +93,10 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         backgroundColor: widget.themeController.theme.colorScheme.secondary,
         currentIndex: widget.screenIndex,
         onTap: widget.updateScreenIndex,
+        itemPadding: const EdgeInsets.symmetric(
+          vertical: 2.0,
+          horizontal: 16.0,
+        ),
         items: _items,
       ),
     );
