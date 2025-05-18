@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:salomon_bottom_bar_extend/salomon_bottom_bar.dart';
 
 import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
 
-const _icons = <IconData>[
-  Icons.home_outlined,
-  Icons.widgets_outlined,
-  Icons.archive_outlined,
-  Icons.settings_outlined,
-];
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({
@@ -52,30 +46,11 @@ class BottomNavigationBarWidget extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(32.0),
-            child: SalomonBottomBar(
-              backgroundColor: themeController.theme.colorScheme.secondary,
-              currentIndex: screenIndex,
-              onTap: (value) {
-                updateScreenIndex(value);
-              },
-              items: List.generate(4, (index) {
-                return SalomonBottomBarItem(
-                  unselectedColor: themeController.theme.colorScheme.primary,
-                  icon: Icon(
-                    _icons[index],
-                  ),
-                  title: ValueListenableBuilder(
-                    valueListenable: UserPreferencesInheritedWidget.of(context)!
-                        .languageNotifier,
-                    builder: (context, value, child) {
-                      return Text(
-                        getBottomNavigationBarName(index),
-                      );
-                    },
-                  ),
-                  selectedColor: Colors.blue,
-                );
-              }),
+            child: NavigationBarWidget(
+              themeController: themeController,
+              screenIndex: screenIndex,
+              updateScreenIndex: updateScreenIndex,
+              getBottomNavigationBarName: getBottomNavigationBarName,
             ),
           ),
         );
