@@ -50,7 +50,6 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
     required String title,
   }) {
     return SalomonBottomBarItem(
-      unselectedColor: widget.themeController.theme.colorScheme.primary,
       icon: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Icon(

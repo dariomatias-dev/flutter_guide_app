@@ -23,12 +23,13 @@ class DocsAndResourcesDialogWidget extends StatelessWidget {
 
     return CustomDialog.dialog(
       title: AppLocalizations.of(context)!.docsAndResources,
+      isActionFullWidth: true,
       actions: <ActionButtonWidget>[
         CustomDialog.button(
-          text: 'Ok',
           onTap: () {
             overlayEntry?.remove();
           },
+          text: 'Ok',
         ),
       ],
       children: List.generate(
