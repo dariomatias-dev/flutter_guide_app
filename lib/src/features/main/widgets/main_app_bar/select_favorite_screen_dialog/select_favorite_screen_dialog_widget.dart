@@ -75,6 +75,7 @@ class _SelectFavoriteScreenDialogWidgetState
           icon: Icons.archive_outlined,
         ),
       ],
+      isActionFullWidth: true,
       actions: <ActionButtonWidget>[
         CustomDialog.button(
           text: 'Ok',
