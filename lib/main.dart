@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:syntax_highlight/syntax_highlight.dart';
 
 import 'package:flutter_guide/src/core/constants/components/functions.dart';
 import 'package:flutter_guide/src/core/constants/components/packages.dart';
@@ -19,7 +20,6 @@ import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.da
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +41,7 @@ Future<void> main() async {
 
   // Highlighter Initialization
   await Highlighter.initialize(
-    <String>['dart', 'yaml'],
+    <String>['dart'],
   );
 
   // Theme
