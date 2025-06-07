@@ -32,6 +32,7 @@
     "selectTheTheme": "Selecione o Tema",
     "system": "Sistema",
     "loginScreen": "Tela de Login",
+    "phoneVerificationScreen": "Tela de Verificação de Telefone",
     "loginScreenWithBackgroundImage": "Tela de Login com Imagem de Fundo",
     "emailsApp": "App de Emails",
     "chatScreen": "Tela de Chat",

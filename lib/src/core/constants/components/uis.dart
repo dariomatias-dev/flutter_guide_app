@@ -8,6 +8,7 @@ import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/uis/c
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/uis/emails_app_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/uis/login_screen_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/uis/login_with_background_image_screen_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/uis/phone_verification_screen_sample.dart';
 
 List<InterfaceModel> getUis(
   BuildContext context,
@@ -34,6 +35,11 @@ List<InterfaceModel> getUis(
       name: appLocalizations.chatScreen,
       fileName: 'chat_screen',
       component: const ChatScreenSample(),
+    ),
+    InterfaceModel(
+      name: appLocalizations.phoneVerificationScreen,
+      fileName: 'phone_verification_screen',
+      component: const PhoneVerificationScreenSample(),
     ),
   ];
 }

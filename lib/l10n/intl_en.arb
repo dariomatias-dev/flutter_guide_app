@@ -32,6 +32,7 @@
     "selectTheTheme": "Select the Theme",
     "system": "System",
     "loginScreen": "Login Screen",
+    "phoneVerificationScreen": "Phone Verification Screen",
     "loginScreenWithBackgroundImage": "Login With Background Image Screen",
     "emailsApp": "Emails App",
     "chatScreen": "Chat Screen",
