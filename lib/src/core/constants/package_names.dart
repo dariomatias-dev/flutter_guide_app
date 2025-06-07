@@ -26,6 +26,7 @@ class PackageNames {
   static const mshCheckboxPackage = 'msh_checkbox';
   static const networkInfoPlusPackage = 'network_info_plus';
   static const photoViewPackage = 'photo_view';
+  static const pinputPackage = 'pinput';
   static const salomonBottomBarPackage = 'salomon_bottom_bar';
   static const sharePlusPackage = 'share_plus';
   static const sharedPreferencesPackage = 'shared_preferences';
