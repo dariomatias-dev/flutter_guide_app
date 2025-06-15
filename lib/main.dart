@@ -23,11 +23,19 @@ import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
 
   await dotenv.load(
     fileName: '.env',
   );
+  
+  final requestConfiguration = RequestConfiguration(
+    testDeviceIds: <String>[
+      dotenv.get('DEVICE_ID'),
+    ],
+  );
+
+  MobileAds.instance.initialize();
+  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
 
   final sharedPreferences = await SharedPreferences.getInstance();
 
