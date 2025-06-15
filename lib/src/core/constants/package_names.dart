@@ -17,6 +17,7 @@ class PackageNames {
   static const fontAwesomeFlutterPackage = 'font_awesome_flutter';
   static const glassPackage = 'glass';
   static const googleFontsPackage = 'google_fonts';
+  static const googleMobileAdsPackage = 'google_mobile_ads';
   static const httpPackage = 'http';
   static const iconsPlusPackage = 'icons_plus';
   static const infiniteScrollPaginationPackage = 'infinite_scroll_pagination';

@@ -25,6 +25,7 @@ import 'package:flutter_guide/src/shared/widgets/component/samples/packages/flut
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/font_awesome_flutter_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/glass_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/google_fonts_sample.dart';
+import 'package:flutter_guide/src/shared/widgets/component/samples/packages/google_mobile_ads_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/http_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/icons_plus_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/component/samples/packages/infinite_scroll_pagination_sample.dart';
@@ -139,6 +140,11 @@ const packages = <PackageModel>[
     icon: Icons.font_download_outlined,
     videoId: '8Vzv2CdbEY0',
     sample: GoogleFontsSamples(),
+  ),
+  PackageModel(
+    name: PackageNames.googleMobileAdsPackage,
+    icon: Icons.monetization_on_outlined,
+    sample: GoogleMobileAdsSample(),
   ),
   PackageModel(
     name: PackageNames.httpPackage,
