@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ShowDatePickerSample(),
+    ),
+  );
+}
+
 class ShowDatePickerSample extends StatefulWidget {
   const ShowDatePickerSample({super.key});
 
