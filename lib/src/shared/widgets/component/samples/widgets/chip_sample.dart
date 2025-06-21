@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ChipSample(),
+    ),
+  );
+}
+
 class ChipSample extends StatelessWidget {
   const ChipSample({super.key});
 

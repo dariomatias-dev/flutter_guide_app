@@ -102,6 +102,15 @@ final _mainAxisSizeItems = List.generate(
   },
 );
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: RowSample(),
+    ),
+  );
+}
+
 class RowSample extends StatefulWidget {
   const RowSample({super.key});
 

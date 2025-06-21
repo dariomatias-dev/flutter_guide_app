@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SelectableTextSample(),
+    ),
+  );
+}
+
 class SelectableTextSample extends StatelessWidget {
   const SelectableTextSample({super.key});
 

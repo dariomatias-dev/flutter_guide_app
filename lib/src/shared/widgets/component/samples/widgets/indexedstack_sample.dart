@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 const _colors = <Color>[
   Colors.blue,
   Colors.yellow,
@@ -11,6 +12,15 @@ const _colors = <Color>[
 final items = List.generate(5, (index) {
   return 'Item ${index + 1}';
 });
+
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: IndexedStackSample(),
+    ),
+  );
+}
 
 class IndexedStackSample extends StatefulWidget {
   const IndexedStackSample({super.key});

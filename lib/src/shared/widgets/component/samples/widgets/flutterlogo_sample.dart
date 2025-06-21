@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterLogoSample(),
+    ),
+  );
+}
+
 class FlutterLogoSample extends StatelessWidget {
   const FlutterLogoSample({super.key});
 

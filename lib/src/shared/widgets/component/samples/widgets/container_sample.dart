@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ContainerSample(),
+    ),
+  );
+}
+
 class ContainerSample extends StatelessWidget {
   const ContainerSample({super.key});
 

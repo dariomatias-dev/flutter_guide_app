@@ -13,6 +13,15 @@ final _elements = List.generate(100, (index) {
   );
 });
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GridViewSample(),
+    ),
+  );
+}
+
 class GridViewSample extends StatefulWidget {
   const GridViewSample({super.key});
 

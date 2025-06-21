@@ -1,4 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CupertinoPageScaffoldSample(),
+    ),
+  );
+}
 
 class CupertinoPageScaffoldSample extends StatelessWidget {
   const CupertinoPageScaffoldSample({super.key});

@@ -1,6 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CupertinoListTileSample(),
+    ),
+  );
+}
+
 class CupertinoListTileSample extends StatelessWidget {
   const CupertinoListTileSample({super.key});
 

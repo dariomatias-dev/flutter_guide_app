@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GestureDetectorSample(),
+    ),
+  );
+}
+
 class GestureDetectorSample extends StatefulWidget {
   const GestureDetectorSample({super.key});
 

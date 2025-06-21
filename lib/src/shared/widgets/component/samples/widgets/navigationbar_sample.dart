@@ -6,6 +6,15 @@ const _screens = <String>[
   'Settings Screen',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: NavigationBarSample(),
+    ),
+  );
+}
+
 class NavigationBarSample extends StatefulWidget {
   const NavigationBarSample({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BadgeSample(),
+    ),
+  );
+}
+
 class BadgeSample extends StatefulWidget {
   const BadgeSample({super.key});
 

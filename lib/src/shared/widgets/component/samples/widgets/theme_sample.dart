@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ThemeSample(),
+    ),
+  );
+}
+
 class ThemeSample extends StatefulWidget {
   const ThemeSample({super.key});
 

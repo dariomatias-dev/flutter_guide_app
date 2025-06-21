@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ElevatedButtonSample(),
+    ),
+  );
+}
+
 class ElevatedButtonSample extends StatelessWidget {
   const ElevatedButtonSample({super.key});
 

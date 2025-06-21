@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: RadioListTileSample(),
+    ),
+  );
+}
+
 class RadioListTileSample extends StatefulWidget {
   const RadioListTileSample({super.key});
 

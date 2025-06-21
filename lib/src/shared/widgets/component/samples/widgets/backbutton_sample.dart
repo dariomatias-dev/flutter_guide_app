@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BackButtonSample(),
+    ),
+  );
+}
+
 class BackButtonSample extends StatelessWidget {
   const BackButtonSample({super.key});
 

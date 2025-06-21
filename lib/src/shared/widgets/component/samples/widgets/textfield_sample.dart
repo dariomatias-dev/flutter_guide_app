@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 const _defaultMessage = 'Type something below';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: TextFieldSample(),
+    ),
+  );
+}
+
 class TextFieldSample extends StatefulWidget {
   const TextFieldSample({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MaterialBannerSample(),
+    ),
+  );
+}
+
 class MaterialBannerSample extends StatefulWidget {
   const MaterialBannerSample({super.key});
 

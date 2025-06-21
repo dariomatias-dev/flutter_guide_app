@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CircularProgressIndicatorSample(),
+    ),
+  );
+}
+
 class CircularProgressIndicatorSample extends StatelessWidget {
   const CircularProgressIndicatorSample({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: RadioSample(),
+    ),
+  );
+}
+
 class RadioSample extends StatefulWidget {
   const RadioSample({super.key});
 

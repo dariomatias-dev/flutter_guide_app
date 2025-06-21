@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: TooltipSample(),
+    ),
+  );
+}
+
 class TooltipSample extends StatelessWidget {
   const TooltipSample({super.key});
 

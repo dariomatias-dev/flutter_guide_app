@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OpacitySample(),
+    ),
+  );
+}
+
 class OpacitySample extends StatefulWidget {
   const OpacitySample({super.key});
 

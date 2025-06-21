@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OutlinedButtonSample(),
+    ),
+  );
+}
+
 class OutlinedButtonSample extends StatelessWidget {
   const OutlinedButtonSample({super.key});
 

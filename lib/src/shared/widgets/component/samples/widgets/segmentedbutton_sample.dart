@@ -41,6 +41,15 @@ final _colors = <Color>[
   Color.green,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SegmentedButtonSample(),
+    ),
+  );
+}
+
 class SegmentedButtonSample extends StatefulWidget {
   const SegmentedButtonSample({super.key});
 

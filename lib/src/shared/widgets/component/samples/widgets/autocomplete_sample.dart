@@ -11,6 +11,15 @@ const _programmingLanguages = <String>[
   'Kotlin',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AutocompleteSample(),
+    ),
+  );
+}
+
 class AutocompleteSample extends StatelessWidget {
   const AutocompleteSample({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DropdownButtonSample(),
+    ),
+  );
+}
+
 class DropdownButtonSample extends StatefulWidget {
   const DropdownButtonSample({super.key});
 

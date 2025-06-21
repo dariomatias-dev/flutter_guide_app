@@ -7,6 +7,15 @@ const _programmingLanguages = <String>[
   'Java',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FilterChipSample(),
+    ),
+  );
+}
+
 class FilterChipSample extends StatefulWidget {
   const FilterChipSample({super.key});
 

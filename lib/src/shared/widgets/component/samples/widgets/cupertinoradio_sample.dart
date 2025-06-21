@@ -1,6 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CupertinoRadioSample(),
+    ),
+  );
+}
+
 class CupertinoRadioSample extends StatefulWidget {
   const CupertinoRadioSample({super.key});
 

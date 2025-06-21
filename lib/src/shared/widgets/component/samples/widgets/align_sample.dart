@@ -49,6 +49,15 @@ const _alignments = <_AlignmentModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AlignSample(),
+    ),
+  );
+}
+
 class AlignSample extends StatefulWidget {
   const AlignSample({super.key});
 

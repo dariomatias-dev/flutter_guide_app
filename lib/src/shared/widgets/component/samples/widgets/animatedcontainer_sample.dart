@@ -2,6 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedContainerSample(),
+    ),
+  );
+}
+
 class AnimatedContainerSample extends StatefulWidget {
   const AnimatedContainerSample({super.key});
 

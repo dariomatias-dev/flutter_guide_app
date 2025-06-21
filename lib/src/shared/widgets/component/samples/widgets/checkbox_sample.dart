@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CheckboxSample(),
+    ),
+  );
+}
+
 class CheckboxSample extends StatefulWidget {
   const CheckboxSample({super.key});
 

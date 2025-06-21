@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ListTileSample(),
+    ),
+  );
+}
+
 class ListTileSample extends StatelessWidget {
   const ListTileSample({super.key});
 

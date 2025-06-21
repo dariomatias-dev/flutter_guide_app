@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedAlignSample(),
+    ),
+  );
+}
+
 class AnimatedAlignSample extends StatefulWidget {
   const AnimatedAlignSample({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ExpansionTileSample(),
+    ),
+  );
+}
+
 class ExpansionTileSample extends StatelessWidget {
   const ExpansionTileSample({super.key});
 

@@ -22,6 +22,15 @@ final _texts = List.generate(
   },
 );
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WrapSample(),
+    ),
+  );
+}
+
 class WrapSample extends StatefulWidget {
   const WrapSample({super.key});
 

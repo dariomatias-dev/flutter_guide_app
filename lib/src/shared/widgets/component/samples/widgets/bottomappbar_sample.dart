@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BottomAppBarSample(),
+    ),
+  );
+}
+
 class BottomAppBarSample extends StatelessWidget {
   const BottomAppBarSample({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SimpleDialogSample(),
+    ),
+  );
+}
+
 class SimpleDialogSample extends StatelessWidget {
   const SimpleDialogSample({super.key});
 

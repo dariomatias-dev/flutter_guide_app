@@ -6,6 +6,15 @@ const _colors = <Color>[
   Colors.red,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: StackSample(),
+    ),
+  );
+}
+
 class StackSample extends StatefulWidget {
   const StackSample({super.key});
 

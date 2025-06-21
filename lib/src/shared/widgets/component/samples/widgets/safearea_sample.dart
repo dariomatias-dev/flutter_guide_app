@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeAreaSample(),
+    ),
+  );
+}
+
 class SafeAreaSample extends StatefulWidget {
   const SafeAreaSample({super.key});
 

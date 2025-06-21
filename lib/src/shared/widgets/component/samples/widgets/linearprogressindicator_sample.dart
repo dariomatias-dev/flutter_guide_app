@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LinearProgressIndicatorSample(),
+    ),
+  );
+}
+
 class LinearProgressIndicatorSample extends StatelessWidget {
   const LinearProgressIndicatorSample({super.key});
 

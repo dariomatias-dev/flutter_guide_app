@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ValueListenableBuilderSample(),
+    ),
+  );
+}
+
 class ValueListenableBuilderSample extends StatefulWidget {
   const ValueListenableBuilderSample({super.key});
 

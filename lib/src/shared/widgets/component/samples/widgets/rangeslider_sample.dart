@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: RangeSliderSample(),
+    ),
+  );
+}
+
 class RangeSliderSample extends StatelessWidget {
   const RangeSliderSample({super.key});
 

@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 const _defaultText = 'Flutter';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: EditabletextSample(),
+    ),
+  );
+}
+
 class EditabletextSample extends StatefulWidget {
   const EditabletextSample({super.key});
 

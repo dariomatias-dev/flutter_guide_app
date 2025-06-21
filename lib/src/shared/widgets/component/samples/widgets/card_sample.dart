@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CardSample(),
+    ),
+  );
+}
+
 class CardSample extends StatelessWidget {
   const CardSample({super.key});
 

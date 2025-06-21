@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SnackBarSample(),
+    ),
+  );
+}
+
 class SnackBarSample extends StatefulWidget {
   const SnackBarSample({super.key});
 

@@ -2,6 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BackdropFilterSample(),
+    ),
+  );
+}
+
 class BackdropFilterSample extends StatefulWidget {
   const BackdropFilterSample({super.key});
 

@@ -8,6 +8,15 @@ const _colors = <Color>[
   Colors.purple,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PageViewSample(),
+    ),
+  );
+}
+
 class PageViewSample extends StatelessWidget {
   const PageViewSample({super.key});
 

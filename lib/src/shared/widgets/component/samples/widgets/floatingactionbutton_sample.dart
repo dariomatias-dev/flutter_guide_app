@@ -21,6 +21,15 @@ const _screenNames = <String>[
   'Small',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FloatingActionButtonSample(),
+    ),
+  );
+}
+
 class FloatingActionButtonSample extends StatelessWidget {
   const FloatingActionButtonSample({super.key});
 
