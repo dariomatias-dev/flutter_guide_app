@@ -92,6 +92,15 @@ class TodoModel {
   }
 }
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ConfiguringDioSample(),
+    ),
+  );
+}
+
 class ConfiguringDioSample extends StatefulWidget {
   const ConfiguringDioSample({super.key});
 

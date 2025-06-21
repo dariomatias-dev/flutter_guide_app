@@ -81,6 +81,15 @@ final worldCities = List.generate(worldCitiesNames.length, (index) {
   );
 });
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CustomDropdownSample(),
+    ),
+  );
+}
+
 class CustomDropdownSample extends StatefulWidget {
   const CustomDropdownSample({super.key});
 

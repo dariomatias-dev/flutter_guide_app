@@ -2,6 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoadingButtonSample(),
+    ),
+  );
+}
+
 class LoadingButtonSample extends StatefulWidget {
   const LoadingButtonSample({super.key});
 

@@ -49,14 +49,23 @@ const alignments = <AlignmentModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CustomPopupMenuSample(),
+    ),
+  );
+}
+
 class CustomPopupMenuSample extends StatefulWidget {
   const CustomPopupMenuSample({super.key});
 
   @override
-  State<CustomPopupMenuSample> createState() => CcustoPpopuMmenSsampleState();
+  State<CustomPopupMenuSample> createState() => CustomPopupMenuSampleState();
 }
 
-class CcustoPpopuMmenSsampleState extends State<CustomPopupMenuSample> {
+class CustomPopupMenuSampleState extends State<CustomPopupMenuSample> {
   final _buttonKey = GlobalKey();
 
   OverlayEntry? _overlayEntry;

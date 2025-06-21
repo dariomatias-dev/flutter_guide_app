@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 const numberOfPages = 10;
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PaginationSample(),
+    ),
+  );
+}
+
 class PaginationSample extends StatefulWidget {
   const PaginationSample({super.key});
 

@@ -5,6 +5,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ImageLoaderSample(),
+    ),
+  );
+}
+
 class ImageLoaderSample extends StatefulWidget {
   const ImageLoaderSample({super.key});
 

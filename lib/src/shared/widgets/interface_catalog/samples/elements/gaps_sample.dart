@@ -13,6 +13,15 @@ const programmingLanguages = <String>[
   'Swift',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GapsSample(),
+    ),
+  );
+}
+
 class GapsSample extends StatefulWidget {
   const GapsSample({super.key});
 

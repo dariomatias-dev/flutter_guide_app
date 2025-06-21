@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PasswordFieldSample(),
+    ),
+  );
+}
+
 class PasswordFieldSample extends StatefulWidget {
   const PasswordFieldSample({super.key});
 
