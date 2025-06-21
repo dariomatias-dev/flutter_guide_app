@@ -16,7 +16,7 @@ class SettingsController {
 
   final BuildContext _context;
 
-  late AppLocalizations appLocalizations;
+  late final AppLocalizations appLocalizations;
 
   void showDocsAndResourcesDialog() {
     showCustomDialog(

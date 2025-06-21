@@ -11,7 +11,7 @@ class ChangeThemeButtonController {
         UserPreferencesInheritedWidget.of(context)!.themeController;
   }
 
-  late ThemeController themeController;
+  late final ThemeController themeController;
 
   Future<void> toggleTheme(
     VoidCallback setStateCallback,

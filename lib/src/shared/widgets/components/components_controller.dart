@@ -28,8 +28,8 @@ class ComponentsController {
   final adInterval = 10;
   final initialItemsNotifier = InitialItemsNotifier([]);
 
-  late FavoritesService favoritesService;
-  late FavoriteNotifier favoriteNotifier;
+  late final FavoritesService favoritesService;
+  late final FavoriteNotifier favoriteNotifier;
   late List<ComponentModel> _standardComponents;
   late List<ComponentModel> _components;
 

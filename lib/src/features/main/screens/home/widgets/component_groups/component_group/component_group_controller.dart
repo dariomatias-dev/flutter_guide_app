@@ -10,8 +10,8 @@ class ComponentGroupController {
     _init(context);
   }
 
-  late List<String> widgetNames;
-  late UserPreferencesInheritedWidget userPreferencesInheritedWidget;
+  late final List<String> widgetNames;
+  late final UserPreferencesInheritedWidget userPreferencesInheritedWidget;
 
   void _init(BuildContext context) {
     widgetNames = ComponentsMapInheritedWidget.of(context)!.widgetNames;

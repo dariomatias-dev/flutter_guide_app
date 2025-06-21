@@ -20,8 +20,8 @@ class FavoritePopupMenuItemController {
     );
   }
 
-  late FavoritesService favoritesService;
-  late FavoriteNotifier favoriteNotifier;
+  late final FavoritesService favoritesService;
+  late final FavoriteNotifier favoriteNotifier;
 
   late bool saved;
 

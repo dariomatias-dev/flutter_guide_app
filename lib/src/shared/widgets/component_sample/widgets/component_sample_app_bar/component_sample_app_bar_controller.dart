@@ -13,7 +13,7 @@ class ComponentSampleAppBarController {
 
   final BuildContext Function() getContext;
 
-  late String _filePath;
+  late final String _filePath;
 
   Future<void> copyCode() async {
     final codeString = await rootBundle.loadString(_filePath);

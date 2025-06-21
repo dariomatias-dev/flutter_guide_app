@@ -15,10 +15,10 @@ class SelectLanguageController {
     _init(context);
   }
 
-  late UserPreferencesInheritedWidget _userPreferencesInheritedWidget;
-  late SharedPreferences _sharedPreferences;
+  late final UserPreferencesInheritedWidget _userPreferencesInheritedWidget;
+  late final SharedPreferences _sharedPreferences;
 
-  late ValueNotifier<LanguageModel> selectedLanguageNotifier;
+  late final ValueNotifier<LanguageModel> selectedLanguageNotifier;
 
   void _init(
     BuildContext context,

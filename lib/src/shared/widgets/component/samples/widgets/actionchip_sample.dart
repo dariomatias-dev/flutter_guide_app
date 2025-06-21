@@ -4,10 +4,10 @@ class ActionChipSample extends StatefulWidget {
   const ActionChipSample({super.key});
 
   @override
-  State<ActionChipSample> createState() => ActionchiSsampleState();
+  State<ActionChipSample> createState() => _ActionChipSampleState();
 }
 
-class ActionchiSsampleState extends State<ActionChipSample> {
+class _ActionChipSampleState extends State<ActionChipSample> {
   bool _isFavorite = false;
 
   @override

@@ -24,17 +24,17 @@ class SavedComponentsController {
     );
   }
 
-  late AppLocalizations _appLocalizations;
-  late String titleScreen;
-  late String missingElementsMessage;
+  late final AppLocalizations _appLocalizations;
+  late final String titleScreen;
+  late final String missingElementsMessage;
 
-  late String componentTypeName;
+  late final String componentTypeName;
 
-  late FavoriteNotifier favoriteNotifier;
-  late FavoritesService _favoritesService;
+  late final FavoriteNotifier favoriteNotifier;
+  late final FavoritesService _favoritesService;
 
   late List<ComponentModel> components;
-  late List<ComponentModel> _groupOfComponents;
+  late final List<ComponentModel> _groupOfComponents;
 
   void _init(
     BuildContext context,

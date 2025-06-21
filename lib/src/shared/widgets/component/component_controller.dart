@@ -21,8 +21,8 @@ class ComponentController {
   final ComponentType _componentType;
   final String _componentName;
 
-  late ComponentSummaryModel component;
-  late ComponentType? type;
+  late final ComponentSummaryModel component;
+  late final ComponentType? type;
 
   void _init() {
     final ComponentsMapInheritedWidget(
