@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/widgets/components/widgets/search_field_widget/search_field_controller.dart';
@@ -76,11 +75,6 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
           return TextFormField(
             controller: _controller.searchFieldController,
             decoration: InputDecoration(
-              filled: true,
-              fillColor: (themeController.isLight
-                      ? Colors.grey.shade200
-                      : FlutterGuideColors.darkNeutral200)
-                  .withOpacity(0.8),
               prefixIcon: Icon(
                 Icons.search,
                 color: themeController.theme.colorScheme.tertiary,
@@ -99,9 +93,13 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
                 color: Colors.grey.shade600,
                 fontSize: 14.0,
               ),
-              border: OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
-                borderSide: BorderSide.none,
+                borderSide: BorderSide(
+                  color: themeController.isLight
+                      ? Colors.grey.shade400
+                      : Colors.grey.shade500,
+                ),
               ),
             ),
             onChanged: widget.onChange,
