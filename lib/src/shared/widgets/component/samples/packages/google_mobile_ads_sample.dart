@@ -16,6 +16,9 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
   InterstitialAd? _interstitialAd;
   bool _isInterstitialLoaded = false;
 
+  RewardedAd? _rewardedAd;
+  bool _isRewardedLoaded = false;
+
   void _loadBanner() {
     _bannerAd = BannerAd(
       adUnitId: dotenv.env['BANNER_AD_SAMPLE_ID']!,
@@ -26,8 +29,11 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           setState(() => _isBannerLoaded = true);
         },
         onAdFailedToLoad: (ad, error) {
-          debugPrint('BannerAd failed to load: $error');
           ad.dispose();
+
+          debugPrint(
+            'BannerAd failed to load: $error',
+          );
         },
       ),
     )..load();
@@ -59,15 +65,22 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
     _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (ad) {
         ad.dispose();
+
         _interstitialAd = null;
         _isInterstitialLoaded = false;
+
         _loadInterstitial();
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
         ad.dispose();
+
         _interstitialAd = null;
         _isInterstitialLoaded = false;
-        debugPrint('InterstitialAd failed to show: $error');
+
+        debugPrint(
+          'InterstitialAd failed to show: $error',
+        );
+
         _loadInterstitial();
       },
     );
@@ -77,10 +90,70 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
     _isInterstitialLoaded = false;
   }
 
+  void _loadRewarded() {
+    RewardedAd.load(
+      adUnitId: dotenv.env['REWARDED_AD_SAMPLE_ID']!,
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          _rewardedAd = ad;
+          _isRewardedLoaded = true;
+        },
+        onAdFailedToLoad: (error) {
+          debugPrint(
+            'RewardedAd failed to load: $error',
+          );
+
+          _isRewardedLoaded = false;
+        },
+      ),
+    );
+  }
+
+  void _showRewarded() {
+    if (!_isRewardedLoaded || _rewardedAd == null) {
+      debugPrint('RewardedAd is not ready');
+
+      return;
+    }
+
+    _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
+      onAdDismissedFullScreenContent: (ad) {
+        ad.dispose();
+        _rewardedAd = null;
+        _isRewardedLoaded = false;
+        _loadRewarded();
+      },
+      onAdFailedToShowFullScreenContent: (ad, error) {
+        ad.dispose();
+
+        _rewardedAd = null;
+        _isRewardedLoaded = false;
+        debugPrint(
+          'RewardedAd failed to show: $error',
+        );
+
+        _loadRewarded();
+      },
+    );
+
+    _rewardedAd!.show(
+      onUserEarnedReward: (ad, reward) {
+        debugPrint(
+          'Usuário recebeu recompensa: ${reward.amount} ${reward.type}',
+        );
+      },
+    );
+
+    _rewardedAd = null;
+    _isRewardedLoaded = false;
+  }
+
   @override
   void initState() {
     _loadBanner();
     _loadInterstitial();
+    _loadRewarded();
 
     super.initState();
   }
@@ -89,6 +162,7 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
   void dispose() {
     _bannerAd?.dispose();
     _interstitialAd?.dispose();
+    _rewardedAd?.dispose();
 
     super.dispose();
   }
@@ -102,9 +176,7 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           children: <Widget>[
             const Text(
               'Banner Ad',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 12.0),
             if (_isBannerLoaded && _bannerAd != null)
@@ -122,6 +194,13 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
               onPressed: _showInterstitial,
               child: const Text(
                 'Show Interstitial Ad',
+              ),
+            ),
+            const SizedBox(height: 12.0),
+            ElevatedButton(
+              onPressed: _showRewarded,
+              child: const Text(
+                'Show Rewarded Ad',
               ),
             ),
           ],
