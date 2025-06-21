@@ -10,14 +10,86 @@ class GoogleMobileAdsSample extends StatefulWidget {
 }
 
 class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
+  void _navigateTo(
+    Widget screen,
+  ) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => screen,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  return _navigateTo(
+                    const BannerAdScreen(),
+                  );
+                },
+                child: const Text(
+                  'Banner Ad',
+                ),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  return _navigateTo(
+                    const InterstitialAdScreen(),
+                  );
+                },
+                child: const Text(
+                  'Interstitial Ad',
+                ),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  return _navigateTo(
+                    const RewardedAdScreen(),
+                  );
+                },
+                child: const Text(
+                  'Rewarded Ad',
+                ),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  return _navigateTo(
+                    const AppOpenAdScreen(),
+                  );
+                },
+                child: const Text(
+                  'App Open Ad',
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BannerAdScreen extends StatefulWidget {
+  const BannerAdScreen({super.key});
+
+  @override
+  State<BannerAdScreen> createState() => _BannerAdScreenState();
+}
+
+class _BannerAdScreenState extends State<BannerAdScreen> {
   BannerAd? _bannerAd;
   bool _isBannerLoaded = false;
-
-  InterstitialAd? _interstitialAd;
-  bool _isInterstitialLoaded = false;
-
-  RewardedAd? _rewardedAd;
-  bool _isRewardedLoaded = false;
 
   void _loadBanner() {
     _bannerAd = BannerAd(
@@ -25,19 +97,69 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
       request: const AdRequest(),
       size: AdSize.banner,
       listener: BannerAdListener(
-        onAdLoaded: (_) {
-          setState(() => _isBannerLoaded = true);
+        onAdLoaded: (ad) {
+          setState(() {
+            _isBannerLoaded = true;
+          });
         },
         onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+
           debugPrint(
             'BannerAd failed to load: $error',
           );
-
-          ad.dispose();
         },
       ),
     )..load();
   }
+
+  @override
+  void initState() {
+    _loadBanner();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Banner Ad',
+        ),
+      ),
+      body: Center(
+        child: _isBannerLoaded && _bannerAd != null
+            ? SizedBox(
+                width: _bannerAd!.size.width.toDouble(),
+                height: _bannerAd!.size.height.toDouble(),
+                child: AdWidget(
+                  ad: _bannerAd!,
+                ),
+              )
+            : const CircularProgressIndicator(),
+      ),
+    );
+  }
+}
+
+class InterstitialAdScreen extends StatefulWidget {
+  const InterstitialAdScreen({super.key});
+
+  @override
+  State<InterstitialAdScreen> createState() => _InterstitialAdScreenState();
+}
+
+class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
+  InterstitialAd? _interstitialAd;
+  bool _isInterstitialLoaded = false;
 
   void _loadInterstitial() {
     InterstitialAd.load(
@@ -47,6 +169,8 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
         onAdLoaded: (ad) {
           _interstitialAd = ad;
           _isInterstitialLoaded = true;
+
+          _showInterstitial();
         },
         onAdFailedToLoad: (error) {
           debugPrint(
@@ -75,7 +199,7 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
         _interstitialAd = null;
         _isInterstitialLoaded = false;
 
-        _loadInterstitial();
+        Navigator.pop(context);
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
         ad.dispose();
@@ -87,14 +211,52 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           'InterstitialAd failed to show: $error',
         );
 
-        _loadInterstitial();
+        Navigator.pop(context);
       },
     );
 
     _interstitialAd!.show();
-    _interstitialAd = null;
-    _isInterstitialLoaded = false;
   }
+
+  @override
+  void initState() {
+    _loadInterstitial();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _interstitialAd?.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Interstitial Ad',
+        ),
+      ),
+      body: const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+}
+
+class RewardedAdScreen extends StatefulWidget {
+  const RewardedAdScreen({super.key});
+
+  @override
+  State<RewardedAdScreen> createState() => _RewardedAdScreenState();
+}
+
+class _RewardedAdScreenState extends State<RewardedAdScreen> {
+  RewardedAd? _rewardedAd;
+  bool _isRewardedLoaded = false;
 
   void _loadRewarded() {
     RewardedAd.load(
@@ -104,6 +266,8 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
         onAdLoaded: (ad) {
           _rewardedAd = ad;
           _isRewardedLoaded = true;
+
+          _showRewarded();
         },
         onAdFailedToLoad: (error) {
           debugPrint(
@@ -111,6 +275,8 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           );
 
           _isRewardedLoaded = false;
+
+          Navigator.pop(context);
         },
       ),
     );
@@ -118,9 +284,9 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
 
   void _showRewarded() {
     if (!_isRewardedLoaded || _rewardedAd == null) {
-      debugPrint(
-        'RewardedAd is not ready',
-      );
+      debugPrint('RewardedAd is not ready');
+
+      Navigator.pop(context);
 
       return;
     }
@@ -132,7 +298,7 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
         _rewardedAd = null;
         _isRewardedLoaded = false;
 
-        _loadRewarded();
+        Navigator.pop(context);
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
         ad.dispose();
@@ -144,7 +310,7 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           'RewardedAd failed to show: $error',
         );
 
-        _loadRewarded();
+        Navigator.pop(context);
       },
     );
 
@@ -155,84 +321,32 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
         );
       },
     );
-
-    _rewardedAd = null;
-    _isRewardedLoaded = false;
   }
 
   @override
   void initState() {
-    _loadBanner();
-    _loadInterstitial();
-    _loadRewarded();
-
     super.initState();
+
+    _loadRewarded();
   }
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
-    _interstitialAd?.dispose();
     _rewardedAd?.dispose();
-    super.dispose();
-  }
 
-  void _navigateToAppOpenAd() {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const AppOpenAdScreen()),
-    );
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Banner Ad',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 12.0),
-              if (_isBannerLoaded && _bannerAd != null)
-                SizedBox(
-                  width: _bannerAd!.size.width.toDouble(),
-                  height: _bannerAd!.size.height.toDouble(),
-                  child: AdWidget(
-                    ad: _bannerAd!,
-                  ),
-                )
-              else
-                const CircularProgressIndicator(),
-              const SizedBox(height: 32.0),
-              ElevatedButton(
-                onPressed: _showInterstitial,
-                child: const Text(
-                  'Show Interstitial Ad',
-                ),
-              ),
-              const SizedBox(height: 12.0),
-              ElevatedButton(
-                onPressed: _showRewarded,
-                child: const Text(
-                  'Show Rewarded Ad',
-                ),
-              ),
-              const SizedBox(height: 12.0),
-              ElevatedButton(
-                onPressed: _navigateToAppOpenAd,
-                child: const Text(
-                  'Show App Open Ad Example',
-                ),
-              ),
-            ],
-          ),
+      appBar: AppBar(
+        title: const Text(
+          'Rewarded Ad',
         ),
+      ),
+      body: const Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }
@@ -301,15 +415,15 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
 
   void _goBack() {
     if (mounted) {
-      Navigator.of(context).pop();
+      Navigator.pop(context);
     }
   }
 
   @override
   void initState() {
-    _loadAppOpenAd();
-
     super.initState();
+
+    _loadAppOpenAd();
   }
 
   @override
@@ -321,8 +435,13 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'App Open Ad',
+        ),
+      ),
+      body: const Center(
         child: CircularProgressIndicator(),
       ),
     );
