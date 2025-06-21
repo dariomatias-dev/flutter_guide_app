@@ -27,7 +27,7 @@ Future<void> main() async {
   await dotenv.load(
     fileName: '.env',
   );
-  
+
   final requestConfiguration = RequestConfiguration(
     testDeviceIds: <String>[
       dotenv.get('DEVICE_ID'),
