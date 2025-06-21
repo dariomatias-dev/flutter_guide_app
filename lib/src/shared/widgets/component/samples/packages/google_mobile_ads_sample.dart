@@ -29,11 +29,11 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           setState(() => _isBannerLoaded = true);
         },
         onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-
           debugPrint(
             'BannerAd failed to load: $error',
           );
+
+          ad.dispose();
         },
       ),
     )..load();
@@ -49,7 +49,10 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
           _isInterstitialLoaded = true;
         },
         onAdFailedToLoad: (error) {
-          debugPrint('InterstitialAd failed to load: $error');
+          debugPrint(
+            'InterstitialAd failed to load: $error',
+          );
+
           _isInterstitialLoaded = false;
         },
       ),
@@ -58,7 +61,10 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
 
   void _showInterstitial() {
     if (!_isInterstitialLoaded || _interstitialAd == null) {
-      debugPrint('InterstitialAd is not ready');
+      debugPrint(
+        'InterstitialAd is not ready',
+      );
+
       return;
     }
 
@@ -112,7 +118,9 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
 
   void _showRewarded() {
     if (!_isRewardedLoaded || _rewardedAd == null) {
-      debugPrint('RewardedAd is not ready');
+      debugPrint(
+        'RewardedAd is not ready',
+      );
 
       return;
     }
@@ -120,8 +128,10 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
     _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (ad) {
         ad.dispose();
+
         _rewardedAd = null;
         _isRewardedLoaded = false;
+
         _loadRewarded();
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
@@ -129,6 +139,7 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
 
         _rewardedAd = null;
         _isRewardedLoaded = false;
+
         debugPrint(
           'RewardedAd failed to show: $error',
         );
@@ -163,48 +174,156 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
     _bannerAd?.dispose();
     _interstitialAd?.dispose();
     _rewardedAd?.dispose();
-
     super.dispose();
+  }
+
+  void _navigateToAppOpenAd() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const AppOpenAdScreen()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Banner Ad',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 12.0),
-            if (_isBannerLoaded && _bannerAd != null)
-              SizedBox(
-                width: _bannerAd!.size.width.toDouble(),
-                height: _bannerAd!.size.height.toDouble(),
-                child: AdWidget(
-                  ad: _bannerAd!,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Banner Ad',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
                 ),
-              )
-            else
-              const CircularProgressIndicator(),
-            const SizedBox(height: 24.0),
-            ElevatedButton(
-              onPressed: _showInterstitial,
-              child: const Text(
-                'Show Interstitial Ad',
               ),
-            ),
-            const SizedBox(height: 12.0),
-            ElevatedButton(
-              onPressed: _showRewarded,
-              child: const Text(
-                'Show Rewarded Ad',
+              const SizedBox(height: 12.0),
+              if (_isBannerLoaded && _bannerAd != null)
+                SizedBox(
+                  width: _bannerAd!.size.width.toDouble(),
+                  height: _bannerAd!.size.height.toDouble(),
+                  child: AdWidget(
+                    ad: _bannerAd!,
+                  ),
+                )
+              else
+                const CircularProgressIndicator(),
+              const SizedBox(height: 32.0),
+              ElevatedButton(
+                onPressed: _showInterstitial,
+                child: const Text(
+                  'Show Interstitial Ad',
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 12.0),
+              ElevatedButton(
+                onPressed: _showRewarded,
+                child: const Text(
+                  'Show Rewarded Ad',
+                ),
+              ),
+              const SizedBox(height: 12.0),
+              ElevatedButton(
+                onPressed: _navigateToAppOpenAd,
+                child: const Text(
+                  'Show App Open Ad Example',
+                ),
+              ),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class AppOpenAdScreen extends StatefulWidget {
+  const AppOpenAdScreen({super.key});
+
+  @override
+  State<AppOpenAdScreen> createState() => _AppOpenAdScreenState();
+}
+
+class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
+  AppOpenAd? _appOpenAd;
+  bool _isAdShowing = false;
+
+  void _loadAppOpenAd() {
+    AppOpenAd.load(
+      adUnitId: dotenv.env['APP_OPEN_AD_SAMPLE_ID']!,
+      request: const AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: (ad) {
+          _appOpenAd = ad;
+
+          _showAppOpenAd();
+        },
+        onAdFailedToLoad: (error) {
+          debugPrint(
+            'AppOpenAd failed to load: $error',
+          );
+
+          _goBack();
+        },
+      ),
+    );
+  }
+
+  void _showAppOpenAd() {
+    if (_appOpenAd == null || _isAdShowing) {
+      _goBack();
+
+      return;
+    }
+
+    _isAdShowing = true;
+
+    _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
+      onAdDismissedFullScreenContent: (ad) {
+        ad.dispose();
+
+        _goBack();
+      },
+      onAdFailedToShowFullScreenContent: (ad, error) {
+        ad.dispose();
+
+        debugPrint(
+          'AppOpenAd failed to show: $error',
+        );
+
+        _goBack();
+      },
+    );
+
+    _appOpenAd!.show();
+  }
+
+  void _goBack() {
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
+  }
+
+  @override
+  void initState() {
+    _loadAppOpenAd();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _appOpenAd?.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }
