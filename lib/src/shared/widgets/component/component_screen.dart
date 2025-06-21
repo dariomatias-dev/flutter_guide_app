@@ -23,18 +23,11 @@ class ComponentScreen extends StatefulWidget {
 }
 
 class _ComponentScreenState extends State<ComponentScreen> {
-  late ComponentController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = ComponentController(
-      context: context,
-      componentType: widget.componentType,
-      componentName: widget.componentName,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = ComponentController(
+    context: context,
+    componentType: widget.componentType,
+    componentName: widget.componentName,
+  );
 
   @override
   Widget build(BuildContext context) {

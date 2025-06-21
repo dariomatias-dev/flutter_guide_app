@@ -33,18 +33,11 @@ class ComponentSampleAppBarWidget extends StatefulWidget
 
 class _ComponentSampleAppBarWidgetState
     extends State<ComponentSampleAppBarWidget> {
-  late ComponentSampleAppBarController _controller;
+  late final _controller = ComponentSampleAppBarController(
+    getContext: getContext,
+  );
 
   BuildContext getContext() => context;
-
-  @override
-  void didChangeDependencies() {
-    _controller = ComponentSampleAppBarController(
-      getContext: getContext,
-    );
-
-    super.didChangeDependencies();
-  }
 
   @override
   Widget build(BuildContext context) {

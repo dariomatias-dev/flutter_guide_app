@@ -26,19 +26,12 @@ class SaveButtonWidget extends StatefulWidget {
 }
 
 class _SaveButtonWidgetState extends State<SaveButtonWidget> {
-  late SaveButtonController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = SaveButtonController(
-      context: context,
-      componentName: widget.componentName,
-      favoritesService: widget.favoritesService,
-      favoriteNotifier: widget.favoriteNotifier,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = SaveButtonController(
+    context: context,
+    componentName: widget.componentName,
+    favoritesService: widget.favoritesService,
+    favoriteNotifier: widget.favoriteNotifier,
+  );
 
   @override
   Widget build(BuildContext context) {

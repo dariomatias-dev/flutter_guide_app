@@ -19,16 +19,9 @@ class SelectLanguageWidget extends StatefulWidget {
 }
 
 class _SelectLanguageWidgetState extends State<SelectLanguageWidget> {
-  late SelectLanguageController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = SelectLanguageController(
-      context: context,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = SelectLanguageController(
+    context: context,
+  );
 
   @override
   Widget build(BuildContext context) {

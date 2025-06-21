@@ -23,16 +23,9 @@ class SelectFavoriteScreenDialogWidget extends StatefulWidget {
 
 class _SelectFavoriteScreenDialogWidgetState
     extends State<SelectFavoriteScreenDialogWidget> {
-  late SelectFavoriteScreenDialogController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = SelectFavoriteScreenDialogController(
-      context: context,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = SelectFavoriteScreenDialogController(
+    context: context,
+  );
 
   @override
   Widget build(BuildContext context) {

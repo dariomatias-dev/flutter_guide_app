@@ -19,17 +19,10 @@ class SavedComponents extends StatefulWidget {
 }
 
 class _SavedComponentsState extends State<SavedComponents> {
-  late SavedComponentsController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = SavedComponentsController(
-      context: context,
-      componentType: widget.componentType,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = SavedComponentsController(
+    context: context,
+    componentType: widget.componentType,
+  );
 
   @override
   Widget build(BuildContext context) {

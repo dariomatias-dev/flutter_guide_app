@@ -15,16 +15,9 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  late SettingsController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = SettingsController(
-      context: context,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = SettingsController(
+    context: context,
+  );
 
   @override
   Widget build(BuildContext context) {

@@ -26,16 +26,9 @@ class SearchFieldWidget extends StatefulWidget {
 }
 
 class _SearchFieldWidgetState extends State<SearchFieldWidget> {
-  late SearchFieldController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = SearchFieldController(
-      searchClear: widget.searchClear,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = SearchFieldController(
+    searchClear: widget.searchClear,
+  );
 
   @override
   void dispose() {

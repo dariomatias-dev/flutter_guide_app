@@ -16,16 +16,9 @@ class MainAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _MainAppBarWidgetState extends State<MainAppBarWidget> {
-  late MainAppBarController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = MainAppBarController(
-      context: context,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = MainAppBarController(
+    context: context,
+  );
 
   @override
   Widget build(BuildContext context) {

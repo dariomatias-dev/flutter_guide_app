@@ -12,16 +12,9 @@ class ChangeThemeButtonWidget extends StatefulWidget {
 }
 
 class _ChangeThemeButtonWidgetState extends State<ChangeThemeButtonWidget> {
-  late ChangeThemeButtonController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = ChangeThemeButtonController(
-      context: context,
-    );
-
-    super.didChangeDependencies();
-  }
+  late final _controller = ChangeThemeButtonController(
+    context: context,
+  );
 
   @override
   Widget build(BuildContext context) {
