@@ -14,8 +14,17 @@ final _fonts = <_TextStyleType>[
   GoogleFonts.poppins,
 ];
 
-class GoogleFontsSamples extends StatelessWidget {
-  const GoogleFontsSamples({super.key});
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GoogleFontsSample(),
+    ),
+  );
+}
+
+class GoogleFontsSample extends StatelessWidget {
+  const GoogleFontsSample({super.key});
 
   @override
   Widget build(BuildContext context) {

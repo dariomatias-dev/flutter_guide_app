@@ -37,6 +37,15 @@ const _indicatorTypes = <Indicator>[
   Indicator.triangleSkewSpin,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoadingIndicatorSample(),
+    ),
+  );
+}
+
 class LoadingIndicatorSample extends StatelessWidget {
   const LoadingIndicatorSample({super.key});
 

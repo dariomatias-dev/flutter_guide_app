@@ -26,6 +26,15 @@ class _UserModel {
 
 const _url = 'https://jsonplaceholder.org/users';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DioSample(),
+    ),
+  );
+}
+
 class DioSample extends StatefulWidget {
   const DioSample({super.key});
 

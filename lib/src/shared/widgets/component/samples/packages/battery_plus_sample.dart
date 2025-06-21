@@ -4,6 +4,15 @@ import 'package:logger/logger.dart';
 
 final _battery = Battery();
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BatteryPlusSample(),
+    ),
+  );
+}
+
 class BatteryPlusSample extends StatefulWidget {
   const BatteryPlusSample({super.key});
 

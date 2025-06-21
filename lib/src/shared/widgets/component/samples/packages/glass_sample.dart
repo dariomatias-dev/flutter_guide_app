@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:glass/glass.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GlassSample(),
+    ),
+  );
+}
+
 class GlassSample extends StatelessWidget {
   const GlassSample({super.key});
 

@@ -8,6 +8,15 @@ const _mshCheckboxStyles = <MSHCheckboxStyle>[
   MSHCheckboxStyle.fillScaleColor,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MshCheckboxSample(),
+    ),
+  );
+}
+
 class MshCheckboxSample extends StatelessWidget {
   const MshCheckboxSample({super.key});
 

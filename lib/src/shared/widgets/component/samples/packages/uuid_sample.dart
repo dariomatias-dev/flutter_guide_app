@@ -55,6 +55,15 @@ final _uuidVersions = <_UuidVersionModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: UuidSample(),
+    ),
+  );
+}
+
 class UuidSample extends StatefulWidget {
   const UuidSample({super.key});
 

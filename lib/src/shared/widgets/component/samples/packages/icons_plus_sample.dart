@@ -43,6 +43,15 @@ const _flagIcons = <String>[
   Flags.united_states_of_america,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: IconsPlusSample(),
+    ),
+  );
+}
+
 class IconsPlusSample extends StatelessWidget {
   const IconsPlusSample({super.key});
 

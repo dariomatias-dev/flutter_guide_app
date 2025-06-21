@@ -63,6 +63,15 @@ const _toastificationStyles = <_ToastificationStyleModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ToastificationSample(),
+    ),
+  );
+}
+
 class ToastificationSample extends StatefulWidget {
   const ToastificationSample({super.key});
 

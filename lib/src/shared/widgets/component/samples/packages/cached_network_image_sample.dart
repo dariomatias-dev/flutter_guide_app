@@ -1,6 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CachedNetworkImageSample(),
+    ),
+  );
+}
+
 class CachedNetworkImageSample extends StatelessWidget {
   const CachedNetworkImageSample({super.key});
 

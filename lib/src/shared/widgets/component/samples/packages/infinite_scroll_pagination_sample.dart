@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: InfiniteScrollPaginationSample(),
+    ),
+  );
+}
+
 class InfiniteScrollPaginationSample extends StatefulWidget {
   const InfiniteScrollPaginationSample({super.key});
 

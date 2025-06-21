@@ -12,6 +12,15 @@ const _actions = <_SlidableActionTemplate>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterSlidableSample(),
+    ),
+  );
+}
+
 class FlutterSlidableSample extends StatelessWidget {
   const FlutterSlidableSample({super.key});
 

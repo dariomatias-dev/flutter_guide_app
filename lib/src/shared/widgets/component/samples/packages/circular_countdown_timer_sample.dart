@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CircularCountdownTimerSample(),
+    ),
+  );
+}
+
 class CircularCountdownTimerSample extends StatelessWidget {
   const CircularCountdownTimerSample({super.key});
 

@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GoogleMobileAdsSample(),
+    ),
+  );
+}
+
 class GoogleMobileAdsSample extends StatefulWidget {
   const GoogleMobileAdsSample({super.key});
 

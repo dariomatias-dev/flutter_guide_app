@@ -183,6 +183,15 @@ final _smoothPageIndicators = <_IndicatorEffectModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SmoothPageIndicatorSample(),
+    ),
+  );
+}
+
 class SmoothPageIndicatorSample extends StatefulWidget {
   const SmoothPageIndicatorSample({super.key});
 

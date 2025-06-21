@@ -7,6 +7,15 @@ const _screenNames = <String>[
   'Settings',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SalomonBottomBarSample(),
+    ),
+  );
+}
+
 class SalomonBottomBarSample extends StatefulWidget {
   const SalomonBottomBarSample({super.key});
 

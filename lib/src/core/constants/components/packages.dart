@@ -139,7 +139,7 @@ const packages = <PackageModel>[
     name: PackageNames.googleFontsPackage,
     icon: Icons.font_download_outlined,
     videoId: '8Vzv2CdbEY0',
-    sample: GoogleFontsSamples(),
+    sample: GoogleFontsSample(),
   ),
   PackageModel(
     name: PackageNames.googleMobileAdsPackage,

@@ -73,6 +73,15 @@ final _awesomeMaterialBanners = <_AwesomeMaterialBannerModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AwesomeSnackbarContentSample(),
+    ),
+  );
+}
+
 class AwesomeSnackbarContentSample extends StatefulWidget {
   const AwesomeSnackbarContentSample({super.key});
 

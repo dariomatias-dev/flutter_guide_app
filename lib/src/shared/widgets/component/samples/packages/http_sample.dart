@@ -26,6 +26,15 @@ class _UserModel {
   }
 }
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HttpSample(),
+    ),
+  );
+}
+
 class HttpSample extends StatefulWidget {
   const HttpSample({super.key});
 

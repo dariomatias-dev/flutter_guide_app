@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: NetworkInfoPlusSample(),
+    ),
+  );
+}
+
 class NetworkInfoPlusSample extends StatefulWidget {
   const NetworkInfoPlusSample({super.key});
 

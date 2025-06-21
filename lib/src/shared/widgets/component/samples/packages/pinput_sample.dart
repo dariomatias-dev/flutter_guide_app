@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PinputSample(),
+    ),
+  );
+}
+
 class PinputSample extends StatefulWidget {
   const PinputSample({super.key});
 

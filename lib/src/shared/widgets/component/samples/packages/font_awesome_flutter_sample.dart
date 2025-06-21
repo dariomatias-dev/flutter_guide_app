@@ -9,6 +9,15 @@ const _icons = <IconData>[
   FontAwesomeIcons.clock,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FontAwesomeFlutterSample(),
+    ),
+  );
+}
+
 class FontAwesomeFlutterSample extends StatelessWidget {
   const FontAwesomeFlutterSample({super.key});
 

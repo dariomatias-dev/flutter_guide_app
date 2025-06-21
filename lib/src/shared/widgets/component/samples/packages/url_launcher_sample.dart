@@ -3,6 +3,15 @@ import 'package:url_launcher/url_launcher.dart';
 
 const _standardUrl = 'https://pub.dev/';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: UrlLauncherSample(),
+    ),
+  );
+}
+
 class UrlLauncherSample extends StatefulWidget {
   const UrlLauncherSample({super.key});
 

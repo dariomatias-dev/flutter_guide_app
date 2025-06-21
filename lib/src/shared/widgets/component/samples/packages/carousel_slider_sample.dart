@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CarouselSliderSample(),
+    ),
+  );
+}
+
 class CarouselSliderSample extends StatelessWidget {
   const CarouselSliderSample({super.key});
 

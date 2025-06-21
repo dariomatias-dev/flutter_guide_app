@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PhotoViewSample(),
+    ),
+  );
+}
+
 class PhotoViewSample extends StatelessWidget {
   const PhotoViewSample({super.key});
 

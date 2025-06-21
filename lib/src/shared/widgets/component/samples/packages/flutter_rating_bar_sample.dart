@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterRatingBarSample(),
+    ),
+  );
+}
+
 class FlutterRatingBarSample extends StatefulWidget {
   const FlutterRatingBarSample({super.key});
 

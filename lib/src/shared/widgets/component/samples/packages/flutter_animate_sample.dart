@@ -27,6 +27,15 @@ final _effects = <Animate Function({
   ).animate().slide,
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterAnimateSample(),
+    ),
+  );
+}
+
 class FlutterAnimateSample extends StatefulWidget {
   const FlutterAnimateSample({super.key});
 

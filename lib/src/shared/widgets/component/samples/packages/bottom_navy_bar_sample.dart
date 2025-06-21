@@ -7,6 +7,15 @@ const _screenNames = <String>[
   'Settings',
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BottomNavyBarSample(),
+    ),
+  );
+}
+
 class BottomNavyBarSample extends StatefulWidget {
   const BottomNavyBarSample({super.key});
 

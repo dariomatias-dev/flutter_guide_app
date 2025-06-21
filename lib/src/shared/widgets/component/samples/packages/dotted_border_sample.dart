@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DottedBorderSample(),
+    ),
+  );
+}
+
 class DottedBorderSample extends StatefulWidget {
   const DottedBorderSample({super.key});
 

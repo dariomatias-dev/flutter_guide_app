@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterSvgSample(),
+    ),
+  );
+}
+
 class FlutterSvgSample extends StatelessWidget {
   const FlutterSvgSample({super.key});
 

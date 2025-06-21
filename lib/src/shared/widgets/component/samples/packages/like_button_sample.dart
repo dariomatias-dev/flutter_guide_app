@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LikeButtonSample(),
+    ),
+  );
+}
+
 class LikeButtonSample extends StatelessWidget {
   const LikeButtonSample({super.key});
 

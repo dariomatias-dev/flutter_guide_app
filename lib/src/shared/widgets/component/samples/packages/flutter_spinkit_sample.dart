@@ -94,6 +94,15 @@ const _loaders = <Widget>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterSpinkitSample(),
+    ),
+  );
+}
+
 class FlutterSpinkitSample extends StatelessWidget {
   const FlutterSpinkitSample({super.key});
 

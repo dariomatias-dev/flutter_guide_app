@@ -87,6 +87,15 @@ final _loaders = <Widget>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoadingAnimationWidgetSample(),
+    ),
+  );
+}
+
 class LoadingAnimationWidgetSample extends StatelessWidget {
   const LoadingAnimationWidgetSample({super.key});
 

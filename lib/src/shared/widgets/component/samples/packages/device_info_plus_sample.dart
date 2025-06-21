@@ -52,6 +52,15 @@ class _DeviceInfo {
   final String name;
 }
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DeviceInfoPlusSample(),
+    ),
+  );
+}
+
 class DeviceInfoPlusSample extends StatefulWidget {
   const DeviceInfoPlusSample({super.key});
 

@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SharedPreferencesSample(),
+    ),
+  );
+}
+
 class SharedPreferencesSample extends StatefulWidget {
   const SharedPreferencesSample({super.key});
 

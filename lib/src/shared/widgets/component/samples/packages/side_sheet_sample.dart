@@ -6,6 +6,15 @@ enum _Direction {
   ritght,
 }
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SideSheetSample(),
+    ),
+  );
+}
+
 class SideSheetSample extends StatefulWidget {
   const SideSheetSample({super.key});
 

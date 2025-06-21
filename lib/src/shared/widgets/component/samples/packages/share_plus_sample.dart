@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:share_plus/share_plus.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SharePlusSample(),
+    ),
+  );
+}
+
 class SharePlusSample extends StatefulWidget {
   const SharePlusSample({super.key});
 
