@@ -2,6 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoginWithBackgroundImageScreenSample(),
+    ),
+  );
+}
+
 class LoginWithBackgroundImageScreenSample extends StatelessWidget {
   const LoginWithBackgroundImageScreenSample({super.key});
 

@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PhoneVerificationScreenSample(),
+    ),
+  );
+}
+
 class PhoneVerificationScreenSample extends StatefulWidget {
   const PhoneVerificationScreenSample({super.key});
 
@@ -101,7 +110,8 @@ class _PhoneVerificationScreenSampleState
             Pinput(
               length: 4,
               controller: _pinController,
-              autofocus: true,              defaultPinTheme: _pinTheme,
+              autofocus: true,
+              defaultPinTheme: _pinTheme,
               focusedPinTheme: _pinTheme.copyWith(
                 decoration: BoxDecoration(
                   color: Colors.white,

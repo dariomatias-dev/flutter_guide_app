@@ -86,6 +86,15 @@ final emails = <EmailModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: EmailsAppSample(),
+    ),
+  );
+}
+
 class EmailsAppSample extends StatelessWidget {
   const EmailsAppSample({super.key});
 

@@ -125,6 +125,15 @@ final messages = <MessageModel>[
   ),
 ];
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ChatScreenSample(),
+    ),
+  );
+}
+
 class ChatScreenSample extends StatelessWidget {
   const ChatScreenSample({super.key});
 
