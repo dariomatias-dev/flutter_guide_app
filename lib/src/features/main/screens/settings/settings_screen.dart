@@ -40,12 +40,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SelectLanguageWidget(
               title: _controller.appLocalizations.language,
             ),
-            ListTileItemWidget(
-              title: _controller.appLocalizations.myWebsite,
-              icon: Icons.public,
-              openInBrowser: true,
-              onTap: null,
-            ),
+            // ListTileItemWidget(
+            //   title: _controller.appLocalizations.myWebsite,
+            //   icon: Icons.public,
+            //   openInBrowser: true,
+            //   onTap: null,
+            // ),
             ListTileItemWidget(
               title: 'Official Site',
               icon: Icons.public,
