@@ -39,7 +39,7 @@ The app showcases the power of Flutter by highlighting responsive user interface
 
 ---
 
-## Installation
+## Download the App
 
 You can download Flutter Guide directly from the Google Play Store:
 
@@ -47,10 +47,9 @@ You can download Flutter Guide directly from the Google Play Store:
 
 ---
 
-## Official Website
+## Website
 
-Visit the official Flutter Guide website:
-[https://flutter-guide-web.vercel.app/](https://flutter-guide-web.vercel.app/)
+Visit the official Flutter Guide website: [Official Website](https://flutter-guide-web.vercel.app/)
 
 ---
 
