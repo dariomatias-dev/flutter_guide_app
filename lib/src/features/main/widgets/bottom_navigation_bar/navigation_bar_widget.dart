@@ -24,7 +24,7 @@ class NavigationBarWidget extends StatefulWidget {
   final ThemeController themeController;
   final int screenIndex;
   final void Function(
-    int value,
+    int newIndex,
   ) updateScreenIndex;
   final String Function(
     int index,
@@ -35,59 +35,24 @@ class NavigationBarWidget extends StatefulWidget {
 }
 
 class _NavigationBarWidgetState extends State<NavigationBarWidget> {
-  late final _items = List.generate(
-    _icons.length,
-    (index) {
-      return _getSalomonBottomBarItem(
-        icon: _icons[index],
-        title: widget.getBottomNavigationBarName(index),
-      );
-    },
-  );
-
-  SalomonBottomBarItem _getSalomonBottomBarItem({
-    required IconData icon,
-    required String title,
-  }) {
-    return SalomonBottomBarItem(
-      icon: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Icon(
-          icon,
-        ),
-      ),
-      title: ValueListenableBuilder(
-        valueListenable:
-            UserPreferencesInheritedWidget.of(context)!.languageNotifier,
-        builder: (context, value, child) {
-          return Text(
-            title,
-          );
-        },
-      ),
-      selectedColor: Colors.blue,
-    );
-  }
-
-  void _handleSwipe(
+  void _onSwipe(
     DragEndDetails details,
   ) {
     final velocity = details.primaryVelocity ?? 0;
-    final currentIndex = widget.screenIndex;
+    final lastIndex = _icons.length - 1;
+    final current = widget.screenIndex;
 
-    if (velocity < -100 && currentIndex < _items.length - 1) {
-      final nextIndex = currentIndex + 1;
-      widget.updateScreenIndex(nextIndex);
-    } else if (velocity > 100 && currentIndex > 0) {
-      final previousIndex = currentIndex - 1;
-      widget.updateScreenIndex(previousIndex);
+    if (velocity < -100 && current < lastIndex) {
+      widget.updateScreenIndex(current + 1);
+    } else if (velocity > 100 && current > 0) {
+      widget.updateScreenIndex(current - 1);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onHorizontalDragEnd: _handleSwipe,
+      onHorizontalDragEnd: _onSwipe,
       child: SalomonBottomBar(
         backgroundColor: widget.themeController.theme.colorScheme.secondary,
         currentIndex: widget.screenIndex,
@@ -96,7 +61,29 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           vertical: 2.0,
           horizontal: 16.0,
         ),
-        items: _items,
+        items: List.generate(
+          _icons.length,
+          (index) {
+            return SalomonBottomBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  _icons[index],
+                ),
+              ),
+              title: ValueListenableBuilder(
+                valueListenable: UserPreferencesInheritedWidget.of(context)!
+                    .languageNotifier,
+                builder: (context, value, child) {
+                  return Text(
+                    widget.getBottomNavigationBarName(index),
+                  );
+                },
+              ),
+              selectedColor: Colors.blue,
+            );
+          },
+        ),
       ),
     );
   }
