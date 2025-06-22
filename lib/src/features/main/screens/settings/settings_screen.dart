@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/features/main/screens/settings/settings_controller.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/app_info_widget/app_info_widget.dart';
@@ -22,6 +23,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(
         scrollbars: false,
@@ -33,21 +36,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const AppInfoWidget(),
             const SizedBox(height: 20.0),
             ListTileItemWidget(
-              title: _controller.appLocalizations.docsAndResources,
+              title: appLocalizations.docsAndResources,
               icon: Icons.description_outlined,
               onTap: _controller.showDocsAndResourcesDialog,
             ),
             SelectLanguageWidget(
-              title: _controller.appLocalizations.language,
+              title: appLocalizations.language,
             ),
             // ListTileItemWidget(
-            //   title: _controller.appLocalizations.myWebsite,
+            //   title: appLocalizations.myWebsite,
             //   icon: Icons.public,
             //   openInBrowser: true,
             //   onTap: null,
             // ),
             ListTileItemWidget(
-              title: 'Official Site',
+              title: appLocalizations.officialSite,
               icon: Icons.public,
               onTap: () {
                 openUrl(
@@ -58,7 +61,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               openInBrowser: true,
             ),
             ListTileItemWidget(
-              title: 'Privacy Policy',
+              title: appLocalizations.privacyPolicy,
               icon: Icons.article_outlined,
               onTap: () {
                 openUrl(
@@ -74,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //   onTap: _controller.showDonateDialog,
             // ),
             // ListTileItemWidget(
-            //   title: _controller.appLocalizations.about,
+            //   title: appLocalizations.about,
             //   icon: Icons.info_outline,
             //   onTap: _controller.showAboutDialog,
             // ),
