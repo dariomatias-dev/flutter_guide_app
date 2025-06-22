@@ -3,8 +3,6 @@ import 'package:salomon_bottom_bar_extend/salomon_bottom_bar.dart';
 
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 const _icons = <IconData>[
   Icons.home_outlined,
   Icons.widgets_outlined,
@@ -71,14 +69,8 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                   _icons[index],
                 ),
               ),
-              title: ValueListenableBuilder(
-                valueListenable: UserPreferencesInheritedWidget.of(context)!
-                    .languageNotifier,
-                builder: (context, value, child) {
-                  return Text(
-                    widget.getBottomNavigationBarName(index),
-                  );
-                },
+              title: Text(
+                widget.getBottomNavigationBarName(index),
               ),
               selectedColor: Colors.blue,
             );
