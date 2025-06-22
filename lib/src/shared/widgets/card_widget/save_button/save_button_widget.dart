@@ -58,7 +58,7 @@ class _SaveButtonWidgetState extends State<SaveButtonWidget> {
               return Icon(
                 _controller.saved ? Icons.bookmark : Icons.bookmark_border,
                 color: themeController.theme.colorScheme.primary,
-                size: 20.0,
+                size: 24.0,
               );
             },
           );

@@ -65,7 +65,7 @@ class CardWidget extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(width: 12.0),
+          const SizedBox(width: 4.0),
         ],
         SaveButtonWidget(
           componentName: componentName,
