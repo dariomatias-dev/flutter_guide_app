@@ -21,21 +21,15 @@ class NavigationBarWidget extends StatefulWidget {
 
   final ThemeController themeController;
   final int screenIndex;
-  final void Function(
-    int newIndex,
-  ) updateScreenIndex;
-  final String Function(
-    int index,
-  ) getBottomNavigationBarName;
+  final void Function(int newIndex) updateScreenIndex;
+  final String Function(int index) getBottomNavigationBarName;
 
   @override
   State<NavigationBarWidget> createState() => _NavigationBarWidgetState();
 }
 
 class _NavigationBarWidgetState extends State<NavigationBarWidget> {
-  void _onSwipe(
-    DragEndDetails details,
-  ) {
+  void _onSwipe(DragEndDetails details) {
     final velocity = details.primaryVelocity ?? 0;
     final lastIndex = _icons.length - 1;
     final current = widget.screenIndex;
@@ -55,9 +49,11 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         backgroundColor: widget.themeController.theme.colorScheme.secondary,
         currentIndex: widget.screenIndex,
         onTap: widget.updateScreenIndex,
-        itemPadding: const EdgeInsets.symmetric(
-          vertical: 2.0,
-          horizontal: 16.0,
+        itemPadding: const EdgeInsets.only(
+          top: 2.0,
+          right: 12.0,
+          bottom: 2.0,
+          left: 6.0,
         ),
         items: List.generate(
           _icons.length,
@@ -69,8 +65,12 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                   _icons[index],
                 ),
               ),
-              title: Text(
-                widget.getBottomNavigationBarName(index),
+              title: Flexible(
+                child: Text(
+                  widget.getBottomNavigationBarName(index),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
               ),
               selectedColor: Colors.blue,
             );
