@@ -138,22 +138,27 @@ class _BannerAdScreenState extends State<BannerAdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Banner Ad',
+    return Theme(
+      data: Theme.of(context).brightness == Brightness.light
+          ? ThemeData.light()
+          : ThemeData.dark(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Banner Ad',
+          ),
         ),
-      ),
-      body: Center(
-        child: _isBannerLoaded && _bannerAd != null
-            ? SizedBox(
-                width: _bannerAd!.size.width.toDouble(),
-                height: _bannerAd!.size.height.toDouble(),
-                child: AdWidget(
-                  ad: _bannerAd!,
-                ),
-              )
-            : const CircularProgressIndicator(),
+        body: Center(
+          child: _isBannerLoaded && _bannerAd != null
+              ? SizedBox(
+                  width: _bannerAd!.size.width.toDouble(),
+                  height: _bannerAd!.size.height.toDouble(),
+                  child: AdWidget(
+                    ad: _bannerAd!,
+                  ),
+                )
+              : const CircularProgressIndicator(),
+        ),
       ),
     );
   }
@@ -243,14 +248,19 @@ class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Interstitial Ad',
+    return Theme(
+      data: Theme.of(context).brightness == Brightness.light
+          ? ThemeData.light()
+          : ThemeData.dark(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Interstitial Ad',
+          ),
         ),
-      ),
-      body: const Center(
-        child: CircularProgressIndicator(),
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
@@ -348,14 +358,19 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Rewarded Ad',
+    return Theme(
+      data: Theme.of(context).brightness == Brightness.light
+          ? ThemeData.light()
+          : ThemeData.dark(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Rewarded Ad',
+          ),
         ),
-      ),
-      body: const Center(
-        child: CircularProgressIndicator(),
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
@@ -444,14 +459,19 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'App Open Ad',
+    return Theme(
+      data: Theme.of(context).brightness == Brightness.light
+          ? ThemeData.light()
+          : ThemeData.dark(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'App Open Ad',
+          ),
         ),
-      ),
-      body: const Center(
-        child: CircularProgressIndicator(),
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
