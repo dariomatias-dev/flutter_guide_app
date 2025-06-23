@@ -65,12 +65,10 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                   _icons[index],
                 ),
               ),
-              title: Flexible(
-                child: Text(
-                  widget.getBottomNavigationBarName(index),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                ),
+              title: Text(
+                widget.getBottomNavigationBarName(index),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
               selectedColor: Colors.blue,
             );
