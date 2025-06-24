@@ -62,5 +62,6 @@
     "remove": "Remover",
     "copy": "Copiar",
     "copyToClipboard": "Código copiado para a área de transferência",
-    "aboutDescription": "Aplicativo desenvolvido em Flutter para demonstrar os principais recursos e funcionalidades da tecnologia."
+    "aboutDescription": "Um aplicativo educacional desenvolvido em Flutter que ajuda desenvolvedores a aprender sobre a tecnologia por meio de exemplos práticos.",
+    "viewOnPlayStore": "Ver na Play Store"
 }
