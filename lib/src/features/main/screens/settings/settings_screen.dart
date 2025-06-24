@@ -43,12 +43,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SelectLanguageWidget(
               title: appLocalizations.language,
             ),
-            // ListTileItemWidget(
-            //   title: appLocalizations.myWebsite,
-            //   icon: Icons.public,
-            //   openInBrowser: true,
-            //   onTap: null,
-            // ),
+            ListTileItemWidget(
+              title: appLocalizations.myWebsite,
+              icon: Icons.public,
+              openInBrowser: true,
+              onTap: () {
+                openUrl(
+                  () => context,
+                  'https://dariomatias-portfolio.vercel.app/',
+                );
+              },
+            ),
             ListTileItemWidget(
               title: appLocalizations.officialSite,
               icon: Icons.public,
@@ -72,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               openInBrowser: true,
             ),
             // ListTileItemWidget(
-            //   title: 'Buy Me a Coffee',F
+            //   title: 'Buy Me a Coffee',
             //   icon: Icons.local_cafe_outlined,
             //   onTap: _controller.showDonateDialog,
             // ),
