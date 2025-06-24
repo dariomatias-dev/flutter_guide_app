@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:scroll_infinity/scroll_infinity.dart';
 
 import 'package:flutter_guide/src/core/constants/components/elements.dart';
 import 'package:flutter_guide/src/core/constants/components/uis.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
+import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
-class InterfaceCatalogScreen extends StatelessWidget {
+const _pageSize = 18;
+
+class InterfaceCatalogScreen extends StatefulWidget {
   const InterfaceCatalogScreen({
     super.key,
     required this.elementType,
@@ -18,26 +22,52 @@ class InterfaceCatalogScreen extends StatelessWidget {
   final InterfaceTypeEnum elementType;
 
   @override
+  State<InterfaceCatalogScreen> createState() => _InterfaceCatalogScreenState();
+}
+
+class _InterfaceCatalogScreenState extends State<InterfaceCatalogScreen> {
+  final _allInterfaces = <InterfaceModel>[];
+
+  Future<List<InterfaceModel>> _loadData(int pageIndex) async {
+    final start = pageIndex * _pageSize;
+    final end = start + _pageSize;
+    final nextPageItems = _allInterfaces.sublist(
+      start,
+      end > _allInterfaces.length ? _allInterfaces.length : end,
+    );
+
+    return nextPageItems;
+  }
+
+  @override
+  void didChangeDependencies() {
+    final isUi = widget.elementType == InterfaceTypeEnum.ui;
+    _allInterfaces.addAll(
+      (isUi ? getUis : getElements)(context),
+    );
+
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final isUi = elementType == InterfaceTypeEnum.ui;
-    final interfaces = <InterfaceModel>[
-      ...(isUi ? getUis : getElements)(context)
-    ];
+    final isUi = widget.elementType == InterfaceTypeEnum.ui;
 
     return Scaffold(
       appBar: StandardAppBarWidget(
         titleName: isUi ? 'UIs' : 'Elements',
       ),
-      body: ListView.separated(
-        itemCount: interfaces.length,
+      body: ScrollInfinity<InterfaceModel?>(
         padding: const EdgeInsets.symmetric(
           vertical: 12.0,
         ),
-        separatorBuilder: (context, index) {
-          return const SizedBox(height: 12.0);
-        },
-        itemBuilder: (context, index) {
-          final element = interfaces[index];
+        maxItems: 18,
+        interval: 10,
+        loadData: _loadData,
+        itemBuilder: (value, index) {
+          if (value == null) {
+            return const BannerAdWidget();
+          }
 
           return ListTileItemWidget(
             onTap: () {
@@ -46,16 +76,16 @@ class InterfaceCatalogScreen extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) {
                     return ComponentSampleScreen(
-                      title: element.name,
+                      title: value.name,
                       filePath:
-                          'lib/src/shared/widgets/interface_catalog/samples/${isUi ? 'uis' : 'elements'}/${element.fileName}_sample.dart',
-                      sample: element.component,
+                          'lib/src/shared/widgets/interface_catalog/samples/${isUi ? 'uis' : 'elements'}/${value.fileName}_sample.dart',
+                      sample: value.component,
                     );
                   },
                 ),
               );
             },
-            title: element.name,
+            title: value.name,
             trailingWidgets: const <Widget>[
               Icon(
                 Icons.keyboard_arrow_right_rounded,
