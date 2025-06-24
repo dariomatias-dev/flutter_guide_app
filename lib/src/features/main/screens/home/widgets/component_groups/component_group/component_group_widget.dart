@@ -8,7 +8,10 @@ import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.da
 
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/components/widgets/ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
+
+const _adInterval = 5;
 
 class ComponentGroupWidget extends StatefulWidget {
   const ComponentGroupWidget({
@@ -33,6 +36,12 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
   Widget build(BuildContext context) {
     final themeController =
         UserPreferencesInheritedWidget.of(context)!.themeController;
+
+    final components = widget.componentGroup.components;
+
+    final itemCount = components.length;
+    final adCount = (itemCount / _adInterval).floor();
+    final totalItems = itemCount + adCount;
 
     return Column(
       children: <Widget>[
@@ -61,10 +70,12 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
         ),
         if (_isExpanded)
           Column(
-            children: List.generate(
-              widget.componentGroup.components.length,
-              (index) {
-                final componentName = widget.componentGroup.components[index];
+            children: List.generate(totalItems, (index) {
+              if ((index + 1) % (_adInterval + 1) == 0) {
+                return const AdItemWidget();
+              } else {
+                final componentIndex = index - (index ~/ (_adInterval + 1));
+                final componentName = components[componentIndex];
                 final component =
                     widgets[_controller.widgetNames.indexOf(componentName)];
 
@@ -77,12 +88,10 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
                       .userPreferencesInheritedWidget.favoriteWidgetsService,
                   favoriteNotifier: _controller
                       .userPreferencesInheritedWidget.favoriteWidgetNotifier,
-                  padding: const EdgeInsets.only(
-                    left: 20.0,
-                  ),
+                  padding: const EdgeInsets.only(left: 20.0),
                 );
-              },
-            ),
+              }
+            }),
           ),
       ],
     );
