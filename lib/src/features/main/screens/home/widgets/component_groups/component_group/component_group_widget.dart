@@ -7,8 +7,8 @@ import 'package:flutter_guide/src/features/main/screens/home/widgets/component_g
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
+import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/components/widgets/ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 const _adInterval = 5;
@@ -72,7 +72,7 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
           Column(
             children: List.generate(totalItems, (index) {
               if ((index + 1) % (_adInterval + 1) == 0) {
-                return const AdItemWidget();
+                return const BannerAdWidget();
               } else {
                 final componentIndex = index - (index ~/ (_adInterval + 1));
                 final componentName = components[componentIndex];

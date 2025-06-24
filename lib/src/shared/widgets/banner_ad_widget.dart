@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class AdItemWidget extends StatefulWidget {
-  const AdItemWidget({super.key});
+class BannerAdWidget extends StatefulWidget {
+  const BannerAdWidget({super.key});
 
   @override
-  State<AdItemWidget> createState() => AdItemwidgetState();
+  State<BannerAdWidget> createState() => BannerAdWidgetState();
 }
 
-class AdItemwidgetState extends State<AdItemWidget> {
+class BannerAdWidgetState extends State<BannerAdWidget> {
   BannerAd? _bannerAd;
   bool _isLoaded = false;
 
