@@ -73,24 +73,26 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
             children: List.generate(totalItems, (index) {
               if ((index + 1) % (_adInterval + 1) == 0) {
                 return const BannerAdWidget();
-              } else {
-                final componentIndex = index - (index ~/ (_adInterval + 1));
-                final componentName = components[componentIndex];
-                final component =
-                    widgets[_controller.widgetNames.indexOf(componentName)];
-
-                return CardWidget(
-                  icon: component.icon,
-                  componentName: component.name,
-                  componentType: ComponentType.widget,
-                  videoId: component.videoId,
-                  favoritesService: _controller
-                      .userPreferencesInheritedWidget.favoriteWidgetsService,
-                  favoriteNotifier: _controller
-                      .userPreferencesInheritedWidget.favoriteWidgetNotifier,
-                  padding: const EdgeInsets.only(left: 20.0),
-                );
               }
+
+              final componentIndex = index - (index ~/ (_adInterval + 1));
+              final componentName = components[componentIndex];
+              final component =
+                  widgets[_controller.widgetNames.indexOf(componentName)];
+
+              return CardWidget(
+                icon: component.icon,
+                componentName: component.name,
+                componentType: ComponentType.widget,
+                videoId: component.videoId,
+                favoritesService: _controller
+                    .userPreferencesInheritedWidget.favoriteWidgetsService,
+                favoriteNotifier: _controller
+                    .userPreferencesInheritedWidget.favoriteWidgetNotifier,
+                padding: const EdgeInsets.only(
+                  left: 20.0,
+                ),
+              );
             }),
           ),
       ],
