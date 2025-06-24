@@ -47,6 +47,8 @@ class ComponentSampleController {
   }
 
   List<String> getChunck(int index) {
+    if (index < 0 || index >= _chunks.length) return <String>[];
+
     return _chunks[index];
   }
 
