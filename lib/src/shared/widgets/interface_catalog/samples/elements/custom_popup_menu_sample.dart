@@ -128,7 +128,7 @@ class CustomPopupMenuSampleState extends State<CustomPopupMenuSample> {
   }
 
   void _removeOverlay() {
-    _overlayEntry!.remove();
+    _overlayEntry?.remove();
   }
 
   @override

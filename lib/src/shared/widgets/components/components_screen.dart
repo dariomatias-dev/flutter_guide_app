@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_infinity/scroll_infinity.dart';
 
+import 'package:flutter_guide/src/core/constants/constants.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -70,7 +71,7 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
             maxItems: 18,
             initialPageIndex: 1,
             initialItems: value,
-            interval: _controller.adInterval,
+            interval: adInterval,
             loadData: _controller.loadData,
             itemBuilder: (value, index) {
               if (value == null) {

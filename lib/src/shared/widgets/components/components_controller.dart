@@ -25,7 +25,6 @@ class ComponentsController {
     );
   }
 
-  final adInterval = 12;
   final initialItemsNotifier = InitialItemsNotifier([]);
 
   late final FavoritesService favoritesService;

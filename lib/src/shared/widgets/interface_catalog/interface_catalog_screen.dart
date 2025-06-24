@@ -3,6 +3,7 @@ import 'package:scroll_infinity/scroll_infinity.dart';
 
 import 'package:flutter_guide/src/core/constants/components/elements.dart';
 import 'package:flutter_guide/src/core/constants/components/uis.dart';
+import 'package:flutter_guide/src/core/constants/constants.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
@@ -62,7 +63,7 @@ class _InterfaceCatalogScreenState extends State<InterfaceCatalogScreen> {
           vertical: 12.0,
         ),
         maxItems: 18,
-        interval: 10,
+        interval: adInterval,
         loadData: _loadData,
         itemBuilder: (value, index) {
           if (value == null) {
