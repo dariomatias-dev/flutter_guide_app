@@ -17,6 +17,16 @@ List<InterfaceModel> getUis(
 
   return <InterfaceModel>[
     InterfaceModel(
+      name: appLocalizations.chatScreen,
+      fileName: 'chat_screen',
+      component: const ChatScreenSample(),
+    ),
+    InterfaceModel(
+      name: appLocalizations.emailsApp,
+      fileName: 'emails_app',
+      component: const EmailsAppSample(),
+    ),
+    InterfaceModel(
       name: appLocalizations.loginScreen,
       fileName: 'login_screen',
       component: const LoginScreenSample(),
@@ -25,16 +35,6 @@ List<InterfaceModel> getUis(
       name: appLocalizations.loginScreenWithBackgroundImage,
       fileName: 'login_with_background_image_screen',
       component: const LoginWithBackgroundImageScreenSample(),
-    ),
-    InterfaceModel(
-      name: appLocalizations.emailsApp,
-      fileName: 'emails_app',
-      component: const EmailsAppSample(),
-    ),
-    InterfaceModel(
-      name: appLocalizations.chatScreen,
-      fileName: 'chat_screen',
-      component: const ChatScreenSample(),
     ),
     InterfaceModel(
       name: appLocalizations.phoneVerificationScreen,
