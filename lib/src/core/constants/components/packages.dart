@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/constants/package_names.dart';
+import 'package:flutter_guide/src/core/constants/sample_names/package_names.dart';
 
 // Models
 import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
