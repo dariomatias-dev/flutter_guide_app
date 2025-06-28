@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/constants/sample_names/function_names.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_names/function_names.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 // Models
