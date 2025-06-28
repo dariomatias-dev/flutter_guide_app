@@ -30,6 +30,18 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
     searchClear: widget.searchClear,
   );
 
+  OutlineInputBorder get _border {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20.0),
+      borderSide: BorderSide(
+        color:
+            UserPreferencesInheritedWidget.of(context)!.themeController.isLight
+                ? Colors.grey.shade400
+                : Colors.grey.shade500,
+      ),
+    );
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -86,16 +98,17 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
                 color: Colors.grey.shade600,
                 fontSize: 14.0,
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: BorderSide(
-                  color: themeController.isLight
-                      ? Colors.grey.shade400
-                      : Colors.grey.shade500,
+              border: _border,
+              focusedBorder: _border.copyWith(
+                borderSide: const BorderSide(
+                  width: 1.4,
                 ),
               ),
             ),
             onChanged: widget.onChange,
+            onTapOutside: (event) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
           );
         },
       ),
