@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:flutter_guide/src/shared/models/interface_model.dart';
+
 // Elements
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/configuring_dio_sample.dart';
 // import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
@@ -14,8 +16,6 @@ import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/eleme
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/pagination_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/password_field_sample.dart';
 
-import 'package:flutter_guide/src/shared/models/interface_model.dart';
-
 List<InterfaceModel> getElements(
   BuildContext context,
 ) {
@@ -23,9 +23,9 @@ List<InterfaceModel> getElements(
 
   return <InterfaceModel>[
     InterfaceModel(
-      name: appLocalizations.customPopupMenu,
-      fileName: 'custom_popup_menu',
-      component: const CustomPopupMenuSample(),
+      name: appLocalizations.configuringDio,
+      fileName: 'configuring_dio',
+      component: const ConfiguringDioSample(),
     ),
     // InterfaceModel(
     //   name: appLocalizations.customDropdown,
@@ -33,19 +33,19 @@ List<InterfaceModel> getElements(
     //   component: const CustomDropdownSample(),
     // ),
     InterfaceModel(
+      name: appLocalizations.customPopupMenu,
+      fileName: 'custom_popup_menu',
+      component: const CustomPopupMenuSample(),
+    ),
+    InterfaceModel(
       name: appLocalizations.gaps,
       fileName: 'gaps',
       component: const GapsSample(),
     ),
     InterfaceModel(
-      name: appLocalizations.passwordField,
-      fileName: 'password_field',
-      component: const PasswordFieldSample(),
-    ),
-    InterfaceModel(
-      name: appLocalizations.loadingButton,
-      fileName: 'loading_button',
-      component: const LoadingButtonSample(),
+      name: appLocalizations.imageLoader,
+      fileName: 'image_loader',
+      component: const ImageLoaderSample(),
     ),
     InterfaceModel(
       name: appLocalizations.infiniteGridView,
@@ -53,14 +53,9 @@ List<InterfaceModel> getElements(
       component: const InfiniteGridViewSample(),
     ),
     InterfaceModel(
-      name: appLocalizations.pagination,
-      fileName: 'pagination',
-      component: const PaginationSample(),
-    ),
-    InterfaceModel(
-      name: appLocalizations.configuringDio,
-      fileName: 'configuring_dio',
-      component: const ConfiguringDioSample(),
+      name: appLocalizations.loadingButton,
+      fileName: 'loading_button',
+      component: const LoadingButtonSample(),
     ),
     InterfaceModel(
       name: appLocalizations.loadingDialog,
@@ -73,9 +68,14 @@ List<InterfaceModel> getElements(
       component: const LoadingScreenSample(),
     ),
     InterfaceModel(
-      name: appLocalizations.imageLoader,
-      fileName: 'image_loader',
-      component: const ImageLoaderSample(),
+      name: appLocalizations.pagination,
+      fileName: 'pagination',
+      component: const PaginationSample(),
+    ),
+    InterfaceModel(
+      name: appLocalizations.passwordField,
+      fileName: 'password_field',
+      component: const PasswordFieldSample(),
     ),
   ];
 }
