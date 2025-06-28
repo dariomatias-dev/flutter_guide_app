@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/packages.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/widgets.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.dart';

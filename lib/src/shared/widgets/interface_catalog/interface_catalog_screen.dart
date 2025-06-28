@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_infinity/scroll_infinity.dart';
 
-import 'package:flutter_guide/src/core/constants/samples/sample_components/elements.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/uis.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/constants/constants.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 

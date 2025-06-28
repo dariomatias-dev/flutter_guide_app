@@ -5,9 +5,9 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/packages.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/widgets.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
