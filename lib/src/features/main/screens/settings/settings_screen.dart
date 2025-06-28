@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:flutter_guide/src/core/constants/app_links.dart';
+
 import 'package:flutter_guide/src/features/main/screens/settings/settings_controller.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/app_info_widget/app_info_widget.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/select_language/select_language_widget.dart';
@@ -50,7 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onTap: () {
                 openUrl(
                   () => context,
-                  'https://dariomatias-portfolio.vercel.app/',
+                  AppLinks.myWebsite,
                 );
               },
             ),
@@ -60,7 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onTap: () {
                 openUrl(
                   () => context,
-                  'https://flutter-guide-web.vercel.app/',
+                  AppLinks.officialSite,
                 );
               },
               openInBrowser: true,
@@ -71,7 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onTap: () {
                 openUrl(
                   () => context,
-                  'https://flutter-guide-web.vercel.app/privacy-policy/',
+                  AppLinks.privacyPolicy,
                 );
               },
               openInBrowser: true,
