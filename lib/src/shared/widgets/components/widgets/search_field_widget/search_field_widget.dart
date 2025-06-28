@@ -38,6 +38,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
             UserPreferencesInheritedWidget.of(context)!.themeController.isLight
                 ? Colors.grey.shade400
                 : Colors.grey.shade500,
+        width: 0.5,
       ),
     );
   }
@@ -99,9 +100,11 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
                 fontSize: 14.0,
               ),
               border: _border,
+              enabledBorder: _border,
               focusedBorder: _border.copyWith(
-                borderSide: const BorderSide(
-                  width: 1.4,
+                borderSide: BorderSide(
+                  color: _border.borderSide.color,
+                  width: 1.0,
                 ),
               ),
             ),
