@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // Elements
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/configuring_dio_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
+// import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_popup_menu_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/gaps_sample.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/image_loader_sample.dart';
@@ -27,11 +27,11 @@ List<InterfaceModel> getElements(
       fileName: 'custom_popup_menu',
       component: const CustomPopupMenuSample(),
     ),
-    InterfaceModel(
-      name: appLocalizations.customDropdown,
-      fileName: 'custom_dropdown',
-      component: const CustomDropdownSample(),
-    ),
+    // InterfaceModel(
+    //   name: appLocalizations.customDropdown,
+    //   fileName: 'custom_dropdown',
+    //   component: const CustomDropdownSample(),
+    // ),
     InterfaceModel(
       name: appLocalizations.gaps,
       fileName: 'gaps',
