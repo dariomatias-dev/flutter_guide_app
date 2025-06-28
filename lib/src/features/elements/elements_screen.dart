@@ -26,9 +26,11 @@ class _ElementsScreenState extends State<ElementsScreen> {
         children: <Widget>[
           DefaultTabBarWidget(
             onTap: (value) {
-              setState(() {
-                _tabIndex = value;
-              });
+              if (value != _tabIndex) {
+                setState(() {
+                  _tabIndex = value;
+                });
+              }
             },
             tabs: <Tab>[
               const Tab(
