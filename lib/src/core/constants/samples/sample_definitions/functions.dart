@@ -9,11 +9,11 @@ import 'package:flutter_guide/src/shared/models/component_summary_mode/component
 import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
 
 // Functions
-import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showbottomsheet_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showdatepicker_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showdialog_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showmodalbottomsheet_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/component/samples/functions/showtimepicker_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showbottomsheet_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showdatepicker_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showdialog_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showmodalbottomsheet_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showtimepicker_sample.dart';
 
 const functions = <FunctionModel>[
   FunctionModel(

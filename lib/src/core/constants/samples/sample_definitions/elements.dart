@@ -4,17 +4,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
 
 // Elements
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/configuring_dio_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/configuring_dio_sample.dart';
 // import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_popup_menu_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/gaps_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/image_loader_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/infinite_grid_view_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/loading_button_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/loading_dialog_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/loading_screen_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/pagination_sample.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/password_field_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/custom_popup_menu_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/gaps_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/image_loader_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/infinite_grid_view_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/loading_button_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/loading_dialog_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/loading_screen_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/pagination_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/password_field_sample.dart';
 
 List<InterfaceModel> getElements(
   BuildContext context,

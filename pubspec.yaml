@@ -122,12 +122,11 @@ flutter:
     - assets/icons/
     - assets/videos/
 
-    - lib/src/shared/widgets/component/samples/widgets/
-    - lib/src/shared/widgets/component/samples/functions/
-    - lib/src/shared/widgets/component/samples/packages/
-
-    - lib/src/shared/widgets/interface_catalog/samples/elements/
-    - lib/src/shared/widgets/interface_catalog/samples/uis/
+    - lib/src/core/constants/samples/sample_components/widgets/
+    - lib/src/core/constants/samples/sample_components/functions/
+    - lib/src/core/constants/samples/sample_components/packages/
+    - lib/src/core/constants/samples/sample_components/elements/
+    - lib/src/core/constants/samples/sample_components/uis/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

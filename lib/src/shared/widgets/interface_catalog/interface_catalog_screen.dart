@@ -79,7 +79,7 @@ class _InterfaceCatalogScreenState extends State<InterfaceCatalogScreen> {
                     return ComponentSampleScreen(
                       title: value.name,
                       filePath:
-                          'lib/src/shared/widgets/interface_catalog/samples/${isUi ? 'uis' : 'elements'}/${value.fileName}_sample.dart',
+                          'lib/src/core/constants/samples/sample_components/${isUi ? 'uis' : 'elements'}/${value.fileName}_sample.dart',
                       sample: value.component,
                     );
                   },
