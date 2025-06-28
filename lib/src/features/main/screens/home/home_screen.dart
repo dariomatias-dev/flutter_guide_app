@@ -22,19 +22,6 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 20.0),
           BorderListTileItemWidget(
-            title: 'UIs',
-            icon: Icons.web,
-            onTap: () {
-              navigateTo(
-                context,
-                const InterfaceCatalogScreen(
-                  elementType: InterfaceTypeEnum.ui,
-                ),
-              );
-            },
-          ),
-          const SizedBox(height: 8.0),
-          BorderListTileItemWidget(
             title: AppLocalizations.of(context)!.elements,
             icon: Icons.list_alt,
             onTap: () {
@@ -42,6 +29,19 @@ class HomeScreen extends StatelessWidget {
                 context,
                 const InterfaceCatalogScreen(
                   elementType: InterfaceTypeEnum.element,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 8.0),
+          BorderListTileItemWidget(
+            title: 'UIs',
+            icon: Icons.web,
+            onTap: () {
+              navigateTo(
+                context,
+                const InterfaceCatalogScreen(
+                  elementType: InterfaceTypeEnum.ui,
                 ),
               );
             },
