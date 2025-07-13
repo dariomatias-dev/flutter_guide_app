@@ -36,10 +36,12 @@ class SettingsController {
   }
 
   void showAboutDialog() {
-    showDialog(
+    showCustomDialog(
       context: _context,
-      builder: (context) {
-        return const AboutDialogWidget();
+      builder: (overlayEntry) {
+        return AboutDialogWidget(
+          overlayEntry: overlayEntry,
+        );
       },
     );
   }
