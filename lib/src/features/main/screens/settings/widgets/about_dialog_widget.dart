@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
+import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
 
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
@@ -52,7 +53,7 @@ class AboutDialogWidget extends StatelessWidget {
                 onPressed: () {
                   openUrl(
                     () => context,
-                    'https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide',
+                    AppLinks.playStoreDownload,
                   );
                 },
                 style: ElevatedButton.styleFrom(

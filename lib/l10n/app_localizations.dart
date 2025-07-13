@@ -438,7 +438,7 @@ abstract class AppLocalizations {
   /// No description provided for @code.
   ///
   /// In en, this message translates to:
-  /// **'Código'**
+  /// **'Code'**
   String get code;
 
   /// No description provided for @preview.

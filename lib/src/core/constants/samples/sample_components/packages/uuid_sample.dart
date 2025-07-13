@@ -31,7 +31,7 @@ final _uuidVersions = <_UuidVersionModel>[
     generator: () {
       return _uuid.v5(
         Uuid.NAMESPACE_URL,
-        'https://flutter.dev',
+        'https://dariomatias-dev.com/',
       );
     },
   ),

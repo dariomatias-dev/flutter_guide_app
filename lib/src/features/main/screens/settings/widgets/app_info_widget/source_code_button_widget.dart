@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
+import 'package:flutter_guide/src/core/constants/links/app_links.dart';
+
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
@@ -26,7 +28,7 @@ class SourceCodeButtonWidget extends StatelessWidget {
             onTap: () {
               openUrl(
                 () => context,
-                'https://github.com/dariomatias-dev/flutter_guide',
+                AppLinks.repository,
               );
             },
             borderRadius: borderRadius,

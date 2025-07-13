@@ -178,7 +178,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get samples => 'Samples';
 
   @override
-  String get code => 'Código';
+  String get code => 'Code';
 
   @override
   String get preview => 'Preview';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const _standardUrl = 'https://pub.dev/';
+const _standardUrl = 'https://dariomatias-dev.com/';
 
 void main() {
   runApp(
