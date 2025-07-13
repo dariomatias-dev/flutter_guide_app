@@ -468,8 +468,7 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
               ),
             ),
             filled: true,
-            fillColor:
-                Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
+            fillColor: Theme.of(context).colorScheme.onSurface.withAlpha(31),
             contentPadding: const EdgeInsets.all(12.0),
             isDense: true,
             border: const OutlineInputBorder(
@@ -970,7 +969,7 @@ class _EmailWidgetState extends State<EmailWidget> {
                             color: Theme.of(context)
                                 .colorScheme
                                 .secondary
-                                .withOpacity(0.5),
+                                .withAlpha(128),
                             fontSize: 12.0,
                           ),
                         ),
@@ -1043,7 +1042,7 @@ class _SaveEmailButtonWidgetState extends State<SaveEmailButtonWidget> {
         size: 20.0,
         color: _isStarred
             ? Colors.yellow.shade600
-            : Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+            : Theme.of(context).colorScheme.secondary.withAlpha(128),
       ),
     );
   }

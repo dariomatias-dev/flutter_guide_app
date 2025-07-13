@@ -197,7 +197,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
 
   BoxShadow get _boxShadow {
     return BoxShadow(
-      color: Colors.black.withOpacity(0.3),
+      color: Colors.black.withAlpha(77),
       blurRadius: 6.0,
       spreadRadius: 0.0,
       offset: const Offset(0, 1),
@@ -359,7 +359,7 @@ class _MenuWidgetState extends State<MenuWidget> {
       _isLight = Theme.of(context).brightness == Brightness.light;
       _defaultBackgroundColor = _isLight ? Colors.white : Colors.grey.shade900;
       _selectedBackgroundColor =
-          _isLight ? Colors.grey.shade300.withOpacity(0.8) : Colors.black12;
+          _isLight ? Colors.grey.shade300.withAlpha(204) : Colors.black12;
 
       _update();
     });

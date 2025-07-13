@@ -61,7 +61,7 @@ class LoginWitBackgroundScreen extends StatelessWidget {
                 sigmaY: 5.0,
               ),
               child: Container(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withAlpha(51),
               ),
             ),
             Scaffold(
@@ -165,7 +165,7 @@ class TextFormFieldWidget extends StatelessWidget {
     return Theme(
       data: Theme.of(context).copyWith(
         textSelectionTheme: TextSelectionThemeData(
-          selectionColor: Colors.white.withOpacity(0.2),
+          selectionColor: Colors.white.withAlpha(51),
           cursorColor: Colors.white,
         ),
       ),

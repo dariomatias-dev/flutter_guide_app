@@ -249,7 +249,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   BoxShadow(
                     blurRadius: 8.0,
                     spreadRadius: 8.0,
-                    color: Colors.black.withOpacity(0.115),
+                    color: Colors.black.withAlpha(29),
                     offset: const Offset(1.0, 1.0),
                   ),
                 ],
@@ -446,7 +446,7 @@ class MessageWidget extends StatelessWidget {
                   BoxShadow(
                     blurRadius: 8.0,
                     spreadRadius: 8.0,
-                    color: Colors.black.withOpacity(0.115),
+                    color: Colors.black.withAlpha(29),
                     offset: const Offset(1.0, 1.0),
                   ),
                 ],

@@ -20,8 +20,8 @@ class SocialNetworkButtonWidget extends StatelessWidget {
           socialNetwork.url,
         );
       },
-      highlightColor: Colors.blue.withOpacity(0.07),
-      hoverColor: Colors.blue.withOpacity(0.08),
+      highlightColor: Colors.blue.withAlpha(18),
+      hoverColor: Colors.blue.withAlpha(20),
       icon: ValueListenableBuilder(
         valueListenable: themeController,
         builder: (context, value, child) {

@@ -33,12 +33,12 @@ class SourceCodeButtonWidget extends StatelessWidget {
             },
             borderRadius: borderRadius,
             overlayColor: WidgetStatePropertyAll(
-              Colors.blue.withOpacity(
-                themeController.isLight ? 0.06 : 0.11,
+              Colors.blue.withAlpha(
+                themeController.isLight ? 15 : 28,
               ),
             ),
-            hoverColor: Colors.blue.withOpacity(
-              themeController.isLight ? 0.055 : 0.105,
+            hoverColor: Colors.blue.withAlpha(
+              themeController.isLight ? 14 : 27,
             ),
             child: Ink(
               width: double.infinity,
@@ -49,8 +49,8 @@ class SourceCodeButtonWidget extends StatelessWidget {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(
-                    themeController.isLight ? 0.05 : 0.1,
+                  color: Colors.blue.withAlpha(
+                    themeController.isLight ? 15 : 26,
                   ),
                   borderRadius: borderRadius,
                 ),

@@ -17,11 +17,11 @@ class CustomDialogScreenWidget extends StatelessWidget {
         GestureDetector(
           onTap: removeDocs,
           child: Container(
-            color: Colors.black.withOpacity(0.6),
+            color: Colors.black.withAlpha(153),
             constraints: const BoxConstraints.expand(),
             child: Container(
-              color: Colors.blue.shade100.withOpacity(
-                Theme.of(context).brightness == Brightness.light ? 0.3 : 0.0,
+              color: Colors.blue.shade100.withAlpha(
+                Theme.of(context).brightness == Brightness.light ? 77 : 0,
               ),
               constraints: const BoxConstraints.expand(),
             ),

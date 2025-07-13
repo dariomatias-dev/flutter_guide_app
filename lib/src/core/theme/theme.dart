@@ -6,7 +6,7 @@ final ligthMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     primary: FlutterGuideColors.darkNeutral50,
-    secondary: FlutterGuideColors.blue100.withOpacity(0.5),
+    secondary: FlutterGuideColors.blue100.withAlpha(128),
     tertiary: Colors.grey.shade800,
     surface: Colors.white,
   ),

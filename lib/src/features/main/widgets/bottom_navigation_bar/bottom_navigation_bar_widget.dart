@@ -39,8 +39,8 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 blurRadius: 0.5,
                 spreadRadius: 0.5,
                 color: themeController.isLight
-                    ? Colors.black.withOpacity(0.07)
-                    : Colors.grey.withOpacity(0.1),
+                    ? Colors.black.withAlpha(18)
+                    : Colors.grey.withAlpha(26),
               ),
             ],
           ),

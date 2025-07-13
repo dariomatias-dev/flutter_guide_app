@@ -24,8 +24,8 @@ class DonateDialogWidget extends StatelessWidget {
         CustomDialog.button(
           text: appLocalizations.donate,
           textColor: Colors.white,
-          backgroundColor: Colors.yellow.withOpacity(
-            isLight ? 1.0 : 0.95,
+          backgroundColor: Colors.yellow.withAlpha(
+            isLight ? 255 : 242,
           ),
           onTap: () {
             openUrl(
@@ -37,8 +37,8 @@ class DonateDialogWidget extends StatelessWidget {
         CustomDialog.button(
           text: appLocalizations.cancel,
           textColor: Colors.grey[isLight ? 700 : 800]!,
-          backgroundColor: Colors.white.withOpacity(
-            isLight ? 0.9 : 0.95,
+          backgroundColor: Colors.white.withAlpha(
+            isLight ? 230 : 242,
           ),
           onTap: () {
             overlayEntry?.remove();

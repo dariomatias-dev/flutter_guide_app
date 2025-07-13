@@ -25,7 +25,7 @@ class _LoadingDialogSampleState extends State<LoadingDialogSample> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.8),
+      barrierColor: Colors.black.withAlpha(204),
       builder: (context) {
         return PopScope(
           onPopInvoked: (didPop) {

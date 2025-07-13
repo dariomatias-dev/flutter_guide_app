@@ -47,7 +47,7 @@ class _CircularProgressSliderStateWidget
       children: <Widget>[
         CircularProgressIndicator(
           value: _value,
-          backgroundColor: Colors.black.withOpacity(0.2),
+          backgroundColor: Colors.black.withAlpha(51),
         ),
         Slider(
           value: _value,

@@ -26,9 +26,9 @@ class DefaultTabBarWidget extends StatelessWidget {
       builder: (context, value, child) {
         return TabBar(
           controller: controller,
-          labelColor: Colors.blue.shade400.withOpacity(0.8),
+          labelColor: Colors.blue.shade400.withAlpha(204),
           unselectedLabelColor: themeController.theme.colorScheme.tertiary,
-          indicatorColor: Colors.blue.shade400.withOpacity(0.8),
+          indicatorColor: Colors.blue.shade400.withAlpha(204),
           dividerHeight: 0.0,
           onTap: onTap,
           tabs: tabs,

@@ -27,7 +27,7 @@ class _LoadingScreenSampleState extends State<LoadingScreenSample> {
     _overlayEntry = OverlayEntry(
       builder: (context) {
         return Container(
-          color: Colors.black.withOpacity(0.8),
+          color: Colors.black.withAlpha(204),
           constraints: const BoxConstraints.expand(),
           child: Center(
             child: CircularProgressIndicator(

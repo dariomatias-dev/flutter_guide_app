@@ -49,7 +49,7 @@ class _CupertinoRadioSampleState extends State<CupertinoRadioSample> {
                   children: List.generate(5, (index) {
                     return CupertinoRadio(
                       value: index,
-                      inactiveColor: Colors.grey.shade400.withOpacity(0.6),
+                      inactiveColor: Colors.grey.shade400.withAlpha(153),
                       groupValue: _radioIndex,
                       onChanged: _updateRadioIndex,
                     );

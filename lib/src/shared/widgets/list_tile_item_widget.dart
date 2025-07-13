@@ -54,7 +54,7 @@ class ListTileItemWidget extends StatelessWidget {
                             Icon(
                               icon,
                               color: themeController.theme.colorScheme.primary
-                                  .withOpacity(onTap == null ? 0.5 : 1.0),
+                                  .withAlpha(onTap == null ? 128 : 255),
                               size: 20.0,
                             ),
                           const SizedBox(width: 12.0),
@@ -62,7 +62,7 @@ class ListTileItemWidget extends StatelessWidget {
                             title,
                             style: TextStyle(
                               color: themeController.theme.colorScheme.primary
-                                  .withOpacity(onTap == null ? 0.6 : 1.0),
+                                  .withAlpha(onTap == null ? 153 : 255),
                               fontSize: 14.0,
                             ),
                           ),
@@ -81,7 +81,7 @@ class ListTileItemWidget extends StatelessWidget {
                         return Icon(
                           Icons.open_in_new_rounded,
                           color: themeController.theme.colorScheme.primary
-                              .withOpacity(onTap == null ? 0.5 : 1.0),
+                              .withAlpha(onTap == null ? 128 : 255),
                           size: 18.0,
                         );
                       },

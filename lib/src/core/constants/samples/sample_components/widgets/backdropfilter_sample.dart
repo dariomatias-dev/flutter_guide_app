@@ -44,7 +44,7 @@ class _BackdropFilterSampleState extends State<BackdropFilterSample> {
                     sigmaY: _sigmaY,
                   ),
                   child: Container(
-                    color: Colors.black.withOpacity(0.0),
+                    color: Colors.black.withAlpha(0),
                   ),
                 ),
               ),

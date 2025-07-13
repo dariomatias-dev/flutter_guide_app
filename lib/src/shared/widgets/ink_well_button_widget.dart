@@ -19,9 +19,9 @@ class InkWellButtonWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       overlayColor: WidgetStatePropertyAll(
-        Colors.blue.withOpacity(0.05),
+        Colors.blue.withAlpha(13),
       ),
-      hoverColor: Colors.blue.withOpacity(0.05),
+      hoverColor: Colors.blue.withAlpha(13),
       borderRadius: BorderRadius.circular(borderRadius),
       child: Ink(
         decoration: BoxDecoration(

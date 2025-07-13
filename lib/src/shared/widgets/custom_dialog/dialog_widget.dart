@@ -40,7 +40,7 @@ class DialogWidget extends StatelessWidget {
             child: Center(
               child: LineWidget(
                 color: isLight
-                    ? Colors.grey.shade400.withOpacity(0.6)
+                    ? Colors.grey.shade400.withAlpha(153)
                     : Colors.grey.shade500,
                 width: 32.0,
               ),
@@ -120,7 +120,7 @@ class DialogWidget extends StatelessWidget {
                 Expanded(
                   child: LineWidget(
                     color: isLight
-                        ? Colors.grey.shade500.withOpacity(0.5)
+                        ? Colors.grey.shade500.withAlpha(128)
                         : Colors.grey.shade600,
                     width: double.infinity,
                   ),

@@ -348,7 +348,7 @@ class TextFormFieldWidget extends StatelessWidget {
     return Theme(
       data: Theme.of(context).copyWith(
         textSelectionTheme: TextSelectionThemeData(
-          selectionColor: Colors.black.withOpacity(0.2),
+          selectionColor: Colors.black.withAlpha(51),
           cursorColor: Colors.black,
         ),
       ),
