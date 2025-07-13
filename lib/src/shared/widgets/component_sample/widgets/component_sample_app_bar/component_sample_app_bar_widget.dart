@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/component_sample_app_bar/component_sample_app_bar_controller.dart';
