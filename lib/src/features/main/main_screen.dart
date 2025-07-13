@@ -72,18 +72,20 @@ class _MainScreenState extends State<MainScreen> {
           Positioned(
             right: 16.0,
             left: 16.0,
-            bottom: 12.0,
-            child: BottomNavigationBarWidget(
-              screenIndex: _controller.screenIndex,
-              updateScreenIndex: (value) {
-                _controller.updateScreenIndex(
-                  () => setState(() {}),
-                  value,
-                );
-              },
-              getBottomNavigationBarName: (index) {
-                return screens[index].bottomNavigationBarName;
-              },
+            bottom: 8.0,
+            child: SafeArea(
+              child: BottomNavigationBarWidget(
+                screenIndex: _controller.screenIndex,
+                updateScreenIndex: (value) {
+                  _controller.updateScreenIndex(
+                    () => setState(() {}),
+                    value,
+                  );
+                },
+                getBottomNavigationBarName: (index) {
+                  return screens[index].bottomNavigationBarName;
+                },
+              ),
             ),
           ),
         ],
