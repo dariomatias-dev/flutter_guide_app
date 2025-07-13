@@ -25,12 +25,52 @@ class ComponentGroupWidget extends StatefulWidget {
   State<ComponentGroupWidget> createState() => _ComponentGroupWidgetState();
 }
 
-class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
+class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
+    with SingleTickerProviderStateMixin {
   late final _controller = ComponentGroupController(
     context: context,
   );
 
+  late final AnimationController _animationController;
+  late final Animation<double> _animation;
+
   bool _isExpanded = false;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      duration: Duration(
+        milliseconds:
+            (widget.componentGroup.components.length / 10).ceil() * 300,
+      ),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.fastOutSlowIn,
+    );
+
+    super.initState();
+  }
+
+  void _handleTap() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+
+    if (_isExpanded) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +86,7 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
     return Column(
       children: <Widget>[
         ListTileItemWidget(
-          onTap: () {
-            setState(() {
-              _isExpanded = !_isExpanded;
-            });
-          },
+          onTap: _handleTap,
           title: widget.componentGroup.title,
           icon: widget.componentGroup.icon,
           trailingWidgets: <Widget>[
@@ -68,8 +104,10 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
             ),
           ],
         ),
-        if (_isExpanded)
-          Column(
+        SizeTransition(
+          sizeFactor: _animation,
+          axisAlignment: -1.0,
+          child: Column(
             children: List.generate(totalItems, (index) {
               if ((index + 1) % (_adInterval + 1) == 0) {
                 return const BannerAdWidget();
@@ -95,6 +133,7 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget> {
               );
             }),
           ),
+        ),
       ],
     );
   }
