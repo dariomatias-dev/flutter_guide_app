@@ -264,7 +264,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         _removeMenu();
       },
       child: GestureDetector(

@@ -61,7 +61,7 @@ class _LoadingScreenSampleState extends State<LoadingScreenSample> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         _removeLoadingScreen();
         _openScreen = false;
       },

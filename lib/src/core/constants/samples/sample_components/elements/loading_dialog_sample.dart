@@ -28,7 +28,7 @@ class _LoadingDialogSampleState extends State<LoadingDialogSample> {
       barrierColor: Colors.black.withAlpha(204),
       builder: (context) {
         return PopScope(
-          onPopInvoked: (didPop) {
+          onPopInvokedWithResult: (didPop, result) {
             _openDialog = false;
           },
           child: const Center(

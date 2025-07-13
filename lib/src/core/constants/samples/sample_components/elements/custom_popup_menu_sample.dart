@@ -137,7 +137,7 @@ class CustomPopupMenuSampleState extends State<CustomPopupMenuSample> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         _removeOverlay();
       },
       child: Scaffold(

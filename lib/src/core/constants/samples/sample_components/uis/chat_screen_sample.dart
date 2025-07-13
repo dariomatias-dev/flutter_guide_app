@@ -431,7 +431,9 @@ class MessageWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isMessageSent
                     ? Colors.blue
-                    : Theme.of(context).indicatorColor,
+                    : Theme.of(context).brightness == Brightness.light
+                        ? Theme.of(context).colorScheme.surface
+                        : Theme.of(context).colorScheme.onSurface,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                     isMessageSent ? 20.0 : 0.0,
