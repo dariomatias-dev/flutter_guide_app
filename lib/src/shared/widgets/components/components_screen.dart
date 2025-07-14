@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/constants/constants.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -67,7 +66,6 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
             padding: const EdgeInsets.only(
               bottom: 100.0,
             ),
-            adInterval: adInterval,
             items: value,
             itemBuilder: (value) {
               return SizedBox(

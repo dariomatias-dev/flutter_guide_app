@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/constants/constants.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
@@ -31,8 +30,6 @@ class InterfaceCatalogScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           vertical: 12.0,
         ),
-        header: Container(),
-        adInterval: adInterval,
         items: (isUi ? getUis : getElements)(context),
         itemBuilder: (value) {
           return ListTileItemWidget(
