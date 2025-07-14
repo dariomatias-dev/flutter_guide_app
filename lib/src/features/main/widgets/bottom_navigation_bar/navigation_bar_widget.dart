@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar_extend/salomon_bottom_bar.dart';
 
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
-
 const _icons = <IconData>[
   Icons.home_outlined,
   Icons.widgets_outlined,
@@ -13,13 +11,11 @@ const _icons = <IconData>[
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({
     super.key,
-    required this.themeController,
     required this.screenIndex,
     required this.updateScreenIndex,
     required this.getBottomNavigationBarName,
   });
 
-  final ThemeController themeController;
   final int screenIndex;
   final void Function(int newIndex) updateScreenIndex;
   final String Function(int index) getBottomNavigationBarName;
@@ -46,7 +42,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
     return GestureDetector(
       onHorizontalDragEnd: _onSwipe,
       child: SalomonBottomBar(
-        backgroundColor: widget.themeController.theme.colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         currentIndex: widget.screenIndex,
         onTap: widget.updateScreenIndex,
         itemPadding: const EdgeInsets.only(

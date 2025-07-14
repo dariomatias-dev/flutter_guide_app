@@ -10,7 +10,6 @@ import 'package:flutter_guide/src/features/main/screens/settings/settings_screen
 import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/main_app_bar_widget.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 import 'package:flutter_guide/src/shared/models/screen_model.dart';
 import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
 
@@ -51,23 +50,12 @@ class _MainScreenState extends State<MainScreen> {
 
     final screenSelected = screens[screenIndex];
 
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
     return Scaffold(
       appBar: const MainAppBarWidget(),
       body: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
-          ValueListenableBuilder(
-            valueListenable: themeController,
-            builder: (context, value, child) {
-              return Scaffold(
-                backgroundColor: themeController.theme.scaffoldBackgroundColor,
-                body: child,
-              );
-            },
-            child: screenSelected.screen,
-          ),
+          screenSelected.screen,
           Positioned(
             right: 16.0,
             left: 16.0,
