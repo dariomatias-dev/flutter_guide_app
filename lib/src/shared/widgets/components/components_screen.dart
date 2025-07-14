@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scroll_infinity/scroll_infinity.dart';
 
 import 'package:flutter_guide/src/core/constants/constants.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
@@ -7,10 +6,10 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
-import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/components/components_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/components/widgets/search_field_widget/search_field_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/infinity_scroll.dart';
 
 class ComponentsScreen extends StatefulWidget {
   const ComponentsScreen({
@@ -47,9 +46,9 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
         );
       },
       child: ValueListenableBuilder(
-        valueListenable: _controller.initialItemsNotifier,
+        valueListenable: _controller.itemsNotifier,
         builder: (context, value, child) {
-          return ScrollInfinity<ComponentModel?>(
+          return InfinityScroll<ComponentModel>(
             header: Column(
               children: <Widget>[
                 const SizedBox(height: 20.0),
@@ -68,16 +67,9 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
             padding: const EdgeInsets.only(
               bottom: 100.0,
             ),
-            maxItems: 18,
-            initialPageIndex: 1,
-            initialItems: value,
-            interval: adInterval,
-            loadData: _controller.loadData,
-            itemBuilder: (value, index) {
-              if (value == null) {
-                return const BannerAdWidget();
-              }
-
+            adInterval: adInterval,
+            items: value,
+            itemBuilder: (value) {
               return SizedBox(
                 height: 44.0,
                 child: CardWidget(

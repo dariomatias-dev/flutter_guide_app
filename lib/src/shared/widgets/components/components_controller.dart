@@ -25,7 +25,7 @@ class ComponentsController {
     );
   }
 
-  final initialItemsNotifier = InitialItemsNotifier([]);
+  final itemsNotifier = InitialItemsNotifier([]);
 
   late final FavoritesService favoritesService;
   late final FavoriteNotifier favoriteNotifier;
@@ -53,17 +53,13 @@ class ComponentsController {
         .themeController
         .addListener(favoritesService.getWidgets);
 
-    initialItemsNotifier.setComponents(
-      await loadData(0),
-    );
+    itemsNotifier.setComponents(_components);
   }
 
   Future<void> searchClear() async {
     _components = _standardComponents;
 
-    initialItemsNotifier.setComponents(
-      await loadData(0),
-    );
+    itemsNotifier.setComponents(_components);
   }
 
   void searchComponents(
@@ -86,26 +82,6 @@ class ComponentsController {
       _components = _standardComponents;
     }
 
-    final componentsLength = _components.length;
-
-    initialItemsNotifier.setComponents(
-      _components.sublist(
-        0,
-        componentsLength > maxItems ? maxItems : componentsLength,
-      ),
-    );
-  }
-
-  Future<List<ComponentModel>> loadData(
-    int pageIndex,
-  ) async {
-    final startIndex = pageIndex * maxItems;
-    final endIndex = startIndex + maxItems;
-    final componentsLength = _components.length;
-
-    return _components.sublist(
-      startIndex,
-      endIndex > componentsLength ? componentsLength : endIndex,
-    );
+    itemsNotifier.setComponents(_components);
   }
 }
