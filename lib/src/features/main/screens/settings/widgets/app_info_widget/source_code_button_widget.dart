@@ -3,8 +3,6 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 
 class SourceCodeButtonWidget extends StatelessWidget {
@@ -14,60 +12,55 @@ class SourceCodeButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
-    return ValueListenableBuilder(
-      valueListenable: themeController,
-      builder: (context, value, child) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 36.0,
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 36.0,
+      ),
+      child: InkWell(
+        onTap: () {
+          openUrl(
+            () => context,
+            AppLinks.repository,
+          );
+        },
+        borderRadius: borderRadius,
+        overlayColor: WidgetStatePropertyAll(
+          Colors.blue.withAlpha(
+            isDark ? 28 : 15,
           ),
-          child: InkWell(
-            onTap: () {
-              openUrl(
-                () => context,
-                AppLinks.repository,
-              );
-            },
+        ),
+        hoverColor: Colors.blue.withAlpha(
+          isDark ? 27 : 14,
+        ),
+        child: Ink(
+          width: double.infinity,
+          height: 40.0,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.secondary,
             borderRadius: borderRadius,
-            overlayColor: WidgetStatePropertyAll(
-              Colors.blue.withAlpha(
-                themeController.isLight ? 15 : 28,
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.blue.withAlpha(
+                isDark ? 26 : 15,
               ),
+              borderRadius: borderRadius,
             ),
-            hoverColor: Colors.blue.withAlpha(
-              themeController.isLight ? 14 : 27,
-            ),
-            child: Ink(
-              width: double.infinity,
-              height: 40.0,
-              decoration: BoxDecoration(
-                color: themeController.theme.colorScheme.secondary,
-                borderRadius: borderRadius,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.withAlpha(
-                    themeController.isLight ? 15 : 26,
-                  ),
-                  borderRadius: borderRadius,
-                ),
-                child: Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.sourceCode,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.blue,
-                    ),
-                  ),
+            child: Center(
+              child: Text(
+                AppLocalizations.of(context)!.sourceCode,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.blue,
                 ),
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
