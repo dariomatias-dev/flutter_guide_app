@@ -5,7 +5,6 @@ import 'package:flutter_guide/src/core/constants/samples/sample_definitions/pack
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/elements/elements_screen.dart';
 
-import 'package:flutter_guide/src/features/main/main_controller.dart';
 import 'package:flutter_guide/src/features/main/screens/home/home_screen.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/settings_screen.dart';
 import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
@@ -23,7 +22,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final _controller = MainController();
+  int screenIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
     ];
 
-    final screenSelected = screens[_controller.screenIndex];
+    final screenSelected = screens[screenIndex];
 
     final themeController =
         UserPreferencesInheritedWidget.of(context)!.themeController;
@@ -75,12 +74,11 @@ class _MainScreenState extends State<MainScreen> {
             bottom: 8.0,
             child: SafeArea(
               child: BottomNavigationBarWidget(
-                screenIndex: _controller.screenIndex,
+                screenIndex: screenIndex,
                 updateScreenIndex: (value) {
-                  _controller.updateScreenIndex(
-                    () => setState(() {}),
-                    value,
-                  );
+                  setState(() {
+                    screenIndex = value;
+                  });
                 },
                 getBottomNavigationBarName: (index) {
                   return screens[index].bottomNavigationBarName;
