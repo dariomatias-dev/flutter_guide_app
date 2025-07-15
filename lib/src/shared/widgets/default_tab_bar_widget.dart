@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 class DefaultTabBarWidget extends StatelessWidget {
   const DefaultTabBarWidget({
     super.key,
@@ -18,22 +16,14 @@ class DefaultTabBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
-    return ValueListenableBuilder(
-      valueListenable: themeController,
-      builder: (context, value, child) {
-        return TabBar(
-          controller: controller,
-          labelColor: Colors.blue.shade400.withAlpha(204),
-          unselectedLabelColor: themeController.theme.colorScheme.tertiary,
-          indicatorColor: Colors.blue.shade400.withAlpha(204),
-          dividerHeight: 0.0,
-          onTap: onTap,
-          tabs: tabs,
-        );
-      },
+    return TabBar(
+      controller: controller,
+      labelColor: Colors.blue.shade400.withAlpha(204),
+      unselectedLabelColor: Theme.of(context).colorScheme.tertiary,
+      indicatorColor: Colors.blue.shade400.withAlpha(204),
+      dividerHeight: 0.0,
+      onTap: onTap,
+      tabs: tabs,
     );
   }
 }
