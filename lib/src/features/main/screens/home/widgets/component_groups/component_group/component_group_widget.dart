@@ -4,7 +4,6 @@ import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widg
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/features/main/screens/home/widgets/component_groups/component_group/component_group_controller.dart';
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
@@ -74,9 +73,6 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
     final components = widget.componentGroup.components;
 
     final itemCount = components.length;
@@ -90,17 +86,12 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
           title: widget.componentGroup.title,
           icon: widget.componentGroup.icon,
           trailingWidgets: <Widget>[
-            ValueListenableBuilder(
-              valueListenable: themeController,
-              builder: (context, value, child) {
-                return Icon(
-                  _isExpanded
-                      ? Icons.keyboard_arrow_down_rounded
-                      : Icons.keyboard_arrow_right_rounded,
-                  color: themeController.theme.colorScheme.primary,
-                  size: 20.0,
-                );
-              },
+            Icon(
+              _isExpanded
+                  ? Icons.keyboard_arrow_down_rounded
+                  : Icons.keyboard_arrow_right_rounded,
+              color: Theme.of(context).colorScheme.primary,
+              size: 20.0,
             ),
           ],
         ),
