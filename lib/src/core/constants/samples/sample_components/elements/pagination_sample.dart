@@ -29,62 +29,64 @@ class _PaginationSampleState extends State<PaginationSample> {
           'Page ${_selectedPageIndex + 1}',
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 40.0,
-        child: Wrap(
-          spacing: 12.0,
-          alignment: WrapAlignment.center,
-          children: <Widget>[
-            StepNavigatorWidget(
-              action: () {
-                setState(() {
-                  _selectedPageIndex--;
-                });
-              },
-              disabled: _selectedPageIndex == 0,
-              icon: Icons.keyboard_arrow_left_rounded,
-            ),
-            ...List.generate(5, (index) {
-              int pageIndex = index;
-
-              if (_selectedPageIndex > 2) {
-                if (_selectedPageIndex + 4 > numberOfPages) {
-                  pageIndex += numberOfPages - 5;
-                } else {
-                  pageIndex += _selectedPageIndex - 2;
-                }
-              }
-
-              final isPageIndex = _selectedPageIndex == pageIndex;
-
-              return PageActionWidget(
+      bottomNavigationBar: SafeArea(
+        child: SizedBox(
+          height: 40.0,
+          child: Wrap(
+            spacing: 12.0,
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              StepNavigatorWidget(
                 action: () {
                   setState(() {
-                    _selectedPageIndex = pageIndex;
+                    _selectedPageIndex--;
                   });
                 },
-                fillColor: isPageIndex,
-                child: Center(
-                  child: Text(
-                    '${pageIndex + 1}',
-                    style: TextStyle(
-                      color: isPageIndex ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.w500,
+                disabled: _selectedPageIndex == 0,
+                icon: Icons.keyboard_arrow_left_rounded,
+              ),
+              ...List.generate(5, (index) {
+                int pageIndex = index;
+        
+                if (_selectedPageIndex > 2) {
+                  if (_selectedPageIndex + 4 > numberOfPages) {
+                    pageIndex += numberOfPages - 5;
+                  } else {
+                    pageIndex += _selectedPageIndex - 2;
+                  }
+                }
+        
+                final isPageIndex = _selectedPageIndex == pageIndex;
+        
+                return PageActionWidget(
+                  action: () {
+                    setState(() {
+                      _selectedPageIndex = pageIndex;
+                    });
+                  },
+                  fillColor: isPageIndex,
+                  child: Center(
+                    child: Text(
+                      '${pageIndex + 1}',
+                      style: TextStyle(
+                        color: isPageIndex ? Colors.white : Colors.black,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                ),
-              );
-            }),
-            StepNavigatorWidget(
-              action: () {
-                setState(() {
-                  _selectedPageIndex++;
-                });
-              },
-              disabled: _selectedPageIndex == numberOfPages - 1,
-              icon: Icons.keyboard_arrow_right_rounded,
-            ),
-          ],
+                );
+              }),
+              StepNavigatorWidget(
+                action: () {
+                  setState(() {
+                    _selectedPageIndex++;
+                  });
+                },
+                disabled: _selectedPageIndex == numberOfPages - 1,
+                icon: Icons.keyboard_arrow_right_rounded,
+              ),
+            ],
+          ),
         ),
       ),
     );
