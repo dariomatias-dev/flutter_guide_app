@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+
+import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_syntax_highlighter.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_tab_controller.dart';
 
 class CodeTabWidget extends StatefulWidget {
@@ -26,7 +29,6 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
   @override
   void dispose() {
     _controller.dispose();
-
     super.dispose();
   }
 
@@ -42,31 +44,25 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
         behavior: ScrollConfiguration.of(context).copyWith(
           scrollbars: false,
         ),
-        child: ValueListenableBuilder<List<TextSpan>>(
-          valueListenable: _controller.chunksNotifier,
-          builder: (context, chunks, child) {
-            return ListView.builder(
+        child: ValueListenableBuilder<String>(
+          valueListenable: _controller.codeNotifier,
+          builder: (context, codeString, child) {
+            return SingleChildScrollView(
               controller: _controller.scrollController,
               padding: const EdgeInsets.symmetric(
                 vertical: 16.0,
                 horizontal: 6.0,
               ),
-              itemCount: chunks.length,
-              itemBuilder: (context, index) {
-                final chunk = chunks[index];
-
-                return ValueListenableBuilder<double>(
-                  valueListenable: widget.fontSizeNotifier,
-                  builder: (context, fontSize, child) {
-                    return SelectableText.rich(
-                      chunk,
-                      style: TextStyle(
-                        fontSize: fontSize,
-                      ),
-                    );
-                  },
-                );
-              },
+              child: ValueListenableBuilder<double>(
+                valueListenable: widget.fontSizeNotifier,
+                builder: (context, fontSize, child) {
+                  return CodeDisplay(
+                    code: codeString,
+                    isDarkMode: ThemeController.instance.isDark,
+                    fontSize: fontSize,
+                  );
+                },
+              ),
             );
           },
         ),

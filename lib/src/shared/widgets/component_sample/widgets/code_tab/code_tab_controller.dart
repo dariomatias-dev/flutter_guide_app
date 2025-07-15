@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
 
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
@@ -15,46 +14,34 @@ class CodeTabController {
     ) getChunck,
   }) {
     _getChunck = getChunck;
-
     _init();
   }
 
   final _logger = Logger();
-
   final scrollController = ScrollController();
-  final chunksNotifier = ValueNotifier(<TextSpan>[]);
+
+  final codeNotifier = ValueNotifier<String>('');
 
   int _currentIndex = 0;
   bool _isLoading = false;
   bool _hasMore = true;
-  Highlighter? _highlighter;
 
-  Future<void> _init() async {
+  void _init() {
     scrollController.addListener(onScroll);
 
-    await _setHighlighter();
+    ThemeController.instance.themeModeNotifier.addListener(_onThemeChanged);
 
-    ThemeController.instance.themeModeNotifier.addListener(_setHighlighter);
+    loadNextChunk();
   }
 
-  Future<void> _setHighlighter() async {
-    final themeLoader = ThemeController.instance.isDark
-        ? HighlighterTheme.loadDarkTheme
-        : HighlighterTheme.loadLightTheme;
-
-    final theme = await themeLoader();
-
-    _highlighter = Highlighter(
-      language: 'dart',
-      theme: theme,
-    );
-
-    scrollController.jumpTo(0.0);
-    chunksNotifier.value.clear();
+  void _onThemeChanged() {
+    codeNotifier.value = '';
 
     _currentIndex = 0;
     _hasMore = true;
+    _isLoading = false;
 
+    scrollController.jumpTo(0.0);
     loadNextChunk();
   }
 
@@ -68,31 +55,25 @@ class CodeTabController {
   }
 
   Future<void> loadNextChunk() async {
+    if (_isLoading || !_hasMore) return;
+
     _isLoading = true;
 
-    final nextChunk = _getChunck(_currentIndex);
-    _currentIndex++;
-
-    if (nextChunk.isEmpty) {
-      _hasMore = false;
-      _isLoading = false;
-
-      return;
-    }
-
-    _hasMore = nextChunk.length == 50;
-
     try {
-      final highlightedChunk = _highlighter?.highlight(
-        nextChunk.join('\n'),
-      );
+      final nextChunkLines = _getChunck(_currentIndex);
+      _currentIndex++;
 
-      if (highlightedChunk != null) {
-        chunksNotifier.value = <TextSpan>[
-          ...chunksNotifier.value,
-          highlightedChunk,
-        ];
+      if (nextChunkLines.isEmpty) {
+        _hasMore = false;
+        _isLoading = false;
+        return;
       }
+
+      _hasMore = nextChunkLines.length == 50;
+
+      final newCode = nextChunkLines.join('\n');
+
+      codeNotifier.value = '${codeNotifier.value}$newCode\n';
     } catch (err, stackTrace) {
       _logger.e(
         'Error loading next chunk',
@@ -101,18 +82,13 @@ class CodeTabController {
       );
     }
 
-    await Future.delayed(
-      const Duration(
-        milliseconds: 1,
-      ),
-    );
-
     _isLoading = false;
   }
 
   void dispose() {
     scrollController.removeListener(onScroll);
-    ThemeController.instance.themeModeNotifier.removeListener(_setHighlighter);
+    ThemeController.instance.themeModeNotifier.removeListener(_onThemeChanged);
     scrollController.dispose();
+    codeNotifier.dispose();
   }
 }
