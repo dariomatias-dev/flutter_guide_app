@@ -6,6 +6,10 @@ class CodeSyntaxHighlighter {
   CodeSyntaxHighlighter(this.theme);
 
   TextSpan format(String source, {required double lineHeight}) {
+    if (!source.endsWith('\n')) {
+      source += '\n';
+    }
+
     final spans = <TextSpan>[];
     final tokens = _tokenize(source);
     int lineNumber = 1;
@@ -17,16 +21,21 @@ class CodeSyntaxHighlighter {
       ),
     );
 
-    for (final token in tokens) {
+    for (int i = 0; i < tokens.length; i++) {
+      final token = tokens[i];
+
       if (token.type == _TokenType.newline) {
         lineNumber++;
         spans.add(const TextSpan(text: '\n'));
-        spans.add(
-          TextSpan(
-            text: '${lineNumber.toString().padLeft(4)}  ',
-            style: theme.lineNumberStyle,
-          ),
-        );
+
+        if (i < tokens.length - 1) {
+          spans.add(
+            TextSpan(
+              text: '${lineNumber.toString().padLeft(4)}  ',
+              style: theme.lineNumberStyle,
+            ),
+          );
+        }
       } else {
         spans.add(
           TextSpan(
@@ -68,6 +77,8 @@ class CodeSyntaxHighlighter {
         return theme.numberStyle;
       case _TokenType.literal:
         return theme.literalStyle;
+      case _TokenType.variable:
+        return theme.variableStyle;
       case _TokenType.punctuation:
       case _TokenType.identifier:
       default:
@@ -90,6 +101,7 @@ class CodeSyntaxHighlighter {
       RegExp(r'\b(setState|build|main|runApp|createState)\b'):
           _TokenType.function,
       RegExp(r'\b(true|false|null)\b'): _TokenType.literal,
+      RegExp(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'): _TokenType.variable,
       RegExp(r'//[^\n]*'): _TokenType.comment,
       RegExp(r"/\*[\s\S]*?\*/"): _TokenType.comment,
       RegExp(r"'.*?'"): _TokenType.string,
@@ -176,6 +188,7 @@ class SyntaxTheme {
     required this.bracket1Style,
     required this.bracket2Style,
     required this.bracket3Style,
+    required this.variableStyle,
   });
 
   final TextStyle baseStyle;
@@ -193,6 +206,7 @@ class SyntaxTheme {
   final TextStyle bracket1Style;
   final TextStyle bracket2Style;
   final TextStyle bracket3Style;
+  final TextStyle variableStyle;
 
   SyntaxTheme copyWithFontSize(double size) {
     return SyntaxTheme(
@@ -211,6 +225,7 @@ class SyntaxTheme {
       bracket1Style: bracket1Style.copyWith(fontSize: size),
       bracket2Style: bracket2Style.copyWith(fontSize: size),
       bracket3Style: bracket3Style.copyWith(fontSize: size),
+      variableStyle: variableStyle.copyWith(fontSize: size),
     );
   }
 
@@ -231,6 +246,7 @@ class SyntaxTheme {
       bracket1Style: TextStyle(color: Color(0xFFE6E69A)),
       bracket2Style: TextStyle(color: Color(0xFFD670D6)),
       bracket3Style: TextStyle(color: Color(0xFFAEDCFF)),
+      variableStyle: TextStyle(color: Color(0xFF9CDCFE)),
     );
   }
 
@@ -251,6 +267,7 @@ class SyntaxTheme {
       bracket1Style: TextStyle(color: Color(0xFF795E26)),
       bracket2Style: TextStyle(color: Color(0xFFAF00DB)),
       bracket3Style: TextStyle(color: Color(0xFF333333)),
+      variableStyle: TextStyle(color: Color(0xFF001080)),
     );
   }
 }
@@ -269,6 +286,7 @@ enum _TokenType {
   number,
   bracket,
   newline,
+  variable,
 }
 
 class _Token {
