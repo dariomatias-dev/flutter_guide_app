@@ -24,9 +24,9 @@ class _ChangeThemeButtonWidgetState extends State<ChangeThemeButtonWidget> {
           setState(() {});
         });
       },
-      icon: _controller.themeController.isLight
-          ? Icons.light_mode_outlined
-          : Icons.dark_mode_outlined,
+      icon: Theme.of(context).brightness == Brightness.dark
+          ? Icons.dark_mode_outlined
+          : Icons.light_mode_outlined,
     );
   }
 }

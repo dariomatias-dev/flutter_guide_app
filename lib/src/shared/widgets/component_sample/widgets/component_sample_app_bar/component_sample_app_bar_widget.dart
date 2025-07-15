@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/component_sample_app_bar/component_sample_app_bar_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/component_sample_app_bar/component_sample_tab_bar_widget.dart';
@@ -41,15 +40,12 @@ class _ComponentSampleAppBarWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
     return StandardAppBarWidget(
       titleName: widget.title,
       actions: <Widget>[
         PopupMenuButton(
           surfaceTintColor: Colors.white,
-          iconColor: themeController.theme.colorScheme.tertiary,
+          iconColor: Theme.of(context).colorScheme.tertiary,
           itemBuilder: (context) {
             return <PopupMenuEntry>[
               PopupMenuItem(
