@@ -321,7 +321,7 @@ class CodeDisplay extends StatelessWidget {
     final theme = baseTheme.copyWithFontSize(fontSize);
     final highlighter = CodeSyntaxHighlighter(theme);
 
-    return SelectableText.rich(
+    return Text.rich(
       highlighter.format(
         code,
         lineHeight: lineHeight,

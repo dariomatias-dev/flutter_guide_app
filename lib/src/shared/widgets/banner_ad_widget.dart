@@ -27,6 +27,8 @@ class BannerAdWidgetState extends State<BannerAdWidget> {
           ad.dispose();
         },
         onAdLoaded: (ad) {
+          if (!mounted) return;
+
           setState(() {
             _isLoaded = true;
           });
@@ -43,9 +45,16 @@ class BannerAdWidgetState extends State<BannerAdWidget> {
   }
 
   @override
+  void dispose() {
+    _bannerAd?.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
-      child: _isLoaded
+      child: _isLoaded && _bannerAd != null
           ? SizedBox(
               width: _bannerAd!.size.width.toDouble(),
               height: _bannerAd!.size.height.toDouble(),
