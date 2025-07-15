@@ -2,21 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 class CodeTabController {
-  late final BuildContext Function() _getContext;
   late final List<String> Function(
     int index,
   ) _getChunck;
 
   CodeTabController({
-    required BuildContext Function() getContext,
     required List<String> Function(
       int index,
     ) getChunck,
   }) {
-    _getContext = getContext;
     _getChunck = getChunck;
 
     _init();
@@ -24,8 +21,6 @@ class CodeTabController {
 
   final _logger = Logger();
 
-  late final themeController =
-      UserPreferencesInheritedWidget.of(_getContext())!.themeController;
   final scrollController = ScrollController();
   final chunksNotifier = ValueNotifier(<TextSpan>[]);
 
@@ -37,15 +32,28 @@ class CodeTabController {
   Future<void> _init() async {
     scrollController.addListener(onScroll);
 
-    final brightness = Theme.of(_getContext()).colorScheme.brightness;
-    final theme = await (brightness == Brightness.light
-        ? HighlighterTheme.loadLightTheme
-        : HighlighterTheme.loadDarkTheme)();
+    await _setHighlighter();
+
+    ThemeController.instance.themeModeNotifier.addListener(_setHighlighter);
+  }
+
+  Future<void> _setHighlighter() async {
+    final themeLoader = ThemeController.instance.isDark
+        ? HighlighterTheme.loadDarkTheme
+        : HighlighterTheme.loadLightTheme;
+
+    final theme = await themeLoader();
 
     _highlighter = Highlighter(
       language: 'dart',
       theme: theme,
     );
+
+    scrollController.jumpTo(0.0);
+    chunksNotifier.value.clear();
+
+    _currentIndex = 0;
+    _hasMore = true;
 
     loadNextChunk();
   }
@@ -104,6 +112,7 @@ class CodeTabController {
 
   void dispose() {
     scrollController.removeListener(onScroll);
+    ThemeController.instance.themeModeNotifier.removeListener(_setHighlighter);
     scrollController.dispose();
   }
 }

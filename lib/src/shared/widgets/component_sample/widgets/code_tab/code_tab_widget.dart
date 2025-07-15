@@ -20,7 +20,6 @@ class CodeTabWidget extends StatefulWidget {
 
 class _CodeTabWidgetState extends State<CodeTabWidget> {
   late final _controller = CodeTabController(
-    getContext: () => context,
     getChunck: widget.getChunck,
   );
 
@@ -48,10 +47,9 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
           builder: (context, chunks, child) {
             return ListView.builder(
               controller: _controller.scrollController,
-              padding: const EdgeInsets.only(
-                top: 16.0,
-                right: 6.0,
-                left: 6.0,
+              padding: const EdgeInsets.symmetric(
+                vertical: 16.0,
+                horizontal: 6.0,
               ),
               itemCount: chunks.length,
               itemBuilder: (context, index) {
