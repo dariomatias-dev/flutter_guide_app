@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/components/components_controller.dart';
@@ -33,18 +31,9 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
-    return ValueListenableBuilder(
-      valueListenable: themeController,
-      builder: (context, value, child) {
-        return Scaffold(
-          backgroundColor: themeController.theme.scaffoldBackgroundColor,
-          body: child,
-        );
-      },
-      child: ValueListenableBuilder(
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: ValueListenableBuilder(
         valueListenable: _controller.itemsNotifier,
         builder: (context, value, child) {
           return InfinityScroll<ComponentModel>(
