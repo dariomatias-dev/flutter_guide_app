@@ -3,8 +3,6 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 import 'package:flutter_guide/src/shared/widgets/components/widgets/search_field_widget/search_field_controller.dart';
 
 class SearchFieldWidget extends StatefulWidget {
@@ -34,10 +32,9 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(20.0),
       borderSide: BorderSide(
-        color:
-            UserPreferencesInheritedWidget.of(context)!.themeController.isLight
-                ? Colors.grey.shade400
-                : Colors.grey.shade500,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.grey.shade500
+            : Colors.grey.shade400,
         width: 0.5,
       ),
     );
@@ -66,8 +63,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
         hintText = appLocalizations.package;
     }
 
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
+    final iconColor = Theme.of(context).colorScheme.tertiary;
 
     return Container(
       width: double.infinity,
@@ -75,44 +71,39 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
       margin: const EdgeInsets.symmetric(
         horizontal: 8.0,
       ),
-      child: ValueListenableBuilder(
-        valueListenable: themeController,
-        builder: (context, value, child) {
-          return TextFormField(
-            controller: _controller.searchFieldController,
-            decoration: InputDecoration(
-              prefixIcon: Icon(
-                Icons.search,
-                color: themeController.theme.colorScheme.tertiary,
-                size: 20.0,
-              ),
-              suffixIcon: GestureDetector(
-                onTap: _controller.searchFieldClear,
-                child: Icon(
-                  Icons.close,
-                  color: themeController.theme.colorScheme.tertiary,
-                  size: 20.0,
-                ),
-              ),
-              hintText: '$hintText...',
-              hintStyle: TextStyle(
-                color: Colors.grey.shade600,
-                fontSize: 14.0,
-              ),
-              border: _border,
-              enabledBorder: _border,
-              focusedBorder: _border.copyWith(
-                borderSide: BorderSide(
-                  color: _border.borderSide.color,
-                  width: 1.0,
-                ),
-              ),
+      child: TextFormField(
+        controller: _controller.searchFieldController,
+        decoration: InputDecoration(
+          prefixIcon: Icon(
+            Icons.search,
+            color: iconColor,
+            size: 20.0,
+          ),
+          suffixIcon: GestureDetector(
+            onTap: _controller.searchFieldClear,
+            child: Icon(
+              Icons.close,
+              color: iconColor,
+              size: 20.0,
             ),
-            onChanged: widget.onChange,
-            onTapOutside: (event) {
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-          );
+          ),
+          hintText: '$hintText...',
+          hintStyle: TextStyle(
+            color: Colors.grey.shade600,
+            fontSize: 14.0,
+          ),
+          border: _border,
+          enabledBorder: _border,
+          focusedBorder: _border.copyWith(
+            borderSide: BorderSide(
+              color: _border.borderSide.color,
+              width: 1.0,
+            ),
+          ),
+        ),
+        onChanged: widget.onChange,
+        onTapOutside: (event) {
+          FocusManager.instance.primaryFocus?.unfocus();
         },
       ),
     );
