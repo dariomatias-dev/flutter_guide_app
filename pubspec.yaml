@@ -41,7 +41,6 @@ dependencies:
   shared_preferences: 2.5.3
   url_launcher: 6.3.2
   package_info_plus: ^6.0.0
-  syntax_highlight: ^0.4.0
   msh_checkbox: ^2.0.1
   flutter_svg: ^2.0.10+1
   flutter_spinkit: ^5.2.1
@@ -67,7 +66,6 @@ dependencies:
   side_sheet: ^1.0.4
   validatorless: ^1.2.3
   device_info_plus: ^10.1.0
-  scroll_infinity: ^0.4.0
   flutter_chat_bubble: ^2.0.2
   intl: 0.20.2
   logger: ^2.3.0

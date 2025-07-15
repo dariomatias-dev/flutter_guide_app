@@ -3,7 +3,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
@@ -45,11 +44,6 @@ Future<void> main() async {
   // Application Language
   final language = sharedPreferences.getString(
     SharedPreferencesKeys.languageKey,
-  );
-
-  // Highlighter Initialization
-  await Highlighter.initialize(
-    <String>['dart'],
   );
 
   // Notifiers
