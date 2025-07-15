@@ -116,7 +116,7 @@ class _PhoneVerificationScreenSampleState
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: const [
+                  boxShadow: const <BoxShadow>[
                     BoxShadow(
                       color: Color.fromRGBO(0, 0, 0, 0.06),
                       offset: Offset(0, 3),
@@ -144,6 +144,9 @@ class _PhoneVerificationScreenSampleState
                 ),
               ),
               onCompleted: _onCompleted,
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
             ),
             const SizedBox(height: 32.0),
             const Text(

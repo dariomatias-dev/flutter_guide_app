@@ -172,9 +172,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   SizedBox get _space => const SizedBox(height: 8.0);
 
-  void _addItem(
-    String text,
-  ) {
+  void _addItem(String text) {
     if (text.isEmpty) return;
 
     final message = MessageModel(
@@ -193,6 +191,7 @@ class _ChatScreenState extends State<ChatScreen> {
     ];
 
     _itemsNotifier.addAll(newItems);
+    _autoScrollToEnd();
   }
 
   void _generateItems() {
@@ -231,32 +230,31 @@ class _ChatScreenState extends State<ChatScreen> {
     _itemsNotifier.value = items;
   }
 
-  void _autoScrollToEnd() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (_scrollController.hasClients) {
-        final current = _scrollController.offset;
-        final max = _scrollController.position.maxScrollExtent;
+  void _generateItemsAndScroll() {
+    _generateItems();
 
-        if (current < max - 10) {
-          _scrollController.animateTo(
-            max + 40.0,
-            duration: const Duration(
-              milliseconds: 500,
-            ),
-            curve: Curves.easeOut,
-          );
-        }
+    _autoScrollToEnd(
+      initial: true,
+    );
+  }
+
+  void _autoScrollToEnd({
+    bool initial = false,
+  }) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.jumpTo(
+          _scrollController.position.maxScrollExtent + (initial ? 40.0 : 0.0),
+        );
       }
     });
   }
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        _generateItems();
-      },
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _generateItemsAndScroll();
+    });
 
     super.initState();
   }
@@ -277,9 +275,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
         title: const Text('Chat'),
         centerTitle: true,
@@ -295,8 +291,6 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ValueListenableBuilder<List<Widget>>(
                 valueListenable: _itemsNotifier,
                 builder: (context, value, child) {
-                  _autoScrollToEnd();
-
                   return ListView.builder(
                     controller: _scrollController,
                     padding: const EdgeInsets.all(16.0),
