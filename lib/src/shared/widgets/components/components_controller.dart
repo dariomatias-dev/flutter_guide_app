@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -49,9 +50,9 @@ class ComponentsController {
     favoritesService =
         userPreferencesInheritedWidget.getFavoriteService(componentType);
 
-    UserPreferencesInheritedWidget.of(context)!
-        .themeController
-        .addListener(favoritesService.getWidgets);
+    ThemeController.instance.themeModeNotifier.addListener(
+      favoritesService.getWidgets,
+    );
 
     itemsNotifier.setComponents(_components);
   }

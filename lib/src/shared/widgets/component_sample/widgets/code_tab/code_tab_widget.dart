@@ -34,7 +34,7 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: _controller.themeController.theme.copyWith(
+      data: Theme.of(context).copyWith(
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Colors.white,
         ),

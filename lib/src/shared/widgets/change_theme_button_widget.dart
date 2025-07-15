@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/widgets/change_theme_button/change_theme_button_controller.dart';
+import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
 import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 
 class ChangeThemeButtonWidget extends StatefulWidget {
@@ -12,21 +15,17 @@ class ChangeThemeButtonWidget extends StatefulWidget {
 }
 
 class _ChangeThemeButtonWidgetState extends State<ChangeThemeButtonWidget> {
-  late final _controller = ChangeThemeButtonController(
-    context: context,
-  );
-
   @override
   Widget build(BuildContext context) {
+    Theme.of(context);
+
     return IconButtonWidget(
-      onTap: () {
-        _controller.toggleTheme(() {
-          setState(() {});
-        });
-      },
-      icon: Theme.of(context).brightness == Brightness.dark
-          ? Icons.dark_mode_outlined
-          : Icons.light_mode_outlined,
+      onTap: UserPreferencesInheritedWidget.of(context)!
+          .themeController
+          .toggleTheme,
+      icon: ThemeController.instance.isDark
+          ? Icons.light_mode_outlined
+          : Icons.dark_mode_outlined,
     );
   }
 }

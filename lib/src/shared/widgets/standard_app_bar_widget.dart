@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/shared/widgets/back_button_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/change_theme_button/change_theme_button_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/change_theme_button_widget.dart';
 
 class StandardAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {

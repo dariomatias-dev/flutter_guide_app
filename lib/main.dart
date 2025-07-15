@@ -52,11 +52,6 @@ Future<void> main() async {
     <String>['dart'],
   );
 
-  // Theme
-  final themeController = ThemeController(
-    sharedPreferences: sharedPreferences,
-  );
-
   // Notifiers
   final favoriteWidgetNotifier = FavoriteWidgetNotifier('');
   final favoriteFunctionNotifier = FavoriteFunctionNotifier('');
@@ -109,7 +104,7 @@ Future<void> main() async {
         language ?? LanguagesApp.en,
       ),
       sharedPreferences: sharedPreferences,
-      themeController: themeController,
+      themeController: ThemeController.instance,
       favoriteWidgetNotifier: favoriteWidgetNotifier,
       favoritePackageNotifier: favoritePackageNotifier,
       getFavoriteNotifier: getFavoriteNotifier,
@@ -121,9 +116,7 @@ Future<void> main() async {
         widgetNames: widgetInfos.componentNames,
         packagesMap: packagesMap(),
         functionsMap: functionsInfos.samples,
-        child: FlutterGuideApp(
-          themeController: themeController,
-        ),
+        child: const FlutterGuideApp(),
       ),
     ),
   );

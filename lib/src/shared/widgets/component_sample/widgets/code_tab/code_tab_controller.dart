@@ -37,7 +37,7 @@ class CodeTabController {
   Future<void> _init() async {
     scrollController.addListener(onScroll);
 
-    final brightness = themeController.theme.colorScheme.brightness;
+    final brightness = Theme.of(_getContext()).colorScheme.brightness;
     final theme = await (brightness == Brightness.light
         ? HighlighterTheme.loadLightTheme
         : HighlighterTheme.loadDarkTheme)();

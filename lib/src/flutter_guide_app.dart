@@ -11,12 +11,7 @@ import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 class FlutterGuideApp extends StatelessWidget {
-  const FlutterGuideApp({
-    super.key,
-    required this.themeController,
-  });
-
-  final ThemeController themeController;
+  const FlutterGuideApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +19,16 @@ class FlutterGuideApp extends StatelessWidget {
       valueListenable:
           UserPreferencesInheritedWidget.of(context)!.languageNotifier,
       builder: (context, value, child) {
-        return AnimatedBuilder(
-          animation: themeController,
-          builder: (context, child) {
+        return ValueListenableBuilder(
+          valueListenable: ThemeController.instance.themeModeNotifier,
+          builder: (context, themeMode, child) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Flutter Guide',
               routes: flutterGuideRoutes,
-              themeMode: themeController.themeMode,
               theme: ligthMode,
+              darkTheme: darkMode,
+              themeMode: themeMode,
               supportedLocales: L10n.all,
               locale: LanguagesApp.locale(
                 value,
@@ -43,7 +39,6 @@ class FlutterGuideApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-              darkTheme: darkMode,
             );
           },
         );

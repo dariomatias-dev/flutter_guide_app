@@ -1,56 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:flutter_guide/src/core/theme/theme.dart';
+import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 
-class ThemeController extends ValueNotifier {
-  ThemeController({
-    this.themeMode = ThemeMode.system,
-    required SharedPreferences sharedPreferences,
-  }) : super(themeMode) {
-    _initialize(sharedPreferences);
-  }
+class ThemeController {
+  ThemeController._();
 
-  ThemeMode themeMode;
-  late bool isLight;
-  late ThemeData theme;
+  static final instance = ThemeController._();
 
-  late SharedPreferences _sharedPreferences;
+  final themeModeNotifier = ValueNotifier<ThemeMode>(ThemeMode.dark);
 
-  void _initialize(
-    SharedPreferences sharedPreferences,
-  ) {
-    _sharedPreferences = sharedPreferences;
+  bool get isDark => themeModeNotifier.value == ThemeMode.dark;
 
-    final themeName = _sharedPreferences.getString('theme');
+  Future<void> loadTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedTheme = prefs.getString(SharedPreferencesKeys.themeKey);
 
-    themeMode =
-        themeName == ThemeMode.light.name ? ThemeMode.light : ThemeMode.dark;
-
-    _setTheme();
-
-    notifyListeners();
+    if (savedTheme == ThemeMode.light.name) {
+      themeModeNotifier.value = ThemeMode.light;
+    } else {
+      themeModeNotifier.value = ThemeMode.dark;
+    }
   }
 
   Future<void> toggleTheme() async {
-    themeMode = isLight ? ThemeMode.dark : ThemeMode.light;
+    final mode = isDark ? ThemeMode.light : ThemeMode.dark;
 
-    await _saveTheme();
-
-    notifyListeners();
-  }
-
-  void _setTheme() {
-    isLight = themeMode == ThemeMode.light;
-    theme = isLight ? ligthMode : darkMode;
-  }
-
-  Future<void> _saveTheme() async {
-    _setTheme();
-
-    await _sharedPreferences.setString(
-      'theme',
-      themeMode.name,
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(
+      SharedPreferencesKeys.themeKey,
+      mode.name,
     );
+
+    themeModeNotifier.value = mode;
   }
 }

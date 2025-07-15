@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+
 import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_controller.dart';
 
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/component_sample_app_bar/component_sample_app_bar_widget.dart';
@@ -30,7 +31,7 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
     with TickerProviderStateMixin {
   late final _controller = ComponentSampleController(
     vsync: this,
-    filePath: widget.filePath
+    filePath: widget.filePath,
   );
 
   @override
@@ -42,9 +43,6 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        UserPreferencesInheritedWidget.of(context)!.themeController;
-
     return ComponentSampleScreenInheritedWidget(
       file: widget.filePath,
       child: DefaultTabController(
@@ -62,9 +60,9 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
             onPageChanged: _controller.onPageChanged,
             children: <Widget>[
               Theme(
-                data: themeController.isLight
-                    ? ThemeData.light()
-                    : ThemeData.dark(),
+                data: ThemeController.instance.isDark
+                    ? ThemeData.dark()
+                    : ThemeData.light(),
                 child: widget.sample,
               ),
               CodeTabWidget(
