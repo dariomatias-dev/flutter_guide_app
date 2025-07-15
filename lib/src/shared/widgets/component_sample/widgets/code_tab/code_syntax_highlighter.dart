@@ -5,7 +5,7 @@ class CodeSyntaxHighlighter {
 
   CodeSyntaxHighlighter(this.theme);
 
-  TextSpan format(String source) {
+  TextSpan format(String source, {required double lineHeight}) {
     final spans = <TextSpan>[];
     final tokens = _tokenize(source);
     int lineNumber = 1;
@@ -20,11 +20,7 @@ class CodeSyntaxHighlighter {
     for (final token in tokens) {
       if (token.type == _TokenType.newline) {
         lineNumber++;
-        spans.add(
-          const TextSpan(
-            text: '\n',
-          ),
-        );
+        spans.add(const TextSpan(text: '\n'));
         spans.add(
           TextSpan(
             text: '${lineNumber.toString().padLeft(4)}  ',
@@ -42,6 +38,7 @@ class CodeSyntaxHighlighter {
     }
 
     return TextSpan(
+      style: TextStyle(height: lineHeight),
       children: spans,
     );
   }
@@ -52,7 +49,6 @@ class CodeSyntaxHighlighter {
         final level = token.level % 3;
         if (level == 0) return theme.bracket1Style;
         if (level == 1) return theme.bracket2Style;
-
         return theme.bracket3Style;
       case _TokenType.keyword:
         return theme.keywordStyle;
@@ -106,23 +102,13 @@ class CodeSyntaxHighlighter {
       _Token? matchedToken;
 
       if (source[currentIndex] == '\n') {
-        tokens.add(
-          _Token(
-            _TokenType.newline,
-            '\n',
-          ),
-        );
+        tokens.add(_Token(_TokenType.newline, '\n'));
         currentIndex++;
         continue;
       }
 
       if (RegExp(r'\s').hasMatch(source[currentIndex])) {
-        tokens.add(
-          _Token(
-            _TokenType.identifier,
-            source[currentIndex],
-          ),
-        );
+        tokens.add(_Token(_TokenType.identifier, source[currentIndex]));
         currentIndex++;
         continue;
       }
@@ -135,13 +121,7 @@ class CodeSyntaxHighlighter {
         final bracket = openBracketMatch.group(0)!;
         final level = bracketStack.length;
         bracketStack.add(bracket);
-        tokens.add(
-          _Token(
-            _TokenType.bracket,
-            bracket,
-            level: level,
-          ),
-        );
+        tokens.add(_Token(_TokenType.bracket, bracket, level: level));
         currentIndex += bracket.length;
         continue;
       }
@@ -153,15 +133,8 @@ class CodeSyntaxHighlighter {
       if (closeBracketMatch != null) {
         final bracket = closeBracketMatch.group(0)!;
         if (bracketStack.isNotEmpty) bracketStack.removeLast();
-
         final level = bracketStack.length;
-        tokens.add(
-          _Token(
-            _TokenType.bracket,
-            bracket,
-            level: level,
-          ),
-        );
+        tokens.add(_Token(_TokenType.bracket, bracket, level: level));
         currentIndex += bracket.length;
         continue;
       }
@@ -169,10 +142,7 @@ class CodeSyntaxHighlighter {
       for (final entry in patterns.entries) {
         final match = entry.key.matchAsPrefix(source, currentIndex);
         if (match != null) {
-          matchedToken = _Token(
-            entry.value,
-            match.group(0)!,
-          );
+          matchedToken = _Token(entry.value, match.group(0)!);
           break;
         }
       }
@@ -181,16 +151,10 @@ class CodeSyntaxHighlighter {
         tokens.add(matchedToken);
         currentIndex += matchedToken.value.length;
       } else {
-        tokens.add(
-          _Token(
-            _TokenType.identifier,
-            source[currentIndex],
-          ),
-        );
+        tokens.add(_Token(_TokenType.identifier, source[currentIndex]));
         currentIndex++;
       }
     }
-
     return tokens;
   }
 }
@@ -325,11 +289,13 @@ class CodeDisplay extends StatelessWidget {
     required this.code,
     this.isDarkMode = false,
     this.fontSize = 14.0,
+    this.lineHeight = 1.35,
   });
 
   final String code;
   final bool isDarkMode;
   final double fontSize;
+  final double lineHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -337,8 +303,11 @@ class CodeDisplay extends StatelessWidget {
     final theme = baseTheme.copyWithFontSize(fontSize);
     final highlighter = CodeSyntaxHighlighter(theme);
 
-    return RichText(
-      text: highlighter.format(code),
+    return SelectableText.rich(
+      highlighter.format(
+        code,
+        lineHeight: lineHeight,
+      ),
     );
   }
 }
