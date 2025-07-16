@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CodeSyntaxHighlighter {
+class _Highlighter {
   final SyntaxTheme theme;
 
-  CodeSyntaxHighlighter(this.theme);
+  _Highlighter(this.theme);
 
   TextStyle getStyleForToken(SyntaxToken token) {
     switch (token.type) {
@@ -291,8 +291,8 @@ class SyntaxToken {
   final int level;
 }
 
-class CodeDisplay extends StatelessWidget {
-  const CodeDisplay({
+class SyntaxHighlighter extends StatelessWidget {
+  const SyntaxHighlighter({
     super.key,
     required this.code,
     this.isDarkMode = false,
@@ -305,7 +305,7 @@ class CodeDisplay extends StatelessWidget {
   final double fontSize;
   final double lineHeight;
 
-  double calculateLineNumberPadding({
+  double _calculateLineWidth({
     required double fontSize,
     required double lineHeight,
     required int maxLineNumberDigits,
@@ -323,7 +323,7 @@ class CodeDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final baseTheme = isDarkMode ? SyntaxTheme.dark() : SyntaxTheme.light();
     final theme = baseTheme.copyWithFontSize(fontSize);
-    final highlighter = CodeSyntaxHighlighter(theme);
+    final highlighter = _Highlighter(theme);
 
     final tokens = highlighter.tokenize(code);
     final lineWidgets = <Widget>[];
@@ -333,7 +333,7 @@ class CodeDisplay extends StatelessWidget {
     final lineCount = '\n'.allMatches(code).length + 1;
     final maxDigits = lineCount.toString().length;
 
-    final lineNumberPadding = calculateLineNumberPadding(
+    final lineWidth = _calculateLineWidth(
       fontSize: fontSize,
       lineHeight: lineHeight,
       maxLineNumberDigits: maxDigits,
@@ -349,7 +349,7 @@ class CodeDisplay extends StatelessWidget {
                 padding: const EdgeInsets.only(
                   right: 8.0,
                 ),
-                width: lineNumberPadding,
+                width: lineWidth,
                 child: Text(
                   lineNumber.toString(),
                   textAlign: TextAlign.right,

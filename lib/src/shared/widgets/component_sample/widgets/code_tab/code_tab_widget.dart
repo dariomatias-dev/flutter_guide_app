@@ -56,7 +56,7 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
               child: ValueListenableBuilder<double>(
                 valueListenable: widget.fontSizeNotifier,
                 builder: (context, fontSize, child) {
-                  return CodeDisplay(
+                  return SyntaxHighlighter(
                     code: codeString,
                     isDarkMode: ThemeController.instance.isDark,
                     fontSize: fontSize,
