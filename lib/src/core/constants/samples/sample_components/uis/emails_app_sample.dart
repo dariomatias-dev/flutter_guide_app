@@ -314,7 +314,6 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
-        bottom: false,
         child: Column(
           children: <Widget>[
             Padding(
@@ -453,11 +452,6 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
         child: TextFormField(
           controller: _searchController,
           focusNode: _searchFocus,
-          onEditingComplete: () {
-            widget.searchEmails(
-              _searchController.text,
-            );
-          },
           decoration: InputDecoration(
             prefixIcon: GestureDetector(
               onTap: () {
@@ -467,9 +461,9 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
                 Icons.menu,
               ),
             ),
+            contentPadding: EdgeInsetsDirectional.zero,
             filled: true,
             fillColor: Theme.of(context).colorScheme.onSurface.withAlpha(31),
-            contentPadding: const EdgeInsets.all(12.0),
             isDense: true,
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
@@ -478,6 +472,14 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
               borderSide: BorderSide.none,
             ),
           ),
+          onEditingComplete: () {
+            widget.searchEmails(
+              _searchController.text,
+            );
+          },
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
         ),
       ),
     );
