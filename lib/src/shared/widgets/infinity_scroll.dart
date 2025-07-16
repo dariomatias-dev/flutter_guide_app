@@ -23,6 +23,8 @@ class InfinityScroll<T> extends StatefulWidget {
 }
 
 class _InfinityScrollState<T> extends State<InfinityScroll<T>> {
+  final _adWidgets = <int, BannerAdWidget>{};
+
   bool get hasHeader => widget.header != null;
 
   int _getTotalItemCount() {
@@ -51,6 +53,20 @@ class _InfinityScrollState<T> extends State<InfinityScroll<T>> {
     return index - offset - adsBefore;
   }
 
+  Widget _getAdWidget(int index) {
+    return _adWidgets.putIfAbsent(
+      index,
+      () => const BannerAdWidget(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _adWidgets.clear();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -62,7 +78,7 @@ class _InfinityScrollState<T> extends State<InfinityScroll<T>> {
         }
 
         if (_isAdIndex(index)) {
-          return const BannerAdWidget();
+          return _getAdWidget(index);
         }
 
         final itemIndex = _getItemIndex(index);
