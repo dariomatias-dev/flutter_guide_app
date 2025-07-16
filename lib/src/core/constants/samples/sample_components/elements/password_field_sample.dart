@@ -40,6 +40,9 @@ class _PasswordFieldSampleState extends State<PasswordFieldSample> {
               ),
             ),
           ),
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
         ),
       ),
     );
