@@ -41,66 +41,68 @@ class _DottedBorderSampleState extends State<DottedBorderSample> {
           ),
         ),
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(
-            'Space Between the Lines: ${_spaceBetweenTheLines.floor()}',
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w500,
+      bottomNavigationBar: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              'Space Between the Lines: ${_spaceBetweenTheLines.floor()}',
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          Slider(
-            min: 2.0,
-            max: 20.0,
-            divisions: 9,
-            value: _spaceBetweenTheLines,
-            onChanged: (value) {
-              setState(() {
-                _spaceBetweenTheLines = value;
-              });
-            },
-          ),
-          const SizedBox(height: 4.0),
-          Text(
-            'Line Width: ${_lineWidth.floor()}',
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w500,
+            Slider(
+              min: 2.0,
+              max: 20.0,
+              divisions: 9,
+              value: _spaceBetweenTheLines,
+              onChanged: (value) {
+                setState(() {
+                  _spaceBetweenTheLines = value;
+                });
+              },
             ),
-          ),
-          Slider(
-            min: 2.0,
-            max: 20.0,
-            divisions: 9,
-            value: _lineWidth,
-            onChanged: (value) {
-              setState(() {
-                _lineWidth = value;
-              });
-            },
-          ),
-          const SizedBox(height: 4.0),
-          Text(
-            'Line Size: ${_lineSize.floor()}',
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w500,
+            const SizedBox(height: 4.0),
+            Text(
+              'Line Width: ${_lineWidth.floor()}',
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          Slider(
-            min: 2.0,
-            max: 20.0,
-            divisions: 9,
-            value: _lineSize,
-            onChanged: (value) {
-              setState(() {
-                _lineSize = value;
-              });
-            },
-          ),
-        ],
+            Slider(
+              min: 2.0,
+              max: 20.0,
+              divisions: 9,
+              value: _lineWidth,
+              onChanged: (value) {
+                setState(() {
+                  _lineWidth = value;
+                });
+              },
+            ),
+            const SizedBox(height: 4.0),
+            Text(
+              'Line Size: ${_lineSize.floor()}',
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Slider(
+              min: 2.0,
+              max: 20.0,
+              divisions: 9,
+              value: _lineSize,
+              onChanged: (value) {
+                setState(() {
+                  _lineSize = value;
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -47,49 +47,51 @@ class _FlutterAnimateSampleState extends State<FlutterAnimateSample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              key: GlobalKey(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  _effects.length,
-                  (index) {
-                    return Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12.0,
-                        horizontal: 24.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.5,
-                          color:
-                              Theme.of(context).brightness == Brightness.light
-                                  ? Colors.black
-                                  : Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Center(
+                key: GlobalKey(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    _effects.length,
+                    (index) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 12.0,
+                          horizontal: 24.0,
                         ),
-                      ),
-                      child: _effects[index](
-                        duration: const Duration(
-                          seconds: 1,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.5,
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                        child: _effects[index](
+                          duration: const Duration(
+                            seconds: 1,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
-          TextButton(
-            onPressed: () {
-              setState(() {});
-            },
-            child: const Text('Restart'),
-          ),
-          const SizedBox(height: 12.0),
-        ],
+            TextButton(
+              onPressed: () {
+                setState(() {});
+              },
+              child: const Text('Restart'),
+            ),
+            const SizedBox(height: 12.0),
+          ],
+        ),
       ),
     );
   }
