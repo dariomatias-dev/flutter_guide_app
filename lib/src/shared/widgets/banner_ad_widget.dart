@@ -6,40 +6,36 @@ class BannerAdWidget extends StatefulWidget {
   const BannerAdWidget({super.key});
 
   @override
-  State<BannerAdWidget> createState() => BannerAdWidgetState();
+  State<BannerAdWidget> createState() => _BannerAdWidgetState();
 }
 
-class BannerAdWidgetState extends State<BannerAdWidget> {
+class _BannerAdWidgetState extends State<BannerAdWidget> {
   BannerAd? _bannerAd;
   bool _isLoaded = false;
 
-  void _loadAd() {
+  @override
+  void initState() {
     _bannerAd = BannerAd(
       adUnitId: dotenv.env['BANNER_AD_ID']!,
       request: const AdRequest(),
       size: AdSize.banner,
       listener: BannerAdListener(
-        onAdFailedToLoad: (ad, err) {
+        onAdLoaded: (_) {
+          if (mounted) {
+            setState(() {
+              _isLoaded = true;
+            });
+          }
+        },
+        onAdFailedToLoad: (ad, error) {
           debugPrint(
-            'BannerAd failed to load: $err',
+            'Ad failed to load: $error',
           );
 
           ad.dispose();
         },
-        onAdLoaded: (ad) {
-          if (!mounted) return;
-
-          setState(() {
-            _isLoaded = true;
-          });
-        },
       ),
     )..load();
-  }
-
-  @override
-  void initState() {
-    _loadAd();
 
     super.initState();
   }
@@ -53,16 +49,21 @@ class BannerAdWidgetState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _isLoaded && _bannerAd != null
-          ? SizedBox(
-              width: _bannerAd!.size.width.toDouble(),
-              height: _bannerAd!.size.height.toDouble(),
-              child: AdWidget(
-                ad: _bannerAd!,
-              ),
-            )
-          : const CircularProgressIndicator(),
+    if (!_isLoaded || _bannerAd == null) {
+      return const SizedBox(
+        height: 50.0,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    return SizedBox(
+      width: _bannerAd!.size.width.toDouble(),
+      height: _bannerAd!.size.height.toDouble(),
+      child: AdWidget(
+        ad: _bannerAd!,
+      ),
     );
   }
 }
