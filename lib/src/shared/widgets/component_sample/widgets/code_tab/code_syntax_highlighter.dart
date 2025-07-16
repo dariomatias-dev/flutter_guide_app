@@ -5,122 +5,89 @@ class CodeSyntaxHighlighter {
 
   CodeSyntaxHighlighter(this.theme);
 
-  TextSpan format(String source, {required double lineHeight}) {
-    if (!source.endsWith('\n')) {
-      source += '\n';
-    }
-
-    final spans = <TextSpan>[];
-    final tokens = _tokenize(source);
-    int lineNumber = 1;
-
-    spans.add(
-      TextSpan(
-        text: '${lineNumber.toString().padLeft(4)}  ',
-        style: theme.lineNumberStyle,
-      ),
-    );
-
-    for (int i = 0; i < tokens.length; i++) {
-      final token = tokens[i];
-
-      if (token.type == _TokenType.newline) {
-        lineNumber++;
-        spans.add(const TextSpan(text: '\n'));
-
-        if (i < tokens.length - 1) {
-          spans.add(
-            TextSpan(
-              text: '${lineNumber.toString().padLeft(4)}  ',
-              style: theme.lineNumberStyle,
-            ),
-          );
-        }
-      } else {
-        spans.add(
-          TextSpan(
-            text: token.value,
-            style: _getStyle(token),
-          ),
-        );
-      }
-    }
-
-    return TextSpan(
-      style: TextStyle(height: lineHeight),
-      children: spans,
-    );
-  }
-
-  TextStyle _getStyle(_Token token) {
+  TextStyle getStyleForToken(SyntaxToken token) {
     switch (token.type) {
-      case _TokenType.bracket:
+      case TokenType.bracket:
         final level = token.level % 3;
         if (level == 0) return theme.bracket1Style;
         if (level == 1) return theme.bracket2Style;
         return theme.bracket3Style;
-      case _TokenType.keyword:
+      case TokenType.keyword:
         return theme.keywordStyle;
-      case _TokenType.specialKeyword:
+      case TokenType.specialKeyword:
         return theme.specialKeywordStyle;
-      case _TokenType.storageModifier:
+      case TokenType.storageModifier:
         return theme.storageModifierStyle;
-      case _TokenType.type:
+      case TokenType.type:
         return theme.typeStyle;
-      case _TokenType.function:
+      case TokenType.function:
         return theme.functionStyle;
-      case _TokenType.comment:
+      case TokenType.comment:
         return theme.commentStyle;
-      case _TokenType.string:
+      case TokenType.string:
         return theme.stringStyle;
-      case _TokenType.number:
+      case TokenType.number:
         return theme.numberStyle;
-      case _TokenType.literal:
+      case TokenType.literal:
         return theme.literalStyle;
-      case _TokenType.variable:
+      case TokenType.variable:
         return theme.variableStyle;
-      case _TokenType.punctuation:
-      case _TokenType.identifier:
-      default:
+      case TokenType.punctuation:
+      case TokenType.identifier:
+      case TokenType.newline:
         return theme.baseStyle;
     }
   }
 
-  List<_Token> _tokenize(String source) {
-    final tokens = <_Token>[];
+  List<SyntaxToken> tokenize(String source) {
+    if (!source.endsWith('\n')) {
+      source += '\n';
+    }
+
+    final tokens = <SyntaxToken>[];
     final bracketStack = <String>[];
     int currentIndex = 0;
 
-    final Map<Pattern, _TokenType> patterns = {
-      RegExp(r'\b(import|const|void)\b'): _TokenType.specialKeyword,
-      RegExp(r'\b(@override|return)\b'): _TokenType.storageModifier,
+    final Map<Pattern, TokenType> patterns = {
+      RegExp(r'\b(import|const|void)\b'): TokenType.specialKeyword,
+      RegExp(r'\b(@override|return)\b'): TokenType.storageModifier,
       RegExp(r'\b(extends|class|final|var|new|this|super|if|else|for|while|do|switch|case|default|break|continue|as|is|in|throw|try|catch|finally|async|await|yield|export|part|of|library|with|enum|assert)\b'):
-          _TokenType.keyword,
+          TokenType.keyword,
       RegExp(r'\b(_?[A-Z][a-zA-Z0-9]*|int|double|String|bool)\b'):
-          _TokenType.type,
+          TokenType.type,
       RegExp(r'\b(setState|build|main|runApp|createState)\b'):
-          _TokenType.function,
-      RegExp(r'\b(true|false|null)\b'): _TokenType.literal,
-      RegExp(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'): _TokenType.variable,
-      RegExp(r'//[^\n]*'): _TokenType.comment,
-      RegExp(r"/\*[\s\S]*?\*/"): _TokenType.comment,
-      RegExp(r"'.*?'"): _TokenType.string,
-      RegExp(r'".*?"'): _TokenType.string,
-      RegExp(r'\b\d+(\.\d+)?\b'): _TokenType.number,
-      RegExp(r'[\.,;]'): _TokenType.punctuation,
+          TokenType.function,
+      RegExp(r'\b(true|false|null)\b'): TokenType.literal,
+      RegExp(r'//[^\n]*'): TokenType.comment,
+      RegExp(r"/\*[\s\S]*?\*/"): TokenType.comment,
+      RegExp(r"'.*?'"): TokenType.string,
+      RegExp(r'".*?"'): TokenType.string,
+      RegExp(r'\b\d+(\.\d+)?\b'): TokenType.number,
+      RegExp(r'[\.,;]'): TokenType.punctuation,
+      RegExp(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'): TokenType.variable,
     };
 
     while (currentIndex < source.length) {
-      _Token? matchedToken;
+      bool matchFound = false;
 
       if (source[currentIndex] == '\n') {
-        tokens.add(_Token(_TokenType.newline, '\n'));
+        tokens.add(
+          SyntaxToken(
+            TokenType.newline,
+            '\n',
+          ),
+        );
         currentIndex++;
         continue;
       }
 
       if (RegExp(r'\s').hasMatch(source[currentIndex])) {
-        tokens.add(_Token(_TokenType.identifier, source[currentIndex]));
+        tokens.add(
+          SyntaxToken(
+            TokenType.identifier,
+            source[currentIndex],
+          ),
+        );
         currentIndex++;
         continue;
       }
@@ -133,7 +100,13 @@ class CodeSyntaxHighlighter {
         final bracket = openBracketMatch.group(0)!;
         final level = bracketStack.length;
         bracketStack.add(bracket);
-        tokens.add(_Token(_TokenType.bracket, bracket, level: level));
+        tokens.add(
+          SyntaxToken(
+            TokenType.bracket,
+            bracket,
+            level: level,
+          ),
+        );
         currentIndex += bracket.length;
         continue;
       }
@@ -145,8 +118,15 @@ class CodeSyntaxHighlighter {
       if (closeBracketMatch != null) {
         final bracket = closeBracketMatch.group(0)!;
         if (bracketStack.isNotEmpty) bracketStack.removeLast();
+
         final level = bracketStack.length;
-        tokens.add(_Token(_TokenType.bracket, bracket, level: level));
+        tokens.add(
+          SyntaxToken(
+            TokenType.bracket,
+            bracket,
+            level: level,
+          ),
+        );
         currentIndex += bracket.length;
         continue;
       }
@@ -154,19 +134,29 @@ class CodeSyntaxHighlighter {
       for (final entry in patterns.entries) {
         final match = entry.key.matchAsPrefix(source, currentIndex);
         if (match != null) {
-          matchedToken = _Token(entry.value, match.group(0)!);
+          tokens.add(
+            SyntaxToken(
+              entry.value,
+              match.group(0)!,
+            ),
+          );
+          currentIndex += match.group(0)!.length;
+          matchFound = true;
           break;
         }
       }
 
-      if (matchedToken != null) {
-        tokens.add(matchedToken);
-        currentIndex += matchedToken.value.length;
-      } else {
-        tokens.add(_Token(_TokenType.identifier, source[currentIndex]));
+      if (!matchFound) {
+        tokens.add(
+          SyntaxToken(
+            TokenType.identifier,
+            source[currentIndex],
+          ),
+        );
         currentIndex++;
       }
     }
+
     return tokens;
   }
 }
@@ -272,7 +262,7 @@ class SyntaxTheme {
   }
 }
 
-enum _TokenType {
+enum TokenType {
   identifier,
   keyword,
   specialKeyword,
@@ -289,14 +279,14 @@ enum _TokenType {
   variable,
 }
 
-class _Token {
-  _Token(
+class SyntaxToken {
+  SyntaxToken(
     this.type,
     this.value, {
     this.level = 0,
   });
 
-  final _TokenType type;
+  final TokenType type;
   final String value;
   final int level;
 }
@@ -315,16 +305,90 @@ class CodeDisplay extends StatelessWidget {
   final double fontSize;
   final double lineHeight;
 
+  double calculateLineNumberPadding({
+    required double fontSize,
+    required double lineHeight,
+    required int maxLineNumberDigits,
+  }) {
+    const characterWidthFactor = 0.6;
+    const extraSpacing = 8.0;
+
+    final characterWidth = fontSize * characterWidthFactor;
+    final numberWidth = characterWidth * maxLineNumberDigits;
+
+    return numberWidth + extraSpacing;
+  }
+
   @override
   Widget build(BuildContext context) {
     final baseTheme = isDarkMode ? SyntaxTheme.dark() : SyntaxTheme.light();
     final theme = baseTheme.copyWithFontSize(fontSize);
     final highlighter = CodeSyntaxHighlighter(theme);
 
-    return Text.rich(
-      highlighter.format(
-        code,
-        lineHeight: lineHeight,
+    final tokens = highlighter.tokenize(code);
+    final lineWidgets = <Widget>[];
+    var currentLineSpans = <TextSpan>[];
+    var lineNumber = 1;
+
+    final lineCount = '\n'.allMatches(code).length + 1;
+    final maxDigits = lineCount.toString().length;
+
+    final lineNumberPadding = calculateLineNumberPadding(
+      fontSize: fontSize,
+      lineHeight: lineHeight,
+      maxLineNumberDigits: maxDigits,
+    );
+
+    for (final token in tokens) {
+      if (token.type == TokenType.newline) {
+        final lineWidget = Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SelectionContainer.disabled(
+              child: Container(
+                padding: const EdgeInsets.only(
+                  right: 8.0,
+                ),
+                width: lineNumberPadding,
+                child: Text(
+                  lineNumber.toString(),
+                  textAlign: TextAlign.right,
+                  style: theme.lineNumberStyle.copyWith(
+                    height: lineHeight,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text.rich(
+                TextSpan(
+                  style: theme.baseStyle.copyWith(
+                    height: lineHeight,
+                  ),
+                  children: currentLineSpans,
+                ),
+              ),
+            ),
+          ],
+        );
+        lineWidgets.add(lineWidget);
+
+        currentLineSpans = [];
+        lineNumber++;
+      } else {
+        currentLineSpans.add(
+          TextSpan(
+            text: token.value,
+            style: highlighter.getStyleForToken(token),
+          ),
+        );
+      }
+    }
+
+    return SelectionArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: lineWidgets,
       ),
     );
   }
