@@ -4,7 +4,6 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
 
 // Elements
-import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/configuring_dio_sample.dart';
 // import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/custom_popup_menu_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/gaps_sample.dart';
@@ -22,11 +21,6 @@ List<InterfaceModel> getElements(
   final appLocalizations = AppLocalizations.of(context)!;
 
   return <InterfaceModel>[
-    InterfaceModel(
-      name: appLocalizations.configuringDio,
-      fileName: 'configuring_dio',
-      component: const ConfiguringDioSample(),
-    ),
     // InterfaceModel(
     //   name: appLocalizations.customDropdown,
     //   fileName: 'custom_dropdown',
