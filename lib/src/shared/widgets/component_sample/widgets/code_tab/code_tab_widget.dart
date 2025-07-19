@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
-import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_syntax_highlighter.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_tab_controller.dart';
 
 class CodeTabWidget extends StatefulWidget {
@@ -29,6 +29,7 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
   @override
   void dispose() {
     _controller.dispose();
+    
     super.dispose();
   }
 
