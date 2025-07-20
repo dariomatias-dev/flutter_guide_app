@@ -10,4 +10,8 @@ class AppLinks {
   static const repository = 'https://github.com/dariomatias-dev/flutter_guide/';
   static const playStoreDownload =
       'https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide';
+  static const feedbackFormLinkPt =
+      'https://docs.google.com/forms/d/e/1FAIpQLSfOICpkeuVrQk6364BWHfARGBzflyzVzsRG2YOwuTV6iHzwKw/viewform?usp=sharing&ouid=116984750672904269893';
+  static const feedbackFormLinkEn =
+      'https://docs.google.com/forms/d/e/1FAIpQLSeO3R0RXTseeZDXIHfmSw3P9jFQoTA50gT6_Mwf-IeQPstqpg/viewform?usp=sharing&ouid=116984750672904269893';
 }

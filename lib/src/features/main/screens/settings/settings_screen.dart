@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/l10n/l10n.dart';
 
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 
@@ -74,6 +75,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 openUrl(
                   () => context,
                   AppLinks.privacyPolicy,
+                );
+              },
+              openInBrowser: true,
+            ),
+            ListTileItemWidget(
+              title: 'Feedback',
+              icon: Icons.feedback_outlined,
+              onTap: () {
+                openUrl(
+                  () => context,
+                  L10n.isPortuguese(Localizations.localeOf(context))
+                      ? AppLinks.feedbackFormLinkPt
+                      : AppLinks.feedbackFormLinkEn,
                 );
               },
               openInBrowser: true,

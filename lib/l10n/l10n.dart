@@ -5,4 +5,8 @@ class L10n {
     const Locale('en', ''),
     const Locale('pt', 'BR'),
   ];
+
+  static bool isEnglish(Locale locale) => locale.languageCode == 'en';
+
+  static bool isPortuguese(Locale locale) => locale.languageCode == 'pt';
 }
