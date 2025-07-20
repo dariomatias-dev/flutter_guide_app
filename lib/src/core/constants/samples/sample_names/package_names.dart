@@ -14,6 +14,7 @@ class PackageNames {
   static const flutterSlidablePackage = 'flutter_slidable';
   static const flutterSpinkitPackage = 'flutter_spinkit';
   static const flutterSvgPackage = 'flutter_svg';
+  static const flutterSyntaxHighlighterPackage = 'flutter_syntax_highlighter';
   static const fontAwesomeFlutterPackage = 'font_awesome_flutter';
   static const glassPackage = 'glass';
   static const googleFontsPackage = 'google_fonts';

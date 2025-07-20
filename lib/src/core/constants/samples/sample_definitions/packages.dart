@@ -22,6 +22,7 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/packa
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/flutter_slidable_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/flutter_spinkit_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/flutter_svg_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/flutter_syntax_highlighter_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/font_awesome_flutter_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/glass_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/google_fonts_sample.dart';
@@ -123,6 +124,11 @@ const packages = <PackageModel>[
     name: PackageNames.flutterSvgPackage,
     icon: Icons.image,
     sample: FlutterSvgSample(),
+  ),
+  PackageModel(
+    name: PackageNames.flutterSyntaxHighlighterPackage,
+    icon: Icons.description_outlined,
+    sample: FlutterSyntaxHighlighterSample(),
   ),
   PackageModel(
     name: PackageNames.fontAwesomeFlutterPackage,
