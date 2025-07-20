@@ -84,6 +84,15 @@ class _FlutterSyntaxHighlighterSampleState
   }
 
   @override
+  void didChangeDependencies() {
+    setState(() {
+      _isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    });
+
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Syntax Highlighter',
@@ -96,7 +105,11 @@ class _FlutterSyntaxHighlighterSampleState
           title: const Text('Flutter Syntax Highlighter'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(_isDarkMode ? Icons.light_mode : Icons.dark_mode),
+              icon: Icon(
+                _isDarkMode
+                    ? Icons.light_mode_outlined
+                    : Icons.dark_mode_outlined,
+              ),
               onPressed: _toggleTheme,
               tooltip: 'Toggle Theme',
             ),
