@@ -50,9 +50,11 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
           builder: (context, codeString, child) {
             return SingleChildScrollView(
               controller: _controller.scrollController,
-              padding: const EdgeInsets.symmetric(
-                vertical: 16.0,
-                horizontal: 6.0,
+              padding: const EdgeInsets.only(
+                top: 16.0,
+                right: 6.0,
+                bottom: 28.0,
+                left: 6.0,
               ),
               child: ValueListenableBuilder<double>(
                 valueListenable: widget.fontSizeNotifier,

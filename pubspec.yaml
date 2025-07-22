@@ -83,7 +83,7 @@ dependencies:
   cached_network_image: ^3.4.0
   pinput: ^5.0.1
   url_launcher_android: 6.3.16
-  flutter_syntax_highlighter: ^0.1.5
+  flutter_syntax_highlighter: ^0.1.6
 
 dev_dependencies:
   flutter_test:

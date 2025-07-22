@@ -375,10 +375,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_syntax_highlighter
-      sha256: "1aebaae5f7c2ea41968ee31a1fe0ebd30f21c61a5abdc98b1b59cf714353d6ec"
+      sha256: db07f48a29e006b406e538cefdd3584c7dbbe1a28e8ead41ee373a749499c60a
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.5"
+    version: "0.1.6"
   flutter_test:
     dependency: "direct dev"
     description: flutter
