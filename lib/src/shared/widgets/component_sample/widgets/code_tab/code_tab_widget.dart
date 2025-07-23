@@ -8,10 +8,12 @@ import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_t
 class CodeTabWidget extends StatefulWidget {
   const CodeTabWidget({
     super.key,
+    required this.lineCountNotifier,
     required this.getChunck,
     required this.fontSizeNotifier,
   });
 
+  final ValueNotifier<int> lineCountNotifier;
   final List<String> Function(
     int index,
   ) getChunck;
@@ -29,7 +31,7 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
   @override
   void dispose() {
     _controller.dispose();
-    
+
     super.dispose();
   }
 
@@ -62,6 +64,7 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
                   return SyntaxHighlighter(
                     code: codeString,
                     isDarkMode: ThemeController.instance.isDark,
+                    maxCharCount: widget.lineCountNotifier.value.toString().length,
                     fontSize: fontSize,
                   );
                 },

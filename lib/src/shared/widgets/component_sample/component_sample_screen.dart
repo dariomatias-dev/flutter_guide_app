@@ -66,6 +66,7 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
                 child: widget.sample,
               ),
               CodeTabWidget(
+                lineCountNotifier: _controller.lineCountNotifier,
                 getChunck: _controller.getChunck,
                 fontSizeNotifier: _controller.fontSizeNotifier,
               ),

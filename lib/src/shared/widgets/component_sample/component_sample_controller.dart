@@ -26,6 +26,7 @@ class ComponentSampleController {
   final pageController = PageController();
   final currentTabIndexNotifier = ValueNotifier(0);
 
+  final lineCountNotifier = ValueNotifier(0);
   static const _linesPerChunk = 50;
   final _chunks = <List<String>>[];
 
@@ -35,11 +36,12 @@ class ComponentSampleController {
     final codeString = await rootBundle.loadString(filePath);
 
     final lines = codeString.split('\n');
+    lineCountNotifier.value = lines.length;
 
-    for (var i = 0; i < lines.length; i += _linesPerChunk) {
-      final end = (i + _linesPerChunk < lines.length)
+    for (var i = 0; i < lineCountNotifier.value; i += _linesPerChunk) {
+      final end = (i + _linesPerChunk < lineCountNotifier.value)
           ? i + _linesPerChunk
-          : lines.length;
+          : lineCountNotifier.value;
       _chunks.add(
         lines.sublist(i, end),
       );
