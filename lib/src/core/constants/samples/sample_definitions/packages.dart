@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_names/package_names.dart';
 
-// Models
-import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
-
 // Samples
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/awesome_snackbar_content_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/battery_plus_sample.dart';
@@ -38,6 +34,7 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/packa
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/photo_view_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/pinput_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/salomon_bottom_bar_sample.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/scroll_infinity_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/share_plus_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/shared_preferences_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/side_sheet_sample.dart';
@@ -46,6 +43,10 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/packa
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/url_launcher_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/uuid_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/video_player_sample.dart';
+
+// Models
+import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
+import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
 
 const packages = <PackageModel>[
   PackageModel(
@@ -206,6 +207,11 @@ const packages = <PackageModel>[
     name: PackageNames.salomonBottomBarPackage,
     icon: Icons.view_carousel,
     sample: SalomonBottomBarSample(),
+  ),
+  PackageModel(
+    name: PackageNames.scrollInfinityPackage,
+    icon: Icons.loop,
+    sample: ScrollInfinitySample(),
   ),
   PackageModel(
     name: PackageNames.sharePlusPackage,

@@ -813,6 +813,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.2"
+  scroll_infinity:
+    dependency: "direct main"
+    description:
+      name: scroll_infinity
+      sha256: e1c25a56a6cf77c9f75982d1d9cd22762b72fe964ceb3d484921b267676df9a0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   share_plus:
     dependency: "direct main"
     description:

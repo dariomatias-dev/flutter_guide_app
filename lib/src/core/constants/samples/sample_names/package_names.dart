@@ -30,6 +30,7 @@ class PackageNames {
   static const photoViewPackage = 'photo_view';
   static const pinputPackage = 'pinput';
   static const salomonBottomBarPackage = 'salomon_bottom_bar';
+  static const scrollInfinityPackage = 'scroll_infinity';
   static const sharePlusPackage = 'share_plus';
   static const sharedPreferencesPackage = 'shared_preferences';
   static const sideSheetPackage = 'side_sheet';
