@@ -817,10 +817,10 @@ packages:
     dependency: "direct main"
     description:
       name: scroll_infinity
-      sha256: e1c25a56a6cf77c9f75982d1d9cd22762b72fe964ceb3d484921b267676df9a0
+      sha256: "85250b8222f0f6e0e70b03d9fd5b4cab71efec57396a27eefaedc214c0198a43"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.5.1"
   share_plus:
     dependency: "direct main"
     description:

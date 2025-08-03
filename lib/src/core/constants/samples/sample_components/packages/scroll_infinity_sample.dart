@@ -69,8 +69,9 @@ class _ScrollInfinitySampleState extends State<ScrollInfinitySample> {
           loadData: _fetchProducts,
           itemBuilder: (product, index) {
             return ListTile(
-              title: Text(product?.title ?? ''),
-              subtitle: Text(product?.description ?? ''),
+              leading: Text('${index + 1}'),
+              title: Text(product.title),
+              subtitle: Text(product.description),
             );
           },
         ),
