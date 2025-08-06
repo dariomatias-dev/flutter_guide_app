@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
-import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
+import 'package:flutter_guide/src/core/constants/samples/sample_definitions/templates.dart';
 
+import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/infinity_scroll.dart';
@@ -20,17 +22,33 @@ class InterfaceCatalogScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isUi = elementType == InterfaceTypeEnum.ui;
+    late final String title;
+    late final List<InterfaceModel> items;
+
+    switch (elementType) {
+      case InterfaceTypeEnum.ui:
+        title = 'UIs';
+        items = getUis(context);
+        break;
+      case InterfaceTypeEnum.element:
+        title = AppLocalizations.of(context)!.elements;
+        items = getElements(context);
+        break;
+      case InterfaceTypeEnum.template:
+        title = 'Templates';
+        items = getTemplates(context);
+        break;
+    }
 
     return Scaffold(
       appBar: StandardAppBarWidget(
-        titleName: isUi ? 'UIs' : 'Elements',
+        titleName: title,
       ),
       body: InfinityScroll<InterfaceModel>(
         padding: const EdgeInsets.symmetric(
           vertical: 12.0,
         ),
-        items: (isUi ? getUis : getElements)(context),
+        items: items,
         itemBuilder: (value) {
           return ListTileItemWidget(
             onTap: () {
@@ -41,7 +59,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
                     return ComponentSampleScreen(
                       title: value.name,
                       filePath:
-                          'lib/src/core/constants/samples/sample_components/${isUi ? 'uis' : 'elements'}/${value.fileName}_sample.dart',
+                          'lib/src/core/constants/samples/sample_components/${title.toLowerCase()}/${value.fileName}_sample.dart',
                       sample: value.component,
                     );
                   },
