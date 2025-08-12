@@ -75,8 +75,7 @@ Get **Flutter Guide** directly from the **Google Play Store**:
 
 ## Contributing
 
-Contributions make the open-source community an amazing place to learn and create.  
-Any contributions you make are greatly appreciated.
+Contributions make the open-source community an amazing place to learn and create. Any contributions you make are greatly appreciated.
 
 To get started:
 
