@@ -27,7 +27,7 @@ A mobile app designed to help developers learn, practice, and master Flutter thr
 - [Features](#features)
 - [Built With](#built-with)
 - [Screenshots](#screenshots)
-- [Downloads](#downloads)
+- [Download the App](#download-the-app)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -65,7 +65,7 @@ This project was developed using the following core technologies:
 <img src="screenshots/flutter_guide_screen_6.jpeg" width="200" alt="Screenshot 6"/>
 </div>
 
-## Downloads
+## Download the App
 
 Get **Flutter Guide** directly from the **Google Play Store**:
 
