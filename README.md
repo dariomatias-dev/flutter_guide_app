@@ -30,7 +30,7 @@ A mobile app designed to help developers learn, practice, and master Flutter thr
 - [Download the App](#download-the-app)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
+- [Author](#author)
 
 ## About The Project
 
@@ -104,11 +104,12 @@ To get started:
 
 Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
 
-## Contact
+## Author
 
-I am always open to discussing new projects and ideas. Feel free to get in touch.
+Developed by **Dário Matias**:
 
 - **Portfolio**: [dariomatias-dev](https://dariomatias-dev.com)
+- **GitHub**: [dariomatias-dev](https://github.com/dariomatias-dev)
 - **Email**: [matiasdario75@gmail.com](mailto:matiasdario75@gmail.com)
 - **Instagram**: [@dariomatias_dev](https://instagram.com/dariomatias_dev)
 - **LinkedIn**: [linkedin.com/in/dariomatias-dev](https://linkedin.com/in/dariomatias-dev)
