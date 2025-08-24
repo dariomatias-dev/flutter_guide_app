@@ -204,6 +204,15 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get viewOnPlayStore => 'Ver na Play Store';
+
+  @override
+  String get selectCodeTheme => 'Selecionar Tema de Código';
+
+  @override
+  String get light => 'Claro';
+
+  @override
+  String get dark => 'Escuro';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -406,4 +415,13 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get viewOnPlayStore => 'Ver na Play Store';
+
+  @override
+  String get selectCodeTheme => 'Selecionar Tema de Código';
+
+  @override
+  String get light => 'Claro';
+
+  @override
+  String get dark => 'Escuro';
 }

@@ -488,6 +488,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View on Play Store'**
   String get viewOnPlayStore;
+
+  /// No description provided for @selectCodeTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Code Theme'**
+  String get selectCodeTheme;
+
+  /// No description provided for @light.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get light;
+
+  /// No description provided for @dark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get dark;
 }
 
 class _AppLocalizationsDelegate

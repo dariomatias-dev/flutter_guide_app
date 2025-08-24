@@ -64,5 +64,8 @@
     "copy": "Copy",
     "copyToClipboard": "Code copied to the clipboard",
     "aboutDescription": "An educational app developed with Flutter that helps developers learn the technology through practical examples.",
-    "viewOnPlayStore": "View on Play Store"
+    "viewOnPlayStore": "View on Play Store",
+    "selectCodeTheme": "Select Code Theme",
+    "light": "Light",
+    "dark": "Dark"
 }

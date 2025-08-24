@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
+import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
 const sampleCode = '''
@@ -114,18 +115,22 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: StandardAppBarWidget(
-        title: const Text('Select Code Theme'),
+        title: Text(
+          appLocalizations.selectCodeTheme,
+        ),
         bottom: DefaultTabBarWidget(
           onTap: (value) {},
           controller: _tabController,
-          tabs: const <Widget>[
+          tabs: <Widget>[
             Tab(
-              text: 'Light',
+              text: appLocalizations.light,
             ),
             Tab(
-              text: 'Dark',
+              text: appLocalizations.dark,
             ),
           ],
         ),
@@ -311,13 +316,13 @@ class _ThemeCard extends StatelessWidget {
                     },
                     child: isSelected
                         ? Icon(
+                            key: const ValueKey('selected'),
                             Icons.check_circle_rounded,
                             color: cardColors.check,
-                            key: const ValueKey('selected'),
                           )
                         : const SizedBox(
-                            width: 24.0,
                             key: ValueKey('unselected'),
+                            width: 24.0,
                           ),
                   ),
                 ],

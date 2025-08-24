@@ -204,4 +204,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get viewOnPlayStore => 'View on Play Store';
+
+  @override
+  String get selectCodeTheme => 'Select Code Theme';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get dark => 'Dark';
 }
