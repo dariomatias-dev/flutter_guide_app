@@ -21,6 +21,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get language => 'Idioma';
 
   @override
+  String get codeTheme => 'Tema de Código';
+
+  @override
   String get function => 'Função';
 
   @override
@@ -218,6 +221,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get language => 'Idioma';
+
+  @override
+  String get codeTheme => 'Tema de Código';
 
   @override
   String get function => 'Função';

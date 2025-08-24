@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language => 'Language';
 
   @override
+  String get codeTheme => 'Code Theme';
+
+  @override
   String get function => 'Function';
 
   @override

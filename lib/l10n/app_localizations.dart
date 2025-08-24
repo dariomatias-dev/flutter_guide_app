@@ -123,6 +123,12 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get language;
 
+  /// No description provided for @codeTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Code Theme'**
+  String get codeTheme;
+
   /// No description provided for @function.
   ///
   /// In en, this message translates to:
