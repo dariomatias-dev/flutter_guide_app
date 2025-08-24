@@ -20,6 +20,8 @@ import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
 
+import 'package:flutter_guide/src/shared/utils/code_theme_controller.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -48,6 +50,9 @@ Future<void> main() async {
 
   // Application Theme
   ThemeController.instance.init(sharedPreferences);
+
+  // Application Code Theme
+  await CodeThemeController.instance.init();
 
   // Notifiers
   final favoriteWidgetNotifier = FavoriteWidgetNotifier('');

@@ -3,6 +3,7 @@ import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
+import 'package:flutter_guide/src/shared/utils/code_theme_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_tab_controller.dart';
 
 class CodeTabWidget extends StatefulWidget {
@@ -64,8 +65,13 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
                   return SyntaxHighlighter(
                     code: codeString,
                     isDarkMode: ThemeController.instance.isDark,
-                    maxCharCount: widget.lineCountNotifier.value.toString().length,
+                    maxCharCount:
+                        widget.lineCountNotifier.value.toString().length,
                     fontSize: fontSize,
+                    lightColorSchema:
+                        CodeThemeController.instance.selectedLightTheme,
+                    darkColorSchema:
+                        CodeThemeController.instance.selectedDarkTheme,
                   );
                 },
               ),

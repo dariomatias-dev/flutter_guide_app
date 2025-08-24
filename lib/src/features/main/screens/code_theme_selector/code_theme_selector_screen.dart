@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
-
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
+import 'package:flutter_guide/src/shared/utils/code_theme_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
@@ -56,133 +53,26 @@ class CodeThemeSelectorScreen extends StatefulWidget {
 
 class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
     with SingleTickerProviderStateMixin {
-  late SyntaxColorSchema _selectedDarkTheme;
-  late SyntaxColorSchema _selectedLightTheme;
-
   late final TabController _tabController;
 
-  final _darkThemes = <(String, SyntaxColorSchema)>[
-    ('A11y Dark', SyntaxThemes.a11yDark),
-    ('Android Studio Dark', SyntaxThemes.androidstudioDark),
-    ('Atom One Dark', SyntaxThemes.atomOneDark),
-    ('Cobalt2', SyntaxThemes.cobalt2),
-    ('Dark High Contrast', SyntaxThemes.darkHighContrast),
-    ('Dracula', SyntaxThemes.dracula),
-    ('GitHub Dark', SyntaxThemes.githubDark),
-    ('Material Oceanic', SyntaxThemes.materialOceanic),
-    ('Monokai', SyntaxThemes.monokai),
-    ('Night Owl', SyntaxThemes.nightOwl),
-    ('Nord', SyntaxThemes.nord),
-    ('One Dark Pro', SyntaxThemes.oneDarkPro),
-    ('Panda Syntax', SyntaxThemes.pandaSyntax),
-    ('Solarized Dark', SyntaxThemes.solarizedDark),
-    ('StackOverflow Dark', SyntaxThemes.stackoverflowDark),
-    ('Synthwave 84', SyntaxThemes.synthwave84),
-    ('VS Code Dark', SyntaxThemes.vsCodeDark),
-    ('Xcode Dark', SyntaxThemes.xcodeDark),
-  ];
-
-  final _lightThemes = <(String, SyntaxColorSchema)>[
-    ('A11y Light', SyntaxThemes.a11yLight),
-    ('Android Studio Light', SyntaxThemes.androidstudioLight),
-    ('Atom One Light', SyntaxThemes.atomOneLight),
-    ('GitHub Light', SyntaxThemes.githubLight),
-    ('Solarized Light', SyntaxThemes.solarizedLight),
-    ('StackOverflow Light', SyntaxThemes.stackoverflowLight),
-    ('VS Code Light', SyntaxThemes.vsCodeLight),
-  ];
-
-  String get _previewCode => sampleCode;
-
-  Future<void> _onThemeSelected(
-    String name,
-    SyntaxColorSchema schema,
-    ThemeType type,
-  ) async {
-    final prefs = UserPreferencesInheritedWidget.of(context)!.sharedPreferences;
-
-    if (type == ThemeType.dark) {
-      await prefs.setString(
-        SharedPreferencesKeys.codeDarkThemeKey,
-        name,
-      );
-
-      _selectedDarkTheme = schema;
-    } else {
-      await prefs.setString(
-        SharedPreferencesKeys.codeLightThemeKey,
-        name,
-      );
-
-      _selectedLightTheme = schema;
-    }
-
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
-  Future<void> _loadSavedThemes() async {
-    final prefs = UserPreferencesInheritedWidget.of(context)!.sharedPreferences;
-
-    final darkThemeName = prefs.getString(
-      SharedPreferencesKeys.codeDarkThemeKey,
-    );
-    final lightThemeName = prefs.getString(
-      SharedPreferencesKeys.codeLightThemeKey,
-    );
-
-    var newDarkTheme = _selectedDarkTheme;
-    var newLightTheme = _selectedLightTheme;
-
-    if (darkThemeName != null) {
-      final foundTheme = _darkThemes.firstWhere(
-        (theme) => theme.$1 == darkThemeName,
-      );
-
-      newDarkTheme = foundTheme.$2;
-    }
-
-    if (lightThemeName != null) {
-      final foundTheme = _lightThemes.firstWhere(
-        (theme) => theme.$1 == lightThemeName,
-      );
-
-      newLightTheme = foundTheme.$2;
-    }
-
-    if (mounted) {
-      setState(() {
-        _selectedDarkTheme = newDarkTheme;
-        _selectedLightTheme = newLightTheme;
-      });
-    }
-  }
+  final _codeThemeController = CodeThemeController.instance;
 
   @override
   void initState() {
     super.initState();
-
-    _tabController = TabController(
-      length: 2,
-      vsync: this,
-    );
-
-    _selectedLightTheme = SyntaxThemes.vsCodeLight;
-    _selectedDarkTheme = SyntaxThemes.vsCodeDark;
-
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        _loadSavedThemes();
-      },
-    );
+    _tabController = TabController(length: 2, vsync: this);
+    _codeThemeController.addListener(_rebuild);
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-
+    _codeThemeController.removeListener(_rebuild);
     super.dispose();
+  }
+
+  void _rebuild() {
+    setState(() {});
   }
 
   @override
@@ -211,30 +101,30 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
         controller: _tabController,
         children: <Widget>[
           _ThemeList(
-            themes: _lightThemes,
+            themes: _codeThemeController.lightThemes,
             themeType: ThemeType.light,
-            selectedSchema: _selectedLightTheme,
+            selectedSchema: _codeThemeController.selectedLightTheme,
             onThemeSelected: (name, schema) {
-              _onThemeSelected(
-                name,
-                schema,
-                ThemeType.light,
+              _codeThemeController.updateTheme(
+                name: name,
+                schema: schema,
+                isDark: false,
               );
             },
-            previewCode: _previewCode,
+            previewCode: sampleCode,
           ),
           _ThemeList(
-            themes: _darkThemes,
+            themes: _codeThemeController.darkThemes,
             themeType: ThemeType.dark,
-            selectedSchema: _selectedDarkTheme,
+            selectedSchema: _codeThemeController.selectedDarkTheme,
             onThemeSelected: (name, schema) {
-              _onThemeSelected(
-                name,
-                schema,
-                ThemeType.dark,
+              _codeThemeController.updateTheme(
+                name: name,
+                schema: schema,
+                isDark: true,
               );
             },
-            previewCode: _previewCode,
+            previewCode: sampleCode,
           ),
         ],
       ),
@@ -254,10 +144,7 @@ class _ThemeList extends StatelessWidget {
   final List<(String, SyntaxColorSchema)> themes;
   final ThemeType themeType;
   final SyntaxColorSchema selectedSchema;
-  final void Function(
-    String name,
-    SyntaxColorSchema schema,
-  ) onThemeSelected;
+  final void Function(String name, SyntaxColorSchema schema) onThemeSelected;
   final String previewCode;
 
   @override
