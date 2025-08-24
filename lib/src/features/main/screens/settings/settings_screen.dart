@@ -92,11 +92,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
               openInBrowser: true,
             ),
-            // ListTileItemWidget(
-            //   title: 'Buy Me a Coffee',
-            //   icon: Icons.local_cafe_outlined,
-            //   onTap: _controller.showDonateDialog,
-            // ),
             ListTileItemWidget(
               title: appLocalizations.about,
               icon: Icons.info_outline,
