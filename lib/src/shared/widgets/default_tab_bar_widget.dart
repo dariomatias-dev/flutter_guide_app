@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DefaultTabBarWidget extends StatelessWidget {
+class DefaultTabBarWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   const DefaultTabBarWidget({
     super.key,
     this.controller,
@@ -13,6 +14,13 @@ class DefaultTabBarWidget extends StatelessWidget {
     int value,
   ) onTap;
   final List<Widget> tabs;
+
+  @override
+  Size get preferredSize {
+    return const Size.fromHeight(
+      kToolbarHeight,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

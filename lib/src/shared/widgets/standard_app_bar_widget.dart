@@ -24,7 +24,11 @@ class StandardAppBarWidget extends StatelessWidget
   final PreferredSizeWidget? bottom;
 
   @override
-  Size get preferredSize => const Size.fromHeight(kTextTabBarHeight);
+  Size get preferredSize {
+    return Size.fromHeight(
+      kToolbarHeight + (bottom?.preferredSize.height ?? 0),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
