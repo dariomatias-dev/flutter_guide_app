@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
 import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 
 class ChangeThemeButtonWidget extends StatefulWidget {
@@ -20,9 +18,7 @@ class _ChangeThemeButtonWidgetState extends State<ChangeThemeButtonWidget> {
     Theme.of(context);
 
     return IconButtonWidget(
-      onTap: UserPreferencesInheritedWidget.of(context)!
-          .themeController
-          .toggleTheme,
+      onTap: ThemeController.instance.toggleTheme,
       icon: ThemeController.instance.isDark
           ? Icons.light_mode_outlined
           : Icons.dark_mode_outlined,

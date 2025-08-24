@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.dart';
 
@@ -13,7 +12,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
     super.key,
     required this.appVersion,
     required this.languageNotifier,
-    required this.themeController,
     required this.sharedPreferences,
     required this.favoriteWidgetNotifier,
     required this.favoritePackageNotifier,
@@ -27,7 +25,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
   final String appVersion;
   final ValueNotifier<String> languageNotifier;
 
-  final ThemeController themeController;
   final SharedPreferences sharedPreferences;
 
   final FavoriteWidgetNotifier favoriteWidgetNotifier;

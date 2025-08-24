@@ -46,6 +46,9 @@ Future<void> main() async {
     SharedPreferencesKeys.languageKey,
   );
 
+  // Application Theme
+  ThemeController.instance.init(sharedPreferences);
+
   // Notifiers
   final favoriteWidgetNotifier = FavoriteWidgetNotifier('');
   final favoriteFunctionNotifier = FavoriteFunctionNotifier('');
@@ -98,7 +101,6 @@ Future<void> main() async {
         language ?? LanguagesApp.en,
       ),
       sharedPreferences: sharedPreferences,
-      themeController: ThemeController.instance,
       favoriteWidgetNotifier: favoriteWidgetNotifier,
       favoritePackageNotifier: favoritePackageNotifier,
       getFavoriteNotifier: getFavoriteNotifier,

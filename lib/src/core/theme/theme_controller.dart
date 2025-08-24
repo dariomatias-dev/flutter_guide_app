@@ -8,13 +8,22 @@ class ThemeController {
 
   static final instance = ThemeController._();
 
+  late final SharedPreferences _sharedPreferences;
+
   final themeModeNotifier = ValueNotifier<ThemeMode>(ThemeMode.dark);
 
   bool get isDark => themeModeNotifier.value == ThemeMode.dark;
 
+  void init(SharedPreferences sharedPreferences) {
+    _sharedPreferences = sharedPreferences;
+
+    loadTheme();
+  }
+
   Future<void> loadTheme() async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedTheme = prefs.getString(SharedPreferencesKeys.themeKey);
+    final savedTheme = _sharedPreferences.getString(
+      SharedPreferencesKeys.themeKey,
+    );
 
     if (savedTheme == ThemeMode.light.name) {
       themeModeNotifier.value = ThemeMode.light;
@@ -26,8 +35,7 @@ class ThemeController {
   Future<void> toggleTheme() async {
     final mode = isDark ? ThemeMode.light : ThemeMode.dark;
 
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(
+    await _sharedPreferences.setString(
       SharedPreferencesKeys.themeKey,
       mode.name,
     );
