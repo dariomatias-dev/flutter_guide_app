@@ -3,12 +3,14 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/elements/elements_screen.dart';
 
+import 'package:flutter_guide/src/features/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/main/screens/home/home_screen.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/settings_screen.dart';
 import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/main_app_bar_widget.dart';
+
+import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/screen_model.dart';
 import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
@@ -23,9 +25,39 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int screenIndex = 0;
 
+  void _updateScreenIndex() {
+    setState(() {
+      screenIndex =
+          UserPreferencesInheritedWidget.of(context)!.screenIndexNotifier.value;
+    });
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        UserPreferencesInheritedWidget.of(context)!
+            .screenIndexNotifier
+            .addListener(_updateScreenIndex);
+      },
+    );
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    UserPreferencesInheritedWidget.of(context)!
+        .screenIndexNotifier
+        .removeListener(_updateScreenIndex);
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+
     final screens = <ScreenModel>[
       ScreenModel(
         bottomNavigationBarName: appLocalizations.home,

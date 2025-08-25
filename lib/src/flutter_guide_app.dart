@@ -24,15 +24,6 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
 
   late AppLinks _appLinks;
 
-  @override
-  void initState() {
-    super.initState();
-
-    _appLinks = AppLinks();
-
-    _initDeepLinks();
-  }
-
   void _initDeepLinks() async {
     try {
       final initialLink = await _appLinks.getInitialLink();
@@ -53,7 +44,49 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
   }
 
   void _handleDeepLink(Uri uri) {
-    _logger.i(uri);
+    if (uri.pathSegments.length < 2) {
+      _logger.e(
+        'Invalid Deep Link',
+      );
+
+      return;
+    }
+
+    final type = uri.pathSegments[0];
+
+    final screenIndexNotifier =
+        UserPreferencesInheritedWidget.of(context)!.screenIndexNotifier;
+
+    switch (type) {
+      case 'elements':
+        screenIndexNotifier.value = 0;
+        break;
+      case 'uis':
+        screenIndexNotifier.value = 0;
+        break;
+      case 'templates':
+        screenIndexNotifier.value = 0;
+        break;
+      case 'widgets':
+        screenIndexNotifier.value = 1;
+        break;
+      case 'functions':
+        screenIndexNotifier.value = 1;
+        break;
+      case 'packages':
+        screenIndexNotifier.value = 1;
+        break;
+      default:
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _appLinks = AppLinks();
+
+    _initDeepLinks();
   }
 
   @override

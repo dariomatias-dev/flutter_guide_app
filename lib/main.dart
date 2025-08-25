@@ -112,6 +112,7 @@ Future<void> main() async {
       favoriteWidgetsService: favoriteWidgetsService,
       favoritePackagesService: favoritePackagesService,
       getFavoriteService: getFavoriteService,
+      screenIndexNotifier: ValueNotifier(0),
       child: ComponentsMapInheritedWidget(
         widgetsMap: widgetInfos.samples,
         widgetNames: widgetInfos.componentNames,
