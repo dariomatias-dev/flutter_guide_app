@@ -98,6 +98,7 @@ Future<void> main() async {
 
   final widgetInfos = getWidgetInfos();
   final functionsInfos = getFunctionInfos();
+  final packagesInfos = getPackageInfos();
 
   runApp(
     UserPreferencesInheritedWidget(
@@ -116,7 +117,9 @@ Future<void> main() async {
       child: ComponentsMapInheritedWidget(
         widgetsMap: widgetInfos.samples,
         widgetNames: widgetInfos.componentNames,
-        packagesMap: packagesMap(),
+        packageNames: packagesInfos.componentNames,
+        packagesMap: packagesInfos.samples,
+        functionNames: functionsInfos.componentNames,
         functionsMap: functionsInfos.samples,
         child: const FlutterGuideApp(),
       ),

@@ -43,10 +43,12 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/packa
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/url_launcher_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/uuid_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/video_player_sample.dart';
+import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 // Models
 import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
 import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
+import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
 
 const packages = <PackageModel>[
   PackageModel(
@@ -257,16 +259,24 @@ const packages = <PackageModel>[
   ),
 ];
 
-Map<String, PackageSummaryModel> packagesMap() {
+PackageInfosModel getPackageInfos() {
+  final packageNames = <String>[];
+
   Map<String, PackageSummaryModel> samples = {};
 
   for (var package in packages) {
+    packageNames.add(package.name);
+
     samples[package.name] = PackageSummaryModel(
       name: package.name,
+      type: ComponentType.package,
       videoId: package.videoId,
       sample: package.sample,
     );
   }
 
-  return samples;
+  return PackageInfosModel(
+    componentNames: packageNames,
+    samples: samples,
+  );
 }

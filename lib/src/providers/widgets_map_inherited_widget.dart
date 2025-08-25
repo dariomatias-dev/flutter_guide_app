@@ -7,15 +7,20 @@ class ComponentsMapInheritedWidget extends InheritedWidget {
     super.key,
     required this.widgetNames,
     required this.widgetsMap,
+    required this.packageNames,
     required this.packagesMap,
+    required this.functionNames,
     required this.functionsMap,
     required super.child,
   });
 
   final List<String> widgetNames;
-
   final Map<String, WidgetSummaryModel> widgetsMap;
+
+  final List<String> packageNames;
   final Map<String, PackageSummaryModel> packagesMap;
+
+  final List<String> functionNames;
   final Map<String, FunctionSummaryModel> functionsMap;
 
   static ComponentsMapInheritedWidget? of(BuildContext context) {
