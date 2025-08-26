@@ -4,7 +4,7 @@ import 'package:flutter_guide/l10n/l10n.dart';
 
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 
-import 'package:flutter_guide/src/features/main/screens/code_theme_selector/code_theme_selector_screen.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/code_theme_selector_screen.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/settings_controller.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/app_info_widget/app_info_widget.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/select_language/select_language_widget.dart';
