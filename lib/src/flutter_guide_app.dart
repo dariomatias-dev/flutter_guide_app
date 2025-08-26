@@ -2,19 +2,16 @@ import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
+import 'package:flutter_guide/src/shared/utils/handle_deep_link.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
-import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/routes/flutter_guide_routes.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
-
-import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
 
 class FlutterGuideApp extends StatefulWidget {
   const FlutterGuideApp({super.key});
@@ -51,86 +48,13 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
   }
 
   void _handleDeepLink(Uri uri) {
-    if (uri.pathSegments.length < 2) {
-      _logger.e(
-        'Invalid Deep Link',
-      );
-
-      return;
-    }
-
-    final type = uri.pathSegments[0];
-    final componentName = uri.pathSegments[1];
-
-    final screenIndexNotifier =
-        UserPreferencesInheritedWidget.of(context)!.screenIndexNotifier;
-
-    Widget? screen;
-    int screenIndex = 0;
-
-    final componentsMapInheritedWidget =
-        ComponentsMapInheritedWidget.of(context)!;
-
-    switch (type) {
-      case 'widgets':
-        screenIndex = 1;
-
-        if (componentsMapInheritedWidget.widgetNames.contains(componentName)) {
-          screen = ComponentScreen(
-            componentType: ComponentType.widget,
-            componentName: componentName,
-          );
-        }
-
-        break;
-      case 'functions':
-        screenIndex = 1;
-
-        if (componentsMapInheritedWidget.functionNames
-            .contains(componentName)) {
-          screen = ComponentScreen(
-            componentType: ComponentType.function,
-            componentName: componentName,
-          );
-        }
-
-        break;
-      case 'packages':
-        screenIndex = 2;
-
-        if (componentsMapInheritedWidget.packageNames.contains(componentName)) {
-          screen = ComponentScreen(
-            componentType: ComponentType.package,
-            componentName: componentName,
-          );
-        }
-
-        break;
-    }
-
-    if (screen != null) {
-      screenIndexNotifier.value = screenIndex;
-
-      _navigatorKey.currentState?.push(
-        MaterialPageRoute(
-          builder: (context) {
-            return screen!;
-          },
-        ),
-      );
-    } else {
-      _scaffoldMessengerKey.currentState?.showSnackBar(
-        SnackBar(
-          content: Text(
-            'The "$componentName" component in "$type" was not found.',
-          ),
-          action: SnackBarAction(
-            label: 'Ok',
-            onPressed: () {},
-          ),
-        ),
-      );
-    }
+    handleDeepLink(
+      _navigatorKey,
+      _scaffoldMessengerKey,
+      context,
+      _logger,
+      uri,
+    );
   }
 
   @override
