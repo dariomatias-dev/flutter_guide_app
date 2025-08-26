@@ -24,6 +24,7 @@ class DeepLinkHandler {
   final Logger logger;
 
   late final ValueNotifier<int> _screenIndexNotifier;
+  late final ValueNotifier<int> _elementsScreenTabIndexNotifier;
   late final ComponentsMapInheritedWidget _componentsMap;
 
   DeepLinkHandler({
@@ -32,8 +33,11 @@ class DeepLinkHandler {
     required this.context,
     required this.logger,
   }) {
-    _screenIndexNotifier =
-        UserPreferencesInheritedWidget.of(context)!.screenIndexNotifier;
+    final userPreferencesInheritedWidget =
+        UserPreferencesInheritedWidget.of(context)!;
+    _screenIndexNotifier = userPreferencesInheritedWidget.screenIndexNotifier;
+    _elementsScreenTabIndexNotifier =
+        userPreferencesInheritedWidget.elementsScreenTabIndexNotifier;
     _componentsMap = ComponentsMapInheritedWidget.of(context)!;
   }
 
@@ -84,6 +88,13 @@ class DeepLinkHandler {
       _screenIndexNotifier.value = -1;
     }
     _screenIndexNotifier.value = newIndex;
+  }
+
+  void _updateElementsScreenTabIndex(int newIndex) {
+    if (_elementsScreenTabIndexNotifier.value == newIndex) {
+      _elementsScreenTabIndexNotifier.value = -1;
+    }
+    _elementsScreenTabIndexNotifier.value = newIndex;
   }
 
   void _openInterface(
@@ -175,6 +186,12 @@ class DeepLinkHandler {
 
     if (screen != null) {
       _updateScreenIndex(screenIndex);
+
+      if (type == 'widgets') {
+        _updateElementsScreenTabIndex(0);
+      } else if (type == 'functions') {
+        _updateElementsScreenTabIndex(1);
+      }
 
       navigatorKey.currentState?.push(
         MaterialPageRoute(

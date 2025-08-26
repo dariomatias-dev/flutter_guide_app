@@ -20,6 +20,7 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
     required this.favoritePackagesService,
     required this.getFavoriteService,
     required this.screenIndexNotifier,
+    required this.elementsScreenTabIndexNotifier,
     required super.child,
   });
 
@@ -41,6 +42,7 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
   ) getFavoriteService;
 
   final ValueNotifier<int> screenIndexNotifier;
+  final ValueNotifier<int> elementsScreenTabIndexNotifier;
 
   static UserPreferencesInheritedWidget? of(BuildContext context) {
     return context
