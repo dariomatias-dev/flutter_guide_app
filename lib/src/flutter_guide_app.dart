@@ -1,17 +1,18 @@
-import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
-import 'package:flutter_guide/src/shared/utils/handle_deep_link.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
+import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
 import 'package:flutter_guide/src/core/routes/flutter_guide_routes.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+
+import 'package:flutter_guide/src/services/deep_link_service.dart';
 
 class FlutterGuideApp extends StatefulWidget {
   const FlutterGuideApp({super.key});
@@ -23,49 +24,31 @@ class FlutterGuideApp extends StatefulWidget {
 class _FlutterGuideAppState extends State<FlutterGuideApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
-
   final _logger = Logger();
 
-  late AppLinks _appLinks;
-
-  void _initDeepLinks() async {
-    try {
-      final initialLink = await _appLinks.getInitialLink();
-      if (initialLink != null) {
-        _handleDeepLink(initialLink);
-      }
-
-      _appLinks.uriLinkStream.listen((uri) {
-        _handleDeepLink(uri);
-      });
-    } catch (err, stackTrace) {
-      _logger.e(
-        'Deep Link',
-        error: err,
-        stackTrace: stackTrace,
-      );
-    }
-  }
-
-  void _handleDeepLink(Uri uri) {
-    handleDeepLink(
-      _navigatorKey,
-      _scaffoldMessengerKey,
-      context,
-      _logger,
-      uri,
-    );
-  }
+  DeepLinkService? _deepLinkService;
 
   @override
   void initState() {
     super.initState();
 
-    _appLinks = AppLinks();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        final handler = DeepLinkHandler(
+          navigatorKey: _navigatorKey,
+          scaffoldMessengerKey: _scaffoldMessengerKey,
+          context: context,
+          logger: _logger,
+        );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _initDeepLinks();
-    });
+        _deepLinkService = DeepLinkService(
+          handler: handler,
+          logger: _logger,
+        );
+
+        _deepLinkService?.init();
+      },
+    );
   }
 
   @override

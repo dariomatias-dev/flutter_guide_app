@@ -6,9 +6,8 @@ class UiSummaryModel extends ComponentSummaryModel {
     required this.type,
     super.videoId,
     required super.sample,
-    required this.fileName,
+    required super.fileName,
   });
 
   final ComponentType type;
-  final String fileName;
 }

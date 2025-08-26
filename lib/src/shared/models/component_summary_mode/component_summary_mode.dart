@@ -14,9 +14,11 @@ class ComponentSummaryModel {
     required this.name,
     this.videoId,
     required this.sample,
+    this.fileName,
   });
 
   final String name;
   final String? videoId;
   final Widget sample;
+  final String? fileName;
 }
