@@ -6,11 +6,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
+import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/routes/flutter_guide_routes.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
+
+import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
 
 class FlutterGuideApp extends StatefulWidget {
   const FlutterGuideApp({super.key});
@@ -20,6 +24,9 @@ class FlutterGuideApp extends StatefulWidget {
 }
 
 class _FlutterGuideAppState extends State<FlutterGuideApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
   final _logger = Logger();
 
   late AppLinks _appLinks;
@@ -53,30 +60,76 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
     }
 
     final type = uri.pathSegments[0];
+    final componentName = uri.pathSegments[1];
 
     final screenIndexNotifier =
         UserPreferencesInheritedWidget.of(context)!.screenIndexNotifier;
 
+    Widget? screen;
+    int screenIndex = 0;
+
+    final componentsMapInheritedWidget =
+        ComponentsMapInheritedWidget.of(context)!;
+
     switch (type) {
-      case 'elements':
-        screenIndexNotifier.value = 0;
-        break;
-      case 'uis':
-        screenIndexNotifier.value = 0;
-        break;
-      case 'templates':
-        screenIndexNotifier.value = 0;
-        break;
       case 'widgets':
-        screenIndexNotifier.value = 1;
+        screenIndex = 1;
+
+        if (componentsMapInheritedWidget.widgetNames.contains(componentName)) {
+          screen = ComponentScreen(
+            componentType: ComponentType.widget,
+            componentName: componentName,
+          );
+        }
+
         break;
       case 'functions':
-        screenIndexNotifier.value = 1;
+        screenIndex = 1;
+
+        if (componentsMapInheritedWidget.functionNames
+            .contains(componentName)) {
+          screen = ComponentScreen(
+            componentType: ComponentType.function,
+            componentName: componentName,
+          );
+        }
+
         break;
       case 'packages':
-        screenIndexNotifier.value = 1;
+        screenIndex = 2;
+
+        if (componentsMapInheritedWidget.packageNames.contains(componentName)) {
+          screen = ComponentScreen(
+            componentType: ComponentType.package,
+            componentName: componentName,
+          );
+        }
+
         break;
-      default:
+    }
+
+    if (screen != null) {
+      screenIndexNotifier.value = screenIndex;
+
+      _navigatorKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) {
+            return screen!;
+          },
+        ),
+      );
+    } else {
+      _scaffoldMessengerKey.currentState?.showSnackBar(
+        SnackBar(
+          content: Text(
+            'The "$componentName" component in "$type" was not found.',
+          ),
+          action: SnackBarAction(
+            label: 'Ok',
+            onPressed: () {},
+          ),
+        ),
+      );
     }
   }
 
@@ -86,7 +139,9 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
 
     _appLinks = AppLinks();
 
-    _initDeepLinks();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initDeepLinks();
+    });
   }
 
   @override
@@ -99,6 +154,8 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
           valueListenable: ThemeController.instance.themeModeNotifier,
           builder: (context, themeMode, child) {
             return MaterialApp(
+              navigatorKey: _navigatorKey,
+              scaffoldMessengerKey: _scaffoldMessengerKey,
               debugShowCheckedModeBanner: false,
               title: 'Flutter Guide',
               routes: flutterGuideRoutes,
