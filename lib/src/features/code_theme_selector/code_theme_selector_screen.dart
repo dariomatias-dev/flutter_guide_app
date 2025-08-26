@@ -197,9 +197,9 @@ class _ThemeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final isPreviewDark = themeType == ThemeType.dark;
     final cardColors = isPreviewDark ? _darkCardColors : _lightCardColors;
+    final selectedColor = Colors.blue.shade500.withAlpha(140);
 
     return GestureDetector(
       onTap: onTap,
@@ -212,13 +212,13 @@ class _ThemeCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
-            color: isSelected ? colorScheme.primary : cardColors.border,
+            color: isSelected ? selectedColor : cardColors.border,
             width: 2.0,
           ),
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: isSelected
-                  ? colorScheme.primary.withAlpha(80)
+                  ? selectedColor.withAlpha(80)
                   : Colors.black.withAlpha(25),
               blurRadius: 10.0,
               offset: const Offset(0.0, 4.0),
@@ -251,18 +251,6 @@ class _ThemeCard extends StatelessWidget {
                   Expanded(
                     child: Row(
                       children: <Widget>[
-                        const _WindowDot(
-                          color: Color(0xFFFF5F57),
-                        ),
-                        const SizedBox(width: 6.0),
-                        const _WindowDot(
-                          color: Color(0xFFFEBC2E),
-                        ),
-                        const SizedBox(width: 6.0),
-                        const _WindowDot(
-                          color: Color(0xFF28C840),
-                        ),
-                        const SizedBox(width: 16.0),
                         Expanded(
                           child: Text(
                             themeName,
@@ -294,7 +282,7 @@ class _ThemeCard extends StatelessWidget {
                         ? Icon(
                             key: const ValueKey('selected'),
                             Icons.check_circle_rounded,
-                            color: cardColors.check,
+                            color: selectedColor,
                           )
                         : const SizedBox(
                             key: ValueKey('unselected'),
@@ -327,30 +315,6 @@ class _ThemeCard extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _WindowDot extends StatelessWidget {
-  const _WindowDot({
-    required this.color,
-  });
-
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 12.0,
-      height: 12.0,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: Colors.black.withAlpha(40),
-          width: 0.5,
         ),
       ),
     );
