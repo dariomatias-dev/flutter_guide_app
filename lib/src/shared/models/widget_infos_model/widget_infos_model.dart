@@ -1,10 +1,8 @@
 part of 'component_infos_model.dart';
 
-class WidgetInfosModel extends ComponentInfosModel {
+class WidgetInfosModel extends ComponentInfosModel<WidgetSummaryModel> {
   const WidgetInfosModel({
     required super.componentNames,
-    required this.samples,
+    required super.samples,
   });
-
-  final Map<String, WidgetSummaryModel> samples;
 }
