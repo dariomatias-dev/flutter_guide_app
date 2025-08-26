@@ -1,4 +1,5 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
@@ -192,7 +193,10 @@ class DeepLinkHandler {
     scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(
         content: Text(
-          'The "$componentName" component in "$type" was not found.',
+          AppLocalizations.of(
+            navigatorKey.currentState!.context,
+          )!
+              .componentNotFound(componentName, type),
         ),
         action: SnackBarAction(
           onPressed: () {},

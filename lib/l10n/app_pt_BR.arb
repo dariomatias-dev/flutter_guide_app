@@ -67,5 +67,6 @@
     "viewOnPlayStore": "Ver na Play Store",
     "selectCodeTheme": "Selecionar Tema de Código",
     "light": "Claro",
-    "dark": "Escuro"
+    "dark": "Escuro",
+    "componentNotFound": "Não foi possível localizar o componente '{componentName}' em '{type}'."
 }

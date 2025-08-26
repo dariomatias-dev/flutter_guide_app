@@ -213,4 +213,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dark => 'Dark';
+
+  @override
+  String componentNotFound(Object componentName, Object type) {
+    return 'Could not locate the \'$componentName\' component in \'$type\'.';
+  }
 }

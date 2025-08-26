@@ -213,6 +213,11 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get dark => 'Escuro';
+
+  @override
+  String componentNotFound(Object componentName, Object type) {
+    return 'Não foi possível localizar o componente \'$componentName\' em \'$type\'.';
+  }
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -424,4 +429,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get dark => 'Escuro';
+
+  @override
+  String componentNotFound(Object componentName, Object type) {
+    return 'Não foi possível localizar o componente \'$componentName\' em \'$type\'.';
+  }
 }

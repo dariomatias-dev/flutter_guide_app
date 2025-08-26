@@ -506,6 +506,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark'**
   String get dark;
+
+  /// No description provided for @componentNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not locate the \'{componentName}\' component in \'{type}\'.'**
+  String componentNotFound(Object componentName, Object type);
 }
 
 class _AppLocalizationsDelegate
