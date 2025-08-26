@@ -4,4 +4,7 @@ enum ComponentType {
   cupertino,
   function,
   package,
+  elements,
+  uis,
+  templates,
 }

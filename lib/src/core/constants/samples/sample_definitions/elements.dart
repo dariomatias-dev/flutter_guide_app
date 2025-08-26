@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
 
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
 
@@ -14,6 +16,7 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/eleme
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/loading_screen_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/pagination_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/password_field_sample.dart';
+import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
 
 List<InterfaceModel> getElements(
   BuildContext context,
@@ -72,4 +75,28 @@ List<InterfaceModel> getElements(
       component: const PasswordFieldSample(),
     ),
   ];
+}
+
+ElementInfosModel getElementInfos(BuildContext context) {
+  final elements = getElements(context);
+
+  final elementNames = <String>[];
+  final samples = <String, ElementSummaryModel>{};
+
+  for (final element in elements) {
+    elementNames.add(element.fileName);
+
+    samples[element.fileName] = ElementSummaryModel(
+      name: element.fileName,
+      type: ComponentType.elements,
+      videoId: null,
+      sample: element.component,
+      fileName: element.fileName,
+    );
+  }
+
+  return ElementInfosModel(
+    componentNames: elementNames,
+    samples: samples,
+  );
 }
