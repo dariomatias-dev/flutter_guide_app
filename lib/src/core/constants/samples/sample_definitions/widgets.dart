@@ -184,7 +184,7 @@ const widgets = <WidgetModel>[
     name: WidgetNames.badgeMaterial,
     icon: Icons.badge_outlined,
     sample: BadgeSample(),
-    type: ComponentType.widget,
+    type: ComponentType.material,
   ),
   WidgetModel(
     name: WidgetNames.bannerWidget,

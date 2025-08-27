@@ -15,10 +15,12 @@ class CodeThemeController with ChangeNotifier {
     ('A11y Light', SyntaxThemes.a11yLight),
     ('Android Studio Light', SyntaxThemes.androidstudioLight),
     ('Atom One Light', SyntaxThemes.atomOneLight),
+    ('Light High Contrast', SyntaxThemes.lightHighContrast),
     ('GitHub Light', SyntaxThemes.githubLight),
     ('Solarized Light', SyntaxThemes.solarizedLight),
     ('StackOverflow Light', SyntaxThemes.stackoverflowLight),
     ('VS Code Light', SyntaxThemes.vsCodeLight),
+    ('Xcode Light', SyntaxThemes.xcodeLight),
   ];
 
   final darkThemes = <(String, SyntaxColorSchema)>[

@@ -60,7 +60,11 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+
+    _tabController = TabController(
+      length: 2,
+      vsync: this,
+    );
     _codeThemeController.addListener(_rebuild);
   }
 
@@ -68,6 +72,7 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
   void dispose() {
     _tabController.dispose();
     _codeThemeController.removeListener(_rebuild);
+
     super.dispose();
   }
 
@@ -144,7 +149,10 @@ class _ThemeList extends StatelessWidget {
   final List<(String, SyntaxColorSchema)> themes;
   final ThemeType themeType;
   final SyntaxColorSchema selectedSchema;
-  final void Function(String name, SyntaxColorSchema schema) onThemeSelected;
+  final void Function(
+    String name,
+    SyntaxColorSchema schema,
+  ) onThemeSelected;
   final String previewCode;
 
   @override
