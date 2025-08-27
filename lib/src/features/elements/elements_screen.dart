@@ -68,38 +68,41 @@ class _ElementsScreenState extends State<ElementsScreen>
       return const SizedBox.shrink();
     }
 
-    return Column(
-      children: <Widget>[
-        DefaultTabBarWidget(
-          controller: _tabController!,
-          onTap: (value) {
-            if (value != _elementsScreenTabIndexNotifier!.value) {
-              _elementsScreenTabIndexNotifier!.value = value;
-            }
-          },
-          tabs: <Tab>[
-            const Tab(
-              child: Text(
-                'Widgets',
-              ),
+    return ValueListenableBuilder(
+      valueListenable: _elementsScreenTabIndexNotifier!,
+      builder: (context, value, child) {
+        return Column(
+          children: <Widget>[
+            DefaultTabBarWidget(
+              controller: _tabController!,
+              onTap: (value) {
+                _elementsScreenTabIndexNotifier!.value = value;
+              },
+              tabs: <Tab>[
+                const Tab(
+                  child: Text(
+                    'Widgets',
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    AppLocalizations.of(context)!.functions,
+                  ),
+                ),
+              ],
             ),
-            Tab(
-              child: Text(
-                AppLocalizations.of(context)!.functions,
+            Expanded(
+              child: ComponentsScreen(
+                key: GlobalKey(),
+                componentType: _tabController!.index == 0
+                    ? ComponentType.widget
+                    : ComponentType.function,
+                components: _tabController!.index == 0 ? widgets : functions,
               ),
             ),
           ],
-        ),
-        Expanded(
-          child: ComponentsScreen(
-            key: GlobalKey(),
-            componentType: _tabController!.index == 0
-                ? ComponentType.widget
-                : ComponentType.function,
-            components: _tabController!.index == 0 ? widgets : functions,
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
 }
