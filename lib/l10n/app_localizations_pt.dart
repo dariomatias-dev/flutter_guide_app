@@ -15,6 +15,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get elements => 'Elementos';
 
   @override
+  String get templates => 'Modelos';
+
+  @override
   String get components => 'Componentes';
 
   @override
@@ -232,6 +235,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get elements => 'Elementos';
+
+  @override
+  String get templates => 'Modelos';
 
   @override
   String get components => 'Componentes';

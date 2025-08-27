@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get elements => 'Elements';
 
   @override
+  String get templates => 'Templates';
+
+  @override
   String get components => 'Components';
 
   @override

@@ -2,6 +2,7 @@
   "@@locale": "en",
   "home": "Home",
   "elements": "Elements",
+  "templates": "Templates",
   "components": "Components",
   "language": "Language",
   "codeTheme": "Code Theme",

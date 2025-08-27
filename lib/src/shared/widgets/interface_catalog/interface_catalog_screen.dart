@@ -23,19 +23,25 @@ class InterfaceCatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late final String title;
+    late final String componentType;
     late final List<InterfaceModel> items;
 
+    final appLocalizations = AppLocalizations.of(context)!;
+
     switch (elementType) {
-      case InterfaceTypeEnum.ui:
-        title = 'UIs';
-        items = getUis(context);
-        break;
       case InterfaceTypeEnum.element:
-        title = AppLocalizations.of(context)!.elements;
+        title = appLocalizations.elements;
+        componentType = 'elements';
         items = getElements(context);
         break;
+      case InterfaceTypeEnum.ui:
+        title = 'UIs';
+        componentType = 'uis';
+        items = getUis(context);
+        break;
       case InterfaceTypeEnum.template:
-        title = 'Templates';
+        title = appLocalizations.templates;
+        componentType = 'templates';
         items = getTemplates(context);
         break;
     }
@@ -59,7 +65,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
                     return ComponentSampleScreen(
                       title: value.name,
                       filePath:
-                          'lib/src/core/constants/samples/sample_components/${title.toLowerCase()}/${value.fileName}_sample.dart',
+                          'lib/src/core/constants/samples/sample_components/$componentType/${value.fileName}_sample.dart',
                       componentName: value.fileName,
                       sample: value.component,
                     );

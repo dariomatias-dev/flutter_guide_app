@@ -14,6 +14,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(
         scrollbars: false,
@@ -22,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 20.0),
           BorderListTileItemWidget(
-            title: AppLocalizations.of(context)!.elements,
+            title: appLocalizations.elements,
             icon: Icons.list_alt,
             onTap: () {
               navigateTo(
@@ -48,7 +50,7 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           BorderListTileItemWidget(
-            title: 'Templates',
+            title: appLocalizations.templates,
             icon: Icons.insert_drive_file_outlined,
             onTap: () {
               navigateTo(
