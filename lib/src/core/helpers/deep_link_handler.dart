@@ -17,6 +17,7 @@ import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/interface_catalog_screen.dart';
 
+/// Handles deep link navigation for components and interfaces
 class DeepLinkHandler {
   final GlobalKey<NavigatorState> navigatorKey;
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
@@ -35,12 +36,18 @@ class DeepLinkHandler {
   }) {
     final userPreferencesInheritedWidget =
         UserPreferencesInheritedWidget.of(context)!;
+
     _screenIndexNotifier = userPreferencesInheritedWidget.screenIndexNotifier;
     _elementsScreenTabIndexNotifier =
         userPreferencesInheritedWidget.elementsScreenTabIndexNotifier;
     _componentsMap = ComponentsMapInheritedWidget.of(context)!;
   }
 
+  // --------------------------
+  // Public Methods
+  // --------------------------
+
+  /// Main entry point for handling deep links
   void handle(Uri uri) {
     if (uri.pathSegments.length < 2) {
       logger.e('Invalid Deep Link');
@@ -83,6 +90,11 @@ class DeepLinkHandler {
     _handleComponentNavigation(type, componentName);
   }
 
+  // --------------------------
+  // Private Methods - UI Updates
+  // --------------------------
+
+  /// Updates main screen index notifier
   void _updateScreenIndex(int newIndex) {
     if (_screenIndexNotifier.value == newIndex) {
       _screenIndexNotifier.value = -1;
@@ -90,6 +102,7 @@ class DeepLinkHandler {
     _screenIndexNotifier.value = newIndex;
   }
 
+  /// Updates elements screen tab index notifier
   void _updateElementsScreenTabIndex(int newIndex) {
     if (_elementsScreenTabIndexNotifier.value == newIndex) {
       _elementsScreenTabIndexNotifier.value = -1;
@@ -97,6 +110,11 @@ class DeepLinkHandler {
     _elementsScreenTabIndexNotifier.value = newIndex;
   }
 
+  // --------------------------
+  // Private Methods - Interface Handling
+  // --------------------------
+
+  /// Open interface catalog and component sample screen
   void _openInterface(
     String componentName,
     int index,
@@ -142,6 +160,7 @@ class DeepLinkHandler {
     );
   }
 
+  /// Build a ComponentScreen if the component exists
   Widget? _buildComponentScreen(
     ComponentType type,
     List<String> names,
@@ -155,6 +174,11 @@ class DeepLinkHandler {
     );
   }
 
+  // --------------------------
+  // Private Methods - Component Navigation
+  // --------------------------
+
+  /// Handles navigation for widgets, functions, and packages
   void _handleComponentNavigation(
     String type,
     String componentName,
@@ -204,6 +228,11 @@ class DeepLinkHandler {
     }
   }
 
+  // --------------------------
+  // Private Methods - Error Handling
+  // --------------------------
+
+  /// Show snack bar when a component is not found
   void _showNotFound(
     String componentName,
     String type,

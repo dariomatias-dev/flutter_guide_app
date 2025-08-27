@@ -24,6 +24,7 @@ class FlutterGuideApp extends StatefulWidget {
 class _FlutterGuideAppState extends State<FlutterGuideApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
   final _logger = Logger();
 
   DeepLinkService? _deepLinkService;
@@ -49,6 +50,13 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
         _deepLinkService?.init();
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _logger.close();
+
+    super.dispose();
   }
 
   @override
