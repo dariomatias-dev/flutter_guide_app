@@ -134,6 +134,7 @@ class DeepLinkHandler {
             title: element.name,
             filePath:
                 'lib/src/core/constants/samples/sample_components/$folder/${element.fileName}_sample.dart',
+            componentName: componentName,
             sample: element.sample,
           );
         },

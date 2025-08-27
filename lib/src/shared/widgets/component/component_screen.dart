@@ -45,6 +45,7 @@ class _ComponentScreenState extends State<ComponentScreen> {
       title: _controller.component.name,
       filePath:
           'lib/src/core/constants/samples/sample_components/$folderName/${widget.componentName.toLowerCase()}_sample.dart',
+      componentName: widget.componentName,
       sample: _controller.component.sample,
       popupMenuItems: <PopupMenuEntry>[
         FavoritePopupMenuItemWidget(

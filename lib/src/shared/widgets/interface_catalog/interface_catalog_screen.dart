@@ -60,6 +60,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
                       title: value.name,
                       filePath:
                           'lib/src/core/constants/samples/sample_components/${title.toLowerCase()}/${value.fileName}_sample.dart',
+                      componentName: value.fileName,
                       sample: value.component,
                     );
                   },

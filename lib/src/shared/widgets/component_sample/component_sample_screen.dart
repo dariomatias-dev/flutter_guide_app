@@ -15,12 +15,14 @@ class ComponentSampleScreen extends StatefulWidget {
     required this.title,
     this.popupMenuItems,
     required this.filePath,
+    required this.componentName,
     required this.sample,
   });
 
   final String title;
   final List<PopupMenuEntry>? popupMenuItems;
   final String filePath;
+  final String componentName;
   final Widget sample;
 
   @override
@@ -44,7 +46,8 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
   @override
   Widget build(BuildContext context) {
     return ComponentSampleScreenInheritedWidget(
-      file: widget.filePath,
+      fileName: widget.filePath,
+      componentName: widget.componentName,
       child: DefaultTabController(
         initialIndex: 0,
         length: 2,
