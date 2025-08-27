@@ -39,7 +39,6 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
           navigatorKey: _navigatorKey,
           scaffoldMessengerKey: _scaffoldMessengerKey,
           context: context,
-          logger: _logger,
         );
 
         _deepLinkService = DeepLinkService(

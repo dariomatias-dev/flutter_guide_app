@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
@@ -21,7 +20,6 @@ class DeepLinkHandler {
   final GlobalKey<NavigatorState> navigatorKey;
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
   final BuildContext context;
-  final Logger logger;
 
   late final ValueNotifier<int> _screenIndexNotifier;
   late final ValueNotifier<int> _elementsScreenTabIndexNotifier;
@@ -31,7 +29,6 @@ class DeepLinkHandler {
     required this.navigatorKey,
     required this.scaffoldMessengerKey,
     required this.context,
-    required this.logger,
   }) {
     final userPreferencesInheritedWidget =
         UserPreferencesInheritedWidget.of(context)!;
@@ -49,7 +46,13 @@ class DeepLinkHandler {
   /// Main entry point for handling deep links
   void handle(Uri uri) {
     if (uri.pathSegments.length < 2) {
-      logger.e('Invalid Deep Link');
+      _showSnackBarMessage(
+        AppLocalizations.of(
+          navigatorKey.currentState!.context,
+        )!
+            .invalidLink,
+      );
+
       return;
     }
 
@@ -231,24 +234,29 @@ class DeepLinkHandler {
   // Private Methods - Error Handling
   // --------------------------
 
-  /// Show snack bar when a component is not found
-  void _showNotFound(
-    String componentName,
-    String type,
-  ) {
+  /// Show snack bar
+  void _showSnackBarMessage(String message) {
     scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(
-        content: Text(
-          AppLocalizations.of(
-            navigatorKey.currentState!.context,
-          )!
-              .componentNotFound(componentName, type),
-        ),
+        content: Text(message),
         action: SnackBarAction(
           onPressed: () {},
           label: 'Ok',
         ),
       ),
+    );
+  }
+
+  /// Show snack bar when a component is not found
+  void _showNotFound(
+    String componentName,
+    String type,
+  ) {
+    _showSnackBarMessage(
+      AppLocalizations.of(
+        navigatorKey.currentState!.context,
+      )!
+          .componentNotFound(componentName, type),
     );
   }
 }

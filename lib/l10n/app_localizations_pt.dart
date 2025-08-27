@@ -224,6 +224,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get share => 'Compartilhar';
+
+  @override
+  String get invalidLink => 'O link é inválido.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -446,4 +449,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get share => 'Compartilhar';
+
+  @override
+  String get invalidLink => 'O link é inválido.';
 }

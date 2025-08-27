@@ -224,4 +224,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get share => 'Share';
+
+  @override
+  String get invalidLink => 'The link is invalid.';
 }

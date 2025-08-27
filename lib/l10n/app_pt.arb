@@ -70,5 +70,6 @@
   "light": "Claro",
   "dark": "Escuro",
   "componentNotFound": "Não foi possível localizar o componente '{componentName}' em '{type}'.",
-  "share": "Compartilhar"
+  "share": "Compartilhar",
+  "invalidLink": "O link é inválido."
 }

@@ -70,5 +70,6 @@
   "light": "Light",
   "dark": "Dark",
   "componentNotFound": "Could not locate the '{componentName}' component in '{type}'.",
-  "share": "Share"
+  "share": "Share",
+  "invalidLink": "The link is invalid."
 }

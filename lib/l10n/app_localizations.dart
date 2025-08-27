@@ -524,6 +524,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Share'**
   String get share;
+
+  /// No description provided for @invalidLink.
+  ///
+  /// In en, this message translates to:
+  /// **'The link is invalid.'**
+  String get invalidLink;
 }
 
 class _AppLocalizationsDelegate
