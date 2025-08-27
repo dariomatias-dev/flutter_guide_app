@@ -48,19 +48,19 @@ class HomeScreen extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 8.0),
-          BorderListTileItemWidget(
-            title: appLocalizations.templates,
-            icon: Icons.insert_drive_file_outlined,
-            onTap: () {
-              navigateTo(
-                context,
-                const InterfaceCatalogScreen(
-                  elementType: InterfaceTypeEnum.template,
-                ),
-              );
-            },
-          ),
+          // const SizedBox(height: 8.0),
+          // BorderListTileItemWidget(
+          //   title: appLocalizations.templates,
+          //   icon: Icons.insert_drive_file_outlined,
+          //   onTap: () {
+          //     navigateTo(
+          //       context,
+          //       const InterfaceCatalogScreen(
+          //         elementType: InterfaceTypeEnum.template,
+          //       ),
+          //     );
+          //   },
+          // ),
           const SizedBox(height: 20.0),
           const ComponentGroupsWidget(),
           const SizedBox(height: 92.0),

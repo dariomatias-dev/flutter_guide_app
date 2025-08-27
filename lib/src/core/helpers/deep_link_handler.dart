@@ -3,7 +3,6 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/templates.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
@@ -76,15 +75,15 @@ class DeepLinkHandler {
           getUiInfos,
         );
         return;
-      case 'templates':
-        _openInterface(
-          componentName,
-          0,
-          InterfaceTypeEnum.template,
-          'templates',
-          getTemplateInfos,
-        );
-        return;
+      // case 'templates':
+      //   _openInterface(
+      //     componentName,
+      //     0,
+      //     InterfaceTypeEnum.template,
+      //     'templates',
+      //     getTemplateInfos,
+      //   );
+      //   return;
     }
 
     _handleComponentNavigation(type, componentName);
