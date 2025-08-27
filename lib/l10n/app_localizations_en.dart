@@ -218,4 +218,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String componentNotFound(Object componentName, Object type) {
     return 'Could not locate the \'$componentName\' component in \'$type\'.';
   }
+
+  @override
+  String get share => 'Share';
 }

@@ -57,8 +57,8 @@ class _ComponentSampleAppBarWidgetState
               if (widget.popupMenuItems != null) ...widget.popupMenuItems!,
               PopupMenuItem(
                 onTap: _controller.shareComponent,
-                child: const Text(
-                  'Share',
+                child: Text(
+                  AppLocalizations.of(context)!.share,
                 ),
               ),
             ];

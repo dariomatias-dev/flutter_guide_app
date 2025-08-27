@@ -68,5 +68,6 @@
   "selectCodeTheme": "Select Code Theme",
   "light": "Light",
   "dark": "Dark",
-  "componentNotFound": "Could not locate the '{componentName}' component in '{type}'."
+  "componentNotFound": "Could not locate the '{componentName}' component in '{type}'.",
+  "share": "Share"
 }

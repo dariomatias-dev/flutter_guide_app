@@ -68,5 +68,6 @@
   "selectCodeTheme": "Selecionar Tema de Código",
   "light": "Claro",
   "dark": "Escuro",
-  "componentNotFound": "Não foi possível localizar o componente '{componentName}' em '{type}'."
+  "componentNotFound": "Não foi possível localizar o componente '{componentName}' em '{type}'.",
+  "share": "Compartilhar"
 }

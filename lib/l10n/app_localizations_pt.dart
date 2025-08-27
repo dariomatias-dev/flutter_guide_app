@@ -218,6 +218,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String componentNotFound(Object componentName, Object type) {
     return 'Não foi possível localizar o componente \'$componentName\' em \'$type\'.';
   }
+
+  @override
+  String get share => 'Compartilhar';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -434,4 +437,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String componentNotFound(Object componentName, Object type) {
     return 'Não foi possível localizar o componente \'$componentName\' em \'$type\'.';
   }
+
+  @override
+  String get share => 'Compartilhar';
 }

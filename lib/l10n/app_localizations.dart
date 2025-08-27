@@ -512,6 +512,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not locate the \'{componentName}\' component in \'{type}\'.'**
   String componentNotFound(Object componentName, Object type);
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
 }
 
 class _AppLocalizationsDelegate
