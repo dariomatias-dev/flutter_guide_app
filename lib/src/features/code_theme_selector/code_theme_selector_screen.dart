@@ -25,21 +25,23 @@ class CounterApp extends StatelessWidget {
 
 enum ThemeType { light, dark }
 
-const _lightCardColors = (
-  header: Color(0xFFF5F5F5),
+final _lightCardColors = (
+  header: const Color(0xFFF5F5F5),
   background: Colors.white,
-  text: Color(0xFF333333),
-  border: Color(0xFFE0E0E0),
-  separator: Color(0xFFE0E0E0),
+  text: const Color(0xFF333333),
+  border: Colors.grey.shade200,
+  selectedBorder: Colors.grey.shade200.withAlpha(200),
+  separator: const Color(0xFFE0E0E0),
   check: Colors.black,
 );
 
-const _darkCardColors = (
-  header: Color(0xFF2A2D35),
-  background: Color(0xFF1F2228),
-  text: Color(0xFFF0F0F0),
-  border: Color(0xFF3A3D46),
-  separator: Color(0xFF1A1C21),
+final _darkCardColors = (
+  header: const Color(0xFF2A2D35),
+  background: const Color(0xFF1F2228),
+  text: const Color(0xFFF0F0F0),
+  border: Colors.grey.shade800,
+  selectedBorder: Colors.grey.shade800.withAlpha(180),
+  separator: const Color(0xFF1A1C21),
   check: Colors.white,
 );
 
@@ -65,6 +67,7 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
       length: 2,
       vsync: this,
     );
+
     _codeThemeController.addListener(_rebuild);
   }
 
@@ -207,7 +210,6 @@ class _ThemeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isPreviewDark = themeType == ThemeType.dark;
     final cardColors = isPreviewDark ? _darkCardColors : _lightCardColors;
-    final selectedColor = Colors.blue.shade500.withAlpha(140);
 
     return GestureDetector(
       onTap: onTap,
@@ -215,18 +217,16 @@ class _ThemeCard extends StatelessWidget {
         duration: const Duration(
           milliseconds: 250,
         ),
-        curve: Curves.easeInOut,
-        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
-            color: isSelected ? selectedColor : cardColors.border,
+            color: isSelected ? cardColors.selectedBorder : cardColors.border,
             width: 2.0,
           ),
+          borderRadius: BorderRadius.circular(12.0),
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: isSelected
-                  ? selectedColor.withAlpha(80)
+                  ? Colors.blue.shade500.withAlpha(80)
                   : Colors.black.withAlpha(25),
               blurRadius: 10.0,
               offset: const Offset(0.0, 4.0),
@@ -290,7 +290,7 @@ class _ThemeCard extends StatelessWidget {
                         ? Icon(
                             key: const ValueKey('selected'),
                             Icons.check_circle_rounded,
-                            color: selectedColor,
+                            color: Colors.blue.shade400,
                           )
                         : const SizedBox(
                             key: ValueKey('unselected'),
