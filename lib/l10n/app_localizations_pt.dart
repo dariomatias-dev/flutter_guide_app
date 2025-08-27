@@ -227,6 +227,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get invalidLink => 'O link é inválido.';
+
+  @override
+  String get deepLinkInitFailure =>
+      'Falha ao inicializar o recurso de Deep Link.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -452,4 +456,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get invalidLink => 'O link é inválido.';
+
+  @override
+  String get deepLinkInitFailure =>
+      'Falha ao inicializar o recurso de Deep Link.';
 }

@@ -530,6 +530,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The link is invalid.'**
   String get invalidLink;
+
+  /// No description provided for @deepLinkInitFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to initialize the Deep Link feature.'**
+  String get deepLinkInitFailure;
 }
 
 class _AppLocalizationsDelegate

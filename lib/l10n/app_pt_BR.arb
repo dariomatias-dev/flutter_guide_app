@@ -71,5 +71,6 @@
   "dark": "Escuro",
   "componentNotFound": "Não foi possível localizar o componente '{componentName}' em '{type}'.",
   "share": "Compartilhar",
-  "invalidLink": "O link é inválido."
+  "invalidLink": "O link é inválido.",
+  "deepLinkInitFailure": "Falha ao inicializar o recurso de Deep Link."
 }

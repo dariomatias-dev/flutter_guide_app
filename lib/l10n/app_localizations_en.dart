@@ -227,4 +227,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidLink => 'The link is invalid.';
+
+  @override
+  String get deepLinkInitFailure =>
+      'Failed to initialize the Deep Link feature.';
 }

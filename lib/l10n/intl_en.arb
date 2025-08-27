@@ -71,5 +71,6 @@
   "dark": "Dark",
   "componentNotFound": "Could not locate the '{componentName}' component in '{type}'.",
   "share": "Share",
-  "invalidLink": "The link is invalid."
+  "invalidLink": "The link is invalid.",
+  "deepLinkInitFailure": "Failed to initialize the Deep Link feature."
 }

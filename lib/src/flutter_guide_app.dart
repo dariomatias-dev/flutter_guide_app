@@ -44,6 +44,8 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
         _deepLinkService = DeepLinkService(
           handler: handler,
           logger: _logger,
+          navigatorKey: _navigatorKey,
+          scaffoldMessengerKey: _scaffoldMessengerKey,
         );
 
         _deepLinkService?.init();
