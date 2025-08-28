@@ -83,7 +83,7 @@ class _FlutterAnimateSampleState extends State<FlutterAnimateSample> {
                 ),
               ),
             ),
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 setState(() {});
               },
