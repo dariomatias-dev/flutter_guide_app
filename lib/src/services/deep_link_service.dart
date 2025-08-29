@@ -29,10 +29,7 @@ class DeepLinkService {
         .deepLinkInitFailure;
 
     try {
-      final initialLink = await _appLinks.getInitialLink();
-      if (initialLink != null) {
-        _handler.handle(initialLink);
-      }
+      await _appLinks.getInitialLink();
 
       _appLinks.uriLinkStream.listen(_handler.handle);
     } catch (err, stackTrace) {
