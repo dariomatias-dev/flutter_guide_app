@@ -33,7 +33,6 @@ class DeepLinkHandler {
   }) {
     final userPreferencesInheritedWidget =
         UserPreferencesInheritedWidget.of(context)!;
-
     _screenIndexNotifier = userPreferencesInheritedWidget.screenIndexNotifier;
     _elementsScreenTabIndexNotifier =
         userPreferencesInheritedWidget.elementsScreenTabIndexNotifier;
@@ -48,12 +47,8 @@ class DeepLinkHandler {
   void handle(Uri uri) {
     if (uri.pathSegments.length < 2) {
       _showSnackBarMessage(
-        AppLocalizations.of(
-          navigatorKey.currentState!.context,
-        )!
-            .invalidLink,
+        AppLocalizations.of(navigatorKey.currentState!.context)!.invalidLink,
       );
-
       return;
     }
 
@@ -79,15 +74,6 @@ class DeepLinkHandler {
           getUiInfos,
         );
         return;
-      // case 'templates':
-      //   _openInterface(
-      //     componentName,
-      //     0,
-      //     InterfaceTypeEnum.template,
-      //     'templates',
-      //     getTemplateInfos,
-      //   );
-      //   return;
     }
 
     _handleComponentNavigation(type, componentName);
@@ -113,6 +99,11 @@ class DeepLinkHandler {
     _elementsScreenTabIndexNotifier.value = newIndex;
   }
 
+  /// Remove todas as telas acima da principal
+  void _resetNavigationStack() {
+    navigatorKey.currentState?.popUntil((route) => route.isFirst);
+  }
+
   // --------------------------
   // Private Methods - Interface Handling
   // --------------------------
@@ -135,6 +126,8 @@ class DeepLinkHandler {
     }
 
     final element = infos.samples[componentName]!;
+
+    _resetNavigationStack();
 
     _updateScreenIndex(index);
 
@@ -213,6 +206,8 @@ class DeepLinkHandler {
     }
 
     if (screen != null) {
+      _resetNavigationStack();
+
       _updateScreenIndex(screenIndex);
 
       if (type == 'widgets') {
