@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/line_widget.dart';
 
 class DialogWidget extends StatelessWidget {
   const DialogWidget({
