@@ -4,17 +4,13 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/select_favorite_screen_dialog/select_favorite_screen_dialog_controller.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
 
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 class SelectFavoriteScreenDialogWidget extends StatefulWidget {
-  const SelectFavoriteScreenDialogWidget({
-    super.key,
-    this.overlayEntry,
-  });
-
-  final OverlayEntry? overlayEntry;
+  const SelectFavoriteScreenDialogWidget({super.key});
 
   @override
   State<SelectFavoriteScreenDialogWidget> createState() =>
@@ -31,12 +27,20 @@ class _SelectFavoriteScreenDialogWidgetState
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
 
-    return CustomDialog.dialog(
+    return DialogWidget(
       title: appLocalizations.favorites,
+      actions: <DialogButtonWidget>[
+        DialogButtonWidget(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          text: 'Ok',
+        ),
+      ],
       children: <Widget>[
         ListTileItemWidget(
           onTap: () {
-            widget.overlayEntry?.remove();
+            Navigator.pop(context);
 
             _controller.navigateTo(
               ComponentType.widget,
@@ -47,7 +51,7 @@ class _SelectFavoriteScreenDialogWidgetState
         ),
         ListTileItemWidget(
           onTap: () {
-            widget.overlayEntry?.remove();
+            Navigator.pop(context);
 
             _controller.navigateTo(
               ComponentType.function,
@@ -58,7 +62,7 @@ class _SelectFavoriteScreenDialogWidgetState
         ),
         ListTileItemWidget(
           onTap: () {
-            widget.overlayEntry?.remove();
+            Navigator.pop(context);
 
             _controller.navigateTo(
               ComponentType.package,
@@ -66,15 +70,6 @@ class _SelectFavoriteScreenDialogWidgetState
           },
           title: appLocalizations.packages,
           icon: Icons.archive_outlined,
-        ),
-      ],
-      isActionFullWidth: true,
-      actions: <ActionButtonWidget>[
-        CustomDialog.button(
-          text: 'Ok',
-          onTap: () {
-            widget.overlayEntry?.remove();
-          },
         ),
       ],
     );

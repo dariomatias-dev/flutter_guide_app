@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
 
 class OpenUrlErrorDialog extends StatelessWidget {
   const OpenUrlErrorDialog({
     super.key,
-    required this.overlayEntry,
     required this.url,
   });
 
-  final OverlayEntry? overlayEntry;
   final String url;
 
   @override
   Widget build(BuildContext context) {
-    return CustomDialog.dialog(
+    return DialogWidget(
       title: 'Error',
-      actions: <ActionButtonWidget>[
-        CustomDialog.button(
-          text: 'Ok',
+      actions: <DialogButtonWidget>[
+        DialogButtonWidget(
           onTap: () {
-            overlayEntry?.remove();
+            Navigator.pop(context);
           },
+          text: 'Ok',
         ),
       ],
       children: <Widget>[
