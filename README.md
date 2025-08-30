@@ -6,7 +6,7 @@
 </div>
 <br>
 
-<h1 align="center">Flutter Guide – Mobile App</h1>
+<h1 align="center">FlutterGuide – Mobile App</h1>
 
 <p align="center">
 A mobile app designed to help developers learn, practice, and master Flutter through curated content.
@@ -34,7 +34,7 @@ A mobile app designed to help developers learn, practice, and master Flutter thr
 
 ## About The Project
 
-**Flutter Guide** is a mobile app developed to accelerate the learning curve for both beginner and experienced Flutter developers.
+**FlutterGuide** is a mobile app developed to accelerate the learning curve for both beginner and experienced Flutter developers.
 It offers a variety of code examples for widgets, functions, packages, as well as elements and interfaces built with this technology.
 
 The app itself showcases Flutter’s features, demonstrating how a single codebase can deliver responsive interfaces, smooth animations, and optimized performance on both Android and iOS.
@@ -67,7 +67,7 @@ This project was developed using the following core technologies:
 
 ## Download the App
 
-Get **Flutter Guide** directly from the **Google Play Store**:
+Get **FlutterGuide** directly from the **Google Play Store**:
 
 <a href="https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="200">

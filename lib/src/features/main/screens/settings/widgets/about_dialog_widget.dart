@@ -30,7 +30,7 @@ class AboutDialogWidget extends StatelessWidget {
         ),
         const SizedBox(height: 16.0),
         const Text(
-          'Flutter Guide',
+          'FlutterGuide',
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,

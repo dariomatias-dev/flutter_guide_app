@@ -73,7 +73,7 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
               navigatorKey: _navigatorKey,
               scaffoldMessengerKey: _scaffoldMessengerKey,
               debugShowCheckedModeBanner: false,
-              title: 'Flutter Guide',
+              title: 'FlutterGuide',
               routes: flutterGuideRoutes,
               theme: ligthMode,
               darkTheme: darkMode,
