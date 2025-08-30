@@ -4,22 +4,28 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
 
 class AboutDialogWidget extends StatelessWidget {
-  const AboutDialogWidget({
-    super.key,
-    required this.overlayEntry,
-  });
-
-  final OverlayEntry? overlayEntry;
+  const AboutDialogWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
 
-    return CustomDialog.dialog(
-      isActionFullWidth: true,
+    return DialogWidget(
+      actions: <Widget>[
+        DialogButtonWidget(
+          onTap: () {
+            openUrl(
+              () => context,
+              AppLinks.playStoreDownload,
+            );
+          },
+          text: appLocalizations.viewOnPlayStore,
+        ),
+      ],
       children: <Widget>[
         const CircleAvatar(
           radius: 36.0,
@@ -43,17 +49,6 @@ class AboutDialogWidget extends StatelessWidget {
           style: const TextStyle(
             fontSize: 14.0,
           ),
-        ),
-      ],
-      actions: <ActionButtonWidget>[
-        ActionButtonWidget(
-          onTap: () {
-            openUrl(
-              () => context,
-              AppLinks.playStoreDownload,
-            );
-          },
-          text: appLocalizations.viewOnPlayStore,
         ),
       ],
     );
