@@ -27,16 +27,15 @@ class AboutDialogWidget extends StatelessWidget {
         ),
       ],
       children: <Widget>[
-        const CircleAvatar(
-          radius: 36.0,
-          backgroundImage: AssetImage(
-            'assets/icons/flutter_guide_icon.png',
-          ),
-          backgroundColor: Colors.transparent,
+        Image.asset(
+          'assets/icons/flutter_guide_icon.png',
+          width: 80.0,
+          height: 80.0,
         ),
         const SizedBox(height: 16.0),
         const Text(
           'FlutterGuide',
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
