@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/widgets/dialog/line_widget.dart';
-
 class DialogWidget extends StatelessWidget {
   const DialogWidget({
     super.key,
@@ -16,106 +14,72 @@ class DialogWidget extends StatelessWidget {
   final List<Widget> actions;
   final List<Widget> children;
 
-  BorderRadius get borderRadius => BorderRadius.circular(32.0);
+  BorderRadius get _borderRadius => BorderRadius.circular(16.0);
 
   @override
   Widget build(BuildContext context) {
-    final isLight = Theme.of(context).brightness == Brightness.light;
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: borderRadius,
+        borderRadius: _borderRadius,
       ),
+      elevation: 8.0,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: 16.0,
+          horizontal: 24.0,
+          vertical: 24.0,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 6.0,
-                bottom: 16.0,
-              ),
-              child: Center(
-                child: LineWidget(
-                  color: isLight
-                      ? Colors.grey.shade400.withAlpha(153)
-                      : Colors.grey.shade500,
-                  width: 32.0,
-                ),
-              ),
-            ),
             if (title != null)
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 16.0,
+                  bottom: 12.0,
                 ),
                 child: Text(
                   title!,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600,
+                  style: textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: colorScheme.onSurface,
                   ),
                 ),
               ),
             if (description != null)
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12.0,
+                padding: EdgeInsets.only(
+                  bottom:
+                      (children.isNotEmpty || actions.isNotEmpty) ? 20.0 : 0.0,
                 ),
                 child: Text(
                   description!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color:
-                        isLight ? Colors.grey.shade900 : Colors.grey.shade400,
-                    fontWeight: FontWeight.w500,
+                  style: textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: description != null ? 12.0 : 0.0,
-                bottom: 14.0,
-              ),
-              child: Column(
-                children: children,
-              ),
-            ),
-            if (actions.isNotEmpty) ...[
-              const SizedBox(height: 8.0),
+            if (children.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12.0,
+                padding: EdgeInsets.only(
+                  top: (title != null || description != null) ? 20.0 : 0.0,
+                  bottom: actions.isNotEmpty ? 24.0 : 0.0,
                 ),
-                child: Row(
-                  children: actions,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: children,
                 ),
               ),
-            ],
-            const SizedBox(height: 26.0),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 8.0,
+            if (actions.isNotEmpty)
+              Wrap(
+                spacing: 12.0,
+                children: actions,
               ),
-              child: Row(
-                children: <Widget>[
-                  Expanded(child: Container()),
-                  Expanded(
-                    child: LineWidget(
-                      color: isLight
-                          ? Colors.grey.shade500.withAlpha(128)
-                          : Colors.grey.shade600,
-                      width: double.infinity,
-                    ),
-                  ),
-                  Expanded(child: Container()),
-                ],
-              ),
-            ),
           ],
         ),
       ),
