@@ -31,7 +31,7 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text(
-                  'Title',
+                  'Custom Dialog',
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w400,
@@ -39,7 +39,8 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
                 ),
                 SizedBox(height: 20.0),
                 Text(
-                  'Description',
+                  'A fully customizable dialog layout.',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14.0,
                     fontWeight: FontWeight.w400,
@@ -59,13 +60,13 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
       builder: (context) {
         return const SimpleDialog(
           title: Text(
-            'Title',
+            'Simple Dialog',
             textAlign: TextAlign.center,
           ),
           children: <Widget>[
             SizedBox(height: 12.0),
             Text(
-              'Description',
+              'A basic dialog for quick messages.',
               textAlign: TextAlign.center,
             ),
           ],
@@ -80,14 +81,16 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
       builder: (context) {
         return const AlertDialog(
           title: Text(
-            'Title',
+            'Alert',
             textAlign: TextAlign.center,
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               SizedBox(height: 12.0),
-              Text('Description'),
+              Text(
+                'An alert dialog with details.',
+              ),
             ],
           ),
         );
