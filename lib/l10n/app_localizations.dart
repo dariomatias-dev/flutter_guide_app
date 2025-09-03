@@ -183,12 +183,6 @@ abstract class AppLocalizations {
   /// **'Docs and Resources'**
   String get docsAndResources;
 
-  /// No description provided for @myWebsite.
-  ///
-  /// In en, this message translates to:
-  /// **'My Website'**
-  String get myWebsite;
-
   /// No description provided for @officialSite.
   ///
   /// In en, this message translates to:
