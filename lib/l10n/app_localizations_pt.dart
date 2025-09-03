@@ -231,6 +231,12 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get deepLinkInitFailure =>
       'Falha ao inicializar o recurso de Deep Link.';
+
+  @override
+  String get error => 'Erro';
+
+  @override
+  String get errorOpeningLink => 'Ocorreu um erro ao tentar abrir o link';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -460,4 +466,10 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get deepLinkInitFailure =>
       'Falha ao inicializar o recurso de Deep Link.';
+
+  @override
+  String get error => 'Erro';
+
+  @override
+  String get errorOpeningLink => 'Ocorreu um erro ao tentar abrir o link';
 }

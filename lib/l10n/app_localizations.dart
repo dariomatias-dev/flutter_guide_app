@@ -536,6 +536,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to initialize the Deep Link feature.'**
   String get deepLinkInitFailure;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @errorOpeningLink.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while trying to open the link'**
+  String get errorOpeningLink;
 }
 
 class _AppLocalizationsDelegate

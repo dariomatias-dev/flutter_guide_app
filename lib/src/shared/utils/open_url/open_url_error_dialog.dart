@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
@@ -13,8 +14,10 @@ class OpenUrlErrorDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return DialogWidget(
-      title: 'Error',
+      title: appLocalizations.error,
       actions: <DialogButtonWidget>[
         DialogButtonWidget(
           onTap: () {
@@ -34,14 +37,15 @@ class OpenUrlErrorDialog extends StatelessWidget {
             ),
             children: <TextSpan>[
               TextSpan(
-                text: 'An error occurred while trying to open the link: ',
+                text: '${appLocalizations.errorOpeningLink}: ',
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               TextSpan(
                 text: url,
-                style: const TextStyle(
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
