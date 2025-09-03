@@ -33,7 +33,6 @@ class _ShowBottomSheetSampleState extends State<ShowBottomSheetSample> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
-      backgroundColor: Colors.grey.shade300,
       builder: (context) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -49,30 +48,22 @@ class _ShowBottomSheetSampleState extends State<ShowBottomSheetSample> {
             const SizedBox(height: 4.0),
             ListTile(
               onTap: _closeBottomSheet,
-              leading: const Icon(
-                Icons.share,
-              ),
+              leading: const Icon(Icons.share),
               title: const Text('Share'),
             ),
             ListTile(
               onTap: _closeBottomSheet,
-              leading: const Icon(
-                Icons.link,
-              ),
+              leading: const Icon(Icons.link),
               title: const Text('Copy Link'),
             ),
             ListTile(
               onTap: _closeBottomSheet,
-              leading: const Icon(
-                Icons.edit_outlined,
-              ),
+              leading: const Icon(Icons.edit_outlined),
               title: const Text('Edit'),
             ),
             ListTile(
               onTap: _closeBottomSheet,
-              leading: const Icon(
-                Icons.delete_outline,
-              ),
+              leading: const Icon(Icons.delete_outline),
               title: const Text('Delete'),
             ),
           ],
