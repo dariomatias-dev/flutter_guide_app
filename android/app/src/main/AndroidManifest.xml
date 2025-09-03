@@ -35,10 +35,31 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:scheme="https"
+
+                <!-- Accepts /widgets/... -->
+                <data android:scheme="https"
                     android:host="flutterguide.app"
-                    android:pathPrefix="/" />
+                    android:pathPattern="/widgets/.*" />
+
+                <!-- Accepts /functions/... -->
+                <data android:scheme="https"
+                    android:host="flutterguide.app"
+                    android:pathPattern="/functions/.*" />
+
+                <!-- Accepts /packages/... -->
+                <data android:scheme="https"
+                    android:host="flutterguide.app"
+                    android:pathPattern="/packages/.*" />
+
+                <!-- Accepts /elements/... -->
+                <data android:scheme="https"
+                    android:host="flutterguide.app"
+                    android:pathPattern="/elements/.*" />
+
+                <!-- Accepts /uis/... -->
+                <data android:scheme="https"
+                    android:host="flutterguide.app"
+                    android:pathPattern="/uis/.*" />
             </intent-filter>
 
             <!-- Deep Link to https://flutterguide.app -->
