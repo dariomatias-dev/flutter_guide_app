@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/about_dialog_widget.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/docs_and_resources_dialog_widget.dart';
-import 'package:flutter_guide/src/features/main/screens/settings/widgets/donate_dialog_widget.dart';
 
 class SettingsController {
   SettingsController({
@@ -16,15 +15,6 @@ class SettingsController {
       context: _context,
       builder: (overlayEntry) {
         return const DocsAndResourcesDialogWidget();
-      },
-    );
-  }
-
-  void showDonateDialog() {
-    showDialog(
-      context: _context,
-      builder: (overlayEntry) {
-        return const DonateDialogWidget();
       },
     );
   }
