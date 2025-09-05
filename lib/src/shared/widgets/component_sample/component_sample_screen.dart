@@ -62,11 +62,16 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
             controller: _controller.pageController,
             onPageChanged: _controller.onPageChanged,
             children: <Widget>[
-              Theme(
-                data: ThemeController.instance.isDark
-                    ? ThemeData.dark()
-                    : ThemeData.light(),
-                child: widget.sample,
+              ValueListenableBuilder(
+                valueListenable: ThemeController.instance.themeModeNotifier,
+                builder: (context, value, child) {
+                  return Theme(
+                    data: ThemeController.instance.isDark
+                        ? ThemeData.dark()
+                        : ThemeData.light(),
+                    child: widget.sample,
+                  );
+                },
               ),
               CodeTabWidget(
                 lineCountNotifier: _controller.lineCountNotifier,
