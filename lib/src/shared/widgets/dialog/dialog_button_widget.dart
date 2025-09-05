@@ -27,31 +27,29 @@ class DialogButtonWidget extends StatelessWidget {
           isDark ? 22 : 20,
         );
 
-    return Expanded(
-      child: SizedBox(
-        height: 48.0,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: borderRadius,
-          overlayColor: WidgetStatePropertyAll(
-            Colors.blue.withAlpha(
-              isDark ? 28 : 15,
-            ),
+    return SizedBox(
+      height: 48.0,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: borderRadius,
+        overlayColor: WidgetStatePropertyAll(
+          Colors.blue.withAlpha(
+            isDark ? 28 : 15,
           ),
-          hoverColor: Colors.blue.withAlpha(isDark ? 27 : 14),
-          child: Ink(
-            decoration: BoxDecoration(
-              color: buttonColor,
-              borderRadius: borderRadius,
-            ),
-            child: Center(
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15.0,
-                  color: textColor ?? Colors.blue,
-                ),
+        ),
+        hoverColor: Colors.blue.withAlpha(isDark ? 27 : 14),
+        child: Ink(
+          decoration: BoxDecoration(
+            color: buttonColor,
+            borderRadius: borderRadius,
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15.0,
+                color: textColor ?? Colors.blue,
               ),
             ),
           ),
