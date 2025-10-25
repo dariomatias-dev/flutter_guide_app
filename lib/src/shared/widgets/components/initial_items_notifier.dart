@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
+import 'package:flutter_guide/src/shared/models/component_model.dart';
 
 class InitialItemsNotifier extends ValueNotifier<List<ComponentModel>> {
   InitialItemsNotifier(super.value);

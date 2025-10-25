@@ -44,8 +44,7 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/packa
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/uuid_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/video_player_sample.dart';
 
-// Models
-import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
+import 'package:flutter_guide/src/shared/models/component_model.dart';
 
 const packages = <PackageModel>[
   PackageModel(

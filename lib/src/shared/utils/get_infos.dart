@@ -1,4 +1,4 @@
-import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
+import 'package:flutter_guide/src/shared/models/component_model.dart';
 import 'package:flutter_guide/src/shared/models/component_summary_mode.dart';
 import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
 
