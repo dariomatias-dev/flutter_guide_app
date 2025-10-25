@@ -61,7 +61,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
                       filePath:
                           'lib/src/core/constants/samples/sample_components/$componentType/${value.fileName}_sample.dart',
                       componentName: value.fileName,
-                      sample: value.component,
+                      sample: value.sample,
                     );
                   },
                 ),

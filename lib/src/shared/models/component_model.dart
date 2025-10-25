@@ -15,14 +15,14 @@ class PackageModel extends ComponentModel {
 class ComponentModel {
   const ComponentModel({
     required this.name,
-    required this.icon,
+    this.icon,
     this.videoId,
     required this.sample,
     required this.type,
   });
 
   final String name;
-  final IconData icon;
+  final IconData? icon;
   final String? videoId;
   final Widget sample;
   final ComponentType type;

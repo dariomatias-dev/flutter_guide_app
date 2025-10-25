@@ -61,7 +61,7 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
                 height: 44.0,
                 child: CardWidget(
                   componentType: widget.componentType,
-                  icon: value.icon,
+                  icon: value.icon ?? Icons.layers,
                   componentName: value.name,
                   videoId: value.videoId,
                   favoritesService: _controller.favoritesService,

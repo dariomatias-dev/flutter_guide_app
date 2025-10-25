@@ -65,7 +65,7 @@ class DeepLinkHandler {
           componentName,
           0,
           InterfaceTypeEnum.element,
-          'elements',
+          type,
           getElementInfos,
         );
         return;
@@ -74,7 +74,7 @@ class DeepLinkHandler {
           componentName,
           0,
           InterfaceTypeEnum.ui,
-          'uis',
+          type,
           getUiInfos,
         );
         return;
