@@ -5,6 +5,8 @@ import 'package:share_plus/share_plus.dart';
 
 import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
 
+import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
+
 class ComponentSampleAppBarController {
   ComponentSampleAppBarController({
     required this.getContext,
@@ -27,18 +29,9 @@ class ComponentSampleAppBarController {
       ClipboardData(text: codeString),
     );
 
-    ScaffoldMessenger.of(
+    SnackBarUtils.show(
       getContext(),
-    ).showSnackBar(
-      SnackBar(
-        content: Text(
-          AppLocalizations.of(getContext())!.copyToClipboard,
-        ),
-        action: SnackBarAction(
-          label: 'Ok',
-          onPressed: () {},
-        ),
-      ),
+      AppLocalizations.of(getContext())!.copyToClipboard,
     );
   }
 

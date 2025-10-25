@@ -5,7 +5,7 @@ import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
 
-import 'package:flutter_guide/src/shared/utils/show_snack_bar_message.dart';
+import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
 
 class DeepLinkService {
   final DeepLinkHandler _handler;
@@ -42,7 +42,7 @@ class DeepLinkService {
         stackTrace: stackTrace,
       );
 
-      showSnackBarMessageByKey(
+      SnackBarUtils.showByKey(
         scaffoldMessengerKey,
         deepLinkInitFailureMessage,
       );

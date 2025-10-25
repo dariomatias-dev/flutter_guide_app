@@ -10,7 +10,7 @@ import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.da
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
-import 'package:flutter_guide/src/shared/utils/show_snack_bar_message.dart';
+import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
 import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/interface_catalog/interface_catalog_screen.dart';
@@ -227,7 +227,7 @@ class DeepLinkHandler {
 
   /// Show snack bar
   void _showSnackBarMessage(String message) {
-    showSnackBarMessageByKey(
+    SnackBarUtils.showByKey(
       scaffoldMessengerKey,
       message,
     );
