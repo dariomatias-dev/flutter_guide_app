@@ -111,12 +111,6 @@ abstract class AppLocalizations {
   /// **'Elements'**
   String get elements;
 
-  /// No description provided for @templates.
-  ///
-  /// In en, this message translates to:
-  /// **'Templates'**
-  String get templates;
-
   /// No description provided for @components.
   ///
   /// In en, this message translates to:

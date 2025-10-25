@@ -7,7 +7,6 @@ part 'function_summary_model.dart';
 part 'package_summary_model.dart';
 part 'element_summary_model.dart';
 part 'ui_summary_model.dart';
-part 'template_summary_model.dart';
 
 class ComponentSummaryModel {
   const ComponentSummaryModel({

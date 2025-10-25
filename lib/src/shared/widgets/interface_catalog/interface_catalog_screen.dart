@@ -3,7 +3,6 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/templates.dart';
 
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
@@ -38,11 +37,6 @@ class InterfaceCatalogScreen extends StatelessWidget {
         title = 'UIs';
         componentType = 'uis';
         items = getUis(context);
-        break;
-      case InterfaceTypeEnum.template:
-        title = appLocalizations.templates;
-        componentType = 'templates';
-        items = getTemplates(context);
         break;
     }
 

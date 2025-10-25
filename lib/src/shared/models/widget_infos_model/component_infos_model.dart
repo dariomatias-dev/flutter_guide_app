@@ -5,7 +5,6 @@ part 'function_infos_model.dart';
 part 'package_infos_model.dart';
 part 'element_infos_model.dart';
 part 'ui_infos_model.dart';
-part 'template_infos_model.dart';
 
 class ComponentInfosModel<T> {
   const ComponentInfosModel({

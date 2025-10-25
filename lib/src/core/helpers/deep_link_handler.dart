@@ -79,15 +79,6 @@ class DeepLinkHandler {
           getUiInfos,
         );
         return;
-      // case 'templates':
-      //   _openInterface(
-      //     componentName,
-      //     0,
-      //     InterfaceTypeEnum.template,
-      //     'templates',
-      //     getTemplateInfos,
-      //   );
-      //   return;
     }
 
     _handleComponentNavigation(type, componentName);

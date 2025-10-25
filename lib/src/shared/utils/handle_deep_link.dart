@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/templates.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
@@ -118,14 +117,6 @@ void handleDeepLink(
         InterfaceTypeEnum.ui,
         'uis',
         getUiInfos,
-      );
-      return;
-    case 'templates':
-      openInterface(
-        0,
-        InterfaceTypeEnum.template,
-        'templates',
-        getTemplateInfos,
       );
       return;
   }

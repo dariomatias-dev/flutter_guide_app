@@ -6,5 +6,4 @@ enum ComponentType {
   package,
   elements,
   uis,
-  templates,
 }
