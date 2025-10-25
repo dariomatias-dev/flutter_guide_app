@@ -63,24 +63,23 @@ class DialogWidget extends StatelessWidget {
             ),
           ),
         const SizedBox(height: 32.0),
-        Padding(
-          padding: const EdgeInsets.only(
-              // bottom: 8.0,
+        Row(
+          children: <Widget>[
+            const Expanded(
+              child: SizedBox(),
+            ),
+            Expanded(
+              child: LineWidget(
+                color: isLight
+                    ? Colors.grey.shade500.withAlpha(128)
+                    : Colors.grey.shade600,
+                width: double.infinity,
               ),
-          child: Row(
-            children: <Widget>[
-              const Expanded(child: SizedBox()),
-              Expanded(
-                child: LineWidget(
-                  color: isLight
-                      ? Colors.grey.shade500.withAlpha(128)
-                      : Colors.grey.shade600,
-                  width: double.infinity,
-                ),
-              ),
-              const Expanded(child: SizedBox()),
-            ],
-          ),
+            ),
+            const Expanded(
+              child: SizedBox(),
+            ),
+          ],
         ),
       ],
     );

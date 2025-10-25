@@ -48,7 +48,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get docsAndResources => 'Docs and Resources';
 
   @override
-  String get myWebsite => 'My Website';
+  String get developerPortfolio => 'Developer Portfolio';
 
   @override
   String get officialSite => 'Official Site';

@@ -48,7 +48,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get docsAndResources => 'Documentos e Recursos';
 
   @override
-  String get myWebsite => 'Meu Site';
+  String get developerPortfolio => 'Portfólio do Desenvolvedor';
 
   @override
   String get officialSite => 'Site Oficial';
@@ -274,7 +274,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get docsAndResources => 'Documentos e Recursos';
 
   @override
-  String get myWebsite => 'Meu Site';
+  String get developerPortfolio => 'Portfólio do Desenvolvedor';
 
   @override
   String get officialSite => 'Site Oficial';

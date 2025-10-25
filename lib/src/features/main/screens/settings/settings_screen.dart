@@ -61,7 +61,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
             ListTileItemWidget(
-              title: appLocalizations.myWebsite,
+              title: appLocalizations.developerPortfolio,
               icon: Icons.public,
               openInBrowser: true,
               onTap: () {
