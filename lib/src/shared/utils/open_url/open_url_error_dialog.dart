@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
+import 'package:flutter_guide/src/shared/widgets/button_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/dialogs/dialog_widget.dart';
 
 class OpenUrlErrorDialog extends StatelessWidget {
   const OpenUrlErrorDialog({
@@ -14,40 +15,38 @@ class OpenUrlErrorDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomDialog.dialog(
+    return DialogWidget(
       title: 'Error',
-      actions: <ActionButtonWidget>[
-        CustomDialog.button(
-          text: 'Ok',
+      content: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          style: const TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 1.0,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+              text: 'An error occurred while trying to open the link: ',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            TextSpan(
+              text: url,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+      actions: <ButtonWidget>[
+        ButtonWidget(
           onTap: () {
             overlayEntry?.remove();
           },
-        ),
-      ],
-      children: <Widget>[
-        RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            style: const TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.w400,
-              letterSpacing: 1.0,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                text: 'An error occurred while trying to open the link: ',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              TextSpan(
-                text: url,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
+          text: 'Ok',
         ),
       ],
     );

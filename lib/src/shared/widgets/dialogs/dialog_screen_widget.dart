@@ -1,7 +1,7 @@
-part of 'custom_dialog.dart';
+import 'package:flutter/material.dart';
 
-class CustomDialogScreenWidget extends StatelessWidget {
-  const CustomDialogScreenWidget({
+class DialogScreenWidget extends StatelessWidget {
+  const DialogScreenWidget({
     super.key,
     required this.removeDocs,
     required this.child,

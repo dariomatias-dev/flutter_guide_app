@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
+import 'package:flutter_guide/src/shared/widgets/dialogs/dialog_screen_widget.dart';
 
 void showCustomDialog({
   required BuildContext context,
@@ -12,7 +12,7 @@ void showCustomDialog({
 
   overlayEntry = OverlayEntry(
     builder: (context) {
-      return CustomDialogScreenWidget(
+      return DialogScreenWidget(
         removeDocs: () {
           overlayEntry?.remove();
         },

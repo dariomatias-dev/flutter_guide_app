@@ -1,4 +1,4 @@
-part of 'custom_dialog.dart';
+import 'package:flutter/material.dart';
 
 class LineWidget extends StatelessWidget {
   const LineWidget({

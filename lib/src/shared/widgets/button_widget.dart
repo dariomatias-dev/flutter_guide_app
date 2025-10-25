@@ -1,7 +1,7 @@
-part of 'custom_dialog.dart';
+import 'package:flutter/material.dart';
 
-class ActionButtonWidget extends StatelessWidget {
-  const ActionButtonWidget({
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
     super.key,
     required this.text,
     this.textColor,
@@ -22,9 +22,9 @@ class ActionButtonWidget extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onTap,
           style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor ?? FlutterGuideColors.white,
+            backgroundColor: backgroundColor ?? Colors.grey.shade50,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
+              borderRadius: BorderRadius.circular(32.0),
             ),
           ),
           child: Text(

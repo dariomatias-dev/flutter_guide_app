@@ -4,7 +4,8 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/docs_and_resources_widget.dart';
 
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
-import 'package:flutter_guide/src/shared/widgets/custom_dialog/custom_dialog.dart';
+import 'package:flutter_guide/src/shared/widgets/button_widget.dart';
+import 'package:flutter_guide/src/shared/widgets/dialogs/dialog_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 class DocsAndResourcesDialogWidget extends StatelessWidget {
@@ -19,35 +20,36 @@ class DocsAndResourcesDialogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final docsAndResources = getDocsAndResources(context);
 
-    return CustomDialog.dialog(
+    return DialogWidget(
       title: AppLocalizations.of(context)!.docsAndResources,
-      isActionFullWidth: true,
-      actions: <ActionButtonWidget>[
-        CustomDialog.button(
+      content: Column(
+        children: List.generate(
+          docsAndResources.length,
+          (index) {
+            final item = docsAndResources[index];
+
+            return ListTileItemWidget(
+              onTap: () {
+                openUrl(
+                  () => context,
+                  item.url,
+                );
+              },
+              icon: item.icon,
+              title: item.name,
+              openInBrowser: true,
+            );
+          },
+        ),
+      ),
+      actions: <Widget>[
+        ButtonWidget(
           onTap: () {
             overlayEntry?.remove();
           },
           text: 'Ok',
         ),
       ],
-      children: List.generate(
-        docsAndResources.length,
-        (index) {
-          final item = docsAndResources[index];
-
-          return ListTileItemWidget(
-            onTap: () {
-              openUrl(
-                () => context,
-                item.url,
-              );
-            },
-            icon: item.icon,
-            title: item.name,
-            openInBrowser: true,
-          );
-        },
-      ),
     );
   }
 }
