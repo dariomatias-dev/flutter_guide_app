@@ -5,8 +5,6 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 // Models
 import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
-import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
 
 // Samples
 import 'package:flutter_guide/src/core/constants/samples/sample_components/widgets/actionchip_sample.dart';
@@ -795,26 +793,3 @@ const widgets = <WidgetModel>[
     type: ComponentType.widget,
   ),
 ];
-
-WidgetInfosModel getWidgetInfos() {
-  final widgetNames = <String>[];
-  Map<String, WidgetSummaryModel> samples = {};
-
-  for (var widget in widgets) {
-    widgetNames.add(
-      widget.name,
-    );
-
-    samples[widget.name] = WidgetSummaryModel(
-      name: widget.name,
-      type: widget.type,
-      videoId: widget.videoId,
-      sample: widget.sample,
-    );
-  }
-
-  return WidgetInfosModel(
-    componentNames: widgetNames,
-    samples: samples,
-  );
-}

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
-
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
+import 'package:flutter_guide/src/shared/models/component_summary_mode.dart';
 
 class ComponentController {
   ComponentController({
@@ -34,11 +33,11 @@ class ComponentController {
     switch (_componentType) {
       case ComponentType.widget:
         component = widgetsMap[_componentName]!;
-        type = (component as WidgetSummaryModel).type;
+        type = (component).type;
         break;
       case ComponentType.function:
         component = functionsMap[_componentName]!;
-        type = (component as FunctionSummaryModel).type;
+        type = (component).type;
         break;
       default:
         component = packagesMap[_componentName]!;

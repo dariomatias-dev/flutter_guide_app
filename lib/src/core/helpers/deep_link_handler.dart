@@ -9,8 +9,7 @@ import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
-import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
+import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
 import 'package:flutter_guide/src/shared/utils/show_snack_bar_message.dart';
 import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
@@ -114,7 +113,7 @@ class DeepLinkHandler {
     int index,
     InterfaceTypeEnum interfaceType,
     String folder,
-    ComponentInfosModel<ComponentSummaryModel> Function(
+    ComponentInfosModel Function(
       BuildContext context,
     ) getInfos,
   ) {

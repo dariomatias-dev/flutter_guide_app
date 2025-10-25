@@ -11,10 +11,12 @@ class ComponentModel {
     required this.icon,
     this.videoId,
     required this.sample,
+    required this.type,
   });
 
   final String name;
   final IconData icon;
   final String? videoId;
   final Widget sample;
+  final ComponentType type;
 }

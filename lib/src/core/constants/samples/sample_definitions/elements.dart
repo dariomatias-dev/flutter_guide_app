@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
+import 'package:flutter_guide/src/shared/models/component_summary_mode.dart';
 
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
 
 // Elements
-// import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/custom_popup_menu_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/gaps_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/image_loader_sample.dart';
@@ -16,7 +15,7 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/eleme
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/loading_screen_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/pagination_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/password_field_sample.dart';
-import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
+import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
 
 List<InterfaceModel> getElements(
   BuildContext context,
@@ -24,11 +23,6 @@ List<InterfaceModel> getElements(
   final appLocalizations = AppLocalizations.of(context)!;
 
   return <InterfaceModel>[
-    // InterfaceModel(
-    //   name: appLocalizations.customDropdown,
-    //   fileName: 'custom_dropdown',
-    //   component: const CustomDropdownSample(),
-    // ),
     InterfaceModel(
       name: appLocalizations.customPopupMenu,
       fileName: 'custom_popup_menu',
@@ -77,16 +71,16 @@ List<InterfaceModel> getElements(
   ];
 }
 
-ElementInfosModel getElementInfos(BuildContext context) {
+ComponentInfosModel getElementInfos(BuildContext context) {
   final elements = getElements(context);
 
   final elementNames = <String>[];
-  final samples = <String, ElementSummaryModel>{};
+  final samples = <String, ComponentSummaryModel>{};
 
   for (final element in elements) {
     elementNames.add(element.fileName);
 
-    samples[element.fileName] = ElementSummaryModel(
+    samples[element.fileName] = ComponentSummaryModel(
       name: element.fileName,
       type: ComponentType.elements,
       videoId: null,
@@ -95,7 +89,7 @@ ElementInfosModel getElementInfos(BuildContext context) {
     );
   }
 
-  return ElementInfosModel(
+  return ComponentInfosModel(
     componentNames: elementNames,
     samples: samples,
   );

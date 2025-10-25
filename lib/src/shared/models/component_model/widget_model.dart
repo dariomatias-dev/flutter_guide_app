@@ -6,8 +6,6 @@ class WidgetModel extends ComponentModel {
     required super.icon,
     super.videoId,
     required super.sample,
-    required this.type,
+    required super.type,
   });
-
-  final ComponentType type;
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
+import 'package:flutter_guide/src/shared/models/component_summary_mode.dart';
 
 class ComponentsMapInheritedWidget extends InheritedWidget {
   const ComponentsMapInheritedWidget({
@@ -15,13 +15,13 @@ class ComponentsMapInheritedWidget extends InheritedWidget {
   });
 
   final List<String> widgetNames;
-  final Map<String, WidgetSummaryModel> widgetsMap;
+  final Map<String, ComponentSummaryModel> widgetsMap;
 
   final List<String> packageNames;
-  final Map<String, PackageSummaryModel> packagesMap;
+  final Map<String, ComponentSummaryModel> packagesMap;
 
   final List<String> functionNames;
-  final Map<String, FunctionSummaryModel> functionsMap;
+  final Map<String, ComponentSummaryModel> functionsMap;
 
   static ComponentsMapInheritedWidget? of(BuildContext context) {
     return context

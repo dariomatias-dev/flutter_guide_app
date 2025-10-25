@@ -6,5 +6,6 @@ class PackageModel extends ComponentModel {
     required super.icon,
     super.videoId,
     required super.sample,
+    super.type = ComponentType.package,
   });
 }
