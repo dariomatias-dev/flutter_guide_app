@@ -52,7 +52,7 @@ final _loaders = <Widget>[
     color: _color,
     size: _size,
   ),
-  LoadingAnimationWidget.prograssiveDots(
+  LoadingAnimationWidget.progressiveDots(
     color: _color,
     size: _size,
   ),

@@ -43,11 +43,7 @@ class _ReorderableListViewSampleState extends State<ReorderableListViewSample> {
               ),
             );
           },
-          onReorder: (oldIndex, newIndex) {
-            if (oldIndex < newIndex) {
-              newIndex -= 1;
-            }
-
+          onReorderItem: (oldIndex, newIndex) {
             final item = _items.removeAt(oldIndex);
             _items.insert(newIndex, item);
 

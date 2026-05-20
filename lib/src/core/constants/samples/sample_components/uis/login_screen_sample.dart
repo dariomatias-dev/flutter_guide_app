@@ -105,7 +105,7 @@ class SocialButtonWidget extends StatelessWidget {
   });
 
   final VoidCallback onTap;
-  final IconData icon;
+  final FaIconData icon;
 
   @override
   Widget build(BuildContext context) {

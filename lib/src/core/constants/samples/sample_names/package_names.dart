@@ -20,7 +20,6 @@ class PackageNames {
   static const googleFontsPackage = 'google_fonts';
   static const googleMobileAdsPackage = 'google_mobile_ads';
   static const httpPackage = 'http';
-  static const iconsPlusPackage = 'icons_plus';
   static const infiniteScrollPaginationPackage = 'infinite_scroll_pagination';
   static const likeButtonPackage = 'like_button';
   static const loadingAnimationWidgetPackage = 'loading_animation_widget';

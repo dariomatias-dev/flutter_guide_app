@@ -13,7 +13,7 @@ class _AwesomeSnackBarModel {
   final ContentType contentType;
 }
 
-final _awesomeSnackBars = <_AwesomeSnackBarModel>[
+const _awesomeSnackBars = <_AwesomeSnackBarModel>[
   _AwesomeSnackBarModel(
     title: 'Failure',
     description: 'Something went wrong. Please try again.',
@@ -49,7 +49,7 @@ class _AwesomeMaterialBannerModel {
   final ContentType contentType;
 }
 
-final _awesomeMaterialBanners = <_AwesomeMaterialBannerModel>[
+const _awesomeMaterialBanners = <_AwesomeMaterialBannerModel>[
   _AwesomeMaterialBannerModel(
     title: 'Failure',
     description: 'Something went wrong. Please try again.',

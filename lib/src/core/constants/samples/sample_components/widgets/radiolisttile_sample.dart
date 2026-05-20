@@ -36,25 +36,28 @@ class RadioListTileSampleState extends State<RadioListTileSample> {
             'Selected radio $_radioIndex',
           ),
           const SizedBox(height: 12.0),
-          ...List.generate(3, (index) {
-            return RadioListTile(
-              value: index,
-              groupValue: _radioIndex,
-              title: Text(
-                'Radio $index',
-              ),
-              onChanged: _updateRadioIndex,
-            );
-          }),
+          RadioGroup<int>(
+            groupValue: _radioIndex,
+            onChanged: _updateRadioIndex,
+            child: Column(
+              children: List.generate(3, (index) {
+                return RadioListTile<int>(
+                  value: index,
+                  title: Text(
+                    'Radio $index',
+                  ),
+                );
+              }),
+            ),
+          ),
           const SizedBox(height: 12.0),
           ...List.generate(3, (index) {
-            return RadioListTile(
+            return RadioListTile<int>(
               value: index,
-              groupValue: _radioIndex,
               title: Text(
                 'Radio $index',
               ),
-              onChanged: null,
+              enabled: false,
             );
           }),
         ],

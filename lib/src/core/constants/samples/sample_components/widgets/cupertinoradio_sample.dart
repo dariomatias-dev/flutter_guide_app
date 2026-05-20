@@ -44,26 +44,27 @@ class _CupertinoRadioSampleState extends State<CupertinoRadioSample> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(5, (index) {
-                    return CupertinoRadio(
-                      value: index,
-                      inactiveColor: Colors.grey.shade400.withAlpha(153),
-                      groupValue: _radioIndex,
-                      onChanged: _updateRadioIndex,
-                    );
-                  }),
+                RadioGroup<int>(
+                  groupValue: _radioIndex,
+                  onChanged: _updateRadioIndex,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(5, (index) {
+                      return CupertinoRadio<int>(
+                        value: index,
+                        inactiveColor: Colors.grey.shade400.withAlpha(153),
+                      );
+                    }),
+                  ),
                 ),
                 const SizedBox(height: 12.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(5, (index) {
-                    return CupertinoRadio(
+                    return CupertinoRadio<int>(
                       value: index,
                       inactiveColor: Colors.grey.shade300,
-                      groupValue: _radioIndex,
-                      onChanged: null,
+                      enabled: false,
                     );
                   }),
                 ),

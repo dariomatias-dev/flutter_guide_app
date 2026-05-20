@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SocialNetworkModel {
   const SocialNetworkModel({
@@ -6,6 +6,6 @@ class SocialNetworkModel {
     required this.url,
   });
 
-  final IconData icon;
+  final FaIconData icon;
   final String url;
 }

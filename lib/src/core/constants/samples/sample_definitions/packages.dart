@@ -24,7 +24,6 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/packa
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/google_fonts_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/google_mobile_ads_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/http_sample.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/icons_plus_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/infinite_scroll_pagination_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/like_button_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/packages/loading_animation_widget_sample.dart';
@@ -159,11 +158,6 @@ const packages = <PackageModel>[
     name: PackageNames.httpPackage,
     icon: Icons.wifi,
     sample: HttpSample(),
-  ),
-  PackageModel(
-    name: PackageNames.iconsPlusPackage,
-    icon: Icons.circle_outlined,
-    sample: IconsPlusSample(),
   ),
   PackageModel(
     name: PackageNames.infiniteScrollPaginationPackage,

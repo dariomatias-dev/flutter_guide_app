@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const _icons = <IconData>[
+const _icons = <FaIconData>[
   FontAwesomeIcons.camera,
   FontAwesomeIcons.user,
   FontAwesomeIcons.star,

@@ -30,7 +30,7 @@ final _uuidVersions = <_UuidVersionModel>[
     version: 5,
     generator: () {
       return _uuid.v5(
-        Uuid.NAMESPACE_URL,
+        Namespace.url.value,
         'https://dariomatias-dev.com/',
       );
     },

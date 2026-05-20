@@ -43,24 +43,23 @@ class _RadioSampleState extends State<RadioSample> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(5, (index) {
-                    return Radio(
-                      value: index,
-                      groupValue: _radioIndex,
-                      onChanged: _updateRadioIndex,
-                    );
-                  }),
+                RadioGroup<int>(
+                  groupValue: _radioIndex,
+                  onChanged: _updateRadioIndex,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(5, (index) {
+                      return Radio<int>(value: index);
+                    }),
+                  ),
                 ),
                 const SizedBox(height: 12.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(5, (index) {
-                    return Radio(
+                    return Radio<int>(
                       value: index,
-                      groupValue: _radioIndex,
-                      onChanged: null,
+                      enabled: false,
                     );
                   }),
                 ),

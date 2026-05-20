@@ -97,7 +97,7 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
         ),
         SizeTransition(
           sizeFactor: _animation,
-          axisAlignment: -1.0,
+          alignment: Alignment.topCenter,
           child: Column(
             children: List.generate(totalItems, (index) {
               if ((index + 1) % (_adInterval + 1) == 0) {

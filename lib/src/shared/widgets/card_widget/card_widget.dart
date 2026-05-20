@@ -57,7 +57,11 @@ class CardWidget extends StatelessWidget {
       trailingWidgets: <Widget>[
         if (videoId != null) ...<Widget>[
           IconButtonWidget(
-            icon: FontAwesomeIcons.youtube,
+            child: FaIcon(
+              FontAwesomeIcons.youtube,
+              color: Theme.of(context).colorScheme.primary,
+              size: 24.0,
+            ),
             onTap: () {
               openUrl(
                 () => context,
