@@ -23,8 +23,8 @@ class _SharePlusSampleState extends State<SharePlusSample> {
 
   Future<void> _shareText() async {
     try {
-      final result = await Share.share(
-        'https://flutterguide.app/',
+      final result = await SharePlus.instance.share(
+        ShareParams(text: 'https://flutterguide.app/'),
       );
 
       if (result.status == ShareResultStatus.dismissed ||

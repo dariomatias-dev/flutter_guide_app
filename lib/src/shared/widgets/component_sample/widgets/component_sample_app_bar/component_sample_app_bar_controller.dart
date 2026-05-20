@@ -51,7 +51,7 @@ class ComponentSampleAppBarController {
 
       final url = 'https://flutterguide.app/$type/$_componentName';
 
-      Share.share(url);
+      SharePlus.instance.share(ShareParams(text: url));
     }
   }
 }
