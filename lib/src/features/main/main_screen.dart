@@ -1,108 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
-import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
-import 'package:flutter_guide/src/features/elements/elements_screen.dart';
-import 'package:flutter_guide/src/features/main/screens/home/home_screen.dart';
-import 'package:flutter_guide/src/features/main/screens/settings/settings_screen.dart';
 import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/main_app_bar_widget.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
+class MainScreen extends StatelessWidget {
+  const MainScreen({
+    super.key,
+    required this.navigationShell,
+  });
 
-import 'package:flutter_guide/src/shared/models/screen_model.dart';
-import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int screenIndex = 0;
-
-  void _updateScreenIndex() {
-    setState(() {
-      screenIndex =
-          UserPreferencesInheritedWidget.of(context)!.screenIndexNotifier.value;
-    });
-  }
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        UserPreferencesInheritedWidget.of(context)!
-            .screenIndexNotifier
-            .addListener(_updateScreenIndex);
-      },
-    );
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    UserPreferencesInheritedWidget.of(context)!
-        .screenIndexNotifier
-        .removeListener(_updateScreenIndex);
-
-    super.dispose();
-  }
+  final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
 
-    final screens = <ScreenModel>[
-      ScreenModel(
-        bottomNavigationBarName: appLocalizations.home,
-        screen: const HomeScreen(),
-      ),
-      ScreenModel(
-        bottomNavigationBarName: appLocalizations.elements,
-        screen: const ElementsScreen(),
-      ),
-      ScreenModel(
-        bottomNavigationBarName: appLocalizations.packages,
-        screen: const ComponentsScreen(
-          componentType: ComponentType.package,
-          components: packages,
-        ),
-      ),
-      ScreenModel(
-        bottomNavigationBarName: appLocalizations.settings,
-        screen: const SettingsScreen(),
-      ),
+    final tabNames = <String>[
+      appLocalizations.home,
+      appLocalizations.elements,
+      appLocalizations.packages,
+      appLocalizations.settings,
     ];
-
-    final screenSelected = screens[screenIndex];
 
     return Scaffold(
       appBar: const MainAppBarWidget(),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          screenSelected.screen,
+          navigationShell,
           Positioned(
             right: 16.0,
             left: 16.0,
             bottom: 8.0,
             child: SafeArea(
               child: BottomNavigationBarWidget(
-                screenIndex: screenIndex,
-                updateScreenIndex: (value) {
-                  setState(() {
-                    screenIndex = value;
-                  });
+                screenIndex: navigationShell.currentIndex,
+                updateScreenIndex: (index) {
+                  navigationShell.goBranch(
+                    index,
+                    initialLocation: index == navigationShell.currentIndex,
+                  );
                 },
-                getBottomNavigationBarName: (index) {
-                  return screens[index].bottomNavigationBarName;
-                },
+                getBottomNavigationBarName: (index) => tabNames[index],
               ),
             ),
           ),
