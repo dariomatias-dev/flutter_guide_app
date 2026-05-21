@@ -15,9 +15,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get elements => 'Elementos';
 
   @override
-  String get templates => 'Modelos';
-
-  @override
   String get components => 'Componentes';
 
   @override
@@ -49,6 +46,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get docsAndResources => 'Documentos e Recursos';
+
+  @override
+  String get developerPortfolio => 'Portfólio do Desenvolvedor';
 
   @override
   String get officialSite => 'Site Oficial';
@@ -247,9 +247,6 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get elements => 'Elementos';
 
   @override
-  String get templates => 'Modelos';
-
-  @override
   String get components => 'Componentes';
 
   @override
@@ -281,6 +278,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get docsAndResources => 'Documentos e Recursos';
+
+  @override
+  String get developerPortfolio => 'Portfólio do Desenvolvedor';
 
   @override
   String get officialSite => 'Site Oficial';

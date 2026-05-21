@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/shared/models/component_summary_mode/component_summary_mode.dart';
 
-import 'package:flutter_guide/src/shared/models/interface_model.dart';
+import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 // Elements
-// import 'package:flutter_guide/src/shared/widgets/interface_catalog/samples/elements/custom_dropdown_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/custom_popup_menu_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/gaps_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/image_loader_sample.dart';
@@ -16,7 +13,10 @@ import 'package:flutter_guide/src/core/constants/samples/sample_components/eleme
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/loading_screen_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/pagination_sample.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_components/elements/password_field_sample.dart';
-import 'package:flutter_guide/src/shared/models/widget_infos_model/component_infos_model.dart';
+import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
+import 'package:flutter_guide/src/shared/models/component_summary_mode.dart';
+
+import 'package:flutter_guide/src/shared/models/interface_model.dart';
 
 List<InterfaceModel> getElements(
   BuildContext context,
@@ -24,78 +24,82 @@ List<InterfaceModel> getElements(
   final appLocalizations = AppLocalizations.of(context)!;
 
   return <InterfaceModel>[
-    // InterfaceModel(
-    //   name: appLocalizations.customDropdown,
-    //   fileName: 'custom_dropdown',
-    //   component: const CustomDropdownSample(),
-    // ),
     InterfaceModel(
       name: appLocalizations.customPopupMenu,
+      type: ComponentType.elements,
       fileName: 'custom_popup_menu',
-      component: const CustomPopupMenuSample(),
+      sample: const CustomPopupMenuSample(),
     ),
     InterfaceModel(
       name: appLocalizations.gaps,
+      type: ComponentType.elements,
       fileName: 'gaps',
-      component: const GapsSample(),
+      sample: const GapsSample(),
     ),
     InterfaceModel(
       name: appLocalizations.imageLoader,
+      type: ComponentType.elements,
       fileName: 'image_loader',
-      component: const ImageLoaderSample(),
+      sample: const ImageLoaderSample(),
     ),
     InterfaceModel(
       name: appLocalizations.infiniteGridView,
+      type: ComponentType.elements,
       fileName: 'infinite_grid_view',
-      component: const InfiniteGridViewSample(),
+      sample: const InfiniteGridViewSample(),
     ),
     InterfaceModel(
       name: appLocalizations.loadingButton,
+      type: ComponentType.elements,
       fileName: 'loading_button',
-      component: const LoadingButtonSample(),
+      sample: const LoadingButtonSample(),
     ),
     InterfaceModel(
       name: appLocalizations.loadingDialog,
+      type: ComponentType.elements,
       fileName: 'loading_dialog',
-      component: const LoadingDialogSample(),
+      sample: const LoadingDialogSample(),
     ),
     InterfaceModel(
       name: appLocalizations.loadingScreen,
+      type: ComponentType.elements,
       fileName: 'loading_screen',
-      component: const LoadingScreenSample(),
+      sample: const LoadingScreenSample(),
     ),
     InterfaceModel(
       name: appLocalizations.pagination,
+      type: ComponentType.elements,
       fileName: 'pagination',
-      component: const PaginationSample(),
+      sample: const PaginationSample(),
     ),
     InterfaceModel(
       name: appLocalizations.passwordField,
+      type: ComponentType.elements,
       fileName: 'password_field',
-      component: const PasswordFieldSample(),
+      sample: const PasswordFieldSample(),
     ),
   ];
 }
 
-ElementInfosModel getElementInfos(BuildContext context) {
+ComponentInfosModel getElementInfos(BuildContext context) {
   final elements = getElements(context);
 
   final elementNames = <String>[];
-  final samples = <String, ElementSummaryModel>{};
+  final samples = <String, ComponentSummaryModel>{};
 
   for (final element in elements) {
     elementNames.add(element.fileName);
 
-    samples[element.fileName] = ElementSummaryModel(
-      name: element.fileName,
+    samples[element.fileName] = ComponentSummaryModel(
+      name: element.name,
       type: ComponentType.elements,
       videoId: null,
-      sample: element.component,
+      sample: element.sample,
       fileName: element.fileName,
     );
   }
 
-  return ElementInfosModel(
+  return ComponentInfosModel(
     componentNames: elementNames,
     samples: samples,
   );

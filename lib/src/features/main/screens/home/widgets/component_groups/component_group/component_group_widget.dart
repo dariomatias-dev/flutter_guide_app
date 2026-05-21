@@ -110,7 +110,7 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
                   widgets[_controller.widgetNames.indexOf(componentName)];
 
               return CardWidget(
-                icon: component.icon,
+                icon: component.icon ?? Icons.layers,
                 componentName: component.name,
                 componentType: ComponentType.widget,
                 videoId: component.videoId,

@@ -6,7 +6,6 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/select_favorite_screen_dialog/select_favorite_screen_dialog_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
-
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 class SelectFavoriteScreenDialogWidget extends StatefulWidget {

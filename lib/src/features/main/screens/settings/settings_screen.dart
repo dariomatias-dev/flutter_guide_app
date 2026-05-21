@@ -8,7 +8,6 @@ import 'package:flutter_guide/src/features/code_theme_selector/code_theme_select
 import 'package:flutter_guide/src/features/main/screens/settings/settings_controller.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/app_info_widget/app_info_widget.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/select_language/select_language_widget.dart';
-import 'package:flutter_guide/src/features/main/screens/settings/widgets/social_networks_widget/social_networks_widget.dart';
 
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
@@ -62,6 +61,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
             ListTileItemWidget(
+              title: appLocalizations.developerPortfolio,
+              icon: Icons.public,
+              openInBrowser: true,
+              onTap: () {
+                openUrl(
+                  () => context,
+                  AppLinks.myWebsite,
+                );
+              },
+            ),
+            ListTileItemWidget(
               title: appLocalizations.officialSite,
               icon: Icons.public,
               onTap: () {
@@ -101,7 +111,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Icons.info_outline,
               onTap: _controller.showAboutDialog,
             ),
-            const SocialNetworksWidget(),
           ],
         ),
       ),

@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/shared/models/component_model.dart';
 
-class InterfaceModel {
+class InterfaceModel extends ComponentModel {
   const InterfaceModel({
-    required this.name,
+    required super.name,
+    required super.type,
     required this.fileName,
-    required this.component,
+    super.icon,
+    required super.sample,
   });
 
-  final String name;
   final String fileName;
-  final Widget component;
 }

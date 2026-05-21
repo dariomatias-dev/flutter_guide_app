@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/shared/models/component_model/component_model.dart';
+import 'package:flutter_guide/src/shared/models/component_model.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/components/components_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/components/widgets/search_field_widget/search_field_widget.dart';
@@ -61,7 +61,7 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
                 height: 44.0,
                 child: CardWidget(
                   componentType: widget.componentType,
-                  icon: value.icon,
+                  icon: value.icon ?? Icons.layers,
                   componentName: value.name,
                   videoId: value.videoId,
                   favoritesService: _controller.favoritesService,

@@ -15,9 +15,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get elements => 'Elements';
 
   @override
-  String get templates => 'Templates';
-
-  @override
   String get components => 'Components';
 
   @override
@@ -49,6 +46,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get docsAndResources => 'Docs and Resources';
+
+  @override
+  String get developerPortfolio => 'Developer Portfolio';
 
   @override
   String get officialSite => 'Official Site';
