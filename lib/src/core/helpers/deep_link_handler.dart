@@ -1,53 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
+import 'package:flutter_guide/src/core/routes/route_names.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
+import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
-import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
-import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/interface_catalog_screen.dart';
 
-/// Handles deep link navigation for components and interfaces
 class DeepLinkHandler {
-  final GlobalKey<NavigatorState> navigatorKey;
-  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
-  final BuildContext context;
-
-  late final ValueNotifier<int> _screenIndexNotifier;
-  late final ValueNotifier<int> _elementsScreenTabIndexNotifier;
-  late final ComponentsMapInheritedWidget _componentsMap;
-
   DeepLinkHandler({
-    required this.navigatorKey,
+    required this.router,
     required this.scaffoldMessengerKey,
-    required this.context,
+    required BuildContext context,
   }) {
-    final userPreferencesInheritedWidget =
-        UserPreferencesInheritedWidget.of(context)!;
-    _screenIndexNotifier = userPreferencesInheritedWidget.screenIndexNotifier;
     _elementsScreenTabIndexNotifier =
-        userPreferencesInheritedWidget.elementsScreenTabIndexNotifier;
+        UserPreferencesInheritedWidget.of(context)!
+            .elementsScreenTabIndexNotifier;
     _componentsMap = ComponentsMapInheritedWidget.of(context)!;
   }
 
-  // --------------------------
-  // Public Methods
-  // --------------------------
+  final GoRouter router;
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
 
-  /// Main entry point for handling deep links
+  late final ValueNotifier<int> _elementsScreenTabIndexNotifier;
+  late final ComponentsMapInheritedWidget _componentsMap;
+
+  BuildContext get _context =>
+      router.routerDelegate.navigatorKey.currentContext!;
+
   void handle(Uri uri) {
     if (uri.pathSegments.length < 2) {
       _showSnackBarMessage(
-        AppLocalizations.of(navigatorKey.currentState!.context)!.invalidLink,
+        AppLocalizations.of(_context)!.invalidLink,
       );
+
       return;
     }
 
@@ -58,195 +52,102 @@ class DeepLinkHandler {
       case 'elements':
         _openInterface(
           componentName,
-          0,
           InterfaceTypeEnum.element,
           type,
           getElementInfos,
         );
+
         return;
       case 'uis':
         _openInterface(
           componentName,
-          0,
           InterfaceTypeEnum.ui,
           type,
           getUiInfos,
         );
+
         return;
     }
 
     _handleComponentNavigation(type, componentName);
   }
 
-  // --------------------------
-  // Private Methods - UI Updates
-  // --------------------------
-
-  /// Updates main screen index notifier
-  void _updateScreenIndex(int newIndex) {
-    if (_screenIndexNotifier.value == newIndex) {
-      _screenIndexNotifier.value = -1;
-    }
-    _screenIndexNotifier.value = newIndex;
-  }
-
-  /// Updates elements screen tab index notifier
-  void _updateElementsScreenTabIndex(int newIndex) {
-    if (_elementsScreenTabIndexNotifier.value == newIndex) {
-      _elementsScreenTabIndexNotifier.value = -1;
-    }
-    _elementsScreenTabIndexNotifier.value = newIndex;
-  }
-
-  /// Remove todas as telas acima da principal
-  void _resetNavigationStack() {
-    navigatorKey.currentState?.popUntil((route) => route.isFirst);
-  }
-
-  // --------------------------
-  // Private Methods - Interface Handling
-  // --------------------------
-
-  /// Open interface catalog and component sample screen
   void _openInterface(
     String componentName,
-    int index,
     InterfaceTypeEnum interfaceType,
     String folder,
-    ComponentInfosModel Function(
-      BuildContext context,
-    ) getInfos,
+    ComponentInfosModel Function(BuildContext) getInfos,
   ) {
-    final infos = getInfos(navigatorKey.currentState!.context);
+    final infos = getInfos(_context);
 
     if (!infos.componentNames.contains(componentName)) {
       _showNotFound(componentName, folder);
+
       return;
     }
 
     final element = infos.samples[componentName]!;
 
-    _resetNavigationStack();
-
-    _updateScreenIndex(index);
-
-    navigatorKey.currentState?.push(
-      MaterialPageRoute(
-        builder: (context) {
-          return InterfaceCatalogScreen(
-            elementType: interfaceType,
-          );
-        },
-      ),
+    router.goNamed(RouteNames.home);
+    router.pushNamed(
+      RouteNames.catalog,
+      pathParameters: {'interfaceType': interfaceType.name},
     );
-
-    navigatorKey.currentState?.push(
-      MaterialPageRoute(
-        builder: (context) {
-          return ComponentSampleScreen(
-            title: element.name,
-            filePath:
-                'lib/src/core/constants/samples/sample_components/$folder/${element.fileName}_sample.dart',
-            componentName: componentName,
-            sample: element.sample,
-          );
-        },
+    router.pushNamed(
+      RouteNames.componentSample,
+      extra: ComponentSampleArgs(
+        title: element.name,
+        filePath:
+            'lib/src/core/constants/samples/sample_components/$folder/${element.fileName}_sample.dart',
+        componentName: componentName,
+        sample: element.sample,
       ),
     );
   }
 
-  /// Build a ComponentScreen if the component exists
-  Widget? _buildComponentScreen(
-    ComponentType type,
-    List<String> names,
-    String componentName,
-  ) {
-    if (!names.contains(componentName)) return null;
-
-    return ComponentScreen(
-      componentType: type,
-      componentName: componentName,
-    );
-  }
-
-  // --------------------------
-  // Private Methods - Component Navigation
-  // --------------------------
-
-  /// Handles navigation for widgets, functions, and packages
-  void _handleComponentNavigation(
-    String type,
-    String componentName,
-  ) {
-    int screenIndex = 0;
-    Widget? screen;
+  void _handleComponentNavigation(String type, String componentName) {
+    ComponentType? componentType;
+    List<String> names;
 
     if (type == 'widgets') {
-      screenIndex = 1;
-      screen = _buildComponentScreen(
-        ComponentType.widget,
-        _componentsMap.widgetNames,
-        componentName,
-      );
+      componentType = ComponentType.widget;
+      names = _componentsMap.widgetNames;
+      _elementsScreenTabIndexNotifier.value = 0;
     } else if (type == 'functions') {
-      screenIndex = 1;
-      screen = _buildComponentScreen(
-        ComponentType.function,
-        _componentsMap.functionNames,
-        componentName,
-      );
+      componentType = ComponentType.function;
+      names = _componentsMap.functionNames;
+      _elementsScreenTabIndexNotifier.value = 1;
     } else if (type == 'packages') {
-      screenIndex = 2;
-      screen = _buildComponentScreen(
-        ComponentType.package,
-        _componentsMap.packageNames,
-        componentName,
-      );
-    }
-
-    if (screen != null) {
-      _resetNavigationStack();
-
-      _updateScreenIndex(screenIndex);
-
-      if (type == 'widgets') {
-        _updateElementsScreenTabIndex(0);
-      } else if (type == 'functions') {
-        _updateElementsScreenTabIndex(1);
-      }
-
-      navigatorKey.currentState?.push(
-        MaterialPageRoute(
-          builder: (context) => screen!,
-        ),
-      );
+      componentType = ComponentType.package;
+      names = _componentsMap.packageNames;
     } else {
       _showNotFound(componentName, type);
+
+      return;
     }
-  }
 
-  // --------------------------
-  // Private Methods - Error Handling
-  // --------------------------
+    if (!names.contains(componentName)) {
+      _showNotFound(componentName, type);
 
-  /// Show snack bar
-  void _showSnackBarMessage(String message) {
-    SnackBarUtils.showByKey(
-      scaffoldMessengerKey,
-      message,
+      return;
+    }
+
+    final targetRoute =
+        type == 'packages' ? RouteNames.packages : RouteNames.elements;
+    router.goNamed(targetRoute);
+    router.pushNamed(
+      RouteNames.component,
+      pathParameters: {'type': componentType.name, 'name': componentName},
     );
   }
 
-  /// Show snack bar when a component is not found
-  void _showNotFound(
-    String componentName,
-    String type,
-  ) {
+  void _showSnackBarMessage(String message) {
+    SnackBarUtils.showByKey(scaffoldMessengerKey, message);
+  }
+
+  void _showNotFound(String componentName, String type) {
     _showSnackBarMessage(
-      AppLocalizations.of(
-        navigatorKey.currentState!.context,
-      )!
-          .componentNotFound(componentName, type),
+      AppLocalizations.of(_context)!.componentNotFound(componentName, type),
     );
   }
 }

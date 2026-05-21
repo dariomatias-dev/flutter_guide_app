@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
@@ -6,8 +7,7 @@ import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/features/main/screens/home/widgets/border_list_tile_item_widget.dart';
 import 'package:flutter_guide/src/features/main/screens/home/widgets/component_groups/component_groups_widget.dart';
 
-import 'package:flutter_guide/src/shared/utils/navigate_to.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/interface_catalog_screen.dart';
+import 'package:flutter_guide/src/core/routes/app_routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,27 +26,19 @@ class HomeScreen extends StatelessWidget {
           BorderListTileItemWidget(
             title: appLocalizations.elements,
             icon: Icons.list_alt,
-            onTap: () {
-              navigateTo(
-                context,
-                const InterfaceCatalogScreen(
-                  elementType: InterfaceTypeEnum.element,
-                ),
-              );
-            },
+            onTap: () => AppRoutes.pushCatalog(
+              context,
+              interfaceType: InterfaceTypeEnum.element,
+            ),
           ),
           const SizedBox(height: 8.0),
           BorderListTileItemWidget(
             title: 'UIs',
             icon: Icons.web,
-            onTap: () {
-              navigateTo(
-                context,
-                const InterfaceCatalogScreen(
-                  elementType: InterfaceTypeEnum.ui,
-                ),
-              );
-            },
+            onTap: () => AppRoutes.pushCatalog(
+              context,
+              interfaceType: InterfaceTypeEnum.ui,
+            ),
           ),
           const SizedBox(height: 20.0),
           const ComponentGroupsWidget(),

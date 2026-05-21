@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/l10n/app_localizations.dart';
+
 import 'package:flutter_guide/l10n/l10n.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 
-import 'package:flutter_guide/src/features/code_theme_selector/code_theme_selector_screen.dart';
+import 'package:flutter_guide/src/core/routes/app_routes.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/settings_controller.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/app_info_widget/app_info_widget.dart';
 import 'package:flutter_guide/src/features/main/screens/settings/widgets/select_language/select_language_widget.dart';
@@ -49,16 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ListTileItemWidget(
               title: appLocalizations.codeTheme,
               icon: Icons.code_rounded,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const CodeThemeSelectorScreen();
-                    },
-                  ),
-                );
-              },
+              onTap: () => AppRoutes.pushCodeTheme(context),
             ),
             ListTileItemWidget(
               title: appLocalizations.developerPortfolio,

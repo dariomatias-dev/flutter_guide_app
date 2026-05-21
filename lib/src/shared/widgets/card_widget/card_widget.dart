@@ -7,9 +7,9 @@ import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
 
+import 'package:flutter_guide/src/core/routes/app_routes.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/save_button/save_button_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 
@@ -39,16 +39,10 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTileItemWidget(
       onTap: () {
-        Navigator.push(
+        AppRoutes.pushComponent(
           context,
-          MaterialPageRoute(
-            builder: (context) {
-              return ComponentScreen(
-                componentType: componentType,
-                componentName: componentName,
-              );
-            },
-          ),
+          type: componentType,
+          name: componentName,
         );
       },
       padding: padding,

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/l10n/l10n.dart';
 import 'package:logger/logger.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/l10n/l10n.dart';
+
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
-import 'package:flutter_guide/src/core/routes/flutter_guide_routes.dart';
+import 'package:flutter_guide/src/core/routes/app_router.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
 import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
@@ -22,9 +23,7 @@ class FlutterGuideApp extends StatefulWidget {
 }
 
 class _FlutterGuideAppState extends State<FlutterGuideApp> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
-
   final _logger = Logger();
 
   DeepLinkService? _deepLinkService;
@@ -36,7 +35,7 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         final handler = DeepLinkHandler(
-          navigatorKey: _navigatorKey,
+          router: AppRouter.router,
           scaffoldMessengerKey: _scaffoldMessengerKey,
           context: context,
         );
@@ -44,7 +43,7 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
         _deepLinkService = DeepLinkService(
           handler: handler,
           logger: _logger,
-          navigatorKey: _navigatorKey,
+          router: AppRouter.router,
           scaffoldMessengerKey: _scaffoldMessengerKey,
         );
 
@@ -69,12 +68,11 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
         return ValueListenableBuilder(
           valueListenable: ThemeController.instance.themeModeNotifier,
           builder: (context, themeMode, child) {
-            return MaterialApp(
-              navigatorKey: _navigatorKey,
+            return MaterialApp.router(
               scaffoldMessengerKey: _scaffoldMessengerKey,
+              routerConfig: AppRouter.router,
               debugShowCheckedModeBanner: false,
               title: 'FlutterGuide',
-              routes: flutterGuideRoutes,
               theme: ligthMode,
               darkTheme: darkMode,
               themeMode: themeMode,

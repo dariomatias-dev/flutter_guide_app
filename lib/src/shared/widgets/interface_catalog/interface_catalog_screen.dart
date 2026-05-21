@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
+import 'package:flutter_guide/src/core/routes/app_routes.dart';
+import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
-import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/infinity_scroll.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
@@ -52,18 +54,14 @@ class InterfaceCatalogScreen extends StatelessWidget {
         itemBuilder: (value) {
           return ListTileItemWidget(
             onTap: () {
-              Navigator.push(
+              AppRoutes.pushComponentSample(
                 context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return ComponentSampleScreen(
-                      title: value.name,
-                      filePath:
-                          'lib/src/core/constants/samples/sample_components/$componentType/${value.fileName}_sample.dart',
-                      componentName: value.fileName,
-                      sample: value.sample,
-                    );
-                  },
+                args: ComponentSampleArgs(
+                  title: value.name,
+                  filePath:
+                      'lib/src/core/constants/samples/sample_components/$componentType/${value.fileName}_sample.dart',
+                  componentName: value.fileName,
+                  sample: value.sample,
                 ),
               );
             },
