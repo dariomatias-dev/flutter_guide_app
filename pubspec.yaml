@@ -85,6 +85,7 @@ dependencies:
   flutter_syntax_highlighter: ^0.2.1
   scroll_infinity: ^0.5.1
   app_links: ^6.4.1
+  go_router: ^17.2.3
 
 dev_dependencies:
   flutter_test:
