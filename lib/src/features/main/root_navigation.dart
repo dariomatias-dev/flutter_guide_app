@@ -8,8 +8,8 @@ import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 import 'package:flutter_guide/src/features/elements/elements_screen.dart';
-import 'package:flutter_guide/src/features/main/screens/home/home_screen.dart';
-import 'package:flutter_guide/src/features/main/screens/settings/settings_screen.dart';
+import 'package:flutter_guide/src/features/home/home_screen.dart';
+import 'package:flutter_guide/src/features/settings/settings_screen.dart';
 import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/features/main/widgets/main_app_bar/main_app_bar_widget.dart';
 

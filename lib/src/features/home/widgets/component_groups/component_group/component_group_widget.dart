@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/features/main/screens/home/widgets/component_groups/component_group/component_group_controller.dart';
+import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group/component_group_controller.dart';
 
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';

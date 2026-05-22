@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/features/main/screens/settings/widgets/about_dialog_widget.dart';
-import 'package:flutter_guide/src/features/main/screens/settings/widgets/docs_and_resources_dialog_widget.dart';
+import 'package:flutter_guide/src/features/settings/widgets/about_dialog_widget.dart';
+import 'package:flutter_guide/src/features/settings/widgets/docs_and_resources_dialog_widget.dart';
 
 class SettingsController {
   SettingsController({
