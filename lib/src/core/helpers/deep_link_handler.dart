@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
+import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
+import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
 import 'package:flutter_guide/src/core/routes/route_names.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -25,6 +29,8 @@ class DeepLinkHandler {
         UserPreferencesInheritedWidget.of(context)!
             .elementsScreenTabIndexNotifier;
     _componentsMap = ComponentsMapInheritedWidget.of(context)!;
+    _navigationNotifier = ProviderScope.containerOf(context)
+        .read(mainNavigationNotifierProvider.notifier);
   }
 
   final GoRouter router;
@@ -32,6 +38,7 @@ class DeepLinkHandler {
 
   late final ValueNotifier<int> _elementsScreenTabIndexNotifier;
   late final ComponentsMapInheritedWidget _componentsMap;
+  late final MainNavigationNotifier _navigationNotifier;
 
   BuildContext get _context =>
       router.routerDelegate.navigatorKey.currentContext!;
@@ -88,7 +95,8 @@ class DeepLinkHandler {
 
     final element = infos.samples[componentName]!;
 
-    router.goNamed(RouteNames.home);
+    _navigationNotifier.setIndex(0);
+
     router.pushNamed(
       RouteNames.catalog,
       pathParameters: {'interfaceType': interfaceType.name},
@@ -132,9 +140,10 @@ class DeepLinkHandler {
       return;
     }
 
-    final targetRoute =
-        type == 'packages' ? RouteNames.packages : RouteNames.elements;
-    router.goNamed(targetRoute);
+    final tabIndex = type == 'packages' ? 2 : 1;
+
+    _navigationNotifier.setIndex(tabIndex);
+
     router.pushNamed(
       RouteNames.component,
       pathParameters: {'type': componentType.name, 'name': componentName},
