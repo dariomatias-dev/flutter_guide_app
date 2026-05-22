@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -102,7 +103,8 @@ Future<void> main() async {
   final packagesInfos = getInfos(packages);
 
   runApp(
-    UserPreferencesInheritedWidget(
+    ProviderScope(
+      child: UserPreferencesInheritedWidget(
       appVersion: packageInfo.version,
       languageNotifier: ValueNotifier(
         language ?? LanguagesApp.en,
@@ -124,6 +126,7 @@ Future<void> main() async {
         functionsMap: functionsInfos.samples,
         child: const FlutterGuideApp(),
       ),
+    ),
     ),
   );
 }
