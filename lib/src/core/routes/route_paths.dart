@@ -1,14 +1,6 @@
 abstract final class RoutePaths {
   static const root = '/';
 
-  static const home = '/home';
-
-  static const elements = '/elements';
-
-  static const packages = '/packages';
-
-  static const settings = '/settings';
-
   static const component = '/component/:type/:name';
 
   static const catalog = '/catalog/:interfaceType';

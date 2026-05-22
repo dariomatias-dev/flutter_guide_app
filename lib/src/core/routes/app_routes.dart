@@ -7,22 +7,6 @@ import 'package:flutter_guide/src/core/routes/route_names.dart';
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 
 abstract final class AppRoutes {
-  static void goHome(BuildContext context) {
-    context.goNamed(RouteNames.home);
-  }
-
-  static void goElements(BuildContext context) {
-    context.goNamed(RouteNames.elements);
-  }
-
-  static void goPackages(BuildContext context) {
-    context.goNamed(RouteNames.packages);
-  }
-
-  static void goSettings(BuildContext context) {
-    context.goNamed(RouteNames.settings);
-  }
-
   static void pushComponent(
     BuildContext context, {
     required ComponentType type,

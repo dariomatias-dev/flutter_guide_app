@@ -1,12 +1,4 @@
 abstract final class RouteNames {
-  static const home = 'home';
-
-  static const elements = 'elements';
-
-  static const packages = 'packages';
-
-  static const settings = 'settings';
-
   static const component = 'component';
 
   static const catalog = 'catalog';
