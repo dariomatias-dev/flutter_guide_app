@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_guide/l10n/app_localizations.dart';
+
+import 'package:flutter_guide/src/core/di/app_version_notifier_provider.dart';
 
 import 'package:flutter_guide/src/features/settings/widgets/app_info_widget/source_code_button_widget.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
-
-class AppInfoWidget extends StatelessWidget {
+class AppInfoWidget extends ConsumerWidget {
   const AppInfoWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textColor = Theme.of(context).textTheme.bodyMedium?.color;
+    final appVersion = ref.watch(appVersionNotifierProvider);
 
     return Center(
       child: Column(
@@ -30,7 +33,7 @@ class AppInfoWidget extends StatelessWidget {
             ),
           ),
           Text(
-            '${AppLocalizations.of(context)!.version} ${UserPreferencesInheritedWidget.of(context)!.appVersion}',
+            '${AppLocalizations.of(context)!.version} ${appVersion.value ?? '...'}',
             style: TextStyle(
               color: textColor ?? Colors.black,
               fontSize: 10.0,
