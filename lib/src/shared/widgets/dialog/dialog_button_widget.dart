@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
-
 class DialogButtonWidget extends StatelessWidget {
   const DialogButtonWidget({
     super.key,
@@ -20,7 +18,7 @@ class DialogButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = ThemeController.instance.isDark;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final buttonColor = backgroundColor ??
         Colors.blue.withAlpha(

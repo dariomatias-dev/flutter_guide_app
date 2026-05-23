@@ -14,7 +14,6 @@ import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widg
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -50,9 +49,6 @@ Future<void> main() async {
   final language = sharedPreferences.getString(
     SharedPreferencesKeys.languageKey,
   );
-
-  // Application Theme
-  ThemeController.instance.init(sharedPreferences);
 
   // Application Code Theme
   await CodeThemeController.instance.init();

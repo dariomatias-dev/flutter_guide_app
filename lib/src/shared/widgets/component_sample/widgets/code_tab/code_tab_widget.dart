@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 
 import 'package:flutter_guide/src/shared/utils/code_theme_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_tab_controller.dart';
 
-class CodeTabWidget extends StatefulWidget {
+class CodeTabWidget extends ConsumerStatefulWidget {
   const CodeTabWidget({
     super.key,
     required this.lineCountNotifier,
@@ -21,10 +22,10 @@ class CodeTabWidget extends StatefulWidget {
   final ValueNotifier<double> fontSizeNotifier;
 
   @override
-  State<CodeTabWidget> createState() => _CodeTabWidgetState();
+  ConsumerState<CodeTabWidget> createState() => _CodeTabWidgetState();
 }
 
-class _CodeTabWidgetState extends State<CodeTabWidget> {
+class _CodeTabWidgetState extends ConsumerState<CodeTabWidget> {
   late final _controller = CodeTabController(
     getChunck: widget.getChunck,
   );
@@ -38,6 +39,12 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ref.watch(themeNotifierProvider.notifier).isDarkMode;
+
+    ref.listen(themeNotifierProvider, (_, __) {
+      _controller.onThemeChanged();
+    });
+
     return Theme(
       data: Theme.of(context).copyWith(
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -64,7 +71,7 @@ class _CodeTabWidgetState extends State<CodeTabWidget> {
                 builder: (context, fontSize, child) {
                   return SyntaxHighlighter(
                     code: codeString,
-                    isDarkMode: ThemeController.instance.isDark,
+                    isDarkMode: isDark,
                     maxCharCount:
                         widget.lineCountNotifier.value.toString().length,
                     fontSize: fontSize,

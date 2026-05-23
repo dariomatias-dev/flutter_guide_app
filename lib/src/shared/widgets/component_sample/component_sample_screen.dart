@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 
 import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_controller.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/compon
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_tab_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/component_sample_font_size_selector_widget.dart';
 
-class ComponentSampleScreen extends StatefulWidget {
+class ComponentSampleScreen extends ConsumerStatefulWidget {
   const ComponentSampleScreen({
     super.key,
     required this.title,
@@ -26,10 +27,11 @@ class ComponentSampleScreen extends StatefulWidget {
   final Widget sample;
 
   @override
-  State<ComponentSampleScreen> createState() => _ComponentSampleScreenState();
+  ConsumerState<ComponentSampleScreen> createState() =>
+      _ComponentSampleScreenState();
 }
 
-class _ComponentSampleScreenState extends State<ComponentSampleScreen>
+class _ComponentSampleScreenState extends ConsumerState<ComponentSampleScreen>
     with TickerProviderStateMixin {
   late final _controller = ComponentSampleController(
     vsync: this,
@@ -45,6 +47,8 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ref.watch(themeNotifierProvider.notifier).isDarkMode;
+
     return ComponentSampleScreenInheritedWidget(
       fileName: widget.filePath,
       componentName: widget.componentName,
@@ -62,16 +66,9 @@ class _ComponentSampleScreenState extends State<ComponentSampleScreen>
             controller: _controller.pageController,
             onPageChanged: _controller.onPageChanged,
             children: <Widget>[
-              ValueListenableBuilder(
-                valueListenable: ThemeController.instance.themeModeNotifier,
-                builder: (context, value, child) {
-                  return Theme(
-                    data: ThemeController.instance.isDark
-                        ? ThemeData.dark()
-                        : ThemeData.light(),
-                    child: widget.sample,
-                  );
-                },
+              Theme(
+                data: isDark ? ThemeData.dark() : ThemeData.light(),
+                child: widget.sample,
               ),
               CodeTabWidget(
                 lineCountNotifier: _controller.lineCountNotifier,

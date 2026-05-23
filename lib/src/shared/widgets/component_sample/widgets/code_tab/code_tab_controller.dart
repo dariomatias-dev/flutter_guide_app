@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
+import 'package:flutter/material.dart';
 
 class CodeTabController {
   late final List<String> Function(
@@ -28,13 +26,10 @@ class CodeTabController {
 
   void _init() {
     scrollController.addListener(onScroll);
-
-    ThemeController.instance.themeModeNotifier.addListener(_onThemeChanged);
-
     loadNextChunk();
   }
 
-  void _onThemeChanged() {
+  void onThemeChanged() {
     codeNotifier.value = '';
 
     _currentIndex = 0;
@@ -87,7 +82,6 @@ class CodeTabController {
 
   void dispose() {
     scrollController.removeListener(onScroll);
-    ThemeController.instance.themeModeNotifier.removeListener(_onThemeChanged);
     scrollController.dispose();
     codeNotifier.dispose();
   }

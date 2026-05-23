@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -6,23 +7,23 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
 
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
+import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
 import 'package:flutter_guide/src/core/routes/app_router.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
-import 'package:flutter_guide/src/core/theme/theme_controller.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/deep_link_service.dart';
 
-class FlutterGuideApp extends StatefulWidget {
+class FlutterGuideApp extends ConsumerStatefulWidget {
   const FlutterGuideApp({super.key});
 
   @override
-  State<FlutterGuideApp> createState() => _FlutterGuideAppState();
+  ConsumerState<FlutterGuideApp> createState() => _FlutterGuideAppState();
 }
 
-class _FlutterGuideAppState extends State<FlutterGuideApp> {
+class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
   final _logger = Logger();
 
@@ -61,31 +62,28 @@ class _FlutterGuideAppState extends State<FlutterGuideApp> {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = ref.watch(themeNotifierProvider);
+
     return ValueListenableBuilder(
       valueListenable:
           UserPreferencesInheritedWidget.of(context)!.languageNotifier,
       builder: (context, value, child) {
-        return ValueListenableBuilder(
-          valueListenable: ThemeController.instance.themeModeNotifier,
-          builder: (context, themeMode, child) {
-            return MaterialApp.router(
-              scaffoldMessengerKey: _scaffoldMessengerKey,
-              routerConfig: AppRouter.router,
-              debugShowCheckedModeBanner: false,
-              title: 'FlutterGuide',
-              theme: ligthMode,
-              darkTheme: darkMode,
-              themeMode: themeMode,
-              supportedLocales: L10n.all,
-              locale: LanguagesApp.locale(value),
-              localizationsDelegates: const <LocalizationsDelegate>[
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-            );
-          },
+        return MaterialApp.router(
+          scaffoldMessengerKey: _scaffoldMessengerKey,
+          routerConfig: AppRouter.router,
+          debugShowCheckedModeBanner: false,
+          title: 'FlutterGuide',
+          theme: ligthMode,
+          darkTheme: darkMode,
+          themeMode: themeMode,
+          supportedLocales: L10n.all,
+          locale: LanguagesApp.locale(value),
+          localizationsDelegates: const <LocalizationsDelegate>[
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
         );
       },
     );
