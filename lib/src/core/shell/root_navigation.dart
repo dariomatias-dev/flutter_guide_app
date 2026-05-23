@@ -6,12 +6,12 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
+import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/root_app_bar_widget.dart';
 
 import 'package:flutter_guide/src/features/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/home/home_screen.dart';
 import 'package:flutter_guide/src/features/settings/settings_screen.dart';
-import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
-import 'package:flutter_guide/src/features/main/widgets/main_app_bar/main_app_bar_widget.dart';
 
 import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
 
@@ -86,7 +86,7 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
     });
 
     return Scaffold(
-      appBar: const MainAppBarWidget(),
+      appBar: const RootAppBarWidget(),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[

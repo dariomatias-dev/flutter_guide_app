@@ -4,9 +4,9 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/routes/route_names.dart';
 import 'package:flutter_guide/src/core/routes/route_paths.dart';
+import 'package:flutter_guide/src/core/shell/root_navigation.dart';
 
 import 'package:flutter_guide/src/features/code_theme_selector/code_theme_selector_screen.dart';
-import 'package:flutter_guide/src/features/main/root_navigation.dart';
 
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';

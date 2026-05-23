@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
 
-import 'package:flutter_guide/src/features/main/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
+import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({
