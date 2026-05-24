@@ -18,7 +18,6 @@ import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.dart';
 
-import 'package:flutter_guide/src/shared/utils/code_theme_controller.dart';
 import 'package:flutter_guide/src/shared/utils/get_infos.dart';
 
 Future<void> main() async {
@@ -38,9 +37,6 @@ Future<void> main() async {
   MobileAds.instance.updateRequestConfiguration(requestConfiguration);
 
   final sharedPreferences = await SharedPreferences.getInstance();
-
-  // Application Code Theme
-  await CodeThemeController.instance.init();
 
   // Notifiers
   final favoriteWidgetNotifier = FavoriteWidgetNotifier('');
