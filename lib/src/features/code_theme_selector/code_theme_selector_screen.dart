@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
+import 'package:flutter_guide/src/core/di/code_theme_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
+import 'package:flutter_guide/src/core/notifiers/code_theme_notifier.dart';
 
 import 'package:flutter_guide/src/features/code_theme_selector/widgets/theme_list_widget.dart';
 
-import 'package:flutter_guide/src/shared/utils/code_theme_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
@@ -26,19 +28,18 @@ class CounterApp extends StatelessWidget {
 }
 ''';
 
-class CodeThemeSelectorScreen extends StatefulWidget {
+class CodeThemeSelectorScreen extends ConsumerStatefulWidget {
   const CodeThemeSelectorScreen({super.key});
 
   @override
-  State<CodeThemeSelectorScreen> createState() =>
+  ConsumerState<CodeThemeSelectorScreen> createState() =>
       _CodeThemeSelectorScreenState();
 }
 
-class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
+class _CodeThemeSelectorScreenState
+    extends ConsumerState<CodeThemeSelectorScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
-
-  final _codeThemeController = CodeThemeController.instance;
 
   @override
   void initState() {
@@ -48,25 +49,19 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
       length: 2,
       vsync: this,
     );
-
-    _codeThemeController.addListener(_rebuild);
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-    _codeThemeController.removeListener(_rebuild);
 
     super.dispose();
-  }
-
-  void _rebuild() {
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+    final codeTheme = ref.watch(codeThemeNotifierProvider);
 
     return Scaffold(
       appBar: StandardAppBarWidget(
@@ -90,28 +85,28 @@ class _CodeThemeSelectorScreenState extends State<CodeThemeSelectorScreen>
         controller: _tabController,
         children: <Widget>[
           ThemeListWidget(
-            themes: _codeThemeController.lightThemes,
+            themes: CodeThemeNotifier.lightThemes,
             themeType: ThemeType.light,
-            selectedSchema: _codeThemeController.selectedLightTheme,
+            selectedSchema: codeTheme.selectedLightTheme,
             onThemeSelected: (name, schema) {
-              _codeThemeController.updateTheme(
-                name: name,
-                schema: schema,
-                isDark: false,
-              );
+              ref.read(codeThemeNotifierProvider.notifier).updateTheme(
+                    name: name,
+                    schema: schema,
+                    isDark: false,
+                  );
             },
             previewCode: sampleCode,
           ),
           ThemeListWidget(
-            themes: _codeThemeController.darkThemes,
+            themes: CodeThemeNotifier.darkThemes,
             themeType: ThemeType.dark,
-            selectedSchema: _codeThemeController.selectedDarkTheme,
+            selectedSchema: codeTheme.selectedDarkTheme,
             onThemeSelected: (name, schema) {
-              _codeThemeController.updateTheme(
-                name: name,
-                schema: schema,
-                isDark: true,
-              );
+              ref.read(codeThemeNotifierProvider.notifier).updateTheme(
+                    name: name,
+                    schema: schema,
+                    isDark: true,
+                  );
             },
             previewCode: sampleCode,
           ),
