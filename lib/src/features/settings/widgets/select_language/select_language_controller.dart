@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_guide/src/core/constants/languages.dart';
+import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -11,26 +12,23 @@ import 'package:flutter_guide/src/shared/models/language_model.dart';
 class SelectLanguageController {
   SelectLanguageController({
     required BuildContext context,
+    required WidgetRef ref,
   }) {
-    _init(context);
+    _init(context, ref);
   }
 
-  late final UserPreferencesInheritedWidget _userPreferencesInheritedWidget;
-  late final SharedPreferences _sharedPreferences;
-
+  late final WidgetRef _ref;
   late final ValueNotifier<LanguageModel> selectedLanguageNotifier;
 
   void _init(
     BuildContext context,
+    WidgetRef ref,
   ) {
-    _userPreferencesInheritedWidget =
-        UserPreferencesInheritedWidget.of(context)!;
-    _sharedPreferences = _userPreferencesInheritedWidget.sharedPreferences;
+    _ref = ref;
 
-    final selectedLanguageName = _sharedPreferences.getString(
-          SharedPreferencesKeys.languageKey,
-        ) ??
-        '';
+    final selectedLanguageName = ref
+        .read(sharedPreferencesServiceProvider)
+        .getString(SharedPreferencesKeys.languageKey);
 
     LanguageModel? selectedLanguage;
 
@@ -85,10 +83,10 @@ class SelectLanguageController {
 
               selectedLanguageNotifier.value = language;
 
-              _sharedPreferences.setString(
-                SharedPreferencesKeys.languageKey,
-                language.code,
-              );
+              _ref.read(sharedPreferencesServiceProvider).setString(
+                    SharedPreferencesKeys.languageKey,
+                    language.code,
+                  );
 
               setStateCallback();
             },

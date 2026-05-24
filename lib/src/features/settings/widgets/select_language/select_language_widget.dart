@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_guide/src/features/settings/widgets/select_language/select_language_controller.dart';
 
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
-class SelectLanguageWidget extends StatefulWidget {
+class SelectLanguageWidget extends ConsumerStatefulWidget {
   const SelectLanguageWidget({
     super.key,
     required this.title,
@@ -13,12 +14,14 @@ class SelectLanguageWidget extends StatefulWidget {
   final String title;
 
   @override
-  State<SelectLanguageWidget> createState() => _SelectLanguageWidgetState();
+  ConsumerState<SelectLanguageWidget> createState() =>
+      _SelectLanguageWidgetState();
 }
 
-class _SelectLanguageWidgetState extends State<SelectLanguageWidget> {
+class _SelectLanguageWidgetState extends ConsumerState<SelectLanguageWidget> {
   late final _controller = SelectLanguageController(
     context: context,
+    ref: ref,
   );
 
   @override
