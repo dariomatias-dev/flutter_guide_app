@@ -1,38 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
+import 'package:flutter_guide/src/core/di/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 
-class ElementsScreen extends StatefulWidget {
+class ElementsScreen extends ConsumerStatefulWidget {
   const ElementsScreen({super.key});
 
   @override
-  State<ElementsScreen> createState() => _ElementsScreenState();
+  ConsumerState<ElementsScreen> createState() => _ElementsScreenState();
 }
 
-class _ElementsScreenState extends State<ElementsScreen>
+class _ElementsScreenState extends ConsumerState<ElementsScreen>
     with SingleTickerProviderStateMixin {
-  ValueNotifier<int>? _elementsScreenTabIndexNotifier;
   TabController? _tabController;
-  VoidCallback? _notifierListener;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    if (_elementsScreenTabIndexNotifier == null) {
-      _elementsScreenTabIndexNotifier =
-          UserPreferencesInheritedWidget.of(context)!
-              .elementsScreenTabIndexNotifier;
-
-      int safeIndex = _elementsScreenTabIndexNotifier!.value;
+    if (_tabController == null) {
+      int safeIndex = ref.read(elementsScreenTabIndexNotifierProvider);
       if (safeIndex < 0 || safeIndex >= 2) safeIndex = 0;
 
       _tabController = TabController(
@@ -40,25 +34,12 @@ class _ElementsScreenState extends State<ElementsScreen>
         vsync: this,
         initialIndex: safeIndex,
       );
-
-      _notifierListener = () {
-        int newIndex = _elementsScreenTabIndexNotifier!.value;
-        if (newIndex >= 0 &&
-            newIndex < _tabController!.length &&
-            _tabController!.index != newIndex) {
-          _tabController!.animateTo(newIndex);
-        }
-      };
-
-      _elementsScreenTabIndexNotifier!.addListener(_notifierListener!);
     }
   }
 
   @override
   void dispose() {
-    _elementsScreenTabIndexNotifier?.removeListener(_notifierListener!);
     _tabController?.dispose();
-
     super.dispose();
   }
 
@@ -68,41 +49,46 @@ class _ElementsScreenState extends State<ElementsScreen>
       return const SizedBox.shrink();
     }
 
-    return ValueListenableBuilder(
-      valueListenable: _elementsScreenTabIndexNotifier!,
-      builder: (context, value, child) {
-        return Column(
-          children: <Widget>[
-            DefaultTabBarWidget(
-              controller: _tabController!,
-              onTap: (value) {
-                _elementsScreenTabIndexNotifier!.value = value;
-              },
-              tabs: <Tab>[
-                const Tab(
-                  child: Text(
-                    'Widgets',
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    AppLocalizations.of(context)!.functions,
-                  ),
-                ),
-              ],
+    ref.listen(elementsScreenTabIndexNotifierProvider, (previous, next) {
+      if (next >= 0 &&
+          next < _tabController!.length &&
+          _tabController!.index != next) {
+        _tabController!.animateTo(next);
+      }
+    });
+
+    final tabIndex = ref.watch(elementsScreenTabIndexNotifierProvider);
+
+    return Column(
+      children: <Widget>[
+        DefaultTabBarWidget(
+          controller: _tabController!,
+          onTap: (value) {
+            ref
+                .read(elementsScreenTabIndexNotifierProvider.notifier)
+                .setIndex(value);
+          },
+          tabs: <Tab>[
+            const Tab(
+              child: Text('Widgets'),
             ),
-            Expanded(
-              child: ComponentsScreen(
-                key: GlobalKey(),
-                componentType: _tabController!.index == 0
-                    ? ComponentType.widget
-                    : ComponentType.function,
-                components: _tabController!.index == 0 ? widgets : functions,
+            Tab(
+              child: Text(
+                AppLocalizations.of(context)!.functions,
               ),
             ),
           ],
-        );
-      },
+        ),
+        Expanded(
+          child: ComponentsScreen(
+            key: GlobalKey(),
+            componentType: tabIndex == 0
+                ? ComponentType.widget
+                : ComponentType.function,
+            components: tabIndex == 0 ? widgets : functions,
+          ),
+        ),
+      ],
     );
   }
 }

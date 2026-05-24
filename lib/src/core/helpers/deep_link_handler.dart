@@ -6,13 +6,14 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
+import 'package:flutter_guide/src/core/di/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
+import 'package:flutter_guide/src/core/notifiers/elements_screen_tab_index_notifier.dart';
 import 'package:flutter_guide/src/core/routes/route_names.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
@@ -25,18 +26,18 @@ class DeepLinkHandler {
     required this.scaffoldMessengerKey,
     required BuildContext context,
   }) {
-    _elementsScreenTabIndexNotifier =
-        UserPreferencesInheritedWidget.of(context)!
-            .elementsScreenTabIndexNotifier;
+    final container = ProviderScope.containerOf(context);
+    _elementsTabNotifier =
+        container.read(elementsScreenTabIndexNotifierProvider.notifier);
     _componentsMap = ComponentsMapInheritedWidget.of(context)!;
-    _navigationNotifier = ProviderScope.containerOf(context)
-        .read(mainNavigationNotifierProvider.notifier);
+    _navigationNotifier =
+        container.read(mainNavigationNotifierProvider.notifier);
   }
 
   final GoRouter router;
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
 
-  late final ValueNotifier<int> _elementsScreenTabIndexNotifier;
+  late final ElementsScreenTabIndexNotifier _elementsTabNotifier;
   late final ComponentsMapInheritedWidget _componentsMap;
   late final MainNavigationNotifier _navigationNotifier;
 
@@ -120,11 +121,11 @@ class DeepLinkHandler {
     if (type == 'widgets') {
       componentType = ComponentType.widget;
       names = _componentsMap.widgetNames;
-      _elementsScreenTabIndexNotifier.value = 0;
+      _elementsTabNotifier.setIndex(0);
     } else if (type == 'functions') {
       componentType = ComponentType.function;
       names = _componentsMap.functionNames;
-      _elementsScreenTabIndexNotifier.value = 1;
+      _elementsTabNotifier.setIndex(1);
     } else if (type == 'packages') {
       componentType = ComponentType.package;
       names = _componentsMap.packageNames;
