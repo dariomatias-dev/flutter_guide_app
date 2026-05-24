@@ -7,12 +7,12 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
 
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
+import 'package:flutter_guide/src/core/di/language_notifier_provider.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
 import 'package:flutter_guide/src/core/routes/app_router.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
 
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/services/deep_link_service.dart';
 
@@ -63,29 +63,24 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
   @override
   Widget build(BuildContext context) {
     final themeMode = ref.watch(themeNotifierProvider);
+    final language = ref.watch(languageNotifierProvider);
 
-    return ValueListenableBuilder(
-      valueListenable:
-          UserPreferencesInheritedWidget.of(context)!.languageNotifier,
-      builder: (context, value, child) {
-        return MaterialApp.router(
-          scaffoldMessengerKey: _scaffoldMessengerKey,
-          routerConfig: AppRouter.router,
-          debugShowCheckedModeBanner: false,
-          title: 'FlutterGuide',
-          theme: ligthMode,
-          darkTheme: darkMode,
-          themeMode: themeMode,
-          supportedLocales: L10n.all,
-          locale: LanguagesApp.locale(value),
-          localizationsDelegates: const <LocalizationsDelegate>[
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-        );
-      },
+    return MaterialApp.router(
+      scaffoldMessengerKey: _scaffoldMessengerKey,
+      routerConfig: AppRouter.router,
+      debugShowCheckedModeBanner: false,
+      title: 'FlutterGuide',
+      theme: ligthMode,
+      darkTheme: darkMode,
+      themeMode: themeMode,
+      supportedLocales: L10n.all,
+      locale: LanguagesApp.locale(language),
+      localizationsDelegates: const <LocalizationsDelegate>[
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 }

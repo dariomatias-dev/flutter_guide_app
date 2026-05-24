@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_guide/src/core/constants/languages.dart';
+import 'package:flutter_guide/src/core/di/language_notifier_provider.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
-
-import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
 
 import 'package:flutter_guide/src/shared/models/language_model.dart';
 
@@ -77,16 +76,11 @@ class SelectLanguageController {
 
           return PopupMenuItem(
             onTap: () {
-              UserPreferencesInheritedWidget.of(context)!
-                  .languageNotifier
-                  .value = language.code;
+              _ref
+                  .read(languageNotifierProvider.notifier)
+                  .setLanguage(language.code);
 
               selectedLanguageNotifier.value = language;
-
-              _ref.read(sharedPreferencesServiceProvider).setString(
-                    SharedPreferencesKeys.languageKey,
-                    language.code,
-                  );
 
               setStateCallback();
             },
