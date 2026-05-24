@@ -7,13 +7,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_guide/src/flutter_guide_app.dart';
 
-import 'package:flutter_guide/src/core/constants/languages_app.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 
 import 'package:flutter_guide/src/providers/favorite_notifier/favorite_notifier.dart';
 import 'package:flutter_guide/src/providers/user_preferences_inherited_widget.dart';
@@ -44,11 +42,6 @@ Future<void> main() async {
 
   // Application Version
   final packageInfo = await PackageInfo.fromPlatform();
-
-  // Application Language
-  final language = sharedPreferences.getString(
-    SharedPreferencesKeys.languageKey,
-  );
 
   // Application Code Theme
   await CodeThemeController.instance.init();
@@ -106,9 +99,6 @@ Future<void> main() async {
       ],
       child: UserPreferencesInheritedWidget(
         appVersion: packageInfo.version,
-        languageNotifier: ValueNotifier(
-          language ?? LanguagesApp.en,
-        ),
         favoriteWidgetNotifier: favoriteWidgetNotifier,
         favoritePackageNotifier: favoritePackageNotifier,
         getFavoriteNotifier: getFavoriteNotifier,

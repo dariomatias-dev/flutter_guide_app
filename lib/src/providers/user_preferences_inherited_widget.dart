@@ -10,7 +10,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
   const UserPreferencesInheritedWidget({
     super.key,
     required this.appVersion,
-    required this.languageNotifier,
     required this.favoriteWidgetNotifier,
     required this.favoritePackageNotifier,
     required this.getFavoriteNotifier,
@@ -22,7 +21,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
   });
 
   final String appVersion;
-  final ValueNotifier<String> languageNotifier;
 
   final FavoriteWidgetNotifier favoriteWidgetNotifier;
   final FavoritePackageNotifier favoritePackageNotifier;
