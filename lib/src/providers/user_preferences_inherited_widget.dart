@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
@@ -12,7 +11,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
     super.key,
     required this.appVersion,
     required this.languageNotifier,
-    required this.sharedPreferences,
     required this.favoriteWidgetNotifier,
     required this.favoritePackageNotifier,
     required this.getFavoriteNotifier,
@@ -25,8 +23,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
 
   final String appVersion;
   final ValueNotifier<String> languageNotifier;
-
-  final SharedPreferences sharedPreferences;
 
   final FavoriteWidgetNotifier favoriteWidgetNotifier;
   final FavoritePackageNotifier favoritePackageNotifier;

@@ -109,7 +109,6 @@ Future<void> main() async {
         languageNotifier: ValueNotifier(
           language ?? LanguagesApp.en,
         ),
-        sharedPreferences: sharedPreferences,
         favoriteWidgetNotifier: favoriteWidgetNotifier,
         favoritePackageNotifier: favoritePackageNotifier,
         getFavoriteNotifier: getFavoriteNotifier,
