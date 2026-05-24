@@ -9,7 +9,6 @@ import 'package:flutter_guide/src/services/bookmarker_service/favorites_service.
 class UserPreferencesInheritedWidget extends InheritedWidget {
   const UserPreferencesInheritedWidget({
     super.key,
-    required this.appVersion,
     required this.favoriteWidgetNotifier,
     required this.favoritePackageNotifier,
     required this.getFavoriteNotifier,
@@ -19,8 +18,6 @@ class UserPreferencesInheritedWidget extends InheritedWidget {
     required this.elementsScreenTabIndexNotifier,
     required super.child,
   });
-
-  final String appVersion;
 
   final FavoriteWidgetNotifier favoriteWidgetNotifier;
   final FavoritePackageNotifier favoritePackageNotifier;

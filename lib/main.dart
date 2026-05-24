@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_guide/src/flutter_guide_app.dart';
@@ -39,9 +38,6 @@ Future<void> main() async {
   MobileAds.instance.updateRequestConfiguration(requestConfiguration);
 
   final sharedPreferences = await SharedPreferences.getInstance();
-
-  // Application Version
-  final packageInfo = await PackageInfo.fromPlatform();
 
   // Application Code Theme
   await CodeThemeController.instance.init();
@@ -98,7 +94,6 @@ Future<void> main() async {
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
       ],
       child: UserPreferencesInheritedWidget(
-        appVersion: packageInfo.version,
         favoriteWidgetNotifier: favoriteWidgetNotifier,
         favoritePackageNotifier: favoritePackageNotifier,
         getFavoriteNotifier: getFavoriteNotifier,
