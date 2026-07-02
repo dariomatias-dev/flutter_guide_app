@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-import 'package:flutter_guide/src/core/di/code_theme_notifier_provider.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
+
+import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_view_model_provider.dart';
 
 import 'package:flutter_guide/src/shared/widgets/component_sample/widgets/code_tab/code_tab_controller.dart';
 
@@ -40,7 +41,7 @@ class _CodeTabWidgetState extends ConsumerState<CodeTabWidget> {
   @override
   Widget build(BuildContext context) {
     final isDark = ref.watch(themeNotifierProvider.notifier).isDarkMode;
-    final codeTheme = ref.watch(codeThemeNotifierProvider);
+    final codeTheme = ref.watch(codeThemeViewModelProvider);
 
     ref.listen(themeNotifierProvider, (_, __) {
       _controller.onThemeChanged();
