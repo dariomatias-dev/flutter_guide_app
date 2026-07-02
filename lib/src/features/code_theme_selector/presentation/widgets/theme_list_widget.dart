@@ -3,7 +3,7 @@ import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
 
-import 'package:flutter_guide/src/features/code_theme_selector/widgets/theme_card_widget.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/presentation/widgets/theme_card_widget.dart';
 
 class ThemeListWidget extends StatelessWidget {
   const ThemeListWidget({

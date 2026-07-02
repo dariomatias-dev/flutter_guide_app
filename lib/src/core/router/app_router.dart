@@ -6,7 +6,7 @@ import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/core/router/route_paths.dart';
 import 'package:flutter_guide/src/core/shell/root_navigation.dart';
 
-import 'package:flutter_guide/src/features/code_theme_selector/code_theme_selector_screen.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
 
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/widgets/component/component_screen.dart';
