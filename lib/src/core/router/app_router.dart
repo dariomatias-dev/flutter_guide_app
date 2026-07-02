@@ -2,8 +2,8 @@ import 'package:go_router/go_router.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-import 'package:flutter_guide/src/core/routes/route_names.dart';
-import 'package:flutter_guide/src/core/routes/route_paths.dart';
+import 'package:flutter_guide/src/core/router/route_names.dart';
+import 'package:flutter_guide/src/core/router/route_paths.dart';
 import 'package:flutter_guide/src/core/shell/root_navigation.dart';
 
 import 'package:flutter_guide/src/features/code_theme_selector/code_theme_selector_screen.dart';
@@ -26,7 +26,7 @@ abstract final class AppRouter {
         builder: (context, state) => const RootNavigation(),
       ),
       GoRoute(
-        path: '/component/:type/:name',
+        path: RoutePaths.component,
         name: RouteNames.component,
         builder: (context, state) {
           final typeName = state.pathParameters['type']!;
@@ -40,7 +40,7 @@ abstract final class AppRouter {
         },
       ),
       GoRoute(
-        path: '/catalog/:interfaceType',
+        path: RoutePaths.catalog,
         name: RouteNames.catalog,
         builder: (context, state) {
           final typeName = state.pathParameters['interfaceType']!;
@@ -68,7 +68,7 @@ abstract final class AppRouter {
         },
       ),
       GoRoute(
-        path: '/saved/:type',
+        path: RoutePaths.savedComponents,
         name: RouteNames.savedComponents,
         builder: (context, state) {
           final typeName = state.pathParameters['type']!;

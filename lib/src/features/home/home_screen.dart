@@ -7,7 +7,7 @@ import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/features/home/widgets/border_list_tile_item_widget.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_groups_widget.dart';
 
-import 'package:flutter_guide/src/core/routes/app_routes.dart';
+import 'package:flutter_guide/src/core/router/app_routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

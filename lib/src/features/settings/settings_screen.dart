@@ -5,7 +5,7 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 
-import 'package:flutter_guide/src/core/routes/app_routes.dart';
+import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/features/settings/settings_controller.dart';
 import 'package:flutter_guide/src/features/settings/widgets/app_info_widget/app_info_widget.dart';
 import 'package:flutter_guide/src/features/settings/widgets/select_language/select_language_widget.dart';

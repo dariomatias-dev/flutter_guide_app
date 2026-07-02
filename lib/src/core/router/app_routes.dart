@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-import 'package:flutter_guide/src/core/routes/route_names.dart';
+import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 
 abstract final class AppRoutes {
@@ -12,9 +14,11 @@ abstract final class AppRoutes {
     required ComponentType type,
     required String name,
   }) {
-    context.pushNamed(
-      RouteNames.component,
-      pathParameters: {'type': type.name, 'name': name},
+    unawaited(
+      context.pushNamed(
+        RouteNames.component,
+        pathParameters: {'type': type.name, 'name': name},
+      ),
     );
   }
 
@@ -22,9 +26,11 @@ abstract final class AppRoutes {
     BuildContext context, {
     required InterfaceTypeEnum interfaceType,
   }) {
-    context.pushNamed(
-      RouteNames.catalog,
-      pathParameters: {'interfaceType': interfaceType.name},
+    unawaited(
+      context.pushNamed(
+        RouteNames.catalog,
+        pathParameters: {'interfaceType': interfaceType.name},
+      ),
     );
   }
 
@@ -32,9 +38,11 @@ abstract final class AppRoutes {
     BuildContext context, {
     required ComponentSampleArgs args,
   }) {
-    context.pushNamed(
-      RouteNames.componentSample,
-      extra: args,
+    unawaited(
+      context.pushNamed(
+        RouteNames.componentSample,
+        extra: args,
+      ),
     );
   }
 
@@ -42,13 +50,15 @@ abstract final class AppRoutes {
     BuildContext context, {
     required ComponentType type,
   }) {
-    context.pushNamed(
-      RouteNames.savedComponents,
-      pathParameters: {'type': type.name},
+    unawaited(
+      context.pushNamed(
+        RouteNames.savedComponents,
+        pathParameters: {'type': type.name},
+      ),
     );
   }
 
   static void pushCodeTheme(BuildContext context) {
-    context.pushNamed(RouteNames.codeTheme);
+    unawaited(context.pushNamed(RouteNames.codeTheme));
   }
 }

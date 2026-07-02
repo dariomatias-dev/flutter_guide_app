@@ -12,7 +12,7 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
 import 'package:flutter_guide/src/core/notifiers/elements_screen_tab_index_notifier.dart';
-import 'package:flutter_guide/src/core/routes/route_names.dart';
+import 'package:flutter_guide/src/core/router/route_names.dart';
 
 import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
 

@@ -6,7 +6,7 @@ import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elem
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-import 'package:flutter_guide/src/core/routes/app_routes.dart';
+import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/models/interface_model.dart';
 import 'package:flutter_guide/src/shared/widgets/infinity_scroll.dart';
