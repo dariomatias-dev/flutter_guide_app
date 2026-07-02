@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group/component_group_controller.dart';
+import 'package:flutter_guide/src/features/home/presentation/view_models/component_group_view_model.dart';
 
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
@@ -26,7 +26,7 @@ class ComponentGroupWidget extends StatefulWidget {
 
 class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
     with SingleTickerProviderStateMixin {
-  late final _controller = ComponentGroupController(
+  late final _viewModel = ComponentGroupViewModel(
     context: context,
   );
 
@@ -107,16 +107,16 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
               final componentIndex = index - (index ~/ (_adInterval + 1));
               final componentName = components[componentIndex];
               final component =
-                  widgets[_controller.widgetNames.indexOf(componentName)];
+                  widgets[_viewModel.widgetNames.indexOf(componentName)];
 
               return CardWidget(
                 icon: component.icon ?? Icons.layers,
                 componentName: component.name,
                 componentType: ComponentType.widget,
                 videoId: component.videoId,
-                favoritesService: _controller
+                favoritesService: _viewModel
                     .userPreferencesInheritedWidget.favoriteWidgetsService,
-                favoriteNotifier: _controller
+                favoriteNotifier: _viewModel
                     .userPreferencesInheritedWidget.favoriteWidgetNotifier,
                 padding: const EdgeInsets.only(
                   left: 20.0,
