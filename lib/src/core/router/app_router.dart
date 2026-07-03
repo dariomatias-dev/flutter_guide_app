@@ -6,12 +6,12 @@ import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/core/router/route_paths.dart';
 import 'package:flutter_guide/src/core/shell/root_navigation.dart';
 
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component/component_screen.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/interface_catalog/interface_catalog_screen.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
 
-import 'package:flutter_guide/src/features/catalog/presentation/screens/component/component_screen.dart';
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/widgets/component_sample/component_sample_screen.dart';
-import 'package:flutter_guide/src/shared/widgets/interface_catalog/interface_catalog_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/saved_components/saved_components_widget.dart';
 
 abstract final class AppRouter {
