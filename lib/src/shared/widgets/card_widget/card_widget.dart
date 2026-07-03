@@ -66,9 +66,8 @@ class CardWidget extends StatelessWidget {
           const SizedBox(width: 4.0),
         ],
         SaveButtonWidget(
+          componentType: componentType,
           componentName: componentName,
-          favoritesService: favoritesService,
-          favoriteNotifier: favoriteNotifier,
         ),
       ],
     );
