@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/di/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
-import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ElementsScreen extends ConsumerStatefulWidget {
   const ElementsScreen({super.key});
@@ -82,9 +80,8 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
         Expanded(
           child: ComponentsScreen(
             key: GlobalKey(),
-            componentType: tabIndex == 0
-                ? ComponentType.widget
-                : ComponentType.function,
+            componentType:
+                tabIndex == 0 ? ComponentType.widget : ComponentType.function,
             components: tabIndex == 0 ? widgets : functions,
           ),
         ),

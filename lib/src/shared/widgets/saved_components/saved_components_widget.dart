@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
-import 'package:flutter_guide/src/shared/widgets/components/components_screen.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/saved_components/saved_components_controller.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
