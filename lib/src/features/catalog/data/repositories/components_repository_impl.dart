@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/widgets.dart' show Widget;
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/data/datasources/components_local_datasource.dart';
 import 'package:flutter_guide/src/features/catalog/domain/entities/component_entity.dart';
@@ -30,5 +31,13 @@ class ComponentsRepositoryImpl implements ComponentsRepository {
       name: name,
       locale: _locale,
     );
+  }
+
+  @override
+  Widget getSampleWidget({
+    required ComponentType type,
+    required String name,
+  }) {
+    return _datasource.getSampleWidget(type: type, name: name);
   }
 }
