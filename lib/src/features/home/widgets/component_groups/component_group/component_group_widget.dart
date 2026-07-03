@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
 import 'package:flutter_guide/src/features/home/presentation/view_models/component_group_view_model.dart';
-
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
@@ -114,10 +111,6 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
                 componentName: component.name,
                 componentType: ComponentType.widget,
                 videoId: component.videoId,
-                favoritesService: _viewModel
-                    .userPreferencesInheritedWidget.favoriteWidgetsService,
-                favoriteNotifier: _viewModel
-                    .userPreferencesInheritedWidget.favoriteWidgetNotifier,
                 padding: const EdgeInsets.only(
                   left: 20.0,
                 ),
