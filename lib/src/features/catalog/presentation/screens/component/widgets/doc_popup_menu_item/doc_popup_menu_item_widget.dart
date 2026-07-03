@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
-import 'package:flutter_guide/src/shared/widgets/component/widgets/doc_popup_menu_item/doc_popup_menu_item_controller.dart';
 
 class DocPopupMenuItemWidget extends PopupMenuEntry {
   const DocPopupMenuItemWidget({
@@ -22,29 +19,35 @@ class DocPopupMenuItemWidget extends PopupMenuEntry {
   bool represents(value) => false;
 
   @override
-  State<DocPopupMenuItemWidget> createState() => _PopupMenuItemDocWidgetState();
+  State<DocPopupMenuItemWidget> createState() => _DocPopupMenuItemWidgetState();
+
+  static String _category(ComponentType type) {
+    switch (type) {
+      case ComponentType.widget:
+        return 'widgets';
+      case ComponentType.material:
+      case ComponentType.function:
+        return 'material';
+      default:
+        return 'cupertino';
+    }
+  }
 }
 
-class _PopupMenuItemDocWidgetState extends State<DocPopupMenuItemWidget> {
-  final _controller = DocPopupMenuItemController();
-
+class _DocPopupMenuItemWidgetState extends State<DocPopupMenuItemWidget> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuItem(
       onTap: () {
-        String url = '';
+        String url;
 
         if (widget.type == null) {
           url = 'https://pub.dev/packages/${widget.componentName}';
         } else {
-          final type = _controller.getCategory(
-            widget.type!,
-          );
+          final category = DocPopupMenuItemWidget._category(widget.type!);
 
-          url =
-              'https://api.flutter.dev/flutter/$type/${widget.componentName}';
-
-          url +=
+          url = 'https://api.flutter.dev/flutter/$category/'
+              '${widget.componentName}'
               '${widget.type != ComponentType.function ? '-class' : ''}.html';
         }
 
