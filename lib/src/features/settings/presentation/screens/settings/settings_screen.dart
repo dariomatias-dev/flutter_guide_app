@@ -3,20 +3,19 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 import 'package:flutter_guide/src/core/router/app_routes.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/settings_view_model_provider.dart';
+import 'package:flutter_guide/src/features/settings/presentation/widgets/about_dialog_widget.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/app_info_widget/app_info_widget.dart';
+import 'package:flutter_guide/src/features/settings/presentation/widgets/docs_and_resources_dialog_widget.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/select_language_widget.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SettingsScreen extends ConsumerWidget {
+class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
-    final settingsViewModel = ref.read(settingsViewModelProvider);
 
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(
@@ -31,8 +30,9 @@ class SettingsScreen extends ConsumerWidget {
             ListTileItemWidget(
               title: appLocalizations.docsAndResources,
               icon: Icons.description_outlined,
-              onTap: () => settingsViewModel.showDocsAndResourcesDialog(
-                context,
+              onTap: () => showDialog<void>(
+                context: context,
+                builder: (context) => const DocsAndResourcesDialogWidget(),
               ),
             ),
             SelectLanguageWidget(
@@ -92,7 +92,10 @@ class SettingsScreen extends ConsumerWidget {
             ListTileItemWidget(
               title: appLocalizations.about,
               icon: Icons.info_outline,
-              onTap: () => settingsViewModel.showAboutDialog(context),
+              onTap: () => showDialog<void>(
+                context: context,
+                builder: (context) => const AboutDialogWidget(),
+              ),
             ),
           ],
         ),
