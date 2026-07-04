@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
-
-import 'package:flutter_guide/src/shared/models/doc_and_resources_model.dart';
+import 'package:flutter_guide/src/features/settings/domain/entities/doc_and_resources_model.dart';
 
 List<DocAndResourcesModel> getDocsAndResources(BuildContext context) {
   final appLocalizations = AppLocalizations.of(context)!;
