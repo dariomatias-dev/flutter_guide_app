@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/di/elements_screen_tab_index_notifier_provider.dart';
@@ -13,12 +9,13 @@ import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
 import 'package:flutter_guide/src/core/notifiers/elements_screen_tab_index_notifier.dart';
 import 'package:flutter_guide/src/core/router/route_names.dart';
-
-import 'package:flutter_guide/src/providers/widgets_map_inherited_widget.dart';
-
+import 'package:flutter_guide/src/features/catalog/domain/repositories/components_repository.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class DeepLinkHandler {
   DeepLinkHandler({
@@ -29,7 +26,7 @@ class DeepLinkHandler {
     final container = ProviderScope.containerOf(context);
     _elementsTabNotifier =
         container.read(elementsScreenTabIndexNotifierProvider.notifier);
-    _componentsMap = ComponentsMapInheritedWidget.of(context)!;
+    _componentsRepository = container.read(componentsRepositoryProvider);
     _navigationNotifier =
         container.read(mainNavigationNotifierProvider.notifier);
   }
@@ -38,7 +35,7 @@ class DeepLinkHandler {
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
 
   late final ElementsScreenTabIndexNotifier _elementsTabNotifier;
-  late final ComponentsMapInheritedWidget _componentsMap;
+  late final ComponentsRepository _componentsRepository;
   late final MainNavigationNotifier _navigationNotifier;
 
   BuildContext get _context =>
@@ -116,26 +113,26 @@ class DeepLinkHandler {
 
   void _handleComponentNavigation(String type, String componentName) {
     ComponentType? componentType;
-    List<String> names;
 
     if (type == 'widgets') {
       componentType = ComponentType.widget;
-      names = _componentsMap.widgetNames;
       _elementsTabNotifier.setIndex(0);
     } else if (type == 'functions') {
       componentType = ComponentType.function;
-      names = _componentsMap.functionNames;
       _elementsTabNotifier.setIndex(1);
     } else if (type == 'packages') {
       componentType = ComponentType.package;
-      names = _componentsMap.packageNames;
     } else {
       _showNotFound(componentName, type);
 
       return;
     }
 
-    if (!names.contains(componentName)) {
+    final exists = _componentsRepository
+        .getComponentsByType(componentType)
+        .any((component) => component.name == componentName);
+
+    if (!exists) {
       _showNotFound(componentName, type);
 
       return;
