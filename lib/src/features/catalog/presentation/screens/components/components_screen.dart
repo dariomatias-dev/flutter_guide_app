@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/widgets/search_field_widget/search_field_widget.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
 import 'package:flutter_guide/src/shared/models/component_model.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/infinity_scroll.dart';
 
 class ComponentsScreen extends StatefulWidget {
   const ComponentsScreen({

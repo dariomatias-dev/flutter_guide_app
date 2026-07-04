@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 
 const _adInterval = 12;
