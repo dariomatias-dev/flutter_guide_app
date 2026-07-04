@@ -6,12 +6,12 @@ import 'package:flutter_guide/src/core/di/elements_screen_tab_index_notifier_pro
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
+import 'package:flutter_guide/src/core/models/component_infos_model.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
 import 'package:flutter_guide/src/core/notifiers/elements_screen_tab_index_notifier.dart';
 import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/components_repository.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
-import 'package:flutter_guide/src/shared/models/component_infos_model.dart';
 import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

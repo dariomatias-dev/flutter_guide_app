@@ -1,4 +1,4 @@
-import 'package:flutter_guide/src/shared/models/component_summary_mode.dart';
+import 'package:flutter_guide/src/core/models/component_summary_mode.dart';
 
 class ComponentInfosModel {
   const ComponentInfosModel({
