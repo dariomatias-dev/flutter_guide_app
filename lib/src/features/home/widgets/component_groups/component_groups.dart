@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/src/core/constants/samples/sample_names/widget_names.dart';
-
-import 'package:flutter_guide/src/shared/models/component_group_model.dart';
+import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group_model.dart';
 
 const componentGroups = <ComponentGroupModel>[
   ComponentGroupModel(
