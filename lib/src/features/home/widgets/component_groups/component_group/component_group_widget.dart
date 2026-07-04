@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/home/presentation/view_models/component_group_view_model.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/shared/models/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const _adInterval = 5;
 
-class ComponentGroupWidget extends StatefulWidget {
+class ComponentGroupWidget extends ConsumerStatefulWidget {
   const ComponentGroupWidget({
     super.key,
     required this.componentGroup,
@@ -18,15 +18,12 @@ class ComponentGroupWidget extends StatefulWidget {
   final ComponentGroupModel componentGroup;
 
   @override
-  State<ComponentGroupWidget> createState() => _ComponentGroupWidgetState();
+  ConsumerState<ComponentGroupWidget> createState() =>
+      _ComponentGroupWidgetState();
 }
 
-class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
+class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
     with SingleTickerProviderStateMixin {
-  late final _viewModel = ComponentGroupViewModel(
-    context: context,
-  );
-
   late final AnimationController _animationController;
   late final Animation<double> _animation;
 
@@ -76,6 +73,8 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
     final adCount = (itemCount / _adInterval).floor();
     final totalItems = itemCount + adCount;
 
+    final componentsRepository = ref.watch(componentsRepositoryProvider);
+
     return Column(
       children: <Widget>[
         ListTileItemWidget(
@@ -103,8 +102,10 @@ class _ComponentGroupWidgetState extends State<ComponentGroupWidget>
 
               final componentIndex = index - (index ~/ (_adInterval + 1));
               final componentName = components[componentIndex];
-              final component =
-                  widgets[_viewModel.widgetNames.indexOf(componentName)];
+              final component = componentsRepository.getComponentByName(
+                type: ComponentType.widget,
+                name: componentName,
+              );
 
               return CardWidget(
                 icon: component.icon ?? Icons.layers,
