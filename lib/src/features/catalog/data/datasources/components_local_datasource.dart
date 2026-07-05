@@ -9,11 +9,11 @@ import 'package:flutter_guide/src/core/constants/samples/sample_definitions/pack
 import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart'
     as widgets_source;
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/domain/entities/component_entity.dart';
+import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/shared/models/component_model.dart';
 
 class ComponentsLocalDatasource {
-  List<ComponentEntity> getByType(
+  List<Component> getByType(
     ComponentType type, {
     required Locale locale,
   }) {
@@ -33,7 +33,7 @@ class ComponentsLocalDatasource {
     }
   }
 
-  ComponentEntity getByName({
+  Component getByName({
     required ComponentType type,
     required String name,
     required Locale locale,
@@ -68,8 +68,8 @@ class ComponentsLocalDatasource {
     }
   }
 
-  ComponentEntity _fromComponentModel(ComponentModel model) {
-    return ComponentEntity(
+  Component _fromComponentModel(ComponentModel model) {
+    return Component(
       name: model.name,
       type: model.type,
       icon: model.icon,
@@ -77,51 +77,51 @@ class ComponentsLocalDatasource {
     );
   }
 
-  List<ComponentEntity> _getElements(Locale locale) {
+  List<Component> _getElements(Locale locale) {
     final l10n = lookupAppLocalizations(locale);
 
-    return <ComponentEntity>[
-      ComponentEntity(
+    return <Component>[
+      Component(
         name: l10n.customPopupMenu,
         type: ComponentType.elements,
         fileName: 'custom_popup_menu',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.gaps,
         type: ComponentType.elements,
         fileName: 'gaps',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.imageLoader,
         type: ComponentType.elements,
         fileName: 'image_loader',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.infiniteGridView,
         type: ComponentType.elements,
         fileName: 'infinite_grid_view',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.loadingButton,
         type: ComponentType.elements,
         fileName: 'loading_button',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.loadingDialog,
         type: ComponentType.elements,
         fileName: 'loading_dialog',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.loadingScreen,
         type: ComponentType.elements,
         fileName: 'loading_screen',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.pagination,
         type: ComponentType.elements,
         fileName: 'pagination',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.passwordField,
         type: ComponentType.elements,
         fileName: 'password_field',
@@ -129,31 +129,31 @@ class ComponentsLocalDatasource {
     ];
   }
 
-  List<ComponentEntity> _getUis(Locale locale) {
+  List<Component> _getUis(Locale locale) {
     final l10n = lookupAppLocalizations(locale);
 
-    return <ComponentEntity>[
-      ComponentEntity(
+    return <Component>[
+      Component(
         name: l10n.chatScreen,
         type: ComponentType.uis,
         fileName: 'chat_screen',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.emailsApp,
         type: ComponentType.uis,
         fileName: 'emails_app',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.loginScreen,
         type: ComponentType.uis,
         fileName: 'login_screen',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.loginScreenWithBackgroundImage,
         type: ComponentType.uis,
         fileName: 'login_with_background_image_screen',
       ),
-      ComponentEntity(
+      Component(
         name: l10n.phoneVerificationScreen,
         type: ComponentType.uis,
         fileName: 'phone_verification_screen',

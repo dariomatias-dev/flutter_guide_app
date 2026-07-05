@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart' show IconData;
 
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
-class ComponentEntity {
-  const ComponentEntity({
+class Component {
+  const Component({
     required this.name,
     required this.type,
     this.icon,

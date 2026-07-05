@@ -1,7 +1,7 @@
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-class CodeThemeEntity {
-  const CodeThemeEntity({
+class CodeTheme {
+  const CodeTheme({
     required this.selectedLightTheme,
     required this.selectedDarkTheme,
   });

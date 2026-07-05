@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/features/settings/domain/entities/language_entity.dart';
+import 'package:flutter_guide/src/features/settings/domain/entities/language.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/select_language_view_model_provider.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,9 +34,9 @@ class SelectLanguageWidget extends ConsumerWidget {
       context: context,
       position: position,
       items: List.generate(
-        LanguageEntity.all.length,
+        Language.all.length,
         (index) {
-          final language = LanguageEntity.all[index];
+          final language = Language.all[index];
 
           return PopupMenuItem(
             onTap: () {

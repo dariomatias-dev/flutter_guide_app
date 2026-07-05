@@ -1,7 +1,7 @@
-import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme_entity.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 
 abstract class CodeThemeRepository {
-  CodeThemeEntity getSelectedTheme();
+  CodeTheme getSelectedTheme();
 
   Future<void> saveLightTheme(String name);
 

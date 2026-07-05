@@ -1,7 +1,7 @@
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
 
-class LanguageEntity {
-  const LanguageEntity({
+class Language {
+  const Language({
     required this.name,
     required this.code,
   });
@@ -9,12 +9,12 @@ class LanguageEntity {
   final String name;
   final String code;
 
-  static const all = <LanguageEntity>[
-    LanguageEntity(
+  static const all = <Language>[
+    Language(
       name: 'English',
       code: LanguagesApp.en,
     ),
-    LanguageEntity(
+    Language(
       name: 'Português',
       code: LanguagesApp.ptBr,
     ),

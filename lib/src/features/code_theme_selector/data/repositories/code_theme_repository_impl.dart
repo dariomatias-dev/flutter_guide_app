@@ -2,7 +2,7 @@ import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 import 'package:flutter_guide/src/core/services/shared_preferences_service.dart';
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
-import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme_entity.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/domain/repositories/code_theme_repository.dart';
 
 class CodeThemeRepositoryImpl implements CodeThemeRepository {
@@ -11,7 +11,7 @@ class CodeThemeRepositoryImpl implements CodeThemeRepository {
   final SharedPreferencesService _preferences;
 
   @override
-  CodeThemeEntity getSelectedTheme() {
+  CodeTheme getSelectedTheme() {
     final lightThemeName = _preferences.getStringOrNull(
       SharedPreferencesKeys.codeLightThemeKey,
     );
@@ -23,24 +23,24 @@ class CodeThemeRepositoryImpl implements CodeThemeRepository {
     var selectedDark = SyntaxThemes.vsCodeDark;
 
     if (lightThemeName != null) {
-      selectedLight = CodeThemeEntity.lightThemes
+      selectedLight = CodeTheme.lightThemes
           .firstWhere(
             (t) => t.$1 == lightThemeName,
-            orElse: () => CodeThemeEntity.lightThemes.last,
+            orElse: () => CodeTheme.lightThemes.last,
           )
           .$2;
     }
 
     if (darkThemeName != null) {
-      selectedDark = CodeThemeEntity.darkThemes
+      selectedDark = CodeTheme.darkThemes
           .firstWhere(
             (t) => t.$1 == darkThemeName,
-            orElse: () => CodeThemeEntity.darkThemes.last,
+            orElse: () => CodeTheme.darkThemes.last,
           )
           .$2;
     }
 
-    return CodeThemeEntity(
+    return CodeTheme(
       selectedLightTheme: selectedLight,
       selectedDarkTheme: selectedDark,
     );

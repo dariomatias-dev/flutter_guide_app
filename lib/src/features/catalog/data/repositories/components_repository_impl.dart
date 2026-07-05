@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/widgets.dart' show Widget;
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/data/datasources/components_local_datasource.dart';
-import 'package:flutter_guide/src/features/catalog/domain/entities/component_entity.dart';
+import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/components_repository.dart';
 
 class ComponentsRepositoryImpl implements ComponentsRepository {
@@ -17,12 +17,12 @@ class ComponentsRepositoryImpl implements ComponentsRepository {
   final Locale _locale;
 
   @override
-  List<ComponentEntity> getComponentsByType(ComponentType type) {
+  List<Component> getComponentsByType(ComponentType type) {
     return _datasource.getByType(type, locale: _locale);
   }
 
   @override
-  ComponentEntity getComponentByName({
+  Component getComponentByName({
     required ComponentType type,
     required String name,
   }) {

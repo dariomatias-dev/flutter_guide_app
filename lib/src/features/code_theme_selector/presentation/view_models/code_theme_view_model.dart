@@ -1,17 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme_entity.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/domain/repositories/code_theme_repository.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_repository_provider.dart';
 
-class CodeThemeViewModel extends Notifier<CodeThemeEntity> {
+class CodeThemeViewModel extends Notifier<CodeTheme> {
   late final CodeThemeRepository _repository = ref.read(
     codeThemeRepositoryProvider,
   );
 
   @override
-  CodeThemeEntity build() {
+  CodeTheme build() {
     return _repository.getSelectedTheme();
   }
 
@@ -21,13 +21,13 @@ class CodeThemeViewModel extends Notifier<CodeThemeEntity> {
     required bool isDark,
   }) async {
     if (isDark) {
-      state = CodeThemeEntity(
+      state = CodeTheme(
         selectedLightTheme: state.selectedLightTheme,
         selectedDarkTheme: schema,
       );
       await _repository.saveDarkTheme(name);
     } else {
-      state = CodeThemeEntity(
+      state = CodeTheme(
         selectedLightTheme: schema,
         selectedDarkTheme: state.selectedDarkTheme,
       );

@@ -4,7 +4,7 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
 
-import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme_entity.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_view_model_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/widgets/theme_list_widget.dart';
 
@@ -85,7 +85,7 @@ class _CodeThemeSelectorScreenState
         controller: _tabController,
         children: <Widget>[
           ThemeListWidget(
-            themes: CodeThemeEntity.lightThemes,
+            themes: CodeTheme.lightThemes,
             themeType: ThemeType.light,
             selectedSchema: codeTheme.selectedLightTheme,
             onThemeSelected: (name, schema) {
@@ -98,7 +98,7 @@ class _CodeThemeSelectorScreenState
             previewCode: sampleCode,
           ),
           ThemeListWidget(
-            themes: CodeThemeEntity.darkThemes,
+            themes: CodeTheme.darkThemes,
             themeType: ThemeType.dark,
             selectedSchema: codeTheme.selectedDarkTheme,
             onThemeSelected: (name, schema) {

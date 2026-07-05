@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart' show Widget;
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/domain/entities/component_entity.dart';
+import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 
 abstract class ComponentsRepository {
-  List<ComponentEntity> getComponentsByType(ComponentType type);
+  List<Component> getComponentsByType(ComponentType type);
 
-  ComponentEntity getComponentByName({
+  Component getComponentByName({
     required ComponentType type,
     required String name,
   });
