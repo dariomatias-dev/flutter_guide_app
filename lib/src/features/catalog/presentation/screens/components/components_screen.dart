@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/widgets/search_field_widget/search_field_widget.dart';
+import 'package:flutter_guide/src/features/catalog/domain/entities/component_entity.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
-import 'package:flutter_guide/src/shared/models/component_model.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
 
 class ComponentsScreen extends StatefulWidget {
@@ -13,14 +13,14 @@ class ComponentsScreen extends StatefulWidget {
   });
 
   final ComponentType componentType;
-  final List<ComponentModel> components;
+  final List<ComponentEntity> components;
 
   @override
   State<ComponentsScreen> createState() => _ComponentsScreenState();
 }
 
 class _ComponentsScreenState extends State<ComponentsScreen> {
-  late List<ComponentModel> _items = widget.components;
+  late List<ComponentEntity> _items = widget.components;
 
   void _search(String value) {
     setState(() {
@@ -46,7 +46,7 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: InfinityScroll<ComponentModel>(
+      body: InfinityScroll<ComponentEntity>(
         header: Column(
           children: <Widget>[
             const SizedBox(height: 20.0),

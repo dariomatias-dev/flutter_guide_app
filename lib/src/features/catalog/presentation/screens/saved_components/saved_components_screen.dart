@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_view_model_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
-import 'package:flutter_guide/src/shared/models/component_model.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,17 +14,6 @@ class SavedComponentsScreen extends ConsumerWidget {
   });
 
   final ComponentType componentType;
-
-  List<ComponentModel> get _groupOfComponents {
-    switch (componentType) {
-      case ComponentType.widget:
-        return widgets;
-      case ComponentType.function:
-        return functions;
-      default:
-        return packages;
-    }
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -53,7 +39,9 @@ class SavedComponentsScreen extends ConsumerWidget {
       ),
     );
 
-    final components = _groupOfComponents
+    final components = ref
+        .watch(componentsRepositoryProvider)
+        .getComponentsByType(componentType)
         .where((component) => savedNames.contains(component.name))
         .toList();
 

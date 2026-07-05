@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_guide/l10n/app_localizations.dart';
 
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/root_app_bar_widget.dart';
 
+import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/features/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/home/home_screen.dart';
@@ -23,16 +23,6 @@ class RootNavigation extends ConsumerStatefulWidget {
 
 class _RootNavigationState extends ConsumerState<RootNavigation> {
   late final PageController _pageController;
-
-  final _screens = <Widget>[
-    const HomeScreen(),
-    const ElementsScreen(),
-    const ComponentsScreen(
-      componentType: ComponentType.package,
-      components: packages,
-    ),
-    const SettingsScreen(),
-  ];
 
   void _handleNavigationChange(int index) {
     if (_pageController.hasClients && _pageController.page?.round() != index) {
@@ -80,6 +70,18 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
 
     final selectedIndex = ref.watch(mainNavigationNotifierProvider);
 
+    final screens = <Widget>[
+      const HomeScreen(),
+      const ElementsScreen(),
+      ComponentsScreen(
+        componentType: ComponentType.package,
+        components: ref
+            .watch(componentsRepositoryProvider)
+            .getComponentsByType(ComponentType.package),
+      ),
+      const SettingsScreen(),
+    ];
+
     ref.listen<int>(mainNavigationNotifierProvider, (prev, next) {
       _handleNavigationChange(next);
     });
@@ -92,7 +94,7 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
           PageView(
             controller: _pageController,
             onPageChanged: _onPageChanged,
-            children: _screens,
+            children: screens,
           ),
           Positioned(
             right: 16.0,
