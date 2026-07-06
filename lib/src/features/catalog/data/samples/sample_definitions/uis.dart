@@ -7,7 +7,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/uis/phone_verification_screen_sample.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/models/component_infos_model.dart';
-import 'package:flutter_guide/src/core/models/component_summary_mode.dart';
+import 'package:flutter_guide/src/core/models/component_summary_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 
 List<InterfaceModel> getUis(
