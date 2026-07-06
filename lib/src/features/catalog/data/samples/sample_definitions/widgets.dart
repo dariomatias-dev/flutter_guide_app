@@ -109,7 +109,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/visibility_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/wrap_sample.dart';
 
-import 'package:flutter_guide/src/shared/models/component_model.dart';
+import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 
 const widgets = <ComponentModel>[
   ComponentModel(

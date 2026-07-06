@@ -1,4 +1,4 @@
-import 'package:flutter_guide/src/shared/models/component_model.dart';
+import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 
 class InterfaceModel extends ComponentModel {
   const InterfaceModel({

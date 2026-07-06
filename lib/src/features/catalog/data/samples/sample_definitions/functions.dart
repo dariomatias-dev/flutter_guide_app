@@ -10,7 +10,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showmodalbottomsheet_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showtimepicker_sample.dart';
 
-import 'package:flutter_guide/src/shared/models/component_model.dart';
+import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 
 const functions = <ComponentModel>[
   ComponentModel(
