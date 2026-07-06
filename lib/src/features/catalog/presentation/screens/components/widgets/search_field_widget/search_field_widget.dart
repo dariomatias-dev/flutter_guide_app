@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/screens/components/widgets/search_field_widget/search_field_controller.dart';
 
 class SearchFieldWidget extends StatefulWidget {
   const SearchFieldWidget({
@@ -22,9 +21,12 @@ class SearchFieldWidget extends StatefulWidget {
 }
 
 class _SearchFieldWidgetState extends State<SearchFieldWidget> {
-  late final _controller = SearchFieldController(
-    searchClear: widget.searchClear,
-  );
+  final _searchFieldController = TextEditingController();
+
+  void _searchFieldClear() {
+    widget.searchClear();
+    _searchFieldController.clear();
+  }
 
   OutlineInputBorder get _border {
     return OutlineInputBorder(
@@ -40,7 +42,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    _searchFieldController.dispose();
 
     super.dispose();
   }
@@ -70,7 +72,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
         horizontal: 8.0,
       ),
       child: TextFormField(
-        controller: _controller.searchFieldController,
+        controller: _searchFieldController,
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search,
@@ -78,7 +80,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
             size: 20.0,
           ),
           suffixIcon: GestureDetector(
-            onTap: _controller.searchFieldClear,
+            onTap: _searchFieldClear,
             child: Icon(
               Icons.close,
               color: iconColor,

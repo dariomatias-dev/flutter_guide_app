@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_app_bar/component_sample_app_bar_controller.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/component_sample_screen_inherited_widget.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_app_bar/component_sample_app_bar_actions.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_app_bar/component_sample_tab_bar_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
-class ComponentSampleAppBarWidget extends StatefulWidget
+class ComponentSampleAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
   const ComponentSampleAppBarWidget({
     super.key,
@@ -25,22 +26,13 @@ class ComponentSampleAppBarWidget extends StatefulWidget
       );
 
   @override
-  State<ComponentSampleAppBarWidget> createState() =>
-      _ComponentSampleAppBarWidgetState();
-}
-
-class _ComponentSampleAppBarWidgetState
-    extends State<ComponentSampleAppBarWidget> {
-  late final _controller = ComponentSampleAppBarController(
-    getContext: getContext,
-  );
-
-  BuildContext getContext() => context;
-
-  @override
   Widget build(BuildContext context) {
+    final inheritedWidget = ComponentSampleScreenInheritedWidget.of(context)!;
+    final filePath = inheritedWidget.fileName;
+    final componentName = inheritedWidget.componentName;
+
     return StandardAppBarWidget(
-      titleName: widget.title,
+      titleName: title,
       actions: <Widget>[
         PopupMenuButton(
           surfaceTintColor: Colors.white,
@@ -48,14 +40,20 @@ class _ComponentSampleAppBarWidgetState
           itemBuilder: (context) {
             return <PopupMenuEntry>[
               PopupMenuItem(
-                onTap: _controller.copyCode,
+                onTap: () => ComponentSampleAppBarActions.copyCode(
+                  context,
+                  filePath,
+                ),
                 child: Text(
                   AppLocalizations.of(context)!.copy,
                 ),
               ),
-              if (widget.popupMenuItems != null) ...widget.popupMenuItems!,
+              if (popupMenuItems != null) ...popupMenuItems!,
               PopupMenuItem(
-                onTap: _controller.shareComponent,
+                onTap: () => ComponentSampleAppBarActions.shareComponent(
+                  filePath,
+                  componentName,
+                ),
                 child: Text(
                   AppLocalizations.of(context)!.share,
                 ),
@@ -65,8 +63,8 @@ class _ComponentSampleAppBarWidgetState
         ),
       ],
       bottom: ComponentSampleTabBarWidget(
-        currentTabIndexNotifier: widget.currentTabIndexNotifier,
-        tabController: widget.tabController,
+        currentTabIndexNotifier: currentTabIndexNotifier,
+        tabController: tabController,
       ),
     );
   }
