@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/component_sample_screen_inherited_widget.dart';
 import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
 import 'package:share_plus/share_plus.dart';
 

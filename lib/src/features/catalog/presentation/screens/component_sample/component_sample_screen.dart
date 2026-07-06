@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/component_sample_screen_inherited_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_controller.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/code_tab/code_tab_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_app_bar/component_sample_app_bar_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_font_size_selector_widget.dart';
-import 'package:flutter_guide/src/providers/component_sample_screen_inherited_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ComponentSampleScreen extends ConsumerStatefulWidget {

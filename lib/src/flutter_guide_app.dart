@@ -14,7 +14,7 @@ import 'package:flutter_guide/src/core/theme/theme.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/language_view_model_provider.dart';
 
 
-import 'package:flutter_guide/src/services/deep_link_service.dart';
+import 'package:flutter_guide/src/core/services/deep_link_service.dart';
 
 class FlutterGuideApp extends ConsumerStatefulWidget {
   const FlutterGuideApp({super.key});
