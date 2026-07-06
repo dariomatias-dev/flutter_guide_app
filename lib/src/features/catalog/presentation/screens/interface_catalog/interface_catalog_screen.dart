@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
@@ -56,7 +56,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
                 args: ComponentSampleArgs(
                   title: value.name,
                   filePath:
-                      'lib/src/core/constants/samples/sample_components/$componentType/${value.fileName}_sample.dart',
+                      'lib/src/features/catalog/data/samples/sample_components/$componentType/${value.fileName}_sample.dart',
                   componentName: value.fileName,
                   sample: value.sample,
                 ),

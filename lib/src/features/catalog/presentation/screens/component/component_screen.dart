@@ -42,7 +42,7 @@ class ComponentScreen extends ConsumerWidget {
     return ComponentSampleScreen(
       title: component.name,
       filePath:
-          'lib/src/core/constants/samples/sample_components/$folderName/${componentName.toLowerCase()}_sample.dart',
+          'lib/src/features/catalog/data/samples/sample_components/$folderName/${componentName.toLowerCase()}_sample.dart',
       componentName: componentName,
       sample: repository.getSampleWidget(
         type: componentType,

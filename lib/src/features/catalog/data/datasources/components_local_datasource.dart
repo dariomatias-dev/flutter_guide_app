@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/widgets.dart' show Widget;
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/functions.dart'
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/functions.dart'
     as functions_source;
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/packages.dart'
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/packages.dart'
     as packages_source;
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/widgets.dart'
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/widgets.dart'
     as widgets_source;
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';

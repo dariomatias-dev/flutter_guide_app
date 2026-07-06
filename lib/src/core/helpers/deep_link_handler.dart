@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/elements.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_definitions/uis.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/di/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
@@ -104,7 +104,7 @@ class DeepLinkHandler {
       extra: ComponentSampleArgs(
         title: element.name,
         filePath:
-            'lib/src/core/constants/samples/sample_components/$folder/${element.fileName}_sample.dart',
+            'lib/src/features/catalog/data/samples/sample_components/$folder/${element.fileName}_sample.dart',
         componentName: componentName,
         sample: element.sample,
       ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/constants/samples/sample_names/function_names.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/function_names.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
 // Functions
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showbottomsheet_sample.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showdatepicker_sample.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showdialog_sample.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showmodalbottomsheet_sample.dart';
-import 'package:flutter_guide/src/core/constants/samples/sample_components/functions/showtimepicker_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showbottomsheet_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showdatepicker_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showdialog_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showmodalbottomsheet_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/functions/showtimepicker_sample.dart';
 
 import 'package:flutter_guide/src/shared/models/component_model.dart';
 
