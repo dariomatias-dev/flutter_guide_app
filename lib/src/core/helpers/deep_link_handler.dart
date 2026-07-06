@@ -12,7 +12,7 @@ import 'package:flutter_guide/src/features/catalog/presentation/view_models/elem
 import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/components_repository.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
-import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
 import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

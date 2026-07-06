@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/route_names.dart';
-import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
 
 abstract final class AppRoutes {
   static void pushComponent(

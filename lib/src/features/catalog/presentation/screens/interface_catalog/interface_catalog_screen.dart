@@ -5,7 +5,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitio
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
-import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';

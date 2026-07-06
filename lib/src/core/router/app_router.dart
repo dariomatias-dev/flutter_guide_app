@@ -12,7 +12,7 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/interfac
 import 'package:flutter_guide/src/features/catalog/presentation/screens/saved_components/saved_components_screen.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
 
-import 'package:flutter_guide/src/shared/models/component_sample_args.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
 
 abstract final class AppRouter {
   static final router = GoRouter(
