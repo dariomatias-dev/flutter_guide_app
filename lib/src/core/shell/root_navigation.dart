@@ -10,7 +10,7 @@ import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/root_app_bar_w
 
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
-import 'package:flutter_guide/src/features/elements/elements_screen.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/home/home_screen.dart';
 import 'package:flutter_guide/src/features/settings/presentation/screens/settings/settings_screen.dart';
 
