@@ -1,14 +1,13 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart' show Widget;
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/functions.dart'
     as functions_source;
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/packages.dart'
     as packages_source;
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/widgets.dart'
     as widgets_source;
-import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/shared/models/component_model.dart';
 
@@ -41,31 +40,6 @@ class ComponentsLocalDatasource {
     return getByType(type, locale: locale).firstWhere(
       (component) => component.name == name,
     );
-  }
-
-  Widget getSampleWidget({
-    required ComponentType type,
-    required String name,
-  }) {
-    switch (type) {
-      case ComponentType.function:
-        return functions_source.functions
-            .firstWhere((component) => component.name == name)
-            .sample;
-      case ComponentType.package:
-        return packages_source.packages
-            .firstWhere((component) => component.name == name)
-            .sample;
-      case ComponentType.widget:
-      case ComponentType.material:
-      case ComponentType.cupertino:
-        return widgets_source.widgets
-            .firstWhere((component) => component.name == name)
-            .sample;
-      case ComponentType.elements:
-      case ComponentType.uis:
-        throw UnsupportedError('$type has no sample widget');
-    }
   }
 
   Component _fromComponentModel(ComponentModel model) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/samples/sample_registry.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/doc_popup_menu_item/doc_popup_menu_item_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/favorite_popup_menu_item/favorite_popup_menu_item_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_screen.dart';
@@ -44,7 +45,7 @@ class ComponentScreen extends ConsumerWidget {
       filePath:
           'lib/src/features/catalog/data/samples/sample_components/$folderName/${componentName.toLowerCase()}_sample.dart',
       componentName: componentName,
-      sample: repository.getSampleWidget(
+      sample: SampleRegistry.resolve(
         type: componentType,
         name: componentName,
       ),
