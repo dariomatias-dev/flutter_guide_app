@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-
+import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/features/home/widgets/border_list_tile_item_widget.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_groups_widget.dart';
 
-import 'package:flutter_guide/src/core/router/app_routes.dart';
-
+/// Home tab: entry points to elements, UIs and component groups.
 class HomeScreen extends StatelessWidget {
+  /// Creates a [HomeScreen].
   const HomeScreen({super.key});
 
   @override
@@ -22,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       ),
       child: ListView(
         children: <Widget>[
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 20),
           BorderListTileItemWidget(
             title: appLocalizations.elements,
             icon: Icons.list_alt,
@@ -31,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               interfaceType: InterfaceTypeEnum.element,
             ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 8),
           BorderListTileItemWidget(
             title: 'UIs',
             icon: Icons.web,
@@ -40,9 +38,9 @@ class HomeScreen extends StatelessWidget {
               interfaceType: InterfaceTypeEnum.ui,
             ),
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 20),
           const ComponentGroupsWidget(),
-          const SizedBox(height: 92.0),
+          const SizedBox(height: 92),
         ],
       ),
     );

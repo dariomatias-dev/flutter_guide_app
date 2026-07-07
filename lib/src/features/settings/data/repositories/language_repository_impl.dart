@@ -3,7 +3,9 @@ import 'package:flutter_guide/src/core/services/shared_preferences_service.dart'
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/features/settings/domain/repositories/language_repository.dart';
 
+/// Default [LanguageRepository] backed by `SharedPreferences`.
 class LanguageRepositoryImpl implements LanguageRepository {
+  /// Creates a [LanguageRepositoryImpl].
   LanguageRepositoryImpl(this._preferences);
 
   final SharedPreferencesService _preferences;

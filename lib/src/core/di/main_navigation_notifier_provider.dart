@@ -1,7 +1,8 @@
+import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
-
-final mainNavigationNotifierProvider = NotifierProvider<MainNavigationNotifier, int>(
+/// Provides the app-wide [MainNavigationNotifier].
+final mainNavigationNotifierProvider =
+    NotifierProvider<MainNavigationNotifier, int>(
   MainNavigationNotifier.new,
 );

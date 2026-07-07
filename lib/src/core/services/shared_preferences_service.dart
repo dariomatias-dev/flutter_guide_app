@@ -2,18 +2,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Service class to manage data stored in SharedPreferences.
 ///
-/// This class is designed to be used with dependency injection (e.g., Provider),
-/// allowing better testability and flexibility.
+/// This class is designed to be used with dependency injection
+/// (e.g., Provider), allowing better testability and flexibility.
 ///
 /// An instance of [SharedPreferences] must be provided through the constructor.
 class SharedPreferencesService {
-  /// The SharedPreferences instance.
-  final SharedPreferences _prefs;
 
   /// Creates a new instance of [SharedPreferencesService].
   ///
-  /// [prefs] The SharedPreferences instance to be used.
+  /// The provided `SharedPreferences` instance is used for all operations.
   SharedPreferencesService(this._prefs);
+  /// The SharedPreferences instance.
+  final SharedPreferences _prefs;
 
   // ==================================================
   // ============== String Operations =================
@@ -81,7 +81,7 @@ class SharedPreferencesService {
   ///
   /// Returns `true` if the value was successfully stored,
   /// otherwise returns `false`.
-  Future<bool> setBool(String key, bool value) {
+  Future<bool> setBool(String key, {required bool value}) {
     return _prefs.setBool(key, value);
   }
 
@@ -165,7 +165,8 @@ class SharedPreferencesService {
   /// [defaultValue] The default value to return if the key does not exist.
   /// Defaults to an empty list.
   ///
-  /// Returns the stored `List<String>` or the [defaultValue] if the key doesn't exist.
+  /// Returns the stored `List<String>` or the [defaultValue] if the key
+  /// doesn't exist.
   List<String> getStringList(String key, {List<String>? defaultValue}) {
     return _prefs.getStringList(key) ?? (defaultValue ?? <String>[]);
   }

@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
+/// A themed [InkWell] wrapper with rounded corners and hover overlay.
 class InkWellButtonWidget extends StatelessWidget {
+  /// Creates an [InkWellButtonWidget].
   const InkWellButtonWidget({
+    required this.borderRadius,
+    required this.child,
     super.key,
     this.onTap,
-    required this.borderRadius,
     this.backgroundColor,
-    required this.child,
   });
 
+  /// Called when the button is tapped.
   final VoidCallback? onTap;
+
+  /// Corner radius of the ink effect.
   final double borderRadius;
+
+  /// Optional background color.
   final Color? backgroundColor;
+
+  /// The button's content.
   final Widget child;
 
   @override

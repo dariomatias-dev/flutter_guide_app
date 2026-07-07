@@ -3,18 +3,27 @@ import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
 
 const _adInterval = 12;
 
+/// A list view that interleaves banner ads between items at a fixed interval.
 class InfinityScroll<T> extends StatefulWidget {
+  /// Creates an [InfinityScroll].
   const InfinityScroll({
-    super.key,
     required this.padding,
-    this.header,
     required this.items,
     required this.itemBuilder,
+    super.key,
+    this.header,
   });
 
+  /// Padding around the list.
   final EdgeInsetsGeometry? padding;
+
+  /// Optional header shown as the first item.
   final Widget? header;
+
+  /// Items to display.
   final List<T> items;
+
+  /// Builds a widget for a given item.
   final Widget Function(T value) itemBuilder;
 
   @override

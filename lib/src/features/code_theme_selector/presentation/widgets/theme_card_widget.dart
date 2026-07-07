@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
+typedef _CardColors = ({
+  Color background,
+  Color border,
+  Color check,
+  Color header,
+  Color selectedBorder,
+  Color separator,
+  Color text,
+});
 
-final _lightCardColors = (
+final _CardColors _lightCardColors = (
   header: const Color(0xFFF5F5F5),
   background: Colors.white,
   text: const Color(0xFF333333),
@@ -13,7 +22,7 @@ final _lightCardColors = (
   check: Colors.black,
 );
 
-final _darkCardColors = (
+final _CardColors _darkCardColors = (
   header: const Color(0xFF2A2D35),
   background: const Color(0xFF1F2228),
   text: const Color(0xFFF0F0F0),
@@ -23,22 +32,35 @@ final _darkCardColors = (
   check: Colors.white,
 );
 
+/// Card previewing a syntax theme, with a selected indicator.
 class ThemeCardWidget extends StatelessWidget {
+  /// Creates a [ThemeCardWidget].
   const ThemeCardWidget({
-    super.key,
     required this.themeName,
     required this.themeSchema,
     required this.themeType,
     required this.isSelected,
     required this.previewCode,
     required this.onTap,
+    super.key,
   });
 
+  /// Display name of the theme.
   final String themeName;
+
+  /// Syntax color scheme previewed by this card.
   final SyntaxColorSchema themeSchema;
+
+  /// Whether this is a light or dark theme.
   final ThemeType themeType;
+
+  /// Whether this theme is currently selected.
   final bool isSelected;
+
+  /// Code snippet shown in the preview.
   final String previewCode;
+
+  /// Called when the card is tapped.
   final VoidCallback onTap;
 
   @override
@@ -55,16 +77,16 @@ class ThemeCardWidget extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected ? cardColors.selectedBorder : cardColors.border,
-            width: 2.0,
+            width: 2,
           ),
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(12),
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: isSelected
                   ? Colors.blue.shade500.withAlpha(80)
                   : Colors.black.withAlpha(25),
-              blurRadius: 10.0,
-              offset: const Offset(0.0, 4.0),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -72,20 +94,19 @@ class ThemeCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: 50.0,
+              height: 50,
               padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
+                horizontal: 16,
               ),
               decoration: BoxDecoration(
                 color: cardColors.header,
                 border: Border(
                   bottom: BorderSide(
                     color: cardColors.separator,
-                    width: 1.0,
                   ),
                 ),
                 borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(10.0),
+                  top: Radius.circular(10),
                 ),
               ),
               child: Row(
@@ -99,7 +120,7 @@ class ThemeCardWidget extends StatelessWidget {
                             themeName,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 14.0,
+                              fontSize: 14,
                               color: cardColors.text,
                             ),
                             overflow: TextOverflow.ellipsis,
@@ -129,7 +150,7 @@ class ThemeCardWidget extends StatelessWidget {
                           )
                         : const SizedBox(
                             key: ValueKey('unselected'),
-                            width: 24.0,
+                            width: 24,
                           ),
                   ),
                 ],
@@ -137,20 +158,20 @@ class ThemeCardWidget extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 12.0,
+                horizontal: 16,
+                vertical: 12,
               ),
               decoration: BoxDecoration(
                 color: cardColors.background,
                 borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(10.0),
+                  bottom: Radius.circular(10),
                 ),
               ),
               child: AbsorbPointer(
                 child: SyntaxHighlighter(
                   code: previewCode,
                   isDarkMode: isPreviewDark,
-                  fontSize: 13.0,
+                  fontSize: 13,
                   showLineNumbers: false,
                   lightColorSchema: themeSchema,
                   darkColorSchema: themeSchema,

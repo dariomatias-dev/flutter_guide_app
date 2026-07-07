@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 
+/// Search field shown above component lists, with a clear button.
 class SearchFieldWidget extends StatefulWidget {
+  /// Creates a [SearchFieldWidget].
   const SearchFieldWidget({
-    super.key,
     required this.componentType,
     required this.onChange,
     required this.searchClear,
+    super.key,
   });
 
+  /// Category being searched, used for the hint text.
   final ComponentType componentType;
+
+  /// Called with the query whenever it changes.
   final void Function(
     String value,
   ) onChange;
+
+  /// Called when the search is cleared.
   final VoidCallback searchClear;
 
   @override
@@ -30,7 +37,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
 
   OutlineInputBorder get _border {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20.0),
+      borderRadius: BorderRadius.circular(20),
       borderSide: BorderSide(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.grey.shade500
@@ -55,11 +62,13 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
     switch (widget.componentType) {
       case ComponentType.widget:
         hintText = 'Widget';
-        break;
       case ComponentType.function:
         hintText = appLocalizations.function;
-        break;
-      default:
+      case ComponentType.material:
+      case ComponentType.cupertino:
+      case ComponentType.package:
+      case ComponentType.elements:
+      case ComponentType.uis:
         hintText = appLocalizations.package;
     }
 
@@ -67,9 +76,9 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
 
     return Container(
       width: double.infinity,
-      height: 44.0,
+      height: 44,
       margin: const EdgeInsets.symmetric(
-        horizontal: 8.0,
+        horizontal: 8,
       ),
       child: TextFormField(
         controller: _searchFieldController,
@@ -77,27 +86,26 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
           prefixIcon: Icon(
             Icons.search,
             color: iconColor,
-            size: 20.0,
+            size: 20,
           ),
           suffixIcon: GestureDetector(
             onTap: _searchFieldClear,
             child: Icon(
               Icons.close,
               color: iconColor,
-              size: 20.0,
+              size: 20,
             ),
           ),
           hintText: '$hintText...',
           hintStyle: TextStyle(
             color: Colors.grey.shade600,
-            fontSize: 14.0,
+            fontSize: 14,
           ),
           border: _border,
           enabledBorder: _border,
           focusedBorder: _border.copyWith(
             borderSide: BorderSide(
               color: _border.borderSide.color,
-              width: 1.0,
             ),
           ),
         ),

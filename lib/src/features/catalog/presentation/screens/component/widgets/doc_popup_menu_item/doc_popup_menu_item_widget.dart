@@ -1,22 +1,29 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 
-class DocPopupMenuItemWidget extends PopupMenuEntry {
+/// Popup menu entry that opens the documentation for a component.
+class DocPopupMenuItemWidget extends PopupMenuEntry<Never> {
+  /// Creates a [DocPopupMenuItemWidget].
   const DocPopupMenuItemWidget({
-    super.key,
     required this.componentName,
     required this.type,
+    super.key,
   });
 
+  /// Name of the component to open documentation for.
   final String componentName;
+
+  /// Type of the component, or `null` for packages.
   final ComponentType? type;
 
   @override
   double get height => kMinInteractiveDimension;
 
   @override
-  bool represents(value) => false;
+  bool represents(Object? value) => false;
 
   @override
   State<DocPopupMenuItemWidget> createState() => _DocPopupMenuItemWidgetState();
@@ -28,7 +35,10 @@ class DocPopupMenuItemWidget extends PopupMenuEntry {
       case ComponentType.material:
       case ComponentType.function:
         return 'material';
-      default:
+      case ComponentType.cupertino:
+      case ComponentType.package:
+      case ComponentType.elements:
+      case ComponentType.uis:
         return 'cupertino';
     }
   }
@@ -37,7 +47,7 @@ class DocPopupMenuItemWidget extends PopupMenuEntry {
 class _DocPopupMenuItemWidgetState extends State<DocPopupMenuItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return PopupMenuItem(
+    return PopupMenuItem<void>(
       onTap: () {
         String url;
 
@@ -51,9 +61,11 @@ class _DocPopupMenuItemWidgetState extends State<DocPopupMenuItemWidget> {
               '${widget.type != ComponentType.function ? '-class' : ''}.html';
         }
 
-        openUrl(
-          () => context,
-          url,
+        unawaited(
+          openUrl(
+            () => context,
+            url,
+          ),
         );
       },
       child: const Text('Doc'),

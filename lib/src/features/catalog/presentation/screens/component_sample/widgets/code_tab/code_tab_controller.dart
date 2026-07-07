@@ -1,11 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
+/// Lazily loads source code in chunks as the user scrolls.
 class CodeTabController {
-  late final List<String> Function(
-    int index,
-  ) _getChunck;
-
+  /// Creates a [CodeTabController] that pulls chunks via [getChunck].
   CodeTabController({
     required List<String> Function(
       int index,
@@ -15,9 +15,16 @@ class CodeTabController {
     _init();
   }
 
+  late final List<String> Function(
+    int index,
+  ) _getChunck;
+
   final _logger = Logger();
+
+  /// Controls scrolling of the code view.
   final scrollController = ScrollController();
 
+  /// Holds the currently loaded source code.
   final codeNotifier = ValueNotifier<String>('');
 
   int _currentIndex = 0;
@@ -26,9 +33,10 @@ class CodeTabController {
 
   void _init() {
     scrollController.addListener(onScroll);
-    loadNextChunk();
+    unawaited(loadNextChunk());
   }
 
+  /// Resets and reloads the code, e.g. after a theme change.
   void onThemeChanged() {
     codeNotifier.value = '';
 
@@ -36,19 +44,21 @@ class CodeTabController {
     _hasMore = true;
     _isLoading = false;
 
-    scrollController.jumpTo(0.0);
-    loadNextChunk();
+    scrollController.jumpTo(0);
+    unawaited(loadNextChunk());
   }
 
+  /// Loads the next chunk when the user nears the end of the list.
   void onScroll() {
     if (scrollController.position.pixels >=
             scrollController.position.maxScrollExtent - 100 &&
         !_isLoading &&
         _hasMore) {
-      loadNextChunk();
+      unawaited(loadNextChunk());
     }
   }
 
+  /// Appends the next chunk of source lines to [codeNotifier].
   Future<void> loadNextChunk() async {
     if (_isLoading || !_hasMore) return;
 
@@ -69,7 +79,7 @@ class CodeTabController {
       final newCode = nextChunkLines.join('\n');
 
       codeNotifier.value = '${codeNotifier.value}$newCode\n';
-    } catch (err, stackTrace) {
+    } on Object catch (err, stackTrace) {
       _logger.e(
         'Error loading next chunk',
         error: err,
@@ -80,9 +90,11 @@ class CodeTabController {
     _isLoading = false;
   }
 
+  /// Disposes the controller and notifier.
   void dispose() {
-    scrollController.removeListener(onScroll);
-    scrollController.dispose();
+    scrollController
+      ..removeListener(onScroll)
+      ..dispose();
     codeNotifier.dispose();
   }
 }

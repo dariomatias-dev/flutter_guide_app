@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/widget_names.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group_model.dart';
 
+/// The predefined component groups shown on the home screen.
 const componentGroups = <ComponentGroupModel>[
   ComponentGroupModel(
     icon: Icons.text_fields,

@@ -4,12 +4,15 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
 
+/// Dialog shown when a URL fails to open.
 class OpenUrlErrorDialog extends StatelessWidget {
+  /// Creates an [OpenUrlErrorDialog] for [url].
   const OpenUrlErrorDialog({
-    super.key,
     required this.url,
+    super.key,
   });
 
+  /// The URL that could not be opened.
   final String url;
 
   @override
@@ -31,9 +34,9 @@ class OpenUrlErrorDialog extends StatelessWidget {
           textAlign: TextAlign.center,
           text: TextSpan(
             style: const TextStyle(
-              fontSize: 16.0,
+              fontSize: 16,
               fontWeight: FontWeight.w400,
-              letterSpacing: 1.0,
+              letterSpacing: 1,
             ),
             children: <TextSpan>[
               TextSpan(

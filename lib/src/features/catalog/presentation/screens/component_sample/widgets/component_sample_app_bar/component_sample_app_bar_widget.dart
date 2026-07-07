@@ -5,19 +5,28 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/componen
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_app_bar/component_sample_tab_bar_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
+/// App bar for the component sample screen, with tabs and actions.
 class ComponentSampleAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
+  /// Creates a [ComponentSampleAppBarWidget].
   const ComponentSampleAppBarWidget({
-    super.key,
     required this.title,
     required this.popupMenuItems,
     required this.currentTabIndexNotifier,
     required this.tabController,
+    super.key,
   });
 
+  /// Title shown in the app bar.
   final String title;
-  final List<PopupMenuEntry>? popupMenuItems;
+
+  /// Optional extra popup menu entries.
+  final List<PopupMenuEntry<dynamic>>? popupMenuItems;
+
+  /// Currently selected tab index.
   final ValueNotifier<int> currentTabIndexNotifier;
+
+  /// Controls the sample/code tab selection.
   final TabController tabController;
 
   @override
@@ -38,8 +47,8 @@ class ComponentSampleAppBarWidget extends StatelessWidget
           surfaceTintColor: Colors.white,
           iconColor: Theme.of(context).colorScheme.tertiary,
           itemBuilder: (context) {
-            return <PopupMenuEntry>[
-              PopupMenuItem(
+            return <PopupMenuEntry<dynamic>>[
+              PopupMenuItem<void>(
                 onTap: () => ComponentSampleAppBarActions.copyCode(
                   context,
                   filePath,
@@ -49,7 +58,7 @@ class ComponentSampleAppBarWidget extends StatelessWidget
                 ),
               ),
               if (popupMenuItems != null) ...popupMenuItems!,
-              PopupMenuItem(
+              PopupMenuItem<void>(
                 onTap: () => ComponentSampleAppBarActions.shareComponent(
                   filePath,
                   componentName,

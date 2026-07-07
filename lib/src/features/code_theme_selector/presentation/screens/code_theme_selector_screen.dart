@@ -1,16 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
-
 import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_view_model_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/widgets/theme_list_widget.dart';
-
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Code snippet shown in the theme previews.
 const sampleCode = '''
 import 'package:flutter/material.dart';
 
@@ -28,7 +28,9 @@ class CounterApp extends StatelessWidget {
 }
 ''';
 
+/// Screen letting the user pick light and dark code syntax themes.
 class CodeThemeSelectorScreen extends ConsumerStatefulWidget {
+  /// Creates a [CodeThemeSelectorScreen].
   const CodeThemeSelectorScreen({super.key});
 
   @override
@@ -89,11 +91,13 @@ class _CodeThemeSelectorScreenState
             themeType: ThemeType.light,
             selectedSchema: codeTheme.selectedLightTheme,
             onThemeSelected: (name, schema) {
-              ref.read(codeThemeViewModelProvider.notifier).updateTheme(
-                    name: name,
-                    schema: schema,
-                    isDark: false,
-                  );
+              unawaited(
+                ref.read(codeThemeViewModelProvider.notifier).updateTheme(
+                      name: name,
+                      schema: schema,
+                      isDark: false,
+                    ),
+              );
             },
             previewCode: sampleCode,
           ),
@@ -102,11 +106,13 @@ class _CodeThemeSelectorScreenState
             themeType: ThemeType.dark,
             selectedSchema: codeTheme.selectedDarkTheme,
             onThemeSelected: (name, schema) {
-              ref.read(codeThemeViewModelProvider.notifier).updateTheme(
-                    name: name,
-                    schema: schema,
-                    isDark: true,
-                  );
+              unawaited(
+                ref.read(codeThemeViewModelProvider.notifier).updateTheme(
+                      name: name,
+                      schema: schema,
+                      isDark: true,
+                    ),
+              );
             },
             previewCode: sampleCode,
           ),

@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 
+/// A rounded button used inside a dialog.
 class DialogButtonWidget extends StatelessWidget {
+  /// Creates a [DialogButtonWidget].
   const DialogButtonWidget({
-    super.key,
     required this.onTap,
     required this.text,
+    super.key,
     this.textColor,
     this.backgroundColor,
   });
 
+  /// Called when the button is tapped.
   final VoidCallback onTap;
+
+  /// Button label.
   final String text;
+
+  /// Optional text color.
   final Color? textColor;
+
+  /// Optional background color.
   final Color? backgroundColor;
 
-  BorderRadius get borderRadius => BorderRadius.circular(24.0);
+  /// Corner radius of the button.
+  BorderRadius get borderRadius => BorderRadius.circular(24);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,7 @@ class DialogButtonWidget extends StatelessWidget {
         );
 
     return SizedBox(
-      height: 48.0,
+      height: 48,
       child: InkWell(
         onTap: onTap,
         borderRadius: borderRadius,
@@ -46,7 +56,7 @@ class DialogButtonWidget extends StatelessWidget {
               text,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                fontSize: 15.0,
+                fontSize: 15,
                 color: textColor ?? Colors.blue,
               ),
             ),

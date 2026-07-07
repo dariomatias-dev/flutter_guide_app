@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/select_favorite_screen_dialog/select_favorite_screen_dialog_widget.dart';
@@ -5,7 +7,9 @@ import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/select_favorit
 import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
+/// Top app bar shown on the root navigation shell.
 class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
+  /// Creates a [RootAppBarWidget].
   const RootAppBarWidget({super.key});
 
   @override
@@ -17,11 +21,13 @@ class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
 
 class _RootAppBarWidgetState extends State<RootAppBarWidget> {
   void showSelectFavoriteScreenDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const SelectFavoriteScreenDialogWidget();
-      },
+    unawaited(
+      showDialog<void>(
+        context: context,
+        builder: (context) {
+          return const SelectFavoriteScreenDialogWidget();
+        },
+      ),
     );
   }
 
@@ -33,15 +39,15 @@ class _RootAppBarWidgetState extends State<RootAppBarWidget> {
         children: <Widget>[
           Image.asset(
             'assets/icons/flutter_guide_icon.png',
-            width: 20.0,
-            height: 20.0,
+            width: 20,
+            height: 20,
             fit: BoxFit.cover,
           ),
-          const SizedBox(width: 16.0),
+          const SizedBox(width: 16),
           const Text(
             'FlutterGuide',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -52,7 +58,7 @@ class _RootAppBarWidgetState extends State<RootAppBarWidget> {
           onTap: showSelectFavoriteScreenDialog,
           icon: Icons.bookmark_border,
         ),
-        const SizedBox(width: 4.0),
+        const SizedBox(width: 4),
       ],
     );
   }

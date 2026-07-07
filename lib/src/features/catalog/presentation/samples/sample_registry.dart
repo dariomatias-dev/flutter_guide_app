@@ -12,6 +12,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitio
 /// Sample widgets are a presentation concern, so widget resolution lives in
 /// the presentation layer instead of leaking [Widget] into domain/data.
 abstract final class SampleRegistry {
+  /// Returns the sample [Widget] for the component named [name] of [type].
   static Widget resolve({
     required ComponentType type,
     required String name,

@@ -5,6 +5,7 @@ import 'package:flutter_guide/src/features/catalog/domain/repositories/component
 import 'package:flutter_guide/src/features/settings/presentation/providers/language_view_model_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Provides the [ComponentsRepository] for the selected language.
 final componentsRepositoryProvider = Provider<ComponentsRepository>((ref) {
   final language = ref.watch(languageViewModelProvider);
 

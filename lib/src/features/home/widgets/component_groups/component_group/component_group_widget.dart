@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
@@ -9,12 +11,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const _adInterval = 5;
 
+/// Expandable group listing its components, with interleaved ads.
 class ComponentGroupWidget extends ConsumerStatefulWidget {
+  /// Creates a [ComponentGroupWidget].
   const ComponentGroupWidget({
-    super.key,
     required this.componentGroup,
+    super.key,
   });
 
+  /// The group of components to display.
   final ComponentGroupModel componentGroup;
 
   @override
@@ -52,9 +57,9 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
     });
 
     if (_isExpanded) {
-      _animationController.forward();
+      unawaited(_animationController.forward());
     } else {
-      _animationController.reverse();
+      unawaited(_animationController.reverse());
     }
   }
 
@@ -87,7 +92,7 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
                   ? Icons.keyboard_arrow_down_rounded
                   : Icons.keyboard_arrow_right_rounded,
               color: Theme.of(context).colorScheme.primary,
-              size: 20.0,
+              size: 20,
             ),
           ],
         ),
@@ -113,7 +118,7 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
                 componentType: ComponentType.widget,
                 videoId: component.videoId,
                 padding: const EdgeInsets.only(
-                  left: 20.0,
+                  left: 20,
                 ),
               );
             }),

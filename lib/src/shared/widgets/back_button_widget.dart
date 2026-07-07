@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Circular back button that pops the current route.
 class BackButtonWidget extends StatelessWidget {
+  /// Creates a [BackButtonWidget].
   const BackButtonWidget({super.key});
 
   @override

@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+/// Displays a Google Mobile Ads banner, with a loading placeholder.
 class BannerAdWidget extends StatefulWidget {
+  /// Creates a [BannerAdWidget].
   const BannerAdWidget({super.key});
 
   @override
@@ -32,17 +36,19 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
             'Ad failed to load: $error',
           );
 
-          ad.dispose();
+          unawaited(ad.dispose());
         },
       ),
-    )..load();
+    );
+
+    unawaited(_bannerAd!.load());
 
     super.initState();
   }
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
+    unawaited(_bannerAd?.dispose());
 
     super.dispose();
   }
@@ -51,7 +57,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   Widget build(BuildContext context) {
     if (!_isLoaded || _bannerAd == null) {
       return const SizedBox(
-        height: 50.0,
+        height: 50,
         child: Center(
           child: CircularProgressIndicator(),
         ),

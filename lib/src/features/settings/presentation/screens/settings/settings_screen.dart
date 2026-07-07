@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
@@ -10,7 +12,9 @@ import 'package:flutter_guide/src/features/settings/presentation/widgets/select_
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
+/// Settings tab with app info, language, links and about dialogs.
 class SettingsScreen extends StatelessWidget {
+  /// Creates a [SettingsScreen].
   const SettingsScreen({super.key});
 
   @override
@@ -24,9 +28,9 @@ class SettingsScreen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 36.0),
+            const SizedBox(height: 36),
             const AppInfoWidget(),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             ListTileItemWidget(
               title: appLocalizations.docsAndResources,
               icon: Icons.description_outlined,
@@ -48,9 +52,11 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.public,
               openInBrowser: true,
               onTap: () {
-                openUrl(
-                  () => context,
-                  AppLinks.myWebsite,
+                unawaited(
+                  openUrl(
+                    () => context,
+                    AppLinks.myWebsite,
+                  ),
                 );
               },
             ),
@@ -58,9 +64,11 @@ class SettingsScreen extends StatelessWidget {
               title: appLocalizations.officialSite,
               icon: Icons.public,
               onTap: () {
-                openUrl(
-                  () => context,
-                  AppLinks.officialSite,
+                unawaited(
+                  openUrl(
+                    () => context,
+                    AppLinks.officialSite,
+                  ),
                 );
               },
               openInBrowser: true,
@@ -69,9 +77,11 @@ class SettingsScreen extends StatelessWidget {
               title: appLocalizations.privacyPolicy,
               icon: Icons.article_outlined,
               onTap: () {
-                openUrl(
-                  () => context,
-                  AppLinks.privacyPolicy,
+                unawaited(
+                  openUrl(
+                    () => context,
+                    AppLinks.privacyPolicy,
+                  ),
                 );
               },
               openInBrowser: true,
@@ -80,11 +90,13 @@ class SettingsScreen extends StatelessWidget {
               title: 'Feedback',
               icon: Icons.feedback_outlined,
               onTap: () {
-                openUrl(
-                  () => context,
-                  L10n.isPortuguese(Localizations.localeOf(context))
-                      ? AppLinks.feedbackFormLinkPt
-                      : AppLinks.feedbackFormLinkEn,
+                unawaited(
+                  openUrl(
+                    () => context,
+                    L10n.isPortuguese(Localizations.localeOf(context))
+                        ? AppLinks.feedbackFormLinkPt
+                        : AppLinks.feedbackFormLinkEn,
+                  ),
                 );
               },
               openInBrowser: true,

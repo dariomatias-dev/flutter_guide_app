@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
@@ -8,14 +10,19 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/componen
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Screen shown for a single component, hosting its sample and actions.
 class ComponentScreen extends ConsumerWidget {
+  /// Creates a [ComponentScreen].
   const ComponentScreen({
-    super.key,
     required this.componentType,
     required this.componentName,
+    super.key,
   });
 
+  /// Category of the component being shown.
   final ComponentType componentType;
+
+  /// Name of the component being shown.
   final String componentName;
 
   @override
@@ -36,7 +43,11 @@ class ComponentScreen extends ConsumerWidget {
         folderName = 'widgets';
       case ComponentType.package:
         folderName = 'packages';
-      default:
+      case ComponentType.material:
+      case ComponentType.cupertino:
+      case ComponentType.function:
+      case ComponentType.elements:
+      case ComponentType.uis:
         folderName = 'functions';
     }
 
@@ -49,17 +60,19 @@ class ComponentScreen extends ConsumerWidget {
         type: componentType,
         name: componentName,
       ),
-      popupMenuItems: <PopupMenuEntry>[
+      popupMenuItems: <PopupMenuEntry<dynamic>>[
         FavoritePopupMenuItemWidget(
           componentType: componentType,
           componentName: component.name,
         ),
         if (component.videoId != null)
-          PopupMenuItem(
+          PopupMenuItem<void>(
             onTap: () {
-              openUrl(
-                () => context,
-                'https://www.youtube.com/watch?v=${component.videoId}',
+              unawaited(
+                openUrl(
+                  () => context,
+                  'https://www.youtube.com/watch?v=${component.videoId}',
+                ),
               );
             },
             child: const Text('YouTube'),

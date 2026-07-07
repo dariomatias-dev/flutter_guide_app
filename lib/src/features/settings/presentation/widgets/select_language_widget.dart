@@ -1,19 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/features/settings/domain/entities/language.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/select_language_view_model_provider.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Settings row that opens a menu to change the app language.
 class SelectLanguageWidget extends ConsumerWidget {
+  /// Creates a [SelectLanguageWidget].
   const SelectLanguageWidget({
-    super.key,
     required this.title,
+    super.key,
   });
 
+  /// Row title.
   final String title;
 
   void _showLanguageMenu(BuildContext context, WidgetRef ref) {
-    final button = context.findRenderObject() as RenderBox;
+    final button = context.findRenderObject()! as RenderBox;
     final overlay =
         Overlay.of(context).context.findRenderObject()! as RenderBox;
     final position = RelativeRect.fromRect(
@@ -30,32 +35,34 @@ class SelectLanguageWidget extends ConsumerWidget {
       Offset.zero & overlay.size,
     );
 
-    showMenu(
-      context: context,
-      position: position,
-      items: List.generate(
-        Language.all.length,
-        (index) {
-          final language = Language.all[index];
+    unawaited(
+      showMenu<Language>(
+        context: context,
+        position: position,
+        items: List.generate(
+          Language.all.length,
+          (index) {
+            final language = Language.all[index];
 
-          return PopupMenuItem(
-            onTap: () {
-              ref
-                  .read(selectLanguageViewModelProvider.notifier)
-                  .selectLanguage(language.code);
-            },
-            value: language,
-            child: Text(
-              language.name,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 14.0,
+            return PopupMenuItem(
+              onTap: () {
+                ref
+                    .read(selectLanguageViewModelProvider.notifier)
+                    .selectLanguage(language.code);
+              },
+              value: language,
+              child: Text(
+                language.name,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 14,
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
+        elevation: 8,
       ),
-      elevation: 8.0,
     );
   }
 
@@ -78,7 +85,7 @@ class SelectLanguageWidget extends ConsumerWidget {
               selectedLanguage.name,
               style: TextStyle(
                 color: textColor,
-                fontSize: 14.0,
+                fontSize: 14,
               ),
             ),
             Icon(

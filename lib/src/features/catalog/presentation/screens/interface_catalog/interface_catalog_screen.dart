@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/app_routes.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
+/// Lists reusable elements or full UI samples for a given interface type.
 class InterfaceCatalogScreen extends StatelessWidget {
+  /// Creates an [InterfaceCatalogScreen].
   const InterfaceCatalogScreen({
-    super.key,
     required this.elementType,
+    super.key,
   });
 
+  /// Whether to show elements or UIs.
   final InterfaceTypeEnum elementType;
 
   @override
@@ -31,12 +34,10 @@ class InterfaceCatalogScreen extends StatelessWidget {
         title = appLocalizations.elements;
         componentType = 'elements';
         items = getElements(context);
-        break;
       case InterfaceTypeEnum.ui:
         title = 'UIs';
         componentType = 'uis';
         items = getUis(context);
-        break;
     }
 
     return Scaffold(
@@ -45,7 +46,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
       ),
       body: InfinityScroll<InterfaceModel>(
         padding: const EdgeInsets.symmetric(
-          vertical: 12.0,
+          vertical: 12,
         ),
         items: items,
         itemBuilder: (value) {
@@ -66,7 +67,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
             trailingWidgets: const <Widget>[
               Icon(
                 Icons.keyboard_arrow_right_rounded,
-                size: 26.0,
+                size: 26,
               ),
             ],
           );

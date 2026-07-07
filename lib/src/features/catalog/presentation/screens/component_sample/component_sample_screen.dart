@@ -7,20 +7,31 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/componen
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_font_size_selector_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Screen showing a component's running sample alongside its source code.
 class ComponentSampleScreen extends ConsumerStatefulWidget {
+  /// Creates a [ComponentSampleScreen].
   const ComponentSampleScreen({
-    super.key,
     required this.title,
-    this.popupMenuItems,
     required this.filePath,
     required this.componentName,
     required this.sample,
+    super.key,
+    this.popupMenuItems,
   });
 
+  /// Title shown in the app bar.
   final String title;
-  final List<PopupMenuEntry>? popupMenuItems;
+
+  /// Optional extra popup menu entries for the app bar.
+  final List<PopupMenuEntry<dynamic>>? popupMenuItems;
+
+  /// Path to the sample's source file.
   final String filePath;
+
+  /// Name of the component being shown.
   final String componentName;
+
+  /// The runnable sample widget.
   final Widget sample;
 
   @override
@@ -50,7 +61,6 @@ class _ComponentSampleScreenState extends ConsumerState<ComponentSampleScreen>
       fileName: widget.filePath,
       componentName: widget.componentName,
       child: DefaultTabController(
-        initialIndex: 0,
         length: 2,
         child: Scaffold(
           appBar: ComponentSampleAppBarWidget(
@@ -96,7 +106,7 @@ class _ComponentSampleScreenState extends ConsumerState<ComponentSampleScreen>
                             : null,
                         icon: Icons.add,
                       ),
-                      const SizedBox(height: 8.0),
+                      const SizedBox(height: 8),
                       ComponentSampleFontSizeSelectorWidget(
                         action: value > ComponentSampleController.minFontSize
                             ? () {

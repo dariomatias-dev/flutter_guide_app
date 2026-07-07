@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 
+/// Tab bar (Preview / Code) for the component sample screen.
 class ComponentSampleTabBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
+  /// Creates a [ComponentSampleTabBarWidget].
   const ComponentSampleTabBarWidget({
-    super.key,
     required this.currentTabIndexNotifier,
     required this.tabController,
+    super.key,
   });
 
+  /// Currently selected tab index.
   final ValueNotifier<int> currentTabIndexNotifier;
+
+  /// Controls the tab selection.
   final TabController tabController;
 
   @override

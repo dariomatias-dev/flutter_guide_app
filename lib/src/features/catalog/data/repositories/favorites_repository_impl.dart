@@ -2,7 +2,9 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/data/datasources/favorites_local_datasource.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/favorites_repository.dart';
 
+/// Default [FavoritesRepository] backed by a local datasource.
 class FavoritesRepositoryImpl implements FavoritesRepository {
+  /// Creates a [FavoritesRepositoryImpl].
   FavoritesRepositoryImpl(this._datasource);
 
   final FavoritesLocalDatasource _datasource;

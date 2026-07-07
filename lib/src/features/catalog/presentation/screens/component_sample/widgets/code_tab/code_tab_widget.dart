@@ -5,18 +5,25 @@ import 'package:flutter_guide/src/features/code_theme_selector/presentation/prov
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
+/// Tab showing the sample's source code, lazily loaded and syntax highlighted.
 class CodeTabWidget extends ConsumerStatefulWidget {
+  /// Creates a [CodeTabWidget].
   const CodeTabWidget({
-    super.key,
     required this.lineCountNotifier,
     required this.getChunck,
     required this.fontSizeNotifier,
+    super.key,
   });
 
+  /// Notifier holding the total number of source lines.
   final ValueNotifier<int> lineCountNotifier;
+
+  /// Returns the chunk of source lines at a given index.
   final List<String> Function(
     int index,
   ) getChunck;
+
+  /// Notifier holding the current code font size.
   final ValueNotifier<double> fontSizeNotifier;
 
   @override
@@ -60,10 +67,10 @@ class _CodeTabWidgetState extends ConsumerState<CodeTabWidget> {
             return SingleChildScrollView(
               controller: _controller.scrollController,
               padding: const EdgeInsets.only(
-                top: 16.0,
-                right: 6.0,
-                bottom: 28.0,
-                left: 6.0,
+                top: 16,
+                right: 6,
+                bottom: 28,
+                left: 6,
               ),
               child: ValueListenableBuilder<double>(
                 valueListenable: widget.fontSizeNotifier,

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/providers/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/providers/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Bottom-nav screen browsing Widgets and Functions via tabs.
 class ElementsScreen extends ConsumerStatefulWidget {
+  /// Creates an [ElementsScreen].
   const ElementsScreen({super.key});
 
   @override
@@ -23,7 +25,7 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
     super.didChangeDependencies();
 
     if (_tabController == null) {
-      int safeIndex = ref.read(elementsScreenTabIndexNotifierProvider);
+      var safeIndex = ref.read(elementsScreenTabIndexNotifierProvider);
       if (safeIndex < 0 || safeIndex >= 2) safeIndex = 0;
 
       _tabController = TabController(
@@ -61,7 +63,7 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
     return Column(
       children: <Widget>[
         DefaultTabBarWidget(
-          controller: _tabController!,
+          controller: _tabController,
           onTap: (value) {
             ref
                 .read(elementsScreenTabIndexNotifierProvider.notifier)

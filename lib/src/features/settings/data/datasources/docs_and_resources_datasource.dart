@@ -3,6 +3,7 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 import 'package:flutter_guide/src/features/settings/domain/entities/doc_and_resources_model.dart';
 
+/// Returns the documentation and resource links shown in settings.
 List<DocAndResourcesModel> getDocsAndResources(BuildContext context) {
   final appLocalizations = AppLocalizations.of(context)!;
 

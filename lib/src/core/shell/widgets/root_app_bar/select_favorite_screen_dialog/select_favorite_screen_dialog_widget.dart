@@ -9,7 +9,9 @@ import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dar
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
+/// Dialog letting the user pick which favorites list to open.
 class SelectFavoriteScreenDialogWidget extends StatelessWidget {
+  /// Creates a [SelectFavoriteScreenDialogWidget].
   const SelectFavoriteScreenDialogWidget({super.key});
 
   @override

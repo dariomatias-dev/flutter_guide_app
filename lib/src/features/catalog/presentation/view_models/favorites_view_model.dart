@@ -1,8 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/favorites_repository.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_repository_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const _trackedTypes = <ComponentType>[
   ComponentType.widget,
@@ -10,6 +9,7 @@ const _trackedTypes = <ComponentType>[
   ComponentType.package,
 ];
 
+/// Tracks which components the user has favorited, per type.
 class FavoritesViewModel extends Notifier<Map<ComponentType, Set<String>>> {
   late final FavoritesRepository _repository = ref.read(
     favoritesRepositoryProvider,
@@ -23,6 +23,7 @@ class FavoritesViewModel extends Notifier<Map<ComponentType, Set<String>>> {
     };
   }
 
+  /// Whether [name] of [type] is currently a favorite.
   bool isFavorite({
     required ComponentType type,
     required String name,
@@ -30,6 +31,7 @@ class FavoritesViewModel extends Notifier<Map<ComponentType, Set<String>>> {
     return state[type]?.contains(name) ?? false;
   }
 
+  /// Toggles the favorite state of [name], returning the new state.
   bool toggle({
     required ComponentType type,
     required String name,

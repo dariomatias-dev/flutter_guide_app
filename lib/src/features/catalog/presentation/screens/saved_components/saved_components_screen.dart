@@ -7,12 +7,15 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/componen
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Screen listing the user's saved components of a given type.
 class SavedComponentsScreen extends ConsumerWidget {
+  /// Creates a [SavedComponentsScreen].
   const SavedComponentsScreen({
-    super.key,
     required this.componentType,
+    super.key,
   });
 
+  /// Category of saved components to show.
   final ComponentType componentType;
 
   @override
@@ -28,7 +31,11 @@ class SavedComponentsScreen extends ConsumerWidget {
       case ComponentType.function:
         titleScreen = appLocalizations.savedFunctions;
         missingElementsMessage = appLocalizations.noFunctionSaved;
-      default:
+      case ComponentType.material:
+      case ComponentType.cupertino:
+      case ComponentType.package:
+      case ComponentType.elements:
+      case ComponentType.uis:
         titleScreen = appLocalizations.savedPackages;
         missingElementsMessage = appLocalizations.noPackageSaved;
     }

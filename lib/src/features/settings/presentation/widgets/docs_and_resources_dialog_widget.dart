@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/features/settings/data/datasources/docs_and_resources_datasource.dart';
@@ -6,7 +8,9 @@ import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dar
 import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
+/// Dialog listing documentation and resource links.
 class DocsAndResourcesDialogWidget extends StatelessWidget {
+  /// Creates a [DocsAndResourcesDialogWidget].
   const DocsAndResourcesDialogWidget({super.key});
 
   @override
@@ -30,9 +34,11 @@ class DocsAndResourcesDialogWidget extends StatelessWidget {
 
           return ListTileItemWidget(
             onTap: () {
-              openUrl(
-                () => context,
-                item.url,
+              unawaited(
+                openUrl(
+                  () => context,
+                  item.url,
+                ),
               );
             },
             icon: item.icon,

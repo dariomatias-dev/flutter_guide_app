@@ -1,17 +1,21 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/shared/utils/snack_bar_utils.dart';
 import 'package:share_plus/share_plus.dart';
 
+/// Actions available from the component sample app bar.
 abstract final class ComponentSampleAppBarActions {
+  /// Copies the source at [filePath] to the clipboard and confirms it.
   static Future<void> copyCode(
     BuildContext context,
     String filePath,
   ) async {
     final codeString = await rootBundle.loadString(filePath);
 
-    Clipboard.setData(
+    await Clipboard.setData(
       ClipboardData(text: codeString),
     );
 
@@ -23,6 +27,7 @@ abstract final class ComponentSampleAppBarActions {
     );
   }
 
+  /// Shares a public link to the component identified by [filePath].
   static void shareComponent(
     String filePath,
     String componentName,
@@ -36,6 +41,6 @@ abstract final class ComponentSampleAppBarActions {
 
     final url = 'https://flutterguide.app/$type/$componentName';
 
-    SharePlus.instance.share(ShareParams(text: url));
+    unawaited(SharePlus.instance.share(ShareParams(text: url)));
   }
 }

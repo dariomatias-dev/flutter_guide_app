@@ -8,16 +8,23 @@ const _icons = <IconData>[
   Icons.settings_outlined,
 ];
 
+/// Swipeable bottom navigation bar backed by [SalomonBottomBar].
 class NavigationBarWidget extends StatefulWidget {
+  /// Creates a [NavigationBarWidget].
   const NavigationBarWidget({
-    super.key,
     required this.screenIndex,
     required this.updateScreenIndex,
     required this.getBottomNavigationBarName,
+    super.key,
   });
 
+  /// Index of the currently selected screen.
   final int screenIndex;
+
+  /// Called with the new index when the selection changes.
   final void Function(int newIndex) updateScreenIndex;
+
+  /// Returns the label for the tab at the given index.
   final String Function(int index) getBottomNavigationBarName;
 
   @override
@@ -46,17 +53,17 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         currentIndex: widget.screenIndex,
         onTap: widget.updateScreenIndex,
         itemPadding: const EdgeInsets.only(
-          top: 2.0,
-          right: 12.0,
-          bottom: 2.0,
-          left: 6.0,
+          top: 2,
+          right: 12,
+          bottom: 2,
+          left: 6,
         ),
         items: List.generate(
           _icons.length,
           (index) {
             return SalomonBottomBarItem(
               icon: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Icon(
                   _icons[index],
                 ),

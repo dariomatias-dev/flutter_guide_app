@@ -4,21 +4,26 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_view_model_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FavoritePopupMenuItemWidget extends PopupMenuEntry {
+/// Popup menu entry that toggles a component's favorite state.
+class FavoritePopupMenuItemWidget extends PopupMenuEntry<Never> {
+  /// Creates a [FavoritePopupMenuItemWidget].
   const FavoritePopupMenuItemWidget({
-    super.key,
     required this.componentType,
     required this.componentName,
+    super.key,
   });
 
+  /// Category of the component.
   final ComponentType componentType;
+
+  /// Name of the component.
   final String componentName;
 
   @override
   double get height => kMinInteractiveDimension;
 
   @override
-  bool represents(value) => false;
+  bool represents(Object? value) => false;
 
   @override
   State<FavoritePopupMenuItemWidget> createState() =>
@@ -41,7 +46,7 @@ class _FavoritePopupMenuItemWidgetState
 
         final appLocalizations = AppLocalizations.of(context)!;
 
-        return PopupMenuItem(
+        return PopupMenuItem<void>(
           onTap: () {
             ref.read(favoritesViewModelProvider.notifier).toggle(
                   type: widget.componentType,

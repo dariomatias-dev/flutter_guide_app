@@ -1,20 +1,21 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/root_app_bar_widget.dart';
-
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/home/home_screen.dart';
 import 'package:flutter_guide/src/features/settings/presentation/screens/settings/settings_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// Root navigation shell hosting the app's four primary tabs.
 class RootNavigation extends ConsumerStatefulWidget {
+  /// Creates a [RootNavigation].
   const RootNavigation({super.key});
 
   @override
@@ -26,10 +27,12 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
 
   void _handleNavigationChange(int index) {
     if (_pageController.hasClients && _pageController.page?.round() != index) {
-      _pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
+      unawaited(
+        _pageController.animateToPage(
+          index,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        ),
       );
     }
   }
@@ -97,9 +100,9 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
             children: screens,
           ),
           Positioned(
-            right: 16.0,
-            left: 16.0,
-            bottom: 8.0,
+            right: 16,
+            left: 16,
+            bottom: 8,
             child: SafeArea(
               child: BottomNavigationBarWidget(
                 screenIndex: selectedIndex,

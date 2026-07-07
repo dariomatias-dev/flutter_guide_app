@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/functions.dart'
     as functions_source;
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/packages.dart'
@@ -9,9 +10,10 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitio
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/widgets.dart'
     as widgets_source;
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
-import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 
+/// Builds catalog components from the bundled sample definitions.
 class ComponentsLocalDatasource {
+  /// Returns all components of [type], localized with [locale].
   List<Component> getByType(
     ComponentType type, {
     required Locale locale,
@@ -32,6 +34,7 @@ class ComponentsLocalDatasource {
     }
   }
 
+  /// Returns the component named [name] of [type], localized with [locale].
   Component getByName({
     required ComponentType type,
     required String name,

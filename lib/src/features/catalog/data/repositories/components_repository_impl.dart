@@ -5,7 +5,9 @@ import 'package:flutter_guide/src/features/catalog/data/datasources/components_l
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/components_repository.dart';
 
+/// Default [ComponentsRepository] backed by a local datasource.
 class ComponentsRepositoryImpl implements ComponentsRepository {
+  /// Creates a [ComponentsRepositoryImpl].
   ComponentsRepositoryImpl({
     required ComponentsLocalDatasource datasource,
     required Locale locale,

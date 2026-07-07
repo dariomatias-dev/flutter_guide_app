@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// A styled dialog with an optional title, description, body and actions.
 class DialogWidget extends StatelessWidget {
+  /// Creates a [DialogWidget].
   const DialogWidget({
     super.key,
     this.title,
@@ -9,12 +11,19 @@ class DialogWidget extends StatelessWidget {
     this.children = const <Widget>[],
   });
 
+  /// Optional title text.
   final String? title;
+
+  /// Optional description text.
   final String? description;
+
+  /// Action buttons shown at the bottom.
   final List<Widget> actions;
+
+  /// Body widgets shown between the description and actions.
   final List<Widget> children;
 
-  BorderRadius get _borderRadius => BorderRadius.circular(16.0);
+  BorderRadius get _borderRadius => BorderRadius.circular(16);
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +34,11 @@ class DialogWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: _borderRadius,
       ),
-      elevation: 8.0,
+      elevation: 8,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 24.0,
-          vertical: 24.0,
+          horizontal: 24,
+          vertical: 24,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -38,7 +47,7 @@ class DialogWidget extends StatelessWidget {
             if (title != null)
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 12.0,
+                  bottom: 12,
                 ),
                 child: Text(
                   title!,
@@ -70,14 +79,13 @@ class DialogWidget extends StatelessWidget {
                   bottom: actions.isNotEmpty ? 24.0 : 0.0,
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: children,
                 ),
               ),
             if (actions.isNotEmpty)
               Wrap(
-                spacing: 12.0,
+                spacing: 12,
                 children: actions,
               ),
           ],

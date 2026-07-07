@@ -4,18 +4,25 @@ import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
 
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
 
+/// Rounded, elevated container wrapping the [NavigationBarWidget].
 class BottomNavigationBarWidget extends StatelessWidget {
+  /// Creates a [BottomNavigationBarWidget].
   const BottomNavigationBarWidget({
-    super.key,
     required this.screenIndex,
     required this.updateScreenIndex,
     required this.getBottomNavigationBarName,
+    super.key,
   });
 
+  /// Index of the currently selected screen.
   final int screenIndex;
+
+  /// Called with the new index when the selection changes.
   final void Function(
     int value,
   ) updateScreenIndex;
+
+  /// Returns the label for the tab at the given index.
   final String Function(
     int index,
   ) getBottomNavigationBarName;
@@ -27,7 +34,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? null : FlutterGuideColors.white,
-        borderRadius: BorderRadius.circular(32.0),
+        borderRadius: BorderRadius.circular(32),
         boxShadow: <BoxShadow>[
           BoxShadow(
             blurRadius: 0.5,
@@ -38,7 +45,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
         ],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(32.0),
+        borderRadius: BorderRadius.circular(32),
         child: NavigationBarWidget(
           screenIndex: screenIndex,
           updateScreenIndex: updateScreenIndex,

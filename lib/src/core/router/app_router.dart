@@ -1,20 +1,19 @@
-import 'package:go_router/go_router.dart';
-
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/core/router/route_paths.dart';
 import 'package:flutter_guide/src/core/shell/root_navigation.dart';
-
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/component_screen.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/interface_catalog/interface_catalog_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/saved_components/saved_components_screen.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
-
+/// Central [GoRouter] configuration for the app.
 abstract final class AppRouter {
+  /// The app's configured router.
   static final router = GoRouter(
     initialLocation: RoutePaths.root,
     onException: (context, state, router) {
@@ -56,7 +55,7 @@ abstract final class AppRouter {
         path: RoutePaths.componentSample,
         name: RouteNames.componentSample,
         builder: (context, state) {
-          final args = state.extra as ComponentSampleArgs;
+          final args = state.extra! as ComponentSampleArgs;
 
           return ComponentSampleScreen(
             title: args.title,

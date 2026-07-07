@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
@@ -10,7 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(
-    fileName: '.env',
+    
   );
 
   final requestConfiguration = RequestConfiguration(
@@ -19,8 +21,10 @@ Future<void> main() async {
     ],
   );
 
-  MobileAds.instance.initialize();
-  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
+  unawaited(MobileAds.instance.initialize());
+  unawaited(
+    MobileAds.instance.updateRequestConfiguration(requestConfiguration),
+  );
 
   final sharedPreferences = await SharedPreferences.getInstance();
 
