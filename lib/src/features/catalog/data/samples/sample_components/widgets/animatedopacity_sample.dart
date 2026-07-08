@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AnimatedOpacitySample`.
 class AnimatedOpacitySample extends StatefulWidget {
+  /// Creates a [AnimatedOpacitySample].
   const AnimatedOpacitySample({super.key});
 
   @override
@@ -17,7 +19,7 @@ class AnimatedOpacitySample extends StatefulWidget {
 }
 
 class _AnimatedOpacitySampleState extends State<AnimatedOpacitySample> {
-  double _opacity = 0.0;
+  double _opacity = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,11 @@ class _AnimatedOpacitySampleState extends State<AnimatedOpacitySample> {
               ),
               child: Image.asset(
                 'assets/icons/flutter_icon.png',
-                width: 200.0,
-                height: 200.0,
+                width: 200,
+                height: 200,
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 setState(() {

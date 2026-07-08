@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ShowBottomSheetSample`.
 class ShowBottomSheetSample extends StatefulWidget {
+  /// Creates a [ShowBottomSheetSample].
   const ShowBottomSheetSample({super.key});
 
   @override
@@ -17,7 +19,7 @@ class ShowBottomSheetSample extends StatefulWidget {
 }
 
 class _ShowBottomSheetSampleState extends State<ShowBottomSheetSample> {
-  final _isOpen = ValueNotifier(false);
+  final ValueNotifier<bool> _isOpen = ValueNotifier(false);
 
   PersistentBottomSheetController? _persistentBottomSheetController;
 
@@ -31,21 +33,21 @@ class _ShowBottomSheetSampleState extends State<ShowBottomSheetSample> {
     _persistentBottomSheetController = showBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(20),
       ),
       builder: (context) {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 16),
             const Text(
               'Actions:',
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 4),
             ListTile(
               onTap: _closeBottomSheet,
               leading: const Icon(Icons.share),

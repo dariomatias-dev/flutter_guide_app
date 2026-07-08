@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FormSample`.
 class FormSample extends StatefulWidget {
+  /// Creates a [FormSample].
   const FormSample({super.key});
 
   @override
@@ -45,7 +47,7 @@ class _FormSampleState extends State<FormSample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: Column(
@@ -69,7 +71,7 @@ class _FormSampleState extends State<FormSample> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -90,7 +92,7 @@ class _FormSampleState extends State<FormSample> {
                   return null;
                 },
               ),
-              const SizedBox(height: 24.0),
+              const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: _submitForm,
                 child: const Text('Submit'),

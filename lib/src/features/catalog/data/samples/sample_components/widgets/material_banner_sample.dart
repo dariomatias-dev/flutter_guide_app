@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `MaterialBannerSample`.
 class MaterialBannerSample extends StatefulWidget {
+  /// Creates a [MaterialBannerSample].
   const MaterialBannerSample({super.key});
 
   @override

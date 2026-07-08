@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SpacerSample`.
 class SpacerSample extends StatelessWidget {
+  /// Creates a [SpacerSample].
   const SpacerSample({super.key});
 
   @override
@@ -19,30 +21,30 @@ class SpacerSample extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-              width: 50.0,
-              height: 50.0,
+              width: 50,
+              height: 50,
               color: Colors.blue,
             ),
             const Spacer(),
             Container(
-              width: 50.0,
-              height: 50.0,
+              width: 50,
+              height: 50,
               color: Colors.yellow,
             ),
             const Spacer(
               flex: 2,
             ),
             Container(
-              width: 50.0,
-              height: 50.0,
+              width: 50,
+              height: 50,
               color: Colors.red,
             ),
             const Spacer(
               flex: 3,
             ),
             Container(
-              width: 50.0,
-              height: 50.0,
+              width: 50,
+              height: 50,
               color: Colors.green,
             ),
           ],

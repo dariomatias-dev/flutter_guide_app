@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `TooltipSample`.
 class TooltipSample extends StatelessWidget {
+  /// Creates a [TooltipSample].
   const TooltipSample({super.key});
 
   @override
@@ -28,7 +30,7 @@ class TooltipSample extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
+            const SizedBox(width: 8),
             Tooltip(
               message: 'Information',
               child: IconButton(
@@ -38,7 +40,7 @@ class TooltipSample extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
+            const SizedBox(width: 8),
             Tooltip(
               message: 'Success',
               child: IconButton(
@@ -48,7 +50,7 @@ class TooltipSample extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
+            const SizedBox(width: 8),
             Tooltip(
               message: 'Help',
               child: IconButton(
@@ -58,7 +60,7 @@ class TooltipSample extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
+            const SizedBox(width: 8),
             Tooltip(
               message: 'Settings',
               child: IconButton(

@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ChoiceChipSample`.
 class ChoiceChipSample extends StatefulWidget {
+  /// Creates a [ChoiceChipSample].
   const ChoiceChipSample({super.key});
 
   @override
@@ -27,7 +29,7 @@ class _ChoiceChipSampleState extends State<ChoiceChipSample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Wrap(
-              spacing: 6.0,
+              spacing: 6,
               children: List.generate(3, (index) {
                 return ChoiceChip(
                   label: Text('Item ${index + 1}'),
@@ -40,16 +42,15 @@ class _ChoiceChipSampleState extends State<ChoiceChipSample> {
                 );
               }),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             Wrap(
-              spacing: 6.0,
+              spacing: 6,
               children: List.generate(3, (index) {
                 return ChoiceChip(
                   label: Text(
                     'Item ${index + 1}',
                   ),
                   selected: _selectedItemIndex == index,
-                  onSelected: null,
                 );
               }),
             ),

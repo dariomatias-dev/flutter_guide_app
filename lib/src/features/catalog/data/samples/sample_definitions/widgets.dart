@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/widget_names.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-
+import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 // Samples
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/actionchip_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/alertdialog_sample.dart';
@@ -69,6 +67,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/listenablebuilder_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/listtile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/listview_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/material_banner_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/menuanchor_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/navigationbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/navigationrail_sample.dart';
@@ -101,16 +100,15 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/textbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/textfield_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/textformfield_sample.dart';
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/material_banner_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/theme_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/togglebuttons_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/tooltip_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/valuelistenablebuilder_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/visibility_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/wrap_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/widget_names.dart';
 
-import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
-
+/// All widget samples shown in the catalog.
 const widgets = <ComponentModel>[
   ComponentModel(
     name: WidgetNames.actionChipMaterial,

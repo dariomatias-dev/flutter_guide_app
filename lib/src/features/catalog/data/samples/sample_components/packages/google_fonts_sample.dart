@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-typedef _TextStyleType = TextStyle Function({
-  double? fontSize,
-  FontWeight? fontWeight,
-});
 
-final _fonts = <_TextStyleType>[
+final _fonts = <TextStyle Function({double? fontSize, FontWeight? fontWeight})>[
   GoogleFonts.roboto,
   GoogleFonts.lato,
   GoogleFonts.montserrat,
@@ -23,7 +19,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `GoogleFontsSample`.
 class GoogleFontsSample extends StatelessWidget {
+  /// Creates a [GoogleFontsSample].
   const GoogleFontsSample({super.key});
 
   @override
@@ -35,15 +33,14 @@ class GoogleFontsSample extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: _fonts.length,
           separatorBuilder: (context, index) {
-            return const SizedBox(height: 8.0);
+            return const SizedBox(height: 8);
           },
           itemBuilder: (context, index) {
             return Align(
-              alignment: Alignment.center,
               child: Text(
                 'Google Fonts',
                 style: _fonts[index](
-                  fontSize: 20.0,
+                  fontSize: 20,
                   fontWeight: FontWeight.w500,
                 ),
               ),

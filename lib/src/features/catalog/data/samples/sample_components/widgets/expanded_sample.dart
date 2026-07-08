@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ExpandedSample`.
 class ExpandedSample extends StatelessWidget {
+  /// Creates a [ExpandedSample].
   const ExpandedSample({super.key});
 
   @override

@@ -15,7 +15,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `NavigationBarSample`.
 class NavigationBarSample extends StatefulWidget {
+  /// Creates a [NavigationBarSample].
   const NavigationBarSample({super.key});
 
   @override

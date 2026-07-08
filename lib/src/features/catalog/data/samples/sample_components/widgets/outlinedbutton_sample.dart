@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `OutlinedButtonSample`.
 class OutlinedButtonSample extends StatelessWidget {
+  /// Creates a [OutlinedButtonSample].
   const OutlinedButtonSample({super.key});
 
   @override
@@ -23,7 +25,7 @@ class OutlinedButtonSample extends StatelessWidget {
               onPressed: () {},
               child: const Text('Enabled'),
             ),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 12),
             const OutlinedButton(
               onPressed: null,
               child: Text('Disabled'),

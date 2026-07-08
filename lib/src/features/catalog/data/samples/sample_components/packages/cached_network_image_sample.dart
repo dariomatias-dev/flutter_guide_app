@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CachedNetworkImageSample`.
 class CachedNetworkImageSample extends StatelessWidget {
+  /// Creates a [CachedNetworkImageSample].
   const CachedNetworkImageSample({super.key});
 
   @override
@@ -18,8 +20,8 @@ class CachedNetworkImageSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          width: 350.0,
-          height: 150.0,
+          width: 350,
+          height: 150,
           child: Center(
             child: CachedNetworkImage(
               imageUrl:

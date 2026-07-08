@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ListViewSample`.
 class ListViewSample extends StatelessWidget {
+  /// Creates a [ListViewSample].
   const ListViewSample({super.key});
 
   @override

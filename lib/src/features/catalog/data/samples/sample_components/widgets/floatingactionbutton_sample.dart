@@ -1,9 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+/// The available floating action button variants.
 enum FloatingActionButtonType {
+  /// Extended FAB with an icon and label.
   extended,
+
+  /// Large FAB.
   large,
+
+  /// Small FAB.
   small,
+
+  /// Standard FAB.
   standard,
 }
 
@@ -30,21 +40,25 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FloatingActionButtonSample`.
 class FloatingActionButtonSample extends StatelessWidget {
+  /// Creates a [FloatingActionButtonSample].
   const FloatingActionButtonSample({super.key});
 
   void _onPressed(
     BuildContext context,
     FloatingActionButtonType floatingActionButtonType,
   ) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return FloatingActionButtonScreen(
-            floatingActionButtonType: floatingActionButtonType,
-          );
-        },
+    unawaited(
+      Navigator.push<void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) {
+            return FloatingActionButtonScreen(
+              floatingActionButtonType: floatingActionButtonType,
+            );
+          },
+        ),
       ),
     );
   }
@@ -55,7 +69,7 @@ class FloatingActionButtonSample extends StatelessWidget {
       body: Center(
         child: Wrap(
           direction: Axis.vertical,
-          spacing: 12.0,
+          spacing: 12,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: List.generate(
             _floatingActionButtonTypes.length,
@@ -77,12 +91,15 @@ class FloatingActionButtonSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `FloatingActionButtonScreen`.
 class FloatingActionButtonScreen extends StatefulWidget {
+  /// Creates a [FloatingActionButtonScreen].
   const FloatingActionButtonScreen({
-    super.key,
     required this.floatingActionButtonType,
+    super.key,
   });
 
+  /// Which FAB variant to demonstrate.
   final FloatingActionButtonType floatingActionButtonType;
 
   @override
@@ -92,7 +109,7 @@ class FloatingActionButtonScreen extends StatefulWidget {
 
 class _FloatingActionButtonScreenState
     extends State<FloatingActionButtonScreen> {
-  final _isEnabledNotifier = ValueNotifier(true);
+  final ValueNotifier<bool> _isEnabledNotifier = ValueNotifier(true);
 
   Widget _getFloatingActionButton() {
     switch (widget.floatingActionButtonType) {
@@ -112,7 +129,7 @@ class _FloatingActionButtonScreenState
           onPressed: _isEnabledNotifier.value ? () {} : null,
           child: const Icon(Icons.add),
         );
-      default:
+      case FloatingActionButtonType.standard:
         return FloatingActionButton(
           onPressed: _isEnabledNotifier.value ? () {} : null,
           child: const Icon(Icons.add),
@@ -131,7 +148,7 @@ class _FloatingActionButtonScreenState
           },
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
-            size: 20.0,
+            size: 20,
           ),
         ),
         title: ValueListenableBuilder(

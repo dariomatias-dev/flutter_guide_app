@@ -20,7 +20,7 @@ const daysOfWeekNames = <String>[
   'Sunday',
 ];
 
-final daysOfWeek = List.generate(daysOfWeekNames.length, (index) {
+final List<MenuOptionModel<int>> daysOfWeek = List.generate(daysOfWeekNames.length, (index) {
   return MenuOptionModel(
     value: index,
     name: daysOfWeekNames[index],
@@ -39,10 +39,10 @@ const monthsOfYearNames = <String>[
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ];
 
-final monthsOfYear = List.generate(monthsOfYearNames.length, (index) {
+final List<MenuOptionModel<int>> monthsOfYear = List.generate(monthsOfYearNames.length, (index) {
   return MenuOptionModel(
     value: index + 1,
     name: monthsOfYearNames[index],
@@ -72,7 +72,7 @@ const worldCitiesNames = <String>[
   'Bangkok',
 ];
 
-final worldCities = List.generate(worldCitiesNames.length, (index) {
+final List<MenuOptionModel<String>> worldCities = List.generate(worldCitiesNames.length, (index) {
   final worldCitiesName = worldCitiesNames[index];
 
   return MenuOptionModel(
@@ -90,7 +90,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CustomDropdownSample`.
 class CustomDropdownSample extends StatefulWidget {
+  /// Creates a [CustomDropdownSample].
   const CustomDropdownSample({super.key});
 
   @override
@@ -122,7 +124,7 @@ class _CustomDropdownSampleState extends State<CustomDropdownSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 12.0,
+          horizontal: 12,
         ),
         child: Center(
           child: Column(
@@ -138,7 +140,7 @@ class _CustomDropdownSampleState extends State<CustomDropdownSample> {
                   );
                 },
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 16),
               DropdownButtonWidget(
                 title: 'Months of the Year',
                 options: monthsOfYear,
@@ -149,7 +151,7 @@ class _CustomDropdownSampleState extends State<CustomDropdownSample> {
                   );
                 },
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 16),
               DropdownButtonWidget(
                 title: 'Cities of the World',
                 options: worldCities,
@@ -168,12 +170,10 @@ class _CustomDropdownSampleState extends State<CustomDropdownSample> {
   }
 }
 
+/// Sample demonstrating `DropdownButtonWidget`.
 class DropdownButtonWidget extends StatefulWidget {
   const DropdownButtonWidget({
-    super.key,
-    required this.title,
-    required this.options,
-    required this.onChange,
+    required this.title, required this.options, required this.onChange, super.key,
   });
 
   final String title;
@@ -187,26 +187,25 @@ class DropdownButtonWidget extends StatefulWidget {
 }
 
 class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
-  final _dropdownButtonKey = GlobalKey();
+  final GlobalKey<State<StatefulWidget>> _dropdownButtonKey = GlobalKey();
 
   OverlayEntry? _overlayEntry;
   bool _isOpen = false;
   MenuOptionModel? _selectedValue;
 
-  BorderRadius get _defaultBorderRadius => BorderRadius.circular(20.0);
+  BorderRadius get _defaultBorderRadius => BorderRadius.circular(20);
 
   BoxShadow get _boxShadow {
     return BoxShadow(
       color: Colors.black.withAlpha(77),
-      blurRadius: 6.0,
-      spreadRadius: 0.0,
+      blurRadius: 6,
       offset: const Offset(0, 1),
     );
   }
 
   void _showMenu() {
     final renderBox =
-        _dropdownButtonKey.currentContext!.findRenderObject() as RenderBox;
+        _dropdownButtonKey.currentContext!.findRenderObject()! as RenderBox;
     final position = renderBox.globalToLocal(Offset.zero);
 
     final positionDy = position.dy * -1;
@@ -278,8 +277,8 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
           key: _dropdownButtonKey,
           width: double.infinity,
           padding: const EdgeInsets.symmetric(
-            vertical: 10.0,
-            horizontal: 12.0,
+            vertical: 10,
+            horizontal: 12,
           ),
           decoration: BoxDecoration(
             color: Theme.of(context).brightness == Brightness.light
@@ -309,16 +308,11 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
   }
 }
 
+/// Sample demonstrating `MenuWidget`.
 class MenuWidget extends StatefulWidget {
   const MenuWidget({
-    super.key,
-    required this.removeMenu,
+    required this.removeMenu, required this.boxShadow, required this.borderRadius, required this.padding, required this.options, required this.onChange, super.key,
     this.selectedOption,
-    required this.boxShadow,
-    required this.borderRadius,
-    required this.padding,
-    required this.options,
-    required this.onChange,
   });
 
   final VoidCallback removeMenu;
@@ -339,7 +333,7 @@ class _MenuWidgetState extends State<MenuWidget> {
   bool _isLight = true;
   Color? _defaultBackgroundColor;
   Color? _selectedBackgroundColor;
-  double _opacity = 0.0;
+  double _opacity = 0;
 
   Future<void> _update() async {
     await Future.delayed(
@@ -380,8 +374,8 @@ class _MenuWidgetState extends State<MenuWidget> {
           padding: EdgeInsets.only(
             top: isTopDirection ? widget.padding.top : mediaQuery.padding.top,
             bottom: widget.padding.bottom,
-            right: 12.0,
-            left: 12.0,
+            right: 12,
+            left: 12,
           ),
           child: Column(
             mainAxisAlignment: isTopDirection
@@ -412,7 +406,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                       borderRadius: widget.borderRadius,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 6.0,
+                          vertical: 6,
                         ),
                         decoration: BoxDecoration(
                           color: _defaultBackgroundColor,
@@ -436,8 +430,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                                       ? _selectedBackgroundColor
                                       : _defaultBackgroundColor,
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0,
-                                    vertical: 8.0,
+                                    horizontal: 12,
+                                    vertical: 8,
                                   ),
                                   width: double.infinity,
                                   child: Text(

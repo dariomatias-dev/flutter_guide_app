@@ -13,7 +13,7 @@ const _programmingLanguages = <String>[
   'Swift',
 ];
 
-final _texts = List.generate(
+final List<Text> _texts = List.generate(
   _programmingLanguages.length,
   (index) {
     return Text(
@@ -31,7 +31,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `WrapSample`.
 class WrapSample extends StatefulWidget {
+  /// Creates a [WrapSample].
   const WrapSample({super.key});
 
   @override
@@ -53,7 +55,7 @@ class _WrapSampleState extends State<WrapSample> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: 160.0,
+        height: 160,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

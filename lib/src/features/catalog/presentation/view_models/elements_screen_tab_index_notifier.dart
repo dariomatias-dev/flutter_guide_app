@@ -5,8 +5,9 @@ class ElementsScreenTabIndexNotifier extends Notifier<int> {
   @override
   int build() => 0;
 
+  /// The currently selected tab index.
+  int get index => state;
+
   /// Selects the tab at [index].
-  void setIndex(int index) {
-    state = index;
-  }
+  set index(int index) => state = index;
 }

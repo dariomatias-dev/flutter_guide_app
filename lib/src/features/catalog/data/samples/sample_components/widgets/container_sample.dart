@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ContainerSample`.
 class ContainerSample extends StatelessWidget {
+  /// Creates a [ContainerSample].
   const ContainerSample({super.key});
 
   @override
@@ -17,8 +19,8 @@ class ContainerSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          width: 160.0,
-          height: 160.0,
+          width: 160,
+          height: 160,
           color: Colors.blue,
         ),
       ),

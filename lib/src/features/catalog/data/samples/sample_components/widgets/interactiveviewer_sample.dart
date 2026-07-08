@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `InteractiveViewerSample`.
 class InteractiveViewerSample extends StatelessWidget {
+  /// Creates a [InteractiveViewerSample].
   const InteractiveViewerSample({super.key});
 
   @override
@@ -19,8 +21,8 @@ class InteractiveViewerSample extends StatelessWidget {
         child: Center(
           child: Image.asset(
             'assets/icons/flutter_icon.png',
-            width: 100.0,
-            height: 100.0,
+            width: 100,
+            height: 100,
           ),
         ),
       ),

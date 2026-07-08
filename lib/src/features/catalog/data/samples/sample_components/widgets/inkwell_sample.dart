@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `InkWellSample`.
 class InkWellSample extends StatelessWidget {
+  /// Creates a [InkWellSample].
   const InkWellSample({super.key});
 
   @override
@@ -21,23 +23,22 @@ class InkWellSample extends StatelessWidget {
           children: <Widget>[
             InkWell(
               onTap: () {},
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(20),
               child: Ink(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 8.0,
+                  horizontal: 20,
+                  vertical: 8,
                 ),
                 child: const Text('Enabled'),
               ),
             ),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 12),
             InkWell(
-              onTap: null,
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(20),
               child: Ink(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 8.0,
+                  horizontal: 20,
+                  vertical: 8,
                 ),
                 child: const Text('Disabled'),
               ),

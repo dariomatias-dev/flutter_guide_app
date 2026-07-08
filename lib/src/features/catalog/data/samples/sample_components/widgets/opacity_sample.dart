@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `OpacitySample`.
 class OpacitySample extends StatefulWidget {
+  /// Creates a [OpacitySample].
   const OpacitySample({super.key});
 
   @override
@@ -28,11 +30,11 @@ class _OpacitySampleState extends State<OpacitySample> {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
+                  horizontal: 20,
                 ),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(
-                    maxWidth: 140.0,
+                    maxWidth: 140,
                   ),
                   child: Opacity(
                     opacity: _opacity / 100,
@@ -46,7 +48,7 @@ class _OpacitySampleState extends State<OpacitySample> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
+              vertical: 20,
             ),
             child: Slider(
               label: _opacity.floor().toString(),

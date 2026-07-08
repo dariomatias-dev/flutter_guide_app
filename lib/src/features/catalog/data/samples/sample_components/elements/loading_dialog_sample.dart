@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoadingDialogSample`.
 class LoadingDialogSample extends StatefulWidget {
+  /// Creates a [LoadingDialogSample].
   const LoadingDialogSample({super.key});
 
   @override

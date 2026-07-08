@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SliderSample`.
 class SliderSample extends StatelessWidget {
+  /// Creates a [SliderSample].
   const SliderSample({super.key});
 
   @override
@@ -22,7 +24,7 @@ class SliderSample extends StatelessWidget {
         child: const SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: 12.0,
+              vertical: 12,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -33,25 +35,25 @@ class SliderSample extends StatelessWidget {
                 Divider(),
                 SliderTemplate(
                   title: '0 to 100 without divisions',
-                  max: 100.0,
+                  max: 100,
                 ),
                 Divider(),
                 SliderTemplate(
                   title: '50 to 100 with 50 divisions',
-                  min: 50.0,
-                  max: 100.0,
+                  min: 50,
+                  max: 100,
                   divisions: 50,
                 ),
                 Divider(),
                 SliderTemplate(
                   title: '0 to 100 with 20 divisions',
-                  max: 100.0,
+                  max: 100,
                   divisions: 20,
                 ),
                 Divider(),
                 SliderTemplate(
                   title: '0 to 100 with 100 divisions',
-                  max: 100.0,
+                  max: 100,
                   divisions: 100,
                 ),
               ],
@@ -63,10 +65,10 @@ class SliderSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `SliderTemplate`.
 class SliderTemplate extends StatefulWidget {
   const SliderTemplate({
-    super.key,
-    required this.title,
+    required this.title, super.key,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
@@ -83,7 +85,7 @@ class SliderTemplate extends StatefulWidget {
 
 class _SliderTemplateState extends State<SliderTemplate> {
   bool _showFloatingPoint = true;
-  double _value = 0.0;
+  double _value = 0;
 
   @override
   void initState() {
@@ -104,7 +106,7 @@ class _SliderTemplateState extends State<SliderTemplate> {
         Text(
           widget.title,
           style: const TextStyle(
-            fontSize: 18.0,
+            fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),

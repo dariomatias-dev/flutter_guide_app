@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:flutter/material.dart';
 
 class _AwesomeSnackBarModel {
   const _AwesomeSnackBarModel({
@@ -82,7 +82,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AwesomeSnackbarContentSample`.
 class AwesomeSnackbarContentSample extends StatefulWidget {
+  /// Creates a [AwesomeSnackbarContentSample].
   const AwesomeSnackbarContentSample({super.key});
 
   @override
@@ -99,9 +101,9 @@ class _AwesomeSnackbarContentSampleState
   void _showAwesomeSnackBar() {
     final awesomeSnackBar = SnackBar(
       padding: const EdgeInsets.only(
-        top: 20.0,
+        top: 20,
       ),
-      elevation: 0.0,
+      elevation: 0,
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.transparent,
       content: AwesomeSnackbarContent(
@@ -121,7 +123,7 @@ class _AwesomeSnackbarContentSampleState
 
   void _showAwesomeMaterialBanner() {
     final awesomeMaterialBanner = MaterialBanner(
-      elevation: 0.0,
+      elevation: 0,
       backgroundColor: Colors.transparent,
       forceActionsBelow: true,
       content: AwesomeSnackbarContent(
@@ -155,7 +157,7 @@ class _AwesomeSnackbarContentSampleState
                 'Show Awesome SnackBar',
               ),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             DropdownButtonHideUnderline(
               child: DropdownButton<_AwesomeSnackBarModel>(
                 value: _awesomeSnackBar,
@@ -176,14 +178,14 @@ class _AwesomeSnackbarContentSampleState
                 },
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _showAwesomeMaterialBanner,
               child: const Text(
                 'Show Awesome Material Banner',
               ),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             DropdownButtonHideUnderline(
               child: DropdownButton<_AwesomeMaterialBannerModel>(
                 value: _awesomeMaterialBanner,

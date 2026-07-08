@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SingleChildScrollViewSample`.
 class SingleChildScrollViewSample extends StatelessWidget {
+  /// Creates a [SingleChildScrollViewSample].
   const SingleChildScrollViewSample({super.key});
 
   @override
@@ -23,7 +25,7 @@ class SingleChildScrollViewSample extends StatelessWidget {
               title: 'Scrolling With Indicator',
               screenToNavigate: SingleChildScrollViewWithIndicator(),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 16),
             CustomElevatedButton(
               title: 'Scrolling Without Indicator',
               screenToNavigate: SingleChildScrollViewWithoutIndicator(),
@@ -35,11 +37,10 @@ class SingleChildScrollViewSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `CustomElevatedButton`.
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
-    super.key,
-    required this.title,
-    required this.screenToNavigate,
+    required this.title, required this.screenToNavigate, super.key,
   });
 
   final String title;
@@ -48,7 +49,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 36.0,
+      height: 36,
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
@@ -66,7 +67,9 @@ class CustomElevatedButton extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `SingleChildScrollViewWithIndicator`.
 class SingleChildScrollViewWithIndicator extends StatelessWidget {
+  /// Creates a [SingleChildScrollViewWithIndicator].
   const SingleChildScrollViewWithIndicator({super.key});
 
   @override
@@ -81,7 +84,9 @@ class SingleChildScrollViewWithIndicator extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `SingleChildScrollViewWithoutIndicator`.
 class SingleChildScrollViewWithoutIndicator extends StatelessWidget {
+  /// Creates a [SingleChildScrollViewWithoutIndicator].
   const SingleChildScrollViewWithoutIndicator({super.key});
 
   @override
@@ -101,10 +106,10 @@ class SingleChildScrollViewWithoutIndicator extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `SingleChildScrollViewTemplate`.
 class SingleChildScrollViewTemplate extends StatelessWidget {
   const SingleChildScrollViewTemplate({
-    super.key,
-    required this.builder,
+    required this.builder, super.key,
   });
 
   final Widget Function(Widget child) builder;

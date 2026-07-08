@@ -11,19 +11,19 @@ class _UserModel {
     required this.email,
   });
 
-  final String firstName;
-  final String lastName;
-  final String email;
-
   factory _UserModel.fromMap(
     Map<String, dynamic> json,
   ) {
     return _UserModel(
-      firstName: json['firstname'],
-      lastName: json['lastname'],
-      email: json['email'],
+      firstName: json['firstname'] as String,
+      lastName: json['lastname'] as String,
+      email: json['email'] as String,
     );
   }
+
+  final String firstName;
+  final String lastName;
+  final String email;
 }
 
 void main() {
@@ -35,7 +35,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `HttpSample`.
 class HttpSample extends StatefulWidget {
+  /// Creates a [HttpSample].
   const HttpSample({super.key});
 
   @override
@@ -57,9 +59,9 @@ class _HttpSampleState extends State<HttpSample> {
       ) as List;
 
       final users = <_UserModel>[];
-      for (var result in results) {
+      for (final result in results) {
         users.add(
-          _UserModel.fromMap(result),
+          _UserModel.fromMap(result as Map<String, dynamic>),
         );
       }
 

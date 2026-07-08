@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoNavigationBarSample`.
 class CupertinoNavigationBarSample extends StatelessWidget {
+  /// Creates a [CupertinoNavigationBarSample].
   const CupertinoNavigationBarSample({super.key});
 
   @override
@@ -20,7 +22,7 @@ class CupertinoNavigationBarSample extends StatelessWidget {
         middle: Text('Title'),
         trailing: Icon(
           CupertinoIcons.bell,
-          size: 24.0,
+          size: 24,
         ),
       ),
       child: Container(),

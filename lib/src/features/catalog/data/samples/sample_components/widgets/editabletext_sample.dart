@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `EditabletextSample`.
 class EditabletextSample extends StatefulWidget {
+  /// Creates a [EditabletextSample].
   const EditabletextSample({super.key});
 
   @override
@@ -32,7 +34,7 @@ class _EditabletextSampleState extends State<EditabletextSample> {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20),
         child: Center(
           child: EditableText(
             controller: _controller,
@@ -41,7 +43,7 @@ class _EditabletextSampleState extends State<EditabletextSample> {
             backgroundCursorColor: isLight,
             style: TextStyle(
               color: isLight,
-              fontSize: 20.0,
+              fontSize: 20,
             ),
             onTapOutside: (event) {
               FocusManager.instance.primaryFocus?.unfocus();

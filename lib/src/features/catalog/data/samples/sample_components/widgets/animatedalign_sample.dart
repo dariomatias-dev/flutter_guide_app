@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AnimatedAlignSample`.
 class AnimatedAlignSample extends StatefulWidget {
+  /// Creates a [AnimatedAlignSample].
   const AnimatedAlignSample({super.key});
 
   @override
@@ -27,23 +29,18 @@ class _AnimatedAlignSampleState extends State<AnimatedAlignSample> {
       case Alignment.topCenter:
         alignment = Alignment.topRight;
         _seconds = 1;
-        break;
       case Alignment.topRight:
         alignment = Alignment.bottomRight;
         _seconds = 2;
-        break;
       case Alignment.bottomRight:
         alignment = Alignment.bottomLeft;
         _seconds = 1;
-        break;
       case Alignment.bottomLeft:
         alignment = Alignment.topLeft;
         _seconds = 2;
-        break;
       case Alignment.topLeft:
         alignment = Alignment.topRight;
         _seconds = 1;
-        break;
     }
 
     if (alignment != null) {
@@ -75,8 +72,8 @@ class _AnimatedAlignSampleState extends State<AnimatedAlignSample> {
         onEnd: _onEnd,
         child: Image.asset(
           'assets/icons/flutter_icon.png',
-          width: 80.0,
-          height: 80.0,
+          width: 80,
+          height: 80,
           fit: BoxFit.cover,
         ),
       ),

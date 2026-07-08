@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SharedPreferencesSample`.
 class SharedPreferencesSample extends StatefulWidget {
+  /// Creates a [SharedPreferencesSample].
   const SharedPreferencesSample({super.key});
 
   @override
@@ -77,7 +79,7 @@ class _SharedPreferencesSampleState extends State<SharedPreferencesSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 12.0,
+          horizontal: 12,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -93,7 +95,7 @@ class _SharedPreferencesSampleState extends State<SharedPreferencesSample> {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             if (_value != null && _value != '')
               Text(
                 'Stored value: $_value',

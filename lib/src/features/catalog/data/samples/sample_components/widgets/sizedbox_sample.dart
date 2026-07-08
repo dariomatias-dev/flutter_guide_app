@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SizedBoxSample`.
 class SizedBoxSample extends StatelessWidget {
+  /// Creates a [SizedBoxSample].
   const SizedBoxSample({super.key});
 
   @override
@@ -17,8 +19,8 @@ class SizedBoxSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          width: 100.0,
-          height: 100.0,
+          width: 100,
+          height: 100,
           child: Image.asset(
             'assets/icons/flutter_icon.png',
           ),

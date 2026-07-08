@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SwitchListTileSample`.
 class SwitchListTileSample extends StatefulWidget {
+  /// Creates a [SwitchListTileSample].
   const SwitchListTileSample({super.key});
 
   @override
@@ -17,7 +19,7 @@ class SwitchListTileSample extends StatefulWidget {
 }
 
 class _SwitchListTileSampleState extends State<SwitchListTileSample> {
-  final _selectedOptions = List.filled(2, false);
+  final List<bool> _selectedOptions = List.filled(2, false);
 
   void _updateSelectedOptions(int index, bool newValue) {
     setState(() {
@@ -48,7 +50,7 @@ class _SwitchListTileSampleState extends State<SwitchListTileSample> {
               ),
             );
           }),
-          const SizedBox(height: 12.0),
+          const SizedBox(height: 12),
           ...List.generate(_selectedOptions.length, (index) {
             return SwitchListTile(
               title: Text(

@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ShowDatePickerSample`.
 class ShowDatePickerSample extends StatefulWidget {
+  /// Creates a [ShowDatePickerSample].
   const ShowDatePickerSample({super.key});
 
   @override
@@ -50,7 +52,7 @@ class _ShowDatePickerSampleState extends State<ShowDatePickerSample> {
             if (_date != null)
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 16.0,
+                  bottom: 16,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -58,14 +60,14 @@ class _ShowDatePickerSampleState extends State<ShowDatePickerSample> {
                     const Text(
                       'Date selected: ',
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       _date!,
                       style: const TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 16,
                       ),
                     ),
                   ],

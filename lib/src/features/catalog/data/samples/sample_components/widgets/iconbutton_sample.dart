@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `IconButtonSample`.
 class IconButtonSample extends StatelessWidget {
+  /// Creates a [IconButtonSample].
   const IconButtonSample({super.key});
 
   @override
@@ -17,7 +19,7 @@ class IconButtonSample extends StatelessWidget {
     return const Scaffold(
       body: Center(
         child: Wrap(
-          spacing: 12.0,
+          spacing: 12,
           children: <Widget>[
             FavoriteButtonWidget(),
             SettingButtonWidget(),
@@ -28,7 +30,9 @@ class IconButtonSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `FavoriteButtonWidget`.
 class FavoriteButtonWidget extends StatefulWidget {
+  /// Creates a [FavoriteButtonWidget].
   const FavoriteButtonWidget({super.key});
 
   @override
@@ -44,7 +48,7 @@ class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> {
 
     return Wrap(
       direction: Axis.vertical,
-      spacing: 4.0,
+      spacing: 4,
       children: <Widget>[
         IconButton(
           onPressed: () {
@@ -67,7 +71,9 @@ class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> {
   }
 }
 
+/// Sample demonstrating `SettingButtonWidget`.
 class SettingButtonWidget extends StatefulWidget {
+  /// Creates a [SettingButtonWidget].
   const SettingButtonWidget({super.key});
 
   @override
@@ -84,7 +90,7 @@ class _SettingButtonWidgetState extends State<SettingButtonWidget> {
 
     return Wrap(
       direction: Axis.vertical,
-      spacing: 4.0,
+      spacing: 4,
       children: <Widget>[
         IconButton(
           onPressed: () {

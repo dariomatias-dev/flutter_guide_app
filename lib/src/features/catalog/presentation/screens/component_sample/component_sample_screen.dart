@@ -71,7 +71,8 @@ class _ComponentSampleScreenState extends ConsumerState<ComponentSampleScreen>
           ),
           body: PageView(
             controller: _controller.pageController,
-            onPageChanged: _controller.onPageChanged,
+            onPageChanged: (index) =>
+                _controller.currentTabIndexNotifier.value = index,
             children: <Widget>[
               Theme(
                 data: isDark ? ThemeData.dark() : ThemeData.light(),

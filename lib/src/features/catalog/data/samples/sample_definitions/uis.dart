@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/core/models/component_infos_model.dart';
+import 'package:flutter_guide/src/core/models/component_summary_model.dart';
+import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/uis/chat_screen_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/uis/emails_app_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/uis/login_screen_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/uis/login_with_background_image_screen_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/uis/phone_verification_screen_sample.dart';
-import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/core/models/component_infos_model.dart';
-import 'package:flutter_guide/src/core/models/component_summary_model.dart';
-import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 
+/// Returns the UI samples, localized via [context].
 List<InterfaceModel> getUis(
   BuildContext context,
 ) {
@@ -49,6 +50,7 @@ List<InterfaceModel> getUis(
   ];
 }
 
+/// Returns UI component infos, localized via [context].
 ComponentInfosModel getUiInfos(BuildContext context) {
   final uis = getUis(context);
 
@@ -61,7 +63,6 @@ ComponentInfosModel getUiInfos(BuildContext context) {
     samples[ui.fileName] = ComponentSummaryModel(
       name: ui.name,
       type: ComponentType.uis,
-      videoId: null,
       sample: ui.sample,
       fileName: ui.fileName,
     );

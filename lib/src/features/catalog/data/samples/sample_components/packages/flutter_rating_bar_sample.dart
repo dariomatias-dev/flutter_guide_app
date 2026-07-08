@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterRatingBarSample`.
 class FlutterRatingBarSample extends StatefulWidget {
+  /// Creates a [FlutterRatingBarSample].
   const FlutterRatingBarSample({super.key});
 
   @override
@@ -36,10 +38,8 @@ class _FlutterRatingBarSampleState extends State<FlutterRatingBarSample> {
           children: <Widget>[
             RatingBar.builder(
               direction: _direction,
-              initialRating: 0.0,
-              itemCount: 5,
               itemPadding: const EdgeInsets.symmetric(
-                horizontal: 4.0,
+                horizontal: 4,
               ),
               allowHalfRating: _allowHalfRating,
               itemBuilder: (context, index) {
@@ -50,11 +50,11 @@ class _FlutterRatingBarSampleState extends State<FlutterRatingBarSample> {
               },
               onRatingUpdate: (value) {},
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             DropdownButtonHideUnderline(
-              child: DropdownButton(
+              child: DropdownButton<Axis>(
                 value: _direction,
-                items: const <DropdownMenuItem>[
+                items: const <DropdownMenuItem<Axis>>[
                   DropdownMenuItem(
                     value: Axis.horizontal,
                     child: Text('Horizontal'),
@@ -65,13 +65,15 @@ class _FlutterRatingBarSampleState extends State<FlutterRatingBarSample> {
                   ),
                 ],
                 onChanged: (value) {
+                  if (value == null) return;
+
                   setState(() {
                     _direction = value;
                   });
                 },
               ),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             ListTile(
               title: const Text('Half Rating:'),
               trailing: Transform.scale(

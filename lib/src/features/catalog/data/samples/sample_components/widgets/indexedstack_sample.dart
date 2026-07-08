@@ -9,7 +9,7 @@ const _colors = <Color>[
   Colors.purple,
 ];
 
-final items = List.generate(5, (index) {
+final List<String> items = List.generate(5, (index) {
   return 'Item ${index + 1}';
 });
 
@@ -22,7 +22,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `IndexedStackSample`.
 class IndexedStackSample extends StatefulWidget {
+  /// Creates a [IndexedStackSample].
   const IndexedStackSample({super.key});
 
   @override
@@ -43,14 +45,14 @@ class _IndexedStackSampleState extends State<IndexedStackSample> {
               index: _itemIndex,
               children: List.generate(_colors.length, (index) {
                 return Container(
-                  height: 160.0,
+                  height: 160,
                   color: _colors[index],
                   child: Center(
                     child: Text(
                       'Item ${index + 1}',
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 20.0,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -58,7 +60,7 @@ class _IndexedStackSampleState extends State<IndexedStackSample> {
                 );
               }),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             DropdownButtonHideUnderline(
               child: DropdownButton(
                 value: _itemIndex,
@@ -70,7 +72,7 @@ class _IndexedStackSampleState extends State<IndexedStackSample> {
                 }),
                 onChanged: (value) {
                   setState(() {
-                    _itemIndex = value as int;
+                    _itemIndex = value!;
                   });
                 },
               ),

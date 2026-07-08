@@ -17,7 +17,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `MshCheckboxSample`.
 class MshCheckboxSample extends StatelessWidget {
+  /// Creates a [MshCheckboxSample].
   const MshCheckboxSample({super.key});
 
   @override
@@ -26,7 +28,7 @@ class MshCheckboxSample extends StatelessWidget {
       body: Center(
         child: Wrap(
           direction: Axis.vertical,
-          spacing: 12.0,
+          spacing: 12,
           children: List.generate(_mshCheckboxStyles.length, (index) {
             return MshCheckboxItemSample(
               style: _mshCheckboxStyles[index],
@@ -38,10 +40,10 @@ class MshCheckboxSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `MshCheckboxItemSample`.
 class MshCheckboxItemSample extends StatefulWidget {
   const MshCheckboxItemSample({
-    super.key,
-    required this.style,
+    required this.style, super.key,
   });
 
   final MSHCheckboxStyle style;
@@ -57,7 +59,7 @@ class _MshCheckboxItemSampleState extends State<MshCheckboxItemSample> {
   Widget build(BuildContext context) {
     return MSHCheckbox(
       value: _isChecked,
-      size: 32.0,
+      size: 32,
       style: widget.style,
       colorConfig: MSHColorConfig(
         checkColor: widget.style == MSHCheckboxStyle.stroke

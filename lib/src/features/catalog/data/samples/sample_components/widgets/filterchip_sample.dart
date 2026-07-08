@@ -16,7 +16,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FilterChipSample`.
 class FilterChipSample extends StatefulWidget {
+  /// Creates a [FilterChipSample].
   const FilterChipSample({super.key});
 
   @override
@@ -49,15 +51,15 @@ class _FilterChipSampleState extends State<FilterChipSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
+          horizontal: 20,
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Wrap(
-                spacing: 6.0,
-                runSpacing: 6.0,
+                spacing: 6,
+                runSpacing: 6,
                 alignment: WrapAlignment.center,
                 children: List.generate(_programmingLanguages.length, (index) {
                   final programmingLanguage = _programmingLanguages[index];
@@ -73,10 +75,10 @@ class _FilterChipSampleState extends State<FilterChipSample> {
                   );
                 }),
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 8),
               Wrap(
-                spacing: 6.0,
-                runSpacing: 6.0,
+                spacing: 6,
+                runSpacing: 6,
                 alignment: WrapAlignment.center,
                 children: List.generate(_programmingLanguages.length, (index) {
                   final programmingLanguage = _programmingLanguages[index];
@@ -90,7 +92,7 @@ class _FilterChipSampleState extends State<FilterChipSample> {
                   );
                 }),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 20),
               if (_selectedProgrammingLanguages.isNotEmpty)
                 RichText(
                   text: TextSpan(

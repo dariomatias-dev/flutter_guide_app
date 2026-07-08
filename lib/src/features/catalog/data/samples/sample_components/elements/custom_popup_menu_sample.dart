@@ -58,22 +58,25 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CustomPopupMenuSample`.
 class CustomPopupMenuSample extends StatefulWidget {
+  /// Creates a [CustomPopupMenuSample].
   const CustomPopupMenuSample({super.key});
 
   @override
   State<CustomPopupMenuSample> createState() => CustomPopupMenuSampleState();
 }
 
+/// Sample demonstrating `CustomPopupMenuSampleState`.
 class CustomPopupMenuSampleState extends State<CustomPopupMenuSample> {
-  final _buttonKey = GlobalKey();
+  final GlobalKey<State<StatefulWidget>> _buttonKey = GlobalKey();
 
   OverlayEntry? _overlayEntry;
   Alignment _buttonAlignment = Alignment.center;
 
   void _showMenu() {
     final rendexBox =
-        _buttonKey.currentContext!.findRenderObject() as RenderBox;
+        _buttonKey.currentContext!.findRenderObject()! as RenderBox;
     final buttonPosition = rendexBox.localToGlobal(Offset.zero);
     final screenSize = MediaQuery.sizeOf(context);
     final screenWidth = screenSize.width;
@@ -106,11 +109,11 @@ class CustomPopupMenuSampleState extends State<CustomPopupMenuSample> {
             child: Material(
               color: Colors.transparent,
               child: Container(
-                width: 120.0,
-                height: 120.0,
+                width: 120,
+                height: 120,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Center(
                   child: Text('Menu'),
@@ -155,7 +158,7 @@ class CustomPopupMenuSampleState extends State<CustomPopupMenuSample> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 12.0,
+                vertical: 12,
               ),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(

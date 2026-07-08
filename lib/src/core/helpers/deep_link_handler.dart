@@ -101,7 +101,7 @@ class DeepLinkHandler {
 
     final element = infos.samples[componentName]!;
 
-    _navigationNotifier.setIndex(0);
+    _navigationNotifier.index = 0;
 
     unawaited(
       router.pushNamed(
@@ -128,10 +128,10 @@ class DeepLinkHandler {
 
     if (type == 'widgets') {
       componentType = ComponentType.widget;
-      _elementsTabNotifier.setIndex(0);
+      _elementsTabNotifier.index = 0;
     } else if (type == 'functions') {
       componentType = ComponentType.function;
-      _elementsTabNotifier.setIndex(1);
+      _elementsTabNotifier.index = 1;
     } else if (type == 'packages') {
       componentType = ComponentType.package;
     } else {
@@ -152,7 +152,7 @@ class DeepLinkHandler {
 
     final tabIndex = type == 'packages' ? 2 : 1;
 
-    _navigationNotifier.setIndex(tabIndex);
+    _navigationNotifier.index = tabIndex;
 
     unawaited(
       router.pushNamed(

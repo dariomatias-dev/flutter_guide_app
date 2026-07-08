@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `TabBarSample`.
 class TabBarSample extends StatefulWidget {
+  /// Creates a [TabBarSample].
   const TabBarSample({super.key});
 
   @override

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-final _pages = List.generate(10, (index) {
+final List<Container> _pages = List.generate(10, (index) {
   return Container(
-    height: 200.0,
+    height: 200,
     margin: const EdgeInsets.symmetric(
-      horizontal: 10.0,
+      horizontal: 10,
     ),
     decoration: BoxDecoration(
       color: Colors.blue,
-      borderRadius: BorderRadius.circular(12.0),
+      borderRadius: BorderRadius.circular(12),
     ),
     child: Center(
       child: Text(
@@ -33,8 +33,8 @@ class _IndicatorEffectModel {
   final IndicatorEffect effect;
 }
 
-final _dotColor = Colors.grey.shade300;
-final _activeDotColor = Colors.blue.shade400;
+final Color _dotColor = Colors.grey.shade300;
+final Color _activeDotColor = Colors.blue.shade400;
 const _dotHeight = 12.0;
 const _dotWidth = 12.0;
 
@@ -99,7 +99,7 @@ final _smoothPageIndicators = <_IndicatorEffectModel>[
   _IndicatorEffectModel(
     title: 'Jumping dot with vertical offset',
     effect: JumpingDotEffect(
-      verticalOffset: 5.0,
+      verticalOffset: 5,
       dotColor: _dotColor,
       activeDotColor: _activeDotColor,
       dotHeight: _dotHeight,
@@ -192,7 +192,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SmoothPageIndicatorSample`.
 class SmoothPageIndicatorSample extends StatefulWidget {
+  /// Creates a [SmoothPageIndicatorSample].
   const SmoothPageIndicatorSample({super.key});
 
   @override
@@ -203,7 +205,6 @@ class SmoothPageIndicatorSample extends StatefulWidget {
 class _SmoothPageIndicatorSampleState extends State<SmoothPageIndicatorSample> {
   final _pageViewController = PageController(
     viewportFraction: 0.8,
-    keepPage: true,
   );
 
   @override
@@ -218,12 +219,12 @@ class _SmoothPageIndicatorSampleState extends State<SmoothPageIndicatorSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
-          top: 20.0,
+          top: 20,
         ),
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 200.0,
+              height: 200,
               child: PageView.builder(
                 controller: _pageViewController,
                 itemCount: _pages.length,
@@ -235,8 +236,8 @@ class _SmoothPageIndicatorSampleState extends State<SmoothPageIndicatorSample> {
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.only(
-                  top: 20.0,
-                  bottom: 20.0,
+                  top: 20,
+                  bottom: 20,
                 ),
                 itemCount: _smoothPageIndicators.length,
                 itemBuilder: (context, index) {
@@ -247,13 +248,13 @@ class _SmoothPageIndicatorSampleState extends State<SmoothPageIndicatorSample> {
                       Text(
                         smoothPageIndicator.title,
                       ),
-                      const SizedBox(height: 6.0),
+                      const SizedBox(height: 6),
                       SmoothPageIndicator(
                         controller: _pageViewController,
                         count: _pages.length,
                         effect: smoothPageIndicator.effect,
                       ),
-                      const SizedBox(height: 16.0),
+                      const SizedBox(height: 16),
                     ],
                   );
                 },

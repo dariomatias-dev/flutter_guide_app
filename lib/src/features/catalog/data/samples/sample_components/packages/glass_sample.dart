@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `GlassSample`.
 class GlassSample extends StatelessWidget {
+  /// Creates a [GlassSample].
   const GlassSample({super.key});
 
   @override
@@ -31,8 +33,8 @@ class GlassSample extends StatelessWidget {
           ),
           Center(
             child: const SizedBox(
-              width: 200.0,
-              height: 200.0,
+              width: 200,
+              height: 200,
               child: Center(
                 child: Text(
                   'Glass Effect',
@@ -43,10 +45,8 @@ class GlassSample extends StatelessWidget {
                 ),
               ),
             ).asGlass(
-              blurX: 10.0,
-              blurY: 10.0,
               tintColor: Colors.black,
-              clipBorderRadius: BorderRadius.circular(20.0),
+              clipBorderRadius: BorderRadius.circular(20),
             ),
           ),
         ],

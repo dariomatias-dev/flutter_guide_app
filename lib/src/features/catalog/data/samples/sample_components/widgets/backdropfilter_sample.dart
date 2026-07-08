@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BackdropFilterSample`.
 class BackdropFilterSample extends StatefulWidget {
+  /// Creates a [BackdropFilterSample].
   const BackdropFilterSample({super.key});
 
   @override
@@ -19,16 +21,16 @@ class BackdropFilterSample extends StatefulWidget {
 }
 
 class _BackdropFilterSampleState extends State<BackdropFilterSample> {
-  double _sigmaX = 0.0;
-  double _sigmaY = 0.0;
+  double _sigmaX = 0;
+  double _sigmaY = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          width: 200.0,
-          height: 200.0,
+          width: 200,
+          height: 200,
           child: Stack(
             alignment: Alignment.center,
             children: <Widget>[
@@ -53,7 +55,7 @@ class _BackdropFilterSampleState extends State<BackdropFilterSample> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: 140.0,
+        height: 140,
         child: Column(
           children: <Widget>[
             Text(

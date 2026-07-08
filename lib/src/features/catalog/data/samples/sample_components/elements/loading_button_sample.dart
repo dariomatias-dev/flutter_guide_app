@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoadingButtonSample`.
 class LoadingButtonSample extends StatefulWidget {
+  /// Creates a [LoadingButtonSample].
   const LoadingButtonSample({super.key});
 
   @override
@@ -22,14 +24,14 @@ class _LoadingButtonSampleState extends State<LoadingButtonSample> {
   bool _isLoading = false;
   bool? _isSuccess;
 
-  BorderRadius get _standardBorderRadius => BorderRadius.circular(24.0);
+  BorderRadius get _standardBorderRadius => BorderRadius.circular(24);
 
   Widget get _loadingWidget => const SizedBox(
-        width: 26.0,
-        height: 26.0,
+        width: 26,
+        height: 26,
         child: CircularProgressIndicator(
           color: Colors.white,
-          strokeWidth: 2.0,
+          strokeWidth: 2,
         ),
       );
 
@@ -107,10 +109,10 @@ class _LoadingButtonSampleState extends State<LoadingButtonSample> {
                 milliseconds: 200,
               ),
               padding: _isLoading || _isSuccess != null
-                  ? const EdgeInsets.all(8.0)
+                  ? const EdgeInsets.all(8)
                   : const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 44.0,
+                      vertical: 10,
+                      horizontal: 44,
                     ),
               decoration: BoxDecoration(
                 color: _isSuccess != null

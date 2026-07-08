@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ReorderableListViewSample`.
 class ReorderableListViewSample extends StatefulWidget {
+  /// Creates a [ReorderableListViewSample].
   const ReorderableListViewSample({super.key});
 
   @override
@@ -18,7 +20,7 @@ class ReorderableListViewSample extends StatefulWidget {
 }
 
 class _ReorderableListViewSampleState extends State<ReorderableListViewSample> {
-  final _items = List.generate(10, (index) => index);
+  final List<int> _items = List.generate(10, (index) => index);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class _ReorderableListViewSampleState extends State<ReorderableListViewSample> {
         ),
         child: ReorderableListView.builder(
           padding: const EdgeInsets.symmetric(
-            horizontal: 20.0,
+            horizontal: 20,
           ),
           itemCount: _items.length,
           itemBuilder: (context, index) {

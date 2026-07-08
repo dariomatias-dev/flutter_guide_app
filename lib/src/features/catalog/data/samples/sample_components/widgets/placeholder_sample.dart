@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PlaceholderSample`.
 class PlaceholderSample extends StatelessWidget {
+  /// Creates a [PlaceholderSample].
   const PlaceholderSample({super.key});
 
   @override

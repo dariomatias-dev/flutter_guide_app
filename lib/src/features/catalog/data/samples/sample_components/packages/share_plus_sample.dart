@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SharePlusSample`.
 class SharePlusSample extends StatefulWidget {
+  /// Creates a [SharePlusSample].
   const SharePlusSample({super.key});
 
   @override

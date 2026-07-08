@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoNavigationBarBackButtonSample`.
 class CupertinoNavigationBarBackButtonSample extends StatelessWidget {
+  /// Creates a [CupertinoNavigationBarBackButtonSample].
   const CupertinoNavigationBarBackButtonSample({super.key});
 
   @override

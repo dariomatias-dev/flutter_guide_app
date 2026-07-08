@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BannerSample`.
 class BannerSample extends StatelessWidget {
+  /// Creates a [BannerSample].
   const BannerSample({super.key});
 
   @override
@@ -18,21 +20,21 @@ class BannerSample extends StatelessWidget {
       body: Center(
         child: Container(
           margin: const EdgeInsets.symmetric(
-            horizontal: 12.0,
+            horizontal: 12,
           ),
-          height: 200.0,
+          height: 200,
           color: Colors.blue,
           child: const Stack(
             children: <Widget>[
               SizedBox(
-                height: 200.0,
+                height: 200,
               ),
               Banner(
                 message: 'Standard',
                 location: BannerLocation.topEnd,
                 child: SizedBox(
                   width: double.infinity,
-                  height: 200.0,
+                  height: 200,
                 ),
               ),
               ClipRRect(
@@ -42,7 +44,7 @@ class BannerSample extends StatelessWidget {
                   location: BannerLocation.bottomStart,
                   child: SizedBox(
                     width: double.infinity,
-                    height: 200.0,
+                    height: 200,
                   ),
                 ),
               ),

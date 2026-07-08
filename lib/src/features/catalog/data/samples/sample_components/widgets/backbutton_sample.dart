@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BackButtonSample`.
 class BackButtonSample extends StatelessWidget {
+  /// Creates a [BackButtonSample].
   const BackButtonSample({super.key});
 
   @override

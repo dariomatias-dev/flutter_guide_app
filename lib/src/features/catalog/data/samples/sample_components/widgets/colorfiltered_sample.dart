@@ -9,11 +9,13 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ColorFilteredSample`.
 class ColorFilteredSample extends StatelessWidget {
+  /// Creates a [ColorFilteredSample].
   const ColorFilteredSample({super.key});
 
   TextStyle get _defaultTextStyle => const TextStyle(
-        fontSize: 20.0,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       );
 

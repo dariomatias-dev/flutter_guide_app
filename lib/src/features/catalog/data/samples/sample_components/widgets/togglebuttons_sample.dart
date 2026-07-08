@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ToggleButtonsSample`.
 class ToggleButtonsSample extends StatefulWidget {
+  /// Creates a [ToggleButtonsSample].
   const ToggleButtonsSample({super.key});
 
   @override

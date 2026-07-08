@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DialogSample`.
 class DialogSample extends StatefulWidget {
+  /// Creates a [DialogSample].
   const DialogSample({super.key});
 
   @override
@@ -18,7 +20,7 @@ class DialogSample extends StatefulWidget {
 
 class _DialogSampleState extends State<DialogSample> {
   Widget get _defaultDialogContent => Padding(
-        padding: const EdgeInsets.all(28.0),
+        padding: const EdgeInsets.all(28),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,12 +28,12 @@ class _DialogSampleState extends State<DialogSample> {
             const Text(
               'Title',
               style: TextStyle(
-                fontSize: 24.0,
+                fontSize: 24,
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             const Text('Description'),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
@@ -84,7 +86,7 @@ class _DialogSampleState extends State<DialogSample> {
       builder: (context) {
         return Dialog(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(24),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -93,10 +95,10 @@ class _DialogSampleState extends State<DialogSample> {
                 ),
                 Container(
                   padding: const EdgeInsets.only(
-                    top: 12.0,
-                    right: 20.0,
-                    bottom: 20.0,
-                    left: 20.0,
+                    top: 12,
+                    right: 20,
+                    bottom: 20,
+                    left: 20,
                   ),
                   color: Colors.white,
                   child: Column(
@@ -105,17 +107,17 @@ class _DialogSampleState extends State<DialogSample> {
                       const Text(
                         'Crimson Forest',
                         style: TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       const Text(
                         'Discover the enchanting Red Forest! Visit today and lose yourself in a sea of breathtaking crimson foliage. Your adventure awaits!',
                         style: TextStyle(
-                          fontSize: 14.0,
+                          fontSize: 14,
                         ),
                       ),
-                      const SizedBox(height: 12.0),
+                      const SizedBox(height: 12),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -146,7 +148,7 @@ class _DialogSampleState extends State<DialogSample> {
     return Scaffold(
       body: Center(
         child: Wrap(
-          spacing: 12.0,
+          spacing: 12,
           direction: Axis.vertical,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[

@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoginScreenSample`.
 class LoginScreenSample extends StatelessWidget {
+  /// Creates a [LoginScreenSample].
   const LoginScreenSample({super.key});
 
   @override
@@ -35,7 +37,9 @@ class LoginScreenSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `LoginScreen`.
 class LoginScreen extends StatelessWidget {
+  /// Creates a [LoginScreen].
   const LoginScreen({super.key});
 
   @override
@@ -45,9 +49,9 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 120.0,
-            right: 20.0,
-            left: 20.0,
+            top: 120,
+            right: 20,
+            left: 20,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -56,11 +60,11 @@ class LoginScreen extends StatelessWidget {
                 'Login',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 32.0,
+                  fontSize: 32,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              const SizedBox(height: 40.0),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -68,26 +72,26 @@ class LoginScreen extends StatelessWidget {
                     onTap: () {},
                     icon: FontAwesomeIcons.google,
                   ),
-                  const SizedBox(width: 20.0),
+                  const SizedBox(width: 20),
                   SocialButtonWidget(
                     onTap: () {},
                     icon: FontAwesomeIcons.facebookF,
                   ),
-                  const SizedBox(width: 20.0),
+                  const SizedBox(width: 20),
                   SocialButtonWidget(
                     onTap: () {},
                     icon: FontAwesomeIcons.apple,
                   ),
                 ],
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 20),
               const Text(
                 'or use your account',
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 16,
                 ),
               ),
-              const SizedBox(height: 28.0),
+              const SizedBox(height: 28),
               const FormWidget(),
             ],
           ),
@@ -97,11 +101,10 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `SocialButtonWidget`.
 class SocialButtonWidget extends StatelessWidget {
   const SocialButtonWidget({
-    super.key,
-    required this.onTap,
-    required this.icon,
+    required this.onTap, required this.icon, super.key,
   });
 
   final VoidCallback onTap;
@@ -110,8 +113,8 @@ class SocialButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 44.0,
-      height: 44.0,
+      width: 44,
+      height: 44,
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
@@ -121,7 +124,6 @@ class SocialButtonWidget extends StatelessWidget {
           shadowColor: Colors.transparent,
           shape: CircleBorder(
             side: BorderSide(
-              width: 1.0,
               color: Colors.grey.shade400,
             ),
           ),
@@ -130,7 +132,7 @@ class SocialButtonWidget extends StatelessWidget {
           child: FaIcon(
             icon,
             color: Colors.black,
-            size: 26.0,
+            size: 26,
           ),
         ),
       ),
@@ -138,7 +140,9 @@ class SocialButtonWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `FormWidget`.
 class FormWidget extends StatefulWidget {
+  /// Creates a [FormWidget].
   const FormWidget({super.key});
 
   @override
@@ -173,13 +177,13 @@ class _FormWidgetState extends State<FormWidget> {
             autofocus: true,
             validator: formValidations.validateEmailField,
           ),
-          const SizedBox(height: 24.0),
+          const SizedBox(height: 24),
           TextFormFieldWidget(
             controller: _passwordController,
             fieldName: 'Password',
             validator: formValidations.validatePasswordField,
           ),
-          const SizedBox(height: 12.0),
+          const SizedBox(height: 12),
           Align(
             alignment: Alignment.centerLeft,
             child: GestureDetector(
@@ -188,13 +192,13 @@ class _FormWidgetState extends State<FormWidget> {
                 'Forgot password',
                 style: TextStyle(
                   color: Colors.grey.shade700,
-                  fontSize: 14.0,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 32.0),
+          const SizedBox(height: 32),
           ButtonWidget(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
@@ -223,7 +227,7 @@ class _FormWidgetState extends State<FormWidget> {
             textColor: Colors.white,
             backgroundColor: Colors.black,
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 20),
           ButtonWidget(
             onPressed: () {
               Navigator.pop(context);
@@ -266,12 +270,12 @@ class FormValidations {
     final validField = _validateField(value);
     if (validField != null) return validField;
 
-    final regexLowercaseharacters = RegExp(r'[a-záéíóúãõâêîôûàèìòùäëïöü]');
+    final regexLowercaseharacters = RegExp('[a-záéíóúãõâêîôûàèìòùäëïöü]');
     if (!regexLowercaseharacters.hasMatch(value!)) {
       return 'The password must contain lowercase characters';
     }
 
-    final regexUppercaseCharacters = RegExp(r'[A-ZÁÉÍÓÚÃÕÂÊÎÔÛÀÈÌÒÙÄËÏÖÜ]');
+    final regexUppercaseCharacters = RegExp('[A-ZÁÉÍÓÚÃÕÂÊÎÔÛÀÈÌÒÙÄËÏÖÜ]');
     if (!regexUppercaseCharacters.hasMatch(value)) {
       return 'The password must contain uppercase characters';
     }
@@ -281,7 +285,7 @@ class FormValidations {
       return 'The password must contain numbers';
     }
 
-    final regexSpecialCharacters = RegExp(r'[^a-zA-Z0-9]');
+    final regexSpecialCharacters = RegExp('[^a-zA-Z0-9]');
     if (!regexSpecialCharacters.hasMatch(value)) {
       return 'The password must contain special characters';
     }
@@ -327,13 +331,11 @@ class LoginModel {
   }
 }
 
+/// Sample demonstrating `TextFormFieldWidget`.
 class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget({
-    super.key,
-    required this.controller,
-    required this.fieldName,
+    required this.controller, required this.fieldName, required this.validator, super.key,
     this.autofocus = false,
-    required this.validator,
   });
 
   final TextEditingController controller;
@@ -366,7 +368,7 @@ class TextFormFieldWidget extends StatelessWidget {
           filled: true,
           fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none,
           ),
         ),
@@ -379,13 +381,10 @@ class TextFormFieldWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `ButtonWidget`.
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
-    super.key,
-    required this.onPressed,
-    required this.text,
-    required this.textColor,
-    required this.backgroundColor,
+    required this.onPressed, required this.text, required this.textColor, required this.backgroundColor, super.key,
   });
 
   final VoidCallback onPressed;
@@ -396,21 +395,21 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 52.0,
+      height: 52,
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
         child: Text(
           text,
           style: TextStyle(
             color: textColor,
-            fontSize: 18.0,
+            fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),

@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `GoogleMobileAdsSample`.
 class GoogleMobileAdsSample extends StatefulWidget {
+  /// Creates a [GoogleMobileAdsSample].
   const GoogleMobileAdsSample({super.key});
 
   @override
@@ -89,7 +91,9 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
   }
 }
 
+/// Sample demonstrating `BannerAdScreen`.
 class BannerAdScreen extends StatefulWidget {
+  /// Creates a [BannerAdScreen].
   const BannerAdScreen({super.key});
 
   @override
@@ -164,7 +168,9 @@ class _BannerAdScreenState extends State<BannerAdScreen> {
   }
 }
 
+/// Sample demonstrating `InterstitialAdScreen`.
 class InterstitialAdScreen extends StatefulWidget {
+  /// Creates a [InterstitialAdScreen].
   const InterstitialAdScreen({super.key});
 
   @override
@@ -266,7 +272,9 @@ class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
   }
 }
 
+/// Sample demonstrating `RewardedAdScreen`.
 class RewardedAdScreen extends StatefulWidget {
+  /// Creates a [RewardedAdScreen].
   const RewardedAdScreen({super.key});
 
   @override
@@ -376,7 +384,9 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
   }
 }
 
+/// Sample demonstrating `AppOpenAdScreen`.
 class AppOpenAdScreen extends StatefulWidget {
+  /// Creates a [AppOpenAdScreen].
   const AppOpenAdScreen({super.key});
 
   @override

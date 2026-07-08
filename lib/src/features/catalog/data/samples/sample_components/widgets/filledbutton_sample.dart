@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FilledButtonSample`.
 class FilledButtonSample extends StatelessWidget {
+  /// Creates a [FilledButtonSample].
   const FilledButtonSample({super.key});
 
   @override
@@ -20,7 +22,7 @@ class FilledButtonSample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('FilledButton'),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -28,16 +30,16 @@ class FilledButtonSample extends StatelessWidget {
                   onPressed: () {},
                   child: const Text('Enabled'),
                 ),
-                const SizedBox(width: 12.0),
+                const SizedBox(width: 12),
                 const FilledButton(
                   onPressed: null,
                   child: Text('Disabled'),
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             const Text('FilledButton.tonal'),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -45,16 +47,16 @@ class FilledButtonSample extends StatelessWidget {
                   onPressed: () {},
                   child: const Text('Enabled'),
                 ),
-                const SizedBox(width: 12.0),
+                const SizedBox(width: 12),
                 const FilledButton.tonal(
                   onPressed: null,
                   child: Text('Disabled'),
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             const Text('FilledButton.icon'),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -63,7 +65,7 @@ class FilledButtonSample extends StatelessWidget {
                   label: const Text('Enabled'),
                   icon: const Icon(Icons.add),
                 ),
-                const SizedBox(width: 12.0),
+                const SizedBox(width: 12),
                 FilledButton.icon(
                   onPressed: null,
                   label: const Text('Disabled'),
@@ -71,9 +73,9 @@ class FilledButtonSample extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             const Text('FilledButton.tonalIcon'),
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -82,7 +84,7 @@ class FilledButtonSample extends StatelessWidget {
                   label: const Text('Enabled'),
                   icon: const Icon(Icons.add),
                 ),
-                const SizedBox(width: 12.0),
+                const SizedBox(width: 12),
                 FilledButton.tonalIcon(
                   onPressed: null,
                   label: const Text('Disabled'),

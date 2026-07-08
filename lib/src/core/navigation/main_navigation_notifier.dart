@@ -5,8 +5,11 @@ class MainNavigationNotifier extends Notifier<int> {
   @override
   int build() => 0;
 
+  /// The currently selected navigation index.
+  int get index => state;
+
   /// Selects the navigation tab at [index].
-  void setIndex(int index) => state = index;
+  set index(int index) => state = index;
 
   /// Resets the selection to the first tab.
   void reset() => state = 0;

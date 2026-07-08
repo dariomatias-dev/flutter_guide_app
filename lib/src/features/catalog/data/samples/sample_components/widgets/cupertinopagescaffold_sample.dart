@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoPageScaffoldSample`.
 class CupertinoPageScaffoldSample extends StatelessWidget {
+  /// Creates a [CupertinoPageScaffoldSample].
   const CupertinoPageScaffoldSample({super.key});
 
   @override

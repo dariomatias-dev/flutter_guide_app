@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterSvgSample`.
 class FlutterSvgSample extends StatelessWidget {
+  /// Creates a [FlutterSvgSample].
   const FlutterSvgSample({super.key});
 
   @override
@@ -19,7 +21,7 @@ class FlutterSvgSample extends StatelessWidget {
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(
-            maxWidth: 200.0,
+            maxWidth: 200,
           ),
           child: SvgPicture.asset(
             'assets/icons/flutter_icon.svg',

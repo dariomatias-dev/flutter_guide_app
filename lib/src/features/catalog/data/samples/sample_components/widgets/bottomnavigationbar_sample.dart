@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BottomNavigationBarSample`.
 class BottomNavigationBarSample extends StatefulWidget {
+  /// Creates a [BottomNavigationBarSample].
   const BottomNavigationBarSample({super.key});
 
   @override

@@ -6,10 +6,10 @@ const _colors = <Color>[
   Colors.red,
 ];
 
-final _rowItems = List.generate(_colors.length, (index) {
+final List<Container> _rowItems = List.generate(_colors.length, (index) {
   return Container(
-    width: 50.0,
-    height: 50.0,
+    width: 50,
+    height: 50,
     color: _colors[index],
   );
 });
@@ -52,7 +52,7 @@ const _mainAxisAlignments = <_MainAxisAlignmentModel>[
   ),
 ];
 
-final _mainAxisAlignmentItems = List.generate(
+final List<DropdownMenuItem<MainAxisAlignment>> _mainAxisAlignmentItems = List.generate(
   _mainAxisAlignments.length,
   (index) {
     final mainAxisAlignment = _mainAxisAlignments[index];
@@ -88,7 +88,7 @@ const _mainAxisSizes = <_MainAxisSizeModel>[
   ),
 ];
 
-final _mainAxisSizeItems = List.generate(
+final List<DropdownMenuItem<MainAxisSize>> _mainAxisSizeItems = List.generate(
   _mainAxisSizes.length,
   (index) {
     final mainAxisSize = _mainAxisSizes[index];
@@ -111,7 +111,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `RowSample`.
 class RowSample extends StatefulWidget {
+  /// Creates a [RowSample].
   const RowSample({super.key});
 
   @override
@@ -136,7 +138,7 @@ class _RowSampleState extends State<RowSample> {
         ],
       ),
       bottomNavigationBar: SizedBox(
-        height: 180.0,
+        height: 180,
         child: Column(
           children: <Widget>[
             const Divider(),
@@ -150,7 +152,7 @@ class _RowSampleState extends State<RowSample> {
                 });
               },
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             const Text('MainAxisSize'),
             DropdownButton<MainAxisSize>(
               value: _mainAxisSize,

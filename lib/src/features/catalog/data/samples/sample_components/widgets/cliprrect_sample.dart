@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ClipRRectSample`.
 class ClipRRectSample extends StatelessWidget {
+  /// Creates a [ClipRRectSample].
   const ClipRRectSample({super.key});
 
   @override
@@ -17,11 +19,11 @@ class ClipRRectSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(20),
           child: Container(
             color: Colors.blue,
-            width: 100.0,
-            height: 100.0,
+            width: 100,
+            height: 100,
           ),
         ),
       ),

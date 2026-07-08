@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoginWithBackgroundImageScreenSample`.
 class LoginWithBackgroundImageScreenSample extends StatelessWidget {
+  /// Creates a [LoginWithBackgroundImageScreenSample].
   const LoginWithBackgroundImageScreenSample({super.key});
 
   @override
@@ -36,7 +38,9 @@ class LoginWithBackgroundImageScreenSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `LoginWitBackgroundScreen`.
 class LoginWitBackgroundScreen extends StatelessWidget {
+  /// Creates a [LoginWitBackgroundScreen].
   const LoginWitBackgroundScreen({super.key});
 
   @override
@@ -57,8 +61,8 @@ class LoginWitBackgroundScreen extends StatelessWidget {
             ),
             BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: 5.0,
-                sigmaY: 5.0,
+                sigmaX: 5,
+                sigmaY: 5,
               ),
               child: Container(
                 color: Colors.black.withAlpha(51),
@@ -68,7 +72,7 @@ class LoginWitBackgroundScreen extends StatelessWidget {
               backgroundColor: Colors.transparent,
               body: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
+                  horizontal: 20,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -77,11 +81,11 @@ class LoginWitBackgroundScreen extends StatelessWidget {
                       'Login',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 32.0,
+                        fontSize: 32,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                    const SizedBox(height: 40.0),
+                    const SizedBox(height: 40),
                     Form(
                       child: Column(
                         children: <Widget>[
@@ -90,12 +94,12 @@ class LoginWitBackgroundScreen extends StatelessWidget {
                             autofocus: true,
                             prefixIcon: Icons.email,
                           ),
-                          const SizedBox(height: 24.0),
+                          const SizedBox(height: 24),
                           const TextFormFieldWidget(
                             fieldName: 'Password',
                             prefixIcon: Icons.lock,
                           ),
-                          const SizedBox(height: 12.0),
+                          const SizedBox(height: 12),
                           Align(
                             alignment: Alignment.centerLeft,
                             child: GestureDetector(
@@ -104,15 +108,15 @@ class LoginWitBackgroundScreen extends StatelessWidget {
                                 'Forgot password',
                                 style: TextStyle(
                                   color: Colors.grey.shade400,
-                                  fontSize: 14.0,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 32.0),
+                          const SizedBox(height: 32),
                           SizedBox(
-                            height: 52.0,
+                            height: 52,
                             width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {
@@ -121,14 +125,14 @@ class LoginWitBackgroundScreen extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 18.0,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -140,7 +144,7 @@ class LoginWitBackgroundScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -148,12 +152,11 @@ class LoginWitBackgroundScreen extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `TextFormFieldWidget`.
 class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget({
-    super.key,
-    required this.fieldName,
+    required this.fieldName, required this.prefixIcon, super.key,
     this.autofocus = false,
-    required this.prefixIcon,
   });
 
   final String fieldName;

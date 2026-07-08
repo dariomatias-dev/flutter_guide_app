@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `RichTextSample`.
 class RichTextSample extends StatelessWidget {
+  /// Creates a [RichTextSample].
   const RichTextSample({super.key});
 
   @override

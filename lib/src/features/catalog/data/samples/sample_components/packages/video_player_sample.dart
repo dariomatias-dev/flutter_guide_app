@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `VideoPlayerSample`.
 class VideoPlayerSample extends StatefulWidget {
+  /// Creates a [VideoPlayerSample].
   const VideoPlayerSample({super.key});
 
   @override
@@ -79,16 +81,16 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                   Text(
                     'Video Origin: ${_isNetworkUrl ? 'Network' : 'Asset'}',
                     style: const TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   AspectRatio(
                     aspectRatio: _controller.value.aspectRatio,
                     child: VideoPlayer(_controller),
                   ),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -98,7 +100,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                           setState(() {
                             _controller.seekTo(
                               const Duration(
-                                seconds: 0,
+                                
                               ),
                             );
 
@@ -109,7 +111,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                           Icons.restore,
                         ),
                       ),
-                      const SizedBox(width: 12.0),
+                      const SizedBox(width: 12),
                       FloatingActionButton(
                         heroTag: 'playPauseButton',
                         onPressed: () {
@@ -125,7 +127,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                               : Icons.play_arrow,
                         ),
                       ),
-                      const SizedBox(width: 12.0),
+                      const SizedBox(width: 12),
                       FloatingActionButton.small(
                         heroTag: 'loopButton',
                         onPressed: () {
@@ -141,7 +143,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   ElevatedButton(
                     onPressed: () {
                       _isNetworkUrl = !_isNetworkUrl;

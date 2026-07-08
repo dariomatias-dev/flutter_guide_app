@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CardSample`.
 class CardSample extends StatelessWidget {
+  /// Creates a [CardSample].
   const CardSample({super.key});
 
   @override
@@ -20,8 +22,8 @@ class CardSample extends StatelessWidget {
           color: Colors.grey.shade200,
           child: const Padding(
             padding: EdgeInsets.symmetric(
-              vertical: 120.0,
-              horizontal: 80.0,
+              vertical: 120,
+              horizontal: 80,
             ),
             child: Text(
               'Card',

@@ -14,7 +14,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ImageLoaderSample`.
 class ImageLoaderSample extends StatefulWidget {
+  /// Creates a [ImageLoaderSample].
   const ImageLoaderSample({super.key});
 
   @override
@@ -30,15 +32,15 @@ class _ImageLoaderSampleState extends State<ImageLoaderSample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 160.0,
-              height: 160.0,
+              width: 160,
+              height: 160,
               child: ImageLoader(
                 key: GlobalKey(),
                 url:
                     'https://storage.googleapis.com/cms-storage-bucket/4fd0db61df0567c0f352.png',
               ),
             ),
-            const SizedBox(height: 24.0),
+            const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
                 setState(() {});
@@ -52,10 +54,10 @@ class _ImageLoaderSampleState extends State<ImageLoaderSample> {
   }
 }
 
+/// Sample demonstrating `ImageLoader`.
 class ImageLoader extends StatefulWidget {
   const ImageLoader({
-    super.key,
-    required this.url,
+    required this.url, super.key,
   });
 
   final String url;
@@ -90,7 +92,7 @@ class _ImageLoaderState extends State<ImageLoader> {
       }
 
       return Uint8List.fromList(
-        response.data,
+        response.data as List<int>,
       );
     } catch (err, stackTrace) {
       _logger.e(
@@ -118,7 +120,7 @@ class _ImageLoaderState extends State<ImageLoader> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             decoration: const BoxDecoration(
               color: Colors.blue,
               shape: BoxShape.circle,

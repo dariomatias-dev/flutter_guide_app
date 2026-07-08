@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(
@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CarouselSliderSample`.
 class CarouselSliderSample extends StatelessWidget {
+  /// Creates a [CarouselSliderSample].
   const CarouselSliderSample({super.key});
 
   @override
@@ -19,8 +21,8 @@ class CarouselSliderSample extends StatelessWidget {
       body: Center(
         child: CarouselSlider(
           options: CarouselOptions(
-            height: 260.0,
-            viewportFraction: 1.0,
+            height: 260,
+            viewportFraction: 1,
           ),
           items: List.generate(5, (index) {
             return Image.asset(

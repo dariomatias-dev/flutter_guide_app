@@ -37,14 +37,6 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
     }
   }
 
-  void _onPageChanged(int index) {
-    ref.read(mainNavigationNotifierProvider.notifier).setIndex(index);
-  }
-
-  void _onNavBarTap(int index) {
-    ref.read(mainNavigationNotifierProvider.notifier).setIndex(index);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -96,7 +88,8 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
         children: <Widget>[
           PageView(
             controller: _pageController,
-            onPageChanged: _onPageChanged,
+            onPageChanged: (index) =>
+                ref.read(mainNavigationNotifierProvider.notifier).index = index,
             children: screens,
           ),
           Positioned(
@@ -106,7 +99,9 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
             child: SafeArea(
               child: BottomNavigationBarWidget(
                 screenIndex: selectedIndex,
-                updateScreenIndex: _onNavBarTap,
+                updateScreenIndex: (index) =>
+                    ref.read(mainNavigationNotifierProvider.notifier).index =
+                        index,
                 getBottomNavigationBarName: (index) => tabNames[index],
               ),
             ),

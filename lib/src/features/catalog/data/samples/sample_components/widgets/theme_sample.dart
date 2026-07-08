@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ThemeSample`.
 class ThemeSample extends StatefulWidget {
+  /// Creates a [ThemeSample].
   const ThemeSample({super.key});
 
   @override

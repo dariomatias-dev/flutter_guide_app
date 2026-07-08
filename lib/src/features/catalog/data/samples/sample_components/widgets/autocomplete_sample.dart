@@ -20,7 +20,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AutocompleteSample`.
 class AutocompleteSample extends StatelessWidget {
+  /// Creates a [AutocompleteSample].
   const AutocompleteSample({super.key});
 
   @override
@@ -35,8 +37,8 @@ class AutocompleteSample extends StatelessWidget {
                   );
             });
           },
-          onSelected: (String selection) {},
-          displayStringForOption: (String option) => option,
+          onSelected: (selection) {},
+          displayStringForOption: (option) => option,
         ),
       ),
     );

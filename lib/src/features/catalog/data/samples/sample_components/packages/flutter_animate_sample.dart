@@ -36,7 +36,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterAnimateSample`.
 class FlutterAnimateSample extends StatefulWidget {
+  /// Creates a [FlutterAnimateSample].
   const FlutterAnimateSample({super.key});
 
   @override
@@ -60,8 +62,8 @@ class _FlutterAnimateSampleState extends State<FlutterAnimateSample> {
                     (index) {
                       return Container(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 12.0,
-                          horizontal: 24.0,
+                          vertical: 12,
+                          horizontal: 24,
                         ),
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -89,7 +91,7 @@ class _FlutterAnimateSampleState extends State<FlutterAnimateSample> {
               },
               child: const Text('Restart'),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
           ],
         ),
       ),

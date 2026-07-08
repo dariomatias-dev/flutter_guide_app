@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterChatBubbleSample`.
 class FlutterChatBubbleSample extends StatelessWidget {
+  /// Creates a [FlutterChatBubbleSample].
   const FlutterChatBubbleSample({super.key});
 
   @override
@@ -19,7 +21,7 @@ class FlutterChatBubbleSample extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 12.0,
+            horizontal: 12,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +37,7 @@ class FlutterChatBubbleSample extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 20),
               ChatBubble(
                 clipper: ChatBubbleClipper9(
                   type: BubbleType.receiverBubble,

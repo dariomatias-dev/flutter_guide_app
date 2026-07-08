@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/package_names.dart';
-
+import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
 // Samples
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/awesome_snackbar_content_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/battery_plus_sample.dart';
@@ -42,9 +40,9 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/url_launcher_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/uuid_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/video_player_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/package_names.dart';
 
-import 'package:flutter_guide/src/features/catalog/data/models/component_model.dart';
-
+/// All package samples shown in the catalog.
 const packages = <PackageModel>[
   PackageModel(
     name: PackageNames.awesomeSnackbarContentPackage,

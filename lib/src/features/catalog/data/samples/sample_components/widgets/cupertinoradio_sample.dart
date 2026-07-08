@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoRadioSample`.
 class CupertinoRadioSample extends StatefulWidget {
+  /// Creates a [CupertinoRadioSample].
   const CupertinoRadioSample({super.key});
 
   @override
@@ -31,15 +33,14 @@ class _CupertinoRadioSampleState extends State<CupertinoRadioSample> {
     return CupertinoPageScaffold(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
             'Selected radio $_radioIndex',
           ),
-          const SizedBox(height: 12.0),
+          const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
+              horizontal: 20,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +58,7 @@ class _CupertinoRadioSampleState extends State<CupertinoRadioSample> {
                     }),
                   ),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(5, (index) {

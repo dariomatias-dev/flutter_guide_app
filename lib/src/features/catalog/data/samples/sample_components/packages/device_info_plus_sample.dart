@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/material.dart';
 
 enum _Device {
   android,
@@ -61,7 +61,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DeviceInfoPlusSample`.
 class DeviceInfoPlusSample extends StatefulWidget {
+  /// Creates a [DeviceInfoPlusSample].
   const DeviceInfoPlusSample({super.key});
 
   @override
@@ -74,8 +76,8 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
   Future<_DeviceInfo?> _getDeviceInfo() async {
     final deviceInfo = DeviceInfoPlugin();
 
-    String deviceId = '';
-    String deviceName = '';
+    var deviceId = '';
+    var deviceName = '';
 
     try {
       switch (_selectDevice.device) {
@@ -83,27 +85,22 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
           final androidInfo = await deviceInfo.androidInfo;
           deviceId = androidInfo.id;
           deviceName = androidInfo.model;
-          break;
         case _Device.ios:
           final iosInfo = await deviceInfo.iosInfo;
           deviceId = iosInfo.identifierForVendor ?? '';
           deviceName = iosInfo.name;
-          break;
         case _Device.windows:
           final windowsInfo = await deviceInfo.windowsInfo;
           deviceId = windowsInfo.deviceId;
           deviceName = windowsInfo.computerName;
-          break;
         case _Device.macos:
           final macOsInfo = await deviceInfo.macOsInfo;
           deviceId = macOsInfo.systemGUID ?? '';
           deviceName = macOsInfo.computerName;
-          break;
         case _Device.linux:
           final linuxInfo = await deviceInfo.linuxInfo;
           deviceId = linuxInfo.id;
           deviceName = linuxInfo.name;
-          break;
       }
 
       return _DeviceInfo(
@@ -128,11 +125,11 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
                 const Text(
                   'Device:',
                   style: TextStyle(
-                    fontSize: 18.0,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(width: 10.0),
+                const SizedBox(width: 10),
                 DropdownButtonHideUnderline(
                   child: DropdownButton(
                     value: _selectDevice,
@@ -155,7 +152,7 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
                 ),
               ],
             ),
-            const SizedBox(height: 28.0),
+            const SizedBox(height: 28),
             FutureBuilder(
               future: _getDeviceInfo(),
               builder: (context, snapshot) {

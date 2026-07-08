@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `InfiniteScrollPaginationSample`.
 class InfiniteScrollPaginationSample extends StatefulWidget {
+  /// Creates a [InfiniteScrollPaginationSample].
   const InfiniteScrollPaginationSample({super.key});
 
   @override
@@ -21,7 +23,7 @@ class InfiniteScrollPaginationSample extends StatefulWidget {
 class _InfiniteScrollPaginationSampleState
     extends State<InfiniteScrollPaginationSample> {
   static const _pageSize = 20;
-  final _controller = PagingController(
+  final PagingController<int, dynamic> _controller = PagingController(
     firstPageKey: 0,
   );
   bool _isDisposed = false;

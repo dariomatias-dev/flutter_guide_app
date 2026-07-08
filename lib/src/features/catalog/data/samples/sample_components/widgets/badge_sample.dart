@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BadgeSample`.
 class BadgeSample extends StatefulWidget {
+  /// Creates a [BadgeSample].
   const BadgeSample({super.key});
 
   @override
@@ -32,7 +34,7 @@ class _BadgeSampleState extends State<BadgeSample> {
                 Icons.settings_outlined,
               ),
             ),
-            const SizedBox(width: 24.0),
+            const SizedBox(width: 24),
             Badge(
               isLabelVisible: _isVisible,
               label: const Text('99'),

@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PopupMenuButtonSample`.
 class PopupMenuButtonSample extends StatelessWidget {
+  /// Creates a [PopupMenuButtonSample].
   const PopupMenuButtonSample({super.key});
 
   @override

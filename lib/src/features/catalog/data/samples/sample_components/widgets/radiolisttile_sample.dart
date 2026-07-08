@@ -9,13 +9,16 @@ void main() {
   );
 }
 
+/// Sample demonstrating `RadioListTileSample`.
 class RadioListTileSample extends StatefulWidget {
+  /// Creates a [RadioListTileSample].
   const RadioListTileSample({super.key});
 
   @override
   State<RadioListTileSample> createState() => RadioListTileSampleState();
 }
 
+/// Sample demonstrating `RadioListTileSampleState`.
 class RadioListTileSampleState extends State<RadioListTileSample> {
   int _radioIndex = 0;
 
@@ -30,12 +33,11 @@ class RadioListTileSampleState extends State<RadioListTileSample> {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
             'Selected radio $_radioIndex',
           ),
-          const SizedBox(height: 12.0),
+          const SizedBox(height: 12),
           RadioGroup<int>(
             groupValue: _radioIndex,
             onChanged: _updateRadioIndex,
@@ -50,7 +52,7 @@ class RadioListTileSampleState extends State<RadioListTileSample> {
               }),
             ),
           ),
-          const SizedBox(height: 12.0),
+          const SizedBox(height: 12),
           ...List.generate(3, (index) {
             return RadioListTile<int>(
               value: index,

@@ -4,5 +4,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Provides the [AppVersionRepository].
 final appVersionRepositoryProvider = Provider<AppVersionRepository>((ref) {
-  return AppVersionRepositoryImpl();
+  return getAppVersion;
 });

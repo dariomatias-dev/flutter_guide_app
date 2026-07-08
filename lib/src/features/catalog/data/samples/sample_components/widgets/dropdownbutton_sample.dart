@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DropdownButtonSample`.
 class DropdownButtonSample extends StatefulWidget {
+  /// Creates a [DropdownButtonSample].
   const DropdownButtonSample({super.key});
 
   @override
@@ -54,7 +56,7 @@ class _DropdownButtonSampleState extends State<DropdownButtonSample> {
                   items: _getDropdownMenuItems(),
                   onChanged: _updateValue,
                 ),
-                const SizedBox(width: 12.0),
+                const SizedBox(width: 12),
                 DropdownButton<int>(
                   value: _value,
                   items: _getDropdownMenuItems(),
@@ -62,7 +64,7 @@ class _DropdownButtonSampleState extends State<DropdownButtonSample> {
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             const Text(
               'DropdownButton without underline',
             ),
@@ -76,7 +78,7 @@ class _DropdownButtonSampleState extends State<DropdownButtonSample> {
                     onChanged: _updateValue,
                   ),
                 ),
-                const SizedBox(width: 12.0),
+                const SizedBox(width: 12),
                 DropdownButtonHideUnderline(
                   child: DropdownButton<int>(
                     value: _value,

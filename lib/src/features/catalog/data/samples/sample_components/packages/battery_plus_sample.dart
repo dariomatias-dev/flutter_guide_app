@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:battery_plus/battery_plus.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 final _battery = Battery();
@@ -13,7 +13,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BatteryPlusSample`.
 class BatteryPlusSample extends StatefulWidget {
+  /// Creates a [BatteryPlusSample].
   const BatteryPlusSample({super.key});
 
   @override
@@ -62,7 +64,7 @@ class _BatteryPlusSampleState extends State<BatteryPlusSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
+          horizontal: 8,
         ),
         child: FutureBuilder(
           future: _getBatteryInfos(),
@@ -82,29 +84,28 @@ class _BatteryPlusSampleState extends State<BatteryPlusSample> {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'Battery Level: ${_batteryLevel!}%',
                     style: const TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   Text(
                     'Device in battery saving mode: ${_isInBatterySaveMode! ? 'Yes' : 'No'}.',
                     style: const TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   Text(
                     'Battery State: ${_batteryState?.name}',
                     style: const TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
-                  )
+                  ),
                 ],
               ),
             );

@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PinputSample`.
 class PinputSample extends StatefulWidget {
+  /// Creates a [PinputSample].
   const PinputSample({super.key});
 
   @override
@@ -42,7 +44,6 @@ class _PinputSampleState extends State<PinputSample> {
       body: Center(
         child: Pinput(
           controller: _pinController,
-          length: 4,
           onCompleted: _onCompleted,
         ),
       ),

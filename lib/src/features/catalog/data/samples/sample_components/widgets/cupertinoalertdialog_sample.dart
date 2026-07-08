@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoAlertDialogSample`.
 class CupertinoAlertDialogSample extends StatelessWidget {
+  /// Creates a [CupertinoAlertDialogSample].
   const CupertinoAlertDialogSample({super.key});
 
   void _showAlertDialog(BuildContext context) {

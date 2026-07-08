@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `NetworkInfoPlusSample`.
 class NetworkInfoPlusSample extends StatefulWidget {
+  /// Creates a [NetworkInfoPlusSample].
   const NetworkInfoPlusSample({super.key});
 
   @override
@@ -64,7 +66,7 @@ class _NetworkInfoPlusSampleState extends State<NetworkInfoPlusSample> {
         child: Wrap(
           direction: Axis.vertical,
           crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 12.0,
+          spacing: 12,
           children: <Widget>[
             Text(
               'Wifi Name: $_wifiName',

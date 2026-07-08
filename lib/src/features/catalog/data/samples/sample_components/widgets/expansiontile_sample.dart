@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ExpansionTileSample`.
 class ExpansionTileSample extends StatelessWidget {
+  /// Creates a [ExpansionTileSample].
   const ExpansionTileSample({super.key});
 
   @override

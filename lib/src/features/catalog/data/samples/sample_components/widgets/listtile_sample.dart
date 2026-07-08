@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ListTileSample`.
 class ListTileSample extends StatelessWidget {
+  /// Creates a [ListTileSample].
   const ListTileSample({super.key});
 
   @override

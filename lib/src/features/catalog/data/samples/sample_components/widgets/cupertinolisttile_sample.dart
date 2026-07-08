@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoListTileSample`.
 class CupertinoListTileSample extends StatelessWidget {
+  /// Creates a [CupertinoListTileSample].
   const CupertinoListTileSample({super.key});
 
   @override
@@ -37,7 +39,7 @@ class CupertinoListTileSample extends StatelessWidget {
                 CupertinoIcons.arrow_right,
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             CupertinoListTile(
               onTap: () {},
               leading: const Icon(

@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `RadioSample`.
 class RadioSample extends StatefulWidget {
+  /// Creates a [RadioSample].
   const RadioSample({super.key});
 
   @override
@@ -30,15 +32,14 @@ class _RadioSampleState extends State<RadioSample> {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
             'Selected radio $_radioIndex',
           ),
-          const SizedBox(height: 12.0),
+          const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
+              horizontal: 20,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +54,7 @@ class _RadioSampleState extends State<RadioSample> {
                     }),
                   ),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(5, (index) {

@@ -16,7 +16,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SalomonBottomBarSample`.
 class SalomonBottomBarSample extends StatefulWidget {
+  /// Creates a [SalomonBottomBarSample].
   const SalomonBottomBarSample({super.key});
 
   @override

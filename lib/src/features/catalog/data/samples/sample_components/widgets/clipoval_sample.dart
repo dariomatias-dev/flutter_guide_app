@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ClipOvalSample`.
 class ClipOvalSample extends StatelessWidget {
+  /// Creates a [ClipOvalSample].
   const ClipOvalSample({super.key});
 
   @override
@@ -19,8 +21,8 @@ class ClipOvalSample extends StatelessWidget {
         child: ClipOval(
           child: Container(
             color: Colors.blue,
-            width: 100.0,
-            height: 100.0,
+            width: 100,
+            height: 100,
           ),
         ),
       ),

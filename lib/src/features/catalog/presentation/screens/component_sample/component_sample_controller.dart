@@ -90,13 +90,6 @@ class ComponentSampleController {
     );
   }
 
-  /// Updates the selected tab index to [index].
-  void onPageChanged(
-    int index,
-  ) {
-    currentTabIndexNotifier.value = index;
-  }
-
   /// Disposes the controllers and notifiers.
   void dispose() {
     pageController.dispose();

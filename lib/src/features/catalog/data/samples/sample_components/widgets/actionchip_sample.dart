@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ActionChipSample`.
 class ActionChipSample extends StatefulWidget {
+  /// Creates a [ActionChipSample].
   const ActionChipSample({super.key});
 
   @override
@@ -39,9 +41,8 @@ class _ActionChipSampleState extends State<ActionChipSample> {
                 _isFavorite ? 'Favorited' : 'Favorite',
               ),
             ),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 12),
             ActionChip(
-              onPressed: null,
               avatar: Icon(
                 _isFavorite ? Icons.favorite : Icons.favorite_border,
               ),

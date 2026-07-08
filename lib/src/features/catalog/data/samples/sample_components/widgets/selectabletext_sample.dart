@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SelectableTextSample`.
 class SelectableTextSample extends StatelessWidget {
+  /// Creates a [SelectableTextSample].
   const SelectableTextSample({super.key});
 
   @override
@@ -17,7 +19,7 @@ class SelectableTextSample extends StatelessWidget {
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: 8.0,
+          horizontal: 8,
         ),
         child: Center(
           child: SelectableText(

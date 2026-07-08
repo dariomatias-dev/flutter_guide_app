@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SnackBarSample`.
 class SnackBarSample extends StatefulWidget {
+  /// Creates a [SnackBarSample].
   const SnackBarSample({super.key});
 
   @override
@@ -65,7 +67,7 @@ class _SnackBarSampleState extends State<SnackBarSample> {
     return Scaffold(
       body: Center(
         child: Wrap(
-          spacing: 16.0,
+          spacing: 16,
           direction: Axis.vertical,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[

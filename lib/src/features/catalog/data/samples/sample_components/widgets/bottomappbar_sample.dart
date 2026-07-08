@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BottomAppBarSample`.
 class BottomAppBarSample extends StatelessWidget {
+  /// Creates a [BottomAppBarSample].
   const BottomAppBarSample({super.key});
 
   @override
@@ -24,12 +26,12 @@ class BottomAppBarSample extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       bottomNavigationBar: SizedBox(
-        height: 88.0,
+        height: 88,
         child: BottomAppBar(
           padding: const EdgeInsets.only(
-            top: 12.0,
-            right: 16.0,
-            left: 16.0,
+            top: 12,
+            right: 16,
+            left: 16,
           ),
           color: Colors.blue,
           child: IconTheme(
@@ -44,14 +46,14 @@ class BottomAppBarSample extends StatelessWidget {
                     Icons.home,
                   ),
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
                     Icons.person,
                   ),
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(

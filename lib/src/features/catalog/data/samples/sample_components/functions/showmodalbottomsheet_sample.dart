@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ShowModalBottomSheetSample`.
 class ShowModalBottomSheetSample extends StatefulWidget {
+  /// Creates a [ShowModalBottomSheetSample].
   const ShowModalBottomSheetSample({super.key});
 
   @override
@@ -23,22 +25,22 @@ class _ShowModalBottomSheetSampleState
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(20),
       ),
       builder: (context) {
         return SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 16),
               const Text(
                 'Actions:',
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 4.0),
+              const SizedBox(height: 4),
               ListTile(
                 onTap: () {
                   Navigator.pop(context);

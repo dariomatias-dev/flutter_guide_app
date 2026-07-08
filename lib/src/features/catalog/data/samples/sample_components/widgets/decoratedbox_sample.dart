@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DecoratedBoxSample`.
 class DecoratedBoxSample extends StatelessWidget {
+  /// Creates a [DecoratedBoxSample].
   const DecoratedBoxSample({super.key});
 
   @override

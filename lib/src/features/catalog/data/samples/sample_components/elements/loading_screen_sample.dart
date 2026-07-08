@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoadingScreenSample`.
 class LoadingScreenSample extends StatefulWidget {
+  /// Creates a [LoadingScreenSample].
   const LoadingScreenSample({super.key});
 
   @override

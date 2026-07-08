@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-final _elements = List.generate(100, (index) {
+final List<Container> _elements = List.generate(100, (index) {
   return Container(
     color: Color.fromARGB(
       255,
@@ -22,7 +22,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `GridViewSample`.
 class GridViewSample extends StatefulWidget {
+  /// Creates a [GridViewSample].
   const GridViewSample({super.key});
 
   @override
@@ -50,7 +52,7 @@ class _GridViewSampleState extends State<GridViewSample> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: 40.0,
+        height: 40,
         child: Slider(
           value: _crossAxisCount / 10,
           min: 0.1,

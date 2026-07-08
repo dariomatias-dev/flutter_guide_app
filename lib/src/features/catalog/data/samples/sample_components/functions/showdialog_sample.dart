@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ShowDialogSample`.
 class ShowDialogSample extends StatefulWidget {
+  /// Creates a [ShowDialogSample].
   const ShowDialogSample({super.key});
 
   @override
@@ -24,8 +26,8 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
         return const Dialog(
           child: Padding(
             padding: EdgeInsets.only(
-              top: 20.0,
-              bottom: 16.0,
+              top: 20,
+              bottom: 16,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -33,16 +35,16 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
                 Text(
                   'Custom Dialog',
                   style: TextStyle(
-                    fontSize: 24.0,
+                    fontSize: 24,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 20),
                 Text(
                   'A fully customizable dialog layout.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -64,7 +66,7 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
             textAlign: TextAlign.center,
           ),
           children: <Widget>[
-            SizedBox(height: 12.0),
+            SizedBox(height: 12),
             Text(
               'A basic dialog for quick messages.',
               textAlign: TextAlign.center,
@@ -87,7 +89,7 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              SizedBox(height: 12.0),
+              SizedBox(height: 12),
               Text(
                 'An alert dialog with details.',
               ),
@@ -109,12 +111,12 @@ class _ShowDialogSampleState extends State<ShowDialogSample> {
               onPressed: _showDialog,
               child: const Text('Show Dialog'),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _showSimpleDialog,
               child: const Text('Show Simple Dialog'),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _showAlertDialog,
               child: const Text('Show Alert Dialog'),

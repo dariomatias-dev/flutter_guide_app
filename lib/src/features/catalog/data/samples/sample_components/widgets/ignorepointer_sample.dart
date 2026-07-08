@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `IgnorePointerSample`.
 class IgnorePointerSample extends StatefulWidget {
+  /// Creates a [IgnorePointerSample].
   const IgnorePointerSample({super.key});
 
   @override
@@ -33,7 +35,7 @@ class _IgnorePointerSampleState extends State<IgnorePointerSample> {
                 child: const Text('Press Me'),
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 setState(() {

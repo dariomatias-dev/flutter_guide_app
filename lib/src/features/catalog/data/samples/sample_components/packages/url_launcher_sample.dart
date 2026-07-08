@@ -12,7 +12,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `UrlLauncherSample`.
 class UrlLauncherSample extends StatefulWidget {
+  /// Creates a [UrlLauncherSample].
   const UrlLauncherSample({super.key});
 
   @override
@@ -64,7 +66,7 @@ class _UrlLauncherSampleState extends State<UrlLauncherSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 12.0,
+          horizontal: 12,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -79,7 +81,7 @@ class _UrlLauncherSampleState extends State<UrlLauncherSample> {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _openUrl,
               child: const Text(

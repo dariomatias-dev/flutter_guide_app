@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `VisibilitySample`.
 class VisibilitySample extends StatefulWidget {
+  /// Creates a [VisibilitySample].
   const VisibilitySample({super.key});
 
   @override
@@ -27,13 +29,13 @@ class _VisibilitySampleState extends State<VisibilitySample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Divider(
-              height: 0.0,
+              height: 0,
             ),
             Visibility(
               visible: isVisible,
               child: Container(
-                width: 120.0,
-                height: 120.0,
+                width: 120,
+                height: 120,
                 decoration: const BoxDecoration(
                   color: Colors.blue,
                   shape: BoxShape.circle,
@@ -41,7 +43,7 @@ class _VisibilitySampleState extends State<VisibilitySample> {
               ),
             ),
             const Divider(
-              height: 0.0,
+              height: 0,
             ),
           ],
         ),

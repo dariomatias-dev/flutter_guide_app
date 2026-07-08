@@ -11,13 +11,16 @@ void main() {
   );
 }
 
+/// Sample demonstrating `InfiniteGridViewSample`.
 class InfiniteGridViewSample extends StatefulWidget {
+  /// Creates a [InfiniteGridViewSample].
   const InfiniteGridViewSample({super.key});
 
   @override
   State<InfiniteGridViewSample> createState() => InfinetGridViewSampleState();
 }
 
+/// Sample demonstrating `InfinetGridViewSampleState`.
 class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
   bool _isLoading = false;
   bool _hasMoreItems = false;
@@ -143,10 +146,10 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
   }
 }
 
+/// Sample demonstrating `BaseElementWidget`.
 class BaseElementWidget extends StatelessWidget {
   const BaseElementWidget({
-    super.key,
-    required this.child,
+    required this.child, super.key,
   });
 
   final Widget child;

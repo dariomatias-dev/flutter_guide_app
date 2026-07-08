@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CupertinoActivityIndicatorSample`.
 class CupertinoActivityIndicatorSample extends StatelessWidget {
+  /// Creates a [CupertinoActivityIndicatorSample].
   const CupertinoActivityIndicatorSample({super.key});
 
   @override

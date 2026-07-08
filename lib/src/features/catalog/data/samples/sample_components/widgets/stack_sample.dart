@@ -15,7 +15,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `StackSample`.
 class StackSample extends StatefulWidget {
+  /// Creates a [StackSample].
   const StackSample({super.key});
 
   @override
@@ -23,7 +25,7 @@ class StackSample extends StatefulWidget {
 }
 
 class _StackSampleState extends State<StackSample> {
-  double _size = 300.0;
+  double _size = 300;
 
   @override
   Widget build(BuildContext context) {

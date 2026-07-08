@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CenterSample`.
 class CenterSample extends StatelessWidget {
+  /// Creates a [CenterSample].
   const CenterSample({super.key});
 
   @override

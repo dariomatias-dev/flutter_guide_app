@@ -18,7 +18,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FontAwesomeFlutterSample`.
 class FontAwesomeFlutterSample extends StatelessWidget {
+  /// Creates a [FontAwesomeFlutterSample].
   const FontAwesomeFlutterSample({super.key});
 
   @override
@@ -26,7 +28,7 @@ class FontAwesomeFlutterSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Wrap(
-          spacing: 20.0,
+          spacing: 20,
           direction: Axis.vertical,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: List.generate(_icons.length, (index) {

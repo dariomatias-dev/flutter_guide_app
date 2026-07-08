@@ -17,7 +17,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PageViewSample`.
 class PageViewSample extends StatelessWidget {
+  /// Creates a [PageViewSample].
   const PageViewSample({super.key});
 
   @override

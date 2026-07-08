@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(
@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CircularCountdownTimerSample`.
 class CircularCountdownTimerSample extends StatelessWidget {
+  /// Creates a [CircularCountdownTimerSample].
   const CircularCountdownTimerSample({super.key});
 
   @override
@@ -18,8 +20,8 @@ class CircularCountdownTimerSample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: CircularCountDownTimer(
-          width: 200.0,
-          height: 200.0,
+          width: 200,
+          height: 200,
           duration: 10,
           textStyle: TextStyle(
             color: Theme.of(context).brightness == Brightness.light
@@ -29,7 +31,7 @@ class CircularCountdownTimerSample extends StatelessWidget {
           fillColor: Colors.blue,
           ringColor: Colors.blue.shade100,
           strokeCap: StrokeCap.round,
-          strokeWidth: 16.0,
+          strokeWidth: 16,
         ),
       ),
     );

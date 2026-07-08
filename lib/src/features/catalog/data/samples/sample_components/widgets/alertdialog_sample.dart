@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AlertDialogSample`.
 class AlertDialogSample extends StatelessWidget {
+  /// Creates a [AlertDialogSample].
   const AlertDialogSample({super.key});
 
   void _showAlertDialog(BuildContext context) {

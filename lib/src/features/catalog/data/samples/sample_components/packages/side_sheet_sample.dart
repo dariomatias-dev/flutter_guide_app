@@ -15,7 +15,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SideSheetSample`.
 class SideSheetSample extends StatefulWidget {
+  /// Creates a [SideSheetSample].
   const SideSheetSample({super.key});
 
   @override
@@ -60,7 +62,7 @@ class _SideSheetSampleState extends State<SideSheetSample> {
                 'Open Left Side Sheet',
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: () {
                 _openSideSheet(

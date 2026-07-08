@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CheckboxSample`.
 class CheckboxSample extends StatefulWidget {
+  /// Creates a [CheckboxSample].
   const CheckboxSample({super.key});
 
   @override
@@ -50,7 +52,7 @@ class _CheckboxSampleState extends State<CheckboxSample> {
                 ),
               ],
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             const Text(
               'Three States',
               style: TextStyle(

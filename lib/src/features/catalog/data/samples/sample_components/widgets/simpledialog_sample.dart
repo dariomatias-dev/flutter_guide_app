@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SimpleDialogSample`.
 class SimpleDialogSample extends StatelessWidget {
+  /// Creates a [SimpleDialogSample].
   const SimpleDialogSample({super.key});
 
   void _showSimpleDialog(BuildContext context) {
@@ -21,7 +23,7 @@ class SimpleDialogSample extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 24.0,
+                horizontal: 24,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

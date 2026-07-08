@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CheckboxListTileSample`.
 class CheckboxListTileSample extends StatefulWidget {
+  /// Creates a [CheckboxListTileSample].
   const CheckboxListTileSample({super.key});
 
   @override
@@ -40,7 +42,7 @@ class _CheckboxListTileSampleState extends State<CheckboxListTileSample> {
             title: const Text('Two States'),
             onChanged: null,
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 20),
           CheckboxListTile(
             value: _selectedWithTristate,
             title: const Text('Three States'),

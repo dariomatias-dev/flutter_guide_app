@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `CircleAvatarSample`.
 class CircleAvatarSample extends StatelessWidget {
+  /// Creates a [CircleAvatarSample].
   const CircleAvatarSample({super.key});
 
   @override

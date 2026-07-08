@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `InputChipSample`.
 class InputChipSample extends StatefulWidget {
+  /// Creates a [InputChipSample].
   const InputChipSample({super.key});
 
   @override
@@ -32,7 +34,7 @@ class _InputChipSampleState extends State<InputChipSample> {
   }
 
   void _addInput() {
-    for (int index = 1; index <= 10; index++) {
+    for (var index = 1; index <= 10; index++) {
       if (!_inputs.contains(index)) {
         _inputs.add(
           index,
@@ -64,9 +66,7 @@ class _InputChipSampleState extends State<InputChipSample> {
   }
 
   void _resetInputs() {
-    setState(() {
-      _generateInputs();
-    });
+    setState(_generateInputs);
   }
 
   @override
@@ -84,8 +84,8 @@ class _InputChipSampleState extends State<InputChipSample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Wrap(
-              spacing: 6.0,
-              runSpacing: 6.0,
+              spacing: 6,
+              runSpacing: 6,
               alignment: WrapAlignment.center,
               children: List.generate(_inputs.length, (index) {
                 return InputChip(
@@ -100,10 +100,9 @@ class _InputChipSampleState extends State<InputChipSample> {
                 );
               }),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 20),
             Wrap(
-              direction: Axis.horizontal,
-              spacing: 6.0,
+              spacing: 6,
               children: <ElevatedButton>[
                 ElevatedButton(
                   onPressed: _inputs.length < 10 ? _addInput : null,

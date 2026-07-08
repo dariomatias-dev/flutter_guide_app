@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `TextButtonSample`.
 class TextButtonSample extends StatelessWidget {
+  /// Creates a [TextButtonSample].
   const TextButtonSample({super.key});
 
   @override
@@ -23,7 +25,7 @@ class TextButtonSample extends StatelessWidget {
               onPressed: () {},
               child: const Text('Enabled'),
             ),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 12),
             const TextButton(
               onPressed: null,
               child: Text('Disabled'),

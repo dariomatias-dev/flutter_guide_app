@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FutureBuilderSample`.
 class FutureBuilderSample extends StatefulWidget {
+  /// Creates a [FutureBuilderSample].
   const FutureBuilderSample({super.key});
 
   @override

@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ListenableBuilderSample`.
 class ListenableBuilderSample extends StatefulWidget {
+  /// Creates a [ListenableBuilderSample].
   const ListenableBuilderSample({super.key});
 
   @override
@@ -18,7 +20,7 @@ class ListenableBuilderSample extends StatefulWidget {
 }
 
 class _ListenableBuilderSampleState extends State<ListenableBuilderSample> {
-  final _countNotifier = ValueNotifier(0);
+  final ValueNotifier<int> _countNotifier = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class _ListenableBuilderSampleState extends State<ListenableBuilderSample> {
             return Text(
               _countNotifier.value.toString(),
               style: const TextStyle(
-                fontSize: 20.0,
+                fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
             );

@@ -21,7 +21,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterSlidableSample`.
 class FlutterSlidableSample extends StatelessWidget {
+  /// Creates a [FlutterSlidableSample].
   const FlutterSlidableSample({super.key});
 
   @override
@@ -29,7 +31,7 @@ class FlutterSlidableSample extends StatelessWidget {
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 12.0,
+          vertical: 12,
         ),
         child: Column(
           children: <Widget>[
@@ -87,11 +89,11 @@ class _FlutterSlidableTemplate extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-            fontSize: 16.0,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 12.0),
+        const SizedBox(height: 12),
         Slidable(
           startActionPane: startActions != null
               ? ActionPane(
@@ -137,13 +139,14 @@ class _SlidableActionTemplate extends StatelessWidget {
 }
 
 class _FlutterSlidableDividir extends StatelessWidget {
+  /// Creates a [_FlutterSlidableDividir].
   const _FlutterSlidableDividir();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+        vertical: 8,
       ),
       child: Divider(
         color: Colors.grey.shade200,

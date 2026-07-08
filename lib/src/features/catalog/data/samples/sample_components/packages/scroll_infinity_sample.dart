@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:scroll_infinity/scroll_infinity.dart';
 
 void main() {
@@ -12,9 +12,6 @@ void main() {
 }
 
 class Product {
-  final int id;
-  final String title;
-  final String description;
 
   Product({
     required this.id,
@@ -26,14 +23,19 @@ class Product {
     Map<String, dynamic> json,
   ) {
     return Product(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
+      id: json['id'] as int,
+      title: json['title'] as String,
+      description: json['description'] as String,
     );
   }
+  final int id;
+  final String title;
+  final String description;
 }
 
+/// Sample demonstrating `ScrollInfinitySample`.
 class ScrollInfinitySample extends StatefulWidget {
+  /// Creates a [ScrollInfinitySample].
   const ScrollInfinitySample({super.key});
 
   @override
@@ -54,10 +56,12 @@ class _ScrollInfinitySampleState extends State<ScrollInfinitySample> {
       },
     );
 
-    final data = response.data;
-    final List products = data['products'];
+    final data = response.data as Map<String, dynamic>;
+    final products = data['products'] as List;
 
-    return products.map((json) => Product.fromJson(json)).toList();
+    return products
+        .map((json) => Product.fromJson(json as Map<String, dynamic>))
+        .toList();
   }
 
   @override

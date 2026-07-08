@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `GestureDetectorSample`.
 class GestureDetectorSample extends StatefulWidget {
+  /// Creates a [GestureDetectorSample].
   const GestureDetectorSample({super.key});
 
   @override
@@ -40,9 +42,8 @@ class _GestureDetectorSampleState extends State<GestureDetectorSample> {
               onTap: _showSnackBar,
               child: const Text('Enabled'),
             ),
-            const SizedBox(width: 20.0),
+            const SizedBox(width: 20),
             GestureDetector(
-              onTap: null,
               child: const Text('Disabled'),
             ),
           ],

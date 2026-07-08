@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DrawerSample`.
 class DrawerSample extends StatelessWidget {
+  /// Creates a [DrawerSample].
   const DrawerSample({super.key});
 
   @override
@@ -83,7 +85,7 @@ class DrawerSample extends StatelessWidget {
               'Open Drawer',
             ),
           );
-        }),
+        },),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `Text`.
 class TextSample extends StatefulWidget {
+  /// Creates a [TextSample].
   const TextSample({super.key});
 
   @override
@@ -18,12 +22,14 @@ class TextSample extends StatefulWidget {
 
 class _TextSampleState extends State<TextSample> {
   void navigateTo(StatelessWidget screen) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return screen;
-        },
+    unawaited(
+      Navigator.push<void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) {
+            return screen;
+          },
+        ),
       ),
     );
   }
@@ -43,7 +49,7 @@ class _TextSampleState extends State<TextSample> {
               },
               child: const Text('Colors'),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
                 navigateTo(
@@ -52,7 +58,7 @@ class _TextSampleState extends State<TextSample> {
               },
               child: const Text('Font Weights'),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
                 navigateTo(
@@ -61,7 +67,7 @@ class _TextSampleState extends State<TextSample> {
               },
               child: const Text('Font Sizes'),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
           ],
         ),
       ),
@@ -69,16 +75,22 @@ class _TextSampleState extends State<TextSample> {
   }
 }
 
+/// A named color shown in the [ColorsSample].
 class ColorModel {
+  /// Creates a [ColorModel].
   const ColorModel({
     required this.name,
     required this.color,
   });
 
+  /// Display name of the color.
   final String name;
+
+  /// The color value.
   final MaterialColor color;
 }
 
+/// Colors demonstrated by [ColorsSample].
 const colors = <ColorModel>[
   ColorModel(
     name: 'Red',
@@ -106,7 +118,9 @@ const colors = <ColorModel>[
   ),
 ];
 
+/// Sample demonstrating colored `Text`.
 class ColorsSample extends StatelessWidget {
+  /// Creates a [ColorsSample].
   const ColorsSample({super.key});
 
   @override
@@ -126,16 +140,22 @@ class ColorsSample extends StatelessWidget {
   }
 }
 
+/// A named font weight shown in the [FontWeightsSample].
 class FontWeightModel {
+  /// Creates a [FontWeightModel].
   const FontWeightModel({
     required this.name,
     required this.weight,
   });
 
+  /// Display name of the font weight.
   final String name;
+
+  /// The font weight value.
   final FontWeight weight;
 }
 
+/// Font weights demonstrated by [FontWeightsSample].
 const fontWeights = <FontWeightModel>[
   FontWeightModel(
     name: 'Font Weight 100',
@@ -175,15 +195,17 @@ const fontWeights = <FontWeightModel>[
   ),
 ];
 
+/// Sample demonstrating `Text` with different font weights.
 class FontWeightsSample extends StatelessWidget {
+  /// Creates a [FontWeightsSample].
   const FontWeightsSample({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ScreenSample(
       children: List.generate(fontWeights.length * 2, (index) {
-        if (index % 2 == 0) {
-          return const SizedBox(height: 4.0);
+        if (index.isEven) {
+          return const SizedBox(height: 4);
         }
 
         final fontWeight = fontWeights[index ~/ 2];
@@ -199,21 +221,24 @@ class FontWeightsSample extends StatelessWidget {
   }
 }
 
+/// Font sizes demonstrated by [FontSizesSample].
 const fontSizes = <double>[
-  10.0,
-  12.0,
-  14.0,
-  16.0,
-  18.0,
-  20.0,
-  22.0,
-  24.0,
-  26.0,
-  28.0,
-  30.0,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
 ];
 
+/// Sample demonstrating `Text` with different font sizes.
 class FontSizesSample extends StatelessWidget {
+  /// Creates a [FontSizesSample].
   const FontSizesSample({super.key});
 
   @override
@@ -233,12 +258,15 @@ class FontSizesSample extends StatelessWidget {
   }
 }
 
+/// Scaffold with a back button that lays out [children] vertically.
 class ScreenSample extends StatelessWidget {
+  /// Creates a [ScreenSample].
   const ScreenSample({
-    super.key,
     required this.children,
+    super.key,
   });
 
+  /// Widgets laid out vertically in the body.
   final List<Widget> children;
 
   @override
@@ -257,7 +285,7 @@ class ScreenSample extends StatelessWidget {
       body: Center(
         child: Wrap(
           direction: Axis.vertical,
-          spacing: 4.0,
+          spacing: 4,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: children,
         ),

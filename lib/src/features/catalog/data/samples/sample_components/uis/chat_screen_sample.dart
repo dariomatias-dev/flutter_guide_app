@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+/// Sample demonstrating `ItemsNotifier`.
 class ItemsNotifier extends ValueNotifier<List<Widget>> {
   ItemsNotifier(super.value);
 
@@ -38,7 +39,7 @@ final messages = <MessageModel>[
   MessageModel(
     text: 'Hello!',
     status: MessageStatus.sent,
-    sentDate: DateTime(2024, 1, 1, 9, 0),
+    sentDate: DateTime(2024, 1, 1, 9),
   ),
   MessageModel(
     text: 'Hi, how are you?',
@@ -51,7 +52,7 @@ final messages = <MessageModel>[
     sentDate: DateTime(2024, 1, 2, 11, 16),
   ),
   MessageModel(
-    text: "Good to hear that!",
+    text: 'Good to hear that!',
     status: MessageStatus.received,
     sentDate: DateTime(2024, 1, 2, 11, 20),
   ),
@@ -96,7 +97,7 @@ final messages = <MessageModel>[
     sentDate: DateTime(2024, 1, 4, 8, 29),
   ),
   MessageModel(
-    text: 'Awesome! I\'m looking forward to it.',
+    text: "Awesome! I'm looking forward to it.",
     status: MessageStatus.sent,
     sentDate: DateTime(2024, 1, 5, 4, 1),
   ),
@@ -128,7 +129,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ChatScreenSample`.
 class ChatScreenSample extends StatelessWidget {
+  /// Creates a [ChatScreenSample].
   const ChatScreenSample({super.key});
 
   @override
@@ -155,7 +158,9 @@ class ChatScreenSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `ChatScreen`.
 class ChatScreen extends StatefulWidget {
+  /// Creates a [ChatScreen].
   const ChatScreen({super.key});
 
   @override
@@ -170,7 +175,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   double get _maxWidth => MediaQuery.of(context).size.width * 0.7;
 
-  SizedBox get _space => const SizedBox(height: 8.0);
+  SizedBox get _space => const SizedBox(height: 8);
 
   void _addItem(String text) {
     if (text.isEmpty) return;
@@ -279,7 +284,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         title: const Text('Chat'),
         centerTitle: true,
-        elevation: 1.0,
+        elevation: 1,
       ),
       body: Column(
         children: <Widget>[
@@ -293,7 +298,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 builder: (context, value, child) {
                   return ListView.builder(
                     controller: _scrollController,
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16),
                     itemCount: value.length,
                     itemBuilder: (context, index) {
                       return value[index];
@@ -319,10 +324,10 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
+/// Sample demonstrating `DateSeparator`.
 class DateSeparator extends StatelessWidget {
   const DateSeparator({
-    super.key,
-    required this.date,
+    required this.date, super.key,
   });
 
   final DateTime date;
@@ -334,21 +339,21 @@ class DateSeparator extends StatelessWidget {
     return Center(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          vertical: 16.0,
+          vertical: 16,
         ),
         padding: const EdgeInsets.symmetric(
-          vertical: 6.0,
-          horizontal: 12.0,
+          vertical: 6,
+          horizontal: 12,
         ),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.secondary,
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Text(
           dateFormat.format(date),
           style: TextStyle(
             color: Theme.of(context).colorScheme.onSurface,
-            fontSize: 12.0,
+            fontSize: 12,
           ),
         ),
       ),
@@ -356,12 +361,10 @@ class DateSeparator extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `MessageWidget`.
 class MessageWidget extends StatelessWidget {
   const MessageWidget({
-    super.key,
-    required this.isMessageSent,
-    required this.maxWidth,
-    required this.message,
+    required this.isMessageSent, required this.maxWidth, required this.message, super.key,
   });
 
   final bool isMessageSent;
@@ -396,14 +399,14 @@ class MessageWidget extends StatelessWidget {
               maxWidth: maxWidth,
             ),
             padding: const EdgeInsets.symmetric(
-              horizontal: 14.0,
-              vertical: 10.0,
+              horizontal: 14,
+              vertical: 10,
             ),
             decoration: BoxDecoration(
               color: isMessageSent ? sentColor : receivedColor,
               borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(18.0),
-                topRight: const Radius.circular(18.0),
+                topLeft: const Radius.circular(18),
+                topRight: const Radius.circular(18),
                 bottomLeft: Radius.circular(
                   isMessageSent ? 18.0 : 4.0,
                 ),
@@ -416,19 +419,19 @@ class MessageWidget extends StatelessWidget {
               message.text,
               style: TextStyle(
                 color: isMessageSent ? sentTextColor : receivedTextColor,
-                fontSize: 16.0,
+                fontSize: 16,
               ),
             ),
           ),
-          const SizedBox(height: 4.0),
+          const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 4.0,
+              horizontal: 4,
             ),
             child: Text(
               formattedTime,
               style: TextStyle(
-                fontSize: 10.0,
+                fontSize: 10,
                 color: Colors.grey.shade500,
               ),
             ),
@@ -439,12 +442,10 @@ class MessageWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `MessageInputField`.
 class MessageInputField extends StatelessWidget {
   const MessageInputField({
-    super.key,
-    required this.controller,
-    required this.focusNode,
-    required this.onSubmitted,
+    required this.controller, required this.focusNode, required this.onSubmitted, super.key,
   });
 
   final TextEditingController controller;
@@ -457,15 +458,15 @@ class MessageInputField extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 12.0,
-        vertical: 8.0,
+        horizontal: 12,
+        vertical: 8,
       ),
       decoration: BoxDecoration(
         color: theme.cardColor,
         boxShadow: <BoxShadow>[
           BoxShadow(
             offset: const Offset(0, -1),
-            blurRadius: 4.0,
+            blurRadius: 4,
             color: Colors.black.withAlpha(13),
           ),
         ],
@@ -475,7 +476,7 @@ class MessageInputField extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: SizedBox(
-                height: 42.0,
+                height: 42,
                 child: TextFormField(
                   controller: controller,
                   focusNode: focusNode,
@@ -484,11 +485,11 @@ class MessageInputField extends StatelessWidget {
                     filled: true,
                     fillColor: theme.colorScheme.secondary,
                     contentPadding: const EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 16.0,
+                      vertical: 10,
+                      horizontal: 16,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(21.0),
+                      borderRadius: BorderRadius.circular(21),
                       borderSide: BorderSide.none,
                     ),
                   ),
@@ -496,7 +497,7 @@ class MessageInputField extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
+            const SizedBox(width: 8),
             IconButton(
               icon: Icon(
                 Icons.send,

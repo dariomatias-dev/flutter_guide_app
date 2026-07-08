@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SafeAreaSample`.
 class SafeAreaSample extends StatefulWidget {
+  /// Creates a [SafeAreaSample].
   const SafeAreaSample({super.key});
 
   @override
@@ -47,7 +49,7 @@ class _SafeAreaSampleState extends State<SafeAreaSample> {
     return Scaffold(
       body: Center(
         child: Wrap(
-          spacing: 12.0,
+          spacing: 12,
           direction: Axis.vertical,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[
@@ -70,7 +72,9 @@ class _SafeAreaSampleState extends State<SafeAreaSample> {
   }
 }
 
+/// Sample demonstrating `WithSafeArea`.
 class WithSafeArea extends StatelessWidget {
+  /// Creates a [WithSafeArea].
   const WithSafeArea({super.key});
 
   @override
@@ -99,7 +103,9 @@ class WithSafeArea extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `WithoutSafeArea`.
 class WithoutSafeArea extends StatelessWidget {
+  /// Creates a [WithoutSafeArea].
   const WithoutSafeArea({super.key});
 
   @override

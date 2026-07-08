@@ -15,7 +15,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `NavigationRailSample`.
 class NavigationRailSample extends StatefulWidget {
+  /// Creates a [NavigationRailSample].
   const NavigationRailSample({super.key});
 
   @override
@@ -55,8 +57,8 @@ class _NavigationRailSampleState extends State<NavigationRailSample> {
             ],
           ),
           const VerticalDivider(
-            thickness: 1.0,
-            width: 1.0,
+            thickness: 1,
+            width: 1,
           ),
           Expanded(
             child: Center(

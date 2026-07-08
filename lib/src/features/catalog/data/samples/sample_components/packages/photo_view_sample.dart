@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PhotoViewSample`.
 class PhotoViewSample extends StatelessWidget {
+  /// Creates a [PhotoViewSample].
   const PhotoViewSample({super.key});
 
   @override
@@ -38,6 +40,7 @@ class PhotoViewSample extends StatelessWidget {
 }
 
 class _PhotoViewScreen extends StatelessWidget {
+  /// Creates a [_PhotoViewScreen].
   const _PhotoViewScreen();
 
   @override

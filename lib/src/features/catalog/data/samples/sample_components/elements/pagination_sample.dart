@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PaginationSample`.
 class PaginationSample extends StatefulWidget {
+  /// Creates a [PaginationSample].
   const PaginationSample({super.key});
 
   @override
@@ -31,9 +33,9 @@ class _PaginationSampleState extends State<PaginationSample> {
       ),
       bottomNavigationBar: SafeArea(
         child: SizedBox(
-          height: 40.0,
+          height: 40,
           child: Wrap(
-            spacing: 12.0,
+            spacing: 12,
             alignment: WrapAlignment.center,
             children: <Widget>[
               StepNavigatorWidget(
@@ -46,7 +48,7 @@ class _PaginationSampleState extends State<PaginationSample> {
                 icon: Icons.keyboard_arrow_left_rounded,
               ),
               ...List.generate(5, (index) {
-                int pageIndex = index;
+                var pageIndex = index;
         
                 if (_selectedPageIndex > 2) {
                   if (_selectedPageIndex + 4 > numberOfPages) {
@@ -93,12 +95,10 @@ class _PaginationSampleState extends State<PaginationSample> {
   }
 }
 
+/// Sample demonstrating `StepNavigatorWidget`.
 class StepNavigatorWidget extends StatelessWidget {
   const StepNavigatorWidget({
-    super.key,
-    required this.action,
-    required this.disabled,
-    required this.icon,
+    required this.action, required this.disabled, required this.icon, super.key,
   });
 
   final VoidCallback action;
@@ -119,13 +119,11 @@ class StepNavigatorWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `PageActionWidget`.
 class PageActionWidget extends StatelessWidget {
   const PageActionWidget({
-    super.key,
-    required this.action,
+    required this.action, required this.fillColor, required this.child, super.key,
     this.disabled = false,
-    required this.fillColor,
-    required this.child,
   });
 
   final VoidCallback action;
@@ -138,8 +136,8 @@ class PageActionWidget extends StatelessWidget {
     return GestureDetector(
       onTap: disabled ? null : action,
       child: Container(
-        width: 32.0,
-        height: 32.0,
+        width: 32,
+        height: 32,
         decoration: BoxDecoration(
           color: disabled
               ? Colors.grey.shade600
@@ -149,10 +147,9 @@ class PageActionWidget extends StatelessWidget {
           border: disabled
               ? null
               : Border.all(
-                  color: Colors.black,
-                  width: 1.0,
+                  
                 ),
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: child,

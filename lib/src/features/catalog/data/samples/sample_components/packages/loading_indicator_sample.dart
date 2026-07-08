@@ -46,7 +46,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoadingIndicatorSample`.
 class LoadingIndicatorSample extends StatelessWidget {
+  /// Creates a [LoadingIndicatorSample].
   const LoadingIndicatorSample({super.key});
 
   @override
@@ -66,7 +68,7 @@ class LoadingIndicatorSample extends StatelessWidget {
           itemBuilder: (context, index) {
             return Center(
               child: SizedBox(
-                height: 48.0,
+                height: 48,
                 child: LoadingIndicator(
                   indicatorType: _indicatorTypes[index],
                   colors: const <Color>[

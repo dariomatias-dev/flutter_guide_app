@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
-const sampleCode = '''
+const sampleCode = r'''
 import 'package:flutter/material.dart';
 
+/// Sample demonstrating `CounterPage`.
 class CounterPage extends StatefulWidget {
+  /// Creates a [CounterPage].
   const CounterPage({super.key});
 
   @override
@@ -28,7 +30,7 @@ class _CounterPageState extends State<CounterPage> {
       ),
       body: Center(
         child: Text(
-          'Count: \$_count',
+          'Count: $_count',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
@@ -51,7 +53,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterSyntaxHighlighterSample`.
 class FlutterSyntaxHighlighterSample extends StatefulWidget {
+  /// Creates a [FlutterSyntaxHighlighterSample].
   const FlutterSyntaxHighlighterSample({super.key});
 
   @override
@@ -128,10 +132,10 @@ class _FlutterSyntaxHighlighterSampleState
                 value: _enableCodeSelection,
                 onChanged: (value) => _toggleCodeSelection(),
               ),
-              const SizedBox(height: 12.0),
+              const SizedBox(height: 12),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8),
                   child: SingleChildScrollView(
                     child: SyntaxHighlighter(
                       code: sampleCode,

@@ -67,7 +67,7 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
           onTap: (value) {
             ref
                 .read(elementsScreenTabIndexNotifierProvider.notifier)
-                .setIndex(value);
+                .index = value;
           },
           tabs: <Tab>[
             const Tab(

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:flutter/material.dart';
 
 const _screenNames = <String>[
   'Home',
@@ -16,7 +16,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `BottomNavyBarSample`.
 class BottomNavyBarSample extends StatefulWidget {
+  /// Creates a [BottomNavyBarSample].
   const BottomNavyBarSample({super.key});
 
   @override

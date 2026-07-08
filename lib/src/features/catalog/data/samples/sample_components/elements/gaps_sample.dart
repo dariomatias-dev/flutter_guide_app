@@ -22,7 +22,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `GapsSample`.
 class GapsSample extends StatefulWidget {
+  /// Creates a [GapsSample].
   const GapsSample({super.key});
 
   @override
@@ -30,7 +32,7 @@ class GapsSample extends StatefulWidget {
 }
 
 class _GapsSampleState extends State<GapsSample> {
-  double _gap = 12.0;
+  double _gap = 12;
 
   @override
   Widget build(BuildContext context) {
@@ -57,18 +59,17 @@ class _GapsSampleState extends State<GapsSample> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const SizedBox(height: 6.0),
+            const SizedBox(height: 6),
             Text(
               'Gap: $_gap',
               style: const TextStyle(
-                fontSize: 16.0,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
             Slider(
               value: _gap,
-              min: 0.0,
-              max: 40.0,
+              max: 40,
               divisions: 20,
               onChanged: (value) {
                 setState(() {

@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ShowTimePickerSample`.
 class ShowTimePickerSample extends StatefulWidget {
+  /// Creates a [ShowTimePickerSample].
   const ShowTimePickerSample({super.key});
 
   @override
@@ -42,7 +44,7 @@ class _ShowTimePickerSampleState extends State<ShowTimePickerSample> {
             if (_time != null)
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 16.0,
+                  bottom: 16,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -50,14 +52,14 @@ class _ShowTimePickerSampleState extends State<ShowTimePickerSample> {
                     const Text(
                       'Time selected: ',
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       _time!,
                       style: const TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 16,
                       ),
                     ),
                   ],

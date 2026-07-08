@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `RangeSliderSample`.
 class RangeSliderSample extends StatelessWidget {
+  /// Creates a [RangeSliderSample].
   const RangeSliderSample({super.key});
 
   @override
@@ -18,7 +20,7 @@ class RangeSliderSample extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: 12.0,
+            vertical: 12,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -29,25 +31,25 @@ class RangeSliderSample extends StatelessWidget {
               Divider(),
               RangeSliderTemplate(
                 title: '0 to 100 without divisions',
-                max: 100.0,
+                max: 100,
               ),
               Divider(),
               RangeSliderTemplate(
                 title: '50 to 100 with 50 divisions',
-                min: 50.0,
-                max: 100.0,
+                min: 50,
+                max: 100,
                 divisions: 50,
               ),
               Divider(),
               RangeSliderTemplate(
                 title: '0 to 100 with 20 divisions',
-                max: 100.0,
+                max: 100,
                 divisions: 20,
               ),
               Divider(),
               RangeSliderTemplate(
                 title: '0 to 100 with 100 divisions',
-                max: 100.0,
+                max: 100,
                 divisions: 100,
               ),
             ],
@@ -58,10 +60,10 @@ class RangeSliderSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `RangeSliderTemplate`.
 class RangeSliderTemplate extends StatefulWidget {
   const RangeSliderTemplate({
-    super.key,
-    required this.title,
+    required this.title, super.key,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
@@ -79,8 +81,8 @@ class RangeSliderTemplate extends StatefulWidget {
 class _RangeSliderTemplateState extends State<RangeSliderTemplate> {
   bool _showFloatingPoint = true;
   RangeValues _values = const RangeValues(
-    0.0,
-    1.0,
+    0,
+    1,
   );
 
   @override
@@ -105,7 +107,7 @@ class _RangeSliderTemplateState extends State<RangeSliderTemplate> {
         Text(
           widget.title,
           style: const TextStyle(
-            fontSize: 18.0,
+            fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),

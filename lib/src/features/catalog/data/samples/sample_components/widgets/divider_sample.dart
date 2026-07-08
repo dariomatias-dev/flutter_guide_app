@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DividerSample`.
 class DividerSample extends StatelessWidget {
+  /// Creates a [DividerSample].
   const DividerSample({super.key});
 
   @override

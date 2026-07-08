@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ScaffoldSample`.
 class ScaffoldSample extends StatelessWidget {
+  /// Creates a [ScaffoldSample].
   const ScaffoldSample({super.key});
 
   @override

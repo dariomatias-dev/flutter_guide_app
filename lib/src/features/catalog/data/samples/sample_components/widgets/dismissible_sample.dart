@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `DismissibleSample`.
 class DismissibleSample extends StatelessWidget {
+  /// Creates a [DismissibleSample].
   const DismissibleSample({super.key});
 
   ListTile get _listTile => const ListTile(
@@ -32,7 +34,7 @@ class DismissibleSample extends StatelessWidget {
             background: Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
+                horizontal: 12,
               ),
               color: Colors.red,
               child: Row(
@@ -53,7 +55,7 @@ class DismissibleSample extends StatelessWidget {
             background: Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
+                horizontal: 12,
               ),
               color: Colors.red,
               child: const Icon(
@@ -64,7 +66,7 @@ class DismissibleSample extends StatelessWidget {
             secondaryBackground: Container(
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
+                horizontal: 12,
               ),
               color: Colors.blue,
               child: const Icon(

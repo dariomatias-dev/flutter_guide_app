@@ -103,7 +103,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterSpinkitSample`.
 class FlutterSpinkitSample extends StatelessWidget {
+  /// Creates a [FlutterSpinkitSample].
   const FlutterSpinkitSample({super.key});
 
   @override

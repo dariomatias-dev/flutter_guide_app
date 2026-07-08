@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AppBarSample`.
 class AppBarSample extends StatelessWidget {
+  /// Creates a [AppBarSample].
   const AppBarSample({super.key});
 
   @override
@@ -22,7 +24,7 @@ class AppBarSample extends StatelessWidget {
           Icon(
             Icons.notifications_none,
           ),
-          SizedBox(width: 8.0),
+          SizedBox(width: 8),
         ],
       ),
     );

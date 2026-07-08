@@ -64,7 +64,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `UuidSample`.
 class UuidSample extends StatefulWidget {
+  /// Creates a [UuidSample].
   const UuidSample({super.key});
 
   @override
@@ -96,7 +98,7 @@ class _UuidSampleState extends State<UuidSample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(_uuid),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             DropdownButtonHideUnderline(
               child: DropdownButton(
                 value: _uuidVersionIndex,
@@ -117,7 +119,7 @@ class _UuidSampleState extends State<UuidSample> {
                 },
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _generateUuid,
               child: const Text(

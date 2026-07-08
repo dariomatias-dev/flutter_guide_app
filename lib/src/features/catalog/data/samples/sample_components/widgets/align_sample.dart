@@ -58,7 +58,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AlignSample`.
 class AlignSample extends StatefulWidget {
+  /// Creates a [AlignSample].
   const AlignSample({super.key});
 
   @override
@@ -85,7 +87,7 @@ class _AlignSampleState extends State<AlignSample> {
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(
-              vertical: 12.0,
+              vertical: 12,
             ),
             child: DropdownButtonHideUnderline(
               child: DropdownButton(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-const _color = Colors.blue;
-const _leftDotColor = _color;
-const _rightDotColor = Colors.red;
+const MaterialColor _color = Colors.blue;
+const MaterialColor _leftDotColor = _color;
+const MaterialColor _rightDotColor = Colors.red;
 const _size = 32.0;
 
 final _loaders = <Widget>[
@@ -96,7 +96,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LoadingAnimationWidgetSample`.
 class LoadingAnimationWidgetSample extends StatelessWidget {
+  /// Creates a [LoadingAnimationWidgetSample].
   const LoadingAnimationWidgetSample({super.key});
 
   @override

@@ -10,7 +10,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LikeButtonSample`.
 class LikeButtonSample extends StatelessWidget {
+  /// Creates a [LikeButtonSample].
   const LikeButtonSample({super.key});
 
   @override

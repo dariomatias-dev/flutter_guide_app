@@ -10,6 +10,6 @@ class AppVersionViewModel extends AsyncNotifier<String> {
 
   @override
   Future<String> build() {
-    return _repository.getAppVersion();
+    return _repository();
   }
 }

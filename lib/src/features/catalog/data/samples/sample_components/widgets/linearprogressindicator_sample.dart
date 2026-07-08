@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `LinearProgressIndicatorSample`.
 class LinearProgressIndicatorSample extends StatelessWidget {
+  /// Creates a [LinearProgressIndicatorSample].
   const LinearProgressIndicatorSample({super.key});
 
   @override
@@ -27,7 +29,9 @@ class LinearProgressIndicatorSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `LinearProgressSliderWidget`.
 class LinearProgressSliderWidget extends StatefulWidget {
+  /// Creates a [LinearProgressSliderWidget].
   const LinearProgressSliderWidget({super.key});
 
   @override
@@ -37,7 +41,7 @@ class LinearProgressSliderWidget extends StatefulWidget {
 
 class _CircularProgressSliderStateWidget
     extends State<LinearProgressSliderWidget> {
-  double _value = 0.0;
+  double _value = 0;
 
   @override
   Widget build(BuildContext context) {

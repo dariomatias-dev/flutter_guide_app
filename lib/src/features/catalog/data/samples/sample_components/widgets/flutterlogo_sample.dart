@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `FlutterLogoSample`.
 class FlutterLogoSample extends StatelessWidget {
+  /// Creates a [FlutterLogoSample].
   const FlutterLogoSample({super.key});
 
   @override
@@ -17,7 +19,7 @@ class FlutterLogoSample extends StatelessWidget {
     return const Scaffold(
       body: Center(
         child: FlutterLogo(
-          size: 120.0,
+          size: 120,
         ),
       ),
     );

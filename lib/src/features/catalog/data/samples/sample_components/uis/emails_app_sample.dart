@@ -41,7 +41,7 @@ final emails = <EmailModel>[
     subject: 'Plans for re-opening the town',
     body:
         'Hello team, We need to discuss the plans for re-opening the town. Please find attached the agenda for our upcoming meeting. Regards, Rika',
-    date: DateTime(2024, 06, 01),
+    date: DateTime(2024, 06),
     withStar: false,
   ),
   EmailModel(
@@ -95,7 +95,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `EmailsAppSample`.
 class EmailsAppSample extends StatelessWidget {
+  /// Creates a [EmailsAppSample].
   const EmailsAppSample({super.key});
 
   @override
@@ -120,6 +122,7 @@ class EmailsAppSample extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `EmailsNotifier`.
 class EmailsNotifier extends ValueNotifier<List<EmailModel>> {
   EmailsNotifier(super.value);
 
@@ -149,7 +152,9 @@ enum Screen {
   withStar,
 }
 
+/// Sample demonstrating `EmailsScreen`.
 class EmailsScreen extends StatefulWidget {
+  /// Creates a [EmailsScreen].
   const EmailsScreen({super.key});
 
   @override
@@ -174,7 +179,7 @@ class _EmailsScreenState extends State<EmailsScreen> {
     screen = Screen.withStar;
 
     final starredEmails = <EmailModel>[];
-    for (var email in _screenEmails) {
+    for (final email in _screenEmails) {
       if (email.withStar) {
         starredEmails.add(email);
       }
@@ -220,7 +225,7 @@ class _EmailsScreenState extends State<EmailsScreen> {
 
     final results = <EmailModel>[];
 
-    for (var email in _screenEmails) {
+    for (final email in _screenEmails) {
       if (email.sender.toLowerCase().contains(query) ||
           email.subject.toLowerCase().contains(query) ||
           email.body.toLowerCase().contains(query)) {
@@ -266,7 +271,7 @@ class _EmailsScreenState extends State<EmailsScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 10.0,
+            horizontal: 10,
           ),
           child: ValueListenableBuilder(
             valueListenable: _emailsNotifier,
@@ -296,12 +301,10 @@ class _EmailsScreenState extends State<EmailsScreen> {
   }
 }
 
+/// Sample demonstrating `EmailsScreenDrawerWidget`.
 class EmailsScreenDrawerWidget extends StatelessWidget {
   const EmailsScreenDrawerWidget({
-    super.key,
-    required this.showEmails,
-    required this.showStarredEmails,
-    required this.setScreenEmails,
+    required this.showEmails, required this.showStarredEmails, required this.setScreenEmails, super.key,
   });
 
   final VoidCallback showEmails;
@@ -318,7 +321,7 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
+                horizontal: 12,
               ),
               child: Row(
                 children: <Widget>[
@@ -327,10 +330,10 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
                     child: Icon(
                       Icons.person,
                       color: Theme.of(context).colorScheme.onPrimary,
-                      size: 32.0,
+                      size: 32,
                     ),
                   ),
-                  const SizedBox(width: 8.0),
+                  const SizedBox(width: 8),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -338,15 +341,15 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
                         'User Name',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          height: 1.0,
+                          height: 1,
                         ),
                       ),
-                      SizedBox(height: 2.0),
+                      SizedBox(height: 2),
                       Text(
                         'emailexample@gmail.com',
                         style: TextStyle(
-                          fontSize: 12.0,
-                          height: 1.0,
+                          fontSize: 12,
+                          height: 1,
                         ),
                       ),
                     ],
@@ -354,9 +357,9 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 8),
             const Divider(
-              height: 12.0,
+              height: 12,
             ),
             ListTile(
               onTap: () {
@@ -366,12 +369,12 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
               },
               leading: const Icon(
                 Icons.inbox,
-                size: 20.0,
+                size: 20,
               ),
               title: const Text(
                 'Main',
                 style: TextStyle(
-                  fontSize: 14.0,
+                  fontSize: 14,
                 ),
               ),
             ),
@@ -383,12 +386,12 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
               },
               leading: const Icon(
                 Icons.star_outline,
-                size: 20.0,
+                size: 20,
               ),
               title: const Text(
                 'With Star',
                 style: TextStyle(
-                  fontSize: 14.0,
+                  fontSize: 14,
                 ),
               ),
             ),
@@ -408,7 +411,7 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
           ],
         ),
       ),
@@ -419,9 +422,7 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
 class EmailsScreenAppBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
   const EmailsScreenAppBarWidget({
-    super.key,
-    required this.isLigth,
-    required this.searchEmails,
+    required this.isLigth, required this.searchEmails, super.key,
   });
 
   final bool isLigth;
@@ -446,9 +447,9 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
     return SafeArea(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          horizontal: 12.0,
+          horizontal: 12,
         ),
-        height: 40.0,
+        height: 40,
         child: TextFormField(
           controller: _searchController,
           focusNode: _searchFocus,
@@ -467,7 +468,7 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
             isDense: true,
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
-                Radius.circular(24.0),
+                Radius.circular(24),
               ),
               borderSide: BorderSide.none,
             ),
@@ -486,12 +487,10 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
   }
 }
 
+/// Sample demonstrating `ComposeEmailFloatingActionButtonWidget`.
 class ComposeEmailFloatingActionButtonWidget extends StatefulWidget {
   const ComposeEmailFloatingActionButtonWidget({
-    super.key,
-    required this.isLigth,
-    required this.emailsNotifier,
-    required this.showEmails,
+    required this.isLigth, required this.emailsNotifier, required this.showEmails, super.key,
   });
 
   final bool isLigth;
@@ -507,12 +506,12 @@ class _ComposeEmailFloatingActionButtonWidgetState
     extends State<ComposeEmailFloatingActionButtonWidget> {
   TextStyle get _defaultTitleFieldTextStyle => TextStyle(
         color: Theme.of(context).colorScheme.secondary,
-        fontSize: 14.0,
+        fontSize: 14,
         fontWeight: FontWeight.w500,
       );
 
   EdgeInsets get _defaultPadding => const EdgeInsets.symmetric(
-        horizontal: 12.0,
+        horizontal: 12,
       );
 
   InputDecoration _defaultInputDecoration({
@@ -549,7 +548,7 @@ class _ComposeEmailFloatingActionButtonWidgetState
       icon: Icon(
         Icons.edit_outlined,
         color: Theme.of(context).colorScheme.onPrimary,
-        size: 20.0,
+        size: 20,
       ),
       label: Text(
         'Compose',
@@ -561,14 +560,10 @@ class _ComposeEmailFloatingActionButtonWidgetState
   }
 }
 
+/// Sample demonstrating `CreateEmailWidget`.
 class CreateEmailWidget extends StatefulWidget {
   const CreateEmailWidget({
-    super.key,
-    required this.titleFieldTextStyle,
-    required this.inputDecoration,
-    required this.padding,
-    required this.emailsNotifier,
-    required this.showEmails,
+    required this.titleFieldTextStyle, required this.inputDecoration, required this.padding, required this.emailsNotifier, required this.showEmails, super.key,
   });
 
   final TextStyle titleFieldTextStyle;
@@ -648,24 +643,24 @@ class _CreateEmailWidgetState extends State<CreateEmailWidget> {
                           Navigator.pop(context);
                         },
                         child: Container(
-                          width: 24.0,
-                          height: 24.0,
+                          width: 24,
+                          height: 24,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
                           child: const Center(
                             child: Icon(
                               Icons.close,
-                              size: 20.0,
+                              size: 20,
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 20.0),
+                      const SizedBox(width: 20),
                       const Text(
                         'Compose an Email',
                         style: TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -674,15 +669,15 @@ class _CreateEmailWidgetState extends State<CreateEmailWidget> {
                   GestureDetector(
                     onTap: _submitForm,
                     child: Container(
-                      width: 24.0,
-                      height: 24.0,
+                      width: 24,
+                      height: 24,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: const Center(
                         child: Icon(
                           Icons.send_outlined,
-                          size: 18.0,
+                          size: 18,
                         ),
                       ),
                     ),
@@ -690,7 +685,7 @@ class _CreateEmailWidgetState extends State<CreateEmailWidget> {
                 ],
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             Expanded(
               child: Form(
                 key: _formKey,
@@ -758,15 +753,11 @@ class _CreateEmailWidgetState extends State<CreateEmailWidget> {
   }
 }
 
+/// Sample demonstrating `CreateEmailTextFieldWidget`.
 class CreateEmailTextFieldWidget extends StatelessWidget {
   const CreateEmailTextFieldWidget({
-    super.key,
-    required this.controller,
+    required this.controller, required this.titleFieldTextStyle, required this.inputDecoration, required this.text, required this.validator, super.key,
     this.autoFocus = false,
-    required this.titleFieldTextStyle,
-    required this.inputDecoration,
-    required this.text,
-    required this.validator,
   });
 
   final TextEditingController controller;
@@ -782,7 +773,7 @@ class CreateEmailTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 12.0,
+        left: 12,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -805,14 +796,16 @@ class CreateEmailTextFieldWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `CreateEmailDividirWidget`.
 class CreateEmailDividirWidget extends StatelessWidget {
+  /// Creates a [CreateEmailDividirWidget].
   const CreateEmailDividirWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 2.0,
+        vertical: 2,
       ),
       child: Divider(),
     );
@@ -834,13 +827,10 @@ final months = <String>[
   'Dec',
 ];
 
+/// Sample demonstrating `EmailWidget`.
 class EmailWidget extends StatefulWidget {
   const EmailWidget({
-    super.key,
-    required this.email,
-    required this.removeEmail,
-    required this.updateScreen,
-    required this.emailsNotifier,
+    required this.email, required this.removeEmail, required this.updateScreen, required this.emailsNotifier, super.key,
   });
 
   final EmailModel email;
@@ -907,7 +897,7 @@ class _EmailWidgetState extends State<EmailWidget> {
       child: Container(
         color: Theme.of(context).colorScheme.surface,
         padding: const EdgeInsets.symmetric(
-          vertical: 8.0,
+          vertical: 8,
         ),
         child: Row(
           children: <Widget>[
@@ -916,10 +906,10 @@ class _EmailWidgetState extends State<EmailWidget> {
               child: Icon(
                 Icons.person,
                 color: Theme.of(context).colorScheme.onPrimary,
-                size: 32.0,
+                size: 32,
               ),
             ),
-            const SizedBox(width: 14.0),
+            const SizedBox(width: 14),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -931,17 +921,17 @@ class _EmailWidgetState extends State<EmailWidget> {
                           widget.email.sender,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12.0),
+                      const SizedBox(width: 12),
                       Text(
                         date,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.secondary,
-                          fontSize: 12.0,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -954,7 +944,7 @@ class _EmailWidgetState extends State<EmailWidget> {
                           widget.email.subject,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                            fontSize: 14.0,
+                            fontSize: 14,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -972,11 +962,11 @@ class _EmailWidgetState extends State<EmailWidget> {
                                 .colorScheme
                                 .secondary
                                 .withAlpha(128),
-                            fontSize: 12.0,
+                            fontSize: 12,
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12.0),
+                      const SizedBox(width: 12),
                       SaveEmailButtonWidget(
                         email: widget.email,
                         updateScreen: widget.updateScreen,
@@ -985,7 +975,7 @@ class _EmailWidgetState extends State<EmailWidget> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -993,11 +983,10 @@ class _EmailWidgetState extends State<EmailWidget> {
   }
 }
 
+/// Sample demonstrating `SaveEmailButtonWidget`.
 class SaveEmailButtonWidget extends StatefulWidget {
   const SaveEmailButtonWidget({
-    super.key,
-    required this.email,
-    required this.updateScreen,
+    required this.email, required this.updateScreen, super.key,
   });
 
   final EmailModel email;
@@ -1041,7 +1030,7 @@ class _SaveEmailButtonWidgetState extends State<SaveEmailButtonWidget> {
       },
       child: Icon(
         _isStarred ? Icons.star : Icons.star_border,
-        size: 20.0,
+        size: 20,
         color: _isStarred
             ? Colors.yellow.shade600
             : Theme.of(context).colorScheme.secondary.withAlpha(128),
@@ -1050,11 +1039,10 @@ class _SaveEmailButtonWidgetState extends State<SaveEmailButtonWidget> {
   }
 }
 
+/// Sample demonstrating `ModalBottomSheetWidget`.
 class ModalBottomSheetWidget extends StatefulWidget {
   const ModalBottomSheetWidget({
-    super.key,
-    required this.emailId,
-    required this.removeEmail,
+    required this.emailId, required this.removeEmail, super.key,
   });
 
   final String emailId;
@@ -1083,25 +1071,25 @@ class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 8.0,
-        right: 12.0,
-        bottom: 12.0,
-        left: 12.0,
+        top: 8,
+        right: 12,
+        bottom: 12,
+        left: 12,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            height: 4.0,
-            width: 40.0,
+            height: 4,
+            width: 40,
             decoration: BoxDecoration(
               color: Colors.grey.shade800,
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(20),
             ),
           ),
-          const SizedBox(height: 24.0),
+          const SizedBox(height: 24),
           SizedBox(
-            height: 86.0,
+            height: 86,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -1110,19 +1098,19 @@ class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
                   icon: Icons.share_outlined,
                   text: 'Share',
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 ModalBottomSheetWidgetActionWidget(
                   action: _action,
                   icon: Icons.add,
                   text: 'Add to',
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 ModalBottomSheetWidgetActionWidget(
                   action: _removeEmail,
                   icon: Icons.delete_outline,
                   text: 'Trash',
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 ModalBottomSheetWidgetActionWidget(
                   action: _action,
                   icon: Icons.archive_outlined,
@@ -1137,12 +1125,10 @@ class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
   }
 }
 
+/// Sample demonstrating `ModalBottomSheetWidgetActionWidget`.
 class ModalBottomSheetWidgetActionWidget extends StatelessWidget {
   const ModalBottomSheetWidgetActionWidget({
-    super.key,
-    required this.icon,
-    required this.text,
-    required this.action,
+    required this.icon, required this.text, required this.action, super.key,
   });
 
   final IconData icon;
@@ -1156,24 +1142,24 @@ class ModalBottomSheetWidgetActionWidget extends StatelessWidget {
         onTap: action,
         child: Container(
           padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
+            vertical: 8,
           ),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
             children: <Widget>[
               Icon(
                 icon,
-                size: 24.0,
+                size: 24,
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 8),
               Text(
                 text,
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontSize: 12.0,
+                  fontSize: 12,
                 ),
               ),
             ],
@@ -1184,12 +1170,10 @@ class ModalBottomSheetWidgetActionWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `EmailScreen`.
 class EmailScreen extends StatefulWidget {
   const EmailScreen({
-    super.key,
-    required this.email,
-    required this.emailsNotifier,
-    required this.removeEmail,
+    required this.email, required this.emailsNotifier, required this.removeEmail, super.key,
   });
 
   final EmailModel email;
@@ -1203,7 +1187,7 @@ class EmailScreen extends StatefulWidget {
 }
 
 class _EmailScreenState extends State<EmailScreen> {
-  final _isStarredNotifier = ValueNotifier(false);
+  final ValueNotifier<bool> _isStarredNotifier = ValueNotifier(false);
 
   void _deleteEmail() {
     widget.removeEmail(
@@ -1272,7 +1256,7 @@ class _EmailScreenState extends State<EmailScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 12.0,
+            horizontal: 12,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1280,36 +1264,36 @@ class _EmailScreenState extends State<EmailScreen> {
               Text(
                 widget.email.subject,
                 style: const TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 8),
               Text(
                 widget.email.body,
               ),
-              const SizedBox(height: 32.0),
+              const SizedBox(height: 32),
               const SizedBox(
-                height: 76.0,
+                height: 76,
                 child: Row(
                   children: <Widget>[
                     EmailScreenActionWidget(
                       icon: Icons.keyboard_arrow_left_rounded,
                       title: 'Responder',
                     ),
-                    SizedBox(width: 6.0),
+                    SizedBox(width: 6),
                     EmailScreenActionWidget(
                       icon: Icons.keyboard_double_arrow_left_rounded,
                       title: 'Responder a todos',
                     ),
-                    SizedBox(width: 6.0),
+                    SizedBox(width: 6),
                     EmailScreenActionWidget(
                       icon: Icons.keyboard_arrow_right_rounded,
                       title: 'Encaminhar',
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -1318,11 +1302,10 @@ class _EmailScreenState extends State<EmailScreen> {
   }
 }
 
+/// Sample demonstrating `EmailScreenActionWidget`.
 class EmailScreenActionWidget extends StatelessWidget {
   const EmailScreenActionWidget({
-    super.key,
-    required this.icon,
-    required this.title,
+    required this.icon, required this.title, super.key,
   });
 
   final IconData icon;
@@ -1337,7 +1320,7 @@ class EmailScreenActionWidget extends StatelessWidget {
             color: Theme.of(context).colorScheme.onSurface,
             width: 1.2,
           ),
-          borderRadius: BorderRadius.circular(28.0),
+          borderRadius: BorderRadius.circular(28),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

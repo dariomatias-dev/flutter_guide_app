@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `TextFormFieldSample`.
 class TextFormFieldSample extends StatefulWidget {
+  /// Creates a [TextFormFieldSample].
   const TextFormFieldSample({super.key});
 
   @override
@@ -27,7 +29,7 @@ class _TextFormFieldSampleState extends State<TextFormFieldSample> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
+          horizontal: 8,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +37,7 @@ class _TextFormFieldSampleState extends State<TextFormFieldSample> {
             Text(
               _value,
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             TextFormField(
               controller: _inputController,
               onChanged: (value) {

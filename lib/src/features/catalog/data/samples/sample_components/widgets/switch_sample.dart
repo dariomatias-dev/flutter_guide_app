@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `SwitchSample`.
 class SwitchSample extends StatefulWidget {
+  /// Creates a [SwitchSample].
   const SwitchSample({super.key});
 
   @override
@@ -37,7 +39,7 @@ class _SwitchSampleState extends State<SwitchSample> {
                     });
                   },
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 Switch(
                   value: _isEnabled,
                   thumbIcon: WidgetStatePropertyAll(
@@ -53,7 +55,7 @@ class _SwitchSampleState extends State<SwitchSample> {
                 ),
               ],
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -61,7 +63,7 @@ class _SwitchSampleState extends State<SwitchSample> {
                   value: _isEnabled,
                   onChanged: null,
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(width: 8),
                 Switch(
                   value: _isEnabled,
                   thumbIcon: WidgetStatePropertyAll(

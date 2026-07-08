@@ -11,7 +11,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `AnimatedContainerSample`.
 class AnimatedContainerSample extends StatefulWidget {
+  /// Creates a [AnimatedContainerSample].
   const AnimatedContainerSample({super.key});
 
   @override
@@ -68,8 +70,8 @@ class _AnimatedContainerSampleState extends State<AnimatedContainerSample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 120.0,
-              height: 120.0,
+              width: 120,
+              height: 120,
               child: Center(
                 child: AnimatedContainer(
                   duration: const Duration(
@@ -81,7 +83,7 @@ class _AnimatedContainerSampleState extends State<AnimatedContainerSample> {
                 ),
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _setTimer,
               child: Text(

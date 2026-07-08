@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `PasswordFieldSample`.
 class PasswordFieldSample extends StatefulWidget {
+  /// Creates a [PasswordFieldSample].
   const PasswordFieldSample({super.key});
 
   @override

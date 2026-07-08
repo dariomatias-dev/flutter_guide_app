@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ChipSample`.
 class ChipSample extends StatelessWidget {
+  /// Creates a [ChipSample].
   const ChipSample({super.key});
 
   @override

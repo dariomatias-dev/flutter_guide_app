@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `MenuAnchorSample`.
 class MenuAnchorSample extends StatefulWidget {
+  /// Creates a [MenuAnchorSample].
   const MenuAnchorSample({super.key});
 
   @override

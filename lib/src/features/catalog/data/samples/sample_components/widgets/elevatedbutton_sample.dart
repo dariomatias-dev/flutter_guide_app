@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ElevatedButtonSample`.
 class ElevatedButtonSample extends StatelessWidget {
+  /// Creates a [ElevatedButtonSample].
   const ElevatedButtonSample({super.key});
 
   @override
@@ -23,7 +25,7 @@ class ElevatedButtonSample extends StatelessWidget {
               onPressed: () {},
               child: const Text('Enabled'),
             ),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 12),
             const ElevatedButton(
               onPressed: null,
               child: Text('Disabled'),

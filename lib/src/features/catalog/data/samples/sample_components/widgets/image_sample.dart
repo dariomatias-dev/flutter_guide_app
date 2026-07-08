@@ -9,7 +9,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ImageSample`.
 class ImageSample extends StatelessWidget {
+  /// Creates a [ImageSample].
   const ImageSample({super.key});
 
   @override

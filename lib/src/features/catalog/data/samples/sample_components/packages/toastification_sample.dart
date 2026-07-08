@@ -72,7 +72,9 @@ void main() {
   );
 }
 
+/// Sample demonstrating `ToastificationSample`.
 class ToastificationSample extends StatefulWidget {
+  /// Creates a [ToastificationSample].
   const ToastificationSample({super.key});
 
   @override
@@ -125,7 +127,7 @@ class _ToastificationSampleState extends State<ToastificationSample> {
                 },
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             DropdownButtonHideUnderline(
               child: DropdownButton(
                 value: _toastificationStyle,
@@ -149,7 +151,7 @@ class _ToastificationSampleState extends State<ToastificationSample> {
                 },
               ),
             ),
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _showNotification,
               child: const Text('Show'),
