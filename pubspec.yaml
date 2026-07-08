@@ -88,6 +88,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mocktail: ^1.0.4
   very_good_analysis: ^10.3.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
