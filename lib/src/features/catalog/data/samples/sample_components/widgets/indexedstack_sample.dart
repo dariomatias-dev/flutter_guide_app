@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 const _colors = <Color>[
   Colors.blue,
   Colors.yellow,
@@ -9,6 +8,7 @@ const _colors = <Color>[
   Colors.purple,
 ];
 
+/// Labels shown in the indexed stack.
 final List<String> items = List.generate(5, (index) {
   return 'Item ${index + 1}';
 });

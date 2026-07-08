@@ -1,15 +1,23 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+/// A selectable dropdown option pairing a [value] with a display [name].
 class MenuOptionModel<T> {
+  /// Creates a [MenuOptionModel].
   const MenuOptionModel({
     required this.value,
     required this.name,
   });
 
+  /// The option's underlying value.
   final T value;
+
+  /// The option's display name.
   final String name;
 }
 
+/// Day names shown in the days-of-week dropdown.
 const daysOfWeekNames = <String>[
   'Monday',
   'Tuesday',
@@ -20,13 +28,18 @@ const daysOfWeekNames = <String>[
   'Sunday',
 ];
 
-final List<MenuOptionModel<int>> daysOfWeek = List.generate(daysOfWeekNames.length, (index) {
-  return MenuOptionModel(
-    value: index,
-    name: daysOfWeekNames[index],
-  );
-});
+/// Days of the week as dropdown options.
+final List<MenuOptionModel<int>> daysOfWeek = List.generate(
+  daysOfWeekNames.length,
+  (index) {
+    return MenuOptionModel(
+      value: index,
+      name: daysOfWeekNames[index],
+    );
+  },
+);
 
+/// Month names shown in the months-of-year dropdown.
 const monthsOfYearNames = <String>[
   'January',
   'February',
@@ -42,13 +55,18 @@ const monthsOfYearNames = <String>[
   'December',
 ];
 
-final List<MenuOptionModel<int>> monthsOfYear = List.generate(monthsOfYearNames.length, (index) {
-  return MenuOptionModel(
-    value: index + 1,
-    name: monthsOfYearNames[index],
-  );
-});
+/// Months of the year as dropdown options.
+final List<MenuOptionModel<int>> monthsOfYear = List.generate(
+  monthsOfYearNames.length,
+  (index) {
+    return MenuOptionModel(
+      value: index + 1,
+      name: monthsOfYearNames[index],
+    );
+  },
+);
 
+/// City names shown in the world-cities dropdown.
 const worldCitiesNames = <String>[
   'New York',
   'Los Angeles',
@@ -72,14 +90,18 @@ const worldCitiesNames = <String>[
   'Bangkok',
 ];
 
-final List<MenuOptionModel<String>> worldCities = List.generate(worldCitiesNames.length, (index) {
-  final worldCitiesName = worldCitiesNames[index];
+/// World cities as dropdown options.
+final List<MenuOptionModel<String>> worldCities = List.generate(
+  worldCitiesNames.length,
+  (index) {
+    final worldCitiesName = worldCitiesNames[index];
 
-  return MenuOptionModel(
-    value: worldCitiesName.toLowerCase().replaceAll(' ', '_'),
-    name: worldCitiesNames[index],
-  );
-});
+    return MenuOptionModel(
+      value: worldCitiesName.toLowerCase().replaceAll(' ', '_'),
+      name: worldCitiesNames[index],
+    );
+  },
+);
 
 void main() {
   runApp(
@@ -172,14 +194,24 @@ class _CustomDropdownSampleState extends State<CustomDropdownSample> {
 
 /// Sample demonstrating `DropdownButtonWidget`.
 class DropdownButtonWidget extends StatefulWidget {
+  /// Creates a [DropdownButtonWidget].
   const DropdownButtonWidget({
-    required this.title, required this.options, required this.onChange, super.key,
+    required this.title,
+    required this.options,
+    required this.onChange,
+    super.key,
   });
 
+  /// Title shown when no option is selected.
   final String title;
-  final List<MenuOptionModel> options;
+
+  /// Options to display in the menu.
+  final List<MenuOptionModel<Object?>> options;
+
+  /// Called with the chosen option.
+  /// The [onChange].
   final void Function(
-    MenuOptionModel value,
+    MenuOptionModel<Object?> value,
   ) onChange;
 
   @override
@@ -191,7 +223,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
 
   OverlayEntry? _overlayEntry;
   bool _isOpen = false;
-  MenuOptionModel? _selectedValue;
+  MenuOptionModel<Object?>? _selectedValue;
 
   BorderRadius get _defaultBorderRadius => BorderRadius.circular(20);
 
@@ -310,19 +342,40 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
 
 /// Sample demonstrating `MenuWidget`.
 class MenuWidget extends StatefulWidget {
+  /// Creates a [MenuWidget].
   const MenuWidget({
-    required this.removeMenu, required this.boxShadow, required this.borderRadius, required this.padding, required this.options, required this.onChange, super.key,
+    required this.removeMenu,
+    required this.boxShadow,
+    required this.borderRadius,
+    required this.padding,
+    required this.options,
+    required this.onChange,
+    super.key,
     this.selectedOption,
   });
 
+  /// Called to dismiss the menu.
   final VoidCallback removeMenu;
-  final MenuOptionModel? selectedOption;
+
+  /// Currently selected option, if any.
+  final MenuOptionModel<Object?>? selectedOption;
+
+  /// Shadow applied to the menu container.
   final BoxShadow boxShadow;
+
+  /// Corner radius of the menu container.
   final BorderRadius borderRadius;
+
+  /// Padding positioning the menu above or below the button.
   final EdgeInsets padding;
-  final List<MenuOptionModel> options;
+
+  /// Options to display.
+  final List<MenuOptionModel<Object?>> options;
+
+  /// Called with the chosen option.
+  /// The [onChange].
   final void Function(
-    MenuOptionModel value,
+    MenuOptionModel<Object?> value,
   ) onChange;
 
   @override
@@ -336,7 +389,7 @@ class _MenuWidgetState extends State<MenuWidget> {
   double _opacity = 0;
 
   Future<void> _update() async {
-    await Future.delayed(
+    await Future<void>.delayed(
       const Duration(
         milliseconds: 10,
       ),
@@ -355,7 +408,7 @@ class _MenuWidgetState extends State<MenuWidget> {
       _selectedBackgroundColor =
           _isLight ? Colors.grey.shade300.withAlpha(204) : Colors.black12;
 
-      _update();
+      unawaited(_update());
     });
 
     super.initState();

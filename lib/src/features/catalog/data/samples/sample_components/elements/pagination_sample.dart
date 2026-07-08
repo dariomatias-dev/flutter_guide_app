@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Total number of pages in the sample.
 const numberOfPages = 10;
 
 void main() {
@@ -49,7 +50,7 @@ class _PaginationSampleState extends State<PaginationSample> {
               ),
               ...List.generate(5, (index) {
                 var pageIndex = index;
-        
+
                 if (_selectedPageIndex > 2) {
                   if (_selectedPageIndex + 4 > numberOfPages) {
                     pageIndex += numberOfPages - 5;
@@ -57,9 +58,9 @@ class _PaginationSampleState extends State<PaginationSample> {
                     pageIndex += _selectedPageIndex - 2;
                   }
                 }
-        
+
                 final isPageIndex = _selectedPageIndex == pageIndex;
-        
+
                 return PageActionWidget(
                   action: () {
                     setState(() {
@@ -97,12 +98,21 @@ class _PaginationSampleState extends State<PaginationSample> {
 
 /// Sample demonstrating `StepNavigatorWidget`.
 class StepNavigatorWidget extends StatelessWidget {
+  /// Creates a [StepNavigatorWidget].
   const StepNavigatorWidget({
-    required this.action, required this.disabled, required this.icon, super.key,
+    required this.action,
+    required this.disabled,
+    required this.icon,
+    super.key,
   });
 
+  /// The [action].
   final VoidCallback action;
+
+  /// The [disabled].
   final bool disabled;
+
+  /// The [icon].
   final IconData icon;
 
   @override
@@ -121,14 +131,25 @@ class StepNavigatorWidget extends StatelessWidget {
 
 /// Sample demonstrating `PageActionWidget`.
 class PageActionWidget extends StatelessWidget {
+  /// Creates a [PageActionWidget].
   const PageActionWidget({
-    required this.action, required this.fillColor, required this.child, super.key,
+    required this.action,
+    required this.fillColor,
+    required this.child,
+    super.key,
     this.disabled = false,
   });
 
+  /// The [action].
   final VoidCallback action;
+
+  /// The [disabled].
   final bool disabled;
+
+  /// The [fillColor].
   final bool fillColor;
+
+  /// The [child].
   final Widget child;
 
   @override
@@ -144,11 +165,7 @@ class PageActionWidget extends StatelessWidget {
               : fillColor
                   ? Colors.black
                   : Colors.white,
-          border: disabled
-              ? null
-              : Border.all(
-                  
-                ),
+          border: disabled ? null : Border.all(),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
   void _onScroll() {
     if (!_isLoading && !_hasMoreItems && _scrollController.position.atEdge) {
       if (_scrollController.position.pixels != 0) {
-        _addElements();
+        unawaited(_addElements());
       }
     }
   }
@@ -40,7 +41,7 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
     _addLoadingElement();
     _updateIsLoading();
 
-    await Future.delayed(
+    await Future<void>.delayed(
       const Duration(
         seconds: 1,
       ),
@@ -115,10 +116,9 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
 
   @override
   void dispose() {
-    _scrollController.removeListener(
-      _onScroll,
-    );
-    _scrollController.dispose();
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
 
     super.dispose();
   }
@@ -148,10 +148,13 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
 
 /// Sample demonstrating `BaseElementWidget`.
 class BaseElementWidget extends StatelessWidget {
+  /// Creates a [BaseElementWidget].
   const BaseElementWidget({
-    required this.child, super.key,
+    required this.child,
+    super.key,
   });
 
+  /// The [child].
   final Widget child;
 
   @override

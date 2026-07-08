@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,83 +22,89 @@ class ShowDialogSample extends StatefulWidget {
 
 class _ShowDialogSampleState extends State<ShowDialogSample> {
   void _showDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Dialog(
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: 20,
-              bottom: 16,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  'Custom Dialog',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w400,
+    unawaited(
+      showDialog<void>(
+        context: context,
+        builder: (context) {
+          return const Dialog(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 20,
+                bottom: 16,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    'Custom Dialog',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'A fully customizable dialog layout.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+                  SizedBox(height: 20),
+                  Text(
+                    'A fully customizable dialog layout.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
   void _showSimpleDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const SimpleDialog(
-          title: Text(
-            'Simple Dialog',
-            textAlign: TextAlign.center,
-          ),
-          children: <Widget>[
-            SizedBox(height: 12),
-            Text(
-              'A basic dialog for quick messages.',
+    unawaited(
+      showDialog<void>(
+        context: context,
+        builder: (context) {
+          return const SimpleDialog(
+            title: Text(
+              'Simple Dialog',
               textAlign: TextAlign.center,
             ),
-          ],
-        );
-      },
+            children: <Widget>[
+              SizedBox(height: 12),
+              Text(
+                'A basic dialog for quick messages.',
+                textAlign: TextAlign.center,
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 
   void _showAlertDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          title: Text(
-            'Alert',
-            textAlign: TextAlign.center,
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              SizedBox(height: 12),
-              Text(
-                'An alert dialog with details.',
-              ),
-            ],
-          ),
-        );
-      },
+    unawaited(
+      showDialog<void>(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text(
+              'Alert',
+              textAlign: TextAlign.center,
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(height: 12),
+                Text(
+                  'An alert dialog with details.',
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 

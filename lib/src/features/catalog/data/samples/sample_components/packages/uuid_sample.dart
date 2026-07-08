@@ -7,7 +7,10 @@ class _UuidVersionModel {
     required this.generator,
   });
 
+  /// The [version].
   final int version;
+
+  /// The [generator].
   final String Function() generator;
 }
 

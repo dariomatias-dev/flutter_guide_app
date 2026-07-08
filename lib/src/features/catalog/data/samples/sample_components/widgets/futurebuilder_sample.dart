@@ -20,7 +20,7 @@ class FutureBuilderSample extends StatefulWidget {
 
 class _FutureBuilderSampleState extends State<FutureBuilderSample> {
   Future<int> _getItemCount() async {
-    return Future.delayed(
+    return Future<int>.delayed(
       const Duration(
         seconds: 3,
       ),

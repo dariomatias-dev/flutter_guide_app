@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 
@@ -54,7 +56,7 @@ class _NetworkInfoPlusSampleState extends State<NetworkInfoPlusSample> {
 
   @override
   void initState() {
-    _fetchData();
+    unawaited(_fetchData());
 
     super.initState();
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -21,12 +23,14 @@ class PhotoViewSample extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const _PhotoViewScreen();
-                },
+            unawaited(
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const _PhotoViewScreen();
+                  },
+                ),
               ),
             );
           },

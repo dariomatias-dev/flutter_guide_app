@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -21,12 +23,14 @@ class LoginScreenSample extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const LoginScreen();
-                },
+            unawaited(
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const LoginScreen();
+                  },
+                ),
               ),
             );
           },
@@ -103,11 +107,17 @@ class LoginScreen extends StatelessWidget {
 
 /// Sample demonstrating `SocialButtonWidget`.
 class SocialButtonWidget extends StatelessWidget {
+  /// Creates a [SocialButtonWidget].
   const SocialButtonWidget({
-    required this.onTap, required this.icon, super.key,
+    required this.onTap,
+    required this.icon,
+    super.key,
   });
 
+  /// The [onTap].
   final VoidCallback onTap;
+
+  /// The [icon].
   final FaIconData icon;
 
   @override
@@ -242,6 +252,7 @@ class _FormWidgetState extends State<FormWidget> {
   }
 }
 
+/// Reusable form field validators for the login sample.
 class FormValidations {
   String? _validateField(String? value) {
     if (value == null || value.isEmpty) {
@@ -251,6 +262,7 @@ class FormValidations {
     return null;
   }
 
+  /// Validates the email field.
   String? validateEmailField(String? value) {
     final validField = _validateField(value);
     if (validField != null) return validField;
@@ -266,6 +278,7 @@ class FormValidations {
     return null;
   }
 
+  /// Validates the password field.
   String? validatePasswordField(String? value) {
     final validField = _validateField(value);
     if (validField != null) return validField;
@@ -299,6 +312,7 @@ class FormValidations {
     return null;
   }
 
+  /// Validates the confirm-password field.
   String? validateConfirmPasswordField(
     String? value,
     String password,
@@ -314,15 +328,21 @@ class FormValidations {
   }
 }
 
+/// Credentials collected by the login form.
 class LoginModel {
+  /// Creates a [LoginModel].
   const LoginModel({
     required this.email,
     required this.password,
   });
 
+  /// The [email].
   final String email;
+
+  /// The [password].
   final String password;
 
+  /// Serializes the credentials to a map.
   Map<String, dynamic> toMap() {
     return {
       'email': email,
@@ -333,14 +353,25 @@ class LoginModel {
 
 /// Sample demonstrating `TextFormFieldWidget`.
 class TextFormFieldWidget extends StatelessWidget {
+  /// Creates a [TextFormFieldWidget].
   const TextFormFieldWidget({
-    required this.controller, required this.fieldName, required this.validator, super.key,
+    required this.controller,
+    required this.fieldName,
+    required this.validator,
+    super.key,
     this.autofocus = false,
   });
 
+  /// The [controller].
   final TextEditingController controller;
+
+  /// The [fieldName].
   final String fieldName;
+
+  /// The [autofocus].
   final bool autofocus;
+
+  /// The [validator].
   final String? Function(
     String? value,
   ) validator;
@@ -383,13 +414,25 @@ class TextFormFieldWidget extends StatelessWidget {
 
 /// Sample demonstrating `ButtonWidget`.
 class ButtonWidget extends StatelessWidget {
+  /// Creates a [ButtonWidget].
   const ButtonWidget({
-    required this.onPressed, required this.text, required this.textColor, required this.backgroundColor, super.key,
+    required this.onPressed,
+    required this.text,
+    required this.textColor,
+    required this.backgroundColor,
+    super.key,
   });
 
+  /// The [onPressed].
   final VoidCallback onPressed;
+
+  /// The [text].
   final String text;
+
+  /// The [textColor].
   final Color textColor;
+
+  /// The [backgroundColor].
   final Color backgroundColor;
 
   @override

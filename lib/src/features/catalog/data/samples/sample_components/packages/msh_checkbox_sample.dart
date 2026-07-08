@@ -42,10 +42,13 @@ class MshCheckboxSample extends StatelessWidget {
 
 /// Sample demonstrating `MshCheckboxItemSample`.
 class MshCheckboxItemSample extends StatefulWidget {
+  /// Creates a [MshCheckboxItemSample].
   const MshCheckboxItemSample({
-    required this.style, super.key,
+    required this.style,
+    super.key,
   });
 
+  /// The [style].
   final MSHCheckboxStyle style;
 
   @override

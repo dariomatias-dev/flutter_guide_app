@@ -11,14 +11,16 @@ void main() {
   );
 }
 
+/// A product returned by the sample API.
 class Product {
-
+  /// Creates a [Product].
   Product({
     required this.id,
     required this.title,
     required this.description,
   });
 
+  /// Creates a [Product] from decoded JSON.
   factory Product.fromJson(
     Map<String, dynamic> json,
   ) {
@@ -28,8 +30,14 @@ class Product {
       description: json['description'] as String,
     );
   }
+
+  /// The [id].
   final int id;
+
+  /// The [title].
   final String title;
+
+  /// The [description].
   final String description;
 }
 
@@ -48,7 +56,7 @@ class _ScrollInfinitySampleState extends State<ScrollInfinitySample> {
 
   Future<List<Product>> _fetchProducts(int page) async {
     final skip = page * _limit;
-    final response = await _dio.get(
+    final response = await _dio.get<Map<String, dynamic>>(
       'https://dummyjson.com/products',
       queryParameters: {
         'limit': _limit,
@@ -56,7 +64,7 @@ class _ScrollInfinitySampleState extends State<ScrollInfinitySample> {
       },
     );
 
-    final data = response.data as Map<String, dynamic>;
+    final data = response.data!;
     final products = data['products'] as List;
 
     return products

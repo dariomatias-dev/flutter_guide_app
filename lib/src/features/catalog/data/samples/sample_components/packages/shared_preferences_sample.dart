@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -62,7 +64,7 @@ class _SharedPreferencesSampleState extends State<SharedPreferencesSample> {
 
   @override
   void didChangeDependencies() {
-    _initSharedPreferences();
+    unawaited(_initSharedPreferences());
 
     super.didChangeDependencies();
   }

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
+/// A named alignment option for the popup menu.
 class AlignmentModel {
+  /// Creates a [AlignmentModel].
   const AlignmentModel({
     required this.name,
     required this.value,
   });
 
+  /// The [name].
   final String name;
+
+  /// The [value].
   final Alignment value;
 }
 
+/// Alignment options shown in the sample.
 const alignments = <AlignmentModel>[
   AlignmentModel(
     name: 'Bottom Center',

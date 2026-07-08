@@ -77,9 +77,16 @@ class _FlutterSlidableTemplate extends StatelessWidget {
     this.endActions,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [motion].
   final Widget? motion;
+
+  /// The [startActions].
   final List<_SlidableActionTemplate>? startActions;
+
+  /// The [endActions].
   final List<_SlidableActionTemplate>? endActions;
 
   @override
@@ -125,7 +132,10 @@ class _SlidableActionTemplate extends StatelessWidget {
     required this.icon,
   });
 
+  /// The [backgroundColor].
   final Color backgroundColor;
+
+  /// The [icon].
   final IconData icon;
 
   @override

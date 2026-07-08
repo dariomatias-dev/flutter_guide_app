@@ -6,7 +6,10 @@ class _AlignmentModel {
     required this.alignment,
   });
 
+  /// The [name].
   final String name;
+
+  /// The [alignment].
   final Alignment alignment;
 }
 

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -24,9 +26,11 @@ class _GoogleMobileAdsSampleState extends State<GoogleMobileAdsSample> {
   void _navigateTo(
     Widget screen,
   ) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => screen,
+    unawaited(
+      Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(
+          builder: (context) => screen,
+        ),
       ),
     );
   }
@@ -116,14 +120,16 @@ class _BannerAdScreenState extends State<BannerAdScreen> {
           });
         },
         onAdFailedToLoad: (ad, error) {
-          ad.dispose();
+          unawaited(ad.dispose());
 
           debugPrint(
             'BannerAd failed to load: $error',
           );
         },
       ),
-    )..load();
+    );
+
+    unawaited(_bannerAd!.load());
   }
 
   @override
@@ -135,7 +141,7 @@ class _BannerAdScreenState extends State<BannerAdScreen> {
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
+    unawaited(_bannerAd?.dispose());
 
     super.dispose();
   }
@@ -181,8 +187,8 @@ class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
   InterstitialAd? _interstitialAd;
   bool _isInterstitialLoaded = false;
 
-  void _loadInterstitial() {
-    InterstitialAd.load(
+  Future<void> _loadInterstitial() {
+    return InterstitialAd.load(
       adUnitId: dotenv.env['INTERSTICIAL_AD_SAMPLE_ID']!,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
@@ -214,7 +220,7 @@ class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
 
     _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (ad) {
-        ad.dispose();
+        unawaited(ad.dispose());
 
         _interstitialAd = null;
         _isInterstitialLoaded = false;
@@ -222,7 +228,7 @@ class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
         Navigator.pop(context);
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
-        ad.dispose();
+        unawaited(ad.dispose());
 
         _interstitialAd = null;
         _isInterstitialLoaded = false;
@@ -235,19 +241,19 @@ class _InterstitialAdScreenState extends State<InterstitialAdScreen> {
       },
     );
 
-    _interstitialAd!.show();
+    unawaited(_interstitialAd!.show());
   }
 
   @override
   void initState() {
-    _loadInterstitial();
+    unawaited(_loadInterstitial());
 
     super.initState();
   }
 
   @override
   void dispose() {
-    _interstitialAd?.dispose();
+    unawaited(_interstitialAd?.dispose());
 
     super.dispose();
   }
@@ -285,8 +291,8 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
   RewardedAd? _rewardedAd;
   bool _isRewardedLoaded = false;
 
-  void _loadRewarded() {
-    RewardedAd.load(
+  Future<void> _loadRewarded() {
+    return RewardedAd.load(
       adUnitId: dotenv.env['REWARDED_AD_SAMPLE_ID']!,
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
@@ -320,7 +326,7 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
 
     _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (ad) {
-        ad.dispose();
+        unawaited(ad.dispose());
 
         _rewardedAd = null;
         _isRewardedLoaded = false;
@@ -328,7 +334,7 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
         Navigator.pop(context);
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
-        ad.dispose();
+        unawaited(ad.dispose());
 
         _rewardedAd = null;
         _isRewardedLoaded = false;
@@ -341,12 +347,14 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
       },
     );
 
-    _rewardedAd!.show(
-      onUserEarnedReward: (ad, reward) {
-        debugPrint(
-          'Usuário recebeu recompensa: ${reward.amount} ${reward.type}',
-        );
-      },
+    unawaited(
+      _rewardedAd!.show(
+        onUserEarnedReward: (ad, reward) {
+          debugPrint(
+            'Usuário recebeu recompensa: ${reward.amount} ${reward.type}',
+          );
+        },
+      ),
     );
   }
 
@@ -354,12 +362,12 @@ class _RewardedAdScreenState extends State<RewardedAdScreen> {
   void initState() {
     super.initState();
 
-    _loadRewarded();
+    unawaited(_loadRewarded());
   }
 
   @override
   void dispose() {
-    _rewardedAd?.dispose();
+    unawaited(_rewardedAd?.dispose());
 
     super.dispose();
   }
@@ -397,8 +405,8 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
   AppOpenAd? _appOpenAd;
   bool _isAdShowing = false;
 
-  void _loadAppOpenAd() {
-    AppOpenAd.load(
+  Future<void> _loadAppOpenAd() {
+    return AppOpenAd.load(
       adUnitId: dotenv.env['APP_OPEN_AD_SAMPLE_ID']!,
       request: const AdRequest(),
       adLoadCallback: AppOpenAdLoadCallback(
@@ -429,12 +437,12 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
 
     _appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (ad) {
-        ad.dispose();
+        unawaited(ad.dispose());
 
         _goBack();
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
-        ad.dispose();
+        unawaited(ad.dispose());
 
         debugPrint(
           'AppOpenAd failed to show: $error',
@@ -444,7 +452,7 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
       },
     );
 
-    _appOpenAd!.show();
+    unawaited(_appOpenAd!.show());
   }
 
   void _goBack() {
@@ -457,12 +465,12 @@ class _AppOpenAdScreenState extends State<AppOpenAdScreen> {
   void initState() {
     super.initState();
 
-    _loadAppOpenAd();
+    unawaited(_loadAppOpenAd());
   }
 
   @override
   void dispose() {
-    _appOpenAd?.dispose();
+    unawaited(_appOpenAd?.dispose());
 
     super.dispose();
   }

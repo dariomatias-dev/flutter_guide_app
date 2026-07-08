@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -21,8 +23,13 @@ class _UserModel {
     );
   }
 
+  /// The [firstName].
   final String firstName;
+
+  /// The [lastName].
   final String lastName;
+
+  /// The [email].
   final String email;
 }
 
@@ -66,7 +73,7 @@ class _HttpSampleState extends State<HttpSample> {
       }
 
       return users;
-    } catch (err, stackTrace) {
+    } on Object catch (err, stackTrace) {
       _logger.e(
         'Error Log',
         error: err,
@@ -79,7 +86,7 @@ class _HttpSampleState extends State<HttpSample> {
 
   @override
   void dispose() {
-    _logger.close();
+    unawaited(_logger.close());
 
     super.dispose();
   }

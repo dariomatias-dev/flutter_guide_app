@@ -17,9 +17,7 @@ class DecoratedBoxSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
+      body: SizedBox.expand(
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(

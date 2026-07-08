@@ -1,16 +1,21 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 /// Sample demonstrating `ItemsNotifier`.
 class ItemsNotifier extends ValueNotifier<List<Widget>> {
-  ItemsNotifier(super.value);
+  /// Creates an [ItemsNotifier].
+  ItemsNotifier() : super(<Widget>[]);
 
+  /// Appends [item] to the list.
   void add(Widget item) {
     value.add(item);
 
     notifyListeners();
   }
 
+  /// Appends all [items] to the list.
   void addAll(List<Widget> items) {
     value.addAll(items);
 
@@ -18,23 +23,35 @@ class ItemsNotifier extends ValueNotifier<List<Widget>> {
   }
 }
 
+/// Whether a message was sent or received.
 enum MessageStatus {
+  /// Sent by the user.
   sent,
+
+  /// Received from the other party.
   received,
 }
 
+/// A single chat message.
 class MessageModel {
+  /// Creates a [MessageModel].
   const MessageModel({
     required this.text,
     required this.status,
     required this.sentDate,
   });
 
+  /// The [text].
   final String text;
+
+  /// The [status].
   final MessageStatus status;
+
+  /// The [sentDate].
   final DateTime sentDate;
 }
 
+/// Seed chat messages.
 final messages = <MessageModel>[
   MessageModel(
     text: 'Hello!',
@@ -103,13 +120,15 @@ final messages = <MessageModel>[
   ),
   MessageModel(
     text:
-        "By the way, have you seen the new movie that was released last week? It's getting great reviews.",
+        'By the way, have you seen the new movie that was released last '
+        "week? It's getting great reviews.",
     status: MessageStatus.received,
     sentDate: DateTime(2024, 1, 5, 4, 7),
   ),
   MessageModel(
     text:
-        "No, I haven't had the chance yet. Maybe we can watch it after the hike.",
+        "No, I haven't had the chance yet. Maybe we can watch it after "
+        'the hike.',
     status: MessageStatus.sent,
     sentDate: DateTime(2024, 1, 6, 20, 37),
   ),
@@ -140,12 +159,14 @@ class ChatScreenSample extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const ChatScreen();
-                },
+            unawaited(
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const ChatScreen();
+                  },
+                ),
               ),
             );
           },
@@ -171,7 +192,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _scrollController = ScrollController();
   final _messageFocus = FocusNode();
   final _messageController = TextEditingController();
-  final _itemsNotifier = ItemsNotifier([]);
+  final _itemsNotifier = ItemsNotifier();
 
   double get _maxWidth => MediaQuery.of(context).size.width * 0.7;
 
@@ -326,10 +347,13 @@ class _ChatScreenState extends State<ChatScreen> {
 
 /// Sample demonstrating `DateSeparator`.
 class DateSeparator extends StatelessWidget {
+  /// Creates a [DateSeparator].
   const DateSeparator({
-    required this.date, super.key,
+    required this.date,
+    super.key,
   });
 
+  /// The [date].
   final DateTime date;
 
   @override
@@ -363,14 +387,24 @@ class DateSeparator extends StatelessWidget {
 
 /// Sample demonstrating `MessageWidget`.
 class MessageWidget extends StatelessWidget {
+  /// Creates a [MessageWidget].
   const MessageWidget({
-    required this.isMessageSent, required this.maxWidth, required this.message, super.key,
+    required this.isMessageSent,
+    required this.maxWidth,
+    required this.message,
+    super.key,
   });
 
+  /// The [isMessageSent].
   final bool isMessageSent;
+
+  /// The [maxWidth].
   final double maxWidth;
+
+  /// The [message].
   final MessageModel message;
 
+  /// The send time formatted as `HH:mm`.
   String get formattedTime {
     final dateFormat = DateFormat('HH:mm');
 
@@ -444,12 +478,21 @@ class MessageWidget extends StatelessWidget {
 
 /// Sample demonstrating `MessageInputField`.
 class MessageInputField extends StatelessWidget {
+  /// Creates a [MessageInputField].
   const MessageInputField({
-    required this.controller, required this.focusNode, required this.onSubmitted, super.key,
+    required this.controller,
+    required this.focusNode,
+    required this.onSubmitted,
+    super.key,
   });
 
+  /// The [controller].
   final TextEditingController controller;
+
+  /// The [focusNode].
   final FocusNode focusNode;
+
+  /// The [onSubmitted].
   final ValueChanged<String> onSubmitted;
 
   @override

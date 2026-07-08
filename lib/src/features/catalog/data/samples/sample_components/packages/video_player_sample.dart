@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -56,7 +58,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
 
   @override
   void initState() {
-    _initializeVideoPlayer();
+    unawaited(_initializeVideoPlayer());
 
     super.initState();
   }
@@ -64,7 +66,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
   @override
   void dispose() {
     _controller.removeListener(_setListeners);
-    _controller.dispose();
+    unawaited(_controller.dispose());
 
     super.dispose();
   }
@@ -98,13 +100,8 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                         heroTag: 'restoreButton',
                         onPressed: () {
                           setState(() {
-                            _controller.seekTo(
-                              const Duration(
-                                
-                              ),
-                            );
-
-                            _controller.pause();
+                            unawaited(_controller.seekTo(Duration.zero));
+                            unawaited(_controller.pause());
                           });
                         },
                         child: const Icon(
@@ -116,9 +113,11 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                         heroTag: 'playPauseButton',
                         onPressed: () {
                           setState(() {
-                            _controller.value.isPlaying
-                                ? _controller.pause()
-                                : _controller.play();
+                            unawaited(
+                              _controller.value.isPlaying
+                                  ? _controller.pause()
+                                  : _controller.play(),
+                            );
                           });
                         },
                         child: Icon(
@@ -132,8 +131,10 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                         heroTag: 'loopButton',
                         onPressed: () {
                           setState(() {
-                            _controller.setLooping(
-                              !_controller.value.isLooping,
+                            unawaited(
+                              _controller.setLooping(
+                                !_controller.value.isLooping,
+                              ),
                             );
                           });
                         },
@@ -148,7 +149,7 @@ class _VideoPlayerSampleState extends State<VideoPlayerSample> {
                     onPressed: () {
                       _isNetworkUrl = !_isNetworkUrl;
 
-                      _initializeVideoPlayer();
+                      unawaited(_initializeVideoPlayer());
                     },
                     child: Text(
                       _isNetworkUrl ? 'Asset Video' : 'Network Video',

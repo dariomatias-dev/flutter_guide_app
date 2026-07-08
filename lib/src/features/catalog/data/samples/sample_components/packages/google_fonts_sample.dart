@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 final _fonts = <TextStyle Function({double? fontSize, FontWeight? fontWeight})>[
   GoogleFonts.roboto,
   GoogleFonts.lato,

@@ -44,7 +44,7 @@ class _LoadingScreenSampleState extends State<LoadingScreenSample> {
       _overlayEntry!,
     );
 
-    await Future.delayed(
+    await Future<void>.delayed(
       const Duration(
         seconds: 3,
       ),

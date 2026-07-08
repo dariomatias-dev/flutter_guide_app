@@ -58,7 +58,7 @@ class _LoadingButtonSampleState extends State<LoadingButtonSample> {
   void _loading() {
     _updateIsLoading();
 
-    Future.delayed(
+    Future<void>.delayed(
       const Duration(
         seconds: 3,
       ),
@@ -67,7 +67,7 @@ class _LoadingButtonSampleState extends State<LoadingButtonSample> {
 
         _updateIsLoading();
 
-        Future.delayed(
+        Future<void>.delayed(
           const Duration(
             seconds: 2,
           ),

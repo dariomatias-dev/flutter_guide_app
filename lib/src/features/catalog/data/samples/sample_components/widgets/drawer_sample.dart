@@ -76,16 +76,18 @@ class DrawerSample extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Builder(builder: (context) {
-          return ElevatedButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            child: const Text(
-              'Open Drawer',
-            ),
-          );
-        },),
+        child: Builder(
+          builder: (context) {
+            return ElevatedButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: const Text(
+                'Open Drawer',
+              ),
+            );
+          },
+        ),
       ),
     );
   }

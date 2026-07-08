@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
+/// Code snippet shown in the highlighter sample.
 const sampleCode = r'''
 import 'package:flutter/material.dart';
 

@@ -29,7 +29,10 @@ class _IndicatorEffectModel {
     required this.effect,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [effect].
   final IndicatorEffect effect;
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Programming languages listed in the sample.
 const programmingLanguages = <String>[
   'Dart',
   'Python',
@@ -43,7 +44,7 @@ class _GapsSampleState extends State<GapsSample> {
             children: List.generate(
               programmingLanguages.length * 2 - 1,
               (index) {
-                if (index % 2 == 1) {
+                if (index.isOdd) {
                   return SizedBox(height: _gap);
                 }
 

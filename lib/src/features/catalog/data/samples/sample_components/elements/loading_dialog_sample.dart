@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,23 +26,25 @@ class _LoadingDialogSampleState extends State<LoadingDialogSample> {
   Future<void> _showLoading() async {
     _openDialog = true;
 
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      barrierColor: Colors.black.withAlpha(204),
-      builder: (context) {
-        return PopScope(
-          onPopInvokedWithResult: (didPop, result) {
-            _openDialog = false;
-          },
-          child: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
+    unawaited(
+      showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        barrierColor: Colors.black.withAlpha(204),
+        builder: (context) {
+          return PopScope(
+            onPopInvokedWithResult: (didPop, result) {
+              _openDialog = false;
+            },
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
+      ),
     );
 
-    await Future.delayed(
+    await Future<void>.delayed(
       const Duration(
         seconds: 3,
       ),

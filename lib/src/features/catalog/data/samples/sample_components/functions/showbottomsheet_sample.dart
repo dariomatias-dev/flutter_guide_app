@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -73,9 +75,11 @@ class _ShowBottomSheetSampleState extends State<ShowBottomSheetSample> {
       },
     );
 
-    _persistentBottomSheetController?.closed.then((value) {
-      _isOpen.value = !_isOpen.value;
-    });
+    unawaited(
+      _persistentBottomSheetController?.closed.then((value) {
+        _isOpen.value = !_isOpen.value;
+      }),
+    );
   }
 
   void _closeBottomSheet() {

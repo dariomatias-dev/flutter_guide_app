@@ -7,7 +7,10 @@ class _ToastificationTypeModel {
     required this.type,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [type].
   final ToastificationType type;
 }
 
@@ -36,7 +39,10 @@ class _ToastificationStyleModel {
     required this.style,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [style].
   final ToastificationStyle style;
 }
 

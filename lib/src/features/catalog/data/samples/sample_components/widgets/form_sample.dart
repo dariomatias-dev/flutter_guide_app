@@ -28,7 +28,9 @@ class _FormSampleState extends State<FormSample> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Form submitted!\nName: ${_nameController.text}\nEmail: ${_emailController.text}',
+            'Form submitted!\n'
+            'Name: ${_nameController.text}\n'
+            'Email: ${_emailController.text}',
           ),
         ),
       );

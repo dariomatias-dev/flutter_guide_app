@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -32,14 +34,13 @@ class _InfiniteScrollPaginationSampleState
   int _quantityOfItems = 0;
 
   Future<void> _fecthNumberOfItems() async {
-    await Future.delayed(
+    await Future<void>.delayed(
       const Duration(
         seconds: 3,
       ),
       () {
         final items = List.generate(_pageSize, (index) {
-          _quantityOfItems++;
-          return _quantityOfItems;
+          return ++_quantityOfItems;
         });
         _page++;
 
@@ -55,7 +56,7 @@ class _InfiniteScrollPaginationSampleState
   void _pageRequestListener(
     int pageKey,
   ) {
-    _fecthNumberOfItems();
+    unawaited(_fecthNumberOfItems());
   }
 
   @override
@@ -67,8 +68,9 @@ class _InfiniteScrollPaginationSampleState
 
   @override
   void dispose() {
-    _controller.removePageRequestListener(_pageRequestListener);
-    _controller.dispose();
+    _controller
+      ..removePageRequestListener(_pageRequestListener)
+      ..dispose();
     _isDisposed = true;
 
     super.dispose();

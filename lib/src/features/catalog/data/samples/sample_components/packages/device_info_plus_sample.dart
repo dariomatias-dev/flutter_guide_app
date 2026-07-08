@@ -15,7 +15,10 @@ class _DeviceModel {
     required this.device,
   });
 
+  /// The [name].
   final String name;
+
+  /// The [device].
   final _Device device;
 }
 
@@ -48,7 +51,10 @@ class _DeviceInfo {
     required this.name,
   });
 
+  /// The [id].
   final String id;
+
+  /// The [name].
   final String name;
 }
 
@@ -107,7 +113,7 @@ class _DeviceInfoPlusSampleState extends State<DeviceInfoPlusSample> {
         id: deviceId,
         name: deviceName,
       );
-    } catch (err) {
+    } on Object {
       return null;
     }
   }

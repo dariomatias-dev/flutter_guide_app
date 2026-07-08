@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:typed_data';
 
@@ -56,10 +57,13 @@ class _ImageLoaderSampleState extends State<ImageLoaderSample> {
 
 /// Sample demonstrating `ImageLoader`.
 class ImageLoader extends StatefulWidget {
+  /// Creates a [ImageLoader].
   const ImageLoader({
-    required this.url, super.key,
+    required this.url,
+    super.key,
   });
 
+  /// The [url].
   final String url;
 
   @override
@@ -77,11 +81,11 @@ class _ImageLoaderState extends State<ImageLoader> {
 
   Future<Uint8List> _loader() async {
     try {
-      final response = await _dio.get(
+      final response = await _dio.get<List<int>>(
         widget.url,
       );
 
-      await Future.delayed(
+      await Future<void>.delayed(
         const Duration(
           seconds: 1,
         ),
@@ -92,9 +96,9 @@ class _ImageLoaderState extends State<ImageLoader> {
       }
 
       return Uint8List.fromList(
-        response.data as List<int>,
+        response.data!,
       );
-    } catch (err, stackTrace) {
+    } on Object catch (err, stackTrace) {
       _logger.e(
         'Error Log',
         error: err,
@@ -108,7 +112,7 @@ class _ImageLoaderState extends State<ImageLoader> {
   @override
   void dispose() {
     _dio.close();
-    _logger.close();
+    unawaited(_logger.close());
 
     super.dispose();
   }

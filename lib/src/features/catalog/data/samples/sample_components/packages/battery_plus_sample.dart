@@ -25,15 +25,15 @@ class BatteryPlusSample extends StatefulWidget {
 class _BatteryPlusSampleState extends State<BatteryPlusSample> {
   final _logger = Logger();
 
-  int? _batteryLevel;
-  bool? _isInBatterySaveMode;
+  late int _batteryLevel;
+  late bool _isInBatterySaveMode;
   BatteryState? _batteryState;
 
   Future<void> _getBatteryInfos() async {
     try {
       _batteryLevel = await _battery.batteryLevel;
       _isInBatterySaveMode = await _battery.isInBatterySaveMode;
-    } catch (err, stackTrace) {
+    } on Object catch (err, stackTrace) {
       _logger.e(
         'Error Log',
         error: err,
@@ -86,14 +86,15 @@ class _BatteryPlusSampleState extends State<BatteryPlusSample> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Battery Level: ${_batteryLevel!}%',
+                    'Battery Level: $_batteryLevel%',
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   Text(
-                    'Device in battery saving mode: ${_isInBatterySaveMode! ? 'Yes' : 'No'}.',
+                    'Device in battery saving mode: '
+                    '${_isInBatterySaveMode ? 'Yes' : 'No'}.',
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,

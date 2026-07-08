@@ -74,9 +74,16 @@ class _CupertinoSliderTemplate extends StatefulWidget {
     this.divisions,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [min].
   final double min;
+
+  /// The [max].
   final double max;
+
+  /// The [divisions].
   final int? divisions;
 
   @override

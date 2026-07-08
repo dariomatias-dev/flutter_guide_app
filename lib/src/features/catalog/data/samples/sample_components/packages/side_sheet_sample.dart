@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:side_sheet/side_sheet.dart';
 
@@ -28,21 +30,23 @@ class _SideSheetSampleState extends State<SideSheetSample> {
   void _openSideSheet(
     _Direction direction,
   ) {
-    direction == _Direction.left
-        ? SideSheet.left(
-            context: context,
-            sheetColor: Theme.of(context).scaffoldBackgroundColor,
-            body: const Center(
-              child: Text('Content'),
+    unawaited(
+      direction == _Direction.left
+          ? SideSheet.left(
+              context: context,
+              sheetColor: Theme.of(context).scaffoldBackgroundColor,
+              body: const Center(
+                child: Text('Content'),
+              ),
+            )
+          : SideSheet.right(
+              context: context,
+              sheetColor: Theme.of(context).scaffoldBackgroundColor,
+              body: const Center(
+                child: Text('Content'),
+              ),
             ),
-          )
-        : SideSheet.right(
-            context: context,
-            sheetColor: Theme.of(context).scaffoldBackgroundColor,
-            body: const Center(
-              child: Text('Content'),
-            ),
-          );
+    );
   }
 
   @override

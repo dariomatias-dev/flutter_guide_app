@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,12 +36,14 @@ class _SafeAreaSampleState extends State<SafeAreaSample> {
   void _navigateTo(
     Widget screen,
   ) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return screen;
-        },
+    unawaited(
+      Navigator.push<void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) {
+            return screen;
+          },
+        ),
       ),
     );
   }

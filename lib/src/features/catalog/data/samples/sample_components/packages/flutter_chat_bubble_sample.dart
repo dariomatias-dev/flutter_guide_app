@@ -31,7 +31,9 @@ class FlutterChatBubbleSample extends StatelessWidget {
                   type: BubbleType.sendBubble,
                 ),
                 child: const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing '
+                  'elit, sed do eiusmod tempor incididunt ut labore et '
+                  'dolore magna aliqua.',
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -44,7 +46,8 @@ class FlutterChatBubbleSample extends StatelessWidget {
                 ),
                 backGroundColor: Colors.grey.shade300,
                 child: const Text(
-                  'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                  'Duis aute irure dolor in reprehenderit in voluptate velit '
+                  'esse cillum dolore eu fugiat nulla pariatur.',
                   style: TextStyle(
                     color: Colors.black,
                   ),

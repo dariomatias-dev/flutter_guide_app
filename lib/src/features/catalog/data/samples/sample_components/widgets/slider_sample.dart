@@ -67,16 +67,25 @@ class SliderSample extends StatelessWidget {
 
 /// Sample demonstrating `SliderTemplate`.
 class SliderTemplate extends StatefulWidget {
+  /// Creates a [SliderTemplate].
   const SliderTemplate({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [min].
   final double min;
+
+  /// The [max].
   final double max;
+
+  /// The [divisions].
   final int? divisions;
 
   @override

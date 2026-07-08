@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,24 +34,26 @@ class _UrlLauncherSampleState extends State<UrlLauncherSample> {
         _urlController.text.trim() == '' ? _standardUrl : _urlController.text;
 
     if (!_url.startsWith('https://') || !await launchUrl(Uri.parse(_url))) {
-      showDialog(
-        context: _getContext(),
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Error'),
-            content: Text(
-              'Unable to open the link: $_url',
-            ),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Ok'),
+      unawaited(
+        showDialog<void>(
+          context: _getContext(),
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Error'),
+              content: Text(
+                'Unable to open the link: $_url',
               ),
-            ],
-          );
-        },
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Ok'),
+                ),
+              ],
+            );
+          },
+        ),
       );
     }
   }

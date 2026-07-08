@@ -62,16 +62,25 @@ class RangeSliderSample extends StatelessWidget {
 
 /// Sample demonstrating `RangeSliderTemplate`.
 class RangeSliderTemplate extends StatefulWidget {
+  /// Creates a [RangeSliderTemplate].
   const RangeSliderTemplate({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [min].
   final double min;
+
+  /// The [max].
   final double max;
+
+  /// The [divisions].
   final int? divisions;
 
   @override
@@ -112,7 +121,9 @@ class _RangeSliderTemplateState extends State<RangeSliderTemplate> {
           ),
         ),
         Text(
-          '${_showFloatingPoint ? _values.start : _values.start.floor()} - ${_showFloatingPoint ? _values.end : _values.end.floor()}',
+          '${_showFloatingPoint ? _values.start : _values.start.floor()}'
+          ' - '
+          '${_showFloatingPoint ? _values.end : _values.end.floor()}',
         ),
         RangeSlider(
           values: _values,

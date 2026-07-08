@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -19,8 +21,13 @@ class _UserModel {
     );
   }
 
+  /// The [firstName].
   final String firstName;
+
+  /// The [lastName].
   final String lastName;
+
+  /// The [email].
   final String email;
 }
 
@@ -50,7 +57,7 @@ class _DioSampleState extends State<DioSample> {
 
   Future<List<_UserModel>?> _getUsers() async {
     try {
-      final response = await _dio.get(_url);
+      final response = await _dio.get<dynamic>(_url);
 
       final results = response.data as List;
 
@@ -62,7 +69,7 @@ class _DioSampleState extends State<DioSample> {
       }
 
       return users;
-    } catch (err, stackTrace) {
+    } on Object catch (err, stackTrace) {
       _logger.e(
         'Error Log',
         error: err,
@@ -76,7 +83,7 @@ class _DioSampleState extends State<DioSample> {
   @override
   void dispose() {
     _dio.close();
-    _logger.close();
+    unawaited(_logger.close());
 
     super.dispose();
   }

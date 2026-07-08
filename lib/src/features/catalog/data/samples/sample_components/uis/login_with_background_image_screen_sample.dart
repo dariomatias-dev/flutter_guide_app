@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -22,12 +23,14 @@ class LoginWithBackgroundImageScreenSample extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const LoginWitBackgroundScreen();
-                },
+            unawaited(
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const LoginWitBackgroundScreen();
+                  },
+                ),
               ),
             );
           },
@@ -154,13 +157,21 @@ class LoginWitBackgroundScreen extends StatelessWidget {
 
 /// Sample demonstrating `TextFormFieldWidget`.
 class TextFormFieldWidget extends StatelessWidget {
+  /// Creates a [TextFormFieldWidget].
   const TextFormFieldWidget({
-    required this.fieldName, required this.prefixIcon, super.key,
+    required this.fieldName,
+    required this.prefixIcon,
+    super.key,
     this.autofocus = false,
   });
 
+  /// The [fieldName].
   final String fieldName;
+
+  /// The [autofocus].
   final bool autofocus;
+
+  /// The [prefixIcon].
   final IconData prefixIcon;
 
   @override

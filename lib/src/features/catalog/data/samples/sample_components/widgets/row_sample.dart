@@ -21,7 +21,10 @@ class _MainAxisAlignmentModel {
     required this.mainAxisAlignment,
   });
 
+  /// The [name].
   final String name;
+
+  /// The [mainAxisAlignment].
   final MainAxisAlignment mainAxisAlignment;
 }
 
@@ -52,7 +55,8 @@ const _mainAxisAlignments = <_MainAxisAlignmentModel>[
   ),
 ];
 
-final List<DropdownMenuItem<MainAxisAlignment>> _mainAxisAlignmentItems = List.generate(
+final List<DropdownMenuItem<MainAxisAlignment>> _mainAxisAlignmentItems =
+    List.generate(
   _mainAxisAlignments.length,
   (index) {
     final mainAxisAlignment = _mainAxisAlignments[index];
@@ -73,7 +77,10 @@ class _MainAxisSizeModel {
     required this.mainAxisSize,
   });
 
+  /// The [name].
   final String name;
+
+  /// The [mainAxisSize].
   final MainAxisSize mainAxisSize;
 }
 

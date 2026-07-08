@@ -1,15 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'package:validatorless/validatorless.dart';
 
+/// Swipe direction over an email row.
 enum Direction {
+  /// Swiped to the left.
   left,
+
+  /// Swiped to the right.
   right,
 }
 
+/// Generator of unique email ids.
 const uuid = Uuid();
 
+/// A single email in the sample inbox.
 class EmailModel {
+  /// Creates an [EmailModel].
   EmailModel({
     required this.id,
     required this.sender,
@@ -20,27 +29,43 @@ class EmailModel {
     required this.withStar,
   });
 
+  /// Unique identifier.
   final String id;
+
+  /// Sender name.
   final String sender;
+
+  /// Recipient address.
   final String to;
+
+  /// Email subject.
   final String subject;
+
+  /// Email body text.
   final String body;
+
+  /// When the email was sent.
   final DateTime date;
+
+  /// Whether the email is starred.
   bool withStar;
 
+  /// Toggles the starred state.
   void toggleWithStar() {
     withStar = !withStar;
   }
 }
 
+/// Seed emails shown in the sample inbox.
 final emails = <EmailModel>[
   EmailModel(
     id: uuid.v4(),
     sender: 'Rika',
     to: 'team@townplanning.com',
     subject: 'Plans for re-opening the town',
-    body:
-        'Hello team, We need to discuss the plans for re-opening the town. Please find attached the agenda for our upcoming meeting. Regards, Rika',
+    body: 'Hello team, We need to discuss the plans for re-opening the town. '
+        'Please find attached the agenda for our upcoming meeting. Regards, '
+        'Rika',
     date: DateTime(2024, 06),
     withStar: false,
   ),
@@ -50,7 +75,9 @@ final emails = <EmailModel>[
     to: 'staff@eventmanagement.com',
     subject: 'Updates on upcoming event',
     body:
-        'Hi everyone, Just a quick update on the event. We have confirmed the venue and finalized the guest list. More details to follow soon. Best, Julius',
+        'Hi everyone, Just a quick update on the event. We have confirmed the '
+        'venue and finalized the guest list. More details to follow soon. '
+        'Best, Julius',
     date: DateTime(2024, 5, 07),
     withStar: true,
   ),
@@ -59,8 +86,8 @@ final emails = <EmailModel>[
     sender: 'Fred',
     to: 'team@corporate.com',
     subject: 'Meeting agenda for next week',
-    body:
-        'Dear team, Please find attached the agenda for our meeting next week. Kindly review it beforehand. Regards, Fred',
+    body: 'Dear team, Please find attached the agenda for our meeting next '
+        'week. Kindly review it beforehand. Regards, Fred',
     date: DateTime(2024, 3, 24),
     withStar: false,
   ),
@@ -70,7 +97,8 @@ final emails = <EmailModel>[
     to: 'reports@salesdepartment.com',
     subject: 'Request for information',
     body:
-        'Hello, I hope this email finds you well. Could you please provide me with the latest sales report? Thanks, Rein',
+        'Hello, I hope this email finds you well. Could you please provide me '
+        'with the latest sales report? Thanks, Rein',
     date: DateTime(2024, 3, 12),
     withStar: false,
   ),
@@ -79,8 +107,9 @@ final emails = <EmailModel>[
     sender: 'Toren',
     to: 'submissions@projectmanagement.com',
     subject: 'Reminder: Deadline approaching',
-    body:
-        'Hi there, Just a friendly reminder that the deadline for project submissions is approaching. Make sure to submit your work on time. Regards, Toren',
+    body: 'Hi there, Just a friendly reminder that the deadline for project '
+        'submissions is approaching. Make sure to submit your work on time. '
+        'Regards, Toren',
     date: DateTime(2024, 2, 19),
     withStar: true,
   ),
@@ -106,12 +135,14 @@ class EmailsAppSample extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const EmailsScreen();
-                },
+            unawaited(
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const EmailsScreen();
+                  },
+                ),
               ),
             );
           },
@@ -124,8 +155,10 @@ class EmailsAppSample extends StatelessWidget {
 
 /// Sample demonstrating `EmailsNotifier`.
 class EmailsNotifier extends ValueNotifier<List<EmailModel>> {
-  EmailsNotifier(super.value);
+  /// Creates an [EmailsNotifier].
+  EmailsNotifier() : super(<EmailModel>[]);
 
+  /// Prepends [email] to the list.
   void addEmail(
     EmailModel email,
   ) {
@@ -134,6 +167,7 @@ class EmailsNotifier extends ValueNotifier<List<EmailModel>> {
     notifyListeners();
   }
 
+  /// Replaces the list with [emails].
   void setEmails(
     List<EmailModel> emails,
   ) {
@@ -142,13 +176,18 @@ class EmailsNotifier extends ValueNotifier<List<EmailModel>> {
     notifyListeners();
   }
 
+  /// Notifies listeners after an in-place email change.
   void updateEmail() {
     notifyListeners();
   }
 }
 
+/// Which inbox view is shown.
 enum Screen {
+  /// All emails.
   main,
+
+  /// Starred emails only.
   withStar,
 }
 
@@ -162,7 +201,7 @@ class EmailsScreen extends StatefulWidget {
 }
 
 class _EmailsScreenState extends State<EmailsScreen> {
-  final _emailsNotifier = EmailsNotifier([]);
+  final _emailsNotifier = EmailsNotifier();
 
   Screen screen = Screen.main;
 
@@ -221,14 +260,14 @@ class _EmailsScreenState extends State<EmailsScreen> {
       return;
     }
 
-    query = query.trim().toLowerCase();
+    final normalizedQuery = query.trim().toLowerCase();
 
     final results = <EmailModel>[];
 
     for (final email in _screenEmails) {
-      if (email.sender.toLowerCase().contains(query) ||
-          email.subject.toLowerCase().contains(query) ||
-          email.body.toLowerCase().contains(query)) {
+      if (email.sender.toLowerCase().contains(normalizedQuery) ||
+          email.subject.toLowerCase().contains(normalizedQuery) ||
+          email.body.toLowerCase().contains(normalizedQuery)) {
         results.add(email);
       }
     }
@@ -303,12 +342,22 @@ class _EmailsScreenState extends State<EmailsScreen> {
 
 /// Sample demonstrating `EmailsScreenDrawerWidget`.
 class EmailsScreenDrawerWidget extends StatelessWidget {
+  /// Creates an [EmailsScreenDrawerWidget].
   const EmailsScreenDrawerWidget({
-    required this.showEmails, required this.showStarredEmails, required this.setScreenEmails, super.key,
+    required this.showEmails,
+    required this.showStarredEmails,
+    required this.setScreenEmails,
+    super.key,
   });
 
+  /// Shows all emails.
   final VoidCallback showEmails;
+
+  /// Shows starred emails only.
   final VoidCallback showStarredEmails;
+
+  /// Replaces the current screen emails.
+  /// The [setScreenEmails].
   final void Function(
     List<EmailModel> value,
   ) setScreenEmails;
@@ -419,13 +468,21 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
   }
 }
 
+/// Sample demonstrating `EmailsScreenAppBarWidget`.
 class EmailsScreenAppBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
+  /// Creates an [EmailsScreenAppBarWidget].
   const EmailsScreenAppBarWidget({
-    required this.isLigth, required this.searchEmails, super.key,
+    required this.isLigth,
+    required this.searchEmails,
+    super.key,
   });
 
+  /// Whether the current theme is light.
   final bool isLigth;
+
+  /// Called with the search query.
+  /// The [searchEmails].
   final void Function(
     String query,
   ) searchEmails;
@@ -489,12 +546,21 @@ class _EmailsScreenAppBarWidgetState extends State<EmailsScreenAppBarWidget> {
 
 /// Sample demonstrating `ComposeEmailFloatingActionButtonWidget`.
 class ComposeEmailFloatingActionButtonWidget extends StatefulWidget {
+  /// Creates a [ComposeEmailFloatingActionButtonWidget].
   const ComposeEmailFloatingActionButtonWidget({
-    required this.isLigth, required this.emailsNotifier, required this.showEmails, super.key,
+    required this.isLigth,
+    required this.emailsNotifier,
+    required this.showEmails,
+    super.key,
   });
 
+  /// The [isLigth].
   final bool isLigth;
+
+  /// The [emailsNotifier].
   final EmailsNotifier emailsNotifier;
+
+  /// The [showEmails].
   final VoidCallback showEmails;
 
   @override
@@ -530,18 +596,20 @@ class _ComposeEmailFloatingActionButtonWidgetState
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () {
-        showDialog(
-          context: context,
-          useSafeArea: false,
-          builder: (context) {
-            return CreateEmailWidget(
-              titleFieldTextStyle: _defaultTitleFieldTextStyle,
-              inputDecoration: _defaultInputDecoration,
-              padding: _defaultPadding,
-              emailsNotifier: widget.emailsNotifier,
-              showEmails: widget.showEmails,
-            );
-          },
+        unawaited(
+          showDialog<void>(
+            context: context,
+            useSafeArea: false,
+            builder: (context) {
+              return CreateEmailWidget(
+                titleFieldTextStyle: _defaultTitleFieldTextStyle,
+                inputDecoration: _defaultInputDecoration,
+                padding: _defaultPadding,
+                emailsNotifier: widget.emailsNotifier,
+                showEmails: widget.showEmails,
+              );
+            },
+          ),
         );
       },
       backgroundColor: Theme.of(context).colorScheme.onSurface,
@@ -562,16 +630,31 @@ class _ComposeEmailFloatingActionButtonWidgetState
 
 /// Sample demonstrating `CreateEmailWidget`.
 class CreateEmailWidget extends StatefulWidget {
+  /// Creates a [CreateEmailWidget].
   const CreateEmailWidget({
-    required this.titleFieldTextStyle, required this.inputDecoration, required this.padding, required this.emailsNotifier, required this.showEmails, super.key,
+    required this.titleFieldTextStyle,
+    required this.inputDecoration,
+    required this.padding,
+    required this.emailsNotifier,
+    required this.showEmails,
+    super.key,
   });
 
+  /// The [titleFieldTextStyle].
   final TextStyle titleFieldTextStyle;
+
+  /// The [inputDecoration].
   final InputDecoration Function({
     String? hinText,
   }) inputDecoration;
+
+  /// The [padding].
   final EdgeInsets padding;
+
+  /// The [emailsNotifier].
   final EmailsNotifier emailsNotifier;
+
+  /// The [showEmails].
   final VoidCallback showEmails;
 
   @override
@@ -755,16 +838,33 @@ class _CreateEmailWidgetState extends State<CreateEmailWidget> {
 
 /// Sample demonstrating `CreateEmailTextFieldWidget`.
 class CreateEmailTextFieldWidget extends StatelessWidget {
+  /// Creates a [CreateEmailTextFieldWidget].
   const CreateEmailTextFieldWidget({
-    required this.controller, required this.titleFieldTextStyle, required this.inputDecoration, required this.text, required this.validator, super.key,
+    required this.controller,
+    required this.titleFieldTextStyle,
+    required this.inputDecoration,
+    required this.text,
+    required this.validator,
+    super.key,
     this.autoFocus = false,
   });
 
+  /// The [controller].
   final TextEditingController controller;
+
+  /// The [autoFocus].
   final bool autoFocus;
+
+  /// The [titleFieldTextStyle].
   final TextStyle titleFieldTextStyle;
+
+  /// The [inputDecoration].
   final InputDecoration inputDecoration;
+
+  /// The [text].
   final String text;
+
+  /// The [validator].
   final String? Function(
     String? value,
   )? validator;
@@ -812,6 +912,7 @@ class CreateEmailDividirWidget extends StatelessWidget {
   }
 }
 
+/// Abbreviated month names.
 final months = <String>[
   'Jan',
   'Feb',
@@ -829,15 +930,27 @@ final months = <String>[
 
 /// Sample demonstrating `EmailWidget`.
 class EmailWidget extends StatefulWidget {
+  /// Creates a [EmailWidget].
   const EmailWidget({
-    required this.email, required this.removeEmail, required this.updateScreen, required this.emailsNotifier, super.key,
+    required this.email,
+    required this.removeEmail,
+    required this.updateScreen,
+    required this.emailsNotifier,
+    super.key,
   });
 
+  /// The [email].
   final EmailModel email;
+
+  /// The [removeEmail].
   final void Function(
     String emailId,
   ) removeEmail;
+
+  /// The [updateScreen].
   final VoidCallback updateScreen;
+
+  /// The [emailsNotifier].
   final EmailsNotifier emailsNotifier;
 
   @override
@@ -848,29 +961,33 @@ class _EmailWidgetState extends State<EmailWidget> {
   late String date;
 
   void _navigateToEmailScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return EmailScreen(
-            email: widget.email,
-            emailsNotifier: widget.emailsNotifier,
-            removeEmail: widget.removeEmail,
-          );
-        },
+    unawaited(
+      Navigator.push<void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) {
+            return EmailScreen(
+              email: widget.email,
+              emailsNotifier: widget.emailsNotifier,
+              removeEmail: widget.removeEmail,
+            );
+          },
+        ),
       ),
     );
   }
 
   void _showModalBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return ModalBottomSheetWidget(
-          emailId: widget.email.id,
-          removeEmail: widget.removeEmail,
-        );
-      },
+    unawaited(
+      showModalBottomSheet<void>(
+        context: context,
+        builder: (context) {
+          return ModalBottomSheetWidget(
+            emailId: widget.email.id,
+            removeEmail: widget.removeEmail,
+          );
+        },
+      ),
     );
   }
 
@@ -985,11 +1102,17 @@ class _EmailWidgetState extends State<EmailWidget> {
 
 /// Sample demonstrating `SaveEmailButtonWidget`.
 class SaveEmailButtonWidget extends StatefulWidget {
+  /// Creates a [SaveEmailButtonWidget].
   const SaveEmailButtonWidget({
-    required this.email, required this.updateScreen, super.key,
+    required this.email,
+    required this.updateScreen,
+    super.key,
   });
 
+  /// The [email].
   final EmailModel email;
+
+  /// The [updateScreen].
   final VoidCallback updateScreen;
 
   @override
@@ -1041,11 +1164,17 @@ class _SaveEmailButtonWidgetState extends State<SaveEmailButtonWidget> {
 
 /// Sample demonstrating `ModalBottomSheetWidget`.
 class ModalBottomSheetWidget extends StatefulWidget {
+  /// Creates a [ModalBottomSheetWidget].
   const ModalBottomSheetWidget({
-    required this.emailId, required this.removeEmail, super.key,
+    required this.emailId,
+    required this.removeEmail,
+    super.key,
   });
 
+  /// The [emailId].
   final String emailId;
+
+  /// The [removeEmail].
   final void Function(
     String emailId,
   ) removeEmail;
@@ -1127,12 +1256,21 @@ class _ModalBottomSheetWidgetState extends State<ModalBottomSheetWidget> {
 
 /// Sample demonstrating `ModalBottomSheetWidgetActionWidget`.
 class ModalBottomSheetWidgetActionWidget extends StatelessWidget {
+  /// Creates a [ModalBottomSheetWidgetActionWidget].
   const ModalBottomSheetWidgetActionWidget({
-    required this.icon, required this.text, required this.action, super.key,
+    required this.icon,
+    required this.text,
+    required this.action,
+    super.key,
   });
 
+  /// The [icon].
   final IconData icon;
+
+  /// The [text].
   final String text;
+
+  /// The [action].
   final VoidCallback action;
 
   @override
@@ -1172,12 +1310,21 @@ class ModalBottomSheetWidgetActionWidget extends StatelessWidget {
 
 /// Sample demonstrating `EmailScreen`.
 class EmailScreen extends StatefulWidget {
+  /// Creates a [EmailScreen].
   const EmailScreen({
-    required this.email, required this.emailsNotifier, required this.removeEmail, super.key,
+    required this.email,
+    required this.emailsNotifier,
+    required this.removeEmail,
+    super.key,
   });
 
+  /// The [email].
   final EmailModel email;
+
+  /// The [emailsNotifier].
   final EmailsNotifier emailsNotifier;
+
+  /// The [removeEmail].
   final void Function(
     String emailId,
   ) removeEmail;
@@ -1304,11 +1451,17 @@ class _EmailScreenState extends State<EmailScreen> {
 
 /// Sample demonstrating `EmailScreenActionWidget`.
 class EmailScreenActionWidget extends StatelessWidget {
+  /// Creates a [EmailScreenActionWidget].
   const EmailScreenActionWidget({
-    required this.icon, required this.title, super.key,
+    required this.icon,
+    required this.title,
+    super.key,
   });
 
+  /// The [icon].
   final IconData icon;
+
+  /// The [title].
   final String title;
 
   @override

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,11 +41,17 @@ class SingleChildScrollViewSample extends StatelessWidget {
 
 /// Sample demonstrating `CustomElevatedButton`.
 class CustomElevatedButton extends StatelessWidget {
+  /// Creates a [CustomElevatedButton].
   const CustomElevatedButton({
-    required this.title, required this.screenToNavigate, super.key,
+    required this.title,
+    required this.screenToNavigate,
+    super.key,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [screenToNavigate].
   final Widget screenToNavigate;
 
   @override
@@ -52,12 +60,14 @@ class CustomElevatedButton extends StatelessWidget {
       height: 36,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return screenToNavigate;
-              },
+          unawaited(
+            Navigator.push<void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) {
+                  return screenToNavigate;
+                },
+              ),
             ),
           );
         },
@@ -108,10 +118,13 @@ class SingleChildScrollViewWithoutIndicator extends StatelessWidget {
 
 /// Sample demonstrating `SingleChildScrollViewTemplate`.
 class SingleChildScrollViewTemplate extends StatelessWidget {
+  /// Creates a [SingleChildScrollViewTemplate].
   const SingleChildScrollViewTemplate({
-    required this.builder, super.key,
+    required this.builder,
+    super.key,
   });
 
+  /// The [builder].
   final Widget Function(Widget child) builder;
 
   @override

@@ -8,8 +8,13 @@ class _AwesomeSnackBarModel {
     required this.contentType,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [description].
   final String description;
+
+  /// The [contentType].
   final ContentType contentType;
 }
 
@@ -44,8 +49,13 @@ class _AwesomeMaterialBannerModel {
     required this.contentType,
   });
 
+  /// The [title].
   final String title;
+
+  /// The [description].
   final String description;
+
+  /// The [contentType].
   final ContentType contentType;
 }
 

@@ -36,7 +36,7 @@ class _SharePlusSampleState extends State<SharePlusSample> {
           error: result.raw,
         );
       }
-    } catch (err, stackTrace) {
+    } on Object catch (err, stackTrace) {
       _logger.e(
         'Error Log',
         error: err,
