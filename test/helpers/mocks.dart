@@ -3,6 +3,8 @@ import 'package:flutter_guide/src/features/catalog/data/datasources/components_l
 import 'package:flutter_guide/src/features/catalog/data/datasources/favorites_local_datasource.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/components_repository.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/favorites_repository.dart';
+import 'package:flutter_guide/src/features/code_theme_selector/domain/repositories/code_theme_repository.dart';
+import 'package:flutter_guide/src/features/settings/domain/repositories/language_repository.dart';
 import 'package:mocktail/mocktail.dart';
 
 /// Mock of [SharedPreferencesService].
@@ -22,3 +24,9 @@ class MockComponentsRepository extends Mock implements ComponentsRepository {}
 /// Mock of [ComponentsLocalDatasource].
 class MockComponentsLocalDatasource extends Mock
     implements ComponentsLocalDatasource {}
+
+/// Mock of [LanguageRepository].
+class MockLanguageRepository extends Mock implements LanguageRepository {}
+
+/// Mock of [CodeThemeRepository].
+class MockCodeThemeRepository extends Mock implements CodeThemeRepository {}
