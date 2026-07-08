@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
-import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-import 'package:flutter_guide/src/core/models/component_infos_model.dart';
+import 'package:flutter_guide/src/core/helpers/deep_link_target.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
 import 'package:flutter_guide/src/core/router/route_names.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
@@ -50,51 +49,29 @@ class DeepLinkHandler {
 
   /// Handles the deep link [uri], navigating or showing an error.
   void handle(Uri uri) {
-    if (uri.pathSegments.length < 2) {
-      _showSnackBarMessage(
-        AppLocalizations.of(_context)!.invalidLink,
-      );
-
-      return;
-    }
-
-    final type = uri.pathSegments[0];
-    final componentName = uri.pathSegments[1];
-
-    switch (type) {
-      case 'elements':
-        _openInterface(
-          componentName,
-          InterfaceTypeEnum.element,
-          type,
-          getElementInfos,
+    switch (parseDeepLink(uri)) {
+      case InvalidLinkTarget():
+        _showSnackBarMessage(
+          AppLocalizations.of(_context)!.invalidLink,
         );
-
-        return;
-      case 'uis':
-        _openInterface(
-          componentName,
-          InterfaceTypeEnum.ui,
-          type,
-          getUiInfos,
-        );
-
-        return;
+      case final InterfaceTarget target:
+        _openInterface(target);
+      case final ComponentTarget target:
+        _handleComponentNavigation(target);
+      case final UnknownTarget target:
+        _showNotFound(target.componentName, target.type);
     }
-
-    _handleComponentNavigation(type, componentName);
   }
 
-  void _openInterface(
-    String componentName,
-    InterfaceTypeEnum interfaceType,
-    String folder,
-    ComponentInfosModel Function(BuildContext) getInfos,
-  ) {
+  void _openInterface(InterfaceTarget target) {
+    final getInfos = target.interfaceType == InterfaceTypeEnum.element
+        ? getElementInfos
+        : getUiInfos;
     final infos = getInfos(_context);
+    final componentName = target.componentName;
 
     if (!infos.componentNames.contains(componentName)) {
-      _showNotFound(componentName, folder);
+      _showNotFound(componentName, target.folder);
 
       return;
     }
@@ -106,7 +83,7 @@ class DeepLinkHandler {
     unawaited(
       router.pushNamed(
         RouteNames.catalog,
-        pathParameters: {'interfaceType': interfaceType.name},
+        pathParameters: {'interfaceType': target.interfaceType.name},
       ),
     );
     unawaited(
@@ -115,7 +92,7 @@ class DeepLinkHandler {
         extra: ComponentSampleArgs(
           title: element.name,
           filePath:
-              'lib/src/features/catalog/data/samples/sample_components/$folder/${element.fileName}_sample.dart',
+              'lib/src/features/catalog/data/samples/sample_components/${target.folder}/${element.fileName}_sample.dart',
           componentName: componentName,
           sample: element.sample,
         ),
@@ -123,41 +100,32 @@ class DeepLinkHandler {
     );
   }
 
-  void _handleComponentNavigation(String type, String componentName) {
-    ComponentType? componentType;
-
-    if (type == 'widgets') {
-      componentType = ComponentType.widget;
-      _elementsTabNotifier.index = 0;
-    } else if (type == 'functions') {
-      componentType = ComponentType.function;
-      _elementsTabNotifier.index = 1;
-    } else if (type == 'packages') {
-      componentType = ComponentType.package;
-    } else {
-      _showNotFound(componentName, type);
-
-      return;
+  void _handleComponentNavigation(ComponentTarget target) {
+    final tabIndex = target.elementsTabIndex;
+    if (tabIndex != null) {
+      _elementsTabNotifier.index = tabIndex;
     }
 
+    final componentName = target.componentName;
     final exists = _componentsRepository
-        .getComponentsByType(componentType)
+        .getComponentsByType(target.componentType)
         .any((component) => component.name == componentName);
 
     if (!exists) {
-      _showNotFound(componentName, type);
+      _showNotFound(componentName, target.componentType.name);
 
       return;
     }
 
-    final tabIndex = type == 'packages' ? 2 : 1;
-
-    _navigationNotifier.index = tabIndex;
+    _navigationNotifier.index = target.navigationIndex;
 
     unawaited(
       router.pushNamed(
         RouteNames.component,
-        pathParameters: {'type': componentType.name, 'name': componentName},
+        pathParameters: {
+          'type': target.componentType.name,
+          'name': componentName,
+        },
       ),
     );
   }
