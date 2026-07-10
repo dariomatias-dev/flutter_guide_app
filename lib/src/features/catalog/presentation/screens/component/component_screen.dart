@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_paths.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/samples/sample_registry.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/doc_popup_menu_item/doc_popup_menu_item_widget.dart';
@@ -46,15 +47,21 @@ class ComponentScreen extends ConsumerWidget {
       case ComponentType.material:
       case ComponentType.cupertino:
       case ComponentType.function:
+        folderName = 'functions';
       case ComponentType.elements:
       case ComponentType.uis:
-        folderName = 'functions';
+        throw StateError(
+          '$componentType belongs to InterfaceCatalogScreen, '
+          'not ComponentScreen',
+        );
     }
 
     return ComponentSampleScreen(
       title: component.name,
-      filePath:
-          'lib/src/features/catalog/data/samples/sample_components/$folderName/${componentName.toLowerCase()}_sample.dart',
+      filePath: resolveSampleFilePath(
+        folder: folderName,
+        fileName: componentName.toLowerCase(),
+      ),
       componentName: componentName,
       sample: SampleRegistry.resolve(
         type: componentType,
