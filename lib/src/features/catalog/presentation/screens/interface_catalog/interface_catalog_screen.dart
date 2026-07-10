@@ -5,8 +5,7 @@ import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_paths.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args_resolver.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
@@ -55,12 +54,10 @@ class InterfaceCatalogScreen extends StatelessWidget {
             onTap: () {
               AppRoutes.pushComponentSample(
                 context,
-                args: ComponentSampleArgs(
+                args: ComponentSampleArgsResolver.resolve(
                   title: value.name,
-                  filePath: resolveSampleFilePath(
-                    folder: componentType,
-                    fileName: value.fileName,
-                  ),
+                  folder: componentType,
+                  fileName: value.fileName,
                   componentName: value.fileName,
                   sample: value.sample,
                 ),

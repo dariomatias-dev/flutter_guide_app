@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/data/samples/sample_paths.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/samples/sample_registry.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/doc_popup_menu_item/doc_popup_menu_item_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/favorite_popup_menu_item/favorite_popup_menu_item_widget.dart';
+import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args_resolver.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -56,12 +56,10 @@ class ComponentScreen extends ConsumerWidget {
         );
     }
 
-    return ComponentSampleScreen(
+    final args = ComponentSampleArgsResolver.resolve(
       title: component.name,
-      filePath: resolveSampleFilePath(
-        folder: folderName,
-        fileName: componentName.toLowerCase(),
-      ),
+      folder: folderName,
+      fileName: componentName.toLowerCase(),
       componentName: componentName,
       sample: SampleRegistry.resolve(
         type: componentType,
@@ -89,6 +87,14 @@ class ComponentScreen extends ConsumerWidget {
           type: docType,
         ),
       ],
+    );
+
+    return ComponentSampleScreen(
+      title: args.title,
+      filePath: args.filePath,
+      componentName: args.componentName,
+      sample: args.sample,
+      popupMenuItems: args.popupMenuItems,
     );
   }
 }
