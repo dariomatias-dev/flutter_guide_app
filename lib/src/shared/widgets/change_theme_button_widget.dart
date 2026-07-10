@@ -10,7 +10,7 @@ class ChangeThemeButtonWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(themeNotifierProvider.notifier).isDarkMode;
+    final isDark = ref.watch(themeNotifierProvider) == ThemeMode.dark;
 
     return IconButtonWidget(
       onTap: () => ref.read(themeNotifierProvider.notifier).toggleTheme(),

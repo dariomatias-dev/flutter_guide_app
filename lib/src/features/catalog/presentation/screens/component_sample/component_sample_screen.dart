@@ -55,7 +55,7 @@ class _ComponentSampleScreenState extends ConsumerState<ComponentSampleScreen>
 
   @override
   Widget build(BuildContext context) {
-    final isDark = ref.watch(themeNotifierProvider.notifier).isDarkMode;
+    final isDark = ref.watch(themeNotifierProvider) == ThemeMode.dark;
 
     return ComponentSampleScreenInheritedWidget(
       fileName: widget.filePath,

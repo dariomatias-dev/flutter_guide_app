@@ -44,7 +44,7 @@ class _CodeTabWidgetState extends ConsumerState<CodeTabWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = ref.watch(themeNotifierProvider.notifier).isDarkMode;
+    final isDark = ref.watch(themeNotifierProvider) == ThemeMode.dark;
     final codeTheme = ref.watch(codeThemeViewModelProvider);
 
     ref.listen(themeNotifierProvider, (_, __) {
