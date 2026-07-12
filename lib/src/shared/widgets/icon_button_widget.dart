@@ -36,10 +36,10 @@ class IconButtonWidget extends StatelessWidget {
         child: Center(
           child: child ??
               Icon(
-                    icon,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 24,
-                  ),
+                icon,
+                color: Theme.of(context).colorScheme.primary,
+                size: 24,
+              ),
         ),
       ),
     );

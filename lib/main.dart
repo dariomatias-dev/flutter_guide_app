@@ -11,9 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load(
-    
-  );
+  await dotenv.load();
 
   final requestConfiguration = RequestConfiguration(
     testDeviceIds: <String>[

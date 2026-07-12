@@ -65,9 +65,8 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
         DefaultTabBarWidget(
           controller: _tabController,
           onTap: (value) {
-            ref
-                .read(elementsScreenTabIndexNotifierProvider.notifier)
-                .index = value;
+            ref.read(elementsScreenTabIndexNotifierProvider.notifier).index =
+                value;
           },
           tabs: <Tab>[
             const Tab(

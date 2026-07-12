@@ -99,9 +99,9 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
             child: SafeArea(
               child: BottomNavigationBarWidget(
                 screenIndex: selectedIndex,
-                updateScreenIndex: (index) =>
-                    ref.read(mainNavigationNotifierProvider.notifier).index =
-                        index,
+                updateScreenIndex: (index) => ref
+                    .read(mainNavigationNotifierProvider.notifier)
+                    .index = index,
                 getBottomNavigationBarName: (index) => tabNames[index],
               ),
             ),

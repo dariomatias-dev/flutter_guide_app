@@ -7,11 +7,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///
 /// An instance of [SharedPreferences] must be provided through the constructor.
 class SharedPreferencesService {
-
   /// Creates a new instance of [SharedPreferencesService].
   ///
   /// The provided `SharedPreferences` instance is used for all operations.
   SharedPreferencesService(this._prefs);
+
   /// The SharedPreferences instance.
   final SharedPreferences _prefs;
 

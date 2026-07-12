@@ -45,8 +45,7 @@ void main() {
       expect(state.selectedDarkTheme, SyntaxThemes.vsCodeDark);
     });
 
-    test('updateTheme with isDark true updates dark and keeps light',
-        () async {
+    test('updateTheme with isDark true updates dark and keeps light', () async {
       final container = makeContainer();
 
       await notifier(container).updateTheme(

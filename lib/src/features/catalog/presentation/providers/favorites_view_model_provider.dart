@@ -3,7 +3,7 @@ import 'package:flutter_guide/src/features/catalog/presentation/view_models/favo
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Provides the [FavoritesViewModel].
-final favoritesViewModelProvider = NotifierProvider<
-    FavoritesViewModel, Map<ComponentType, Set<String>>>(
+final favoritesViewModelProvider =
+    NotifierProvider<FavoritesViewModel, Map<ComponentType, Set<String>>>(
   FavoritesViewModel.new,
 );

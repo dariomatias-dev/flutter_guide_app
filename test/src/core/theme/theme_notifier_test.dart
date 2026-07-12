@@ -13,8 +13,7 @@ void main() {
 
   setUp(() {
     service = MockSharedPreferencesService();
-    when(() => service.setString(any(), any()))
-        .thenAnswer((_) async => true);
+    when(() => service.setString(any(), any())).thenAnswer((_) async => true);
   });
 
   ProviderContainer makeContainer() {

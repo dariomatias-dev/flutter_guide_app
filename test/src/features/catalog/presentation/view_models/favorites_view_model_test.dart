@@ -86,8 +86,7 @@ void main() {
 
         when(() => repository.getSavedComponentNames(ComponentType.widget))
             .thenReturn(['Container']);
-        final saved =
-            vm.toggle(type: ComponentType.widget, name: 'Container');
+        final saved = vm.toggle(type: ComponentType.widget, name: 'Container');
 
         expect(saved, isTrue);
         expect(
