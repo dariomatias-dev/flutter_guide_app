@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Enforces Conventional Commits (https://www.conventionalcommits.org).
+# Enabled via: git config core.hooksPath .githooks
+
+commit_msg_file="$1"
+subject_line=$(head -n1 "$commit_msg_file")
+
+# type(optional-scope)!: subject
+pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9_-]+\))?!?: .{1,72}$'
+
+if [[ "$subject_line" =~ ^Merge ]] || [[ "$subject_line" =~ ^Revert ]]; then
+  exit 0
+fi
+
+if ! [[ "$subject_line" =~ $pattern ]]; then
+  echo "Commit message rejected: does not follow Conventional Commits." >&2
+  echo "" >&2
+  echo "  Got:      $subject_line" >&2
+  echo "  Expected: <type>(<scope>): <subject>" >&2
+  echo "  Types:    build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test" >&2
+  echo "  Example:  feat(catalog): add Table widget sample" >&2
+  exit 1
+fi
+
+exit 0
