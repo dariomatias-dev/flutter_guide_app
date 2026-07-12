@@ -131,6 +131,9 @@ abstract final class WidgetNames {
   /// Display name of the `DropdownButton` component.
   static const dropdownButtonMaterial = 'DropdownButton';
 
+  /// Display name of the `DropdownMenu` component.
+  static const dropdownMenuMaterial = 'DropdownMenu';
+
   /// Display name of the `EditableText` component.
   static const editableTextWidget = 'EditableText';
 

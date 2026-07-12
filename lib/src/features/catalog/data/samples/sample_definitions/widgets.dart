@@ -44,6 +44,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/divider_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/drawer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dropdownbutton_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dropdownmenu_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/editabletext_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/elevatedbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/expanded_sample.dart';
@@ -384,6 +385,13 @@ const widgets = <ComponentModel>[
     icon: Icons.arrow_drop_down,
     videoId: 'ZzQ_PWrFihg',
     sample: DropdownButtonSample(),
+    type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.dropdownMenuMaterial,
+    icon: Icons.arrow_drop_down_circle,
+    videoId: 'giV9AbM2gd8',
+    sample: DropdownMenuSample(),
     type: ComponentType.material,
   ),
   ComponentModel(
