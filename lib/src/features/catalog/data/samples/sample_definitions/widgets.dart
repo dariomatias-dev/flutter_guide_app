@@ -96,6 +96,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/switch_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/switchlisttile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/tabbar_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/table_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/text_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/textbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/textfield_sample.dart';
@@ -723,6 +724,13 @@ const widgets = <ComponentModel>[
     videoId: 'POtoEH-5l40',
     sample: TabBarSample(),
     type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.tableWidget,
+    icon: Icons.grid_on,
+    videoId: '_lbE0wsVZSw',
+    sample: TableSample(),
+    type: ComponentType.widget,
   ),
   ComponentModel(
     name: WidgetNames.textWidget,

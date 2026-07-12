@@ -284,6 +284,9 @@ abstract final class WidgetNames {
   /// Display name of the `SwitchListTile` component.
   static const switchListTileMaterial = 'SwitchListTile';
 
+  /// Display name of the `Table` component.
+  static const tableWidget = 'Table';
+
   /// Display name of the `TabBar` component.
   static const tabBarSampleMaterial = 'TabBar';
 
