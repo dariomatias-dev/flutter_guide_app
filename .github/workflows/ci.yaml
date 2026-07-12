@@ -20,6 +20,17 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Create .env file
+        run: |
+          cat <<'EOF' > .env
+          DEVICE_ID=
+          BANNER_AD_ID=
+          BANNER_AD_SAMPLE_ID=
+          INTERSTICIAL_AD_SAMPLE_ID=
+          REWARDED_AD_SAMPLE_ID=
+          APP_OPEN_AD_SAMPLE_ID=
+          EOF
+
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
