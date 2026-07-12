@@ -44,15 +44,14 @@ class ComponentScreen extends ConsumerWidget {
         folderName = 'widgets';
       case ComponentType.package:
         folderName = 'packages';
-      case ComponentType.material:
-      case ComponentType.cupertino:
       case ComponentType.function:
         folderName = 'functions';
+      case ComponentType.material:
+      case ComponentType.cupertino:
       case ComponentType.elements:
       case ComponentType.uis:
         throw StateError(
-          '$componentType belongs to InterfaceCatalogScreen, '
-          'not ComponentScreen',
+          '$componentType is never routed to ComponentScreen directly',
         );
     }
 
