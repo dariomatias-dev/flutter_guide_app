@@ -97,8 +97,8 @@ class _FilterChipSampleState extends State<FilterChipSample> {
                 RichText(
                   text: TextSpan(
                     text: '',
-                    style: const TextStyle(
-                      color: Colors.black,
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
                     ),
                     children: <TextSpan>[
                       const TextSpan(

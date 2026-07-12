@@ -139,9 +139,6 @@ class _ImageLoaderState extends State<ImageLoader> {
           return const Center(
             child: Text(
               'Error loading image.',
-              style: TextStyle(
-                color: Colors.white,
-              ),
             ),
           );
         }
