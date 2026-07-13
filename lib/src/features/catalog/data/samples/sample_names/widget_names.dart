@@ -143,6 +143,9 @@ abstract final class WidgetNames {
   /// Display name of the `Expanded` component.
   static const expandedWidget = 'Expanded';
 
+  /// Display name of the `ExpansionPanelList` component.
+  static const expansionPanelListMaterial = 'ExpansionPanelList';
+
   /// Display name of the `ExpansionTile` component.
   static const expansionTileMaterial = 'ExpansionTile';
 

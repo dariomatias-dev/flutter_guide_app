@@ -48,6 +48,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/editabletext_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/elevatedbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/expanded_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/expansionpanellist_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/expansiontile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/filledbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/filterchip_sample.dart';
@@ -414,6 +415,12 @@ const widgets = <ComponentModel>[
     videoId: '_rnZaagadyo',
     sample: ExpandedSample(),
     type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.expansionPanelListMaterial,
+    icon: Icons.view_agenda,
+    sample: ExpansionPanelListSample(),
+    type: ComponentType.material,
   ),
   ComponentModel(
     name: WidgetNames.expansionTileMaterial,
