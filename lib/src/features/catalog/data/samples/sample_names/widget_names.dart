@@ -281,6 +281,9 @@ abstract final class WidgetNames {
   /// Display name of the `Stack` component.
   static const stackWidget = 'Stack';
 
+  /// Display name of the `Stepper` component.
+  static const stepperMaterial = 'Stepper';
+
   /// Display name of the `Switch` component.
   static const switchWidget = 'Switch';
 

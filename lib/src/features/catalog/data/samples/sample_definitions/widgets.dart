@@ -94,6 +94,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/snackbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/spacer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/stack_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/stepper_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/switch_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/switchlisttile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/tabbar_sample.dart';
@@ -713,6 +714,12 @@ const widgets = <ComponentModel>[
     videoId: 'liEGSeD3Zt8',
     sample: StackSample(),
     type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.stepperMaterial,
+    icon: Icons.format_list_numbered,
+    sample: StepperSample(),
+    type: ComponentType.material,
   ),
   ComponentModel(
     name: WidgetNames.switchWidget,
