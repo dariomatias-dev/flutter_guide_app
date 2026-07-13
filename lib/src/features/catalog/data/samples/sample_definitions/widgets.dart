@@ -85,6 +85,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/row_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/safearea_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/scaffold_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/searchbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/segmentedbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/selectabletext_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/simpledialog_sample.dart';
@@ -653,6 +654,12 @@ const widgets = <ComponentModel>[
     name: WidgetNames.scaffoldMaterial,
     icon: Icons.dashboard,
     sample: ScaffoldSample(),
+    type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.searchBarMaterial,
+    icon: Icons.search,
+    sample: SearchBarSample(),
     type: ComponentType.material,
   ),
   ComponentModel(

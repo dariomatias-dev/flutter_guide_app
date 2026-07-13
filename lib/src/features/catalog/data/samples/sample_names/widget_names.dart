@@ -254,6 +254,9 @@ abstract final class WidgetNames {
   /// Display name of the `Scaffold` component.
   static const scaffoldMaterial = 'Scaffold';
 
+  /// Display name of the `SearchBar` component.
+  static const searchBarMaterial = 'SearchBar';
+
   /// Display name of the `SegmentedButton` component.
   static const segmentedButtonMaterial = 'SegmentedButton';
 
