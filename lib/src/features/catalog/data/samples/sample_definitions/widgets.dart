@@ -25,6 +25,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/circleavatar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/circularprogressindicator_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/clipoval_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/clippath_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cliprrect_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/colorfiltered_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/column_sample.dart';
@@ -42,6 +43,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dialog_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dismissible_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/divider_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/draggable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/drawer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dropdownbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dropdownmenu_sample.dart';
@@ -52,7 +54,9 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/expansiontile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/filledbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/filterchip_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/flexible_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/floatingactionbutton_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/flow_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/flutterlogo_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/form_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/futurebuilder_sample.dart';
@@ -78,6 +82,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/pageview_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/placeholder_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/popupmenubutton_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/positioned_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/radio_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/radiolisttile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/rangeslider_sample.dart';
@@ -261,6 +266,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.widget,
   ),
   ComponentModel(
+    name: WidgetNames.clipPathWidget,
+    icon: Icons.crop,
+    sample: ClipPathSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.clipRRectWidget,
     icon: Icons.crop,
     sample: ClipRRectSample(),
@@ -377,6 +388,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.material,
   ),
   ComponentModel(
+    name: WidgetNames.draggableWidget,
+    icon: Icons.open_with,
+    sample: DraggableSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.drawerMaterial,
     icon: Icons.menu,
     videoId: 'WRj86iHihgY',
@@ -441,10 +458,22 @@ const widgets = <ComponentModel>[
     type: ComponentType.material,
   ),
   ComponentModel(
+    name: WidgetNames.flexibleWidget,
+    icon: Icons.expand,
+    sample: FlexibleSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.floatingActionButtonMaterial,
     icon: Icons.add,
     sample: FloatingActionButtonSample(),
     type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.flowWidget,
+    icon: Icons.dashboard_customize,
+    sample: FlowSample(),
+    type: ComponentType.widget,
   ),
   ComponentModel(
     name: WidgetNames.flutterLogoMaterial,
@@ -610,6 +639,12 @@ const widgets = <ComponentModel>[
     icon: Icons.more_vert,
     sample: PopupMenuButtonSample(),
     type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.positionedWidget,
+    icon: Icons.control_camera,
+    sample: PositionedSample(),
+    type: ComponentType.widget,
   ),
   ComponentModel(
     name: WidgetNames.radioMaterial,

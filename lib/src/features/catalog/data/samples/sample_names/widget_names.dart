@@ -69,6 +69,9 @@ abstract final class WidgetNames {
   /// Display name of the `ClipOval` component.
   static const clipOvalWidget = 'ClipOval';
 
+  /// Display name of the `ClipPath` component.
+  static const clipPathWidget = 'ClipPath';
+
   /// Display name of the `ClipRRect` component.
   static const clipRRectWidget = 'ClipRRect';
 
@@ -125,6 +128,9 @@ abstract final class WidgetNames {
   /// Display name of the `Divider` component.
   static const dividerMaterial = 'Divider';
 
+  /// Display name of the `Draggable` and `DragTarget` components.
+  static const draggableWidget = 'Draggable & DragTarget';
+
   /// Display name of the `Drawer` component.
   static const drawerMaterial = 'Drawer';
 
@@ -155,8 +161,14 @@ abstract final class WidgetNames {
   /// Display name of the `FilterChip` component.
   static const filterChipMaterial = 'FilterChip';
 
+  /// Display name of the `Flexible` component.
+  static const flexibleWidget = 'Flexible';
+
   /// Display name of the `FloatingActionButton` component.
   static const floatingActionButtonMaterial = 'FloatingActionButton';
+
+  /// Display name of the `Flow` component.
+  static const flowWidget = 'Flow';
 
   /// Display name of the `FlutterLogo` component.
   static const flutterLogoMaterial = 'FlutterLogo';
@@ -232,6 +244,9 @@ abstract final class WidgetNames {
 
   /// Display name of the `PopupMenuButton` component.
   static const popupMenuButtonMaterial = 'PopupMenuButton';
+
+  /// Display name of the `Positioned` component.
+  static const positionedWidget = 'Positioned';
 
   /// Display name of the `Radio` component.
   static const radioMaterial = 'Radio';
