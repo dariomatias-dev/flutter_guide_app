@@ -20,8 +20,7 @@ class CupertinoDatePickerSample extends StatefulWidget {
       _CupertinoDatePickerSampleState();
 }
 
-class _CupertinoDatePickerSampleState
-    extends State<CupertinoDatePickerSample> {
+class _CupertinoDatePickerSampleState extends State<CupertinoDatePickerSample> {
   DateTime? _selectedDate;
 
   Future<void> _showDatePicker() async {

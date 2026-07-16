@@ -40,14 +40,12 @@ class PositionedSample extends StatelessWidget {
                 Positioned(
                   bottom: 10,
                   left: 10,
-                  child:
-                      Container(width: 60, height: 60, color: Colors.green),
+                  child: Container(width: 60, height: 60, color: Colors.green),
                 ),
                 Positioned(
                   bottom: 10,
                   right: 10,
-                  child:
-                      Container(width: 60, height: 60, color: Colors.orange),
+                  child: Container(width: 60, height: 60, color: Colors.orange),
                 ),
                 const Positioned.fill(
                   child: Center(

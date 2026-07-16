@@ -135,8 +135,7 @@ abstract final class WidgetNames {
   static const cupertinoSearchTextFieldCupertino = 'CupertinoSearchTextField';
 
   /// Display name of the `CupertinoSegmentedControl` component.
-  static const cupertinoSegmentedControlCupertino =
-      'CupertinoSegmentedControl';
+  static const cupertinoSegmentedControlCupertino = 'CupertinoSegmentedControl';
 
   /// Display name of the `CupertinoSlider` component.
   static const cupertinoSliderCupertino = 'CupertinoSlider';

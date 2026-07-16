@@ -27,8 +27,8 @@ class _ShowMenuSampleState extends State<ShowMenuSample> {
   void _showMenu() {
     final renderBox =
         _buttonKey.currentContext!.findRenderObject()! as RenderBox;
-    final overlay = Navigator.of(context).overlay!.context.findRenderObject()!
-        as RenderBox;
+    final overlay =
+        Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
     final position = RelativeRect.fromRect(
       Rect.fromPoints(
         renderBox.localToGlobal(Offset.zero, ancestor: overlay),
