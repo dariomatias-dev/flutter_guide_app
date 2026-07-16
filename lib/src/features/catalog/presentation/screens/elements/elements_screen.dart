@@ -81,7 +81,7 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
         ),
         Expanded(
           child: ComponentsScreen(
-            key: GlobalKey(),
+            key: ValueKey(componentType),
             componentType: componentType,
             components: ref
                 .watch(componentsRepositoryProvider)

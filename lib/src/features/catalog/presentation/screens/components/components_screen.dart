@@ -26,15 +26,30 @@ class ComponentsScreen extends StatefulWidget {
 
 class _ComponentsScreenState extends State<ComponentsScreen> {
   late List<Component> _items = widget.components;
+  String _query = '';
+
+  @override
+  void didUpdateWidget(covariant ComponentsScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.components != oldWidget.components) {
+      _applyFilter();
+    }
+  }
 
   void _search(String value) {
+    _query = value;
+    _applyFilter();
+  }
+
+  void _applyFilter() {
     setState(() {
-      _items = value.trim().isEmpty
+      _items = _query.trim().isEmpty
           ? widget.components
           : widget.components
               .where(
                 (component) => component.name.toLowerCase().contains(
-                      value.toLowerCase(),
+                      _query.toLowerCase(),
                     ),
               )
               .toList();
@@ -42,6 +57,7 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
   }
 
   void _clearSearch() {
+    _query = '';
     setState(() {
       _items = widget.components;
     });

@@ -58,7 +58,7 @@ class SavedComponentsScreen extends ConsumerWidget {
       ),
       body: components.isNotEmpty
           ? ComponentsScreen(
-              key: UniqueKey(),
+              key: ValueKey(componentType),
               componentType: componentType,
               components: components,
             )
