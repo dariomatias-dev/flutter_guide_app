@@ -39,6 +39,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinonavigationbarbackbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinopagescaffold_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoradio_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/datatable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/decoratedbox_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dialog_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dismissible_sample.dart';
@@ -80,6 +81,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/opacity_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/outlinedbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/pageview_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/paginateddatatable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/placeholder_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/popupmenubutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/positioned_sample.dart';
@@ -362,6 +364,12 @@ const widgets = <ComponentModel>[
   //   type: ComponentType.cupertino,
   // ),
   ComponentModel(
+    name: WidgetNames.dataTableMaterial,
+    icon: Icons.table_chart,
+    sample: DataTableSample(),
+    type: ComponentType.material,
+  ),
+  ComponentModel(
     name: WidgetNames.decoratedBoxWidget,
     icon: Icons.image,
     sample: DecoratedBoxSample(),
@@ -626,6 +634,12 @@ const widgets = <ComponentModel>[
     videoId: 'J1gE9xvph-A',
     sample: PageViewSample(),
     type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.paginatedDataTableMaterial,
+    icon: Icons.table_rows,
+    sample: PaginatedDataTableSample(),
+    type: ComponentType.material,
   ),
   ComponentModel(
     name: WidgetNames.placeholderWidget,

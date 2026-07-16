@@ -116,6 +116,9 @@ abstract final class WidgetNames {
   /// Display name of the `CupertinoSlider` component.
   static const cupertinoSliderCupertino = 'CupertinoSlider';
 
+  /// Display name of the `DataTable` component.
+  static const dataTableMaterial = 'DataTable';
+
   /// Display name of the `DecoratedBox` component.
   static const decoratedBoxWidget = 'DecoratedBox';
 
@@ -238,6 +241,9 @@ abstract final class WidgetNames {
 
   /// Display name of the `PageView` component.
   static const pageViewWidget = 'PageView';
+
+  /// Display name of the `PaginatedDataTable` component.
+  static const paginatedDataTableMaterial = 'PaginatedDataTable';
 
   /// Display name of the `Placeholder` component.
   static const placeholderWidget = 'Placeholder';
