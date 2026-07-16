@@ -31,14 +31,28 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/column_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/constrainedbox_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/container_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoactionsheet_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoactivityindicator_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoalertdialog_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinobutton_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinocontextmenu_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinodatepicker_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinodialogaction_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoformsection_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinolisttile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinonavigationbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinonavigationbarbackbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinopagescaffold_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinopicker_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoradio_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinosearchtextfield_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinosegmentedcontrol_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoslidingsegmentedcontrol_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinoswitch_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotabbar_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotabscaffold_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotextfield_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotimerpicker_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/datatable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/decoratedbox_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dialog_sample.dart';
@@ -307,6 +321,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.widget,
   ),
   ComponentModel(
+    name: WidgetNames.cupertinoActionSheetCupertino,
+    icon: Icons.list,
+    sample: CupertinoActionSheetSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
     name: WidgetNames.cupertinoActivityIndicatorCupertino,
     icon: Icons.cached,
     videoId: 'AENVH-ZqKDQ',
@@ -324,6 +344,30 @@ const widgets = <ComponentModel>[
     name: WidgetNames.cupertinoButtonCupertino,
     icon: Icons.crop_16_9,
     sample: CupertinoButtonSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoContextMenuCupertino,
+    icon: Icons.touch_app_outlined,
+    sample: CupertinoContextMenuSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoDatePickerCupertino,
+    icon: Icons.event_outlined,
+    sample: CupertinoDatePickerSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoDialogActionCupertino,
+    icon: Icons.chat_bubble_outline,
+    sample: CupertinoDialogActionSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoFormSectionCupertino,
+    icon: Icons.view_list_outlined,
+    sample: CupertinoFormSectionSample(),
     type: ComponentType.cupertino,
   ),
   ComponentModel(
@@ -351,9 +395,27 @@ const widgets = <ComponentModel>[
     type: ComponentType.cupertino,
   ),
   ComponentModel(
+    name: WidgetNames.cupertinoPickerCupertino,
+    icon: Icons.view_day_outlined,
+    sample: CupertinoPickerSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
     name: WidgetNames.cupertinoRadioCupertino,
     icon: Icons.radio_button_checked,
     sample: CupertinoRadioSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoSearchTextFieldCupertino,
+    icon: Icons.search,
+    sample: CupertinoSearchTextFieldSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoSegmentedControlCupertino,
+    icon: Icons.view_column_outlined,
+    sample: CupertinoSegmentedControlSample(),
     type: ComponentType.cupertino,
   ),
   // ComponentModel(
@@ -363,6 +425,42 @@ const widgets = <ComponentModel>[
   //   sample: CupertinoSliderSample(),
   //   type: ComponentType.cupertino,
   // ),
+  ComponentModel(
+    name: WidgetNames.cupertinoSlidingSegmentedControlCupertino,
+    icon: Icons.view_carousel_outlined,
+    sample: CupertinoSlidingSegmentedControlSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoSwitchCupertino,
+    icon: Icons.toggle_on_outlined,
+    sample: CupertinoSwitchSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoTabBarCupertino,
+    icon: Icons.view_agenda_outlined,
+    sample: CupertinoTabBarSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoTabScaffoldCupertino,
+    icon: Icons.dashboard_outlined,
+    sample: CupertinoTabScaffoldSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoTextFieldCupertino,
+    icon: Icons.edit,
+    sample: CupertinoTextFieldSample(),
+    type: ComponentType.cupertino,
+  ),
+  ComponentModel(
+    name: WidgetNames.cupertinoTimerPickerCupertino,
+    icon: Icons.timer_outlined,
+    sample: CupertinoTimerPickerSample(),
+    type: ComponentType.cupertino,
+  ),
   ComponentModel(
     name: WidgetNames.dataTableMaterial,
     icon: Icons.table_chart,

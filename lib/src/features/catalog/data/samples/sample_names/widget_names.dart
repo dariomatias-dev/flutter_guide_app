@@ -87,6 +87,9 @@ abstract final class WidgetNames {
   /// Display name of the `Container` component.
   static const containerWidget = 'Container';
 
+  /// Display name of the `CupertinoActionSheet` component.
+  static const cupertinoActionSheetCupertino = 'CupertinoActionSheet';
+
   /// Display name of the `CupertinoActivityIndicator` component.
   static const cupertinoActivityIndicatorCupertino =
       'CupertinoActivityIndicator';
@@ -96,6 +99,18 @@ abstract final class WidgetNames {
 
   /// Display name of the `CupertinoButton` component.
   static const cupertinoButtonCupertino = 'CupertinoButton';
+
+  /// Display name of the `CupertinoContextMenu` component.
+  static const cupertinoContextMenuCupertino = 'CupertinoContextMenu';
+
+  /// Display name of the `CupertinoDatePicker` component.
+  static const cupertinoDatePickerCupertino = 'CupertinoDatePicker';
+
+  /// Display name of the `CupertinoDialogAction` component.
+  static const cupertinoDialogActionCupertino = 'CupertinoDialogAction';
+
+  /// Display name of the `CupertinoFormSection` component.
+  static const cupertinoFormSectionCupertino = 'CupertinoFormSection';
 
   /// Display name of the `CupertinoListTile` component.
   static const cupertinoListTileCupertino = 'CupertinoListTile';
@@ -110,11 +125,40 @@ abstract final class WidgetNames {
   /// Display name of the `CupertinoPageScaffold` component.
   static const cupertinoPageScaffoldCupertino = 'CupertinoPageScaffold';
 
+  /// Display name of the `CupertinoPicker` component.
+  static const cupertinoPickerCupertino = 'CupertinoPicker';
+
   /// Display name of the `CupertinoRadio` component.
   static const cupertinoRadioCupertino = 'CupertinoRadio';
 
+  /// Display name of the `CupertinoSearchTextField` component.
+  static const cupertinoSearchTextFieldCupertino = 'CupertinoSearchTextField';
+
+  /// Display name of the `CupertinoSegmentedControl` component.
+  static const cupertinoSegmentedControlCupertino =
+      'CupertinoSegmentedControl';
+
   /// Display name of the `CupertinoSlider` component.
   static const cupertinoSliderCupertino = 'CupertinoSlider';
+
+  /// Display name of the `CupertinoSlidingSegmentedControl` component.
+  static const cupertinoSlidingSegmentedControlCupertino =
+      'CupertinoSlidingSegmentedControl';
+
+  /// Display name of the `CupertinoSwitch` component.
+  static const cupertinoSwitchCupertino = 'CupertinoSwitch';
+
+  /// Display name of the `CupertinoTabBar` component.
+  static const cupertinoTabBarCupertino = 'CupertinoTabBar';
+
+  /// Display name of the `CupertinoTabScaffold` component.
+  static const cupertinoTabScaffoldCupertino = 'CupertinoTabScaffold';
+
+  /// Display name of the `CupertinoTextField` component.
+  static const cupertinoTextFieldCupertino = 'CupertinoTextField';
+
+  /// Display name of the `CupertinoTimerPicker` component.
+  static const cupertinoTimerPickerCupertino = 'CupertinoTimerPicker';
 
   /// Display name of the `DataTable` component.
   static const dataTableMaterial = 'DataTable';
