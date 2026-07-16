@@ -25,7 +25,8 @@ class InfiniteScrollPaginationSample extends StatefulWidget {
 class _InfiniteScrollPaginationSampleState
     extends State<InfiniteScrollPaginationSample> {
   static const _pageSize = 20;
-  final PagingController<int, dynamic> _controller = PagingController(
+  static const _maxPages = 5;
+  final PagingController<int, int> _controller = PagingController(
     firstPageKey: 0,
   );
   bool _isDisposed = false;
@@ -33,30 +34,29 @@ class _InfiniteScrollPaginationSampleState
   int _page = 0;
   int _quantityOfItems = 0;
 
-  Future<void> _fecthNumberOfItems() async {
-    await Future<void>.delayed(
-      const Duration(
-        seconds: 3,
-      ),
-      () {
-        final items = List.generate(_pageSize, (index) {
-          return ++_quantityOfItems;
-        });
-        _page++;
+  Future<void> _fetchNumberOfItems() async {
+    await Future<void>.delayed(const Duration(seconds: 3));
 
-        if (_isDisposed) {
-          return;
-        }
+    if (_isDisposed) {
+      return;
+    }
 
-        _controller.appendPage(items, _page);
-      },
-    );
+    final items = List.generate(_pageSize, (index) {
+      return ++_quantityOfItems;
+    });
+    _page++;
+
+    if (_page >= _maxPages) {
+      _controller.appendLastPage(items);
+    } else {
+      _controller.appendPage(items, _page);
+    }
   }
 
   void _pageRequestListener(
     int pageKey,
   ) {
-    unawaited(_fecthNumberOfItems());
+    unawaited(_fetchNumberOfItems());
   }
 
   @override
@@ -68,10 +68,10 @@ class _InfiniteScrollPaginationSampleState
 
   @override
   void dispose() {
+    _isDisposed = true;
     _controller
       ..removePageRequestListener(_pageRequestListener)
       ..dispose();
-    _isDisposed = true;
 
     super.dispose();
   }

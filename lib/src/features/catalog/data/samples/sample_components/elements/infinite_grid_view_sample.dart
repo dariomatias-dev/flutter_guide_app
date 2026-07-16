@@ -3,6 +3,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+const _pageSize = 20;
+const _loadTriggerOffset = 200.0;
+
 void main() {
   runApp(
     const MaterialApp(
@@ -18,100 +21,65 @@ class InfiniteGridViewSample extends StatefulWidget {
   const InfiniteGridViewSample({super.key});
 
   @override
-  State<InfiniteGridViewSample> createState() => InfinetGridViewSampleState();
+  State<InfiniteGridViewSample> createState() => _InfiniteGridViewSampleState();
 }
 
-/// Sample demonstrating `InfinetGridViewSampleState`.
-class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
+class _InfiniteGridViewSampleState extends State<InfiniteGridViewSample> {
   bool _isLoading = false;
-  bool _hasMoreItems = false;
+  bool _hasMoreItems = true;
 
   final _scrollController = ScrollController();
-  final _elements = <Widget>[];
+  final _items = <Color>[];
 
   void _onScroll() {
-    if (!_isLoading && !_hasMoreItems && _scrollController.position.atEdge) {
-      if (_scrollController.position.pixels != 0) {
-        unawaited(_addElements());
-      }
+    if (_isLoading || !_hasMoreItems) {
+      return;
+    }
+
+    final position = _scrollController.position;
+    final nearBottom =
+        position.pixels >= position.maxScrollExtent - _loadTriggerOffset;
+
+    if (nearBottom) {
+      unawaited(_loadNextPage());
     }
   }
 
-  Future<void> _addElements() async {
-    _addLoadingElement();
-    _updateIsLoading();
+  Future<void> _loadNextPage() async {
+    setState(() {
+      _isLoading = true;
+    });
 
-    await Future<void>.delayed(
-      const Duration(
-        seconds: 1,
-      ),
-    );
+    await Future<void>.delayed(const Duration(seconds: 1));
 
-    _removeLoadingElement();
-
-    _createElements();
-
-    _hasMoreItems = Random().nextBool();
-
-    _updateIsLoading();
-  }
-
-  void _createElements() {
-    _elements.addAll(
-      List.generate(20, (index) {
-        return BaseElementWidget(
-          child: Container(
-            constraints: const BoxConstraints.expand(),
-            color: Color.fromARGB(
-              255,
-              Random().nextInt(255),
-              Random().nextInt(255),
-              Random().nextInt(255),
-            ),
-          ),
-        );
-      }),
-    );
-  }
-
-  // Loading Element
-  void _addLoadingElement() {
-    _elements.add(
-      const BaseElementWidget(
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
-    );
-  }
-
-  void _removeLoadingElement() {
-    _elements.removeLast();
-  }
-
-  // IsLoading
-  void _updateIsLoading() {
-    if (mounted) {
-      setState(() {
-        _isLoading = !_isLoading;
-      });
+    if (!mounted) {
+      return;
     }
+
+    setState(() {
+      _items.addAll(_generateColors(_pageSize));
+      _hasMoreItems = Random().nextBool();
+      _isLoading = false;
+    });
+  }
+
+  List<Color> _generateColors(int count) {
+    return List.generate(count, (index) {
+      return Color.fromARGB(
+        255,
+        Random().nextInt(255),
+        Random().nextInt(255),
+        Random().nextInt(255),
+      );
+    });
   }
 
   @override
   void initState() {
-    _scrollController.addListener(
-      _onScroll,
-    );
-
     super.initState();
-  }
 
-  @override
-  void didChangeDependencies() {
-    _createElements();
-
-    super.didChangeDependencies();
+    _items.addAll(_generateColors(_pageSize));
+    _scrollController.addListener(_onScroll);
   }
 
   @override
@@ -125,6 +93,8 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
 
   @override
   Widget build(BuildContext context) {
+    final itemCount = _items.length + (_isLoading || !_hasMoreItems ? 1 : 0);
+
     return Scaffold(
       body: ScrollConfiguration(
         behavior: ScrollConfiguration.of(context).copyWith(
@@ -136,9 +106,24 @@ class InfinetGridViewSampleState extends State<InfiniteGridViewSample> {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
           ),
-          itemCount: _elements.length,
+          itemCount: itemCount,
           itemBuilder: (context, index) {
-            return _elements[index];
+            if (index >= _items.length) {
+              return BaseElementWidget(
+                child: Center(
+                  child: _isLoading
+                      ? const CircularProgressIndicator()
+                      : const Text('No more items'),
+                ),
+              );
+            }
+
+            return BaseElementWidget(
+              child: Container(
+                constraints: const BoxConstraints.expand(),
+                color: _items[index],
+              ),
+            );
           },
         ),
       ),
