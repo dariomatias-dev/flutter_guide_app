@@ -86,6 +86,7 @@ dependencies:
   video_player: ^2.10.0
 
 dev_dependencies:
+  app_links_platform_interface: ^2.0.2
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
