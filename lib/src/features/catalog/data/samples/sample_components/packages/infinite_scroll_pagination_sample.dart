@@ -31,10 +31,7 @@ class _InfiniteScrollPaginationSampleState
   );
   bool _isDisposed = false;
 
-  int _page = 0;
-  int _quantityOfItems = 0;
-
-  Future<void> _fetchNumberOfItems() async {
+  Future<void> _fetchPage(int pageKey) async {
     await Future<void>.delayed(const Duration(seconds: 3));
 
     if (_isDisposed) {
@@ -42,21 +39,20 @@ class _InfiniteScrollPaginationSampleState
     }
 
     final items = List.generate(_pageSize, (index) {
-      return ++_quantityOfItems;
+      return pageKey * _pageSize + index + 1;
     });
-    _page++;
 
-    if (_page >= _maxPages) {
+    if (pageKey + 1 >= _maxPages) {
       _controller.appendLastPage(items);
     } else {
-      _controller.appendPage(items, _page);
+      _controller.appendPage(items, pageKey + 1);
     }
   }
 
   void _pageRequestListener(
     int pageKey,
   ) {
-    unawaited(_fetchNumberOfItems());
+    unawaited(_fetchPage(pageKey));
   }
 
   @override

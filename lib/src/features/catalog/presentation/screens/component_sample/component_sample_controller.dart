@@ -92,11 +92,13 @@ class ComponentSampleController {
 
   /// Disposes the controllers and notifiers.
   void dispose() {
+    tabController.dispose();
     pageController.dispose();
     currentTabIndexNotifier
       ..removeListener(_tabOnChange)
       ..dispose();
     showFloatingActionsNotifier.dispose();
     fontSizeNotifier.dispose();
+    lineCountNotifier.dispose();
   }
 }

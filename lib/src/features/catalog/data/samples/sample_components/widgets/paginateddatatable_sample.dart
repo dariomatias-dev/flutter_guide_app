@@ -114,13 +114,16 @@ class _PaginatedDataTableSampleState extends State<PaginatedDataTableSample> {
   late final _dataSource = _PeopleDataSource(
     onSelectionChanged: () => setState(() {}),
   );
+  final _allPeople = List<_PersonModel>.of(_people);
+  String _query = '';
   int _rowsPerPage = 4;
 
   void _applyQuery(String query) {
     final lower = query.toLowerCase();
     setState(() {
+      _query = query;
       _dataSource.updateRows(
-        _people
+        _allPeople
             .where((person) => person.name.toLowerCase().contains(lower))
             .toList(),
       );
@@ -128,8 +131,10 @@ class _PaginatedDataTableSampleState extends State<PaginatedDataTableSample> {
   }
 
   void _deleteSelected() {
-    final remaining = _dataSource.rows
-        .where((person) => !_dataSource.selected.contains(person))
+    _allPeople.removeWhere(_dataSource.selected.contains);
+    final lower = _query.toLowerCase();
+    final remaining = _allPeople
+        .where((person) => person.name.toLowerCase().contains(lower))
         .toList();
     setState(() {
       _dataSource.selected.clear();

@@ -16,10 +16,14 @@ class ComponentsRepositoryImpl implements ComponentsRepository {
 
   final ComponentsLocalDatasource _datasource;
   final Locale _locale;
+  final _cache = <ComponentType, List<Component>>{};
 
   @override
   List<Component> getComponentsByType(ComponentType type) {
-    return _datasource.getByType(type, locale: _locale);
+    return _cache.putIfAbsent(
+      type,
+      () => _datasource.getByType(type, locale: _locale),
+    );
   }
 
   @override
