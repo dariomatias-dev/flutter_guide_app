@@ -6,6 +6,10 @@
 </div>
 <br>
 
+<p align="center">
+<strong>English</strong> · <a href="README.pt-BR.md">Português (BR)</a> · <a href="README.es.md">Español</a>
+</p>
+
 <h1 align="center">FlutterGuide – Mobile App</h1>
 
 <p align="center">
