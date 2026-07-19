@@ -69,8 +69,8 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
                 value;
           },
           tabs: <Tab>[
-            const Tab(
-              child: Text('Widgets'),
+            Tab(
+              child: Text(AppLocalizations.of(context)!.widgets),
             ),
             Tab(
               child: Text(

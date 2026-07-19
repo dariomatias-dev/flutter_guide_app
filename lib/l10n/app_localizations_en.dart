@@ -271,4 +271,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get builderGroup => 'Builder';
+
+  @override
+  String get doc => 'Doc';
+
+  @override
+  String get widget => 'Widget';
+
+  @override
+  String get widgets => 'Widgets';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get uis => 'UIs';
 }

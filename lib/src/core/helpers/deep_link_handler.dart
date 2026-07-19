@@ -131,7 +131,11 @@ class DeepLinkHandler {
   }
 
   void _showSnackBarMessage(String message) {
-    SnackBarUtils.showByKey(scaffoldMessengerKey, message);
+    SnackBarUtils.showByKey(
+      scaffoldMessengerKey,
+      message,
+      AppLocalizations.of(_context)!.ok,
+    );
   }
 
   void _showNotFound(String componentName, String type) {

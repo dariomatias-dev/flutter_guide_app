@@ -85,5 +85,11 @@
   "displayGroup": "Exibição",
   "effectsGroup": "Efeitos",
   "interactionGroup": "Interação",
-  "builderGroup": "Builder"
+  "builderGroup": "Builder",
+  "doc": "Doc",
+  "widget": "Widget",
+  "widgets": "Widgets",
+  "ok": "Ok",
+  "feedback": "Feedback",
+  "uis": "UIs"
 }

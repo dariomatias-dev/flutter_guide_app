@@ -87,7 +87,7 @@ class SettingsScreen extends StatelessWidget {
               openInBrowser: true,
             ),
             ListTileItemWidget(
-              title: 'Feedback',
+              title: appLocalizations.feedback,
               icon: Icons.feedback_outlined,
               onTap: () {
                 unawaited(

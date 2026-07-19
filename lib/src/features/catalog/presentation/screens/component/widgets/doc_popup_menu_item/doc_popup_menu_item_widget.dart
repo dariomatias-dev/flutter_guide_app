@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 
@@ -68,7 +69,7 @@ class _DocPopupMenuItemWidgetState extends State<DocPopupMenuItemWidget> {
           ),
         );
       },
-      child: const Text('Doc'),
+      child: Text(AppLocalizations.of(context)!.doc),
     );
   }
 }

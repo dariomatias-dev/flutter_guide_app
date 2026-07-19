@@ -614,6 +614,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Builder'**
   String get builderGroup;
+
+  /// No description provided for @doc.
+  ///
+  /// In en, this message translates to:
+  /// **'Doc'**
+  String get doc;
+
+  /// No description provided for @widget.
+  ///
+  /// In en, this message translates to:
+  /// **'Widget'**
+  String get widget;
+
+  /// No description provided for @widgets.
+  ///
+  /// In en, this message translates to:
+  /// **'Widgets'**
+  String get widgets;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedback;
+
+  /// No description provided for @uis.
+  ///
+  /// In en, this message translates to:
+  /// **'UIs'**
+  String get uis;
 }
 
 class _AppLocalizationsDelegate

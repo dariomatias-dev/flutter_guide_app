@@ -25,7 +25,7 @@ class SelectFavoriteScreenDialogWidget extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
           },
-          text: 'Ok',
+          text: appLocalizations.ok,
         ),
       ],
       children: <Widget>[
@@ -38,7 +38,7 @@ class SelectFavoriteScreenDialogWidget extends StatelessWidget {
               type: ComponentType.widget,
             );
           },
-          title: 'Widgets',
+          title: appLocalizations.widgets,
           icon: Icons.extension_outlined,
         ),
         ListTileItemWidget(

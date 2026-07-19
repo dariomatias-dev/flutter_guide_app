@@ -61,7 +61,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
     late final String hintText;
     switch (widget.componentType) {
       case ComponentType.widget:
-        hintText = 'Widget';
+        hintText = appLocalizations.widget;
       case ComponentType.function:
         hintText = appLocalizations.function;
       case ComponentType.material:

@@ -32,8 +32,8 @@ class DeepLinkService {
   /// Starts listening for the initial and subsequent deep links.
   Future<void> init() async {
     final context = router.routerDelegate.navigatorKey.currentContext!;
-    final deepLinkInitFailureMessage =
-        AppLocalizations.of(context)!.deepLinkInitFailure;
+    final appLocalizations = AppLocalizations.of(context)!;
+    final deepLinkInitFailureMessage = appLocalizations.deepLinkInitFailure;
 
     try {
       await _appLinks.getInitialLink();
@@ -49,6 +49,7 @@ class DeepLinkService {
       SnackBarUtils.showByKey(
         scaffoldMessengerKey,
         deepLinkInitFailureMessage,
+        appLocalizations.ok,
       );
     }
   }

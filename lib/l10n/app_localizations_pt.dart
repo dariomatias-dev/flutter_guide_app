@@ -270,6 +270,24 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get builderGroup => 'Builder';
+
+  @override
+  String get doc => 'Doc';
+
+  @override
+  String get widget => 'Widget';
+
+  @override
+  String get widgets => 'Widgets';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get uis => 'UIs';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -538,4 +556,22 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get builderGroup => 'Builder';
+
+  @override
+  String get doc => 'Doc';
+
+  @override
+  String get widget => 'Widget';
+
+  @override
+  String get widgets => 'Widgets';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get uis => 'UIs';
 }

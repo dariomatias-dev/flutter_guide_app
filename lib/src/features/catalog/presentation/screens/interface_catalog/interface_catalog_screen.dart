@@ -35,7 +35,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
         componentType = 'elements';
         items = getElements(context);
       case InterfaceTypeEnum.ui:
-        title = 'UIs';
+        title = appLocalizations.uis;
         componentType = 'uis';
         items = getUis(context);
     }
