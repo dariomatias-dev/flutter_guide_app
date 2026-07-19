@@ -10,10 +10,10 @@
 <a href="README.md">English</a> · <strong>Português (BR)</strong> · <a href="README.es.md">Español</a>
 </p>
 
-<h1 align="center">FlutterGuide – Aplicativo Mobile</h1>
+<h1 align="center">FlutterGuide: Aplicativo Mobile</h1>
 
 <p align="center">
-Um aplicativo mobile projetado para ajudar desenvolvedores a aprender, praticar e dominar Flutter por meio de conteúdo selecionado.
+Um aplicativo Android para explorar widgets, funções e pacotes do Flutter/Dart, cada um com código executável e uma prévia ao vivo.
 <br>
 <a href="#sobre-o-projeto"><strong>Explore a documentação »</strong></a>
 <br>
@@ -32,31 +32,34 @@ Um aplicativo mobile projetado para ajudar desenvolvedores a aprender, praticar 
 - [Construído Com](#construído-com)
 - [Capturas de Tela](#capturas-de-tela)
 - [Baixar o App](#baixar-o-app)
+- [Começando](#começando)
 - [Contribuindo](#contribuindo)
 - [Licença](#licença)
 - [Autor](#autor)
 
 ## Sobre O Projeto
 
-**FlutterGuide** é um aplicativo mobile desenvolvido para acelerar a curva de aprendizado de desenvolvedores Flutter, tanto iniciantes quanto experientes.
-Ele oferece uma variedade de exemplos de código para widgets, funções, pacotes, além de elementos e interfaces construídos com essa tecnologia.
+**FlutterGuide** é um catálogo mobile de peças do Flutter e do Dart, criado para ajudar tanto desenvolvedores iniciantes quanto experientes a aprender por meio de exemplos.
 
-O próprio app demonstra os recursos do Flutter, mostrando como uma única base de código pode entregar interfaces responsivas, animações fluidas e desempenho otimizado tanto no Android quanto no iOS.
+Cada item (widget, função ou pacote) vem com seu código-fonte e uma prévia interativa renderizada dentro do próprio app, para você ver o comportamento antes de copiar para o seu projeto. O catálogo também inclui telas de UI prontas e elementos de interface reutilizáveis para padrões comuns de app.
 
 ## Funcionalidades
 
-- **Design Responsivo**: UI totalmente adaptável que entrega uma experiência consistente em diferentes tamanhos de tela.
-- **Animações Fluidas**: Animações fluidas e de alta performance que melhoram a experiência do usuário sem sacrificar velocidade.
-- **Desempenho Otimizado**: Construído com foco em eficiência para garantir comportamento rápido e confiável.
-- **Integração com API**: Conectividade fluida com APIs externas para conteúdo dinâmico e atualizado.
-- **Exemplos Reais**: Acesse exemplos de código reais para aumentar sua produtividade.
+- **Catálogo de Widgets, Funções e Pacotes**: Navegue por widgets Material e Cupertino, funções essenciais do Dart e pacotes populares, cada um com código, prévia interativa e link para a documentação oficial.
+- **Elementos e Exemplos de UI**: Telas de exemplo completas (login, chat, formulários e mais) e elementos de interface reutilizáveis para estudar ou copiar.
+- **Favoritos**: Salve qualquer widget, função ou pacote para acesso rápido depois.
+- **Busca**: Filtre cada catálogo pelo nome enquanto digita.
+- **Deep Linking**: Abra um componente ou exemplo específico direto de um link compartilhado.
+- **Múltiplos Idiomas**: Interface completa em inglês, português (Brasil) e espanhol.
+- **Seletor de Tema de Código**: Escolha o tema de destaque de sintaxe usado nos exemplos de código, com variantes claro e escuro.
 
 ## Construído Com
 
-Este projeto foi desenvolvido utilizando as seguintes tecnologias principais:
-
-- **[Flutter](https://flutter.dev/)** – Um kit de ferramentas de UI do Google para construir aplicações nativas bonitas para mobile, web e desktop a partir de uma única base de código.
-- **[Dart](https://dart.dev/)** – A linguagem de programação usada pelo Flutter, otimizada para criar apps rápidos em qualquer plataforma.
+- **[Flutter](https://flutter.dev/)**: Kit de ferramentas de UI do Google para construir aplicações nativas a partir de uma única base de código.
+- **[Dart](https://dart.dev/)**: A linguagem de programação por trás do Flutter.
+- **[Riverpod](https://riverpod.dev/)**: Gerenciamento de estado e injeção de dependência.
+- **[go_router](https://pub.dev/packages/go_router)**: Roteamento declarativo e tratamento de deep links.
+- **[flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)**: Destaque de sintaxe para os exemplos de código.
 
 ## Capturas de Tela
 
@@ -77,32 +80,39 @@ Obtenha o **FlutterGuide** diretamente na **Google Play Store**:
 <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponível no Google Play" width="200">
 </a>
 
+## Começando
+
+O projeto fixa a versão do Flutter SDK via [FVM](https://fvm.app/), por isso todos os comandos abaixo usam `fvm flutter` em vez de um `flutter` instalado direto.
+
+```sh
+git clone https://github.com/dariomatias-dev/flutter_guide_app.git
+cd flutter_guide_app
+fvm install
+fvm flutter pub get
+```
+
+Crie um arquivo `.env` na raiz do projeto (ele é git-ignored) com as chaves abaixo; deixe os valores vazios para rodar localmente sem anúncios:
+
+```
+DEVICE_ID=
+BANNER_AD_ID=
+BANNER_AD_SAMPLE_ID=
+INTERSTICIAL_AD_SAMPLE_ID=
+REWARDED_AD_SAMPLE_ID=
+APP_OPEN_AD_SAMPLE_ID=
+```
+
+Depois rode o app em um dispositivo ou emulador conectado:
+
+```sh
+fvm flutter run
+```
+
 ## Contribuindo
 
 Contribuições tornam a comunidade open-source um lugar incrível para aprender e criar. Qualquer contribuição que você fizer será muito bem-vinda.
 
-Para começar:
-
-1. **Faça um Fork do Projeto**
-2. **Crie sua Branch de Funcionalidade**
-
-   ```sh
-   git checkout -b feature/MinhaFuncionalidadeIncrivel
-   ```
-
-3. **Faça o Commit das suas Alterações**
-
-   ```sh
-   git commit -m 'Add some AmazingFeature'
-   ```
-
-4. **Faça o Push da Branch**
-
-   ```sh
-   git push origin feature/MinhaFuncionalidadeIncrivel
-   ```
-
-5. **Abra um Pull Request**
+Antes de abrir um pull request, veja o [CONTRIBUTING.md](CONTRIBUTING.md) (em inglês) para a configuração local, a convenção de mensagens de commit (Conventional Commits) e as regras de branch deste projeto.
 
 ## Licença
 
@@ -110,7 +120,7 @@ Distribuído sob a **Licença MIT**. Veja o arquivo [LICENSE](LICENSE) para mais
 
 ## Autor
 
-Desenvolvido por **Dário Matias**:
+Desenvolvido por **Dário Matias Sales**:
 
 - **Portfólio**: [dariomatias-dev](https://dariomatias-dev.com)
 - **GitHub**: [dariomatias-dev](https://github.com/dariomatias-dev)

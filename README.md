@@ -10,10 +10,10 @@
 <strong>English</strong> · <a href="README.pt-BR.md">Português (BR)</a> · <a href="README.es.md">Español</a>
 </p>
 
-<h1 align="center">FlutterGuide – Mobile App</h1>
+<h1 align="center">FlutterGuide: Mobile App</h1>
 
 <p align="center">
-A mobile app designed to help developers learn, practice, and master Flutter through curated content.
+An Android app for browsing Flutter/Dart widgets, functions, and packages, each with runnable code and a live preview.
 <br>
 <a href="#about-the-project"><strong>Explore the docs »</strong></a>
 <br>
@@ -32,31 +32,34 @@ A mobile app designed to help developers learn, practice, and master Flutter thr
 - [Built With](#built-with)
 - [Screenshots](#screenshots)
 - [Download the App](#download-the-app)
+- [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
 - [Author](#author)
 
 ## About The Project
 
-**FlutterGuide** is a mobile app developed to accelerate the learning curve for both beginner and experienced Flutter developers.
-It offers a variety of code examples for widgets, functions, packages, as well as elements and interfaces built with this technology.
+**FlutterGuide** is a mobile catalog of Flutter and Dart building blocks, built to help both beginner and experienced developers learn by example.
 
-The app itself showcases Flutter’s features, demonstrating how a single codebase can deliver responsive interfaces, smooth animations, and optimized performance on both Android and iOS.
+Each entry (widget, function, or package) ships with its source code and a live, interactive preview rendered right in the app, so you can see the behavior before copying it into your own project. The catalog also includes ready-made UI screens and reusable interface elements for common app patterns.
 
 ## Features
 
-- **Responsive Design**: Fully adaptive UI that delivers a seamless experience across different screen sizes.
-- **Smooth Animations**: Fluid, high-performance animations that enhance user experience without sacrificing speed.
-- **Optimized Performance**: Built with efficiency in mind to ensure fast and reliable app behavior.
-- **API Integration**: Seamless connectivity with external APIs for dynamic and up-to-date content.
-- **Real Examples**: Access real code examples to boost productivity.
+- **Widget, Function & Package Catalog**: Browse Material and Cupertino widgets, core Dart functions, and popular packages, each with code, an interactive preview, and a link to the official docs.
+- **Elements & UI Samples**: Full sample screens (login, chat, forms, and more) and reusable interface elements you can study or copy.
+- **Favorites**: Save any widget, function, or package for quick access later.
+- **Search**: Filter each catalog by name as you type.
+- **Deep Linking**: Open a specific component or sample directly from a shared link.
+- **Multiple Languages**: Full app UI in English, Portuguese (Brazil), and Spanish.
+- **Code Theme Selector**: Pick the syntax-highlighting theme used for code samples, with light and dark variants.
 
 ## Built With
 
-This project was developed using the following core technologies:
-
-- **[Flutter](https://flutter.dev/)** – A UI toolkit by Google for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
-- **[Dart](https://dart.dev/)** – The programming language used for Flutter, optimized for building fast apps on any platform.
+- **[Flutter](https://flutter.dev/)**: Google's UI toolkit for building natively compiled applications from a single codebase.
+- **[Dart](https://dart.dev/)**: The programming language behind Flutter.
+- **[Riverpod](https://riverpod.dev/)**: State management and dependency injection.
+- **[go_router](https://pub.dev/packages/go_router)**: Declarative routing and deep link handling.
+- **[flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)**: Syntax highlighting for the code samples.
 
 ## Screenshots
 
@@ -77,32 +80,39 @@ Get **FlutterGuide** directly from the **Google Play Store**:
 <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="200">
 </a>
 
+## Getting Started
+
+The project pins its Flutter SDK version via [FVM](https://fvm.app/), so all commands below use `fvm flutter` rather than a bare `flutter` install.
+
+```sh
+git clone https://github.com/dariomatias-dev/flutter_guide_app.git
+cd flutter_guide_app
+fvm install
+fvm flutter pub get
+```
+
+Create a `.env` file in the project root (it's git-ignored) with the following keys; leave values empty for a local run without ads:
+
+```
+DEVICE_ID=
+BANNER_AD_ID=
+BANNER_AD_SAMPLE_ID=
+INTERSTICIAL_AD_SAMPLE_ID=
+REWARDED_AD_SAMPLE_ID=
+APP_OPEN_AD_SAMPLE_ID=
+```
+
+Then run the app on a connected device or emulator:
+
+```sh
+fvm flutter run
+```
+
 ## Contributing
 
 Contributions make the open-source community an amazing place to learn and create. Any contributions you make are greatly appreciated.
 
-To get started:
-
-1. **Fork the Project**
-2. **Create your Feature Branch**
-
-   ```sh
-   git checkout -b feature/AmazingFeature
-   ```
-
-3. **Commit your Changes**
-
-   ```sh
-   git commit -m 'Add some AmazingFeature'
-   ```
-
-4. **Push to the Branch**
-
-   ```sh
-   git push origin feature/AmazingFeature
-   ```
-
-5. **Open a Pull Request**
+Before opening a pull request, see [CONTRIBUTING.md](CONTRIBUTING.md) for the local setup, commit message convention (Conventional Commits), and branching rules this project follows.
 
 ## License
 
@@ -110,7 +120,7 @@ Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more 
 
 ## Author
 
-Developed by **Dário Matias**:
+Developed by **Dário Matias Sales**:
 
 - **Portfolio**: [dariomatias-dev](https://dariomatias-dev.com)
 - **GitHub**: [dariomatias-dev](https://github.com/dariomatias-dev)
