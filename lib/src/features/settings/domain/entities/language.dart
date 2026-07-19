@@ -24,5 +24,9 @@ class Language {
       name: 'Português',
       code: LanguagesApp.ptBr,
     ),
+    Language(
+      name: 'Español',
+      code: LanguagesApp.es,
+    ),
   ];
 }

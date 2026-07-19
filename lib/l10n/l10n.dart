@@ -6,6 +6,7 @@ abstract final class L10n {
   static final all = <Locale>[
     const Locale('en', ''),
     const Locale('pt', 'BR'),
+    const Locale('es', ''),
   ];
 
   /// Whether [locale] is English.
@@ -13,4 +14,7 @@ abstract final class L10n {
 
   /// Whether [locale] is Portuguese.
   static bool isPortuguese(Locale locale) => locale.languageCode == 'pt';
+
+  /// Whether [locale] is Spanish.
+  static bool isSpanish(Locale locale) => locale.languageCode == 'es';
 }
