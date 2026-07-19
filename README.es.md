@@ -114,6 +114,6 @@ Desarrollado por **Dário Matias**:
 
 - **Portafolio**: [dariomatias-dev](https://dariomatias-dev.com)
 - **GitHub**: [dariomatias-dev](https://github.com/dariomatias-dev)
-- **Email**: [matiasdario75@gmail.com](mailto:matiasdario75@gmail.com)
+- **Email**: [dariomatias.dev@gmail.com](mailto:dariomatias.dev@gmail.com)
 - **Instagram**: [@dariomatias_dev](https://instagram.com/dariomatias_dev)
 - **LinkedIn**: [linkedin.com/in/dariomatias-dev](https://linkedin.com/in/dariomatias-dev)
