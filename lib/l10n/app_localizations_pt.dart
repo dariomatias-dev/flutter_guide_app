@@ -234,6 +234,42 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get errorOpeningLink => 'Ocorreu um erro ao tentar abrir o link';
+
+  @override
+  String get textGroup => 'Texto';
+
+  @override
+  String get buttonGroup => 'Botão';
+
+  @override
+  String get formGroup => 'Formulário';
+
+  @override
+  String get pickerGroup => 'Seletor';
+
+  @override
+  String get listGroup => 'Lista';
+
+  @override
+  String get layoutGroup => 'Layout';
+
+  @override
+  String get navigationGroup => 'Navegação';
+
+  @override
+  String get dialogAndOverlayGroup => 'Diálogo e Sobreposição';
+
+  @override
+  String get displayGroup => 'Exibição';
+
+  @override
+  String get effectsGroup => 'Efeitos';
+
+  @override
+  String get interactionGroup => 'Interação';
+
+  @override
+  String get builderGroup => 'Builder';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -466,4 +502,40 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get errorOpeningLink => 'Ocorreu um erro ao tentar abrir o link';
+
+  @override
+  String get textGroup => 'Texto';
+
+  @override
+  String get buttonGroup => 'Botão';
+
+  @override
+  String get formGroup => 'Formulário';
+
+  @override
+  String get pickerGroup => 'Seletor';
+
+  @override
+  String get listGroup => 'Lista';
+
+  @override
+  String get layoutGroup => 'Layout';
+
+  @override
+  String get navigationGroup => 'Navegação';
+
+  @override
+  String get dialogAndOverlayGroup => 'Diálogo e Sobreposição';
+
+  @override
+  String get displayGroup => 'Exibição';
+
+  @override
+  String get effectsGroup => 'Efeitos';
+
+  @override
+  String get interactionGroup => 'Interação';
+
+  @override
+  String get builderGroup => 'Builder';
 }

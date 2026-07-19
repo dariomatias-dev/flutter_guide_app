@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group_model.dart';
@@ -84,7 +85,7 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
       children: <Widget>[
         ListTileItemWidget(
           onTap: _handleTap,
-          title: widget.componentGroup.title,
+          title: widget.componentGroup.title(AppLocalizations.of(context)!),
           icon: widget.componentGroup.icon,
           trailingWidgets: <Widget>[
             Icon(

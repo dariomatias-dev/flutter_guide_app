@@ -73,5 +73,17 @@
   "invalidLink": "The link is invalid.",
   "deepLinkInitFailure": "Failed to initialize the Deep Link feature.",
   "error": "Error",
-  "errorOpeningLink": "An error occurred while trying to open the link"
+  "errorOpeningLink": "An error occurred while trying to open the link",
+  "textGroup": "Text",
+  "buttonGroup": "Button",
+  "formGroup": "Form",
+  "pickerGroup": "Picker",
+  "listGroup": "List",
+  "layoutGroup": "Layout",
+  "navigationGroup": "Navigation",
+  "dialogAndOverlayGroup": "Dialog & Overlay",
+  "displayGroup": "Display",
+  "effectsGroup": "Effects",
+  "interactionGroup": "Interaction",
+  "builderGroup": "Builder"
 }

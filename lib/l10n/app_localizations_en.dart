@@ -235,4 +235,40 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get errorOpeningLink =>
       'An error occurred while trying to open the link';
+
+  @override
+  String get textGroup => 'Text';
+
+  @override
+  String get buttonGroup => 'Button';
+
+  @override
+  String get formGroup => 'Form';
+
+  @override
+  String get pickerGroup => 'Picker';
+
+  @override
+  String get listGroup => 'List';
+
+  @override
+  String get layoutGroup => 'Layout';
+
+  @override
+  String get navigationGroup => 'Navigation';
+
+  @override
+  String get dialogAndOverlayGroup => 'Dialog & Overlay';
+
+  @override
+  String get displayGroup => 'Display';
+
+  @override
+  String get effectsGroup => 'Effects';
+
+  @override
+  String get interactionGroup => 'Interaction';
+
+  @override
+  String get builderGroup => 'Builder';
 }

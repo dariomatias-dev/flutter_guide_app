@@ -542,6 +542,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred while trying to open the link'**
   String get errorOpeningLink;
+
+  /// No description provided for @textGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get textGroup;
+
+  /// No description provided for @buttonGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Button'**
+  String get buttonGroup;
+
+  /// No description provided for @formGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Form'**
+  String get formGroup;
+
+  /// No description provided for @pickerGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Picker'**
+  String get pickerGroup;
+
+  /// No description provided for @listGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'List'**
+  String get listGroup;
+
+  /// No description provided for @layoutGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Layout'**
+  String get layoutGroup;
+
+  /// No description provided for @navigationGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigation'**
+  String get navigationGroup;
+
+  /// No description provided for @dialogAndOverlayGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Dialog & Overlay'**
+  String get dialogAndOverlayGroup;
+
+  /// No description provided for @displayGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Display'**
+  String get displayGroup;
+
+  /// No description provided for @effectsGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Effects'**
+  String get effectsGroup;
+
+  /// No description provided for @interactionGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Interaction'**
+  String get interactionGroup;
+
+  /// No description provided for @builderGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Builder'**
+  String get builderGroup;
 }
 
 class _AppLocalizationsDelegate

@@ -3,10 +3,10 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_names/wid
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group_model.dart';
 
 /// The predefined component groups shown on the home screen.
-const componentGroups = <ComponentGroupModel>[
+final componentGroups = <ComponentGroupModel>[
   ComponentGroupModel(
     icon: Icons.text_fields,
-    title: 'Text',
+    title: (l10n) => l10n.textGroup,
     components: <String>[
       WidgetNames.editableTextWidget,
       WidgetNames.richTextWidget,
@@ -16,7 +16,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.crop_16_9,
-    title: 'Button',
+    title: (l10n) => l10n.buttonGroup,
     components: <String>[
       WidgetNames.backButtonMaterial,
       WidgetNames.cupertinoButtonCupertino,
@@ -35,7 +35,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.assignment_outlined,
-    title: 'Form',
+    title: (l10n) => l10n.formGroup,
     components: <String>[
       WidgetNames.autocompleteMaterial,
       WidgetNames.checkboxMaterial,
@@ -62,7 +62,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.event,
-    title: 'Picker',
+    title: (l10n) => l10n.pickerGroup,
     components: <String>[
       WidgetNames.cupertinoDatePickerCupertino,
       WidgetNames.cupertinoPickerCupertino,
@@ -71,7 +71,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.format_list_bulleted,
-    title: 'List',
+    title: (l10n) => l10n.listGroup,
     components: <String>[
       WidgetNames.cupertinoListTileCupertino,
       WidgetNames.expansionPanelListMaterial,
@@ -86,7 +86,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.dashboard_outlined,
-    title: 'Layout',
+    title: (l10n) => l10n.layoutGroup,
     components: <String>[
       WidgetNames.alignWidget,
       WidgetNames.centerWidget,
@@ -109,7 +109,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.navigation_outlined,
-    title: 'Navigation',
+    title: (l10n) => l10n.navigationGroup,
     components: <String>[
       WidgetNames.appBarMaterial,
       WidgetNames.bottomAppBarMaterial,
@@ -128,7 +128,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.chat_bubble_outline,
-    title: 'Dialog & Overlay',
+    title: (l10n) => l10n.dialogAndOverlayGroup,
     components: <String>[
       WidgetNames.alertDialogMaterial,
       WidgetNames.cupertinoActionSheetCupertino,
@@ -145,7 +145,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.info_outline,
-    title: 'Display',
+    title: (l10n) => l10n.displayGroup,
     components: <String>[
       WidgetNames.actionChipMaterial,
       WidgetNames.badgeMaterial,
@@ -170,7 +170,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.auto_awesome,
-    title: 'Effects',
+    title: (l10n) => l10n.effectsGroup,
     components: <String>[
       WidgetNames.animatedAlignWidget,
       WidgetNames.animatedContainerWidget,
@@ -188,7 +188,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.touch_app_outlined,
-    title: 'Interaction',
+    title: (l10n) => l10n.interactionGroup,
     components: <String>[
       WidgetNames.dismissibleMaterial,
       WidgetNames.draggableWidget,
@@ -200,7 +200,7 @@ const componentGroups = <ComponentGroupModel>[
   ),
   ComponentGroupModel(
     icon: Icons.autorenew,
-    title: 'Builder',
+    title: (l10n) => l10n.builderGroup,
     components: <String>[
       WidgetNames.futureBuilderWidget,
       WidgetNames.listenableBuilderWidget,

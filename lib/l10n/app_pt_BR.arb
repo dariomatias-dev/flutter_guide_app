@@ -73,5 +73,17 @@
   "invalidLink": "O link é inválido.",
   "deepLinkInitFailure": "Falha ao inicializar o recurso de Deep Link.",
   "error": "Erro",
-  "errorOpeningLink": "Ocorreu um erro ao tentar abrir o link"
+  "errorOpeningLink": "Ocorreu um erro ao tentar abrir o link",
+  "textGroup": "Texto",
+  "buttonGroup": "Botão",
+  "formGroup": "Formulário",
+  "pickerGroup": "Seletor",
+  "listGroup": "Lista",
+  "layoutGroup": "Layout",
+  "navigationGroup": "Navegação",
+  "dialogAndOverlayGroup": "Diálogo e Sobreposição",
+  "displayGroup": "Exibição",
+  "effectsGroup": "Efeitos",
+  "interactionGroup": "Interação",
+  "builderGroup": "Builder"
 }
