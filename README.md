@@ -33,6 +33,7 @@ An Android app for browsing Flutter/Dart widgets, functions, and packages, each 
 - [Screenshots](#screenshots)
 - [Download the App](#download-the-app)
 - [Getting Started](#getting-started)
+- [Scripts](#scripts)
 - [Contributing](#contributing)
 - [License](#license)
 - [Author](#author)
@@ -64,12 +65,15 @@ Each entry (widget, function, or package) ships with its source code and a live,
 ## Screenshots
 
 <div align="center">
-<img src="screenshots/flutter_guide_screen_1.jpeg" width="200" alt="Screenshot 1"/>
-<img src="screenshots/flutter_guide_screen_2.jpeg" width="200" alt="Screenshot 2"/>
-<img src="screenshots/flutter_guide_screen_3.jpeg" width="200" alt="Screenshot 3"/>
-<img src="screenshots/flutter_guide_screen_4.jpeg" width="200" alt="Screenshot 4"/>
-<img src="screenshots/flutter_guide_screen_5.jpeg" width="200" alt="Screenshot 5"/>
-<img src="screenshots/flutter_guide_screen_6.jpeg" width="200" alt="Screenshot 6"/>
+<img src="screenshots/01_home.png" width="200" alt="Home"/>
+<img src="screenshots/02_catalog_elements.png" width="200" alt="Elements catalog"/>
+<img src="screenshots/03_catalog_uis.png" width="200" alt="UIs catalog"/>
+<img src="screenshots/04_elements_tab.png" width="200" alt="Elements tab"/>
+<img src="screenshots/05_component_detail.png" width="200" alt="Component preview"/>
+<img src="screenshots/06_component_code.png" width="200" alt="Component code"/>
+<img src="screenshots/07_packages_tab.png" width="200" alt="Packages tab"/>
+<img src="screenshots/08_settings.png" width="200" alt="Settings"/>
+<img src="screenshots/09_code_theme_selector.png" width="200" alt="Code theme selector"/>
 </div>
 
 ## Download the App
@@ -107,6 +111,14 @@ Then run the app on a connected device or emulator:
 ```sh
 fvm flutter run
 ```
+
+## Scripts
+
+Utility scripts live under `scripts/`.
+
+| Script       | Command                             | Description                                                                                                                                                    |
+| ------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `screenshot` | `scripts/screenshot.sh [device-id]` | Drives the app through its main screens on a connected device or emulator and saves a screenshot of each one into `screenshots/`, used for the README, Play Store listing, and official website. Run `fvm flutter devices` to list available device ids. |
 
 ## Contributing
 

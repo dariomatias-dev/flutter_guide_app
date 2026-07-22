@@ -33,6 +33,7 @@ Um aplicativo Android para explorar widgets, funções e pacotes do Flutter/Dart
 - [Capturas de Tela](#capturas-de-tela)
 - [Baixar o App](#baixar-o-app)
 - [Começando](#começando)
+- [Scripts](#scripts)
 - [Contribuindo](#contribuindo)
 - [Licença](#licença)
 - [Autor](#autor)
@@ -64,12 +65,15 @@ Cada item (widget, função ou pacote) vem com seu código-fonte e uma prévia i
 ## Capturas de Tela
 
 <div align="center">
-<img src="screenshots/flutter_guide_screen_1.jpeg" width="200" alt="Captura 1"/>
-<img src="screenshots/flutter_guide_screen_2.jpeg" width="200" alt="Captura 2"/>
-<img src="screenshots/flutter_guide_screen_3.jpeg" width="200" alt="Captura 3"/>
-<img src="screenshots/flutter_guide_screen_4.jpeg" width="200" alt="Captura 4"/>
-<img src="screenshots/flutter_guide_screen_5.jpeg" width="200" alt="Captura 5"/>
-<img src="screenshots/flutter_guide_screen_6.jpeg" width="200" alt="Captura 6"/>
+<img src="screenshots/01_home.png" width="200" alt="Início"/>
+<img src="screenshots/02_catalog_elements.png" width="200" alt="Catálogo de elementos"/>
+<img src="screenshots/03_catalog_uis.png" width="200" alt="Catálogo de UIs"/>
+<img src="screenshots/04_elements_tab.png" width="200" alt="Aba de elementos"/>
+<img src="screenshots/05_component_detail.png" width="200" alt="Prévia do componente"/>
+<img src="screenshots/06_component_code.png" width="200" alt="Código do componente"/>
+<img src="screenshots/07_packages_tab.png" width="200" alt="Aba de pacotes"/>
+<img src="screenshots/08_settings.png" width="200" alt="Configurações"/>
+<img src="screenshots/09_code_theme_selector.png" width="200" alt="Seletor de tema de código"/>
 </div>
 
 ## Baixar o App
@@ -107,6 +111,14 @@ Depois rode o app em um dispositivo ou emulador conectado:
 ```sh
 fvm flutter run
 ```
+
+## Scripts
+
+Scripts utilitários ficam em `scripts/`.
+
+| Script       | Comando                             | Descrição                                                                                                                                                    |
+| ------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `screenshot` | `scripts/screenshot.sh [device-id]` | Percorre as principais telas do app em um dispositivo ou emulador conectado e salva uma captura de cada uma em `screenshots/`, usadas no README, na Play Store e no site oficial. Rode `fvm flutter devices` para listar os ids de dispositivos disponíveis. |
 
 ## Contribuindo
 

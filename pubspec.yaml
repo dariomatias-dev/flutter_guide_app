@@ -89,6 +89,8 @@ dev_dependencies:
   app_links_platform_interface: ^2.0.2
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
   mocktail: ^1.0.4
   very_good_analysis: ^10.3.0
 
