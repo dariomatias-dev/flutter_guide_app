@@ -209,6 +209,24 @@ abstract class AppLocalizations {
   /// **'Favorites'**
   String get favorites;
 
+  /// No description provided for @changeTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Change theme'**
+  String get changeTheme;
+
+  /// No description provided for @watchOnYoutube.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch on YouTube'**
+  String get watchOnYoutube;
+
+  /// No description provided for @clearSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search'**
+  String get clearSearch;
+
   /// No description provided for @saved.
   ///
   /// In en, this message translates to:

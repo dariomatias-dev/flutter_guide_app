@@ -7,6 +7,7 @@ class IconButtonWidget extends StatelessWidget {
   /// Creates an [IconButtonWidget].
   const IconButtonWidget({
     required this.onTap,
+    required this.tooltip,
     super.key,
     this.icon,
     this.child,
@@ -25,21 +26,27 @@ class IconButtonWidget extends StatelessWidget {
   /// Called when the button is tapped.
   final VoidCallback onTap;
 
+  /// Accessible label shown as a tooltip and exposed to screen readers.
+  final String tooltip;
+
   @override
   Widget build(BuildContext context) {
-    return InkWellButtonWidget(
-      onTap: onTap,
-      borderRadius: 100,
-      child: SizedBox(
-        width: 40,
-        height: 40,
-        child: Center(
-          child: child ??
-              Icon(
-                icon,
-                color: Theme.of(context).colorScheme.primary,
-                size: 24,
-              ),
+    return Tooltip(
+      message: tooltip,
+      child: InkWellButtonWidget(
+        onTap: onTap,
+        borderRadius: 100,
+        child: SizedBox(
+          width: 40,
+          height: 40,
+          child: Center(
+            child: child ??
+                Icon(
+                  icon,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 24,
+                ),
+          ),
         ),
       ),
     );

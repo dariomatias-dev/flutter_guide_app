@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/router/app_routes.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
@@ -52,6 +53,7 @@ class CardWidget extends StatelessWidget {
       trailingWidgets: <Widget>[
         if (videoId != null) ...<Widget>[
           IconButtonWidget(
+            tooltip: AppLocalizations.of(context)!.watchOnYoutube,
             child: FaIcon(
               FontAwesomeIcons.youtube,
               color: Theme.of(context).colorScheme.primary,

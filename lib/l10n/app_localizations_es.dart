@@ -63,6 +63,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get favorites => 'Favoritos';
 
   @override
+  String get changeTheme => 'Cambiar tema';
+
+  @override
+  String get watchOnYoutube => 'Ver en YouTube';
+
+  @override
+  String get clearSearch => 'Borrar búsqueda';
+
+  @override
   String get saved => 'guardado';
 
   @override

@@ -63,6 +63,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get favorites => 'Favoritos';
 
   @override
+  String get changeTheme => 'Alterar tema';
+
+  @override
+  String get watchOnYoutube => 'Assistir no YouTube';
+
+  @override
+  String get clearSearch => 'Limpar busca';
+
+  @override
   String get saved => 'salvo';
 
   @override
@@ -347,6 +356,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get favorites => 'Favoritos';
+
+  @override
+  String get changeTheme => 'Alterar tema';
+
+  @override
+  String get watchOnYoutube => 'Assistir no YouTube';
+
+  @override
+  String get clearSearch => 'Limpar busca';
 
   @override
   String get saved => 'salvo';

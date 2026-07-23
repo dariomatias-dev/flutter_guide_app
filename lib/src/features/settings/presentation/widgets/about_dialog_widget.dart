@@ -35,6 +35,7 @@ class AboutDialogWidget extends StatelessWidget {
           'assets/icons/flutter_guide_icon.png',
           width: 80,
           height: 80,
+          excludeFromSemantics: true,
         ),
         const SizedBox(height: 16),
         const Text(

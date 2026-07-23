@@ -90,10 +90,13 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
           ),
           suffixIcon: GestureDetector(
             onTap: _searchFieldClear,
-            child: Icon(
-              Icons.close,
-              color: iconColor,
-              size: 20,
+            child: Tooltip(
+              message: appLocalizations.clearSearch,
+              child: Icon(
+                Icons.close,
+                color: iconColor,
+                size: 20,
+              ),
             ),
           ),
           hintText: '$hintText...',

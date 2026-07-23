@@ -12,6 +12,7 @@ void main() {
           IconButtonWidget(
             icon: Icons.star,
             onTap: () {},
+            tooltip: 'star',
           ),
         ),
       );
@@ -24,6 +25,7 @@ void main() {
         wrap(
           IconButtonWidget(
             onTap: () {},
+            tooltip: 'custom',
             child: const Text('custom'),
           ),
         ),
@@ -39,6 +41,7 @@ void main() {
           IconButtonWidget(
             icon: Icons.star,
             onTap: () => taps++,
+            tooltip: 'star',
           ),
         ),
       );
@@ -53,6 +56,7 @@ void main() {
         () => IconButtonWidget(
           icon: Icons.star,
           onTap: () {},
+          tooltip: 'star',
           child: const Text('x'),
         ),
         throwsAssertionError,

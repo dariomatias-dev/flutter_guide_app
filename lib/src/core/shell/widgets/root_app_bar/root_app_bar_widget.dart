@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 
 import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/select_favorite_screen_dialog/select_favorite_screen_dialog_widget.dart';
 
@@ -42,6 +43,7 @@ class _RootAppBarWidgetState extends State<RootAppBarWidget> {
             width: 20,
             height: 20,
             fit: BoxFit.cover,
+            excludeFromSemantics: true,
           ),
           const SizedBox(width: 16),
           const Text(
@@ -57,6 +59,7 @@ class _RootAppBarWidgetState extends State<RootAppBarWidget> {
         IconButtonWidget(
           onTap: showSelectFavoriteScreenDialog,
           icon: Icons.bookmark_border,
+          tooltip: AppLocalizations.of(context)!.favorites,
         ),
         const SizedBox(width: 4),
       ],

@@ -68,117 +68,122 @@ class ThemeCardWidget extends StatelessWidget {
     final isPreviewDark = themeType == ThemeType.dark;
     final cardColors = isPreviewDark ? _darkCardColors : _lightCardColors;
 
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(
-          milliseconds: 250,
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: isSelected ? cardColors.selectedBorder : cardColors.border,
-            width: 2,
+    return Semantics(
+      button: true,
+      selected: isSelected,
+      label: themeName,
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(
+            milliseconds: 250,
           ),
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: isSelected
-                  ? Colors.blue.shade500.withAlpha(80)
-                  : Colors.black.withAlpha(25),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: isSelected ? cardColors.selectedBorder : cardColors.border,
+              width: 2,
             ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              height: 50,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: isSelected
+                    ? Colors.blue.shade500.withAlpha(80)
+                    : Colors.black.withAlpha(25),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-              decoration: BoxDecoration(
-                color: cardColors.header,
-                border: Border(
-                  bottom: BorderSide(
-                    color: cardColors.separator,
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                height: 50,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                decoration: BoxDecoration(
+                  color: cardColors.header,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: cardColors.separator,
+                    ),
+                  ),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(10),
                   ),
                 ),
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(10),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Text(
-                            themeName,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: cardColors.text,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              themeName,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: cardColors.text,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  AnimatedSwitcher(
-                    duration: const Duration(
-                      milliseconds: 300,
-                    ),
-                    transitionBuilder: (child, animation) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: ScaleTransition(
-                          scale: animation,
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: isSelected
-                        ? Icon(
-                            key: const ValueKey('selected'),
-                            Icons.check_circle_rounded,
-                            color: Colors.blue.shade400,
-                          )
-                        : const SizedBox(
-                            key: ValueKey('unselected'),
-                            width: 24,
+                    AnimatedSwitcher(
+                      duration: const Duration(
+                        milliseconds: 300,
+                      ),
+                      transitionBuilder: (child, animation) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: ScaleTransition(
+                            scale: animation,
+                            child: child,
                           ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
-              decoration: BoxDecoration(
-                color: cardColors.background,
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(10),
+                        );
+                      },
+                      child: isSelected
+                          ? Icon(
+                              key: const ValueKey('selected'),
+                              Icons.check_circle_rounded,
+                              color: Colors.blue.shade400,
+                            )
+                          : const SizedBox(
+                              key: ValueKey('unselected'),
+                              width: 24,
+                            ),
+                    ),
+                  ],
                 ),
               ),
-              child: AbsorbPointer(
-                child: SyntaxHighlighter(
-                  code: previewCode,
-                  isDarkMode: isPreviewDark,
-                  fontSize: 13,
-                  showLineNumbers: false,
-                  lightColorSchema: themeSchema,
-                  darkColorSchema: themeSchema,
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: cardColors.background,
+                  borderRadius: const BorderRadius.vertical(
+                    bottom: Radius.circular(10),
+                  ),
+                ),
+                child: AbsorbPointer(
+                  child: SyntaxHighlighter(
+                    code: previewCode,
+                    isDarkMode: isPreviewDark,
+                    fontSize: 13,
+                    showLineNumbers: false,
+                    lightColorSchema: themeSchema,
+                    darkColorSchema: themeSchema,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

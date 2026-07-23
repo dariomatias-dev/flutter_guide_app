@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +16,7 @@ class ChangeThemeButtonWidget extends ConsumerWidget {
     return IconButtonWidget(
       onTap: () => ref.read(themeNotifierProvider.notifier).toggleTheme(),
       icon: isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+      tooltip: AppLocalizations.of(context)!.changeTheme,
     );
   }
 }

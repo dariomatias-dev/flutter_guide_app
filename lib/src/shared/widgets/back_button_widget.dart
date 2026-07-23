@@ -11,13 +11,16 @@ class BackButtonWidget extends StatelessWidget {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Container(
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          Icons.arrow_back_ios_new,
-          color: Theme.of(context).colorScheme.tertiary,
+      child: Tooltip(
+        message: MaterialLocalizations.of(context).backButtonTooltip,
+        child: Container(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Theme.of(context).colorScheme.tertiary,
+          ),
         ),
       ),
     );

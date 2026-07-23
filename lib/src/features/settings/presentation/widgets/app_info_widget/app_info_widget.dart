@@ -23,6 +23,7 @@ class AppInfoWidget extends ConsumerWidget {
             'assets/icons/flutter_guide_icon.png',
             width: 52,
             height: 52,
+            excludeFromSemantics: true,
           ),
           const SizedBox(height: 16),
           Text(
