@@ -4,6 +4,7 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-08-01
 ### Added
 - Spanish localization, alongside existing Portuguese (BR) and English
 - Semantic labels for interactive elements (accessibility)
@@ -247,7 +248,8 @@ Initial public release.
 ## [1.0.0] - 2024-03-21
 Initial commit: project scaffolding.
 
-[Unreleased]: https://github.com/dariomatias-dev/flutter_guide_app/compare/v1.2.3...HEAD
+[Unreleased]: https://github.com/dariomatias-dev/flutter_guide_app/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/dariomatias-dev/flutter_guide_app/compare/v1.2.3...v1.3.0
 [1.2.3]: https://github.com/dariomatias-dev/flutter_guide_app/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/dariomatias-dev/flutter_guide_app/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/dariomatias-dev/flutter_guide_app/compare/v1.2.0...v1.2.1
