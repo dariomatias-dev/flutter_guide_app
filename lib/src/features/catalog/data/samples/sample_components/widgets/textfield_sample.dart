@@ -25,6 +25,13 @@ class _TextFieldSampleState extends State<TextFieldSample> {
   String _value = _defaultMessage;
 
   @override
+  void dispose() {
+    _inputController.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(

@@ -39,6 +39,13 @@ class _PinputSampleState extends State<PinputSample> {
   }
 
   @override
+  void dispose() {
+    _pinController.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(

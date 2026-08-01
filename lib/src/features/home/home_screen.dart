@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           BorderListTileItemWidget(
-            title: 'UIs',
+            title: appLocalizations.uis,
             icon: Icons.web,
             onTap: () => AppRoutes.pushCatalog(
               context,
