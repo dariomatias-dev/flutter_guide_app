@@ -10,11 +10,13 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/device_info_plus_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/dio_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/dotted_border_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/expandable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_animate_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_chat_bubble_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_rating_bar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_slidable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_spinkit_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_staggered_grid_view_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_svg_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_syntax_highlighter_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/font_awesome_flutter_sample.dart';
@@ -34,6 +36,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/scroll_infinity_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/share_plus_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/shared_preferences_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/shimmer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/side_sheet_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/smooth_page_indicator_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/toastification_sample.dart';
@@ -90,6 +93,11 @@ const packages = <PackageModel>[
     sample: DottedBorderSample(),
   ),
   PackageModel(
+    name: PackageNames.expandablePackage,
+    icon: Icons.unfold_more,
+    sample: ExpandableSample(),
+  ),
+  PackageModel(
     name: PackageNames.flutterAnimatePackage,
     icon: Icons.animation,
     sample: FlutterAnimateSample(),
@@ -115,6 +123,11 @@ const packages = <PackageModel>[
     name: PackageNames.flutterSpinkitPackage,
     icon: Icons.cached,
     sample: FlutterSpinkitSample(),
+  ),
+  PackageModel(
+    name: PackageNames.flutterStaggeredGridViewPackage,
+    icon: Icons.grid_view,
+    sample: FlutterStaggeredGridViewSample(),
   ),
   PackageModel(
     name: PackageNames.flutterSvgPackage,
@@ -213,6 +226,11 @@ const packages = <PackageModel>[
     icon: Icons.storage,
     videoId: 'sa_U0jffQII',
     sample: SharedPreferencesSample(),
+  ),
+  PackageModel(
+    name: PackageNames.shimmerPackage,
+    icon: Icons.blur_linear,
+    sample: ShimmerSample(),
   ),
   PackageModel(
     name: PackageNames.sideSheetPackage,

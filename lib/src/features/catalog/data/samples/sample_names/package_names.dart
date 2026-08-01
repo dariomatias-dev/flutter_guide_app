@@ -27,6 +27,9 @@ abstract final class PackageNames {
   /// Display name of the `dotted_border` component.
   static const dottedBorderPackage = 'dotted_border';
 
+  /// Display name of the `expandable` component.
+  static const expandablePackage = 'expandable';
+
   /// Display name of the `flutter_animate` component.
   static const flutterAnimatePackage = 'flutter_animate';
 
@@ -41,6 +44,10 @@ abstract final class PackageNames {
 
   /// Display name of the `flutter_spinkit` component.
   static const flutterSpinkitPackage = 'flutter_spinkit';
+
+  /// Display name of the `flutter_staggered_grid_view` component.
+  static const flutterStaggeredGridViewPackage =
+      'flutter_staggered_grid_view';
 
   /// Display name of the `flutter_svg` component.
   static const flutterSvgPackage = 'flutter_svg';
@@ -98,6 +105,9 @@ abstract final class PackageNames {
 
   /// Display name of the `shared_preferences` component.
   static const sharedPreferencesPackage = 'shared_preferences';
+
+  /// Display name of the `shimmer` component.
+  static const shimmerPackage = 'shimmer';
 
   /// Display name of the `side_sheet` component.
   static const sideSheetPackage = 'side_sheet';
