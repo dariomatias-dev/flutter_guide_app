@@ -5,6 +5,12 @@
 <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
 </div>
 <br>
+<div align="center">
+<a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml"><img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
+<img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Licença MIT"></a>
+</div>
+<br>
 
 <p align="center">
 <a href="README.md">English</a> · <strong>Português (BR)</strong> · <a href="README.es.md">Español</a>
@@ -30,11 +36,14 @@ Um aplicativo Android para explorar widgets, funções e pacotes do Flutter/Dart
 - [Sobre O Projeto](#sobre-o-projeto)
 - [Funcionalidades](#funcionalidades)
 - [Construído Com](#construído-com)
+- [Arquitetura](#arquitetura)
+- [Testes](#testes)
 - [Capturas de Tela](#capturas-de-tela)
 - [Baixar o App](#baixar-o-app)
 - [Começando](#começando)
 - [Scripts](#scripts)
 - [Contribuindo](#contribuindo)
+- [Changelog](#changelog)
 - [Licença](#licença)
 - [Autor](#autor)
 
@@ -44,15 +53,28 @@ Um aplicativo Android para explorar widgets, funções e pacotes do Flutter/Dart
 
 Cada item (widget, função ou pacote) vem com seu código-fonte e uma prévia interativa renderizada dentro do próprio app, para você ver o comportamento antes de copiar para o seu projeto. O catálogo também inclui telas de UI prontas e elementos de interface reutilizáveis para padrões comuns de app.
 
+O catálogo cobre atualmente:
+
+| Categoria      | Quantidade |
+| -------------- | ---------- |
+| Widgets        | 131        |
+| Pacotes        | 42         |
+| Funções        | 13         |
+| Elementos      | 10         |
+| Exemplos de UI | 6          |
+| **Total**      | **202**    |
+
 ## Funcionalidades
 
 - **Catálogo de Widgets, Funções e Pacotes**: Navegue por widgets Material e Cupertino, funções essenciais do Dart e pacotes populares, cada um com código, prévia interativa e link para a documentação oficial.
-- **Elementos e Exemplos de UI**: Telas de exemplo completas (login, chat, formulários e mais) e elementos de interface reutilizáveis para estudar ou copiar.
+- **Elementos e Exemplos de UI**: Telas de exemplo completas (login, chat, cliente de email e mais) e elementos de interface reutilizáveis para estudar ou copiar.
 - **Favoritos**: Salve qualquer widget, função ou pacote para acesso rápido depois.
 - **Busca**: Filtre cada catálogo pelo nome enquanto digita.
 - **Deep Linking**: Abra um componente ou exemplo específico direto de um link compartilhado.
 - **Múltiplos Idiomas**: Interface completa em inglês, português (Brasil) e espanhol.
 - **Seletor de Tema de Código**: Escolha o tema de destaque de sintaxe usado nos exemplos de código, com variantes claro e escuro.
+- **Tema Claro e Escuro**: Temas em todo o app, com preferência salva.
+- **Acessibilidade**: Labels semânticos em elementos interativos para leitores de tela.
 
 ## Construído Com
 
@@ -61,6 +83,47 @@ Cada item (widget, função ou pacote) vem com seu código-fonte e uma prévia i
 - **[Riverpod](https://riverpod.dev/)**: Gerenciamento de estado e injeção de dependência.
 - **[go_router](https://pub.dev/packages/go_router)**: Roteamento declarativo e tratamento de deep links.
 - **[flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)**: Destaque de sintaxe para os exemplos de código.
+- **[shared_preferences](https://pub.dev/packages/shared_preferences)**: Persistência de tema, idioma e tema de código selecionados.
+- **[google_mobile_ads](https://pub.dev/packages/google_mobile_ads)**: Monetização via anúncios.
+- **[app_links](https://pub.dev/packages/app_links)**: Tratamento de deep links.
+- **[intl](https://pub.dev/packages/intl)** e o suporte nativo de `l10n` do Flutter: localização em inglês, português (BR) e espanhol.
+- **[mocktail](https://pub.dev/packages/mocktail)**: Mocks na suíte de testes.
+
+O catálogo dentro do app também demonstra dezenas de outros pacotes, como
+`dio`, `http`, `cached_network_image`, `flutter_svg`, `video_player`,
+`flutter_animate`, `photo_view` e `shimmer`; abra a aba de Pacotes no app
+para ver a lista completa e executável.
+
+## Arquitetura
+
+O app é organizado por feature (`lib/src/features/`), cada uma com suas
+próprias camadas `data`, `domain` e `presentation`:
+
+- **catalog**: o catálogo de widgets/funções/pacotes/elementos/UIs, busca e favoritos.
+- **home**: a tela inicial e os grupos de componentes.
+- **settings**: seleção de idioma e informações do app.
+- **code_theme_selector**: o seletor de tema de destaque de sintaxe dos exemplos de código.
+
+O estado é gerenciado com Riverpod (classes `ViewModel`/`Notifier`
+expostas via providers), o roteamento com `go_router`, e a persistência
+por uma camada de serviço baseada em `SharedPreferences`. Widgets
+compartilhados e independentes de feature ficam em `lib/src/shared`;
+responsabilidades transversais (DI, roteamento, tema) ficam em
+`lib/src/core`.
+
+## Testes
+
+O projeto tem 37 arquivos de teste cobrindo repositórios, view models,
+notifiers, tratamento de deep link e widgets compartilhados, usando
+`mocktail` para mocks e overrides de `ProviderContainer` para estado do
+Riverpod. O código segue o conjunto rigoroso de lints
+`very_good_analysis`, verificado no CI junto com `dart format` e
+`flutter test`.
+
+```sh
+fvm flutter analyze
+fvm flutter test
+```
 
 ## Capturas de Tela
 
@@ -125,6 +188,10 @@ Scripts utilitários ficam em `scripts/`.
 Contribuições tornam a comunidade open-source um lugar incrível para aprender e criar. Qualquer contribuição que você fizer será muito bem-vinda.
 
 Antes de abrir um pull request, veja o [CONTRIBUTING.md](CONTRIBUTING.md) (em inglês) para a configuração local, a convenção de mensagens de commit (Conventional Commits) e as regras de branch deste projeto.
+
+## Changelog
+
+Todas as mudanças notáveis são documentadas em [CHANGELOG.md](CHANGELOG.md) (em inglês), seguindo o formato [Keep a Changelog](https://keepachangelog.com).
 
 ## Licença
 

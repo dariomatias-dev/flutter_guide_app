@@ -5,6 +5,12 @@
 <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
 </div>
 <br>
+<div align="center">
+<a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml"><img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
+<img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Licencia MIT"></a>
+</div>
+<br>
 
 <p align="center">
 <a href="README.md">English</a> · <a href="README.pt-BR.md">Português (BR)</a> · <strong>Español</strong>
@@ -30,11 +36,14 @@ Una aplicación Android para explorar widgets, funciones y paquetes de Flutter/D
 - [Acerca Del Proyecto](#acerca-del-proyecto)
 - [Características](#características)
 - [Construido Con](#construido-con)
+- [Arquitectura](#arquitectura)
+- [Pruebas](#pruebas)
 - [Capturas de Pantalla](#capturas-de-pantalla)
 - [Descargar la Aplicación](#descargar-la-aplicación)
 - [Primeros Pasos](#primeros-pasos)
 - [Scripts](#scripts)
 - [Contribuir](#contribuir)
+- [Changelog](#changelog)
 - [Licencia](#licencia)
 - [Autor](#autor)
 
@@ -44,15 +53,28 @@ Una aplicación Android para explorar widgets, funciones y paquetes de Flutter/D
 
 Cada elemento (widget, función o paquete) incluye su código fuente y una vista previa interactiva renderizada dentro de la propia app, para que veas el comportamiento antes de copiarlo a tu proyecto. El catálogo también incluye pantallas de UI ya construidas y elementos de interfaz reutilizables para patrones comunes de aplicaciones.
 
+El catálogo cubre actualmente:
+
+| Categoría        | Cantidad |
+| ---------------- | -------- |
+| Widgets          | 131      |
+| Paquetes         | 42       |
+| Funciones        | 13       |
+| Elementos        | 10       |
+| Ejemplos de UI   | 6        |
+| **Total**        | **202**  |
+
 ## Características
 
 - **Catálogo de Widgets, Funciones y Paquetes**: Explora widgets Material y Cupertino, funciones esenciales de Dart y paquetes populares, cada uno con código, vista previa interactiva y enlace a la documentación oficial.
-- **Elementos y Ejemplos de UI**: Pantallas de ejemplo completas (inicio de sesión, chat, formularios y más) y elementos de interfaz reutilizables para estudiar o copiar.
+- **Elementos y Ejemplos de UI**: Pantallas de ejemplo completas (inicio de sesión, chat, cliente de correo y más) y elementos de interfaz reutilizables para estudiar o copiar.
 - **Favoritos**: Guarda cualquier widget, función o paquete para acceder rápidamente después.
 - **Búsqueda**: Filtra cada catálogo por nombre mientras escribes.
 - **Deep Linking**: Abre un componente o ejemplo específico directamente desde un enlace compartido.
 - **Múltiples Idiomas**: Interfaz completa en inglés, portugués (Brasil) y español.
 - **Selector de Tema de Código**: Elige el tema de resaltado de sintaxis usado en los ejemplos de código, con variantes clara y oscura.
+- **Tema Claro y Oscuro**: Temas en toda la app, con preferencia guardada.
+- **Accesibilidad**: Etiquetas semánticas en elementos interactivos para lectores de pantalla.
 
 ## Construido Con
 
@@ -61,6 +83,47 @@ Cada elemento (widget, función o paquete) incluye su código fuente y una vista
 - **[Riverpod](https://riverpod.dev/)**: Gestión de estado e inyección de dependencias.
 - **[go_router](https://pub.dev/packages/go_router)**: Enrutamiento declarativo y manejo de deep links.
 - **[flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)**: Resaltado de sintaxis para los ejemplos de código.
+- **[shared_preferences](https://pub.dev/packages/shared_preferences)**: Persistencia del tema, idioma y tema de código seleccionados.
+- **[google_mobile_ads](https://pub.dev/packages/google_mobile_ads)**: Monetización mediante anuncios.
+- **[app_links](https://pub.dev/packages/app_links)**: Manejo de deep links.
+- **[intl](https://pub.dev/packages/intl)** y las herramientas de `l10n` nativas de Flutter: localización en inglés, portugués (BR) y español.
+- **[mocktail](https://pub.dev/packages/mocktail)**: Mocks en la suite de pruebas.
+
+El catálogo dentro de la app también muestra decenas de paquetes más,
+como `dio`, `http`, `cached_network_image`, `flutter_svg`,
+`video_player`, `flutter_animate`, `photo_view` y `shimmer`; abre la
+pestaña de Paquetes en la app para ver la lista completa y ejecutable.
+
+## Arquitectura
+
+La app está organizada por feature (`lib/src/features/`), cada una con
+sus propias capas `data`, `domain` y `presentation`:
+
+- **catalog**: el catálogo de widgets/funciones/paquetes/elementos/UIs, búsqueda y favoritos.
+- **home**: la pantalla de inicio y los grupos de componentes.
+- **settings**: selección de idioma e información de la app.
+- **code_theme_selector**: el selector de tema de resaltado de sintaxis de los ejemplos de código.
+
+El estado se gestiona con Riverpod (clases `ViewModel`/`Notifier`
+expuestas mediante providers), el enrutamiento con `go_router`, y la
+persistencia mediante una capa de servicio basada en `SharedPreferences`.
+Los widgets compartidos e independientes de feature están en
+`lib/src/shared`; las responsabilidades transversales (DI, enrutamiento,
+tema) están en `lib/src/core`.
+
+## Pruebas
+
+El proyecto tiene 37 archivos de prueba que cubren repositorios, view
+models, notifiers, manejo de deep links y widgets compartidos, usando
+`mocktail` para mocks y overrides de `ProviderContainer` para el estado
+de Riverpod. El código sigue el conjunto estricto de lints
+`very_good_analysis`, verificado en CI junto con `dart format` y
+`flutter test`.
+
+```sh
+fvm flutter analyze
+fvm flutter test
+```
 
 ## Capturas de Pantalla
 
@@ -125,6 +188,10 @@ Los scripts utilitarios están en `scripts/`.
 Las contribuciones hacen que la comunidad de código abierto sea un lugar increíble para aprender y crear. Cualquier contribución que hagas será muy apreciada.
 
 Antes de abrir un pull request, consulta [CONTRIBUTING.md](CONTRIBUTING.md) (en inglés) para la configuración local, la convención de mensajes de commit (Conventional Commits) y las reglas de ramas de este proyecto.
+
+## Changelog
+
+Todos los cambios notables se documentan en [CHANGELOG.md](CHANGELOG.md) (en inglés), siguiendo el formato [Keep a Changelog](https://keepachangelog.com).
 
 ## Licencia
 

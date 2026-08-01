@@ -5,6 +5,12 @@
 <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
 </div>
 <br>
+<div align="center">
+<a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml"><img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
+<img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License"></a>
+</div>
+<br>
 
 <p align="center">
 <strong>English</strong> · <a href="README.pt-BR.md">Português (BR)</a> · <a href="README.es.md">Español</a>
@@ -30,11 +36,14 @@ An Android app for browsing Flutter/Dart widgets, functions, and packages, each 
 - [About The Project](#about-the-project)
 - [Features](#features)
 - [Built With](#built-with)
+- [Architecture](#architecture)
+- [Testing](#testing)
 - [Screenshots](#screenshots)
 - [Download the App](#download-the-app)
 - [Getting Started](#getting-started)
 - [Scripts](#scripts)
 - [Contributing](#contributing)
+- [Changelog](#changelog)
 - [License](#license)
 - [Author](#author)
 
@@ -44,15 +53,28 @@ An Android app for browsing Flutter/Dart widgets, functions, and packages, each 
 
 Each entry (widget, function, or package) ships with its source code and a live, interactive preview rendered right in the app, so you can see the behavior before copying it into your own project. The catalog also includes ready-made UI screens and reusable interface elements for common app patterns.
 
+The catalog currently covers:
+
+| Category  | Count |
+| --------- | ----- |
+| Widgets   | 131   |
+| Packages  | 42    |
+| Functions | 13    |
+| Elements  | 10    |
+| UI samples | 6    |
+| **Total** | **202** |
+
 ## Features
 
 - **Widget, Function & Package Catalog**: Browse Material and Cupertino widgets, core Dart functions, and popular packages, each with code, an interactive preview, and a link to the official docs.
-- **Elements & UI Samples**: Full sample screens (login, chat, forms, and more) and reusable interface elements you can study or copy.
+- **Elements & UI Samples**: Full sample screens (login, chat, email client, and more) and reusable interface elements you can study or copy.
 - **Favorites**: Save any widget, function, or package for quick access later.
 - **Search**: Filter each catalog by name as you type.
 - **Deep Linking**: Open a specific component or sample directly from a shared link.
 - **Multiple Languages**: Full app UI in English, Portuguese (Brazil), and Spanish.
 - **Code Theme Selector**: Pick the syntax-highlighting theme used for code samples, with light and dark variants.
+- **Light & Dark Theme**: App-wide theming with a persisted preference.
+- **Accessibility**: Semantic labels on interactive elements for screen readers.
 
 ## Built With
 
@@ -61,6 +83,45 @@ Each entry (widget, function, or package) ships with its source code and a live,
 - **[Riverpod](https://riverpod.dev/)**: State management and dependency injection.
 - **[go_router](https://pub.dev/packages/go_router)**: Declarative routing and deep link handling.
 - **[flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)**: Syntax highlighting for the code samples.
+- **[shared_preferences](https://pub.dev/packages/shared_preferences)**: Persisting theme, language, and code theme selections.
+- **[google_mobile_ads](https://pub.dev/packages/google_mobile_ads)**: Ad monetization.
+- **[app_links](https://pub.dev/packages/app_links)**: Deep link handling.
+- **[intl](https://pub.dev/packages/intl)** and Flutter's built-in `l10n` tooling: English, Portuguese (BR), and Spanish localization.
+- **[mocktail](https://pub.dev/packages/mocktail)**: Mocking in the test suite.
+
+The in-app catalog also demonstrates dozens more packages, such as `dio`,
+`http`, `cached_network_image`, `flutter_svg`, `video_player`,
+`flutter_animate`, `photo_view`, and `shimmer`; open the Packages tab in
+the app for the full, runnable list.
+
+## Architecture
+
+The app is organized by feature (`lib/src/features/`), each with its own
+`data`, `domain`, and `presentation` layers:
+
+- **catalog**: the widget/function/package/element/UI catalog, search, and favorites.
+- **home**: the landing screen and component groups.
+- **settings**: language selection and app info.
+- **code_theme_selector**: the code sample syntax-highlighting theme picker.
+
+State is managed with Riverpod (`ViewModel`/`Notifier` classes exposed
+through providers), routing with `go_router`, and persistence through a
+`SharedPreferences`-backed service layer. Shared, feature-agnostic widgets
+live under `lib/src/shared`; cross-cutting concerns (DI, routing, theming)
+live under `lib/src/core`.
+
+## Testing
+
+The project has 37 test files covering repositories, view models,
+notifiers, deep link handling, and shared widgets, using `mocktail` for
+mocking and `ProviderContainer` overrides for Riverpod state. Code is
+linted against the strict `very_good_analysis` rule set, enforced in CI
+alongside `dart format` and `flutter test`.
+
+```sh
+fvm flutter analyze
+fvm flutter test
+```
 
 ## Screenshots
 
@@ -125,6 +186,10 @@ Utility scripts live under `scripts/`.
 Contributions make the open-source community an amazing place to learn and create. Any contributions you make are greatly appreciated.
 
 Before opening a pull request, see [CONTRIBUTING.md](CONTRIBUTING.md) for the local setup, commit message convention (Conventional Commits), and branching rules this project follows.
+
+## Changelog
+
+All notable changes are documented in [CHANGELOG.md](CHANGELOG.md), following the [Keep a Changelog](https://keepachangelog.com) format.
 
 ## License
 
