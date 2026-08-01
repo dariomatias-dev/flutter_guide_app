@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/shared/widgets/back_button_widget.dart';
@@ -23,7 +24,11 @@ void main() {
         overrides: [
           sharedPreferencesServiceProvider.overrideWithValue(service),
         ],
-        child: MaterialApp(home: Scaffold(appBar: appBar)),
+        child: MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: Scaffold(appBar: appBar),
+        ),
       );
 
   group('StandardAppBarWidget', () {

@@ -82,7 +82,8 @@ class _DioSampleState extends State<DioSample> {
 
   @override
   void dispose() {
-    _dio.close();
+    _dio.close(force: true);
+
     unawaited(_logger.close());
 
     super.dispose();

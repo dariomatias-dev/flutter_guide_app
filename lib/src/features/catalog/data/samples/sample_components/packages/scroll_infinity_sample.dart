@@ -73,6 +73,13 @@ class _ScrollInfinitySampleState extends State<ScrollInfinitySample> {
   }
 
   @override
+  void dispose() {
+    _dio.close(force: true);
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
