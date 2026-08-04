@@ -7,7 +7,10 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/align_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/animatedalign_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/animatedcontainer_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/animatedcrossfade_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/animatedlist_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/animatedopacity_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/animatedswitcher_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/appbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/autocomplete_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/backbutton_sample.dart';
@@ -17,6 +20,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/bottomappbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/bottomnavigationbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/card_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/carouselview_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/center_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/checkbox_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/checkboxlisttile_sample.dart';
@@ -53,12 +57,14 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotabscaffold_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotextfield_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/cupertinotimerpicker_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/customscrollview_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/datatable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/decoratedbox_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dialog_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dismissible_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/divider_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/draggable_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/draggablescrollablesheet_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/drawer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dropdownbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/dropdownmenu_sample.dart';
@@ -77,6 +83,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/futurebuilder_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/gesturedetector_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/gridview_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/hero_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/iconbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/ignorepointer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/image_sample.dart';
@@ -92,8 +99,10 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/menuanchor_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/navigationbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/navigationrail_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/nestedscrollview_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/opacity_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/outlinedbutton_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/overflowbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/pageview_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/paginateddatatable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/placeholder_sample.dart';
@@ -102,11 +111,14 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/radio_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/radiolisttile_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/rangeslider_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/refreshindicator_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/reorderablelistview_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/richtext_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/row_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/safearea_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/scaffold_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/scrollbar_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/searchanchor_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/searchbar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/segmentedbutton_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/widgets/selectabletext_sample.dart';
@@ -169,10 +181,28 @@ const widgets = <ComponentModel>[
     type: ComponentType.widget,
   ),
   ComponentModel(
+    name: WidgetNames.animatedCrossFadeWidget,
+    icon: Icons.compare_arrows,
+    sample: AnimatedCrossFadeSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.animatedListWidget,
+    icon: Icons.playlist_add,
+    sample: AnimatedListSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.animatedOpacityWidget,
     icon: Icons.opacity,
     videoId: 'QZAvjqOqiLY',
     sample: AnimatedOpacitySample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.animatedSwitcherWidget,
+    icon: Icons.swap_horiz,
+    sample: AnimatedSwitcherSample(),
     type: ComponentType.widget,
   ),
   ComponentModel(
@@ -229,6 +259,12 @@ const widgets = <ComponentModel>[
     name: WidgetNames.cardMaterial,
     icon: Icons.dashboard_outlined,
     sample: CardSample(),
+    type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.carouselViewMaterial,
+    icon: Icons.view_carousel,
+    sample: CarouselViewSample(),
     type: ComponentType.material,
   ),
   ComponentModel(
@@ -462,6 +498,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.cupertino,
   ),
   ComponentModel(
+    name: WidgetNames.customScrollViewWidget,
+    icon: Icons.view_agenda,
+    sample: CustomScrollViewSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.dataTableMaterial,
     icon: Icons.table_chart,
     sample: DataTableSample(),
@@ -497,6 +539,12 @@ const widgets = <ComponentModel>[
     name: WidgetNames.draggableWidget,
     icon: Icons.open_with,
     sample: DraggableSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.draggableScrollableSheetWidget,
+    icon: Icons.swap_vertical_circle,
+    sample: DraggableScrollableSheetSample(),
     type: ComponentType.widget,
   ),
   ComponentModel(
@@ -615,6 +663,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.widget,
   ),
   ComponentModel(
+    name: WidgetNames.heroWidget,
+    icon: Icons.flight,
+    sample: HeroSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.iconButtonMaterial,
     icon: Icons.crop_16_9,
     sample: IconButtonSample(),
@@ -714,6 +768,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.material,
   ),
   ComponentModel(
+    name: WidgetNames.nestedScrollViewWidget,
+    icon: Icons.vertical_align_center,
+    sample: NestedScrollViewSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
     name: WidgetNames.opacityWidget,
     icon: Icons.opacity,
     videoId: '9hltevOHQBw',
@@ -725,6 +785,12 @@ const widgets = <ComponentModel>[
     icon: Icons.crop_16_9,
     sample: OutlinedButtonSample(),
     type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.overflowBarWidget,
+    icon: Icons.more_horiz,
+    sample: OverflowBarSample(),
+    type: ComponentType.widget,
   ),
   ComponentModel(
     name: WidgetNames.pageViewWidget,
@@ -778,6 +844,12 @@ const widgets = <ComponentModel>[
     type: ComponentType.material,
   ),
   ComponentModel(
+    name: WidgetNames.refreshIndicatorMaterial,
+    icon: Icons.refresh,
+    sample: RefreshIndicatorSample(),
+    type: ComponentType.material,
+  ),
+  ComponentModel(
     name: WidgetNames.reorderableListViewMaterial,
     icon: Icons.drag_handle,
     videoId: '3fB1mxOsqJE',
@@ -808,6 +880,18 @@ const widgets = <ComponentModel>[
     name: WidgetNames.scaffoldMaterial,
     icon: Icons.dashboard,
     sample: ScaffoldSample(),
+    type: ComponentType.material,
+  ),
+  ComponentModel(
+    name: WidgetNames.scrollbarWidget,
+    icon: Icons.height,
+    sample: ScrollbarSample(),
+    type: ComponentType.widget,
+  ),
+  ComponentModel(
+    name: WidgetNames.searchAnchorMaterial,
+    icon: Icons.search,
+    sample: SearchAnchorSample(),
     type: ComponentType.material,
   ),
   ComponentModel(

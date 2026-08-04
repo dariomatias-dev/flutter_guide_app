@@ -15,8 +15,17 @@ abstract final class WidgetNames {
   /// Display name of the `AnimatedContainer` component.
   static const animatedContainerWidget = 'AnimatedContainer';
 
+  /// Display name of the `AnimatedCrossFade` component.
+  static const animatedCrossFadeWidget = 'AnimatedCrossFade';
+
+  /// Display name of the `AnimatedList` component.
+  static const animatedListWidget = 'AnimatedList';
+
   /// Display name of the `AnimatedOpacity` component.
   static const animatedOpacityWidget = 'AnimatedOpacity';
+
+  /// Display name of the `AnimatedSwitcher` component.
+  static const animatedSwitcherWidget = 'AnimatedSwitcher';
 
   /// Display name of the `AppBar` component.
   static const appBarMaterial = 'AppBar';
@@ -44,6 +53,9 @@ abstract final class WidgetNames {
 
   /// Display name of the `Card` component.
   static const cardMaterial = 'Card';
+
+  /// Display name of the `CarouselView` component.
+  static const carouselViewMaterial = 'CarouselView';
 
   /// Display name of the `Center` component.
   static const centerWidget = 'Center';
@@ -159,6 +171,9 @@ abstract final class WidgetNames {
   /// Display name of the `CupertinoTimerPicker` component.
   static const cupertinoTimerPickerCupertino = 'CupertinoTimerPicker';
 
+  /// Display name of the `CustomScrollView` component.
+  static const customScrollViewWidget = 'CustomScrollView';
+
   /// Display name of the `DataTable` component.
   static const dataTableMaterial = 'DataTable';
 
@@ -176,6 +191,9 @@ abstract final class WidgetNames {
 
   /// Display name of the `Draggable` and `DragTarget` components.
   static const draggableWidget = 'Draggable & DragTarget';
+
+  /// Display name of the `DraggableScrollableSheet` component.
+  static const draggableScrollableSheetWidget = 'DraggableScrollableSheet';
 
   /// Display name of the `Drawer` component.
   static const drawerMaterial = 'Drawer';
@@ -231,6 +249,9 @@ abstract final class WidgetNames {
   /// Display name of the `GridView` component.
   static const gridViewWidget = 'GridView';
 
+  /// Display name of the `Hero` component.
+  static const heroWidget = 'Hero';
+
   /// Display name of the `IconButton` component.
   static const iconButtonMaterial = 'IconButton';
 
@@ -276,11 +297,17 @@ abstract final class WidgetNames {
   /// Display name of the `NavigationRail` component.
   static const navigationRailMaterial = 'NavigationRail';
 
+  /// Display name of the `NestedScrollView` component.
+  static const nestedScrollViewWidget = 'NestedScrollView';
+
   /// Display name of the `Opacity` component.
   static const opacityWidget = 'Opacity';
 
   /// Display name of the `OutlinedButton` component.
   static const outlinedButtonMaterial = 'OutlinedButton';
+
+  /// Display name of the `OverflowBar` component.
+  static const overflowBarWidget = 'OverflowBar';
 
   /// Display name of the `PageView` component.
   static const pageViewWidget = 'PageView';
@@ -306,6 +333,9 @@ abstract final class WidgetNames {
   /// Display name of the `RangeSlider` component.
   static const rangeSliderMaterial = 'RangeSlider';
 
+  /// Display name of the `RefreshIndicator` component.
+  static const refreshIndicatorMaterial = 'RefreshIndicator';
+
   /// Display name of the `ReorderableListView` component.
   static const reorderableListViewMaterial = 'ReorderableListView';
 
@@ -320,6 +350,12 @@ abstract final class WidgetNames {
 
   /// Display name of the `Scaffold` component.
   static const scaffoldMaterial = 'Scaffold';
+
+  /// Display name of the `Scrollbar` component.
+  static const scrollbarWidget = 'Scrollbar';
+
+  /// Display name of the `SearchAnchor` component.
+  static const searchAnchorMaterial = 'SearchAnchor';
 
   /// Display name of the `SearchBar` component.
   static const searchBarMaterial = 'SearchBar';
