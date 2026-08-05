@@ -13,6 +13,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/expandable_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/fl_chart_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_animate_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_card_swiper_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_chat_bubble_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_rating_bar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_slidable_sample.dart';
@@ -24,6 +25,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/glass_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/google_fonts_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/google_mobile_ads_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/grouped_list_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/http_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/infinite_scroll_pagination_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/like_button_sample.dart';
@@ -110,6 +112,11 @@ const packages = <PackageModel>[
     sample: FlutterAnimateSample(),
   ),
   PackageModel(
+    name: PackageNames.flutterCardSwiperPackage,
+    icon: Icons.style_outlined,
+    sample: FlutterCardSwiperSample(),
+  ),
+  PackageModel(
     name: PackageNames.flutterChatBubblePackage,
     icon: Icons.chat_outlined,
     sample: FlutterChatBubbleSample(),
@@ -167,6 +174,11 @@ const packages = <PackageModel>[
     name: PackageNames.googleMobileAdsPackage,
     icon: Icons.monetization_on_outlined,
     sample: GoogleMobileAdsSample(),
+  ),
+  PackageModel(
+    name: PackageNames.groupedListPackage,
+    icon: Icons.list_alt_outlined,
+    sample: GroupedListSample(),
   ),
   PackageModel(
     name: PackageNames.httpPackage,

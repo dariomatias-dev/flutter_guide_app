@@ -36,6 +36,9 @@ abstract final class PackageNames {
   /// Display name of the `flutter_animate` component.
   static const flutterAnimatePackage = 'flutter_animate';
 
+  /// Display name of the `flutter_card_swiper` component.
+  static const flutterCardSwiperPackage = 'flutter_card_swiper';
+
   /// Display name of the `flutter_chat_bubble` component.
   static const flutterChatBubblePackage = 'flutter_chat_bubble';
 
@@ -69,6 +72,9 @@ abstract final class PackageNames {
 
   /// Display name of the `google_mobile_ads` component.
   static const googleMobileAdsPackage = 'google_mobile_ads';
+
+  /// Display name of the `grouped_list` component.
+  static const groupedListPackage = 'grouped_list';
 
   /// Display name of the `http` component.
   static const httpPackage = 'http';
