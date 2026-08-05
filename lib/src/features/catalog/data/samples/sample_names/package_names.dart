@@ -30,6 +30,9 @@ abstract final class PackageNames {
   /// Display name of the `expandable` component.
   static const expandablePackage = 'expandable';
 
+  /// Display name of the `fl_chart` component.
+  static const flChartPackage = 'fl_chart';
+
   /// Display name of the `flutter_animate` component.
   static const flutterAnimatePackage = 'flutter_animate';
 
@@ -114,6 +117,9 @@ abstract final class PackageNames {
 
   /// Display name of the `smooth_page_indicator` component.
   static const smoothPageIndicatorPackage = 'smooth_page_indicator';
+
+  /// Display name of the `table_calendar` component.
+  static const tableCalendarPackage = 'table_calendar';
 
   /// Display name of the `toastification` component.
   static const toastificationPackage = 'toastification';

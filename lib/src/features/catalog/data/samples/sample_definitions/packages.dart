@@ -11,6 +11,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/dio_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/dotted_border_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/expandable_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/fl_chart_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_animate_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_chat_bubble_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/flutter_rating_bar_sample.dart';
@@ -39,6 +40,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/shimmer_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/side_sheet_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/smooth_page_indicator_sample.dart';
+import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/table_calendar_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/toastification_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/url_launcher_sample.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_components/packages/uuid_sample.dart';
@@ -96,6 +98,11 @@ const packages = <PackageModel>[
     name: PackageNames.expandablePackage,
     icon: Icons.unfold_more,
     sample: ExpandableSample(),
+  ),
+  PackageModel(
+    name: PackageNames.flChartPackage,
+    icon: Icons.bar_chart,
+    sample: FlChartSample(),
   ),
   PackageModel(
     name: PackageNames.flutterAnimatePackage,
@@ -241,6 +248,11 @@ const packages = <PackageModel>[
     name: PackageNames.smoothPageIndicatorPackage,
     icon: Icons.view_carousel,
     sample: SmoothPageIndicatorSample(),
+  ),
+  PackageModel(
+    name: PackageNames.tableCalendarPackage,
+    icon: Icons.calendar_month,
+    sample: TableCalendarSample(),
   ),
   PackageModel(
     name: PackageNames.toastificationPackage,

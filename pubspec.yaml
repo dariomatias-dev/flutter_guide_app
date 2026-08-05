@@ -40,6 +40,7 @@ dependencies:
   dio: ^5.4.3+1
   dotted_border: ^2.1.0
   expandable: ^5.0.1
+  fl_chart: ^1.2.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.1
@@ -81,6 +82,7 @@ dependencies:
   shimmer: ^3.0.0
   side_sheet: ^1.0.4
   smooth_page_indicator: ^1.1.0
+  table_calendar: ^3.2.0
   toastification: ^1.2.1
   url_launcher: ^6.3.2
   url_launcher_android: ^6.3.16
