@@ -100,6 +100,7 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
   plugin_platform_interface: ^2.1.8
+  share_plus_platform_interface: ^7.2.0
   url_launcher_platform_interface: ^2.3.2
   very_good_analysis: ^10.3.0
 
