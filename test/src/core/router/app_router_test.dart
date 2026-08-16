@@ -1,9 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/src/core/di/ads_enabled_provider.dart';
-import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/app_router.dart';
@@ -16,51 +13,24 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/componen
 import 'package:flutter_guide/src/features/catalog/presentation/screens/interface_catalog/interface_catalog_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/saved_components/saved_components_screen.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/app_version_repository_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../helpers/pump_router_app.dart';
 
 void main() {
   late SharedPreferences prefs;
 
   setUp(() async {
-    SharedPreferences.setMockInitialValues(<String, Object>{});
-    prefs = await SharedPreferences.getInstance();
+    prefs = await createMockPrefs();
   });
 
-  tearDown(() {
-    // `AppRouter.router` is a singleton, so every test must hand it back
-    // pointing at the root location.
-    AppRouter.router.go(RoutePaths.root);
-  });
+  // `AppRouter.router` is a singleton, so every test must hand it back
+  // pointing at the root location.
+  tearDown(resetRouterLocation);
 
-  /// Pumps the real router already sitting at [location].
-  Future<void> pumpRouterAt(WidgetTester tester, String location) async {
-    AppRouter.router.go(location);
-
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          sharedPreferencesProvider.overrideWithValue(prefs),
-          adsEnabledProvider.overrideWithValue(false),
-          appVersionRepositoryProvider.overrideWithValue(
-            () async => '1.0.0+1',
-          ),
-        ],
-        child: MaterialApp.router(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          routerConfig: AppRouter.router,
-        ),
-      ),
-    );
-    await tester.pump();
-  }
-
-  /// The location the router currently sits at.
-  String currentLocation() {
-    return AppRouter.router.routerDelegate.currentConfiguration.uri.toString();
+  Future<void> pumpRouterAt(WidgetTester tester, String location) {
+    return tester.pumpRouterApp(prefs: prefs, location: location);
   }
 
   group('AppRouter root route', () {
@@ -68,7 +38,7 @@ void main() {
       await pumpRouterAt(tester, RoutePaths.root);
 
       expect(find.byType(RootNavigation), findsOneWidget);
-      expect(currentLocation(), RoutePaths.root);
+      expect(currentRouterLocation(), RoutePaths.root);
     });
   });
 
@@ -185,7 +155,7 @@ void main() {
       await pumpRouterAt(tester, '/does-not-exist');
       await tester.pumpAndSettle();
 
-      expect(currentLocation(), RoutePaths.root);
+      expect(currentRouterLocation(), RoutePaths.root);
       expect(find.byType(RootNavigation), findsOneWidget);
     });
 
@@ -196,7 +166,7 @@ void main() {
       await pumpRouterAt(tester, '/component/widget');
       await tester.pumpAndSettle();
 
-      expect(currentLocation(), RoutePaths.root);
+      expect(currentRouterLocation(), RoutePaths.root);
     });
   });
 }
