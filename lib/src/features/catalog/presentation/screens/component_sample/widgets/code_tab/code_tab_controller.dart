@@ -6,11 +6,15 @@ import 'package:logger/logger.dart';
 /// Lazily loads source code in chunks as the user scrolls.
 class CodeTabController {
   /// Creates a [CodeTabController] that pulls chunks via [getChunck].
+  ///
+  /// Pass [logger] to capture chunk failures instead of printing them, which
+  /// keeps test output clean.
   CodeTabController({
     required List<String> Function(
       int index,
     ) getChunck,
-  }) {
+    Logger? logger,
+  }) : _logger = logger ?? Logger() {
     _getChunck = getChunck;
     _init();
   }
@@ -19,7 +23,7 @@ class CodeTabController {
     int index,
   ) _getChunck;
 
-  final _logger = Logger();
+  final Logger _logger;
 
   /// Controls scrolling of the code view.
   final scrollController = ScrollController();
