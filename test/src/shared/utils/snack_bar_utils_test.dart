@@ -29,7 +29,8 @@ void main() {
   });
 
   group('SnackBarUtils.showByKey', () {
-    testWidgets('shows a snack bar via the messenger key with a custom '
+    testWidgets(
+        'shows a snack bar via the messenger key with a custom '
         'label', (tester) async {
       final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 

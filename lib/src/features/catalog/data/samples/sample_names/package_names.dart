@@ -52,8 +52,7 @@ abstract final class PackageNames {
   static const flutterSpinkitPackage = 'flutter_spinkit';
 
   /// Display name of the `flutter_staggered_grid_view` component.
-  static const flutterStaggeredGridViewPackage =
-      'flutter_staggered_grid_view';
+  static const flutterStaggeredGridViewPackage = 'flutter_staggered_grid_view';
 
   /// Display name of the `flutter_svg` component.
   static const flutterSvgPackage = 'flutter_svg';
