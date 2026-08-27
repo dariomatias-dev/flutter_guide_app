@@ -13,7 +13,7 @@
 <br>
 
 <p align="center">
-<a href="README.md">English</a> · <strong>Português (BR)</strong> · <a href="README.es.md">Español</a>
+<a href="README.md">English</a> · <a href="README.es.md">Español</a> · <strong>Português (BR)</strong>
 </p>
 
 <h1 align="center">FlutterGuide: Aplicativo Mobile</h1>
