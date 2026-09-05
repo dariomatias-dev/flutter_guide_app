@@ -1,8 +1,8 @@
-/// Spacing scale used across the app, outside the catalog samples.
+/// Spacing scale used across the app.
 ///
-/// The samples under `lib/src/features/catalog/data/samples/` keep their
-/// literal values on purpose: they are read as isolated examples, and a
-/// token reference there would teach the wrong thing.
+/// The catalog samples in the main app keep their literal values on purpose:
+/// they are read as isolated examples, and a token reference there would
+/// teach the wrong thing.
 abstract final class AppSpacing {
   /// 2 logical pixels. The bottom bar's own item padding.
   static const xxs = 2.0;

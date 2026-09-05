@@ -63,21 +63,24 @@ aquí, precisamente para que no se desincronicen.
 ./scripts/verify.sh
 ```
 
-Ejecuta exactamente lo que ejecuta la CI, en el mismo orden:
+Ejecuta exactamente lo que ejecuta la CI, en el mismo orden, para la app y
+para `packages/app_ui` de forma independiente:
 
 | Paso | Qué detecta |
 | --- | --- |
-| `build_runner` y `gen-l10n`, y el diff de su salida | Rutas o localizaciones commiteadas que ya no coinciden con su fuente. La CI regenera desde un checkout limpio y falla ante cualquier diferencia |
+| `build_runner` y `gen-l10n`, y el diff de su salida | Rutas o localizaciones commiteadas que ya no coinciden con su fuente. La CI regenera desde un checkout limpio y falla ante cualquier diferencia. Solo en la app: `packages/app_ui` no tiene generador |
 | [`check_l10n.sh`](../scripts/check_l10n.sh) | Una clave ausente en un idioma, o una clave de la plantilla sin `description`. `gen-l10n` recurre al inglés en silencio |
 | `dart format --set-exit-if-changed` | El formato, la única verificación con una sola respuesta correcta |
 | `flutter analyze` | Los lints de `very_good_analysis` |
 | `flutter test --coverage` | La suite de pruebas |
-| [`check_coverage.sh`](../scripts/check_coverage.sh) | Cobertura de líneas por debajo del 95%, excluyendo fuentes generadas y las muestras del catálogo |
+| [`check_coverage.sh`](../scripts/check_coverage.sh) | Cobertura de líneas por debajo del 95% en la app, 98% en `packages/app_ui`, excluyendo fuentes generadas y las muestras del catálogo |
 
-El gate se omite cuando no cambió nada bajo `lib`, `test`, `integration_test`,
-`test_driver` ni en los manifiestos. Usa `--all` para ejecutarlo igual, y
-`--skip-tests` para una verificación rápida a mitad de camino, nunca como la
-final.
+El alcance se deriva de lo que cambió: solo la app, solo `packages/app_ui`, o
+ambos, según qué rutas tengan cambios pendientes. El gate se omite por
+completo cuando no cambió nada bajo `lib`, `test`, `integration_test`,
+`test_driver`, `packages` ni en los manifiestos. Usa `--all` para verificar
+todo igual, y `--skip-tests` para una verificación rápida a mitad de camino,
+nunca como la final.
 
 Una ejecución aprobada guarda el hash del árbol en `.dart_tool/verify_stamp`,
 para que las herramientas sepan si el árbol sigue coincidiendo con una
@@ -87,7 +90,8 @@ ejecución que pasó.
 
 | Job | Qué hace | Merge |
 | --- | --- | --- |
-| `Vulnerabilities` | Ejecuta `osv-scanner` contra `pubspec.lock`, que es lo que realmente se entrega, y no los rangos de caret de `pubspec.yaml`. Independiente de los demás jobs: una advertencia recién publicada no es razón para silenciar las pruebas | Bloquea |
+| `Vulnerabilities` | Ejecuta `osv-scanner` contra `pubspec.lock` y `packages/app_ui/pubspec.lock`, que son lo que realmente se entrega, y no los rangos de caret de `pubspec.yaml`. Independiente de los demás jobs: una advertencia recién publicada no es razón para silenciar las pruebas | Bloquea |
+| `packages/app_ui` | Formato, análisis, pruebas y el gate del 98% de cobertura del paquete de sistema de diseño, independiente de la app, subido a Codecov bajo la flag `app_ui` | Bloquea |
 | `flutter_guide` | El gate de arriba, paso por paso | Bloquea |
 | `Build APK` | Se ejecuta después de que `flutter_guide` pase y construye un APK de release, publicado como artefacto durante 14 días. Sin keystore en el checkout, recurre a las claves de debug | Bloquea |
 | `Integration tests` | Se ejecuta después de que `flutter_guide` pase, levanta un emulador Android y corre `integration_test/screenshot_test.dart` en él. La única verificación que corre la app real: dotenv real, `SharedPreferences` real, un sistema Android real, nada de eso simulado como en una prueba de widget. Activa KVM primero, sin lo cual el emulador cae a renderizado por software y se agota el tiempo | Bloquea |
@@ -101,11 +105,15 @@ entonces el pipeline sigue compilando con una versión que nadie usa.
 ### Informes de cobertura
 
 [`check_coverage.sh`](../scripts/check_coverage.sh) es lo que reprueba la
-build; Codecov es lo que hace legible el número. `codecov.yml` guarda el
-objetivo y repite las exclusiones del script: fuentes generadas, `lib/l10n/` y
-las muestras del catálogo en `lib/src/features/catalog/data/samples/`. Esas
-muestras son código didáctico que la app le muestra al usuario, y sus 6967
-líneas arrastran la cifra del 95% al 24% sin decir nada sobre la app en sí.
+build; Codecov es lo que hace legible el número. Cada paquete sube su propio
+`lcov.info` bajo su propia flag, así que el umbral del 95% de la app y el del
+98% de `packages/app_ui` se siguen por separado, y un pull request recibe un
+comentario con el delta por flag y anotaciones en línea sobre las líneas
+nuevas sin cobertura. `codecov.yml` guarda los objetivos y repite las
+exclusiones del script: fuentes generadas, `lib/l10n/` y las muestras del
+catálogo en `lib/src/features/catalog/data/samples/`. Esas muestras son
+código didáctico que la app le muestra al usuario, y sus 6967 líneas
+arrastran la cifra del 95% al 24% sin decir nada sobre la app en sí.
 
 Las subidas se autentican con el secret `CODECOV_TOKEN`. Un pull request desde
 un fork no puede leerlo, así que el paso usa `fail_ci_if_error: false`: una
@@ -153,7 +161,7 @@ act pull_request -j app           # un job, por su id
 act pull_request -j app --dryrun  # imprime los pasos sin ejecutarlos
 ```
 
-`-j` recibe el id del job (`vulnerabilities`, `app`, `build_apk`,
+`-j` recibe el id del job (`vulnerabilities`, `app_ui`, `app`, `build_apk`,
 `integration`), no el nombre mostrado; `act -l` imprime ambos. La primera
 ejecución descarga una imagen de varios gigabytes, y `act` aproxima los
 runners de GitHub en vez de reproducirlos, así que una ejecución verde aquí es

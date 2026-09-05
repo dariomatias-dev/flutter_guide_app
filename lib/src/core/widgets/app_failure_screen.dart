@@ -1,8 +1,8 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 
 /// The failure an [AppFailureScreen] is reporting.
 enum AppFailureKind {

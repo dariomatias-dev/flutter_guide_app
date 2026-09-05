@@ -1,5 +1,5 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:salomon_bottom_bar_extend/salomon_bottom_bar.dart';
 
 const _icons = <IconData>[

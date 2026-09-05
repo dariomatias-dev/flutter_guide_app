@@ -1,8 +1,7 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 
 /// Search field shown above component lists, with a clear button.
 class SearchFieldWidget extends StatefulWidget {

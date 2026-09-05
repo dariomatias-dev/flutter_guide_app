@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_guide/src/features/settings/presentation/widgets/app_inf
 import 'package:flutter_guide/src/features/settings/presentation/widgets/docs_and_resources_dialog_widget.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/select_language_widget.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
-import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 /// Settings tab with app info, language, links and about dialogs.
 class SettingsScreen extends StatelessWidget {

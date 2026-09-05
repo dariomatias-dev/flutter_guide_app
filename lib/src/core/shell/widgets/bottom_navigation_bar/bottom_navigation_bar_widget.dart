@@ -1,7 +1,6 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_colors.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
 
 /// Rounded, elevated container wrapping the [NavigationBarWidget].
 class BottomNavigationBarWidget extends StatelessWidget {

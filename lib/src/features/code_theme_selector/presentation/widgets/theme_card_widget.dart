@@ -1,8 +1,6 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_durations.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 typedef _CardColors = ({

@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/features/settings/domain/entities/language.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/select_language_view_model_provider.dart';
-import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Settings row that opens a menu to change the app language.

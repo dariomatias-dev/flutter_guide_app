@@ -1,7 +1,6 @@
+import 'package:app_ui/src/tokens/app_radius.dart';
+import 'package:app_ui/src/tokens/app_spacing.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 
 /// A styled dialog with an optional title, description, body and actions.
 class DialogWidget extends StatelessWidget {

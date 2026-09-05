@@ -1,5 +1,5 @@
+import 'package:app_ui/src/widgets/icon_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

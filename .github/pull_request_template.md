@@ -21,6 +21,7 @@ request body, where it no longer resolves.
 - [ ] No inline colors, spacing, radii, durations or text styles where the theme already carries the value
 - [ ] No hardcoded user-facing text
 - [ ] Catalog samples keep their literals inline: they are teaching material, not app code
+- [ ] `packages/app_ui` code has no app coupling: no `flutter_guide/` import, no provider, no `AppLocalizations`
 
 **Tests**
 

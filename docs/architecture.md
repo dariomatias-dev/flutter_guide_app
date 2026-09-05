@@ -11,6 +11,7 @@ How the code is organized and why. For what the app is, see the
 ## Layout
 
 ```text
+packages/app_ui/     Design tokens and app-agnostic widgets, own pubspec
 lib/
 ├── main.dart                  Startup: dotenv, ads, preferences, ProviderScope
 ├── l10n/                      ARB files and the gen-l10n output
@@ -23,8 +24,8 @@ lib/
     │   ├── extensions/        Extensions on Dart and Flutter types
     │   ├── helpers/           Deep link parsing and handling
     │   ├── models/            Models shared across features
-    │   ├── navigation/        Bottom bar index notifier
-    │   ├── router/            go_router configuration, names and paths
+    │   ├── navigation/        Bottom bar index notifier, typed route classes
+    │   ├── router/            The GoRouter provider, built from those routes
     │   ├── services/          Wrappers over platform SDKs
     │   ├── shell/             Root scaffold: app bar and bottom bar
     │   └── theme/             ThemeData and the theme notifier
@@ -33,7 +34,7 @@ lib/
     │   ├── code_theme_selector/
     │   ├── home/
     │   └── settings/
-    └── shared/                Widgets and utilities used by several features
+    └── shared/                Widgets and utilities that read app state
 ```
 
 Each feature holds the same three layers, and only the ones it has content
@@ -152,6 +153,31 @@ silently reset a user's language to English.
 mode and persists it. The code theme is a separate feature, because it is a
 different choice with a different set of options: it selects the palette used
 by `flutter_syntax_highlighter` when rendering a sample.
+
+## Design system (`packages/app_ui`)
+
+A standalone Flutter package, added as a `path` dependency in `pubspec.yaml`,
+holding what has zero coupling to this app: the design tokens
+(`AppSpacing`, `AppRadius`, `AppDurations`, the color palette) and the
+widgets built only from them and from Flutter itself, exported through
+[`app_ui.dart`](../packages/app_ui/lib/app_ui.dart) and imported as
+`package:app_ui/app_ui.dart`.
+
+The boundary is enforced by what a file is allowed to import, not by a lint:
+nothing under `packages/app_ui/lib/` may import `flutter_guide/`, read a
+Riverpod provider, or read `AppLocalizations`. A widget that needs any of
+those is application code, not design system, and stays in `lib/src/shared/`
+regardless of how generic it looks. `ChangeThemeButtonWidget` is the concrete
+example: it reads `themeNotifierProvider` and `AppLocalizations` directly, so
+it stays in the app rather than being forced into `app_ui` with an awkward
+parameter for every value it used to read for itself.
+`StandardAppBarWidget` embeds it, and stays alongside it for the same reason.
+
+`packages/app_ui` has its own `pubspec.yaml`, `analysis_options.yaml` and
+`test/`, gated independently at a 98% coverage threshold in
+[`scripts/verify.sh`](../scripts/verify.sh), which runs it in scope whenever a
+change touches `packages/app_ui/*`, and in CI as its own job, reporting under
+the `app_ui` Codecov flag.
 
 ## Localization
 

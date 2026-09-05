@@ -1,5 +1,5 @@
+import 'package:app_ui/src/tokens/app_radius.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
 
 /// A rounded button used inside a dialog.
 class DialogButtonWidget extends StatelessWidget {

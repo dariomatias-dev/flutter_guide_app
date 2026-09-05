@@ -1,9 +1,9 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/data/providers/favorites_repository_provider.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/save_button/save_button_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

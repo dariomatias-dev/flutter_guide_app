@@ -26,6 +26,7 @@ readonly sources=(
   test
   integration_test
   test_driver
+  packages
   pubspec.yaml
   analysis_options.yaml
   l10n.yaml

@@ -33,7 +33,7 @@ cd "$root" 2>/dev/null || exit 0
 [[ -x scripts/workspace_hash.sh ]] || exit 0
 
 changed="$(git status --porcelain -uall -- \
-  lib test integration_test test_driver \
+  lib test integration_test test_driver packages \
   pubspec.yaml analysis_options.yaml l10n.yaml 2>/dev/null)"
 
 [[ -n "$changed" ]] || exit 0
