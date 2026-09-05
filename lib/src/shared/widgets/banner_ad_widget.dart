@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_guide/src/core/config/app_env_providers.dart';
 import 'package:flutter_guide/src/core/di/ads_enabled_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -21,9 +21,17 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
 
   @override
   void initState() {
-    if (ref.read(adsEnabledProvider)) {
+    // A build with no ad unit id shows nothing rather than throwing: the id
+    // comes from a .env file that a fresh clone and CI do not carry. The
+    // environment is only read once ads are on, so a scope that disables them
+    // does not have to provide one.
+    final adUnitId = ref.read(adsEnabledProvider)
+        ? ref.read(appEnvProvider).bannerAdUnitId
+        : null;
+
+    if (adUnitId != null) {
       _bannerAd = BannerAd(
-        adUnitId: dotenv.env['BANNER_AD_ID']!,
+        adUnitId: adUnitId,
         request: const AdRequest(),
         size: AdSize.banner,
         listener: BannerAdListener(
@@ -59,11 +67,11 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (!ref.watch(adsEnabledProvider)) {
+    if (!ref.watch(adsEnabledProvider) || _bannerAd == null) {
       return const SizedBox.shrink();
     }
 
-    if (!_isLoaded || _bannerAd == null) {
+    if (!_isLoaded) {
       return const SizedBox(
         height: 50,
         child: Center(
