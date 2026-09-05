@@ -4,7 +4,9 @@ import 'package:integration_test/integration_test_driver_extended.dart';
 
 /// Driver entrypoint for `flutter drive`. Receives each screenshot taken
 /// by `integration_test/screenshot_test.dart` and writes it to
-/// `screenshots/`.
+/// `screenshots/<locale>/<name>.png`: the name already carries the locale
+/// segment, and `create(recursive: true)` is what turns that into a
+/// subdirectory per locale.
 Future<void> main() async {
   await integrationDriver(
     onScreenshot: (name, bytes, [args]) async {

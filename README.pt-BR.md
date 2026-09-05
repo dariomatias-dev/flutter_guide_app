@@ -140,15 +140,15 @@ cada etapa detecta e qual job da CI bloqueia o merge.
 ## Capturas de Tela
 
 <div align="center">
-<img src="screenshots/01_home.png" width="200" alt="Início"/>
-<img src="screenshots/02_catalog_elements.png" width="200" alt="Catálogo de elementos"/>
-<img src="screenshots/03_catalog_uis.png" width="200" alt="Catálogo de UIs"/>
-<img src="screenshots/04_elements_tab.png" width="200" alt="Aba de elementos"/>
-<img src="screenshots/05_component_detail.png" width="200" alt="Prévia do componente"/>
-<img src="screenshots/06_component_code.png" width="200" alt="Código do componente"/>
-<img src="screenshots/07_packages_tab.png" width="200" alt="Aba de pacotes"/>
-<img src="screenshots/08_settings.png" width="200" alt="Configurações"/>
-<img src="screenshots/09_code_theme_selector.png" width="200" alt="Seletor de tema de código"/>
+<img src="screenshots/en/01_home.png" width="200" alt="Início"/>
+<img src="screenshots/en/02_catalog_elements.png" width="200" alt="Catálogo de elementos"/>
+<img src="screenshots/en/03_catalog_uis.png" width="200" alt="Catálogo de UIs"/>
+<img src="screenshots/en/04_elements_tab.png" width="200" alt="Aba de elementos"/>
+<img src="screenshots/en/05_component_detail.png" width="200" alt="Prévia do componente"/>
+<img src="screenshots/en/06_component_code.png" width="200" alt="Código do componente"/>
+<img src="screenshots/en/07_packages_tab.png" width="200" alt="Aba de pacotes"/>
+<img src="screenshots/en/08_settings.png" width="200" alt="Configurações"/>
+<img src="screenshots/en/09_code_theme_selector.png" width="200" alt="Seletor de tema de código"/>
 </div>
 
 ## Baixar o App
@@ -197,7 +197,7 @@ Scripts utilitários ficam em `scripts/`.
 | `check_coverage` | `scripts/check_coverage.sh <arquivo-lcov> <mínimo>` | Falha quando a cobertura de linhas fica abaixo do mínimo, excluindo fontes geradas e os samples do catálogo em `lib/src/features/catalog/data/samples/`, que são material didático exibido ao usuário, não lógica do app. |
 | `check_l10n` | `scripts/check_l10n.sh [dir-arb]` | Falha quando os arquivos ARB divergem nas chaves, ou quando uma chave do template não tem `description`. O `gen-l10n` cai no template em silêncio, então nada mais detecta uma tradução pela metade. |
 | `workspace_hash` | `scripts/workspace_hash.sh` | Imprime um hash das fontes cobertas pelo gate. O `verify.sh` grava esse hash em `.dart_tool/verify_stamp`, para que ferramentas saibam se a árvore ainda corresponde a uma execução aprovada. |
-| `screenshot` | `scripts/screenshot.sh [device-id]` | Percorre as principais telas do app em um dispositivo ou emulador conectado e salva uma captura de cada uma em `screenshots/`, usadas no README, na Play Store e no site oficial. Rode `fvm flutter devices` para listar os ids de dispositivos disponíveis. |
+| `screenshot` | `scripts/screenshot.sh [device-id]` | Percorre as principais telas do app em um dispositivo ou emulador conectado, nos três idiomas, salvando cada captura em `screenshots/<idioma>/`. O conjunto em inglês é o que este README, a Play Store e o site oficial usam. Rode `fvm flutter devices` para listar os ids de dispositivos disponíveis. |
 
 ## Documentação
 

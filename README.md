@@ -139,15 +139,15 @@ catches and which CI job blocks a merge.
 ## Screenshots
 
 <div align="center">
-<img src="screenshots/01_home.png" width="200" alt="Home"/>
-<img src="screenshots/02_catalog_elements.png" width="200" alt="Elements catalog"/>
-<img src="screenshots/03_catalog_uis.png" width="200" alt="UIs catalog"/>
-<img src="screenshots/04_elements_tab.png" width="200" alt="Elements tab"/>
-<img src="screenshots/05_component_detail.png" width="200" alt="Component preview"/>
-<img src="screenshots/06_component_code.png" width="200" alt="Component code"/>
-<img src="screenshots/07_packages_tab.png" width="200" alt="Packages tab"/>
-<img src="screenshots/08_settings.png" width="200" alt="Settings"/>
-<img src="screenshots/09_code_theme_selector.png" width="200" alt="Code theme selector"/>
+<img src="screenshots/en/01_home.png" width="200" alt="Home"/>
+<img src="screenshots/en/02_catalog_elements.png" width="200" alt="Elements catalog"/>
+<img src="screenshots/en/03_catalog_uis.png" width="200" alt="UIs catalog"/>
+<img src="screenshots/en/04_elements_tab.png" width="200" alt="Elements tab"/>
+<img src="screenshots/en/05_component_detail.png" width="200" alt="Component preview"/>
+<img src="screenshots/en/06_component_code.png" width="200" alt="Component code"/>
+<img src="screenshots/en/07_packages_tab.png" width="200" alt="Packages tab"/>
+<img src="screenshots/en/08_settings.png" width="200" alt="Settings"/>
+<img src="screenshots/en/09_code_theme_selector.png" width="200" alt="Code theme selector"/>
 </div>
 
 ## Download the App
@@ -196,7 +196,7 @@ Utility scripts live under `scripts/`.
 | `check_coverage` | `scripts/check_coverage.sh <lcov-file> <minimum>` | Fails when line coverage falls below the minimum, excluding generated sources and the catalog samples under `lib/src/features/catalog/data/samples/`, which are teaching material rendered to the user rather than app logic. |
 | `check_l10n` | `scripts/check_l10n.sh [arb-dir]` | Fails when the ARB files disagree on which keys they carry, or when a key in the template ships without a description. `gen-l10n` falls back to the template silently, so nothing else catches a half-translated change. |
 | `workspace_hash` | `scripts/workspace_hash.sh` | Prints a hash of the sources the gate covers. `verify.sh` records it in `.dart_tool/verify_stamp` so tooling can tell whether the tree still matches a passing run. |
-| `screenshot` | `scripts/screenshot.sh [device-id]` | Drives the app through its main screens on a connected device or emulator and saves a screenshot of each one into `screenshots/`, used for the README, Play Store listing, and official website. Run `fvm flutter devices` to list available device ids. |
+| `screenshot` | `scripts/screenshot.sh [device-id]` | Drives the app through its main screens on a connected device or emulator, in all three locales, saving each screenshot under `screenshots/<locale>/`. The English set is what this README, the Play Store listing and the official website use. Run `fvm flutter devices` to list available device ids. |
 
 ## Documentation
 
