@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
+import 'package:flutter_guide/src/features/catalog/data/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/elements_screen_tab_index_notifier_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/shared/widgets/default_tab_bar_widget.dart';

@@ -1,6 +1,6 @@
+import 'package:flutter_guide/src/features/code_theme_selector/data/providers/code_theme_repository_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/domain/repositories/code_theme_repository.dart';
-import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 

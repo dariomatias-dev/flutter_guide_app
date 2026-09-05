@@ -1,4 +1,4 @@
-import 'package:flutter_guide/src/features/settings/presentation/providers/app_version_repository_provider.dart';
+import 'package:flutter_guide/src/features/settings/data/providers/app_version_repository_provider.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/app_version_view_model_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';

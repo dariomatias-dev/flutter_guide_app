@@ -1,5 +1,5 @@
+import 'package:flutter_guide/src/features/code_theme_selector/data/providers/code_theme_repository_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
-import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_repository_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/providers/code_theme_view_model_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/view_models/code_theme_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
+import 'package:flutter_guide/src/features/catalog/data/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/samples/sample_registry.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/doc_popup_menu_item/doc_popup_menu_item_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/widgets/favorite_popup_menu_item/favorite_popup_menu_item_widget.dart';

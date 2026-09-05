@@ -1,6 +1,6 @@
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/features/catalog/data/providers/favorites_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/domain/repositories/favorites_repository.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const _trackedTypes = <ComponentType>[
