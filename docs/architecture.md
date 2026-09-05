@@ -206,5 +206,5 @@ reaching into the widget tree. `test/helpers/` carries the harness:
 `pumpApp` for a widget under a localized `MaterialApp`, `pumpScopedApp` for one
 that opens overlay content, and `pump_router_app.dart` for anything routed.
 
-The coverage gate is 90%, measured over `lib/` minus the generated sources and
+The coverage gate is 95%, measured over `lib/` minus the generated sources and
 the catalog samples.

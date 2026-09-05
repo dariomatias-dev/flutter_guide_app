@@ -69,7 +69,7 @@ It runs exactly what CI runs, in the same order:
 | `dart format --set-exit-if-changed` | Formatting, the one check with a single correct answer |
 | `flutter analyze` | `very_good_analysis` lints |
 | `flutter test --coverage` | The test suite |
-| [`check_coverage.sh`](../scripts/check_coverage.sh) | Line coverage under 90%, excluding generated sources and the catalog samples |
+| [`check_coverage.sh`](../scripts/check_coverage.sh) | Line coverage under 95%, excluding generated sources and the catalog samples |
 
 The gate is skipped when nothing under `lib`, `test`, `integration_test`,
 `test_driver` or the manifests has changed. Pass `--all` to run it anyway, and

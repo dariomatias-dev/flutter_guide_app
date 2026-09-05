@@ -77,7 +77,7 @@ jobs:
         run: flutter test --coverage
 
       - name: Check coverage
-        run: ./scripts/check_coverage.sh coverage/lcov.info 90
+        run: ./scripts/check_coverage.sh coverage/lcov.info 95
 
       # Without a keystore the Gradle config falls back to the debug keys, and
       # a debug-signed artifact cannot be installed over the Play Store build

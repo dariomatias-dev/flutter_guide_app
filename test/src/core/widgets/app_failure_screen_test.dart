@@ -78,5 +78,22 @@ void main() {
 
       expect(find.text('FileNotFoundError: .env'), findsOneWidget);
     });
+
+    testWidgets('uses the dark theme when the platform is dark', (
+      tester,
+    ) async {
+      tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+      addTearDown(
+        tester.platformDispatcher.clearPlatformBrightnessTestValue,
+      );
+
+      await tester.pumpWidget(
+        const AppFailureScreen(kind: AppFailureKind.startup),
+      );
+
+      final material = tester.widget<Material>(find.byType(Material));
+
+      expect(material.color, isNot(Colors.white));
+    });
   });
 }

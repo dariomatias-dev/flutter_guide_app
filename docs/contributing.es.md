@@ -72,7 +72,7 @@ Ejecuta exactamente lo que ejecuta la CI, en el mismo orden:
 | `dart format --set-exit-if-changed` | El formato, la única verificación con una sola respuesta correcta |
 | `flutter analyze` | Los lints de `very_good_analysis` |
 | `flutter test --coverage` | La suite de pruebas |
-| [`check_coverage.sh`](../scripts/check_coverage.sh) | Cobertura de líneas por debajo del 90%, excluyendo fuentes generadas y las muestras del catálogo |
+| [`check_coverage.sh`](../scripts/check_coverage.sh) | Cobertura de líneas por debajo del 95%, excluyendo fuentes generadas y las muestras del catálogo |
 
 El gate se omite cuando no cambió nada bajo `lib`, `test`, `integration_test`,
 `test_driver` ni en los manifiestos. Usa `--all` para ejecutarlo igual, y

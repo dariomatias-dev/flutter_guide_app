@@ -98,7 +98,7 @@ jobs:
         run: flutter test --coverage
 
       - name: Check coverage
-        run: ./scripts/check_coverage.sh coverage/lcov.info 90
+        run: ./scripts/check_coverage.sh coverage/lcov.info 95
 
       # Reporting only: check_coverage.sh above is what fails the build. A
       # fork cannot read the token, so an upload failure must not fail the job.

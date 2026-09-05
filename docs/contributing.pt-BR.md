@@ -71,7 +71,7 @@ Ele roda exatamente o que a CI roda, na mesma ordem:
 | `dart format --set-exit-if-changed` | Formatação, a única verificação com uma resposta correta só |
 | `flutter analyze` | Lints do `very_good_analysis` |
 | `flutter test --coverage` | A suíte de testes |
-| [`check_coverage.sh`](../scripts/check_coverage.sh) | Cobertura de linhas abaixo de 90%, excluindo fontes geradas e os samples do catálogo |
+| [`check_coverage.sh`](../scripts/check_coverage.sh) | Cobertura de linhas abaixo de 95%, excluindo fontes geradas e os samples do catálogo |
 
 O gate é pulado quando nada mudou em `lib`, `test`, `integration_test`,
 `test_driver` ou nos manifestos. Use `--all` para rodar mesmo assim, e

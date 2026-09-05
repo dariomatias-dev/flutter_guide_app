@@ -206,5 +206,5 @@ ferramental: `pumpApp` para um widget sob um `MaterialApp` localizado,
 `pumpScopedApp` para um que abre conteúdo em overlay, e `pump_router_app.dart`
 para qualquer coisa roteada.
 
-O gate de cobertura é 90%, medido sobre `lib/` menos as fontes geradas e os
+O gate de cobertura é 95%, medido sobre `lib/` menos as fontes geradas e os
 samples do catálogo.

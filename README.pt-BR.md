@@ -124,9 +124,9 @@ compartilhados, usando `mocktail` para mocks e overrides de
 `ProviderContainer` para estado do Riverpod. O código segue o conjunto
 rigoroso de lints `very_good_analysis`.
 
-A cobertura de linhas é de 95%, medida sobre `lib/` menos as fontes
+A cobertura de linhas é de 96%, medida sobre `lib/` menos as fontes
 geradas e os samples do catálogo, que são código didático exibido ao
-usuário, não lógica do app. O gate reprova abaixo de 90%.
+usuário, não lógica do app. O gate reprova abaixo de 95%.
 
 Um comando roda tudo o que a CI roda, na mesma ordem:
 
