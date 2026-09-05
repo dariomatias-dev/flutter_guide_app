@@ -1,16 +1,15 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args_resolver.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
-import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 
 /// Lists reusable elements or full UI samples for a given interface type.

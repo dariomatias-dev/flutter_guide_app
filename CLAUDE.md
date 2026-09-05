@@ -41,7 +41,8 @@ initiative. The commit is the maintainer's.
 | A feature's screens, widgets, view models and its providers | `lib/src/features/<feature>/presentation/` |
 | A feature's repository contracts and entities | `lib/src/features/<feature>/domain/` |
 | A feature's repository implementations, data sources and models | `lib/src/features/<feature>/data/` |
-| Widgets and helpers used by more than one feature | `lib/src/shared/` |
+| Widgets and helpers used by more than one feature, but that read app state (a provider, `AppLocalizations`) | `lib/src/shared/` |
+| Design tokens and widgets with zero app coupling: no provider, no `AppLocalizations`, no domain type | `packages/app_ui/lib/src/` |
 | Catalog sample code shown to the user | `lib/src/features/catalog/data/samples/` |
 | User-facing strings | `lib/l10n/app_en.arb`, plus `app_es.arb` and `app_pt.arb` |
 
@@ -100,6 +101,7 @@ by reaching into the widget tree.
 | A CI job | `docs/contributing.md` in all three languages, which names the jobs and says which ones block a merge |
 | A user-visible feature | `CHANGELOG.md` is written by release-please from the commits: no manual entry, but the commit type decides the version bump |
 | Anything under `lib/` | The mirroring file under `test/` |
+| Anything under `packages/app_ui/lib/` | The mirroring file under `packages/app_ui/test/`, and `pubspec.yaml`'s `path` dependency stays untouched: it already points there |
 
 ## Non-negotiables
 
@@ -110,4 +112,7 @@ by reaching into the widget tree.
   doing something that already has a way is a defect, not an improvement.
 - Documentation changes land in all three languages, or they are broken.
 - Public API carries doc comments; `very_good_analysis` enforces it.
+- `packages/app_ui` must not know the app exists: no import of anything under
+  `flutter_guide/`, no provider read, no `AppLocalizations`. A widget that
+  needs either stays in `lib/src/shared/`.
 - Never commit without being asked.

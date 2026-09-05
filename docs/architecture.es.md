@@ -11,6 +11,7 @@ Cómo está organizado el código y por qué. Para saber qué es la app, mira el
 ## Estructura
 
 ```text
+packages/app_ui/     Tokens de diseño y widgets sin acoplamiento a la app, pubspec propio
 lib/
 ├── main.dart                  Arranque: dotenv, anuncios, preferencias, ProviderScope
 ├── l10n/                      Archivos ARB y la salida de gen-l10n
@@ -23,8 +24,8 @@ lib/
     │   ├── extensions/        Extensiones sobre tipos de Dart y Flutter
     │   ├── helpers/           Parseo y manejo de deep links
     │   ├── models/            Modelos compartidos entre features
-    │   ├── navigation/        Notifier del índice de la barra inferior
-    │   ├── router/            Configuración de go_router, nombres y rutas
+    │   ├── navigation/        Notifier del índice de la barra inferior, clases de ruta tipadas
+    │   ├── router/            El provider de GoRouter, armado a partir de esas rutas
     │   ├── services/          Envoltorios sobre SDKs de plataforma
     │   ├── shell/             Scaffold raíz: app bar y barra inferior
     │   └── theme/             ThemeData y el notifier de tema
@@ -33,7 +34,7 @@ lib/
     │   ├── code_theme_selector/
     │   ├── home/
     │   └── settings/
-    └── shared/                Widgets y utilidades usados por varias features
+    └── shared/                Widgets y utilidades que leen estado de la app
 ```
 
 Cada feature tiene las mismas tres capas, y solo las que tengan contenido:
@@ -155,6 +156,33 @@ oscuro, y [`ThemeNotifier`](../lib/src/core/theme/theme_notifier.dart) guarda el
 modo elegido y lo persiste. El tema de código es una feature aparte, porque es
 otra elección con otro conjunto de opciones: selecciona la paleta que usa
 `flutter_syntax_highlighter` al renderizar una muestra.
+
+## Sistema de diseño (`packages/app_ui`)
+
+Un paquete de Flutter aparte, agregado como dependencia `path` en
+`pubspec.yaml`, que guarda lo que no tiene ningún acoplamiento con esta app:
+los tokens de diseño (`AppSpacing`, `AppRadius`, `AppDurations`, la paleta de
+colores) y los widgets construidos solo a partir de ellos y de Flutter mismo,
+exportados mediante
+[`app_ui.dart`](../packages/app_ui/lib/app_ui.dart) e importados como
+`package:app_ui/app_ui.dart`.
+
+El límite se impone por lo que un archivo puede importar, no por un lint:
+nada bajo `packages/app_ui/lib/` puede importar `flutter_guide/`, leer un
+provider de Riverpod ni leer `AppLocalizations`. Un widget que necesite
+cualquiera de esas cosas es código de la app, no del sistema de diseño, y se
+queda en `lib/src/shared/`, sin importar cuán genérico parezca.
+`ChangeThemeButtonWidget` es el ejemplo concreto: lee `themeNotifierProvider`
+y `AppLocalizations` directamente, así que se queda en la app en vez de
+forzarlo dentro de `app_ui` con un parámetro incómodo por cada valor que
+antes leía por sí mismo. `StandardAppBarWidget` lo incorpora, y se queda a su
+lado por la misma razón.
+
+`packages/app_ui` tiene su propio `pubspec.yaml`, `analysis_options.yaml` y
+`test/`, con un gate independiente en un umbral de cobertura del 98% en
+[`scripts/verify.sh`](../scripts/verify.sh), que lo ejecuta cuando un cambio
+toca `packages/app_ui/*`, y en la CI como job propio, reportando bajo la flag
+`app_ui` de Codecov.
 
 ## Localización
 

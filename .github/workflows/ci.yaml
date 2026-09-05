@@ -29,11 +29,61 @@ jobs:
       #
       # Pinned to an exact version, since upstream reserves the right to
       # change behaviour in a patch.
-      - name: Scan the lockfile
+      - name: Scan the lockfiles
         uses: google/osv-scanner-action/osv-scanner-action@v2.5.1
         with:
           scan-args: |-
             --lockfile=pubspec.lock
+            --lockfile=packages/app_ui/pubspec.lock
+
+  app_ui:
+    name: packages/app_ui
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: packages/app_ui
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the Flutter version from .fvmrc
+        id: fvm
+        run: echo "version=$(jq -r .flutter ../../.fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test --coverage
+
+      - name: Check coverage
+        run: ../../scripts/check_coverage.sh coverage/lcov.info 98
+
+      # lcov paths are relative to the package root; Codecov matches them
+      # against the repository, so they need the package prefix.
+      - name: Rewrite coverage paths to be repository-relative
+        run: sed -i 's|^SF:|SF:packages/app_ui/|' coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: packages/app_ui/coverage/lcov.info
+          flags: app_ui
+          name: app_ui
+          fail_ci_if_error: false
 
   app:
     name: flutter_guide

@@ -1,13 +1,12 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/save_button/save_button_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Catalog card linking to a component, with optional video and save button.

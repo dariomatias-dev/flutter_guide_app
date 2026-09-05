@@ -1,8 +1,9 @@
 # Codecov configuration.
 #
-# The targets mirror scripts/check_coverage.sh, which stays the authority:
-# Codecov reports and annotates, the script is what actually fails the build.
-# One flag, because the repository holds one package.
+# Coverage is uploaded as two independent flags, one per package, because the
+# two suites run as separate CI jobs and carry different thresholds. The
+# targets mirror scripts/check_coverage.sh, which stays the authority: Codecov
+# reports and annotates, the script is what actually fails the build.
 
 codecov:
   require_ci_to_pass: true
@@ -13,9 +14,15 @@ coverage:
   range: "95...100"
   status:
     project:
-      default:
+      # Disabled in favour of the two per-flag statuses below.
+      default: false
+      app:
         flags: [app]
         target: 95%
+        threshold: 0.5%
+      app_ui:
+        flags: [app_ui]
+        target: 98%
         threshold: 0.5%
     patch:
       default:
@@ -35,6 +42,10 @@ flags:
   app:
     paths:
       - lib/
+    carryforward: true
+  app_ui:
+    paths:
+      - packages/app_ui/lib/
     carryforward: true
 
 comment:

@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 
 /// Button that opens the app's source code repository.

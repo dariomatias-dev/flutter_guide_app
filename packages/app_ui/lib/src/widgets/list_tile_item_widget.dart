@@ -1,7 +1,6 @@
+import 'package:app_ui/src/tokens/app_spacing.dart';
+import 'package:app_ui/src/widgets/ink_well_button_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
-import 'package:flutter_guide/src/shared/widgets/ink_well_button_widget.dart';
 
 /// A tappable list row with an optional icon, title and trailing widgets.
 class ListTileItemWidget extends StatelessWidget {

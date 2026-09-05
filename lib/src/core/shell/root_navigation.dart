@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/root_app_bar_widget.dart';
-import 'package:flutter_guide/src/core/theme/tokens/app_durations.dart';
 import 'package:flutter_guide/src/features/catalog/data/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/elements/elements_screen.dart';

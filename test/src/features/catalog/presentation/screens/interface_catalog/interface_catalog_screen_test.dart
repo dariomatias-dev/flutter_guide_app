@@ -1,10 +1,10 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/interface_catalog/interface_catalog_screen.dart';
-import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/standard_app_bar_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';

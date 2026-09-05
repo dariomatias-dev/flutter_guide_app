@@ -1,15 +1,10 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_guide/l10n/app_localizations.dart';
-
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
-
-import 'package:flutter_guide/src/shared/widgets/dialog/dialog_button_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/dialog/dialog_widget.dart';
-import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 /// Dialog letting the user pick which favorites list to open.
 class SelectFavoriteScreenDialogWidget extends StatelessWidget {

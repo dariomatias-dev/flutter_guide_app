@@ -30,9 +30,12 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+# packages/app_ui builds independently and gets its own output directory.
+packages/*/build/
 
 # Written by `flutter test --coverage`, which scripts/verify.sh runs.
 /coverage/
+packages/*/coverage/
 
 # Symbolication related
 app.*.symbols
