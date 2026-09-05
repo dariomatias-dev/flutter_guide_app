@@ -12,8 +12,8 @@ request é revisado.
 
 O projeto fixa a versão do SDK do Flutter com o [FVM](https://fvm.app/), então
 todo comando abaixo usa `fvm flutter` em vez de um `flutter` instalado
-globalmente. O `flutter` puro pega o que a máquina tiver, que não é o que a CI
-usa.
+globalmente. O `flutter` puro usa a versão que estiver instalada na máquina,
+que não é a que a CI usa.
 
 ```bash
 git clone https://github.com/dariomatias-dev/flutter_guide_app.git
@@ -63,7 +63,7 @@ repetidas aqui, justamente para não divergirem.
 
 Ele roda exatamente o que a CI roda, na mesma ordem:
 
-| Etapa | O que ela pega |
+| Etapa | O que ela detecta |
 | --- | --- |
 | `gen-l10n` e o diff da saída | Localizações commitadas que não batem mais com os ARB. A CI regenera a partir de um checkout limpo e falha em qualquer diferença |
 | [`check_l10n.sh`](../scripts/check_l10n.sh) | Chave faltando em um idioma, ou chave do template sem `description`. O `gen-l10n` cai no inglês em silêncio |

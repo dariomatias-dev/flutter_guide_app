@@ -7,6 +7,7 @@
 <br>
 <div align="center">
 <a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml"><img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
+<a href="https://codecov.io/gh/dariomatias-dev/flutter_guide_app"><img src="https://codecov.io/gh/dariomatias-dev/flutter_guide_app/branch/main/graph/badge.svg" alt="Coverage"></a>
 <img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Licencia MIT"></a>
 </div>
@@ -42,6 +43,7 @@ Una aplicación Android para explorar widgets, funciones y paquetes de Flutter/D
 - [Descargar la Aplicación](#descargar-la-aplicación)
 - [Primeros Pasos](#primeros-pasos)
 - [Scripts](#scripts)
+- [Documentación](#documentación)
 - [Contribuir](#contribuir)
 - [Changelog](#changelog)
 - [Licencia](#licencia)
@@ -116,17 +118,24 @@ mira [docs/architecture.es.md](docs/architecture.es.md).
 
 ## Pruebas
 
-El proyecto tiene 37 archivos de prueba que cubren repositorios, view
-models, notifiers, manejo de deep links y widgets compartidos, usando
-`mocktail` para mocks y overrides de `ProviderContainer` para el estado
-de Riverpod. El código sigue el conjunto estricto de lints
-`very_good_analysis`, verificado en CI junto con `dart format` y
-`flutter test`.
+El proyecto tiene 59 archivos de prueba y 326 casos, que cubren
+repositorios, view models, notifiers, manejo de deep links, localización y
+widgets compartidos, usando `mocktail` para mocks y overrides de
+`ProviderContainer` para el estado de Riverpod. El código sigue el
+conjunto estricto de lints `very_good_analysis`.
+
+La cobertura de líneas es del 95%, medida sobre `lib/` menos las fuentes
+generadas y las muestras del catálogo, que son código didáctico mostrado
+al usuario y no lógica de la app. El gate reprueba por debajo del 90%.
+
+Un solo comando ejecuta todo lo que ejecuta la CI, en el mismo orden:
 
 ```sh
-fvm flutter analyze
-fvm flutter test
+./scripts/verify.sh
 ```
+
+Consulta [docs/contributing.es.md](docs/contributing.es.md) para saber qué
+detecta cada paso y qué job de CI bloquea el merge.
 
 ## Capturas de Pantalla
 
@@ -189,6 +198,19 @@ Los scripts utilitarios están en `scripts/`.
 | `check_l10n` | `scripts/check_l10n.sh [dir-arb]` | Falla cuando los archivos ARB no coinciden en sus claves, o cuando una clave de la plantilla no tiene `description`. `gen-l10n` recurre a la plantilla en silencio, así que nada más detecta una traducción a medias. |
 | `workspace_hash` | `scripts/workspace_hash.sh` | Imprime un hash de las fuentes que cubre el gate. `verify.sh` lo guarda en `.dart_tool/verify_stamp` para que las herramientas sepan si el árbol sigue coincidiendo con una ejecución aprobada. |
 | `screenshot` | `scripts/screenshot.sh [device-id]` | Recorre las pantallas principales de la app en un dispositivo o emulador conectado y guarda una captura de cada una en `screenshots/`, usadas en este README, en la Play Store y en el sitio oficial. Ejecuta `fvm flutter devices` para listar los ids de dispositivos disponibles. |
+
+## Documentación
+
+| Documento | Qué cubre |
+| --- | --- |
+| [Arquitectura](docs/architecture.es.md) | Estructura, reglas de capas y la decisión detrás de cada subsistema |
+| [Contribuir](docs/contributing.es.md) | Configuración, el gate local, qué verifica la CI, publicaciones y la convención de commits |
+| [Política de seguridad](docs/security.es.md) | Cómo reportar una vulnerabilidad en privado, y qué está dentro del alcance |
+| [Código de Conducta](docs/code_of_conduct.es.md) | El comportamiento esperado en los espacios del proyecto |
+
+Cada uno también está disponible en [English](docs/architecture.md) y
+[Português (BR)](docs/architecture.pt-BR.md), con un selector de idioma en la
+parte superior de cada página.
 
 ## Contribuir
 

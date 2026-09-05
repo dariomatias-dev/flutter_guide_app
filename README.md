@@ -7,6 +7,7 @@
 <br>
 <div align="center">
 <a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml"><img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
+<a href="https://codecov.io/gh/dariomatias-dev/flutter_guide_app"><img src="https://codecov.io/gh/dariomatias-dev/flutter_guide_app/branch/main/graph/badge.svg" alt="Coverage"></a>
 <img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License"></a>
 </div>
@@ -42,6 +43,7 @@ An Android app for browsing Flutter/Dart widgets, functions, and packages, each 
 - [Download the App](#download-the-app)
 - [Getting Started](#getting-started)
 - [Scripts](#scripts)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [License](#license)
@@ -115,16 +117,24 @@ For the layering rules, the subsystems and the decisions behind them, see
 
 ## Testing
 
-The project has 37 test files covering repositories, view models,
-notifiers, deep link handling, and shared widgets, using `mocktail` for
-mocking and `ProviderContainer` overrides for Riverpod state. Code is
-linted against the strict `very_good_analysis` rule set, enforced in CI
-alongside `dart format` and `flutter test`.
+The project has 59 test files and 326 test cases covering repositories,
+view models, notifiers, deep link handling, localization and shared
+widgets, using `mocktail` for mocking and `ProviderContainer` overrides
+for Riverpod state. Code is linted against the strict `very_good_analysis`
+rule set.
+
+Line coverage is 95%, measured over `lib/` minus the generated sources and
+the catalog samples, which are teaching code rendered to the user rather
+than app logic. The gate fails below 90%.
+
+One command runs everything CI runs, in the same order:
 
 ```sh
-fvm flutter analyze
-fvm flutter test
+./scripts/verify.sh
 ```
+
+See [docs/contributing.md](docs/contributing.md) for what each step
+catches and which CI job blocks a merge.
 
 ## Screenshots
 
@@ -187,6 +197,19 @@ Utility scripts live under `scripts/`.
 | `check_l10n` | `scripts/check_l10n.sh [arb-dir]` | Fails when the ARB files disagree on which keys they carry, or when a key in the template ships without a description. `gen-l10n` falls back to the template silently, so nothing else catches a half-translated change. |
 | `workspace_hash` | `scripts/workspace_hash.sh` | Prints a hash of the sources the gate covers. `verify.sh` records it in `.dart_tool/verify_stamp` so tooling can tell whether the tree still matches a passing run. |
 | `screenshot` | `scripts/screenshot.sh [device-id]` | Drives the app through its main screens on a connected device or emulator and saves a screenshot of each one into `screenshots/`, used for the README, Play Store listing, and official website. Run `fvm flutter devices` to list available device ids. |
+
+## Documentation
+
+| Document | What it covers |
+| --- | --- |
+| [Architecture](docs/architecture.md) | Layout, layering rules, and the decision behind each subsystem |
+| [Contributing](docs/contributing.md) | Setup, the local gate, what CI checks, releases, and the commit convention |
+| [Security policy](docs/security.md) | How to report a vulnerability privately, and what is in scope |
+| [Code of Conduct](docs/code_of_conduct.md) | Behaviour expected in project spaces |
+
+Each is also available in [Español](docs/architecture.es.md) and
+[Português (BR)](docs/architecture.pt-BR.md), with a language switcher at the
+top of every page.
 
 ## Contributing
 
