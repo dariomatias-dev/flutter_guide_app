@@ -2,25 +2,64 @@ name: CI
 
 on:
   pull_request:
-    branches: [main]
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  analyze-and-test:
+  # Runs on its own rather than gating the others: a newly disclosed
+  # advisory is not a reason to stop the tests from reporting.
+  vulnerabilities:
+    name: Vulnerabilities
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
+      # Reads pubspec.lock against the OSV database, which carries pub
+      # advisories. The lockfile is what matters here: the caret ranges in
+      # pubspec.yaml say what could resolve, not what actually ships.
+      #
+      # Pinned to an exact version, since upstream reserves the right to
+      # change behaviour in a patch.
+      - name: Scan the lockfile
+        uses: google/osv-scanner-action/osv-scanner-action@v2.5.1
+        with:
+          scan-args: |-
+            --lockfile=pubspec.lock
+
+  app:
+    name: flutter_guide
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      # FVM owns the SDK version. Repeating it here would let the two drift,
+      # and the pipeline would keep building on a version nobody runs.
+      - name: Read the Flutter version from .fvmrc
+        id: fvm
+        run: echo "version=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.44.0'
-          channel: 'stable'
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          channel: stable
+          cache: true
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Create .env file
+      # The app declares .env as an asset and reads the ad unit ids from it.
+      # The real values are secrets; the keys only have to exist.
+      - name: Create the .env file
         run: |
           cat <<'EOF' > .env
           DEVICE_ID=
@@ -31,11 +70,76 @@ jobs:
           APP_OPEN_AD_SAMPLE_ID=
           EOF
 
-      - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
+      - name: Generate localizations
+        run: flutter gen-l10n
+
+      - name: Verify the generated files are up to date
+        run: |
+          if [ -n "$(git status --porcelain -- 'lib/l10n/app_localizations*.dart')" ]; then
+            echo "Generated localizations are out of date. Run 'fvm flutter gen-l10n' locally and commit the result." >&2
+            git status --porcelain -- 'lib/l10n/app_localizations*.dart' >&2
+            git diff -- 'lib/l10n/app_localizations*.dart' >&2
+            exit 1
+          fi
+
+      - name: Check localizations
+        run: ./scripts/check_l10n.sh
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test integration_test
 
       - name: Analyze
         run: flutter analyze
 
       - name: Test
-        run: flutter test
+        run: flutter test --coverage
+
+      - name: Check coverage
+        run: ./scripts/check_coverage.sh coverage/lcov.info 90
+
+  build_apk:
+    name: Build APK
+    needs: app
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the Flutter version from .fvmrc
+        id: fvm
+        run: echo "version=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create the .env file
+        run: |
+          cat <<'EOF' > .env
+          DEVICE_ID=
+          BANNER_AD_ID=
+          BANNER_AD_SAMPLE_ID=
+          INTERSTICIAL_AD_SAMPLE_ID=
+          REWARDED_AD_SAMPLE_ID=
+          APP_OPEN_AD_SAMPLE_ID=
+          EOF
+
+      - name: Generate localizations
+        run: flutter gen-l10n
+
+      # No keystore in this checkout, so the build falls back to the debug
+      # keys. It proves the Android build compiles; the artifact the Play
+      # Store receives comes from the release workflow.
+      - name: Build the release APK
+        run: flutter build apk --release
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flutter_guide-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 14

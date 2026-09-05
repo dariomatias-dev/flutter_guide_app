@@ -38,20 +38,32 @@ android {
         versionName = flutter.versionName
     }
 
+    // key.properties is not in the repository: it points at the upload
+    // keystore and is assembled from secrets in the release workflow. Without
+    // it, reading these values would fail Gradle configuration before any
+    // task runs, so the config only exists when the file does.
     signingConfigs {
-        create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
-            storePassword = keystoreProperties["storePassword"] as String
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+                storePassword = keystoreProperties["storePassword"] as String
+            }
         }
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("release")
+            // Falls back to the debug keys so a release build works in a
+            // clone with no keystore, such as a pull request run. What the
+            // Play Store receives is built by the release workflow, which
+            // writes key.properties first.
+            signingConfig = if (keystorePropertiesFile.exists()) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
 }
