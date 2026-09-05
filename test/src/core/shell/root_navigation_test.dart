@@ -10,7 +10,7 @@ import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/botto
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/home/home_screen.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/app_version_repository_provider.dart';
+import 'package:flutter_guide/src/features/settings/data/providers/app_version_repository_provider.dart';
 import 'package:flutter_guide/src/features/settings/presentation/screens/settings/settings_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';

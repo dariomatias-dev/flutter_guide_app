@@ -4,7 +4,7 @@ import 'package:flutter_guide/src/core/constants/links/app_links.dart';
 import 'package:flutter_guide/src/core/di/ads_enabled_provider.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/app_version_repository_provider.dart';
+import 'package:flutter_guide/src/features/settings/data/providers/app_version_repository_provider.dart';
 import 'package:flutter_guide/src/features/settings/presentation/screens/settings/settings_screen.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/about_dialog_widget.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/app_info_widget/app_info_widget.dart';

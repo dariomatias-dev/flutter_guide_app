@@ -1,5 +1,5 @@
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_repository_provider.dart';
+import 'package:flutter_guide/src/features/catalog/data/providers/favorites_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_view_model_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/view_models/favorites_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -8,7 +8,7 @@ import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 import 'package:flutter_guide/src/core/shell/widgets/root_app_bar/root_app_bar_widget.dart';
 import 'package:flutter_guide/src/core/theme/tokens/app_durations.dart';
-import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
+import 'package:flutter_guide/src/features/catalog/data/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/elements/elements_screen.dart';
 import 'package:flutter_guide/src/features/home/home_screen.dart';

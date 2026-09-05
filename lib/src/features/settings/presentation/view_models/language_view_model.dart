@@ -1,5 +1,5 @@
+import 'package:flutter_guide/src/features/settings/data/providers/language_repository_provider.dart';
 import 'package:flutter_guide/src/features/settings/domain/repositories/language_repository.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/language_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Holds and persists the selected language code.

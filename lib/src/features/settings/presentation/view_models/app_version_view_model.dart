@@ -1,5 +1,5 @@
+import 'package:flutter_guide/src/features/settings/data/providers/app_version_repository_provider.dart';
 import 'package:flutter_guide/src/features/settings/domain/repositories/app_version_repository.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/app_version_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Asynchronously exposes the app version string.

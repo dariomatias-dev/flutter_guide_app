@@ -1,5 +1,5 @@
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
-import 'package:flutter_guide/src/features/settings/presentation/providers/language_repository_provider.dart';
+import 'package:flutter_guide/src/features/settings/data/providers/language_repository_provider.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/language_view_model_provider.dart';
 import 'package:flutter_guide/src/features/settings/presentation/view_models/language_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
