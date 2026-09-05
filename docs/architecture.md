@@ -135,7 +135,7 @@ database.
 
 [`SharedPreferencesService`](../lib/src/core/services/shared_preferences_service.dart)
 wraps the plugin, and the keys live in one place, in
-[`shared_preferences_keys.dart`](../lib/src/core/shared_preferences_keys.dart).
+[`shared_preferences_keys.dart`](../lib/src/core/constants/shared_preferences_keys.dart).
 A repository talks to the service, never to `SharedPreferences` directly, which
 is what lets a test swap the storage without touching the plugin.
 
@@ -208,3 +208,10 @@ that opens overlay content, and `pump_router_app.dart` for anything routed.
 
 The coverage gate is 95%, measured over `lib/` minus the generated sources and
 the catalog samples.
+
+[`integration_test/screenshot_test.dart`](../integration_test/screenshot_test.dart)
+runs on a real Android emulator in CI, in its own job. It exists for capturing
+marketing screenshots, not as a substitute for widget tests, but running it in
+CI also proves the app boots and every screen it visits renders on a real
+device: `dotenv`, `SharedPreferences` and the whole Riverpod graph run for
+real there, none of it faked.
