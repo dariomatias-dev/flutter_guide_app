@@ -226,3 +226,9 @@ O corpo é opcional e existe para o *porquê*. O diff já mostra o que mudou.
 - Neste repositório (mantenedor único), o self-merge após a CI passar é
   permitido; a proteção de branch ainda exige o fluxo de pull request e as
   verificações passando.
+
+## Código de Conduta
+
+A participação neste projeto é regida pelo
+[Código de Conduta](code_of_conduct.pt-BR.md). Relatos de segurança seguem a
+[política de segurança](security.pt-BR.md), nunca uma issue pública.

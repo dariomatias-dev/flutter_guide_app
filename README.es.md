@@ -194,7 +194,9 @@ Los scripts utilitarios están en `scripts/`.
 
 Las contribuciones hacen que la comunidad de código abierto sea un lugar increíble para aprender y crear. Cualquier contribución que hagas será muy apreciada.
 
-Antes de abrir un pull request, consulta [docs/contributing.es.md](docs/contributing.es.md) para la configuración local, el gate de calidad, la convención de mensajes de commit (Conventional Commits) y las reglas de ramas de este proyecto.
+Antes de abrir un pull request, consulta [docs/contributing.es.md](docs/contributing.es.md) para la configuración local, el gate de calidad, la convención de mensajes de commit (Conventional Commits) y las reglas de ramas de este proyecto. La participación se rige por el [Código de Conducta](docs/code_of_conduct.es.md).
+
+¿Encontraste un problema de seguridad? No abras una issue pública: sigue la [política de seguridad](docs/security.es.md).
 
 ## Changelog
 

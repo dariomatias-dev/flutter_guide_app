@@ -194,7 +194,9 @@ Scripts utilitários ficam em `scripts/`.
 
 Contribuições tornam a comunidade open-source um lugar incrível para aprender e criar. Qualquer contribuição que você fizer será muito bem-vinda.
 
-Antes de abrir um pull request, veja o [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para a configuração local, o gate de qualidade, a convenção de mensagens de commit (Conventional Commits) e as regras de branch deste projeto.
+Antes de abrir um pull request, veja o [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para a configuração local, o gate de qualidade, a convenção de mensagens de commit (Conventional Commits) e as regras de branch deste projeto. A participação é regida pelo [Código de Conduta](docs/code_of_conduct.pt-BR.md).
+
+Encontrou um problema de segurança? Não abra uma issue pública: siga a [política de segurança](docs/security.pt-BR.md).
 
 ## Changelog
 
