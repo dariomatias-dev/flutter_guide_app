@@ -78,7 +78,11 @@ tooling can tell whether the tree still matches a run that passed.
 ## Pull requests
 
 - One logical change per PR; keep it small and reviewable.
-- CI (`analyze-and-test`) must pass before merge.
+- CI must pass before merge: the `flutter_guide` job runs the same steps as
+  `scripts/verify.sh`, `Vulnerabilities` scans `pubspec.lock`, and `Build APK`
+  proves the Android build compiles.
+- Codecov comments the coverage delta on the pull request. It reports only:
+  `scripts/check_coverage.sh` is what fails the build.
 - Squash or rebase merge only — no merge commits, to keep history linear
   and each entry a valid Conventional Commit.
 - For this repo (single maintainer), self-merge after CI passes is allowed;

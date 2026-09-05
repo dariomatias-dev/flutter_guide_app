@@ -97,6 +97,17 @@ jobs:
       - name: Check coverage
         run: ./scripts/check_coverage.sh coverage/lcov.info 90
 
+      # Reporting only: check_coverage.sh above is what fails the build. A
+      # fork cannot read the token, so an upload failure must not fail the job.
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/lcov.info
+          flags: app
+          name: flutter_guide
+          fail_ci_if_error: false
+
   build_apk:
     name: Build APK
     needs: app

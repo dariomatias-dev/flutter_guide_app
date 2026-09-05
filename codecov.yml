@@ -1,0 +1,45 @@
+# Codecov configuration.
+#
+# The targets mirror scripts/check_coverage.sh, which stays the authority:
+# Codecov reports and annotates, the script is what actually fails the build.
+# One flag, because the repository holds one package.
+
+codecov:
+  require_ci_to_pass: true
+
+coverage:
+  precision: 1
+  round: down
+  range: "90...100"
+  status:
+    project:
+      default:
+        flags: [app]
+        target: 90%
+        threshold: 0.5%
+    patch:
+      default:
+        target: auto
+        threshold: 0.5%
+
+# Mirrors the exclusions in scripts/check_coverage.sh. Generated sources
+# mirror hand-written declarations, and the catalog samples are the teaching
+# code the app renders to the user: nearly 7000 lines that say nothing about
+# whether the app itself is tested.
+ignore:
+  - "**/*.g.dart"
+  - "lib/l10n/**"
+  - "lib/src/features/catalog/data/samples/**"
+
+flags:
+  app:
+    paths:
+      - lib/
+    carryforward: true
+
+comment:
+  layout: "condensed_header, diff, flags, files"
+  require_changes: true
+
+github_checks:
+  annotations: true
