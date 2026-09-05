@@ -5,15 +5,20 @@ abstract final class LanguagesApp {
   /// English language code.
   static const en = 'en';
 
-  /// Brazilian Portuguese language code.
-  static const ptBr = 'pt_BR';
+  /// Portuguese language code, matching any Portuguese device.
+  static const pt = 'pt';
+
+  /// Language code stored by versions that shipped a pt_BR-only translation.
+  /// Reads still accept it so an existing choice survives the upgrade.
+  static const legacyPtBr = 'pt_BR';
 
   /// Spanish language code.
   static const es = 'es';
 
   static const Map<String, Locale> _languageLocales = {
     en: Locale('en'),
-    ptBr: Locale('pt', 'BR'),
+    pt: Locale('pt'),
+    legacyPtBr: Locale('pt'),
     es: Locale('es'),
   };
 

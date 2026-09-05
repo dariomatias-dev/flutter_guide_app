@@ -8,10 +8,17 @@ void main() {
       expect(LanguagesApp.locale(LanguagesApp.en), const Locale('en'));
     });
 
-    test('returns the Brazilian Portuguese locale', () {
+    test('returns the Portuguese locale', () {
       expect(
-        LanguagesApp.locale(LanguagesApp.ptBr),
-        const Locale('pt', 'BR'),
+        LanguagesApp.locale(LanguagesApp.pt),
+        const Locale('pt'),
+      );
+    });
+
+    test('maps the legacy pt_BR code to the Portuguese locale', () {
+      expect(
+        LanguagesApp.locale(LanguagesApp.legacyPtBr),
+        const Locale('pt'),
       );
     });
 

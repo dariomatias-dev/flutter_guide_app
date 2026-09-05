@@ -224,7 +224,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dark => 'Oscuro';
 
   @override
-  String componentNotFound(Object componentName, Object type) {
+  String componentNotFound(String componentName, String type) {
     return 'No se pudo localizar el componente \'$componentName\' en \'$type\'.';
   }
 

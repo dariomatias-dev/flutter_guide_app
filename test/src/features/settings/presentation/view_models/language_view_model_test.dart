@@ -34,21 +34,21 @@ void main() {
     test('build returns the selected language from the repository', () {
       when(
         () => repository.getSelectedLanguage(),
-      ).thenReturn(LanguagesApp.ptBr);
+      ).thenReturn(LanguagesApp.pt);
 
       expect(
         makeContainer().read(languageViewModelProvider),
-        LanguagesApp.ptBr,
+        LanguagesApp.pt,
       );
     });
 
     test('setLanguage updates the state and persists the code', () async {
       final container = makeContainer();
 
-      await notifier(container).setLanguage(LanguagesApp.ptBr);
+      await notifier(container).setLanguage(LanguagesApp.pt);
 
-      expect(container.read(languageViewModelProvider), LanguagesApp.ptBr);
-      verify(() => repository.saveLanguage(LanguagesApp.ptBr)).called(1);
+      expect(container.read(languageViewModelProvider), LanguagesApp.pt);
+      verify(() => repository.saveLanguage(LanguagesApp.pt)).called(1);
     });
   });
 }

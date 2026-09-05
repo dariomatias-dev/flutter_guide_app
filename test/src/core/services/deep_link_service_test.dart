@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:app_links_platform_interface/app_links_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/l10n/l10n.dart';
 import 'package:flutter_guide/src/core/services/deep_link_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -67,7 +66,7 @@ void main() {
       MaterialApp.router(
         scaffoldMessengerKey: scaffoldMessengerKey,
         routerConfig: router,
-        supportedLocales: L10n.all,
+        supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

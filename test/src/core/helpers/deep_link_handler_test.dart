@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
-import 'package:flutter_guide/l10n/l10n.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
@@ -87,7 +86,7 @@ void main() {
         child: MaterialApp.router(
           scaffoldMessengerKey: scaffoldMessengerKey,
           routerConfig: router,
-          supportedLocales: L10n.all,
+          supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

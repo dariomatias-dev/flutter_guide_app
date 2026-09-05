@@ -12,10 +12,14 @@ class LanguageRepositoryImpl implements LanguageRepository {
 
   @override
   String getSelectedLanguage() {
-    return _preferences.getString(
+    final stored = _preferences.getString(
       SharedPreferencesKeys.languageKey,
       defaultValue: LanguagesApp.en,
     );
+
+    // Versions before the pt_BR arb was dropped stored the region-qualified
+    // code, which no longer matches any entry of Language.all.
+    return stored == LanguagesApp.legacyPtBr ? LanguagesApp.pt : stored;
   }
 
   @override

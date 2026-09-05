@@ -22,7 +22,7 @@ class Language {
     ),
     Language(
       name: 'Português',
-      code: LanguagesApp.ptBr,
+      code: LanguagesApp.pt,
     ),
     Language(
       name: 'Español',

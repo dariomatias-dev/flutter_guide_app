@@ -31,11 +31,11 @@ void main() {
     test('build resolves the Language matching the selected code', () {
       when(
         () => repository.getSelectedLanguage(),
-      ).thenReturn(LanguagesApp.ptBr);
+      ).thenReturn(LanguagesApp.pt);
 
       final language = makeContainer().read(selectLanguageViewModelProvider);
 
-      expect(language.code, LanguagesApp.ptBr);
+      expect(language.code, LanguagesApp.pt);
     });
 
     test('build falls back to the first language for an unknown code', () {
@@ -50,11 +50,11 @@ void main() {
       final container = makeContainer();
       container
           .read(selectLanguageViewModelProvider.notifier)
-          .selectLanguage(LanguagesApp.ptBr);
+          .selectLanguage(LanguagesApp.pt);
 
       await Future<void>.delayed(Duration.zero);
 
-      verify(() => repository.saveLanguage(LanguagesApp.ptBr)).called(1);
+      verify(() => repository.saveLanguage(LanguagesApp.pt)).called(1);
     });
   });
 }

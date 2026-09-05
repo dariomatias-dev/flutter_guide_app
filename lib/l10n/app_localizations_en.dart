@@ -72,7 +72,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clearSearch => 'Clear search';
 
   @override
-  String get saved => 'salved';
+  String get saved => 'saved';
 
   @override
   String get removed => 'removed';
@@ -224,7 +224,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dark => 'Dark';
 
   @override
-  String componentNotFound(Object componentName, Object type) {
+  String componentNotFound(String componentName, String type) {
     return 'Could not locate the \'$componentName\' component in \'$type\'.';
   }
 

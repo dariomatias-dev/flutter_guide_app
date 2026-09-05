@@ -1,0 +1,393 @@
+{
+  "@@locale": "en",
+  "home": "Home",
+  "@home": {
+    "description": "Bottom bar tab and title of the first screen."
+  },
+  "elements": "Elements",
+  "@elements": {
+    "description": "Bottom bar tab listing the ready-made interface elements."
+  },
+  "components": "Components",
+  "@components": {
+    "description": "Bottom bar tab listing the catalog components."
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Settings entry that opens the app language selector."
+  },
+  "codeTheme": "Code Theme",
+  "@codeTheme": {
+    "description": "Settings entry that opens the syntax highlighting theme selector."
+  },
+  "function": "Function",
+  "@function": {
+    "description": "Singular label for a catalog entry of the function type."
+  },
+  "functions": "Functions",
+  "@functions": {
+    "description": "Catalog section listing Dart and Flutter functions."
+  },
+  "package": "Package",
+  "@package": {
+    "description": "Singular label for a catalog entry of the package type."
+  },
+  "packages": "Packages",
+  "@packages": {
+    "description": "Catalog section listing third-party packages."
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Bottom bar tab and title of the settings screen."
+  },
+  "version": "Version",
+  "@version": {
+    "description": "Settings row showing the installed app version."
+  },
+  "sourceCode": "Source Code",
+  "@sourceCode": {
+    "description": "Link that opens the app repository."
+  },
+  "docsAndResources": "Docs and Resources",
+  "@docsAndResources": {
+    "description": "Settings section grouping documentation links."
+  },
+  "developerPortfolio": "Developer Portfolio",
+  "@developerPortfolio": {
+    "description": "Link that opens the developer portfolio site."
+  },
+  "officialSite": "Official Site",
+  "@officialSite": {
+    "description": "Link that opens the app official site."
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Link that opens the privacy policy."
+  },
+  "about": "About",
+  "@about": {
+    "description": "Settings entry that opens the about dialog."
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "Bottom bar tab listing the components the user saved."
+  },
+  "changeTheme": "Change theme",
+  "@changeTheme": {
+    "description": "Tooltip of the button that toggles between light and dark theme."
+  },
+  "watchOnYoutube": "Watch on YouTube",
+  "@watchOnYoutube": {
+    "description": "Menu action that opens the component video on YouTube."
+  },
+  "clearSearch": "Clear search",
+  "@clearSearch": {
+    "description": "Tooltip of the button that clears the search field."
+  },
+  "saved": "saved",
+  "@saved": {
+    "description": "State of the save button once a component has been saved."
+  },
+  "removed": "removed",
+  "@removed": {
+    "description": "State of the save button once a component has been unsaved."
+  },
+  "savedWidget": "Saved Widget",
+  "@savedWidget": {
+    "description": "Message shown after saving a widget."
+  },
+  "savedWidgets": "Saved Widgets",
+  "@savedWidgets": {
+    "description": "Title of the screen listing the saved widgets."
+  },
+  "widgetRemoved": "Removed Widget",
+  "@widgetRemoved": {
+    "description": "Message shown after removing a widget from the saved list."
+  },
+  "savedFunction": "Saved Function",
+  "@savedFunction": {
+    "description": "Message shown after saving a function."
+  },
+  "savedFunctions": "Saved Functions",
+  "@savedFunctions": {
+    "description": "Title of the screen listing the saved functions."
+  },
+  "functionRemoved": "Removed Function",
+  "@functionRemoved": {
+    "description": "Message shown after removing a function from the saved list."
+  },
+  "savedPackage": "Saved Package",
+  "@savedPackage": {
+    "description": "Message shown after saving a package."
+  },
+  "savedPackages": "Saved Packages",
+  "@savedPackages": {
+    "description": "Title of the screen listing the saved packages."
+  },
+  "packageRemoved": "Removed Package",
+  "@packageRemoved": {
+    "description": "Message shown after removing a package from the saved list."
+  },
+  "noWidgetSaved": "No widget has been saved yet.",
+  "@noWidgetSaved": {
+    "description": "Empty state of the saved widgets screen."
+  },
+  "noFunctionSaved": "No function has been saved yet.",
+  "@noFunctionSaved": {
+    "description": "Empty state of the saved functions screen."
+  },
+  "noPackageSaved": "No package has been saved yet.",
+  "@noPackageSaved": {
+    "description": "Empty state of the saved packages screen."
+  },
+  "selectTheTheme": "Select the Theme",
+  "@selectTheTheme": {
+    "description": "Title of the dialog that selects the app theme."
+  },
+  "system": "System",
+  "@system": {
+    "description": "Theme option that follows the device setting."
+  },
+  "loginScreen": "Login Screen",
+  "@loginScreen": {
+    "description": "Name of the login screen sample."
+  },
+  "phoneVerificationScreen": "Phone Verification Screen",
+  "@phoneVerificationScreen": {
+    "description": "Name of the phone verification screen sample."
+  },
+  "loginScreenWithBackgroundImage": "Login With Background Image Screen",
+  "@loginScreenWithBackgroundImage": {
+    "description": "Name of the login screen sample that uses a background image."
+  },
+  "emailsApp": "Emails App",
+  "@emailsApp": {
+    "description": "Name of the email client interface sample."
+  },
+  "chatScreen": "Chat Screen",
+  "@chatScreen": {
+    "description": "Name of the chat screen sample."
+  },
+  "customPopupMenu": "Custom Popup Menu",
+  "@customPopupMenu": {
+    "description": "Name of the custom popup menu sample."
+  },
+  "customDropdown": "Custom Dropdown",
+  "@customDropdown": {
+    "description": "Name of the custom dropdown sample."
+  },
+  "gaps": "Gaps",
+  "@gaps": {
+    "description": "Name of the sample showing spacing helpers."
+  },
+  "passwordField": "Password Field",
+  "@passwordField": {
+    "description": "Name of the password field sample."
+  },
+  "loadingButton": "Loading Button",
+  "@loadingButton": {
+    "description": "Name of the button with a loading state sample."
+  },
+  "infiniteGridView": "Infinite Grid View",
+  "@infiniteGridView": {
+    "description": "Name of the infinite grid sample."
+  },
+  "pagination": "Pagination",
+  "@pagination": {
+    "description": "Name of the pagination sample."
+  },
+  "configuringDio": "Configuring Dio",
+  "@configuringDio": {
+    "description": "Name of the sample that configures the Dio HTTP client."
+  },
+  "loadingDialog": "Loading Dialog",
+  "@loadingDialog": {
+    "description": "Name of the loading dialog sample."
+  },
+  "loadingScreen": "Loading Screen",
+  "@loadingScreen": {
+    "description": "Name of the loading screen sample."
+  },
+  "imageLoader": "Image Loader",
+  "@imageLoader": {
+    "description": "Name of the image loading sample."
+  },
+  "contribute": "Contribute",
+  "@contribute": {
+    "description": "Title of the dialog asking for a donation."
+  },
+  "supportProject": "Support the project by buying a coffee.",
+  "@supportProject": {
+    "description": "Body of the dialog asking for a donation."
+  },
+  "donate": "Donate",
+  "@donate": {
+    "description": "Button that opens the donation link."
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Button that dismisses a dialog without acting."
+  },
+  "flutterDocs": "Flutter Docs",
+  "@flutterDocs": {
+    "description": "Link that opens the official Flutter documentation of a component."
+  },
+  "dartDocs": "Dart Docs",
+  "@dartDocs": {
+    "description": "Link that opens the official Dart documentation of a component."
+  },
+  "samples": "Samples",
+  "@samples": {
+    "description": "Section listing the code samples of a component."
+  },
+  "code": "Code",
+  "@code": {
+    "description": "Tab showing the source code of a sample."
+  },
+  "preview": "Preview",
+  "@preview": {
+    "description": "Tab showing the sample running."
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Button that adds a component to the saved list."
+  },
+  "remove": "Remove",
+  "@remove": {
+    "description": "Button that takes a component out of the saved list."
+  },
+  "copy": "Copy",
+  "@copy": {
+    "description": "Menu action that copies the sample source code."
+  },
+  "copyToClipboard": "Code copied to the clipboard",
+  "@copyToClipboard": {
+    "description": "Message confirming the sample code was copied."
+  },
+  "aboutDescription": "An educational app developed with Flutter that helps developers learn the technology through practical examples.",
+  "@aboutDescription": {
+    "description": "Body of the about dialog, describing what the app is."
+  },
+  "viewOnPlayStore": "View on Play Store",
+  "@viewOnPlayStore": {
+    "description": "Link that opens the app listing on the Play Store."
+  },
+  "selectCodeTheme": "Select Code Theme",
+  "@selectCodeTheme": {
+    "description": "Title of the screen that selects the syntax highlighting theme."
+  },
+  "light": "Light",
+  "@light": {
+    "description": "Theme option with a light background."
+  },
+  "dark": "Dark",
+  "@dark": {
+    "description": "Theme option with a dark background."
+  },
+  "componentNotFound": "Could not locate the '{componentName}' component in '{type}'.",
+  "@componentNotFound": {
+    "description": "Error shown when a deep link points to a component the catalog does not have.",
+    "placeholders": {
+      "componentName": {
+        "type": "String",
+        "example": "Container"
+      },
+      "type": {
+        "type": "String",
+        "example": "widgets"
+      }
+    }
+  },
+  "share": "Share",
+  "@share": {
+    "description": "Menu action that shares a link to the component."
+  },
+  "invalidLink": "The link is invalid.",
+  "@invalidLink": {
+    "description": "Error shown when an incoming deep link cannot be parsed."
+  },
+  "deepLinkInitFailure": "Failed to initialize the Deep Link feature.",
+  "@deepLinkInitFailure": {
+    "description": "Error shown when the deep link listener fails to start."
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Generic title of an error dialog."
+  },
+  "errorOpeningLink": "An error occurred while trying to open the link",
+  "@errorOpeningLink": {
+    "description": "Error shown when an external link cannot be opened."
+  },
+  "textGroup": "Text",
+  "@textGroup": {
+    "description": "Catalog group of widgets that render text."
+  },
+  "buttonGroup": "Button",
+  "@buttonGroup": {
+    "description": "Catalog group of widgets the user taps."
+  },
+  "formGroup": "Form",
+  "@formGroup": {
+    "description": "Catalog group of input and form widgets."
+  },
+  "pickerGroup": "Picker",
+  "@pickerGroup": {
+    "description": "Catalog group of widgets that pick a value, such as dates."
+  },
+  "listGroup": "List",
+  "@listGroup": {
+    "description": "Catalog group of list and scrolling widgets."
+  },
+  "layoutGroup": "Layout",
+  "@layoutGroup": {
+    "description": "Catalog group of widgets that arrange other widgets."
+  },
+  "navigationGroup": "Navigation",
+  "@navigationGroup": {
+    "description": "Catalog group of navigation widgets."
+  },
+  "dialogAndOverlayGroup": "Dialog & Overlay",
+  "@dialogAndOverlayGroup": {
+    "description": "Catalog group of dialogs, sheets and other overlays."
+  },
+  "displayGroup": "Display",
+  "@displayGroup": {
+    "description": "Catalog group of widgets that present content, such as images."
+  },
+  "effectsGroup": "Effects",
+  "@effectsGroup": {
+    "description": "Catalog group of visual effect widgets."
+  },
+  "interactionGroup": "Interaction",
+  "@interactionGroup": {
+    "description": "Catalog group of gesture and interaction widgets."
+  },
+  "builderGroup": "Builder",
+  "@builderGroup": {
+    "description": "Catalog group of builder widgets."
+  },
+  "doc": "Doc",
+  "@doc": {
+    "description": "Menu action that opens the documentation of a component."
+  },
+  "widget": "Widget",
+  "@widget": {
+    "description": "Singular label for a catalog entry of the widget type."
+  },
+  "widgets": "Widgets",
+  "@widgets": {
+    "description": "Catalog section listing Flutter widgets."
+  },
+  "ok": "Ok",
+  "@ok": {
+    "description": "Button that acknowledges and dismisses a message."
+  },
+  "feedback": "Feedback",
+  "@feedback": {
+    "description": "Settings entry that opens the feedback channel."
+  },
+  "uis": "UIs",
+  "@uis": {
+    "description": "Catalog section listing complete interface samples."
+  }
+}

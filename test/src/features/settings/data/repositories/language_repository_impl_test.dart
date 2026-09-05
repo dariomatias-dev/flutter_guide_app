@@ -22,9 +22,15 @@ void main() {
     });
 
     test('getSelectedLanguage returns the saved language', () async {
-      await repository.saveLanguage(LanguagesApp.ptBr);
+      await repository.saveLanguage(LanguagesApp.pt);
 
-      expect(repository.getSelectedLanguage(), LanguagesApp.ptBr);
+      expect(repository.getSelectedLanguage(), LanguagesApp.pt);
+    });
+
+    test('getSelectedLanguage maps the legacy pt_BR code to pt', () async {
+      await repository.saveLanguage(LanguagesApp.legacyPtBr);
+
+      expect(repository.getSelectedLanguage(), LanguagesApp.pt);
     });
 
     test('saveLanguage persists under the language key', () async {
