@@ -241,14 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
-  dart_style:
-    dependency: transitive
-    description:
-      name: dart_style
-      sha256: a4c1ccfee44c7e75ed80484071a5c142a385345e658fd8bd7c4b5c97e7198f98
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.8"
   dbus:
     dependency: transitive
     description:
@@ -608,7 +600,7 @@ packages:
     source: hosted
     version: "4.1.2"
   icons_launcher:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: icons_launcher
       sha256: b42b2f9b10e58d6a973f71293f00a1f0572595e5e50d676c53048e464f78cb7d
@@ -652,14 +644,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.2"
-  intl_utils:
-    dependency: "direct main"
-    description:
-      name: intl_utils
-      sha256: d6bc24bad6fa8b76b6bdb5d44de561b7a8088f375852f305b60b72cb608b27ce
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.8.15"
   io:
     dependency: transitive
     description:
@@ -909,7 +893,7 @@ packages:
     source: hosted
     version: "1.1.0"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       sha256: a7f4874f987173da295a61c181b8ee71dab59b332a486b391babf26a1b884825
@@ -1426,7 +1410,7 @@ packages:
     source: hosted
     version: "6.3.2"
   url_launcher_android:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: url_launcher_android
       sha256: b413d49b73867ac08dd2f9890efd3cc11f2a0e577618d50843440a1fb3776c32
