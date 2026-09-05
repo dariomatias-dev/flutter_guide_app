@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_guide/src/core/config/app_env_providers.dart';
+import 'package:flutter_guide/src/core/config/dotenv_app_env.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/flutter_guide_app.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,12 +12,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load();
+  final appEnv = DotenvAppEnv();
+  await appEnv.load();
 
   final requestConfiguration = RequestConfiguration(
-    testDeviceIds: <String>[
-      dotenv.get('DEVICE_ID'),
-    ],
+    testDeviceIds: appEnv.testDeviceIds,
   );
 
   unawaited(MobileAds.instance.initialize());
@@ -29,6 +29,7 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       overrides: [
+        appEnvProvider.overrideWithValue(appEnv),
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
       ],
       child: const FlutterGuideApp(),

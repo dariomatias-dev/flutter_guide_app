@@ -15,7 +15,8 @@ extension PumpRouterApp on WidgetTester {
   ///
   /// Every repository provider derives from `sharedPreferencesProvider`, so
   /// mock prefs plus a stubbed app version are enough to render any route.
-  /// Ads are disabled because `BannerAdWidget` needs a real dotenv.
+  /// Ads are disabled so no route reaches the real ad SDK; with them off,
+  /// `BannerAdWidget` never reads `appEnvProvider`.
   ///
   /// [AppRouter.router] is a singleton, so pair this with
   /// [resetRouterLocation] in a `tearDown`.
