@@ -7,6 +7,7 @@ import 'package:flutter_guide/src/core/navigation/floating_bar_clearance_notifie
 import 'package:flutter_guide/src/features/home/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../helpers/pump_app.dart';
@@ -81,5 +82,79 @@ void main() {
         .where((box) => box.height == 84);
 
     expect(sizedBoxes, hasLength(1));
+  });
+
+  group('navigation', () {
+    Future<AppLocalizations> pumpWithRouter(
+      WidgetTester tester,
+      String? Function(GoRouterState state) onCatalogPushed,
+    ) async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+
+      final router = GoRouter(
+        initialLocation: '/',
+        routes: <RouteBase>[
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: ProviderScope(
+                overrides: [
+                  sharedPreferencesProvider.overrideWithValue(prefs),
+                  adsEnabledProvider.overrideWithValue(false),
+                ],
+                child: const HomeScreen(),
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/catalog/:interfaceType',
+            builder: (context, state) {
+              onCatalogPushed(state);
+
+              return const Scaffold(body: Text('catalog'));
+            },
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp.router(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          routerConfig: router,
+        ),
+      );
+
+      return AppLocalizations.of(tester.element(find.byType(HomeScreen)));
+    }
+
+    testWidgets('tapping Elements pushes the element catalog', (
+      tester,
+    ) async {
+      String? pushedType;
+
+      final l10n = await pumpWithRouter(tester, (state) {
+        return pushedType = state.pathParameters['interfaceType'];
+      });
+
+      await tester.tap(find.text(l10n.elements));
+      await tester.pumpAndSettle();
+
+      expect(pushedType, 'element');
+    });
+
+    testWidgets('tapping UIs pushes the UI catalog', (tester) async {
+      String? pushedType;
+
+      await pumpWithRouter(tester, (state) {
+        return pushedType = state.pathParameters['interfaceType'];
+      });
+
+      await tester.tap(find.text('UIs'));
+      await tester.pumpAndSettle();
+
+      expect(pushedType, 'ui');
+    });
   });
 }

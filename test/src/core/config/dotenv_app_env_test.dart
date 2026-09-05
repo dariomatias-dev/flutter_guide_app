@@ -49,5 +49,19 @@ void main() {
       expect(missing.bannerAdUnitId, isNull);
       expect(missing.testDeviceIds, isEmpty);
     });
+
+    test('defaults to the global dotenv instance when none is given', () {
+      // main.dart constructs it this way; a missing environment argument
+      // must not be a compile-time requirement. The global instance still
+      // needs initializing before it can be read at all, same as it would
+      // be by main.dart's own load() call.
+      dotenv.testLoad();
+      addTearDown(dotenv.clean);
+
+      final defaultEnv = DotenvAppEnv();
+
+      expect(defaultEnv.bannerAdUnitId, isNull);
+      expect(defaultEnv.testDeviceIds, isEmpty);
+    });
   });
 }

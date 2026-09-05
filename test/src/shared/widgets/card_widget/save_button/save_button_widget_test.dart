@@ -223,5 +223,37 @@ void main() {
 
       expect(find.text(l10n.packageRemoved), findsOneWidget);
     });
+
+    // material, cupertino, elements and uis are all catalog entries the
+    // widget list happens to hold, not their own message: the switch falls
+    // through every one of them to the same widget wording.
+    for (final type in <ComponentType>[
+      ComponentType.material,
+      ComponentType.cupertino,
+      ComponentType.elements,
+      ComponentType.uis,
+    ]) {
+      testWidgets('confirms a saved $type as a widget', (tester) async {
+        final l10n = await toggle(
+          tester,
+          type: type,
+          name: 'Container',
+          saved: true,
+        );
+
+        expect(find.text(l10n.savedWidget), findsOneWidget);
+      });
+
+      testWidgets('confirms a removed $type as a widget', (tester) async {
+        final l10n = await toggle(
+          tester,
+          type: type,
+          name: 'Container',
+          saved: false,
+        );
+
+        expect(find.text(l10n.widgetRemoved), findsOneWidget);
+      });
+    }
   });
 }

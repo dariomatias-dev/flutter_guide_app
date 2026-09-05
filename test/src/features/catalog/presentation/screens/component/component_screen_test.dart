@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../../helpers/mocks.dart';
 import '../../../../../../helpers/pump_app.dart';
+import '../../../../../../helpers/url_launcher_fake.dart';
 
 const _component = Component(name: 'Center', type: ComponentType.widget);
 
@@ -101,4 +102,54 @@ void main() {
       ),
     ).called(1);
   });
+
+  testWidgets('opens the YouTube url from the popup menu when set', (
+    tester,
+  ) async {
+    when(
+      () => componentsRepository.getComponentByName(
+        type: any(named: 'type'),
+        name: any(named: 'name'),
+      ),
+    ).thenReturn(
+      const Component(
+        name: 'Center',
+        type: ComponentType.widget,
+        videoId: 'abc123',
+      ),
+    );
+
+    final urlLauncher = FakeUrlLauncherPlatform()..install();
+    addTearDown(urlLauncher.restore);
+
+    await tester.pumpScopedApp(await scope(), componentScreen);
+    await tester.pump();
+
+    await tester.tap(find.byType(PopupMenuButton<dynamic>));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('YouTube'));
+    await tester.pumpAndSettle();
+
+    expect(
+      urlLauncher.launchedUrls,
+      <String>['https://www.youtube.com/watch?v=abc123'],
+    );
+  });
+
+  for (final type in <ComponentType>[
+    ComponentType.material,
+    ComponentType.cupertino,
+    ComponentType.elements,
+    ComponentType.uis,
+  ]) {
+    testWidgets('throws for $type, which never routes here', (tester) async {
+      await tester.pumpScopedApp(
+        await scope(),
+        ComponentScreen(componentType: type, componentName: 'Center'),
+      );
+
+      expect(tester.takeException(), isStateError);
+    });
+  }
 }
