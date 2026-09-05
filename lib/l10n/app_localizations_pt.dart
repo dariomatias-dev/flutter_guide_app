@@ -297,4 +297,21 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get uis => 'UIs';
+
+  @override
+  String get startupErrorTitle => 'O app não conseguiu iniciar';
+
+  @override
+  String get startupErrorMessage =>
+      'Algo falhou durante a inicialização. Tente de novo e reinstale o app se continuar falhando.';
+
+  @override
+  String get unexpectedErrorTitle => 'Algo deu errado';
+
+  @override
+  String get unexpectedErrorMessage =>
+      'Esta tela não carregou. Volte e tente de novo.';
+
+  @override
+  String get retry => 'Tentar de novo';
 }
