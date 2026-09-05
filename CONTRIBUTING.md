@@ -17,11 +17,20 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org)
 
 ```
 <type>(<scope>): <subject>
+
+<optional body, explaining why>
 ```
 
+The `commit-msg` hook enforces every rule below.
+
 - **type**: `feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`, `perf`, `build`, `ci`, `revert`
-- **scope**: optional, lowercase, e.g. `catalog`, `theme`
-- **subject**: imperative mood, no trailing period, ≤72 chars
+- **scope**: optional, lowercase, in parentheses, e.g. `catalog`, `theme`
+- **breaking change**: `!` before the colon, e.g. `refactor(nav)!: drop the untyped router`
+- **subject**: imperative mood, starting lowercase, no trailing period
+- **subject line**: at most 72 characters, type and scope included
+- **blank line** between the subject and the body
+- **body**: wrapped at 80 columns, except URLs, git trailers such as
+  `Co-Authored-By:` or `Refs #123`, and fenced code blocks
 
 Examples:
 
@@ -31,7 +40,7 @@ fix(theme): rebuild widgets on theme state changes
 refactor(catalog): centralize ComponentSampleArgs construction
 ```
 
-Body (optional) explains *why*, not *what* — the diff already shows what
+Body (optional) explains *why*, not *what*: the diff already shows what
 changed.
 
 ## Branching

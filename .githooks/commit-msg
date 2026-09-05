@@ -1,24 +1,98 @@
 #!/usr/bin/env bash
-# Enforces Conventional Commits (https://www.conventionalcommits.org).
+# Enforces the commit convention documented in CONTRIBUTING.md, which is a
+# superset of Conventional Commits (https://www.conventionalcommits.org).
 # Enabled via: git config core.hooksPath .githooks
 
+set -euo pipefail
+
 commit_msg_file="$1"
-subject_line=$(head -n1 "$commit_msg_file")
 
-# type(optional-scope)!: subject
-pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9_-]+\))?!?: .{1,72}$'
+# Git appends its own comment lines to the buffer, and `--verbose` appends the
+# whole diff after a scissors line. Neither is part of the message.
+message=$(sed -e '/^# *-\{1,\} >8 -\{1,\}/,$d' -e '/^#/d' "$commit_msg_file")
 
+subject_line=$(printf '%s\n' "$message" | sed -n '1p')
+
+# Merge and revert subjects are written by git itself.
 if [[ "$subject_line" =~ ^Merge ]] || [[ "$subject_line" =~ ^Revert ]]; then
   exit 0
 fi
 
-if ! [[ "$subject_line" =~ $pattern ]]; then
-  echo "Commit message rejected: does not follow Conventional Commits." >&2
-  echo "" >&2
-  echo "  Got:      $subject_line" >&2
-  echo "  Expected: <type>(<scope>): <subject>" >&2
-  echo "  Types:    build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test" >&2
-  echo "  Example:  feat(catalog): add Table widget sample" >&2
+types='build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test'
+errors=()
+
+# 1. type, 2. optional lowercase scope, 8. optional ! for a breaking change.
+if ! [[ "$subject_line" =~ ^($types)(\([a-z0-9_-]+\))?!?:\ .+$ ]]; then
+  errors+=(
+    "subject does not match <type>(<scope>): <subject>"
+    "  types: $types"
+    "  scope is optional, lowercase, in parentheses"
+    "  add ! before the colon for a breaking change"
+  )
+else
+  subject=${subject_line#*: }
+
+  # 3. Imperative mood reads as a lowercase first word.
+  if [[ "$subject" =~ ^[A-Z] ]]; then
+    errors+=("subject starts with a capital letter: ${subject:0:20}...")
+  fi
+
+  # 4. The subject is a title, not a sentence.
+  if [[ "$subject" =~ \.$ ]]; then
+    errors+=("subject ends with a period")
+  fi
+fi
+
+# 5. What `git log --oneline` and GitHub show without truncating.
+if (( ${#subject_line} > 72 )); then
+  errors+=("subject line is ${#subject_line} characters, limit is 72")
+fi
+
+second_line=$(printf '%s\n' "$message" | sed -n '2p')
+body=$(printf '%s\n' "$message" | tail -n +3)
+
+# 6. Without the blank line git reads the whole message as the subject.
+if [[ -n "$second_line" ]]; then
+  errors+=("line 2 must be blank, separating the subject from the body")
+fi
+
+# 7. Body wrapped at 80 columns, skipping what has no wrap point: URLs,
+# footers and fenced code.
+in_fence=false
+line_number=2
+while IFS= read -r line; do
+  line_number=$((line_number + 1))
+
+  if [[ "$line" =~ ^\`\`\` ]]; then
+    if [[ "$in_fence" == true ]]; then in_fence=false; else in_fence=true; fi
+    continue
+  fi
+
+  [[ "$in_fence" == true ]] && continue
+  [[ "$line" =~ https?:// ]] && continue
+  [[ "$line" =~ ^BREAKING\ CHANGE: ]] && continue
+  [[ "$line" =~ ^[A-Za-z][A-Za-z-]*:\ .+$ ]] && continue
+  [[ "$line" =~ ^(Refs|Closes|Fixes|Resolves)\ #[0-9]+ ]] && continue
+
+  if (( ${#line} > 80 )); then
+    errors+=("body line $line_number is ${#line} characters, limit is 80")
+  fi
+done <<< "$body"
+
+if (( ${#errors[@]} > 0 )); then
+  {
+    echo "Commit message rejected:"
+    echo
+    for error in "${errors[@]}"; do
+      echo "  - $error"
+    done
+    echo
+    echo "  Got: $subject_line"
+    echo "  Example:"
+    echo "    feat(catalog): add Table widget sample"
+    echo
+    echo "    Body lines wrap at 80 columns and explain why, not what."
+  } >&2
   exit 1
 fi
 
