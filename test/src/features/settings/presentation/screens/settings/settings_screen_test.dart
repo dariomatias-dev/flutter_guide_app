@@ -27,10 +27,7 @@ void main() {
     urlLauncher = FakeUrlLauncherPlatform()..install();
   });
 
-  tearDown(() {
-    urlLauncher.restore();
-    resetRouterLocation();
-  });
+  tearDown(() => urlLauncher.restore());
 
   /// Pumps the settings screen on its own, outside the navigation shell.
   ///

@@ -6,7 +6,7 @@ import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_target.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
-import 'package:flutter_guide/src/core/router/route_names.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
 import 'package:flutter_guide/src/features/catalog/data/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
@@ -83,22 +83,18 @@ class DeepLinkHandler {
     _navigationNotifier.index = 0;
 
     unawaited(
-      router.pushNamed(
-        RouteNames.catalog,
-        pathParameters: {'interfaceType': target.interfaceType.name},
-      ),
+      CatalogRoute(interfaceType: target.interfaceType.name).push(_context),
     );
     unawaited(
-      router.pushNamed(
-        RouteNames.componentSample,
-        extra: ComponentSampleArgs(
+      ComponentSampleRoute(
+        $extra: ComponentSampleArgs(
           title: element.name,
           filePath:
               'lib/src/features/catalog/data/samples/sample_components/${target.folder}/${element.fileName}_sample.dart',
           componentName: componentName,
           sample: element.sample,
         ),
-      ),
+      ).push(_context),
     );
   }
 
@@ -122,13 +118,10 @@ class DeepLinkHandler {
     _navigationNotifier.index = target.navigationIndex;
 
     unawaited(
-      router.pushNamed(
-        RouteNames.component,
-        pathParameters: {
-          'type': target.componentType.name,
-          'name': componentName,
-        },
-      ),
+      ComponentRoute(
+        type: target.componentType.name,
+        name: componentName,
+      ).push(_context),
     );
   }
 

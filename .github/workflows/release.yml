@@ -56,6 +56,9 @@ jobs:
           APP_OPEN_AD_SAMPLE_ID=${{ secrets.APP_OPEN_AD_SAMPLE_ID }}
           EOF
 
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
       - name: Generate localizations
         run: flutter gen-l10n
 

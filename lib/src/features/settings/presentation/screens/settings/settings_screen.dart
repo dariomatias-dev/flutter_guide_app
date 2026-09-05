@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/l10n/l10n.dart';
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
-import 'package:flutter_guide/src/core/router/app_routes.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/code_theme_navigator.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/about_dialog_widget.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/app_info_widget/app_info_widget.dart';
 import 'package:flutter_guide/src/features/settings/presentation/widgets/docs_and_resources_dialog_widget.dart';
@@ -45,7 +45,7 @@ class SettingsScreen extends StatelessWidget {
             ListTileItemWidget(
               title: appLocalizations.codeTheme,
               icon: Icons.code_rounded,
-              onTap: () => AppRoutes.pushCodeTheme(context),
+              onTap: () => unawaited(const CodeThemeRoute().push(context)),
             ),
             ListTileItemWidget(
               title: appLocalizations.developerPortfolio,

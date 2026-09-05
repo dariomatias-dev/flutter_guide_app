@@ -45,6 +45,7 @@ EOF
 - [ ] `test/` still mirrors `lib/src/`
 - [ ] New user-facing strings are in all three ARB files, with a description in `lib/l10n/app_en.arb`
 - [ ] `fvm flutter gen-l10n` re-run and its output committed, if an ARB file changed
+- [ ] `dart run build_runner build` re-run and its output committed, if a route in `core/navigation/navigators/` changed
 - [ ] Documentation changed in all three languages, if it changed at all
 - [ ] Commits follow the convention below
 
@@ -63,7 +64,7 @@ It runs exactly what CI runs, in the same order:
 
 | Step | What it catches |
 | --- | --- |
-| `gen-l10n` and a diff of its output | Committed localizations that no longer match the ARB files. CI regenerates from a clean checkout and fails on any difference |
+| `build_runner` and `gen-l10n`, and a diff of their output | Committed generated routes or localizations that no longer match their source. CI regenerates from a clean checkout and fails on any difference |
 | [`check_l10n.sh`](../scripts/check_l10n.sh) | A key missing from one language, or a template key with no description. `gen-l10n` falls back to English in silence |
 | `dart format --set-exit-if-changed` | Formatting, the one check with a single correct answer |
 | `flutter analyze` | `very_good_analysis` lints |

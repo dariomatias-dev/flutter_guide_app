@@ -33,8 +33,10 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
 
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
+        final router = ref.read(appRouterProvider);
+
         final handler = DeepLinkHandler(
-          router: AppRouter.router,
+          router: router,
           scaffoldMessengerKey: _scaffoldMessengerKey,
           context: context,
         );
@@ -42,7 +44,7 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
         _deepLinkService = DeepLinkService(
           handler: handler,
           logger: ref.read(loggerProvider),
-          router: AppRouter.router,
+          router: router,
           scaffoldMessengerKey: _scaffoldMessengerKey,
         );
 
@@ -55,12 +57,13 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
   Widget build(BuildContext context) {
     final themeMode = ref.watch(themeNotifierProvider);
     final language = ref.watch(languageViewModelProvider);
+    final router = ref.watch(appRouterProvider);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: _overlayStyleFor(themeMode),
       child: MaterialApp.router(
         scaffoldMessengerKey: _scaffoldMessengerKey,
-        routerConfig: AppRouter.router,
+        routerConfig: router,
         debugShowCheckedModeBanner: false,
         title: 'FlutterGuide',
         theme: lightMode,

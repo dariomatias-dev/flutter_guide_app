@@ -48,6 +48,7 @@ EOF
 - [ ] `test/` sigue reflejando `lib/src/`
 - [ ] Las cadenas nuevas visibles para el usuario están en los tres archivos ARB, con `description` en `lib/l10n/app_en.arb`
 - [ ] `fvm flutter gen-l10n` ejecutado y su salida commiteada, si cambió algún ARB
+- [ ] `dart run build_runner build` ejecutado y su salida commiteada, si cambió alguna ruta en `core/navigation/navigators/`
 - [ ] Documentación actualizada en los tres idiomas, si cambió
 - [ ] Los commits siguen la convención de abajo
 
@@ -66,7 +67,7 @@ Ejecuta exactamente lo que ejecuta la CI, en el mismo orden:
 
 | Paso | Qué detecta |
 | --- | --- |
-| `gen-l10n` y el diff de su salida | Localizaciones commiteadas que ya no coinciden con los ARB. La CI regenera desde un checkout limpio y falla ante cualquier diferencia |
+| `build_runner` y `gen-l10n`, y el diff de su salida | Rutas o localizaciones commiteadas que ya no coinciden con su fuente. La CI regenera desde un checkout limpio y falla ante cualquier diferencia |
 | [`check_l10n.sh`](../scripts/check_l10n.sh) | Una clave ausente en un idioma, o una clave de la plantilla sin `description`. `gen-l10n` recurre al inglés en silencio |
 | `dart format --set-exit-if-changed` | El formato, la única verificación con una sola respuesta correcta |
 | `flutter analyze` | Los lints de `very_good_analysis` |

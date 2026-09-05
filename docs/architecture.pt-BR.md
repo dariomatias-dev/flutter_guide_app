@@ -89,23 +89,30 @@ que uma flag de build.
 
 ## Navegação
 
-[`go_router`](../lib/src/core/router/app_router.dart), com os caminhos e nomes
-separados da configuração em
-[`route_paths.dart`](../lib/src/core/router/route_paths.dart) e
-[`route_names.dart`](../lib/src/core/router/route_names.dart), para um link ser
-montado a partir de uma constante, não de um literal.
+[`go_router`](../lib/src/core/router/app_router.dart), configurado a partir de
+rotas tipadas geradas pelo `go_router_builder`. Cada rota é uma subclasse de
+`GoRouteData` em
+[`core/navigation/navigators/`](../lib/src/core/navigation/navigators), um
+arquivo por feature, com uma diretiva `part 'x.g.dart';`; o `dart run
+build_runner build` escreve o arquivo companheiro, que é commitado como a
+saída do l10n e verificado do mesmo jeito no `verify.sh` e na CI.
+
+O `appRouterProvider` é um `Provider<GoRouter>` simples (não auto-disposto),
+lido uma vez pelo widget raiz e pela ligação de deep link. Ser um provider em
+vez de um campo estático é o que permite a um teste sobrescrevê-lo, ou montar
+um a partir de um `ProviderContainer` novo por teste, do jeito que o
+[`pump_router_app.dart`](../test/helpers/pump_router_app.dart) faz.
 
 O `onException` manda uma localização não resolvível de volta para a raiz, em
 vez de mostrar uma tela de erro: toda rota aqui é alcançável por deep link, e
 uma desconhecida é link velho, não uma falha sobre a qual o usuário possa agir.
 
-Duas características do arranjo atual valem saber antes de mexer. O
-`AppRouter.router` é um singleton estático, lido direto pelo widget raiz e pela
-ligação de deep link em vez de resolvido por um provider, então um teste não
-consegue substituí-lo: o `pump_router_app.dart` dirige o router de produção e
-reseta a localização no `tearDown`. E a rota de sample lê seus argumentos de
-`state.extra` com cast não nulo, então uma entrada que não os carregue, como um
-deep link ou uma pilha restaurada, falha ali.
+A rota de sample carrega seus argumentos pelo `extra` do go_router, declarado
+como um campo `$extra` nulável em `ComponentSampleRoute`. O `extra` só é
+preenchido por um `push` dentro do app, nunca por um deep link ou uma pilha de
+navegação restaurada, os dois casos que o deixam `null`; o `redirect` da rota
+manda esse caso de volta para a raiz, em vez do código gerado forçar um cast
+de `extra` nulo, que é o que um campo não nulável ainda faria.
 
 ## Deep links
 

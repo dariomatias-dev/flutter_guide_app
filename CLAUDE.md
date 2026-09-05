@@ -15,6 +15,7 @@ fvm flutter pub get
 fvm flutter analyze
 fvm flutter test
 fvm flutter gen-l10n
+dart run build_runner build --delete-conflicting-outputs
 ./scripts/verify.sh              # the whole gate, what CI runs
 ./scripts/verify.sh --skip-tests # mid-change check, never the final one
 ```
@@ -93,6 +94,7 @@ by reaching into the widget tree.
 | Touching this | Also update |
 | --- | --- |
 | An ARB key | All three language files, then `fvm flutter gen-l10n`, and commit the regenerated output |
+| A route in `core/navigation/navigators/` | `dart run build_runner build`, and commit the regenerated `.g.dart` |
 | `pubspec.yaml` | `pubspec.lock`, via `fvm flutter pub get` |
 | A script in `scripts/` | Its row in all three README tables, and `docs/contributing.md` in all three languages if the gate's behaviour changed |
 | A CI job | `docs/contributing.md` in all three languages, which names the jobs and says which ones block a merge |

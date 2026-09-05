@@ -70,15 +70,18 @@ jobs:
           APP_OPEN_AD_SAMPLE_ID=
           EOF
 
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
       - name: Generate localizations
         run: flutter gen-l10n
 
       - name: Verify the generated files are up to date
         run: |
-          if [ -n "$(git status --porcelain -- 'lib/l10n/app_localizations*.dart')" ]; then
-            echo "Generated localizations are out of date. Run 'fvm flutter gen-l10n' locally and commit the result." >&2
-            git status --porcelain -- 'lib/l10n/app_localizations*.dart' >&2
-            git diff -- 'lib/l10n/app_localizations*.dart' >&2
+          if [ -n "$(git status --porcelain -- 'lib/l10n/app_localizations*.dart' '**/*.g.dart')" ]; then
+            echo "Generated output is out of date. Run 'dart run build_runner build' and 'fvm flutter gen-l10n' locally and commit the result." >&2
+            git status --porcelain -- 'lib/l10n/app_localizations*.dart' '**/*.g.dart' >&2
+            git diff -- 'lib/l10n/app_localizations*.dart' '**/*.g.dart' >&2
             exit 1
           fi
 
@@ -139,6 +142,9 @@ jobs:
           REWARDED_AD_SAMPLE_ID=
           APP_OPEN_AD_SAMPLE_ID=
           EOF
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
 
       - name: Generate localizations
         run: flutter gen-l10n
