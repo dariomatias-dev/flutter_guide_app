@@ -3,8 +3,6 @@ import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
-import 'package:flutter_guide/src/core/router/route_names.dart';
-import 'package:flutter_guide/src/core/router/route_paths.dart';
 import 'package:flutter_guide/src/features/catalog/data/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/elements_screen_tab_index_notifier_provider.dart';
@@ -32,9 +30,11 @@ void main() {
     pushedSampleArgs = null;
     pushedComponent = null;
 
+    // Path literals, not RouteNames/RoutePaths: DeepLinkHandler now
+    // navigates by typed route, which builds its own location string, so
+    // this fake router only has to match that string, never a route name.
     catalogRoute = GoRoute(
-      path: RoutePaths.catalog,
-      name: RouteNames.catalog,
+      path: '/catalog/:interfaceType',
       builder: (context, state) {
         pushedCatalogInterfaceType = state.pathParameters['interfaceType'];
 
@@ -45,16 +45,15 @@ void main() {
 
   Future<GoRouter> pumpApp(WidgetTester tester) async {
     final router = GoRouter(
-      initialLocation: RoutePaths.root,
+      initialLocation: '/',
       routes: <RouteBase>[
         GoRoute(
-          path: RoutePaths.root,
+          path: '/',
           builder: (context, state) => const Scaffold(body: SizedBox()),
         ),
         catalogRoute,
         GoRoute(
-          path: RoutePaths.componentSample,
-          name: RouteNames.componentSample,
+          path: '/component-sample',
           builder: (context, state) {
             pushedSampleArgs = state.extra! as ComponentSampleArgs;
 
@@ -62,8 +61,7 @@ void main() {
           },
         ),
         GoRoute(
-          path: RoutePaths.component,
-          name: RouteNames.component,
+          path: '/component/:type/:name',
           builder: (context, state) {
             pushedComponent = (
               type: state.pathParameters['type']!,

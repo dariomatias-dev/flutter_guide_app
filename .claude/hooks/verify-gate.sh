@@ -61,8 +61,8 @@ Run the gate before finishing:
 
   ./scripts/verify.sh
 
-It regenerates the localizations first and fails when that produces a diff, so
-commit the regenerated output when an ARB file was touched.
+It regenerates the routes and localizations first and fails when that produces
+a diff, so commit the regenerated output when an ARB file or a route changed.
 
 If it fails, fix the cause and run it again. If the changes are deliberately
 incomplete and the user asked to stop here, say so explicitly and stop."""

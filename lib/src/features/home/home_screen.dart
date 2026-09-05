@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-import 'package:flutter_guide/src/core/router/app_routes.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
 import 'package:flutter_guide/src/features/home/widgets/border_list_tile_item_widget.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_groups_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,18 +29,20 @@ class HomeScreen extends ConsumerWidget {
           BorderListTileItemWidget(
             title: appLocalizations.elements,
             icon: Icons.list_alt,
-            onTap: () => AppRoutes.pushCatalog(
-              context,
-              interfaceType: InterfaceTypeEnum.element,
+            onTap: () => unawaited(
+              CatalogRoute(
+                interfaceType: InterfaceTypeEnum.element.name,
+              ).push(context),
             ),
           ),
           const SizedBox(height: 8),
           BorderListTileItemWidget(
             title: appLocalizations.uis,
             icon: Icons.web,
-            onTap: () => AppRoutes.pushCatalog(
-              context,
-              interfaceType: InterfaceTypeEnum.ui,
+            onTap: () => unawaited(
+              CatalogRoute(
+                interfaceType: InterfaceTypeEnum.ui.name,
+              ).push(context),
             ),
           ),
           const SizedBox(height: 20),

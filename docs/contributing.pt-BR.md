@@ -47,6 +47,7 @@ EOF
 - [ ] `test/` continua espelhando `lib/src/`
 - [ ] Strings novas visíveis ao usuário estão nos três arquivos ARB, com `description` em `lib/l10n/app_en.arb`
 - [ ] `fvm flutter gen-l10n` rodado e a saída commitada, se algum ARB mudou
+- [ ] `dart run build_runner build` rodado e a saída commitada, se alguma rota em `core/navigation/navigators/` mudou
 - [ ] Documentação alterada nos três idiomas, se foi alterada
 - [ ] Commits seguem a convenção abaixo
 
@@ -65,7 +66,7 @@ Ele roda exatamente o que a CI roda, na mesma ordem:
 
 | Etapa | O que ela detecta |
 | --- | --- |
-| `gen-l10n` e o diff da saída | Localizações commitadas que não batem mais com os ARB. A CI regenera a partir de um checkout limpo e falha em qualquer diferença |
+| `build_runner` e `gen-l10n`, e o diff da saída | Rotas ou localizações commitadas que não batem mais com a fonte. A CI regenera a partir de um checkout limpo e falha em qualquer diferença |
 | [`check_l10n.sh`](../scripts/check_l10n.sh) | Chave faltando em um idioma, ou chave do template sem `description`. O `gen-l10n` cai no inglês em silêncio |
 | `dart format --set-exit-if-changed` | Formatação, a única verificação com uma resposta correta só |
 | `flutter analyze` | Lints do `very_good_analysis` |

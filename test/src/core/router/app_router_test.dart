@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/code_theme_navigator.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/root_navigator.dart';
 import 'package:flutter_guide/src/core/router/app_router.dart';
-import 'package:flutter_guide/src/core/router/route_names.dart';
-import 'package:flutter_guide/src/core/router/route_paths.dart';
 import 'package:flutter_guide/src/core/shell/root_navigation.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component/component_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_args.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_guide/src/features/catalog/presentation/screens/componen
 import 'package:flutter_guide/src/features/catalog/presentation/screens/interface_catalog/interface_catalog_screen.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/saved_components/saved_components_screen.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/screens/code_theme_selector_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -25,20 +27,19 @@ void main() {
     prefs = await createMockPrefs();
   });
 
-  // `AppRouter.router` is a singleton, so every test must hand it back
-  // pointing at the root location.
-  tearDown(resetRouterLocation);
-
-  Future<void> pumpRouterAt(WidgetTester tester, String location) {
+  Future<ProviderContainer> pumpRouterAt(WidgetTester tester, String location) {
     return tester.pumpRouterApp(prefs: prefs, location: location);
   }
 
   group('AppRouter root route', () {
     testWidgets('starts at the root location', (tester) async {
-      await pumpRouterAt(tester, RoutePaths.root);
+      final container = await pumpRouterAt(tester, const RootRoute().location);
 
       expect(find.byType(RootNavigation), findsOneWidget);
-      expect(currentRouterLocation(), RoutePaths.root);
+      expect(
+        currentRouterLocation(container.read(appRouterProvider)),
+        const RootRoute().location,
+      );
     });
   });
 
@@ -46,7 +47,10 @@ void main() {
     testWidgets('parses the type and name path parameters', (tester) async {
       // `uuid` is used on purpose: its sample does no async work, so the
       // test asserts on routing instead of on a sample's own behavior.
-      await pumpRouterAt(tester, '/component/package/uuid');
+      await pumpRouterAt(
+        tester,
+        const ComponentRoute(type: 'package', name: 'uuid').location,
+      );
 
       final screen = tester.widget<ComponentScreen>(
         find.byType(ComponentScreen),
@@ -57,7 +61,10 @@ void main() {
     });
 
     testWidgets('falls back to widget for an unknown type', (tester) async {
-      await pumpRouterAt(tester, '/component/not-a-type/Center');
+      await pumpRouterAt(
+        tester,
+        const ComponentRoute(type: 'not-a-type', name: 'Center').location,
+      );
 
       final screen = tester.widget<ComponentScreen>(
         find.byType(ComponentScreen),
@@ -70,7 +77,10 @@ void main() {
 
   group('AppRouter catalog route', () {
     testWidgets('parses the interface type path parameter', (tester) async {
-      await pumpRouterAt(tester, '/catalog/ui');
+      await pumpRouterAt(
+        tester,
+        const CatalogRoute(interfaceType: 'ui').location,
+      );
 
       final screen = tester.widget<InterfaceCatalogScreen>(
         find.byType(InterfaceCatalogScreen),
@@ -82,7 +92,10 @@ void main() {
     testWidgets('falls back to element for an unknown interface type', (
       tester,
     ) async {
-      await pumpRouterAt(tester, '/catalog/not-a-type');
+      await pumpRouterAt(
+        tester,
+        const CatalogRoute(interfaceType: 'not-a-type').location,
+      );
 
       final screen = tester.widget<InterfaceCatalogScreen>(
         find.byType(InterfaceCatalogScreen),
@@ -94,7 +107,10 @@ void main() {
 
   group('AppRouter saved components route', () {
     testWidgets('parses the type path parameter', (tester) async {
-      await pumpRouterAt(tester, '/saved/function');
+      await pumpRouterAt(
+        tester,
+        const SavedComponentsRoute(type: 'function').location,
+      );
 
       final screen = tester.widget<SavedComponentsScreen>(
         find.byType(SavedComponentsScreen),
@@ -104,7 +120,10 @@ void main() {
     });
 
     testWidgets('falls back to widget for an unknown type', (tester) async {
-      await pumpRouterAt(tester, '/saved/not-a-type');
+      await pumpRouterAt(
+        tester,
+        const SavedComponentsRoute(type: 'not-a-type').location,
+      );
 
       final screen = tester.widget<SavedComponentsScreen>(
         find.byType(SavedComponentsScreen),
@@ -116,7 +135,7 @@ void main() {
 
   group('AppRouter code theme route', () {
     testWidgets('renders the code theme selector', (tester) async {
-      await pumpRouterAt(tester, RoutePaths.codeTheme);
+      await pumpRouterAt(tester, const CodeThemeRoute().location);
 
       expect(find.byType(CodeThemeSelectorScreen), findsOneWidget);
     });
@@ -133,11 +152,10 @@ void main() {
     );
 
     testWidgets('forwards the extra arguments to the screen', (tester) async {
-      await pumpRouterAt(tester, RoutePaths.root);
+      await pumpRouterAt(tester, const RootRoute().location);
 
-      unawaited(
-        AppRouter.router.pushNamed(RouteNames.componentSample, extra: args),
-      );
+      final context = tester.element(find.byType(RootNavigation));
+      unawaited(const ComponentSampleRoute($extra: args).push(context));
       await tester.pumpAndSettle();
 
       final screen = tester.widget<ComponentSampleScreen>(
@@ -149,14 +167,60 @@ void main() {
       expect(screen.componentName, args.componentName);
       expect(screen.sample, same(args.sample));
     });
+
+    testWidgets(
+      'redirects to the root when opened without extra arguments',
+      (tester) async {
+        // This is the crash the untyped route used to hit: state.extra! on
+        // a deep link or a restored stack, neither of which ever carries
+        // one. The typed route resolves it with a redirect instead.
+        final container = await pumpRouterAt(
+          tester,
+          const ComponentSampleRoute().location,
+        );
+        await tester.pumpAndSettle();
+
+        expect(find.byType(ComponentSampleScreen), findsNothing);
+        expect(find.byType(RootNavigation), findsOneWidget);
+        expect(
+          currentRouterLocation(container.read(appRouterProvider)),
+          const RootRoute().location,
+        );
+      },
+    );
+  });
+
+  group('AppRouter push semantics', () {
+    testWidgets('keeps the previous route on the stack', (tester) async {
+      final container = await pumpRouterAt(
+        tester,
+        const RootRoute().location,
+      );
+
+      final context = tester.element(find.byType(RootNavigation));
+      unawaited(const CodeThemeRoute().push(context));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(CodeThemeSelectorScreen), findsOneWidget);
+
+      // A push, not a replacement: popping must reveal the shell again.
+      container.read(appRouterProvider).pop();
+      await tester.pumpAndSettle();
+
+      expect(find.byType(CodeThemeSelectorScreen), findsNothing);
+      expect(find.byType(RootNavigation), findsOneWidget);
+    });
   });
 
   group('AppRouter exception handling', () {
     testWidgets('redirects an unknown location to the root', (tester) async {
-      await pumpRouterAt(tester, '/does-not-exist');
+      final container = await pumpRouterAt(tester, '/does-not-exist');
       await tester.pumpAndSettle();
 
-      expect(currentRouterLocation(), RoutePaths.root);
+      expect(
+        currentRouterLocation(container.read(appRouterProvider)),
+        const RootRoute().location,
+      );
       expect(find.byType(RootNavigation), findsOneWidget);
     });
 
@@ -164,10 +228,13 @@ void main() {
       tester,
     ) async {
       // Missing the `name` segment, so the pattern never matches.
-      await pumpRouterAt(tester, '/component/widget');
+      final container = await pumpRouterAt(tester, '/component/widget');
       await tester.pumpAndSettle();
 
-      expect(currentRouterLocation(), RoutePaths.root);
+      expect(
+        currentRouterLocation(container.read(appRouterProvider)),
+        const RootRoute().location,
+      );
     });
   });
 }

@@ -18,12 +18,10 @@ void main() {
     prefs = await createMockPrefs();
   });
 
-  tearDown(resetRouterLocation);
-
   /// Pumps the catalog for [type] through the real router.
   ///
-  /// Tapping an entry pushes the sample viewer via `AppRoutes`, which
-  /// needs a `GoRouter` above the screen.
+  /// Tapping an entry pushes the sample viewer via `ComponentSampleRoute`,
+  /// which needs a `GoRouter` above the screen.
   Future<AppLocalizations> pumpCatalog(
     WidgetTester tester,
     InterfaceTypeEnum type,

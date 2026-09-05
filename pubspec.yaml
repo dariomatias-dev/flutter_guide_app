@@ -95,10 +95,12 @@ dev_dependencies:
   # The platform interface packages are here so the plugin channels can be
   # faked in widget tests without a device.
   app_links_platform_interface: ^2.0.2
+  build_runner: ^2.15.1
   flutter_test:
     sdk: flutter
   # Build-time tool: generates the launcher icons from the source image
   # configured in the icons_launcher section below.
+  go_router_builder: ^4.5.0
   icons_launcher: ^3.0.0
   integration_test:
     sdk: flutter

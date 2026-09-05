@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
-import 'package:flutter_guide/src/core/router/app_routes.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/save_button/save_button_widget.dart';
 import 'package:flutter_guide/src/shared/widgets/icon_button_widget.dart';
@@ -41,10 +41,11 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTileItemWidget(
       onTap: () {
-        AppRoutes.pushComponent(
-          context,
-          type: componentType,
-          name: componentName,
+        unawaited(
+          ComponentRoute(
+            type: componentType.name,
+            name: componentName,
+          ).push(context),
         );
       },
       padding: padding,

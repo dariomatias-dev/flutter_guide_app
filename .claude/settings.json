@@ -39,6 +39,7 @@
       "Bash(fvm flutter analyze:*)",
       "Bash(fvm flutter test:*)",
       "Bash(fvm flutter gen-l10n)",
+      "Bash(dart run build_runner build:*)",
       "Bash(fvm flutter pub get)",
       "Bash(fvm dart format:*)"
     ]

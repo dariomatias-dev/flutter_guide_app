@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
-import 'package:flutter_guide/src/core/router/app_routes.dart';
+import 'package:flutter_guide/src/core/navigation/navigators/catalog_navigator.dart';
 import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
@@ -53,15 +55,16 @@ class InterfaceCatalogScreen extends StatelessWidget {
         itemBuilder: (value) {
           return ListTileItemWidget(
             onTap: () {
-              AppRoutes.pushComponentSample(
-                context,
-                args: ComponentSampleArgsResolver.resolve(
-                  title: value.name,
-                  folder: componentType,
-                  fileName: value.fileName,
-                  componentName: value.fileName,
-                  sample: value.sample,
-                ),
+              unawaited(
+                ComponentSampleRoute(
+                  $extra: ComponentSampleArgsResolver.resolve(
+                    title: value.name,
+                    folder: componentType,
+                    fileName: value.fileName,
+                    componentName: value.fileName,
+                    sample: value.sample,
+                  ),
+                ).push(context),
               );
             },
             title: value.name,

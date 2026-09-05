@@ -12,10 +12,10 @@
 # On success the current workspace hash is recorded in .dart_tool/verify_stamp.
 # The Stop hook reads it to tell whether the tree still matches a passing run.
 #
-# Localizations are regenerated on every invocation, and the run fails when
-# that changed anything: CI regenerates from a clean checkout and rejects the
-# build when the result differs from what was committed, which is a failure no
-# other local check can see coming.
+# Generated code and localizations are regenerated on every invocation, and
+# the run fails when that changed anything: CI regenerates from a clean
+# checkout and rejects the build when the result differs from what was
+# committed, which is a failure no other local check can see coming.
 #
 # Usage: scripts/verify.sh [--all] [--skip-tests]
 #
@@ -65,7 +65,7 @@ step() {
 changed_paths() {
   git status --porcelain -uall -- \
     lib test integration_test test_driver \
-    pubspec.yaml analysis_options.yaml l10n.yaml \
+    pubspec.yaml analysis_options.yaml l10n.yaml build.yaml \
     | sed -e 's/^...//' -e 's/.* -> //' -e 's/^"//' -e 's/"$//'
 }
 
@@ -75,17 +75,19 @@ if ! "$check_all" && [[ -z "$(changed_paths)" ]]; then
   exit 0
 fi
 
-# Fingerprints the generated localizations, tracked or not, so a regeneration
-# that changes one can be told apart from one that confirms them all.
+# Fingerprints the generated sources, tracked or not, so a regeneration that
+# changes one can be told apart from one that confirms them all.
 generated_fingerprint() {
-  git ls-files -co --exclude-standard -- 'lib/l10n/app_localizations*.dart' \
+  git ls-files -co --exclude-standard \
+    -- 'lib/l10n/app_localizations*.dart' '**/*.g.dart' \
     | sort \
     | xargs -r sha1sum \
     | sha1sum
 }
 
-step "generate localizations"
+step "generate code and localizations"
 before_generation="$(generated_fingerprint)"
+"${dart[@]}" run build_runner build --delete-conflicting-outputs
 "${flutter[@]}" gen-l10n
 
 if [[ "$(generated_fingerprint)" != "$before_generation" ]]; then
@@ -95,7 +97,7 @@ Generated output was out of date and has just been refreshed. Review the
 changes and commit them: CI regenerates from a clean checkout and fails when
 the result differs from what the branch carries.
 MESSAGE
-  git status --porcelain -- 'lib/l10n/app_localizations*.dart' >&2
+  git status --porcelain -- 'lib/l10n/app_localizations*.dart' '**/*.g.dart' >&2
   exit 1
 fi
 

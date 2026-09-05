@@ -17,8 +17,6 @@ void main() {
     prefs = await createMockPrefs();
   });
 
-  tearDown(resetRouterLocation);
-
   /// Pumps the shell and opens the favorites dialog from the app bar.
   Future<AppLocalizations> openDialog(WidgetTester tester) async {
     await tester.pumpRouterApp(prefs: prefs);
