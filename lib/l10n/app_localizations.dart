@@ -669,6 +669,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'UIs'**
   String get uis;
+
+  /// Title of the screen shown when startup failed before the app could run.
+  ///
+  /// In en, this message translates to:
+  /// **'The app could not start'**
+  String get startupErrorTitle;
+
+  /// Body of the startup failure screen, telling the user what to do next.
+  ///
+  /// In en, this message translates to:
+  /// **'Something failed while starting up. Try again, and reinstall the app if it keeps failing.'**
+  String get startupErrorMessage;
+
+  /// Title of the screen shown when a part of the running app failed to build.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get unexpectedErrorTitle;
+
+  /// Body of the unexpected failure screen.
+  ///
+  /// In en, this message translates to:
+  /// **'This screen failed to load. Go back and try again.'**
+  String get unexpectedErrorMessage;
+
+  /// Button that runs the failed operation again.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retry;
 }
 
 class _AppLocalizationsDelegate

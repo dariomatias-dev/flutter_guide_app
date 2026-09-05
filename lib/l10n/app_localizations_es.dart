@@ -297,4 +297,21 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get uis => 'UIs';
+
+  @override
+  String get startupErrorTitle => 'La app no pudo iniciarse';
+
+  @override
+  String get startupErrorMessage =>
+      'Algo falló durante el inicio. Inténtalo de nuevo y reinstala la app si sigue fallando.';
+
+  @override
+  String get unexpectedErrorTitle => 'Algo salió mal';
+
+  @override
+  String get unexpectedErrorMessage =>
+      'Esta pantalla no se cargó. Vuelve e inténtalo de nuevo.';
+
+  @override
+  String get retry => 'Intentar de nuevo';
 }

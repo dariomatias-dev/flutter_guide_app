@@ -94,5 +94,10 @@
   "widgets": "Widgets",
   "ok": "Ok",
   "feedback": "Feedback",
-  "uis": "UIs"
+  "uis": "UIs",
+  "startupErrorTitle": "La app no pudo iniciarse",
+  "startupErrorMessage": "Algo falló durante el inicio. Inténtalo de nuevo y reinstala la app si sigue fallando.",
+  "unexpectedErrorTitle": "Algo salió mal",
+  "unexpectedErrorMessage": "Esta pantalla no se cargó. Vuelve e inténtalo de nuevo.",
+  "retry": "Intentar de nuevo"
 }

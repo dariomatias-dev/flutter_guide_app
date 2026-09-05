@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
+import 'package:flutter_guide/src/core/di/logger_provider.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
 import 'package:flutter_guide/src/core/router/app_router.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_guide/src/core/services/deep_link_service.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
 import 'package:flutter_guide/src/features/settings/presentation/providers/language_view_model_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 
 /// Root application widget wiring up theme, localization and routing.
 class FlutterGuideApp extends ConsumerStatefulWidget {
@@ -23,7 +23,6 @@ class FlutterGuideApp extends ConsumerStatefulWidget {
 
 class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
-  final _logger = Logger();
 
   DeepLinkService? _deepLinkService;
 
@@ -41,7 +40,7 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
 
         _deepLinkService = DeepLinkService(
           handler: handler,
-          logger: _logger,
+          logger: ref.read(loggerProvider),
           router: AppRouter.router,
           scaffoldMessengerKey: _scaffoldMessengerKey,
         );
@@ -49,13 +48,6 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
         unawaited(_deepLinkService?.init());
       },
     );
-  }
-
-  @override
-  void dispose() {
-    unawaited(_logger.close());
-
-    super.dispose();
   }
 
   @override
