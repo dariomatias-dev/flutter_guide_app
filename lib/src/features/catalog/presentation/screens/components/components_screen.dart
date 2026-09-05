@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/widgets/search_field_widget/search_field_widget.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/widgets/infinity_scroll.dart';
 import 'package:flutter_guide/src/shared/widgets/card_widget/card_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Searchable, ad-interleaved list of components of a given type.
-class ComponentsScreen extends StatefulWidget {
+class ComponentsScreen extends ConsumerStatefulWidget {
   /// Creates a [ComponentsScreen].
   const ComponentsScreen({
     required this.componentType,
@@ -21,10 +23,10 @@ class ComponentsScreen extends StatefulWidget {
   final List<Component> components;
 
   @override
-  State<ComponentsScreen> createState() => _ComponentsScreenState();
+  ConsumerState<ComponentsScreen> createState() => _ComponentsScreenState();
 }
 
-class _ComponentsScreenState extends State<ComponentsScreen> {
+class _ComponentsScreenState extends ConsumerState<ComponentsScreen> {
   late List<Component> _items = widget.components;
   String _query = '';
 
@@ -65,6 +67,8 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final floatingBarClearance = ref.watch(floatingBarClearanceProvider);
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: InfinityScroll<Component>(
@@ -79,9 +83,9 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
             const SizedBox(height: 12),
           ],
         ),
-        padding: const EdgeInsets.only(
-          bottom: 100,
-        ),
+        // Keeps the last item clear of the floating bottom bar; see its doc
+        // comment for why this isn't a literal.
+        padding: EdgeInsets.only(bottom: floatingBarClearance),
         items: _items,
         itemBuilder: (value) {
           return SizedBox(

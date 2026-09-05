@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
@@ -24,6 +25,7 @@ class RootNavigation extends ConsumerStatefulWidget {
 
 class _RootNavigationState extends ConsumerState<RootNavigation> {
   late final PageController _pageController;
+  final GlobalKey _bottomBarKey = GlobalKey();
 
   void _handleNavigationChange(int index) {
     if (_pageController.hasClients && _pageController.page?.round() != index) {
@@ -52,8 +54,38 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
     super.dispose();
   }
 
+  /// Measures the floating bar's rendered height and margin, and publishes
+  /// their sum with the system inset beneath it.
+  ///
+  /// Scheduled from every build rather than only the first, since the bar's
+  /// height depends on the text scale factor and the tab labels, both of
+  /// which can change while the app is open.
+  void _measureFloatingBar() {
+    final box = _bottomBarKey.currentContext?.findRenderObject() as RenderBox?;
+    final height = box?.size.height;
+    if (height == null) {
+      return;
+    }
+
+    final viewPadding = MediaQuery.viewPaddingOf(context).bottom;
+    // Matches the Positioned's own `bottom: 8` below.
+    const margin = 8.0;
+
+    ref
+        .read(floatingBarClearanceProvider.notifier)
+        .update(height + margin + viewPadding);
+  }
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        if (mounted) {
+          _measureFloatingBar();
+        }
+      },
+    );
+
     final appLocalizations = AppLocalizations.of(context);
 
     final tabNames = <String>[
@@ -98,6 +130,7 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
             bottom: 8,
             child: SafeArea(
               child: BottomNavigationBarWidget(
+                key: _bottomBarKey,
                 screenIndex: selectedIndex,
                 updateScreenIndex: (index) =>
                     ref.read(mainNavigationNotifierProvider.notifier).index =

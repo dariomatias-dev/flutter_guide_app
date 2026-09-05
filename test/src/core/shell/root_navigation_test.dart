@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/di/ads_enabled_provider.dart';
+import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/navigation/main_navigation_notifier.dart';
@@ -147,5 +148,54 @@ void main() {
       expect(tester.hasRunningAnimations, isFalse);
       expect(find.byType(HomeScreen), findsOneWidget);
     });
+
+    testWidgets('publishes the floating bar clearance after layout', (
+      tester,
+    ) async {
+      // FakeViewPadding is in physical pixels; pin the ratio so the 48 below
+      // reads as 48 logical pixels too.
+      tester.view.devicePixelRatio = 1;
+      tester.view.viewPadding = const FakeViewPadding(bottom: 48);
+      tester.view.padding = const FakeViewPadding(bottom: 48);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.view.resetViewPadding);
+      addTearDown(tester.view.resetPadding);
+
+      await pumpShell(tester);
+
+      final barHeight = tester
+          .getSize(find.byType(BottomNavigationBarWidget))
+          .height;
+
+      // Margin matches the Positioned's own `bottom: 8` in root_navigation.
+      expect(
+        container.read(floatingBarClearanceProvider),
+        closeTo(barHeight + 8 + 48, 0.5),
+      );
+    });
+
+    testWidgets(
+      'the floating bar clearance follows a system inset change',
+      (tester) async {
+        await pumpShell(tester);
+
+        final withoutInset = container.read(floatingBarClearanceProvider);
+
+        tester.view.devicePixelRatio = 1;
+        tester.view.viewPadding = const FakeViewPadding(bottom: 48);
+        tester.view.padding = const FakeViewPadding(bottom: 48);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        addTearDown(tester.view.resetViewPadding);
+        addTearDown(tester.view.resetPadding);
+        await tester.pump();
+
+        // The taller 3-button system bar reserves more space than gesture
+        // navigation; the shell has to react rather than keep a fixed value.
+        expect(
+          container.read(floatingBarClearanceProvider),
+          greaterThan(withoutInset),
+        );
+      },
+    );
   });
 }

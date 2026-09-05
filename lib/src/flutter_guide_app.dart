@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
 import 'package:flutter_guide/src/core/di/logger_provider.dart';
@@ -55,17 +56,41 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
     final themeMode = ref.watch(themeNotifierProvider);
     final language = ref.watch(languageViewModelProvider);
 
-    return MaterialApp.router(
-      scaffoldMessengerKey: _scaffoldMessengerKey,
-      routerConfig: AppRouter.router,
-      debugShowCheckedModeBanner: false,
-      title: 'FlutterGuide',
-      theme: ligthMode,
-      darkTheme: darkMode,
-      themeMode: themeMode,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: LanguagesApp.locale(language),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: _overlayStyleFor(themeMode),
+      child: MaterialApp.router(
+        scaffoldMessengerKey: _scaffoldMessengerKey,
+        routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
+        title: 'FlutterGuide',
+        theme: ligthMode,
+        darkTheme: darkMode,
+        themeMode: themeMode,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: LanguagesApp.locale(language),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+      ),
+    );
+  }
+
+  /// Status and navigation bar appearance matching [mode].
+  ///
+  /// Both bars are transparent: targetSdk 36 enforces edge-to-edge with no
+  /// opt-out, so an opaque system bar would sit on top of app content rather
+  /// than reserving its own space. Only the icon and text contrast changes
+  /// with the theme.
+  SystemUiOverlayStyle _overlayStyleFor(ThemeMode mode) {
+    final isDark = mode == ThemeMode.dark;
+
+    return SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+      statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: isDark
+          ? Brightness.light
+          : Brightness.dark,
     );
   }
 }
