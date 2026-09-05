@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/core/navigation/floating_bar_clearance_notifier.dart';
 import 'package:flutter_guide/src/features/catalog/domain/entities/component.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/favorites_repository_provider.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/components/components_screen.dart';
@@ -9,6 +11,16 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../../../../../helpers/mocks.dart';
 import '../../../../../../helpers/pump_app.dart';
+
+/// A [FloatingBarClearanceNotifier] that starts already measured.
+class _ClearanceOf extends FloatingBarClearanceNotifier {
+  _ClearanceOf(this.value);
+
+  final double value;
+
+  @override
+  double build() => value;
+}
 
 const _componentsA = <Component>[
   Component(name: 'Alpha', type: ComponentType.widget),
@@ -86,6 +98,31 @@ void main() {
       expect(find.text('Beta'), findsOneWidget);
       expect(find.text('Betamax'), findsOneWidget);
       expect(find.text('Gamma'), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'pads the list with the floating bottom bar clearance',
+    (tester) async {
+      await tester.pumpApp(
+        ProviderScope(
+          overrides: [
+            favoritesRepositoryProvider.overrideWithValue(repository),
+            floatingBarClearanceProvider.overrideWith(
+              () => _ClearanceOf(84),
+            ),
+          ],
+          child: const ComponentsScreen(
+            componentType: ComponentType.widget,
+            components: _componentsA,
+          ),
+        ),
+      );
+
+      final listView = tester.widget<ListView>(find.byType(ListView));
+      final padding = listView.padding as EdgeInsets?;
+
+      expect(padding?.bottom, 84);
     },
   );
 }

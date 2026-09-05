@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_guide/src/core/config/app_env_providers.dart';
 import 'package:flutter_guide/src/core/config/dotenv_app_env.dart';
 import 'package:flutter_guide/src/core/di/logger_provider.dart';
@@ -23,6 +24,11 @@ Future<void> main() async {
   // Installed before anything that can fail, so a failure in startup itself
   // is reported rather than printed and lost.
   installErrorHandlers(_reporter);
+
+  // targetSdk 36 enforces edge-to-edge with no opt-out on Android 15+; this
+  // makes the same layout apply on every supported version instead of
+  // relying on the OS default, which changed across them.
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   ErrorWidget.builder = (details) => AppFailureScreen(
     kind: AppFailureKind.unexpected,
