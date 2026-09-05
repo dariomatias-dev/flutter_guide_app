@@ -1,0 +1,4 @@
+# Runner image act uses for `runs-on: ubuntu-latest`. Pinned here so running a
+# workflow locally needs no flags. The medium image carries the tools the
+# pipeline expects, jq and git among them, without pulling the 40GB full one.
+-P ubuntu-latest=catthehacker/ubuntu:act-latest

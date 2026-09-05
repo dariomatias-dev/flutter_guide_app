@@ -69,6 +69,26 @@ The gate is skipped when nothing under `lib`, `test`, `integration_test`,
 A passing run records the workspace hash in `.dart_tool/verify_stamp`, so
 tooling can tell whether the tree still matches a run that passed.
 
+### Running the workflows locally
+
+[`act`](https://github.com/nektos/act) runs the workflows in Docker, which is
+worth doing before pushing a change to anything under `.github/workflows/`.
+`.actrc` already pins the runner image, so no flags are needed:
+
+```bash
+act -l                          # list every job, with its id and stage
+act pull_request                # everything CI would run on a pull request
+act pull_request -j app         # one job, by its id
+act pull_request -j app --dryrun  # print the steps without running them
+```
+
+`-j` takes the job id (`vulnerabilities`, `app`, `build_apk`), not the display
+name; `act -l` prints both. The first run pulls a multi-gigabyte image, and
+`act` approximates GitHub's runners rather than reproducing them, so a green
+run here is a signal, not a guarantee: `secrets.CODECOV_TOKEN` is empty
+locally, and the OSV scanner action needs network access to the advisory
+database.
+
 ## Branching
 
 - `main` is protected: no direct pushes, merges only via pull request.
