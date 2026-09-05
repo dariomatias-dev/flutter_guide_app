@@ -27,7 +27,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
     late final String componentType;
     late final List<InterfaceModel> items;
 
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
 
     switch (elementType) {
       case InterfaceTypeEnum.element:

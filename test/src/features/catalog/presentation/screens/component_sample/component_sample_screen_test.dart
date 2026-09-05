@@ -42,7 +42,7 @@ void main() {
 
     return AppLocalizations.of(
       tester.element(find.byType(ComponentSampleScreen)),
-    )!;
+    );
   }
 
   /// Switches to the code tab and settles the page transition.

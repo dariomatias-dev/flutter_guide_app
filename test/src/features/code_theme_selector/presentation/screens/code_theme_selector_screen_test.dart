@@ -37,7 +37,7 @@ void main() {
 
     return AppLocalizations.of(
       tester.element(find.byType(CodeThemeSelectorScreen)),
-    )!;
+    );
   }
 
   /// The list built for [type].

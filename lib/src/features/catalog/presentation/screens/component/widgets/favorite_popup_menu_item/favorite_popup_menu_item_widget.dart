@@ -44,7 +44,7 @@ class _FavoritePopupMenuItemWidgetState
           ),
         );
 
-        final appLocalizations = AppLocalizations.of(context)!;
+        final appLocalizations = AppLocalizations.of(context);
 
         return PopupMenuItem<void>(
           onTap: () {

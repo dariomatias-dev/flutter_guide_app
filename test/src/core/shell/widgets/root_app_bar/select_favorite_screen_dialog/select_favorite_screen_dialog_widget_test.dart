@@ -25,7 +25,7 @@ void main() {
 
     final l10n = AppLocalizations.of(
       tester.element(find.byType(RootNavigation)),
-    )!;
+    );
 
     // Saved-component cards use the same icon, so scope to the app bar.
     await tester.tap(

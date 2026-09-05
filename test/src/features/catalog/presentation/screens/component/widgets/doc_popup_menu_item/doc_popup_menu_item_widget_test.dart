@@ -37,7 +37,7 @@ void main() {
 
     final l10n = AppLocalizations.of(
       tester.element(find.byType(DocPopupMenuItemWidget)),
-    )!;
+    );
 
     await tester.tap(find.text(l10n.doc));
     await tester.pumpAndSettle();
@@ -61,7 +61,7 @@ void main() {
 
       final l10n = AppLocalizations.of(
         tester.element(find.byType(DocPopupMenuItemWidget)),
-      )!;
+      );
 
       expect(find.text(l10n.doc), findsOneWidget);
     });

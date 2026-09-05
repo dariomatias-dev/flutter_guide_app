@@ -14,7 +14,7 @@ class AppInfoWidget extends ConsumerWidget {
     final textColor = Theme.of(context).textTheme.bodyMedium?.color;
     final appVersion = ref.watch(appVersionViewModelProvider);
     final versionLabel =
-        '${AppLocalizations.of(context)!.version} ${appVersion.value ?? '...'}';
+        '${AppLocalizations.of(context).version} ${appVersion.value ?? '...'}';
 
     return Center(
       child: Column(

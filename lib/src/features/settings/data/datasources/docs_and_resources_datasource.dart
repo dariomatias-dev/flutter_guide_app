@@ -5,7 +5,7 @@ import 'package:flutter_guide/src/features/settings/domain/entities/doc_and_reso
 
 /// Returns the documentation and resource links shown in settings.
 List<DocAndResourcesModel> getDocsAndResources(BuildContext context) {
-  final appLocalizations = AppLocalizations.of(context)!;
+  final appLocalizations = AppLocalizations.of(context);
 
   return <DocAndResourcesModel>[
     DocAndResourcesModel(

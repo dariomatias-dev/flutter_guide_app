@@ -56,7 +56,7 @@ class SourceCodeButtonWidget extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                AppLocalizations.of(context)!.sourceCode,
+                AppLocalizations.of(context).sourceCode,
                 style: const TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Colors.blue,

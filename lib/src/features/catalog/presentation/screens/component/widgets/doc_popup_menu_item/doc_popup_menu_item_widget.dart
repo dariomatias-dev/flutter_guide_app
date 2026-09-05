@@ -70,7 +70,7 @@ class _DocPopupMenuItemWidgetState extends State<DocPopupMenuItemWidget> {
           ),
         );
       },
-      child: Text(AppLocalizations.of(context)!.doc),
+      child: Text(AppLocalizations.of(context).doc),
     );
   }
 }

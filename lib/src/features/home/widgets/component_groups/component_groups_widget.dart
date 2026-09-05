@@ -18,7 +18,7 @@ class ComponentGroupsWidget extends StatelessWidget {
             left: 12,
           ),
           child: Text(
-            AppLocalizations.of(context)!.components,
+            AppLocalizations.of(context).components,
             style: TextStyle(
               color: Colors.grey.shade600,
               fontSize: 12,

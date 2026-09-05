@@ -59,7 +59,7 @@ class SaveButtonWidget extends ConsumerWidget {
       ),
     );
 
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
 
     return IconButtonWidget(
       tooltip: saved ? l10n.remove : l10n.save,
@@ -68,7 +68,7 @@ class SaveButtonWidget extends ConsumerWidget {
             .read(favoritesViewModelProvider.notifier)
             .toggle(type: componentType, name: componentName);
 
-        final l10n = AppLocalizations.of(context)!;
+        final l10n = AppLocalizations.of(context);
 
         SnackBarUtils.show(
           context,

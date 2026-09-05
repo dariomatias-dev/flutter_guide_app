@@ -78,7 +78,7 @@ void main() {
     }
 
     final context = tester.element(find.byType(Scaffold).first);
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
 
     await shoot('01_home');
 

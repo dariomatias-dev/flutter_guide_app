@@ -68,7 +68,7 @@ void main() {
       await pumpShell(tester);
 
       final context = tester.element(find.byType(RootNavigation));
-      final l10n = AppLocalizations.of(context)!;
+      final l10n = AppLocalizations.of(context);
 
       expect(find.byType(BottomNavigationBarWidget), findsOneWidget);
       expect(find.text(l10n.home), findsOneWidget);

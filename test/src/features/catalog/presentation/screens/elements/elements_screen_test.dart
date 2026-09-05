@@ -56,7 +56,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    return AppLocalizations.of(tester.element(find.byType(ElementsScreen)))!;
+    return AppLocalizations.of(tester.element(find.byType(ElementsScreen)));
   }
 
   ComponentsScreen visibleList(WidgetTester tester) {

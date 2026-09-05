@@ -54,7 +54,7 @@ class _RootNavigationState extends ConsumerState<RootNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
 
     final tabNames = <String>[
       appLocalizations.home,

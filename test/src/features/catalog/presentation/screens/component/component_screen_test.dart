@@ -89,7 +89,7 @@ void main() {
     await tester.pumpAndSettle();
 
     final context = tester.element(find.byType(ComponentScreen));
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
 
     await tester.tap(find.text(l10n.save));
     await tester.pumpAndSettle();

@@ -80,7 +80,7 @@ void main() {
 
       final l10n = AppLocalizations.of(
         tester.element(find.byType(CardWidget)),
-      )!;
+      );
 
       expect(find.byTooltip(l10n.watchOnYoutube), findsOneWidget);
     });

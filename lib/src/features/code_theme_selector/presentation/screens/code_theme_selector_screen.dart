@@ -62,7 +62,7 @@ class _CodeThemeSelectorScreenState
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final codeTheme = ref.watch(codeThemeViewModelProvider);
 
     return Scaffold(

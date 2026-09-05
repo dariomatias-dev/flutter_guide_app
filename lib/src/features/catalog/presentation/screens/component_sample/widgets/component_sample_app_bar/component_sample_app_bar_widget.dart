@@ -54,7 +54,7 @@ class ComponentSampleAppBarWidget extends StatelessWidget
                   filePath,
                 ),
                 child: Text(
-                  AppLocalizations.of(context)!.copy,
+                  AppLocalizations.of(context).copy,
                 ),
               ),
               ...?popupMenuItems,
@@ -64,7 +64,7 @@ class ComponentSampleAppBarWidget extends StatelessWidget
                   componentName,
                 ),
                 child: Text(
-                  AppLocalizations.of(context)!.share,
+                  AppLocalizations.of(context).share,
                 ),
               ),
             ];

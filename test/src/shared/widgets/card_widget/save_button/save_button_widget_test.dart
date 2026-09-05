@@ -115,7 +115,7 @@ void main() {
 
       final l10n = AppLocalizations.of(
         tester.element(find.byType(SaveButtonWidget)),
-      )!;
+      );
 
       expect(
         tester.widget<IconButtonWidget>(find.byType(IconButtonWidget)).tooltip,
@@ -149,7 +149,7 @@ void main() {
 
       final l10n = AppLocalizations.of(
         tester.element(find.byType(SaveButtonWidget)),
-      )!;
+      );
 
       stubToggle(type: type, name: name, saved: saved);
       await tester.tap(find.byType(IconButtonWidget));

@@ -53,7 +53,7 @@ class CardWidget extends StatelessWidget {
       trailingWidgets: <Widget>[
         if (videoId != null) ...<Widget>[
           IconButtonWidget(
-            tooltip: AppLocalizations.of(context)!.watchOnYoutube,
+            tooltip: AppLocalizations.of(context).watchOnYoutube,
             child: FaIcon(
               FontAwesomeIcons.youtube,
               color: Theme.of(context).colorScheme.primary,

@@ -18,7 +18,7 @@ class DocsAndResourcesDialogWidget extends StatelessWidget {
     final docsAndResources = getDocsAndResources(context);
 
     return DialogWidget(
-      title: AppLocalizations.of(context)!.docsAndResources,
+      title: AppLocalizations.of(context).docsAndResources,
       actions: <DialogButtonWidget>[
         DialogButtonWidget(
           onTap: () {

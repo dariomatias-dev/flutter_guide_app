@@ -55,7 +55,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    return AppLocalizations.of(tester.element(find.byType(SettingsScreen)))!;
+    return AppLocalizations.of(tester.element(find.byType(SettingsScreen)));
   }
 
   group('SettingsScreen', () {
@@ -233,7 +233,7 @@ void main() {
 
       final l10n = AppLocalizations.of(
         tester.element(find.byType(SettingsScreen)),
-      )!;
+      );
 
       await tester.tap(find.text(l10n.codeTheme));
       await tester.pumpAndSettle();

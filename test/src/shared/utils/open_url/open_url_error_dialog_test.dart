@@ -14,7 +14,7 @@ void main() {
     await tester.pumpApp(const OpenUrlErrorDialog(url: url));
 
     final context = tester.element(find.byType(OpenUrlErrorDialog));
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
 
     expect(find.text(l10n.error), findsOneWidget);
     expect(

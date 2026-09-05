@@ -15,7 +15,7 @@ Future<AppLocalizations> _localizationsFor(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       home: Builder(
         builder: (context) {
-          localizations = AppLocalizations.of(context)!;
+          localizations = AppLocalizations.of(context);
 
           return const SizedBox.shrink();
         },

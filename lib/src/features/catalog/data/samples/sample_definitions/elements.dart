@@ -18,7 +18,7 @@ import 'package:flutter_guide/src/features/catalog/data/samples/sample_component
 List<InterfaceModel> getElements(
   BuildContext context,
 ) {
-  final appLocalizations = AppLocalizations.of(context)!;
+  final appLocalizations = AppLocalizations.of(context);
 
   return <InterfaceModel>[
     InterfaceModel(

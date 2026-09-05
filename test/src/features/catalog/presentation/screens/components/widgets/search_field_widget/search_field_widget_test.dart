@@ -29,7 +29,7 @@ void main() {
 
     return AppLocalizations.of(
       tester.element(find.byType(SearchFieldWidget)),
-    )!;
+    );
   }
 
   group('SearchFieldWidget', () {

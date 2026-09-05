@@ -17,7 +17,7 @@ abstract final class SnackBarUtils {
   /// Shows a snack bar using the [ScaffoldMessenger] of [context].
   static void show(BuildContext context, String text) {
     ScaffoldMessenger.of(context).showSnackBar(
-      _buildSnackBar(text, AppLocalizations.of(context)!.ok),
+      _buildSnackBar(text, AppLocalizations.of(context).ok),
     );
   }
 

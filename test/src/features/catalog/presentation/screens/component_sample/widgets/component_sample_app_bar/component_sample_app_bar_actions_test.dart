@@ -84,7 +84,7 @@ void main() {
       await tester.pump();
 
       final expected = await rootBundle.loadString(_filePath);
-      final l10n = AppLocalizations.of(capturedContext)!;
+      final l10n = AppLocalizations.of(capturedContext);
 
       expect(clipboardWrites, <String>[expected]);
       expect(find.byType(SnackBar), findsOneWidget);

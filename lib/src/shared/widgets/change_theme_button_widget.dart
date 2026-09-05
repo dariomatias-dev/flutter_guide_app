@@ -16,7 +16,7 @@ class ChangeThemeButtonWidget extends ConsumerWidget {
     return IconButtonWidget(
       onTap: () => ref.read(themeNotifierProvider.notifier).toggleTheme(),
       icon: isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-      tooltip: AppLocalizations.of(context)!.changeTheme,
+      tooltip: AppLocalizations.of(context).changeTheme,
     );
   }
 }

@@ -32,7 +32,7 @@ class DeepLinkService {
   /// Starts listening for the initial and subsequent deep links.
   Future<void> init() async {
     final context = router.routerDelegate.navigatorKey.currentContext!;
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
     final deepLinkInitFailureMessage = appLocalizations.deepLinkInitFailure;
 
     try {

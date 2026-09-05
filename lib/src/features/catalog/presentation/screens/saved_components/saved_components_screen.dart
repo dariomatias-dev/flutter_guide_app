@@ -20,7 +20,7 @@ class SavedComponentsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
 
     late final String titleScreen;
     late final String missingElementsMessage;

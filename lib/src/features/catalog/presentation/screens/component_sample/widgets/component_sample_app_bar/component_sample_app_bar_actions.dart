@@ -23,7 +23,7 @@ abstract final class ComponentSampleAppBarActions {
 
     SnackBarUtils.show(
       context,
-      AppLocalizations.of(context)!.copyToClipboard,
+      AppLocalizations.of(context).copyToClipboard,
     );
   }
 

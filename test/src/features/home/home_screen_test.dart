@@ -26,7 +26,7 @@ void main() {
     );
 
     final context = tester.element(find.byType(HomeScreen));
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
 
     expect(find.text(l10n.elements), findsOneWidget);
     expect(find.text('UIs'), findsOneWidget);

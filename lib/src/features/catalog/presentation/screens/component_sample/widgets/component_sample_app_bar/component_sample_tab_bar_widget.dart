@@ -25,7 +25,7 @@ class ComponentSampleTabBarWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final applocalizations = AppLocalizations.of(context)!;
+    final applocalizations = AppLocalizations.of(context);
 
     return DefaultTabBarWidget(
       controller: tabController,

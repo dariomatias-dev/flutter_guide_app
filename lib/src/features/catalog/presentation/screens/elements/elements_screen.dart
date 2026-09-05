@@ -71,11 +71,11 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
           },
           tabs: <Tab>[
             Tab(
-              child: Text(AppLocalizations.of(context)!.widgets),
+              child: Text(AppLocalizations.of(context).widgets),
             ),
             Tab(
               child: Text(
-                AppLocalizations.of(context)!.functions,
+                AppLocalizations.of(context).functions,
               ),
             ),
           ],

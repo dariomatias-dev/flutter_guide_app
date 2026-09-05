@@ -16,7 +16,7 @@ class SelectFavoriteScreenDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
 
     return DialogWidget(
       title: appLocalizations.favorites,

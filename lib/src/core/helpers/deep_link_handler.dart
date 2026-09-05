@@ -54,7 +54,7 @@ class DeepLinkHandler {
     switch (parseDeepLink(uri)) {
       case InvalidLinkTarget():
         _showSnackBarMessage(
-          AppLocalizations.of(_context)!.invalidLink,
+          AppLocalizations.of(_context).invalidLink,
         );
       case final InterfaceTarget target:
         _openInterface(target);
@@ -136,13 +136,13 @@ class DeepLinkHandler {
     SnackBarUtils.showByKey(
       scaffoldMessengerKey,
       message,
-      AppLocalizations.of(_context)!.ok,
+      AppLocalizations.of(_context).ok,
     );
   }
 
   void _showNotFound(String componentName, String type) {
     _showSnackBarMessage(
-      AppLocalizations.of(_context)!.componentNotFound(componentName, type),
+      AppLocalizations.of(_context).componentNotFound(componentName, type),
     );
   }
 }

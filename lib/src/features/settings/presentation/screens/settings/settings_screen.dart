@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLocalizations = AppLocalizations.of(context)!;
+    final appLocalizations = AppLocalizations.of(context);
 
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(

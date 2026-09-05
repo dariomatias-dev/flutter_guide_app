@@ -85,7 +85,7 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
       children: <Widget>[
         ListTileItemWidget(
           onTap: _handleTap,
-          title: widget.componentGroup.title(AppLocalizations.of(context)!),
+          title: widget.componentGroup.title(AppLocalizations.of(context)),
           icon: widget.componentGroup.icon,
           trailingWidgets: <Widget>[
             Icon(

@@ -59,7 +59,7 @@ class _RootAppBarWidgetState extends State<RootAppBarWidget> {
         IconButtonWidget(
           onTap: showSelectFavoriteScreenDialog,
           icon: Icons.bookmark_border,
-          tooltip: AppLocalizations.of(context)!.favorites,
+          tooltip: AppLocalizations.of(context).favorites,
         ),
         const SizedBox(width: 4),
       ],

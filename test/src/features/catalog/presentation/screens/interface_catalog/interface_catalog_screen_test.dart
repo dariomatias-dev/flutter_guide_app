@@ -33,7 +33,7 @@ void main() {
 
     return AppLocalizations.of(
       tester.element(find.byType(InterfaceCatalogScreen)),
-    )!;
+    );
   }
 
   group('InterfaceCatalogScreen elements', () {
