@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/format-dart.sh",
+            "timeout": 30,
+            "statusMessage": "Formatting Dart..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/verify-gate.sh",
+            "timeout": 60,
+            "statusMessage": "Checking quality gate..."
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(./scripts/verify.sh)",
+      "Bash(./scripts/verify.sh:*)",
+      "Bash(./scripts/check_coverage.sh:*)",
+      "Bash(./scripts/check_l10n.sh)",
+      "Bash(./scripts/check_l10n.sh:*)",
+      "Bash(./scripts/workspace_hash.sh)",
+      "Bash(fvm flutter analyze)",
+      "Bash(fvm flutter analyze:*)",
+      "Bash(fvm flutter test:*)",
+      "Bash(fvm flutter gen-l10n)",
+      "Bash(fvm flutter pub get)",
+      "Bash(fvm dart format:*)"
+    ]
+  }
+}
