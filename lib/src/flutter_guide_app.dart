@@ -63,7 +63,7 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         title: 'FlutterGuide',
-        theme: ligthMode,
+        theme: lightMode,
         darkTheme: darkMode,
         themeMode: themeMode,
         supportedLocales: AppLocalizations.supportedLocales,

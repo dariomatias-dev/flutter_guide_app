@@ -21,5 +21,5 @@ abstract final class FlutterGuideColors {
   static const blue100 = Color(0xFFE9F2FF);
 
   /// Light blue-grey (shade 200).
-  static const ligthBlue200 = Color(0xFFB3B9C4);
+  static const lightBlue200 = Color(0xFFB3B9C4);
 }

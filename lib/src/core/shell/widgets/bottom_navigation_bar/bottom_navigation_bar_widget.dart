@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
-
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_colors.dart';
 
 /// Rounded, elevated container wrapping the [NavigationBarWidget].
 class BottomNavigationBarWidget extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/constants/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
-import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/code_tab/code_tab_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_colors.dart';
 
 /// The app's light [ThemeData].
-final ligthMode = ThemeData(
+final lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     primary: FlutterGuideColors.darkNeutral50,
@@ -16,7 +16,7 @@ final ligthMode = ThemeData(
 final darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    primary: FlutterGuideColors.ligthBlue200,
+    primary: FlutterGuideColors.lightBlue200,
     secondary: FlutterGuideColors.darkNeutral,
     tertiary: Colors.grey,
     surface: FlutterGuideColors.darkNeutral50,
