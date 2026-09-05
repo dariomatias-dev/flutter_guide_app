@@ -45,8 +45,9 @@ void main() {
     });
 
     test('maps functions to a function ComponentTarget on elements tab 1', () {
-      final target =
-          parseDeepLink(Uri.parse('app://host/functions/showDialog'));
+      final target = parseDeepLink(
+        Uri.parse('app://host/functions/showDialog'),
+      );
 
       expect(target, isA<ComponentTarget>());
       target as ComponentTarget;

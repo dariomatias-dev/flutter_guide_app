@@ -57,18 +57,18 @@ const _mainAxisAlignments = <_MainAxisAlignmentModel>[
 
 final List<DropdownMenuItem<MainAxisAlignment>> _mainAxisAlignmentItems =
     List.generate(
-  _mainAxisAlignments.length,
-  (index) {
-    final mainAxisAlignment = _mainAxisAlignments[index];
+      _mainAxisAlignments.length,
+      (index) {
+        final mainAxisAlignment = _mainAxisAlignments[index];
 
-    return DropdownMenuItem(
-      value: mainAxisAlignment.mainAxisAlignment,
-      child: Text(
-        mainAxisAlignment.name,
-      ),
+        return DropdownMenuItem(
+          value: mainAxisAlignment.mainAxisAlignment,
+          child: Text(
+            mainAxisAlignment.name,
+          ),
+        );
+      },
     );
-  },
-);
 
 /// MainAxisSize
 class _MainAxisSizeModel {

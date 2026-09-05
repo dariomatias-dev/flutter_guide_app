@@ -11,8 +11,8 @@ class ComponentsRepositoryImpl implements ComponentsRepository {
   ComponentsRepositoryImpl({
     required ComponentsLocalDatasource datasource,
     required Locale locale,
-  })  : _datasource = datasource,
-        _locale = locale;
+  }) : _datasource = datasource,
+       _locale = locale;
 
   final ComponentsLocalDatasource _datasource;
   final Locale _locale;

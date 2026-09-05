@@ -15,9 +15,9 @@ class ColorFilteredSample extends StatelessWidget {
   const ColorFilteredSample({super.key});
 
   TextStyle get _defaultTextStyle => const TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-      );
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+  );
 
   @override
   Widget build(BuildContext context) {

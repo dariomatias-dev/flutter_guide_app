@@ -26,16 +26,15 @@ void main() {
   Widget scope({
     ComponentType componentType = ComponentType.widget,
     String componentName = 'Container',
-  }) =>
-      ProviderScope(
-        overrides: [
-          favoritesRepositoryProvider.overrideWithValue(repository),
-        ],
-        child: SaveButtonWidget(
-          componentType: componentType,
-          componentName: componentName,
-        ),
-      );
+  }) => ProviderScope(
+    overrides: [
+      favoritesRepositoryProvider.overrideWithValue(repository),
+    ],
+    child: SaveButtonWidget(
+      componentType: componentType,
+      componentName: componentName,
+    ),
+  );
 
   /// Stubs a toggle that reports [saved] and updates the stored names.
   void stubToggle({
@@ -43,10 +42,12 @@ void main() {
     required String name,
     required bool saved,
   }) {
-    when(() => repository.toggleFavorite(type: type, name: name))
-        .thenReturn(saved);
-    when(() => repository.getSavedComponentNames(type))
-        .thenReturn(saved ? <String>[name] : <String>[]);
+    when(
+      () => repository.toggleFavorite(type: type, name: name),
+    ).thenReturn(saved);
+    when(
+      () => repository.getSavedComponentNames(type),
+    ).thenReturn(saved ? <String>[name] : <String>[]);
   }
 
   group('SaveButtonWidget', () {
@@ -57,8 +58,9 @@ void main() {
       expect(find.byIcon(Icons.bookmark), findsNothing);
     });
 
-    testWidgets('fills the bookmark and shows a snack bar when saved',
-        (tester) async {
+    testWidgets('fills the bookmark and shows a snack bar when saved', (
+      tester,
+    ) async {
       when(
         () => repository.toggleFavorite(
           type: ComponentType.widget,
@@ -68,8 +70,9 @@ void main() {
 
       await tester.pumpApp(scope());
 
-      when(() => repository.getSavedComponentNames(ComponentType.widget))
-          .thenReturn(['Container']);
+      when(
+        () => repository.getSavedComponentNames(ComponentType.widget),
+      ).thenReturn(['Container']);
       await tester.tap(find.byIcon(Icons.bookmark_border));
       await tester.pump();
 
@@ -78,8 +81,9 @@ void main() {
     });
 
     testWidgets('shows the filled bookmark when already saved', (tester) async {
-      when(() => repository.getSavedComponentNames(ComponentType.widget))
-          .thenReturn(['Container']);
+      when(
+        () => repository.getSavedComponentNames(ComponentType.widget),
+      ).thenReturn(['Container']);
 
       await tester.pumpApp(scope());
 
@@ -88,8 +92,9 @@ void main() {
     });
 
     testWidgets('empties the bookmark when removed', (tester) async {
-      when(() => repository.getSavedComponentNames(ComponentType.widget))
-          .thenReturn(['Container']);
+      when(
+        () => repository.getSavedComponentNames(ComponentType.widget),
+      ).thenReturn(['Container']);
 
       await tester.pumpApp(scope());
 
@@ -136,8 +141,9 @@ void main() {
       required String name,
       required bool saved,
     }) async {
-      when(() => repository.getSavedComponentNames(type))
-          .thenReturn(saved ? <String>[] : <String>[name]);
+      when(
+        () => repository.getSavedComponentNames(type),
+      ).thenReturn(saved ? <String>[] : <String>[name]);
 
       await tester.pumpApp(scope(componentType: type, componentName: name));
 

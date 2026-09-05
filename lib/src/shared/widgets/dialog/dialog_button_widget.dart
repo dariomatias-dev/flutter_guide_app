@@ -30,7 +30,8 @@ class DialogButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final buttonColor = backgroundColor ??
+    final buttonColor =
+        backgroundColor ??
         Colors.blue.withAlpha(
           isDark ? 22 : 20,
         );

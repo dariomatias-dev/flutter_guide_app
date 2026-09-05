@@ -61,21 +61,23 @@ void main() {
       verifyNever(() => repository.saveLightTheme(any()));
     });
 
-    test('updateTheme with isDark false updates light and keeps dark',
-        () async {
-      final container = makeContainer();
+    test(
+      'updateTheme with isDark false updates light and keeps dark',
+      () async {
+        final container = makeContainer();
 
-      await notifier(container).updateTheme(
-        name: 'GitHub Light',
-        schema: SyntaxThemes.githubLight,
-        isDark: false,
-      );
+        await notifier(container).updateTheme(
+          name: 'GitHub Light',
+          schema: SyntaxThemes.githubLight,
+          isDark: false,
+        );
 
-      final state = container.read(codeThemeViewModelProvider);
-      expect(state.selectedLightTheme, SyntaxThemes.githubLight);
-      expect(state.selectedDarkTheme, SyntaxThemes.vsCodeDark);
-      verify(() => repository.saveLightTheme('GitHub Light')).called(1);
-      verifyNever(() => repository.saveDarkTheme(any()));
-    });
+        final state = container.read(codeThemeViewModelProvider);
+        expect(state.selectedLightTheme, SyntaxThemes.githubLight);
+        expect(state.selectedDarkTheme, SyntaxThemes.vsCodeDark);
+        verify(() => repository.saveLightTheme('GitHub Light')).called(1);
+        verifyNever(() => repository.saveDarkTheme(any()));
+      },
+    );
   });
 }

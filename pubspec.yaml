@@ -19,7 +19,10 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.3.0+19
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  # flutter_riverpod 3.x already requires Dart 3.7, so the old 3.6 floor
+  # claimed a version the app could never resolve on. Nothing below the SDK
+  # pinned in .fvmrc is built or tested.
+  sdk: ">=3.8.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions

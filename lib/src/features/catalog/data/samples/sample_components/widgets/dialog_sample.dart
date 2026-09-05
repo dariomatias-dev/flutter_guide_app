@@ -22,40 +22,40 @@ class DialogSample extends StatefulWidget {
 
 class _DialogSampleState extends State<DialogSample> {
   Widget get _defaultDialogContent => Padding(
-        padding: const EdgeInsets.all(28),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+    padding: const EdgeInsets.all(28),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          'Title',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        const SizedBox(height: 12),
+        const Text('Description'),
+        const SizedBox(height: 4),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            const Text(
-              'Title',
-              style: TextStyle(
-                fontSize: 24,
-              ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Ok'),
             ),
-            const SizedBox(height: 12),
-            const Text('Description'),
-            const SizedBox(height: 4),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Ok'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Cancel'),
-                ),
-              ],
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
             ),
           ],
         ),
-      );
+      ],
+    ),
+  );
 
   void _showBasicDialog() {
     unawaited(

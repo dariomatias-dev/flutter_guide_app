@@ -32,8 +32,9 @@ void main() {
 
   group('LanguageViewModel', () {
     test('build returns the selected language from the repository', () {
-      when(() => repository.getSelectedLanguage())
-          .thenReturn(LanguagesApp.ptBr);
+      when(
+        () => repository.getSelectedLanguage(),
+      ).thenReturn(LanguagesApp.ptBr);
 
       expect(
         makeContainer().read(languageViewModelProvider),

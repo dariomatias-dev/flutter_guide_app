@@ -147,8 +147,10 @@ void main() {
 
       final router = await pumpApp(tester);
 
-      buildHandler(tester, router)
-          .handle(Uri.parse('/packages/does-not-exist'));
+      buildHandler(
+        tester,
+        router,
+      ).handle(Uri.parse('/packages/does-not-exist'));
       await tester.pumpAndSettle();
 
       expect(pushedComponent, isNull);

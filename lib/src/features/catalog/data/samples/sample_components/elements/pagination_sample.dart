@@ -163,8 +163,8 @@ class PageActionWidget extends StatelessWidget {
           color: disabled
               ? Colors.grey.shade600
               : fillColor
-                  ? Colors.black
-                  : Colors.white,
+              ? Colors.black
+              : Colors.white,
           border: disabled ? null : Border.all(),
           borderRadius: BorderRadius.circular(8),
         ),

@@ -18,21 +18,23 @@ void main() {
   });
 
   Widget wrap() => ProviderScope(
-        overrides: [
-          sharedPreferencesServiceProvider.overrideWithValue(service),
-        ],
-        child: const MaterialApp(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          home: Scaffold(body: ChangeThemeButtonWidget()),
-        ),
-      );
+    overrides: [
+      sharedPreferencesServiceProvider.overrideWithValue(service),
+    ],
+    child: const MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      home: Scaffold(body: ChangeThemeButtonWidget()),
+    ),
+  );
 
   group('ChangeThemeButtonWidget', () {
-    testWidgets('shows the light-mode icon while in dark theme',
-        (tester) async {
-      when(() => service.getString(SharedPreferencesKeys.themeKey))
-          .thenReturn('');
+    testWidgets('shows the light-mode icon while in dark theme', (
+      tester,
+    ) async {
+      when(
+        () => service.getString(SharedPreferencesKeys.themeKey),
+      ).thenReturn('');
 
       await tester.pumpWidget(wrap());
 
@@ -40,8 +42,9 @@ void main() {
     });
 
     testWidgets('persists the toggled theme when tapped', (tester) async {
-      when(() => service.getString(SharedPreferencesKeys.themeKey))
-          .thenReturn('');
+      when(
+        () => service.getString(SharedPreferencesKeys.themeKey),
+      ).thenReturn('');
 
       await tester.pumpWidget(wrap());
       await tester.tap(find.byIcon(Icons.light_mode_outlined));

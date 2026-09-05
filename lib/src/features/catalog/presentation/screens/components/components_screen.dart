@@ -47,12 +47,12 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
       _items = _query.trim().isEmpty
           ? widget.components
           : widget.components
-              .where(
-                (component) => component.name.toLowerCase().contains(
-                      _query.toLowerCase(),
-                    ),
-              )
-              .toList();
+                .where(
+                  (component) => component.name.toLowerCase().contains(
+                    _query.toLowerCase(),
+                  ),
+                )
+                .toList();
     });
   }
 

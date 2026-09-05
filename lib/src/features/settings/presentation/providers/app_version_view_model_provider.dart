@@ -4,5 +4,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Provides the [AppVersionViewModel].
 final appVersionViewModelProvider =
     AsyncNotifierProvider<AppVersionViewModel, String>(
-  AppVersionViewModel.new,
-);
+      AppVersionViewModel.new,
+    );

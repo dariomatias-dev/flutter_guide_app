@@ -63,7 +63,8 @@ final emails = <EmailModel>[
     sender: 'Rika',
     to: 'team@townplanning.com',
     subject: 'Plans for re-opening the town',
-    body: 'Hello team, We need to discuss the plans for re-opening the town. '
+    body:
+        'Hello team, We need to discuss the plans for re-opening the town. '
         'Please find attached the agenda for our upcoming meeting. Regards, '
         'Rika',
     date: DateTime(2024, 06),
@@ -86,7 +87,8 @@ final emails = <EmailModel>[
     sender: 'Fred',
     to: 'team@corporate.com',
     subject: 'Meeting agenda for next week',
-    body: 'Dear team, Please find attached the agenda for our meeting next '
+    body:
+        'Dear team, Please find attached the agenda for our meeting next '
         'week. Kindly review it beforehand. Regards, Fred',
     date: DateTime(2024, 3, 24),
     withStar: false,
@@ -107,7 +109,8 @@ final emails = <EmailModel>[
     sender: 'Toren',
     to: 'submissions@projectmanagement.com',
     subject: 'Reminder: Deadline approaching',
-    body: 'Hi there, Just a friendly reminder that the deadline for project '
+    body:
+        'Hi there, Just a friendly reminder that the deadline for project '
         'submissions is approaching. Make sure to submit your work on time. '
         'Regards, Toren',
     date: DateTime(2024, 2, 19),
@@ -321,8 +324,9 @@ class _EmailsScreenState extends State<EmailsScreen> {
                   return EmailWidget(
                     email: value[index],
                     removeEmail: _removeEmail,
-                    updateScreen:
-                        screen == Screen.withStar ? _showStarredEmails : () {},
+                    updateScreen: screen == Screen.withStar
+                        ? _showStarredEmails
+                        : () {},
                     emailsNotifier: _emailsNotifier,
                   );
                 },
@@ -360,7 +364,8 @@ class EmailsScreenDrawerWidget extends StatelessWidget {
   /// The [setScreenEmails].
   final void Function(
     List<EmailModel> value,
-  ) setScreenEmails;
+  )
+  setScreenEmails;
 
   @override
   Widget build(BuildContext context) {
@@ -485,7 +490,8 @@ class EmailsScreenAppBarWidget extends StatefulWidget
   /// The [searchEmails].
   final void Function(
     String query,
-  ) searchEmails;
+  )
+  searchEmails;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -571,14 +577,14 @@ class ComposeEmailFloatingActionButtonWidget extends StatefulWidget {
 class _ComposeEmailFloatingActionButtonWidgetState
     extends State<ComposeEmailFloatingActionButtonWidget> {
   TextStyle get _defaultTitleFieldTextStyle => TextStyle(
-        color: Theme.of(context).colorScheme.secondary,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      );
+    color: Theme.of(context).colorScheme.secondary,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
 
   EdgeInsets get _defaultPadding => const EdgeInsets.symmetric(
-        horizontal: 12,
-      );
+    horizontal: 12,
+  );
 
   InputDecoration _defaultInputDecoration({
     String? hinText,
@@ -646,7 +652,8 @@ class CreateEmailWidget extends StatefulWidget {
   /// The [inputDecoration].
   final InputDecoration Function({
     String? hinText,
-  }) inputDecoration;
+  })
+  inputDecoration;
 
   /// The [padding].
   final EdgeInsets padding;
@@ -867,7 +874,8 @@ class CreateEmailTextFieldWidget extends StatelessWidget {
   /// The [validator].
   final String? Function(
     String? value,
-  )? validator;
+  )?
+  validator;
 
   @override
   Widget build(BuildContext context) {
@@ -945,7 +953,8 @@ class EmailWidget extends StatefulWidget {
   /// The [removeEmail].
   final void Function(
     String emailId,
-  ) removeEmail;
+  )
+  removeEmail;
 
   /// The [updateScreen].
   final VoidCallback updateScreen;
@@ -1075,10 +1084,9 @@ class _EmailWidgetState extends State<EmailWidget> {
                           widget.email.body,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .secondary
-                                .withAlpha(128),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.secondary.withAlpha(128),
                             fontSize: 12,
                           ),
                         ),
@@ -1177,7 +1185,8 @@ class ModalBottomSheetWidget extends StatefulWidget {
   /// The [removeEmail].
   final void Function(
     String emailId,
-  ) removeEmail;
+  )
+  removeEmail;
 
   @override
   State<ModalBottomSheetWidget> createState() => _ModalBottomSheetWidgetState();
@@ -1327,7 +1336,8 @@ class EmailScreen extends StatefulWidget {
   /// The [removeEmail].
   final void Function(
     String emailId,
-  ) removeEmail;
+  )
+  removeEmail;
 
   @override
   State<EmailScreen> createState() => _EmailScreenState();

@@ -12,10 +12,10 @@ class IconButtonWidget extends StatelessWidget {
     this.icon,
     this.child,
   }) : assert(
-          !(icon != null && child != null),
-          'It is not possible to provide a child and an icon. '
-          'Provide only one.',
-        );
+         !(icon != null && child != null),
+         'It is not possible to provide a child and an icon. '
+         'Provide only one.',
+       );
 
   /// Icon shown when [child] is not provided.
   final IconData? icon;
@@ -40,7 +40,8 @@ class IconButtonWidget extends StatelessWidget {
           width: 40,
           height: 40,
           child: Center(
-            child: child ??
+            child:
+                child ??
                 Icon(
                   icon,
                   color: Theme.of(context).colorScheme.primary,

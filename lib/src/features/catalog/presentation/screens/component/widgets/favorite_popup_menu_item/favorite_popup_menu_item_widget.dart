@@ -48,7 +48,9 @@ class _FavoritePopupMenuItemWidgetState
 
         return PopupMenuItem<void>(
           onTap: () {
-            ref.read(favoritesViewModelProvider.notifier).toggle(
+            ref
+                .read(favoritesViewModelProvider.notifier)
+                .toggle(
                   type: widget.componentType,
                   name: widget.componentName,
                 );

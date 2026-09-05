@@ -141,8 +141,9 @@ class _DropdownMenuSampleState extends State<DropdownMenuSample> {
               const SizedBox(height: 8),
               DropdownMenu<String>(
                 label: const Text('Fruit'),
-                errorText:
-                    _validatedFruit == null ? 'This field is required' : null,
+                errorText: _validatedFruit == null
+                    ? 'This field is required'
+                    : null,
                 dropdownMenuEntries: _getEntries(),
                 onSelected: (value) {
                   setState(() {

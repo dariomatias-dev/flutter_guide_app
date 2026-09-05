@@ -61,9 +61,11 @@ class _HttpSampleState extends State<HttpSample> {
       );
       final response = await http.get(url);
 
-      final results = json.decode(
-        response.body,
-      ) as List;
+      final results =
+          json.decode(
+                response.body,
+              )
+              as List;
 
       final users = <_UserModel>[];
       for (final result in results) {

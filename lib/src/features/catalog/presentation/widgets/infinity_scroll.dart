@@ -55,8 +55,9 @@ class _InfinityScrollState<T> extends State<InfinityScroll<T>> {
 
   int _getItemIndex(int index) {
     final offset = hasHeader ? 1 : 0;
-    final adsBefore =
-        _adInterval > 0 ? ((index - offset) / (_adInterval + 1)).floor() : 0;
+    final adsBefore = _adInterval > 0
+        ? ((index - offset) / (_adInterval + 1)).floor()
+        : 0;
 
     return index - offset - adsBefore;
   }

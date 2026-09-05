@@ -23,8 +23,9 @@ class _ThemeSampleState extends State<ThemeSample> {
 
   void _toggleTheme() {
     setState(() {
-      _theme =
-          _theme == ThemeData.light() ? ThemeData.dark() : ThemeData.light();
+      _theme = _theme == ThemeData.light()
+          ? ThemeData.dark()
+          : ThemeData.light();
     });
   }
 

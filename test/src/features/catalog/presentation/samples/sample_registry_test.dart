@@ -145,7 +145,8 @@ void main() {
         expect(
           names.toSet(),
           hasLength(names.length),
-          reason: '${entry.key} has duplicate names, which would shadow a '
+          reason:
+              '${entry.key} has duplicate names, which would shadow a '
               'sample during lookup',
         );
       }

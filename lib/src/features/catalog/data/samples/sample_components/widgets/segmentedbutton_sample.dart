@@ -79,8 +79,8 @@ class _SegmentedButtonSampleState extends State<SegmentedButtonSample> {
   );
 
   TextStyle get _defaultTextStyle => const TextStyle(
-        fontSize: 12,
-      );
+    fontSize: 12,
+  );
 
   @override
   Widget build(BuildContext context) {

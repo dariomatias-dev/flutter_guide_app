@@ -326,8 +326,9 @@ class _BarChartTabState extends State<_BarChartTab> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final maxAmount =
-        _spending.map((day) => day.amount).reduce((a, b) => a > b ? a : b);
+    final maxAmount = _spending
+        .map((day) => day.amount)
+        .reduce((a, b) => a > b ? a : b);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
@@ -472,13 +473,15 @@ class _BarChartTabState extends State<_BarChartTab> {
                             colors: i == _touchedIndex
                                 ? [
                                     theme.colorScheme.tertiary,
-                                    theme.colorScheme.tertiary
-                                        .withValues(alpha: 0.6),
+                                    theme.colorScheme.tertiary.withValues(
+                                      alpha: 0.6,
+                                    ),
                                   ]
                                 : [
                                     theme.colorScheme.primary,
-                                    theme.colorScheme.primary
-                                        .withValues(alpha: 0.6),
+                                    theme.colorScheme.primary.withValues(
+                                      alpha: 0.6,
+                                    ),
                                   ],
                           ),
                           width: 20,
@@ -667,7 +670,8 @@ class _PieChartTabState extends State<_PieChartTab> {
                             touchCallback: (event, response) {
                               setState(() {
                                 _touchedIndex = response
-                                    ?.touchedSection?.touchedSectionIndex;
+                                    ?.touchedSection
+                                    ?.touchedSectionIndex;
                               });
                             },
                           ),
@@ -983,7 +987,8 @@ class _StackedBarChartTab extends StatelessWidget {
                       x: i,
                       barRods: [
                         BarChartRodData(
-                          toY: _housingByQuarter[i] +
+                          toY:
+                              _housingByQuarter[i] +
                               _foodByQuarter[i] +
                               _transportByQuarter[i],
                           width: 26,
@@ -1026,9 +1031,10 @@ class _AreaChartTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final peakDay = _activeUsersDays[_activeUsers.indexOf(
-      _activeUsers.reduce((a, b) => a > b ? a : b),
-    )];
+    final peakDay =
+        _activeUsersDays[_activeUsers.indexOf(
+          _activeUsers.reduce((a, b) => a > b ? a : b),
+        )];
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),

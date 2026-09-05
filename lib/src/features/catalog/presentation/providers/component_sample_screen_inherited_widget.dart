@@ -18,8 +18,10 @@ class ComponentSampleScreenInheritedWidget extends InheritedWidget {
 
   /// Returns the nearest instance from [context], if any.
   static ComponentSampleScreenInheritedWidget? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<
-        ComponentSampleScreenInheritedWidget>();
+    return context
+        .dependOnInheritedWidgetOfExactType<
+          ComponentSampleScreenInheritedWidget
+        >();
   }
 
   @override

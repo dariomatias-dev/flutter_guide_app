@@ -129,15 +129,16 @@ class _FlutterCardSwiperSampleState extends State<FlutterCardSwiperSample> {
                           });
                           return true;
                         },
-                        cardBuilder: (
-                          context,
-                          index,
-                          horizontalOffset,
-                          verticalOffset,
-                        ) {
-                          final candidate = _candidates[index];
-                          return _CandidateCard(candidate: candidate);
-                        },
+                        cardBuilder:
+                            (
+                              context,
+                              index,
+                              horizontalOffset,
+                              verticalOffset,
+                            ) {
+                              final candidate = _candidates[index];
+                              return _CandidateCard(candidate: candidate);
+                            },
                       ),
               ),
               const SizedBox(height: 24),

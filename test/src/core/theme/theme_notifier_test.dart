@@ -29,8 +29,9 @@ void main() {
   group('ThemeNotifier', () {
     group('build', () {
       test('defaults to dark when nothing saved', () {
-        when(() => service.getString(SharedPreferencesKeys.themeKey))
-            .thenReturn('');
+        when(
+          () => service.getString(SharedPreferencesKeys.themeKey),
+        ).thenReturn('');
 
         final container = makeContainer();
 
@@ -38,8 +39,9 @@ void main() {
       });
 
       test('returns light when light is saved', () {
-        when(() => service.getString(SharedPreferencesKeys.themeKey))
-            .thenReturn(ThemeMode.light.name);
+        when(
+          () => service.getString(SharedPreferencesKeys.themeKey),
+        ).thenReturn(ThemeMode.light.name);
 
         final container = makeContainer();
 
@@ -49,8 +51,9 @@ void main() {
 
     group('toggleTheme', () {
       test('flips dark to light and persists the choice', () async {
-        when(() => service.getString(SharedPreferencesKeys.themeKey))
-            .thenReturn('');
+        when(
+          () => service.getString(SharedPreferencesKeys.themeKey),
+        ).thenReturn('');
 
         final container = makeContainer();
         await container.read(themeNotifierProvider.notifier).toggleTheme();
@@ -65,8 +68,9 @@ void main() {
       });
 
       test('flips light back to dark', () async {
-        when(() => service.getString(SharedPreferencesKeys.themeKey))
-            .thenReturn(ThemeMode.light.name);
+        when(
+          () => service.getString(SharedPreferencesKeys.themeKey),
+        ).thenReturn(ThemeMode.light.name);
 
         final container = makeContainer();
         final notifier = container.read(themeNotifierProvider.notifier);
@@ -76,8 +80,9 @@ void main() {
       });
 
       test('isDarkMode reflects the current state', () {
-        when(() => service.getString(SharedPreferencesKeys.themeKey))
-            .thenReturn('');
+        when(
+          () => service.getString(SharedPreferencesKeys.themeKey),
+        ).thenReturn('');
 
         final container = makeContainer();
 

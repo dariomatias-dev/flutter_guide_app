@@ -57,7 +57,8 @@ class _DocPopupMenuItemWidgetState extends State<DocPopupMenuItemWidget> {
         } else {
           final category = DocPopupMenuItemWidget._category(widget.type!);
 
-          url = 'https://api.flutter.dev/flutter/$category/'
+          url =
+              'https://api.flutter.dev/flutter/$category/'
               '${widget.componentName}'
               '${widget.type != ComponentType.function ? '-class' : ''}.html';
         }

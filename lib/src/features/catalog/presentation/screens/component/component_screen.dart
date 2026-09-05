@@ -35,8 +35,9 @@ class ComponentScreen extends ConsumerWidget {
       name: componentName,
     );
 
-    final docType =
-        componentType == ComponentType.package ? null : component.type;
+    final docType = componentType == ComponentType.package
+        ? null
+        : component.type;
 
     late final String folderName;
     switch (componentType) {

@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-final _effects = <Animate Function({
-  Duration? duration,
-})>[
-  const Text(
-    'Hello World!',
-  ).animate().blur,
-  const Text(
-    'Hello World!',
-  ).animate().flip,
-  const Text(
-    'Hello World!',
-  ).animate().fade,
-  const Text(
-    'Hello World!',
-  ).animate().fadeOut,
-  const Text(
-    'Hello World!',
-  ).animate().scale,
-  const Text(
-    'Hello World!',
-  ).animate().show,
-  const Text(
-    'Hello World!',
-  ).animate().slide,
-];
+final _effects =
+    <
+      Animate Function({
+        Duration? duration,
+      })
+    >[
+      const Text(
+        'Hello World!',
+      ).animate().blur,
+      const Text(
+        'Hello World!',
+      ).animate().flip,
+      const Text(
+        'Hello World!',
+      ).animate().fade,
+      const Text(
+        'Hello World!',
+      ).animate().fadeOut,
+      const Text(
+        'Hello World!',
+      ).animate().scale,
+      const Text(
+        'Hello World!',
+      ).animate().show,
+      const Text(
+        'Hello World!',
+      ).animate().slide,
+    ];
 
 void main() {
   runApp(
@@ -70,8 +73,8 @@ class _FlutterAnimateSampleState extends State<FlutterAnimateSample> {
                             width: 0.5,
                             color:
                                 Theme.of(context).brightness == Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
                         child: _effects[index](

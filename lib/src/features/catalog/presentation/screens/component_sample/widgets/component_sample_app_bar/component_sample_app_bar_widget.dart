@@ -31,8 +31,8 @@ class ComponentSampleAppBarWidget extends StatelessWidget
 
   @override
   Size get preferredSize => const Size.fromHeight(
-        kToolbarHeight * 2,
-      );
+    kToolbarHeight * 2,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class ComponentSampleAppBarWidget extends StatelessWidget
                   AppLocalizations.of(context)!.copy,
                 ),
               ),
-              if (popupMenuItems != null) ...popupMenuItems!,
+              ...?popupMenuItems,
               PopupMenuItem<void>(
                 onTap: () => ComponentSampleAppBarActions.shareComponent(
                   filePath,

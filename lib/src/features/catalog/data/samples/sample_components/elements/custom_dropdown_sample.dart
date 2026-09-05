@@ -212,7 +212,8 @@ class DropdownButtonWidget extends StatefulWidget {
   /// The [onChange].
   final void Function(
     MenuOptionModel<Object?> value,
-  ) onChange;
+  )
+  onChange;
 
   @override
   State<DropdownButtonWidget> createState() => _DropdownButtonWidgetState();
@@ -376,7 +377,8 @@ class MenuWidget extends StatefulWidget {
   /// The [onChange].
   final void Function(
     MenuOptionModel<Object?> value,
-  ) onChange;
+  )
+  onChange;
 
   @override
   State<MenuWidget> createState() => _MenuWidgetState();
@@ -405,8 +407,9 @@ class _MenuWidgetState extends State<MenuWidget> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _isLight = Theme.of(context).brightness == Brightness.light;
       _defaultBackgroundColor = _isLight ? Colors.white : Colors.grey.shade900;
-      _selectedBackgroundColor =
-          _isLight ? Colors.grey.shade300.withAlpha(204) : Colors.black12;
+      _selectedBackgroundColor = _isLight
+          ? Colors.grey.shade300.withAlpha(204)
+          : Colors.black12;
 
       unawaited(_update());
     });
@@ -440,8 +443,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                   maxHeight: isTopDirection
                       ? mediaQuery.size.height - widget.padding.top - 40.0
                       : mediaQuery.size.height -
-                          mediaQuery.padding.top -
-                          widget.padding.bottom,
+                            mediaQuery.padding.top -
+                            widget.padding.bottom,
                 ),
                 child: AnimatedOpacity(
                   opacity: _opacity,
@@ -466,8 +469,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         ),
                         child: SingleChildScrollView(
                           child: Column(
-                            children:
-                                List.generate(widget.options.length, (index) {
+                            children: List.generate(widget.options.length, (
+                              index,
+                            ) {
                               final option = widget.options[index];
 
                               final selected =

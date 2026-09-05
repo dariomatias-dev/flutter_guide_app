@@ -30,8 +30,9 @@ class _UrlLauncherSampleState extends State<UrlLauncherSample> {
   BuildContext _getContext() => context;
 
   Future<void> _openUrl() async {
-    _url =
-        _urlController.text.trim() == '' ? _standardUrl : _urlController.text;
+    _url = _urlController.text.trim() == ''
+        ? _standardUrl
+        : _urlController.text;
 
     if (!_url.startsWith('https://') || !await launchUrl(Uri.parse(_url))) {
       unawaited(

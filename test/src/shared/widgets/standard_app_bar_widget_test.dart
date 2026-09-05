@@ -15,21 +15,22 @@ void main() {
 
   setUp(() {
     service = MockSharedPreferencesService();
-    when(() => service.getString(SharedPreferencesKeys.themeKey))
-        .thenReturn('');
+    when(
+      () => service.getString(SharedPreferencesKeys.themeKey),
+    ).thenReturn('');
     when(() => service.setString(any(), any())).thenAnswer((_) async => true);
   });
 
   Widget wrap(StandardAppBarWidget appBar) => ProviderScope(
-        overrides: [
-          sharedPreferencesServiceProvider.overrideWithValue(service),
-        ],
-        child: MaterialApp(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          home: Scaffold(appBar: appBar),
-        ),
-      );
+    overrides: [
+      sharedPreferencesServiceProvider.overrideWithValue(service),
+    ],
+    child: MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      home: Scaffold(appBar: appBar),
+    ),
+  );
 
   group('StandardAppBarWidget', () {
     testWidgets('renders the title from titleName', (tester) async {
@@ -48,8 +49,9 @@ void main() {
       expect(find.byType(BackButtonWidget), findsOneWidget);
     });
 
-    testWidgets('hides the back button when showBackButton is false',
-        (tester) async {
+    testWidgets('hides the back button when showBackButton is false', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         wrap(
           const StandardAppBarWidget(

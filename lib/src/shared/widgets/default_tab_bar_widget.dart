@@ -17,7 +17,8 @@ class DefaultTabBarWidget extends StatelessWidget
   /// Called with the tapped tab index.
   final void Function(
     int value,
-  ) onTap;
+  )
+  onTap;
 
   /// The tabs to display.
   final List<Widget> tabs;

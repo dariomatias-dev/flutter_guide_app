@@ -4,5 +4,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Provides the app-wide [MainNavigationNotifier].
 final mainNavigationNotifierProvider =
     NotifierProvider<MainNavigationNotifier, int>(
-  MainNavigationNotifier.new,
-);
+      MainNavigationNotifier.new,
+    );

@@ -25,8 +25,10 @@ void main() {
       });
 
       test('tags every returned component with the requested type', () {
-        final elements =
-            datasource.getByType(ComponentType.elements, locale: locale);
+        final elements = datasource.getByType(
+          ComponentType.elements,
+          locale: locale,
+        );
 
         expect(
           elements.every((c) => c.type == ComponentType.elements),
@@ -37,8 +39,9 @@ void main() {
 
     group('getByName', () {
       test('returns the component matching the given name', () {
-        final first =
-            datasource.getByType(ComponentType.widget, locale: locale).first;
+        final first = datasource
+            .getByType(ComponentType.widget, locale: locale)
+            .first;
 
         final found = datasource.getByName(
           type: ComponentType.widget,

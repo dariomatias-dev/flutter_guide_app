@@ -125,7 +125,8 @@ void main() {
   group('AppRouter component sample route', () {
     const args = ComponentSampleArgs(
       title: 'Center',
-      filePath: 'lib/src/features/catalog/data/samples/'
+      filePath:
+          'lib/src/features/catalog/data/samples/'
           'sample_components/widgets/center_sample.dart',
       componentName: 'Center',
       sample: SizedBox.shrink(),

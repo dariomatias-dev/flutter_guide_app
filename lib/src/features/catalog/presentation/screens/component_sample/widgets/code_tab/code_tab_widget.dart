@@ -21,7 +21,8 @@ class CodeTabWidget extends ConsumerStatefulWidget {
   /// Returns the chunk of source lines at a given index.
   final List<String> Function(
     int index,
-  ) getChunck;
+  )
+  getChunck;
 
   /// Notifier holding the current code font size.
   final ValueNotifier<double> fontSizeNotifier;
@@ -47,7 +48,7 @@ class _CodeTabWidgetState extends ConsumerState<CodeTabWidget> {
     final isDark = ref.watch(themeNotifierProvider) == ThemeMode.dark;
     final codeTheme = ref.watch(codeThemeViewModelProvider);
 
-    ref.listen(themeNotifierProvider, (_, __) {
+    ref.listen(themeNotifierProvider, (_, _) {
       _controller.onThemeChanged();
     });
 
@@ -78,8 +79,9 @@ class _CodeTabWidgetState extends ConsumerState<CodeTabWidget> {
                   return SyntaxHighlighter(
                     code: codeString,
                     isDarkMode: isDark,
-                    maxCharCount:
-                        widget.lineCountNotifier.value.toString().length,
+                    maxCharCount: widget.lineCountNotifier.value
+                        .toString()
+                        .length,
                     fontSize: fontSize,
                     lightColorSchema: codeTheme.selectedLightTheme,
                     darkColorSchema: codeTheme.selectedDarkTheme,

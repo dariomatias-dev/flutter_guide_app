@@ -33,8 +33,8 @@ class AutocompleteSample extends StatelessWidget {
           optionsBuilder: (textEditingValue) {
             return _programmingLanguages.where((programmingLanguage) {
               return programmingLanguage.toLowerCase().contains(
-                    textEditingValue.text.trim().toLowerCase(),
-                  );
+                textEditingValue.text.trim().toLowerCase(),
+              );
             });
           },
           onSelected: (selection) {},

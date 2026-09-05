@@ -60,8 +60,9 @@ void main() {
     });
 
     test('getSavedComponentNames delegates to the datasource', () {
-      when(() => datasource.getSavedNames(ComponentType.package))
-          .thenReturn(['dio']);
+      when(
+        () => datasource.getSavedNames(ComponentType.package),
+      ).thenReturn(['dio']);
 
       final result = repository.getSavedComponentNames(ComponentType.package);
 

@@ -12,7 +12,8 @@ class CodeTabController {
   CodeTabController({
     required List<String> Function(
       int index,
-    ) getChunck,
+    )
+    getChunck,
     Logger? logger,
   }) : _logger = logger ?? Logger() {
     _getChunck = getChunck;
@@ -21,7 +22,8 @@ class CodeTabController {
 
   late final List<String> Function(
     int index,
-  ) _getChunck;
+  )
+  _getChunck;
 
   final Logger _logger;
 

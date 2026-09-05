@@ -15,10 +15,10 @@ class StandardAppBarWidget extends StatelessWidget
     this.actions,
     this.bottom,
   }) : assert(
-          !(titleName != null && title != null),
-          'You may not supply both the name of the title and the title '
-          'simultaneously.',
-        );
+         !(titleName != null && title != null),
+         'You may not supply both the name of the title and the title '
+         'simultaneously.',
+       );
 
   /// Whether to show a leading back button.
   final bool showBackButton;
@@ -50,7 +50,8 @@ class StandardAppBarWidget extends StatelessWidget
       surfaceTintColor: secondaryColor,
       backgroundColor: secondaryColor,
       leading: showBackButton ? const BackButtonWidget() : null,
-      title: title ??
+      title:
+          title ??
           Text(
             titleName!,
             style: const TextStyle(
@@ -61,7 +62,7 @@ class StandardAppBarWidget extends StatelessWidget
       actions: <Widget>[
         const ChangeThemeButtonWidget(),
         const SizedBox(width: 4),
-        if (actions != null) ...actions!,
+        ...?actions,
       ],
       bottom: bottom,
     );

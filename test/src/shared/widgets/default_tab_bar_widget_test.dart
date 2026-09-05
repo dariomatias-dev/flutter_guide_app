@@ -4,11 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   Widget wrap(Widget child) => MaterialApp(
-        home: DefaultTabController(
-          length: 2,
-          child: Scaffold(body: child),
-        ),
-      );
+    home: DefaultTabController(
+      length: 2,
+      child: Scaffold(body: child),
+    ),
+  );
 
   group('DefaultTabBarWidget', () {
     testWidgets('renders the given tabs', (tester) async {
@@ -16,7 +16,10 @@ void main() {
         wrap(
           DefaultTabBarWidget(
             onTap: (_) {},
-            tabs: const [Tab(text: 'One'), Tab(text: 'Two')],
+            tabs: const [
+              Tab(text: 'One'),
+              Tab(text: 'Two'),
+            ],
           ),
         ),
       );
@@ -31,7 +34,10 @@ void main() {
         wrap(
           DefaultTabBarWidget(
             onTap: (value) => tapped = value,
-            tabs: const [Tab(text: 'One'), Tab(text: 'Two')],
+            tabs: const [
+              Tab(text: 'One'),
+              Tab(text: 'Two'),
+            ],
           ),
         ),
       );

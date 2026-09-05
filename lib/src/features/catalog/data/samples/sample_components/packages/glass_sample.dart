@@ -32,22 +32,23 @@ class GlassSample extends StatelessWidget {
             ),
           ),
           Center(
-            child: const SizedBox(
-              width: 200,
-              height: 200,
-              child: Center(
-                child: Text(
-                  'Glass Effect',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
+            child:
+                const SizedBox(
+                  width: 200,
+                  height: 200,
+                  child: Center(
+                    child: Text(
+                      'Glass Effect',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
+                ).asGlass(
+                  tintColor: Colors.black,
+                  clipBorderRadius: BorderRadius.circular(20),
                 ),
-              ),
-            ).asGlass(
-              tintColor: Colors.black,
-              clipBorderRadius: BorderRadius.circular(20),
-            ),
           ),
         ],
       ),

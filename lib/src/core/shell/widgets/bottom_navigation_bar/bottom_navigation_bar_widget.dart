@@ -20,12 +20,14 @@ class BottomNavigationBarWidget extends StatelessWidget {
   /// Called with the new index when the selection changes.
   final void Function(
     int value,
-  ) updateScreenIndex;
+  )
+  updateScreenIndex;
 
   /// Returns the label for the tab at the given index.
   final String Function(
     int index,
-  ) getBottomNavigationBarName;
+  )
+  getBottomNavigationBarName;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
           BoxShadow(
             blurRadius: 0.5,
             spreadRadius: 0.5,
-            color:
-                isDark ? Colors.grey.withAlpha(26) : Colors.black.withAlpha(18),
+            color: isDark
+                ? Colors.grey.withAlpha(26)
+                : Colors.black.withAlpha(18),
           ),
         ],
       ),

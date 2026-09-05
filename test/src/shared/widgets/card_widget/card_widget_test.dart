@@ -27,17 +27,17 @@ void main() {
   });
 
   Widget scope({String? videoId, EdgeInsets? padding}) => ProviderScope(
-        overrides: [
-          favoritesRepositoryProvider.overrideWithValue(repository),
-        ],
-        child: CardWidget(
-          icon: Icons.star,
-          componentName: 'Container',
-          componentType: ComponentType.widget,
-          videoId: videoId,
-          padding: padding,
-        ),
-      );
+    overrides: [
+      favoritesRepositoryProvider.overrideWithValue(repository),
+    ],
+    child: CardWidget(
+      icon: Icons.star,
+      componentName: 'Container',
+      componentType: ComponentType.widget,
+      videoId: videoId,
+      padding: padding,
+    ),
+  );
 
   group('CardWidget', () {
     testWidgets('renders the name, icon and save button', (tester) async {

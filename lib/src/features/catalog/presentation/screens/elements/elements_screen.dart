@@ -57,8 +57,9 @@ class _ElementsScreenState extends ConsumerState<ElementsScreen>
     });
 
     final tabIndex = ref.watch(elementsScreenTabIndexNotifierProvider);
-    final componentType =
-        tabIndex == 0 ? ComponentType.widget : ComponentType.function;
+    final componentType = tabIndex == 0
+        ? ComponentType.widget
+        : ComponentType.function;
 
     return Column(
       children: <Widget>[

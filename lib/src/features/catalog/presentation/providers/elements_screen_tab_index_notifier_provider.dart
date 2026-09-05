@@ -4,5 +4,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Provides the [ElementsScreenTabIndexNotifier].
 final elementsScreenTabIndexNotifierProvider =
     NotifierProvider<ElementsScreenTabIndexNotifier, int>(
-  ElementsScreenTabIndexNotifier.new,
-);
+      ElementsScreenTabIndexNotifier.new,
+    );

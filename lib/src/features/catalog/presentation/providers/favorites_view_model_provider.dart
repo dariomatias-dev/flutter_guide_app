@@ -5,5 +5,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Provides the [FavoritesViewModel].
 final favoritesViewModelProvider =
     NotifierProvider<FavoritesViewModel, Map<ComponentType, Set<String>>>(
-  FavoritesViewModel.new,
-);
+      FavoritesViewModel.new,
+    );

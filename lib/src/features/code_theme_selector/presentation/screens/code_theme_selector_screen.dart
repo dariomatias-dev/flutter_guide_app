@@ -92,7 +92,9 @@ class _CodeThemeSelectorScreenState
             selectedSchema: codeTheme.selectedLightTheme,
             onThemeSelected: (name, schema) {
               unawaited(
-                ref.read(codeThemeViewModelProvider.notifier).updateTheme(
+                ref
+                    .read(codeThemeViewModelProvider.notifier)
+                    .updateTheme(
                       name: name,
                       schema: schema,
                       isDark: false,
@@ -107,7 +109,9 @@ class _CodeThemeSelectorScreenState
             selectedSchema: codeTheme.selectedDarkTheme,
             onThemeSelected: (name, schema) {
               unawaited(
-                ref.read(codeThemeViewModelProvider.notifier).updateTheme(
+                ref
+                    .read(codeThemeViewModelProvider.notifier)
+                    .updateTheme(
                       name: name,
                       schema: schema,
                       isDark: true,

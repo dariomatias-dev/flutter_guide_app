@@ -374,7 +374,8 @@ class TextFormFieldWidget extends StatelessWidget {
   /// The [validator].
   final String? Function(
     String? value,
-  ) validator;
+  )
+  validator;
 
   @override
   Widget build(BuildContext context) {

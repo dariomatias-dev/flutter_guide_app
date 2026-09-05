@@ -62,16 +62,18 @@ class ListTileItemWidget extends StatelessWidget {
                       if (icon != null)
                         Icon(
                           icon,
-                          color:
-                              primaryColor.withAlpha(onTap == null ? 128 : 255),
+                          color: primaryColor.withAlpha(
+                            onTap == null ? 128 : 255,
+                          ),
                           size: 20,
                         ),
                       const SizedBox(width: 12),
                       Text(
                         title,
                         style: TextStyle(
-                          color:
-                              primaryColor.withAlpha(onTap == null ? 153 : 255),
+                          color: primaryColor.withAlpha(
+                            onTap == null ? 153 : 255,
+                          ),
                           fontSize: 14,
                         ),
                       ),
@@ -87,7 +89,7 @@ class ListTileItemWidget extends StatelessWidget {
                       color: primaryColor.withAlpha(onTap == null ? 128 : 255),
                       size: 18,
                     ),
-                  if (trailingWidgets != null) ...trailingWidgets!,
+                  ...?trailingWidgets,
                 ],
               ),
             ],

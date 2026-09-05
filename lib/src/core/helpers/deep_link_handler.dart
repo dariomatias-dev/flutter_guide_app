@@ -27,11 +27,13 @@ class DeepLinkHandler {
     required BuildContext context,
   }) {
     final container = ProviderScope.containerOf(context);
-    _elementsTabNotifier =
-        container.read(elementsScreenTabIndexNotifierProvider.notifier);
+    _elementsTabNotifier = container.read(
+      elementsScreenTabIndexNotifierProvider.notifier,
+    );
     _componentsRepository = container.read(componentsRepositoryProvider);
-    _navigationNotifier =
-        container.read(mainNavigationNotifierProvider.notifier);
+    _navigationNotifier = container.read(
+      mainNavigationNotifierProvider.notifier,
+    );
   }
 
   /// Router used to perform navigation.

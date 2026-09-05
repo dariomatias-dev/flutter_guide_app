@@ -15,12 +15,12 @@ class DismissibleSample extends StatelessWidget {
   const DismissibleSample({super.key});
 
   ListTile get _listTile => const ListTile(
-        title: Text('Title'),
-        subtitle: Text('Subtitle'),
-        trailing: Icon(
-          Icons.swap_horiz,
-        ),
-      );
+    title: Text('Title'),
+    subtitle: Text('Subtitle'),
+    trailing: Icon(
+      Icons.swap_horiz,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {

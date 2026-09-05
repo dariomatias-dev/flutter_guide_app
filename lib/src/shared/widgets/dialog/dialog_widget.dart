@@ -61,8 +61,9 @@ class DialogWidget extends StatelessWidget {
             if (description != null)
               Padding(
                 padding: EdgeInsets.only(
-                  bottom:
-                      (children.isNotEmpty || actions.isNotEmpty) ? 20.0 : 0.0,
+                  bottom: (children.isNotEmpty || actions.isNotEmpty)
+                      ? 20.0
+                      : 0.0,
                 ),
                 child: Text(
                   description!,

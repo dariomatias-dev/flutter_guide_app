@@ -13,7 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../helpers/pump_app.dart';
 import '../../../../../../helpers/pump_router_app.dart';
 
-const _filePath = 'lib/src/features/catalog/data/samples/'
+const _filePath =
+    'lib/src/features/catalog/data/samples/'
     'sample_components/widgets/center_sample.dart';
 
 const _sampleKey = Key('sample');

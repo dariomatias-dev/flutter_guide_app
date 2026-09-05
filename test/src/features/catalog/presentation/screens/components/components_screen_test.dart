@@ -35,15 +35,15 @@ void main() {
   });
 
   Widget scope(List<Component> components) => ProviderScope(
-        overrides: [
-          favoritesRepositoryProvider.overrideWithValue(repository),
-        ],
-        child: ComponentsScreen(
-          key: const ValueKey(ComponentType.widget),
-          componentType: ComponentType.widget,
-          components: components,
-        ),
-      );
+    overrides: [
+      favoritesRepositoryProvider.overrideWithValue(repository),
+    ],
+    child: ComponentsScreen(
+      key: const ValueKey(ComponentType.widget),
+      componentType: ComponentType.widget,
+      components: components,
+    ),
+  );
 
   testWidgets(
     'search text and filter survive when components list changes '

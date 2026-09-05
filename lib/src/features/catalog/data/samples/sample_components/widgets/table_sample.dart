@@ -51,7 +51,7 @@ const _verticalAlignments = <_VerticalAlignmentModel>[
 ];
 
 final List<DropdownMenuItem<TableCellVerticalAlignment>>
-    _verticalAlignmentItems = List.generate(
+_verticalAlignmentItems = List.generate(
   _verticalAlignments.length,
   (index) {
     final verticalAlignment = _verticalAlignments[index];

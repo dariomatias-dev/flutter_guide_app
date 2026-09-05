@@ -81,7 +81,8 @@ void main() {
     ) async {
       const args = ComponentSampleArgs(
         title: 'Center',
-        filePath: 'lib/src/features/catalog/data/samples/'
+        filePath:
+            'lib/src/features/catalog/data/samples/'
             'sample_components/widgets/center_sample.dart',
         componentName: 'Center',
         sample: SizedBox.shrink(),

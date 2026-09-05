@@ -36,10 +36,12 @@ void main() {
   group('FavoritesViewModel', () {
     group('build', () {
       test('seeds the tracked types from the repository', () {
-        when(() => repository.getSavedComponentNames(ComponentType.widget))
-            .thenReturn(['Container']);
-        when(() => repository.getSavedComponentNames(ComponentType.function))
-            .thenReturn(['showDialog']);
+        when(
+          () => repository.getSavedComponentNames(ComponentType.widget),
+        ).thenReturn(['Container']);
+        when(
+          () => repository.getSavedComponentNames(ComponentType.function),
+        ).thenReturn(['showDialog']);
 
         final state = makeContainer().read(favoritesViewModelProvider);
 
@@ -51,8 +53,9 @@ void main() {
 
     group('isFavorite', () {
       test('returns true for a seeded name', () {
-        when(() => repository.getSavedComponentNames(ComponentType.widget))
-            .thenReturn(['Container']);
+        when(
+          () => repository.getSavedComponentNames(ComponentType.widget),
+        ).thenReturn(['Container']);
 
         final vm = notifier(makeContainer());
 
@@ -84,8 +87,9 @@ void main() {
         final container = makeContainer();
         final vm = notifier(container);
 
-        when(() => repository.getSavedComponentNames(ComponentType.widget))
-            .thenReturn(['Container']);
+        when(
+          () => repository.getSavedComponentNames(ComponentType.widget),
+        ).thenReturn(['Container']);
         final saved = vm.toggle(type: ComponentType.widget, name: 'Container');
 
         expect(saved, isTrue);

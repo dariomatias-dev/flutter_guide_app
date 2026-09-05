@@ -51,8 +51,8 @@ class _StepperSampleState extends State<StepperSample> {
         state: index < _currentStep
             ? StepState.complete
             : index == _currentStep
-                ? StepState.editing
-                : StepState.indexed,
+            ? StepState.editing
+            : StepState.indexed,
         isActive: index <= _currentStep,
       );
     });

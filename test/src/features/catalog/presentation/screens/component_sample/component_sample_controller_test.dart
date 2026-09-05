@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/component_sample_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-const _filePath = 'lib/src/features/catalog/data/samples/'
+const _filePath =
+    'lib/src/features/catalog/data/samples/'
     'sample_components/widgets/paginateddatatable_sample.dart';
 
 void main() {

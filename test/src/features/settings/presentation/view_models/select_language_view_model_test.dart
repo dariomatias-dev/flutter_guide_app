@@ -29,8 +29,9 @@ void main() {
 
   group('SelectLanguageViewModel', () {
     test('build resolves the Language matching the selected code', () {
-      when(() => repository.getSelectedLanguage())
-          .thenReturn(LanguagesApp.ptBr);
+      when(
+        () => repository.getSelectedLanguage(),
+      ).thenReturn(LanguagesApp.ptBr);
 
       final language = makeContainer().read(selectLanguageViewModelProvider);
 

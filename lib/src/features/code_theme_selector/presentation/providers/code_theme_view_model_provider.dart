@@ -5,5 +5,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Provides the [CodeThemeViewModel].
 final codeThemeViewModelProvider =
     NotifierProvider<CodeThemeViewModel, CodeTheme>(
-  CodeThemeViewModel.new,
-);
+      CodeThemeViewModel.new,
+    );

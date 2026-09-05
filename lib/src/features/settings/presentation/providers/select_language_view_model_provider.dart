@@ -5,5 +5,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Provides the [SelectLanguageViewModel].
 final selectLanguageViewModelProvider =
     NotifierProvider<SelectLanguageViewModel, Language>(
-  SelectLanguageViewModel.new,
-);
+      SelectLanguageViewModel.new,
+    );

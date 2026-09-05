@@ -119,13 +119,15 @@ final messages = <MessageModel>[
     sentDate: DateTime(2024, 1, 5, 4, 1),
   ),
   MessageModel(
-    text: 'By the way, have you seen the new movie that was released last '
+    text:
+        'By the way, have you seen the new movie that was released last '
         "week? It's getting great reviews.",
     status: MessageStatus.received,
     sentDate: DateTime(2024, 1, 5, 4, 7),
   ),
   MessageModel(
-    text: "No, I haven't had the chance yet. Maybe we can watch it after "
+    text:
+        "No, I haven't had the chance yet. Maybe we can watch it after "
         'the hike.',
     status: MessageStatus.sent,
     sentDate: DateTime(2024, 1, 6, 20, 37),
@@ -415,16 +417,18 @@ class MessageWidget extends StatelessWidget {
     final isLight = theme.brightness == Brightness.light;
 
     final sentColor = theme.colorScheme.primary;
-    final receivedColor =
-        isLight ? theme.colorScheme.secondary : theme.colorScheme.surface;
+    final receivedColor = isLight
+        ? theme.colorScheme.secondary
+        : theme.colorScheme.surface;
     final sentTextColor = isLight ? Colors.white : Colors.black;
     final receivedTextColor = theme.colorScheme.onSurface;
 
     return Align(
       alignment: isMessageSent ? Alignment.centerRight : Alignment.centerLeft,
       child: Column(
-        crossAxisAlignment:
-            isMessageSent ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        crossAxisAlignment: isMessageSent
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
         children: [
           Container(
             constraints: BoxConstraints(

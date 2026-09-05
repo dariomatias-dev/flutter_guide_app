@@ -8,7 +8,8 @@ import 'package:share_plus_platform_interface/share_plus_platform_interface.dart
 
 import '../../../../../../../../helpers/pump_app.dart';
 
-const _filePath = 'lib/src/features/catalog/data/samples/'
+const _filePath =
+    'lib/src/features/catalog/data/samples/'
     'sample_components/widgets/center_sample.dart';
 
 /// A [SharePlatform] that records share calls instead of performing them.

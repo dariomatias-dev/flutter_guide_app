@@ -13,6 +13,12 @@ analyzer:
   # analyze it.
   exclude:
     - build/**
+    # Generated sources. They are rewritten from their inputs, so a lint
+    # here can only be fixed by changing the generator or its configuration,
+    # never by editing the file. The gen-l10n output ships an ignore header
+    # of its own; build_runner output does not.
+    - "**/*.g.dart"
+    - lib/l10n/app_localizations*.dart
 
 linter:
   # Project-specific overrides go here. Disable a rule with `rule: false` or

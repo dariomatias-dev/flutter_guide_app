@@ -34,8 +34,9 @@ void main() {
     ).thenReturn(_component);
 
     favoritesRepository = MockFavoritesRepository();
-    when(() => favoritesRepository.getSavedComponentNames(any()))
-        .thenReturn([]);
+    when(
+      () => favoritesRepository.getSavedComponentNames(any()),
+    ).thenReturn([]);
     when(
       () => favoritesRepository.toggleFavorite(
         type: any(named: 'type'),
@@ -53,17 +54,17 @@ void main() {
     // `Widget Function(Widget)` parameter.
     // ignore: avoid_types_on_closure_parameters
     return (Widget app) => ProviderScope(
-          overrides: [
-            sharedPreferencesProvider.overrideWithValue(prefs),
-            componentsRepositoryProvider.overrideWithValue(
-              componentsRepository,
-            ),
-            favoritesRepositoryProvider.overrideWithValue(
-              favoritesRepository,
-            ),
-          ],
-          child: app,
-        );
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+        componentsRepositoryProvider.overrideWithValue(
+          componentsRepository,
+        ),
+        favoritesRepositoryProvider.overrideWithValue(
+          favoritesRepository,
+        ),
+      ],
+      child: app,
+    );
   }
 
   const componentScreen = ComponentScreen(

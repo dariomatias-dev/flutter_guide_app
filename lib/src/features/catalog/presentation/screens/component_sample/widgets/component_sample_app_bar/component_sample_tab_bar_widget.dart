@@ -20,8 +20,8 @@ class ComponentSampleTabBarWidget extends StatelessWidget
 
   @override
   Size get preferredSize => const Size.fromHeight(
-        kToolbarHeight,
-      );
+    kToolbarHeight,
+  );
 
   @override
   Widget build(BuildContext context) {

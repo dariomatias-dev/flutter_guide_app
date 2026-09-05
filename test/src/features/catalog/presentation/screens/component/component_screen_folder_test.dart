@@ -133,10 +133,9 @@ void main() {
     ) async {
       await pumpScreen(tester, type: ComponentType.package, name: 'uuid');
 
-      final docItem = sampleScreen(tester)
-          .popupMenuItems!
-          .whereType<DocPopupMenuItemWidget>()
-          .single;
+      final docItem = sampleScreen(
+        tester,
+      ).popupMenuItems!.whereType<DocPopupMenuItemWidget>().single;
 
       expect(docItem.type, isNull);
     });
@@ -146,10 +145,9 @@ void main() {
     ) async {
       await pumpScreen(tester, type: ComponentType.widget, name: 'Align');
 
-      final docItem = sampleScreen(tester)
-          .popupMenuItems!
-          .whereType<DocPopupMenuItemWidget>()
-          .single;
+      final docItem = sampleScreen(
+        tester,
+      ).popupMenuItems!.whereType<DocPopupMenuItemWidget>().single;
 
       expect(docItem.type, ComponentType.widget);
     });

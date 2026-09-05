@@ -90,8 +90,9 @@ void main() {
         find.byType(InterfaceCatalogScreen),
       );
       final uiNames = getUis(screenContext).map((item) => item.name).toSet();
-      final elementNames =
-          getElements(screenContext).map((item) => item.name).toSet();
+      final elementNames = getElements(
+        screenContext,
+      ).map((item) => item.name).toSet();
 
       expect(uiNames.intersection(elementNames), isEmpty);
     });

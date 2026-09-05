@@ -28,7 +28,8 @@ class ThemeListWidget extends StatelessWidget {
   final void Function(
     String name,
     SyntaxColorSchema schema,
-  ) onThemeSelected;
+  )
+  onThemeSelected;
 
   /// Code snippet shown in each card's preview.
   final String previewCode;

@@ -5,7 +5,8 @@ extension ListExtension<R> on List<R> {
     T Function(
       R e,
       int index,
-    ) toElement,
+    )
+    toElement,
   ) {
     return List<T>.generate(
       length,

@@ -26,8 +26,9 @@ void main() {
       const components = [
         Component(name: 'Container', type: ComponentType.widget),
       ];
-      when(() => datasource.getByType(ComponentType.widget, locale: locale))
-          .thenReturn(components);
+      when(
+        () => datasource.getByType(ComponentType.widget, locale: locale),
+      ).thenReturn(components);
 
       final result = repository.getComponentsByType(ComponentType.widget);
 

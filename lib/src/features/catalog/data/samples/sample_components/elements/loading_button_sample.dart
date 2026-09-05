@@ -27,21 +27,21 @@ class _LoadingButtonSampleState extends State<LoadingButtonSample> {
   BorderRadius get _standardBorderRadius => BorderRadius.circular(24);
 
   Widget get _loadingWidget => const SizedBox(
-        width: 26,
-        height: 26,
-        child: CircularProgressIndicator(
-          color: Colors.white,
-          strokeWidth: 2,
-        ),
-      );
+    width: 26,
+    height: 26,
+    child: CircularProgressIndicator(
+      color: Colors.white,
+      strokeWidth: 2,
+    ),
+  );
 
   Widget get _loadWidget => const Text(
-        'Load',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-      );
+    'Load',
+    style: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w500,
+    ),
+  );
 
   Widget _isSuccessWidget() {
     return _isSuccess!
@@ -117,16 +117,16 @@ class _LoadingButtonSampleState extends State<LoadingButtonSample> {
               decoration: BoxDecoration(
                 color: _isSuccess != null
                     ? _isSuccess!
-                        ? Colors.green
-                        : Colors.red
+                          ? Colors.green
+                          : Colors.red
                     : Colors.blue,
                 borderRadius: _standardBorderRadius,
               ),
               child: _isLoading
                   ? _loadingWidget
                   : _isSuccess != null
-                      ? _isSuccessWidget()
-                      : _loadWidget,
+                  ? _isSuccessWidget()
+                  : _loadWidget,
             ),
           ),
         ),

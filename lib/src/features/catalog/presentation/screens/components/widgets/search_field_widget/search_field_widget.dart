@@ -18,7 +18,8 @@ class SearchFieldWidget extends StatefulWidget {
   /// Called with the query whenever it changes.
   final void Function(
     String value,
-  ) onChange;
+  )
+  onChange;
 
   /// Called when the search is cleared.
   final VoidCallback searchClear;
