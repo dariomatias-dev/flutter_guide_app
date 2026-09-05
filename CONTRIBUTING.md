@@ -139,6 +139,22 @@ database.
 - For this repo (single maintainer), self-merge after CI passes is allowed;
   branch protection still requires the PR flow and passing checks.
 
+## Dependencies
+
+[Renovate](https://docs.renovatebot.com) opens the update pull requests, on a
+weekly schedule, prefixed `build(deps):` so the commits pass the message hook
+and feed release-please. `renovate.json` holds the rules; the dependency
+dashboard issue lists everything it is holding back.
+
+Renovate rather than Dependabot because only Renovate can disable or group
+updates by package name, which is what keeps a weekly pull request nobody
+should merge from being opened at all. Never run both.
+
+Two rules exist today: `intl` is dictated by the `flutter_localizations` that
+ships with the pinned SDK, so it moves with the SDK; and `go_router` moves
+together with its route generator, since a skew between them fails code
+generation rather than analysis.
+
 ## Code style
 
 - Follows `very_good_analysis` lints, enforced by the gate above.
