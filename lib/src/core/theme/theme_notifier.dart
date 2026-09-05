@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/constants/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/services/shared_preferences_service.dart';
-import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Holds and persists the app's [ThemeMode].

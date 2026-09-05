@@ -1,5 +1,5 @@
+import 'package:flutter_guide/src/core/constants/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/core/services/shared_preferences_service.dart';
-import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/data/repositories/code_theme_repository_impl.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/domain/entities/code_theme.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';

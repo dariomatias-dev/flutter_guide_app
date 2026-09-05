@@ -50,7 +50,7 @@ class AppFailureScreen extends StatelessWidget {
     final dispatcher = WidgetsBinding.instance.platformDispatcher;
     final theme = dispatcher.platformBrightness == Brightness.dark
         ? darkMode
-        : ligthMode;
+        : lightMode;
     final retry = onRetry;
     final details = technicalDetails;
 

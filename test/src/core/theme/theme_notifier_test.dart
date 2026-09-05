@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/constants/shared_preferences_keys.dart';
 import 'package:flutter_guide/src/core/di/shared_preferences_provider.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
-import 'package:flutter_guide/src/core/shared_preferences_keys.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

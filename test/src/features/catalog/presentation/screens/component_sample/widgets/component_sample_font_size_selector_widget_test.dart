@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide/src/core/flutter_guide_colors.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_colors.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/screens/component_sample/widgets/component_sample_font_size_selector_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 
