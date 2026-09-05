@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_durations.dart';
 
 /// Controls the component sample screen: tabs, code paging and font size.
 class ComponentSampleController {
@@ -82,9 +83,7 @@ class ComponentSampleController {
     unawaited(
       pageController.animateToPage(
         currentTabIndex,
-        duration: const Duration(
-          milliseconds: 300,
-        ),
+        duration: AppDurations.base,
         curve: Curves.easeInOut,
       ),
     );

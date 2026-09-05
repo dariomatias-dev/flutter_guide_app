@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
+
 /// A styled dialog with an optional title, description, body and actions.
 class DialogWidget extends StatelessWidget {
   /// Creates a [DialogWidget].
@@ -23,7 +26,7 @@ class DialogWidget extends StatelessWidget {
   /// Body widgets shown between the description and actions.
   final List<Widget> children;
 
-  BorderRadius get _borderRadius => BorderRadius.circular(16);
+  BorderRadius get _borderRadius => BorderRadius.circular(AppRadius.medium);
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +40,8 @@ class DialogWidget extends StatelessWidget {
       elevation: 8,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 24,
+          horizontal: AppSpacing.xxl,
+          vertical: AppSpacing.xxl,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -47,7 +50,7 @@ class DialogWidget extends StatelessWidget {
             if (title != null)
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 12,
+                  bottom: AppSpacing.md,
                 ),
                 child: Text(
                   title!,
@@ -62,7 +65,7 @@ class DialogWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                   bottom: (children.isNotEmpty || actions.isNotEmpty)
-                      ? 20.0
+                      ? AppSpacing.xl
                       : 0.0,
                 ),
                 child: Text(
@@ -76,8 +79,10 @@ class DialogWidget extends StatelessWidget {
             if (children.isNotEmpty)
               Padding(
                 padding: EdgeInsets.only(
-                  top: (title != null || description != null) ? 20.0 : 0.0,
-                  bottom: actions.isNotEmpty ? 24.0 : 0.0,
+                  top: (title != null || description != null)
+                      ? AppSpacing.xl
+                      : 0.0,
+                  bottom: actions.isNotEmpty ? AppSpacing.xxl : 0.0,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -86,7 +91,7 @@ class DialogWidget extends StatelessWidget {
               ),
             if (actions.isNotEmpty)
               Wrap(
-                spacing: 12,
+                spacing: AppSpacing.md,
                 children: actions,
               ),
           ],

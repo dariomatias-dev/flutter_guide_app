@@ -33,11 +33,9 @@ class OpenUrlErrorDialog extends StatelessWidget {
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              letterSpacing: 1,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(letterSpacing: 1),
             children: <TextSpan>[
               TextSpan(
                 text: '${appLocalizations.errorOpeningLink}: ',

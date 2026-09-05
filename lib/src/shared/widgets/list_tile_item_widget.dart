@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/shared/widgets/ink_well_button_widget.dart';
 
 /// A tappable list row with an optional icon, title and trailing widgets.
@@ -48,14 +49,14 @@ class ListTileItemWidget extends StatelessWidget {
         padding: padding ?? EdgeInsets.zero,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 10,
+            horizontal: AppSpacing.smMd,
           ),
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 12,
+                    vertical: AppSpacing.md,
                   ),
                   child: Row(
                     children: <Widget>[
@@ -70,11 +71,10 @@ class ListTileItemWidget extends StatelessWidget {
                       const SizedBox(width: 12),
                       Text(
                         title,
-                        style: TextStyle(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: primaryColor.withAlpha(
                             onTap == null ? 153 : 255,
                           ),
-                          fontSize: 14,
                         ),
                       ),
                     ],

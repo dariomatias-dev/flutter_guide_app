@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/interface_type_enum.dart';
 import 'package:flutter_guide/src/core/router/app_routes.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/features/catalog/data/models/interface_model.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/elements.dart';
 import 'package:flutter_guide/src/features/catalog/data/samples/sample_definitions/uis.dart';
@@ -46,7 +47,7 @@ class InterfaceCatalogScreen extends StatelessWidget {
       ),
       body: InfinityScroll<InterfaceModel>(
         padding: const EdgeInsets.symmetric(
-          vertical: 12,
+          vertical: AppSpacing.md,
         ),
         items: items,
         itemBuilder: (value) {

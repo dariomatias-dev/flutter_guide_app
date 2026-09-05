@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
 
 /// A rounded button used inside a dialog.
 class DialogButtonWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class DialogButtonWidget extends StatelessWidget {
   final Color? backgroundColor;
 
   /// Corner radius of the button.
-  BorderRadius get borderRadius => BorderRadius.circular(24);
+  BorderRadius get borderRadius => BorderRadius.circular(AppRadius.extraLarge);
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +56,9 @@ class DialogButtonWidget extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 15,
-                color: textColor ?? Colors.blue,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.labelLarge?.copyWith(color: textColor ?? Colors.blue),
             ),
           ),
         ),

@@ -52,13 +52,7 @@ class StandardAppBarWidget extends StatelessWidget
       leading: showBackButton ? const BackButtonWidget() : null,
       title:
           title ??
-          Text(
-            titleName!,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+          Text(titleName!, style: Theme.of(context).textTheme.titleMedium),
       actions: <Widget>[
         const ChangeThemeButtonWidget(),
         const SizedBox(width: 4),

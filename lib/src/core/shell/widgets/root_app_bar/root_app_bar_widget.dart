@@ -46,12 +46,9 @@ class _RootAppBarWidgetState extends State<RootAppBarWidget> {
             excludeFromSemantics: true,
           ),
           const SizedBox(width: 16),
-          const Text(
+          Text(
             'FlutterGuide',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ],
       ),

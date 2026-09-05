@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/theme/tokens/app_colors.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
 
 /// Rounded button used to increase or decrease the code font size.
 class ComponentSampleFontSizeSelectorWidget extends StatelessWidget {
@@ -29,7 +30,7 @@ class ComponentSampleFontSizeSelectorWidget extends StatelessWidget {
           backgroundColor: theme.colorScheme.primary,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(AppRadius.medium),
           ),
         ),
         child: Icon(

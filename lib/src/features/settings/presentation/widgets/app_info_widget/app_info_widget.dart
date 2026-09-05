@@ -28,19 +28,15 @@ class AppInfoWidget extends ConsumerWidget {
           const SizedBox(height: 16),
           Text(
             'FlutterGuide',
-            style: TextStyle(
-              color: textColor ?? Colors.black,
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleSmall?.copyWith(color: textColor ?? Colors.black),
           ),
           Text(
             versionLabel,
-            style: TextStyle(
-              color: textColor ?? Colors.black,
-              fontSize: 10,
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall?.copyWith(color: textColor ?? Colors.black),
           ),
           const SizedBox(height: 20),
           const SourceCodeButtonWidget(),

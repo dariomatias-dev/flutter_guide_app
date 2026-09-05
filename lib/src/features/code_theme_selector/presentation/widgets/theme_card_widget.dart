@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_durations.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
 typedef _CardColors = ({
@@ -75,15 +78,13 @@ class ThemeCardWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
-          duration: const Duration(
-            milliseconds: 250,
-          ),
+          duration: AppDurations.fast,
           decoration: BoxDecoration(
             border: Border.all(
               color: isSelected ? cardColors.selectedBorder : cardColors.border,
               width: 2,
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(AppRadius.small),
             boxShadow: <BoxShadow>[
               BoxShadow(
                 color: isSelected
@@ -100,7 +101,7 @@ class ThemeCardWidget extends StatelessWidget {
               Container(
                 height: 50,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
+                  horizontal: AppSpacing.lg,
                 ),
                 decoration: BoxDecoration(
                   color: cardColors.header,
@@ -122,11 +123,8 @@ class ThemeCardWidget extends StatelessWidget {
                           Expanded(
                             child: Text(
                               themeName,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                                color: cardColors.text,
-                              ),
+                              style: Theme.of(context).textTheme.titleSmall
+                                  ?.copyWith(color: cardColors.text),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -134,9 +132,7 @@ class ThemeCardWidget extends StatelessWidget {
                       ),
                     ),
                     AnimatedSwitcher(
-                      duration: const Duration(
-                        milliseconds: 300,
-                      ),
+                      duration: AppDurations.base,
                       transitionBuilder: (child, animation) {
                         return FadeTransition(
                           opacity: animation,
@@ -162,8 +158,8 @@ class ThemeCardWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
+                  horizontal: AppSpacing.lg,
+                  vertical: AppSpacing.md,
                 ),
                 decoration: BoxDecoration(
                   color: cardColors.background,

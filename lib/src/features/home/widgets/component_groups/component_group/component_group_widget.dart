@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_durations.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/features/catalog/presentation/providers/components_repository_provider.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group_model.dart';
 import 'package:flutter_guide/src/shared/widgets/banner_ad_widget.dart';
@@ -38,10 +40,9 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
   @override
   void initState() {
     _animationController = AnimationController(
-      duration: Duration(
-        milliseconds:
-            (widget.componentGroup.components.length / 10).ceil() * 300,
-      ),
+      duration:
+          AppDurations.base *
+          (widget.componentGroup.components.length / 10).ceil(),
       vsync: this,
     );
     _animation = CurvedAnimation(
@@ -119,7 +120,7 @@ class _ComponentGroupWidgetState extends ConsumerState<ComponentGroupWidget>
                 componentType: ComponentType.widget,
                 videoId: component.videoId,
                 padding: const EdgeInsets.only(
-                  left: 20,
+                  left: AppSpacing.xl,
                 ),
               );
             }),

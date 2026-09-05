@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:salomon_bottom_bar_extend/salomon_bottom_bar.dart';
 
 const _icons = <IconData>[
@@ -53,17 +54,17 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         currentIndex: widget.screenIndex,
         onTap: widget.updateScreenIndex,
         itemPadding: const EdgeInsets.only(
-          top: 2,
-          right: 12,
-          bottom: 2,
-          left: 6,
+          top: AppSpacing.xxs,
+          right: AppSpacing.md,
+          bottom: AppSpacing.xxs,
+          left: AppSpacing.xs,
         ),
         items: List.generate(
           _icons.length,
           (index) {
             return SalomonBottomBarItem(
               icon: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(AppSpacing.sm),
                 child: Icon(
                   _icons[index],
                 ),
