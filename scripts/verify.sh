@@ -30,7 +30,7 @@ export LC_ALL=C
 readonly root="$(git rev-parse --show-toplevel)"
 cd "$root"
 
-readonly coverage_minimum=90
+readonly coverage_minimum=95
 
 check_all=false
 skip_tests=false

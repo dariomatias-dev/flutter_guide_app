@@ -123,9 +123,9 @@ widgets, using `mocktail` for mocking and `ProviderContainer` overrides
 for Riverpod state. Code is linted against the strict `very_good_analysis`
 rule set.
 
-Line coverage is 95%, measured over `lib/` minus the generated sources and
+Line coverage is 96%, measured over `lib/` minus the generated sources and
 the catalog samples, which are teaching code rendered to the user rather
-than app logic. The gate fails below 90%.
+than app logic. The gate fails below 95%.
 
 One command runs everything CI runs, in the same order:
 

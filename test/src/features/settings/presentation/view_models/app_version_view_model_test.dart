@@ -22,5 +22,20 @@ void main() {
 
       expect(version, '1.2.3+18');
     });
+
+    test('build surfaces a failed lookup as an error state', () async {
+      final container = makeContainer(
+        () async => throw StateError('platform channel unavailable'),
+      );
+
+      await expectLater(
+        container.read(appVersionViewModelProvider.future),
+        throwsStateError,
+      );
+      expect(
+        container.read(appVersionViewModelProvider),
+        isA<AsyncError<String>>(),
+      );
+    });
   });
 }

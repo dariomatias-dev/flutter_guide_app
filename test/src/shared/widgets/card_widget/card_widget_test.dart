@@ -8,6 +8,7 @@ import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../../helpers/mocks.dart';
@@ -95,6 +96,57 @@ void main() {
       );
 
       expect(item.padding, padding);
+    });
+
+    testWidgets('tapping the card pushes the component route', (
+      tester,
+    ) async {
+      String? pushedType;
+      String? pushedName;
+
+      final router = GoRouter(
+        initialLocation: '/',
+        routes: <RouteBase>[
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: ProviderScope(
+                overrides: [
+                  favoritesRepositoryProvider.overrideWithValue(repository),
+                ],
+                child: const CardWidget(
+                  icon: Icons.star,
+                  componentName: 'Container',
+                  componentType: ComponentType.widget,
+                ),
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/component/:type/:name',
+            builder: (context, state) {
+              pushedType = state.pathParameters['type'];
+              pushedName = state.pathParameters['name'];
+
+              return const Scaffold(body: Text('component'));
+            },
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp.router(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          routerConfig: router,
+        ),
+      );
+
+      await tester.tap(find.text('Container'));
+      await tester.pumpAndSettle();
+
+      expect(pushedType, ComponentType.widget.name);
+      expect(pushedName, 'Container');
     });
   });
 }

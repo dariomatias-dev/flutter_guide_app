@@ -56,5 +56,31 @@ void main() {
 
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'shows the loading placeholder while a configured ad loads',
+      (tester) async {
+        // There is no real ad SDK in a widget test, so the request the
+        // widget fires never resolves: this only proves the widget builds
+        // the ad and attaches its listener without crashing, and renders
+        // the same placeholder it would show a slow real network the
+        // loading state before onAdLoaded ever fires.
+        await _pumpBanner(
+          tester,
+          adsEnabled: true,
+          env: const FakeAppEnv(
+            bannerAdUnitId: 'ca-app-pub-3940256099942544/6300978111',
+          ),
+        );
+
+        expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+        // The widget disposes its ad on unmount without rethrowing whatever
+        // the platform channel returned for a load that never completed.
+        await tester.pumpApp(const SizedBox.shrink());
+
+        expect(tester.takeException(), isNull);
+      },
+    );
   });
 }
