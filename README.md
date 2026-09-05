@@ -179,6 +179,10 @@ Utility scripts live under `scripts/`.
 
 | Script       | Command                             | Description                                                                                                                                                    |
 | ------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `verify` | `scripts/verify.sh [--all] [--skip-tests]` | Runs the same gate CI enforces: regenerates the localizations and fails if the committed output was stale, checks ARB parity, then format, analyze, tests and the coverage threshold. Only runs when the working tree has pending changes under the code it covers, unless `--all` is passed. |
+| `check_coverage` | `scripts/check_coverage.sh <lcov-file> <minimum>` | Fails when line coverage falls below the minimum, excluding generated sources and the catalog samples under `lib/src/features/catalog/data/samples/`, which are teaching material rendered to the user rather than app logic. |
+| `check_l10n` | `scripts/check_l10n.sh [arb-dir]` | Fails when the ARB files disagree on which keys they carry, or when a key in the template ships without a description. `gen-l10n` falls back to the template silently, so nothing else catches a half-translated change. |
+| `workspace_hash` | `scripts/workspace_hash.sh` | Prints a hash of the sources the gate covers. `verify.sh` records it in `.dart_tool/verify_stamp` so tooling can tell whether the tree still matches a passing run. |
 | `screenshot` | `scripts/screenshot.sh [device-id]` | Drives the app through its main screens on a connected device or emulator and saves a screenshot of each one into `screenshots/`, used for the README, Play Store listing, and official website. Run `fvm flutter devices` to list available device ids. |
 
 ## Contributing

@@ -181,6 +181,10 @@ Scripts utilitários ficam em `scripts/`.
 
 | Script       | Comando                             | Descrição                                                                                                                                                    |
 | ------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `verify` | `scripts/verify.sh [--all] [--skip-tests]` | Roda o mesmo gate que a CI exige: regenera as localizações e falha se a saída commitada estava desatualizada, confere a paridade dos ARB e então format, analyze, testes e o limiar de cobertura. Só roda quando há mudanças pendentes no código que ele cobre, a menos que `--all` seja passado. |
+| `check_coverage` | `scripts/check_coverage.sh <arquivo-lcov> <mínimo>` | Falha quando a cobertura de linhas fica abaixo do mínimo, excluindo fontes geradas e os samples do catálogo em `lib/src/features/catalog/data/samples/`, que são material didático exibido ao usuário, não lógica do app. |
+| `check_l10n` | `scripts/check_l10n.sh [dir-arb]` | Falha quando os arquivos ARB divergem nas chaves, ou quando uma chave do template não tem `description`. O `gen-l10n` cai no template em silêncio, então nada mais pega uma tradução pela metade. |
+| `workspace_hash` | `scripts/workspace_hash.sh` | Imprime um hash das fontes cobertas pelo gate. O `verify.sh` grava esse hash em `.dart_tool/verify_stamp`, para que ferramentas saibam se a árvore ainda corresponde a uma execução aprovada. |
 | `screenshot` | `scripts/screenshot.sh [device-id]` | Percorre as principais telas do app em um dispositivo ou emulador conectado e salva uma captura de cada uma em `screenshots/`, usadas no README, na Play Store e no site oficial. Rode `fvm flutter devices` para listar os ids de dispositivos disponíveis. |
 
 ## Contribuindo

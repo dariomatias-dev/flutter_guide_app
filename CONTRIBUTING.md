@@ -43,6 +43,32 @@ refactor(catalog): centralize ComponentSampleArgs construction
 Body (optional) explains *why*, not *what*: the diff already shows what
 changed.
 
+## Local gate
+
+Run the gate before opening a pull request:
+
+```bash
+./scripts/verify.sh
+```
+
+It runs exactly what CI runs, in the same order:
+
+| Step | What it catches |
+| --- | --- |
+| `gen-l10n` and a diff of its output | Committed localizations that no longer match the ARB files. CI regenerates from a clean checkout and fails on any difference |
+| `scripts/check_l10n.sh` | A key missing from one language, or a template key with no description. `gen-l10n` falls back to English in silence |
+| `dart format --set-exit-if-changed` | Formatting, the one check with a single correct answer |
+| `flutter analyze` | `very_good_analysis` lints |
+| `flutter test --coverage` | The test suite |
+| `scripts/check_coverage.sh` | Line coverage under 90%, excluding generated sources and the catalog samples |
+
+The gate is skipped when nothing under `lib`, `test`, `integration_test`,
+`test_driver` or the manifests has changed. Pass `--all` to run it anyway, and
+`--skip-tests` for a quick mid-change check, never as the final gate.
+
+A passing run records the workspace hash in `.dart_tool/verify_stamp`, so
+tooling can tell whether the tree still matches a run that passed.
+
 ## Branching
 
 - `main` is protected: no direct pushes, merges only via pull request.
@@ -60,5 +86,6 @@ changed.
 
 ## Code style
 
-- Follows `very_good_analysis` lints — run `flutter analyze` before pushing.
-- Run `dart format .` before committing.
+- Follows `very_good_analysis` lints, enforced by the gate above.
+- Every Flutter command runs through FVM: `fvm flutter`, never bare `flutter`.
+  The version lives in `.fvmrc`.

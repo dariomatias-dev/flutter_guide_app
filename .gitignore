@@ -31,6 +31,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Written by `flutter test --coverage`, which scripts/verify.sh runs.
+/coverage/
+
 # Symbolication related
 app.*.symbols
 
