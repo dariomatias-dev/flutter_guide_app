@@ -110,6 +110,9 @@ through providers), routing with `go_router`, and persistence through a
 live under `lib/src/shared`; cross-cutting concerns (DI, routing, theming)
 live under `lib/src/core`.
 
+For the layering rules, the subsystems and the decisions behind them, see
+[docs/architecture.md](docs/architecture.md).
+
 ## Testing
 
 The project has 37 test files covering repositories, view models,

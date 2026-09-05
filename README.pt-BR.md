@@ -111,6 +111,9 @@ compartilhados e independentes de feature ficam em `lib/src/shared`;
 responsabilidades transversais (DI, roteamento, tema) ficam em
 `lib/src/core`.
 
+Para as regras de camada, os subsistemas e as decisões por trás deles, veja
+[docs/architecture.pt-BR.md](docs/architecture.pt-BR.md).
+
 ## Testes
 
 O projeto tem 37 arquivos de teste cobrindo repositórios, view models,

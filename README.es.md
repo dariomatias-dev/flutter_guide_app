@@ -111,6 +111,9 @@ Los widgets compartidos e independientes de feature están en
 `lib/src/shared`; las responsabilidades transversales (DI, enrutamiento,
 tema) están en `lib/src/core`.
 
+Para las reglas de capas, los subsistemas y las decisiones detrás de ellos,
+mira [docs/architecture.es.md](docs/architecture.es.md).
+
 ## Pruebas
 
 El proyecto tiene 37 archivos de prueba que cubren repositorios, view
