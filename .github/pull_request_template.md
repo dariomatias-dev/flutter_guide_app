@@ -11,7 +11,7 @@ Closes #
 ## Checklist
 
 Tick what applies, delete what does not, and say why for anything left out.
-The rules behind each line live in `CONTRIBUTING.md` and `CLAUDE.md`. They are
+The rules behind each line live in `docs/contributing.md` and `CLAUDE.md`. They are
 named rather than linked: a relative link written here lands in the pull
 request body, where it no longer resolves.
 

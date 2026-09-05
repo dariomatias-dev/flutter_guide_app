@@ -189,7 +189,7 @@ Utility scripts live under `scripts/`.
 
 Contributions make the open-source community an amazing place to learn and create. Any contributions you make are greatly appreciated.
 
-Before opening a pull request, see [CONTRIBUTING.md](CONTRIBUTING.md) for the local setup, commit message convention (Conventional Commits), and branching rules this project follows.
+Before opening a pull request, see [docs/contributing.md](docs/contributing.md) for the local setup, the quality gate, the commit message convention (Conventional Commits), and the branching rules this project follows.
 
 ## Changelog
 

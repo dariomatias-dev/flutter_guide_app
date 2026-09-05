@@ -2,7 +2,7 @@
 
 This file is the process for any change to this repository, whether it comes
 from a person or an agent. It is not documentation of what the app does: that
-lives in `README.md` and `CONTRIBUTING.md`.
+lives in `README.md` and `docs/contributing.md`.
 
 ## Commands
 
@@ -94,8 +94,8 @@ by reaching into the widget tree.
 | --- | --- |
 | An ARB key | All three language files, then `fvm flutter gen-l10n`, and commit the regenerated output |
 | `pubspec.yaml` | `pubspec.lock`, via `fvm flutter pub get` |
-| A script in `scripts/` | Its row in all three README tables, and `CONTRIBUTING.md` if the gate's behaviour changed |
-| A CI job | `CONTRIBUTING.md`, which names the jobs and says which ones block a merge |
+| A script in `scripts/` | Its row in all three README tables, and `docs/contributing.md` in all three languages if the gate's behaviour changed |
+| A CI job | `docs/contributing.md` in all three languages, which names the jobs and says which ones block a merge |
 | A user-visible feature | `CHANGELOG.md` is written by release-please from the commits: no manual entry, but the commit type decides the version bump |
 | Anything under `lib/` | The mirroring file under `test/` |
 
