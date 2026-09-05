@@ -160,3 +160,73 @@ jobs:
           name: flutter_guide-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 14
+
+  # Boots the real app on a real Android system: dotenv, SharedPreferences,
+  # the Riverpod graph and go_router all run for real here, none of it
+  # faked, which is what a widget test structurally cannot do. Runs after
+  # app passes rather than gating on it directly, since an emulator is by
+  # far the slowest and flakiest step in the pipeline.
+  integration:
+    name: Integration tests
+    needs: app
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the Flutter version from .fvmrc
+        id: fvm
+        run: echo "version=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create the .env file
+        run: |
+          cat <<'EOF' > .env
+          DEVICE_ID=
+          BANNER_AD_ID=
+          BANNER_AD_SAMPLE_ID=
+          INTERSTICIAL_AD_SAMPLE_ID=
+          REWARDED_AD_SAMPLE_ID=
+          APP_OPEN_AD_SAMPLE_ID=
+          EOF
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Generate localizations
+        run: flutter gen-l10n
+
+      # A cold Android build downloads SDK platform 36 and compiles native
+      # plugin sources, which alone can outrun the emulator session's own
+      # budget. Doing it here, before the emulator boots, keeps that cost
+      # off the timeout below.
+      - name: Warm the Android build
+        run: flutter build apk --debug
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run integration tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          cores: 4
+          ram-size: 4096M
+          heap-size: 1024M
+          script: |
+            timeout 480 flutter test integration_test/screenshot_test.dart -d emulator-5554

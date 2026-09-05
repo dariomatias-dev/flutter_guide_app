@@ -90,6 +90,7 @@ ejecución que pasó.
 | `Vulnerabilities` | Ejecuta `osv-scanner` contra `pubspec.lock`, que es lo que realmente se entrega, y no los rangos de caret de `pubspec.yaml`. Independiente de los demás jobs: una advertencia recién publicada no es razón para silenciar las pruebas | Bloquea |
 | `flutter_guide` | El gate de arriba, paso por paso | Bloquea |
 | `Build APK` | Se ejecuta después de que `flutter_guide` pase y construye un APK de release, publicado como artefacto durante 14 días. Sin keystore en el checkout, recurre a las claves de debug | Bloquea |
+| `Integration tests` | Se ejecuta después de que `flutter_guide` pase, levanta un emulador Android y corre `integration_test/screenshot_test.dart` en él. La única verificación que corre la app real: dotenv real, `SharedPreferences` real, un sistema Android real, nada de eso simulado como en una prueba de widget. Activa KVM primero, sin lo cual el emulador cae a renderizado por software y se agota el tiempo | Bloquea |
 | Subida a Codecov | Reporta el delta de cobertura en el pull request, con anotaciones en línea | Solo reporta |
 
 La versión del SDK viene de `.fvmrc`, leída con `jq` al inicio de cada job, en
@@ -152,12 +153,13 @@ act pull_request -j app           # un job, por su id
 act pull_request -j app --dryrun  # imprime los pasos sin ejecutarlos
 ```
 
-`-j` recibe el id del job (`vulnerabilities`, `app`, `build_apk`), no el nombre
-mostrado; `act -l` imprime ambos. La primera ejecución descarga una imagen de
-varios gigabytes, y `act` aproxima los runners de GitHub en vez de
-reproducirlos, así que una ejecución verde aquí es una señal, no una garantía:
-`secrets.CODECOV_TOKEN` está vacío localmente, y el escáner OSV necesita red
-para consultar la base de advertencias.
+`-j` recibe el id del job (`vulnerabilities`, `app`, `build_apk`,
+`integration`), no el nombre mostrado; `act -l` imprime ambos. La primera
+ejecución descarga una imagen de varios gigabytes, y `act` aproxima los
+runners de GitHub en vez de reproducirlos, así que una ejecución verde aquí es
+una señal, no una garantía: `secrets.CODECOV_TOKEN` está vacío localmente, el
+escáner OSV necesita red para consultar la base de advertencias, y `act` no
+puede ejecutar en absoluto la action de emulador del job `integration`.
 
 ## Trabajar con un agente de IA
 

@@ -88,6 +88,7 @@ que ferramentas saibam se a árvore ainda corresponde a uma execução que passo
 | `Vulnerabilities` | Roda o `osv-scanner` contra o `pubspec.lock`, que é o que de fato é entregue, e não os ranges de caret do `pubspec.yaml`. Independente dos outros jobs: uma advisory recém-divulgada não é motivo para calar os testes | Bloqueia |
 | `flutter_guide` | O gate acima, passo a passo | Bloqueia |
 | `Build APK` | Roda depois de `flutter_guide` passar e constrói um APK de release, publicado como artefato por 14 dias. Sem keystore no checkout, cai na assinatura de debug | Bloqueia |
+| `Integration tests` | Roda depois de `flutter_guide` passar, sobe um emulador Android e roda `integration_test/screenshot_test.dart` nele. A única verificação que roda o app de verdade: dotenv real, `SharedPreferences` real, sistema Android real, nada disso simulado como num teste de widget. Ativa o KVM antes, sem o qual o emulador cai para renderização por software e estoura o tempo | Bloqueia |
 | Upload do Codecov | Reporta o delta de cobertura no pull request, com anotações inline | Só reporta |
 
 A versão do SDK vem do `.fvmrc`, lida com `jq` no começo de cada job, em vez de
@@ -150,12 +151,13 @@ act pull_request -j app           # um job, pelo id
 act pull_request -j app --dryrun  # imprime os passos sem executá-los
 ```
 
-O `-j` recebe o id do job (`vulnerabilities`, `app`, `build_apk`), não o nome
-exibido; o `act -l` mostra os dois. A primeira execução baixa uma imagem de
-vários gigabytes, e o `act` aproxima os runners do GitHub em vez de reproduzi-
-los, então uma execução verde aqui é sinal, não garantia: o
-`secrets.CODECOV_TOKEN` fica vazio localmente, e o scanner OSV precisa de rede
-para consultar a base de advisories.
+O `-j` recebe o id do job (`vulnerabilities`, `app`, `build_apk`,
+`integration`), não o nome exibido; o `act -l` mostra os dois. A primeira
+execução baixa uma imagem de vários gigabytes, e o `act` aproxima os runners
+do GitHub em vez de reproduzi-los, então uma execução verde aqui é sinal, não
+garantia: o `secrets.CODECOV_TOKEN` fica vazio localmente, o scanner OSV
+precisa de rede para consultar a base de advisories, e o `act` não roda de
+jeito nenhum a action de emulador do job `integration`.
 
 ## Trabalhando com um agente de IA
 

@@ -85,6 +85,7 @@ tooling can tell whether the tree still matches a run that passed.
 | `Vulnerabilities` | Runs `osv-scanner` against `pubspec.lock`, which is what actually ships, rather than the caret ranges in `pubspec.yaml`. Independent of the other jobs: a newly disclosed advisory is not a reason to stop the tests from reporting | Blocks |
 | `flutter_guide` | The gate above, step for step | Blocks |
 | `Build APK` | Runs after `flutter_guide` passes and builds a release APK, uploaded as a workflow artifact kept for 14 days. Without a keystore in the checkout it falls back to the debug keys | Blocks |
+| `Integration tests` | Runs after `flutter_guide` passes, boots an Android emulator and runs `integration_test/screenshot_test.dart` on it. The only check that runs the real app: real dotenv, real `SharedPreferences`, a real Android system, none of it faked the way a widget test fakes it. Enables KVM first, without which the emulator falls back to software rendering and times out | Blocks |
 | Codecov upload | Reports the coverage delta on the pull request with inline annotations | Reports only |
 
 The SDK version comes from `.fvmrc`, read with `jq` at the start of each job,
@@ -148,11 +149,13 @@ act pull_request -j app           # one job, by its id
 act pull_request -j app --dryrun  # print the steps without running them
 ```
 
-`-j` takes the job id (`vulnerabilities`, `app`, `build_apk`), not the display
-name; `act -l` prints both. The first run pulls a multi-gigabyte image, and
-`act` approximates GitHub's runners rather than reproducing them, so a green
-run here is a signal, not a guarantee: `secrets.CODECOV_TOKEN` is empty
-locally, and the OSV scanner needs network access to the advisory database.
+`-j` takes the job id (`vulnerabilities`, `app`, `build_apk`, `integration`),
+not the display name; `act -l` prints both. The first run pulls a
+multi-gigabyte image, and `act` approximates GitHub's runners rather than
+reproducing them, so a green run here is a signal, not a guarantee:
+`secrets.CODECOV_TOKEN` is empty locally, the OSV scanner needs network
+access to the advisory database, and `act` cannot run the `integration`
+job's emulator action at all.
 
 ## Working with an AI agent
 

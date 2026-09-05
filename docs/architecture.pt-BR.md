@@ -134,7 +134,7 @@ dados.
 
 O [`SharedPreferencesService`](../lib/src/core/services/shared_preferences_service.dart)
 envolve o plugin, e as chaves ficam em um lugar só, em
-[`shared_preferences_keys.dart`](../lib/src/core/shared_preferences_keys.dart).
+[`shared_preferences_keys.dart`](../lib/src/core/constants/shared_preferences_keys.dart).
 Um repositório fala com o service, nunca com o `SharedPreferences` direto, que é
 o que permite a um teste trocar o armazenamento sem tocar no plugin.
 
@@ -208,3 +208,10 @@ para qualquer coisa roteada.
 
 O gate de cobertura é 95%, medido sobre `lib/` menos as fontes geradas e os
 samples do catálogo.
+
+O [`integration_test/screenshot_test.dart`](../integration_test/screenshot_test.dart)
+roda num emulador Android real na CI, em job próprio. Existe para capturar
+screenshots de divulgação, não como substituto dos testes de widget, mas
+rodá-lo na CI também prova que o app inicia e cada tela que visita renderiza
+num dispositivo real: `dotenv`, `SharedPreferences` e todo o grafo do Riverpod
+rodam de verdade ali, nada disso simulado.

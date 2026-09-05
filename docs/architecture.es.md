@@ -138,7 +138,7 @@ base de datos.
 
 [`SharedPreferencesService`](../lib/src/core/services/shared_preferences_service.dart)
 envuelve el plugin, y las claves viven en un solo lugar, en
-[`shared_preferences_keys.dart`](../lib/src/core/shared_preferences_keys.dart).
+[`shared_preferences_keys.dart`](../lib/src/core/constants/shared_preferences_keys.dart).
 Un repositorio habla con el service, nunca con `SharedPreferences` directamente,
 que es lo que permite a una prueba cambiar el almacenamiento sin tocar el
 plugin.
@@ -214,3 +214,11 @@ localizado, `pumpScopedApp` para uno que abre contenido en overlay, y
 
 El gate de cobertura es 95%, medido sobre `lib/` menos las fuentes generadas y
 las muestras del catálogo.
+
+[`integration_test/screenshot_test.dart`](../integration_test/screenshot_test.dart)
+se ejecuta en un emulador Android real en la CI, en su propio job. Existe
+para capturar capturas de pantalla de marketing, no como sustituto de las
+pruebas de widget, pero ejecutarlo en la CI también prueba que la app arranca
+y cada pantalla que visita se renderiza en un dispositivo real: `dotenv`,
+`SharedPreferences` y todo el grafo de Riverpod corren de verdad ahí, nada de
+eso simulado.
