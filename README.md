@@ -194,6 +194,8 @@ Contributions make the open-source community an amazing place to learn and creat
 
 Before opening a pull request, see [docs/contributing.md](docs/contributing.md) for the local setup, the quality gate, the commit message convention (Conventional Commits), and the branching rules this project follows.
 
+Found a security issue? Do not open a public issue: follow the [security policy](docs/security.md).
+
 ## Changelog
 
 All notable changes are documented in [CHANGELOG.md](CHANGELOG.md), following the [Keep a Changelog](https://keepachangelog.com) format.

@@ -226,3 +226,8 @@ O corpo é opcional e existe para o *porquê*. O diff já mostra o que mudou.
 - Neste repositório (mantenedor único), o self-merge após a CI passar é
   permitido; a proteção de branch ainda exige o fluxo de pull request e as
   verificações passando.
+
+## Segurança
+
+Relatos de segurança seguem a [política de segurança](security.pt-BR.md),
+nunca uma issue pública.

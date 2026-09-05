@@ -222,3 +222,8 @@ changed.
 - For this repository (single maintainer), self-merge after CI passes is
   allowed; branch protection still requires the pull request flow and passing
   checks.
+
+## Security
+
+Security reports follow the [security policy](security.md), never a public
+issue.

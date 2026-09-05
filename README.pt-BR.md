@@ -196,6 +196,8 @@ Contribuições tornam a comunidade open-source um lugar incrível para aprender
 
 Antes de abrir um pull request, veja o [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para a configuração local, o gate de qualidade, a convenção de mensagens de commit (Conventional Commits) e as regras de branch deste projeto.
 
+Encontrou um problema de segurança? Não abra uma issue pública: siga a [política de segurança](docs/security.pt-BR.md).
+
 ## Changelog
 
 Todas as mudanças notáveis são documentadas em [CHANGELOG.md](CHANGELOG.md) (em inglês), seguindo o formato [Keep a Changelog](https://keepachangelog.com).

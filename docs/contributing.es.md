@@ -229,3 +229,8 @@ El cuerpo es opcional y existe para el *porqué*. El diff ya muestra qué cambi�
 - En este repositorio (un solo mantenedor), el self-merge tras pasar la CI está
   permitido; la protección de rama sigue exigiendo el flujo de pull request y
   las verificaciones en verde.
+
+## Seguridad
+
+Los reportes de seguridad siguen la [política de seguridad](security.es.md),
+nunca una issue pública.
