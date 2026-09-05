@@ -69,6 +69,37 @@ The gate is skipped when nothing under `lib`, `test`, `integration_test`,
 A passing run records the workspace hash in `.dart_tool/verify_stamp`, so
 tooling can tell whether the tree still matches a run that passed.
 
+### Releases
+
+Releases are cut by [release-please](https://github.com/googleapis/release-please).
+It reads the Conventional Commits landed on `main` and keeps a pull request
+open carrying the next version and the `CHANGELOG.md` entry derived from them:
+`fix:` bumps the patch, `feat:` the minor, and `!` before the colon the major.
+Merging that pull request writes the version into `pubspec.yaml`, tags the
+commit and publishes the GitHub release.
+
+`.github/workflows/release.yml` then runs the same gate as CI, builds the APK
+and the app bundle, and attaches both to the release. It is called directly by
+`release_please.yml`, since GitHub does not start a workflow from a tag pushed
+with the default token, and it still answers a `v*.*.*` tag pushed by hand.
+
+The release build is signed with the upload key, assembled from repository
+secrets and deleted from the runner afterwards. The job fails rather than
+falling back to the debug keys, since a debug-signed artifact can neither be
+uploaded to the Play Store nor installed over the store build.
+
+| Secret | Used for |
+| --- | --- |
+| `ANDROID_KEYSTORE_BASE64` | The upload keystore, base64 encoded: `base64 -w0 upload-keystore.jks` |
+| `ANDROID_KEYSTORE_PASSWORD` | Its store password |
+| `ANDROID_KEY_ALIAS` | The key alias inside the keystore |
+| `ANDROID_KEY_PASSWORD` | The key password |
+| `BANNER_AD_ID`, `BANNER_AD_SAMPLE_ID`, `INTERSTICIAL_AD_SAMPLE_ID`, `REWARDED_AD_SAMPLE_ID`, `APP_OPEN_AD_SAMPLE_ID` | The ad unit ids written into `.env` for the release build |
+| `CODECOV_TOKEN` | The coverage upload in CI |
+
+Publishing to the Play Store stays manual: download the `.aab` from the
+release and upload it there.
+
 ### Running the workflows locally
 
 [`act`](https://github.com/nektos/act) runs the workflows in Docker, which is

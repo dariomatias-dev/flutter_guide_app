@@ -1,0 +1,41 @@
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release_please:
+    name: Maintain the release pull request
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      # Reads the Conventional Commits landed since the last release, keeps a
+      # pull request open with the resulting CHANGELOG.md entry and the version
+      # bump in pubspec.yaml, and tags plus publishes on merge.
+      - uses: googleapis/release-please-action@v5
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  # The tag above is pushed with the default GITHUB_TOKEN, and GitHub does not
+  # start a new workflow run from it, so the release workflow is called here
+  # rather than left to its own tag trigger.
+  publish:
+    name: Build and attach the release artifacts
+    needs: release_please
+    if: needs.release_please.outputs.release_created == 'true'
+    permissions:
+      contents: write
+    secrets: inherit
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.release_please.outputs.tag_name }}

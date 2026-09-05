@@ -1,0 +1,142 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  # Called by release_please.yml, whose tag cannot start this workflow on its
+  # own: GitHub does not trigger a run from a push made with GITHUB_TOKEN.
+  workflow_call:
+    inputs:
+      tag:
+        description: "The tag to build and publish."
+        required: true
+        type: string
+
+env:
+  # Kept in step with compileSdk in android/app/build.gradle.kts.
+  ANDROID_COMPILE_SDK: "36"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+
+      - name: Read the Flutter version from .fvmrc
+        id: fvm
+        run: echo "version=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm.outputs.version }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create the .env file
+        run: |
+          cat <<'EOF' > .env
+          DEVICE_ID=
+          BANNER_AD_ID=${{ secrets.BANNER_AD_ID }}
+          BANNER_AD_SAMPLE_ID=${{ secrets.BANNER_AD_SAMPLE_ID }}
+          INTERSTICIAL_AD_SAMPLE_ID=${{ secrets.INTERSTICIAL_AD_SAMPLE_ID }}
+          REWARDED_AD_SAMPLE_ID=${{ secrets.REWARDED_AD_SAMPLE_ID }}
+          APP_OPEN_AD_SAMPLE_ID=${{ secrets.APP_OPEN_AD_SAMPLE_ID }}
+          EOF
+
+      - name: Generate localizations
+        run: flutter gen-l10n
+
+      # The same gate CI runs. A tag is the one build users install, so it is
+      # the last place to take a shortcut.
+      - name: Check localizations
+        run: ./scripts/check_l10n.sh
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test integration_test
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test --coverage
+
+      - name: Check coverage
+        run: ./scripts/check_coverage.sh coverage/lcov.info 90
+
+      # Without a keystore the Gradle config falls back to the debug keys, and
+      # a debug-signed artifact cannot be installed over the Play Store build
+      # or uploaded to it. Fail here instead of publishing one.
+      - name: Write the signing configuration
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "ANDROID_KEYSTORE_BASE64 is not set. A release must be signed with the upload key." >&2
+            exit 1
+          fi
+
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/upload-keystore.jks
+
+          cat > android/key.properties <<EOF
+          storeFile=upload-keystore.jks
+          storePassword=$KEYSTORE_PASSWORD
+          keyAlias=$KEY_ALIAS
+          keyPassword=$KEY_PASSWORD
+          EOF
+
+      - name: Install the Android SDK platform the build targets
+        run: |
+          sdkmanager="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$sdkmanager" --licenses > /dev/null
+          "$sdkmanager" "platforms;android-${{ env.ANDROID_COMPILE_SDK }}"
+
+      # The APK is what a GitHub release is downloaded for; the app bundle is
+      # what the Play Store accepts, and uploading it stays manual.
+      - name: Build the release APK
+        run: flutter build apk --release
+
+      - name: Build the release app bundle
+        run: flutter build appbundle --release
+
+      - name: Name the artifacts after the tag
+        run: |
+          mkdir -p release
+          cp build/app/outputs/flutter-apk/app-release.apk \
+            "release/flutter_guide-$TAG.apk"
+          cp build/app/outputs/bundle/release/app-release.aab \
+            "release/flutter_guide-$TAG.aab"
+
+      - name: Remove the signing material
+        if: always()
+        run: rm -f android/key.properties android/upload-keystore.jks
+
+      # release-please publishes the release itself, notes included, so the
+      # artifacts are attached to what already exists. A tag pushed by hand has
+      # no release yet, and gets one here.
+      - name: Publish the artifacts
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" release/flutter_guide-"$TAG".apk \
+              release/flutter_guide-"$TAG".aab --clobber
+          else
+            gh release create "$TAG" release/flutter_guide-"$TAG".apk \
+              release/flutter_guide-"$TAG".aab --title "$TAG" --generate-notes
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}

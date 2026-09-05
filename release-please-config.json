@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "last-release-sha": "48d76e055d1bd9d86837bebba26dfd1a7d509bcb",
+  "packages": {
+    ".": {
+      "release-type": "dart",
+      "package-name": "flutter_guide",
+      "changelog-path": "CHANGELOG.md"
+    }
+  }
+}
