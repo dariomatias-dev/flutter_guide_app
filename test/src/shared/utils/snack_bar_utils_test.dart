@@ -21,10 +21,17 @@ void main() {
       );
 
       SnackBarUtils.show(capturedContext, 'Some message');
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('Some message'), findsOneWidget);
       expect(find.text('Ok'), findsOneWidget);
+
+      // The action dismisses on tap, same as any SnackBarAction; nothing of
+      // its own to assert beyond it not throwing.
+      await tester.tap(find.text('Ok'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Some message'), findsNothing);
     });
   });
 
