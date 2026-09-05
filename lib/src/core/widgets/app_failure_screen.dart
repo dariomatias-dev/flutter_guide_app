@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/theme/theme.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 
 /// The failure an [AppFailureScreen] is reporting.
 enum AppFailureKind {
@@ -72,7 +73,7 @@ class AppFailureScreen extends StatelessWidget {
           child: SafeArea(
             child: Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.all(AppSpacing.xxl),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

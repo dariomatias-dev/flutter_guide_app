@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/enums/component_type_enum.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 
 /// Search field shown above component lists, with a clear button.
 class SearchFieldWidget extends StatefulWidget {
@@ -38,7 +40,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
 
   OutlineInputBorder get _border {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(AppRadius.large),
       borderSide: BorderSide(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.grey.shade500
@@ -79,7 +81,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
       width: double.infinity,
       height: 44,
       margin: const EdgeInsets.symmetric(
-        horizontal: 8,
+        horizontal: AppSpacing.sm,
       ),
       child: TextFormField(
         controller: _searchFieldController,
@@ -101,10 +103,9 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
             ),
           ),
           hintText: '$hintText...',
-          hintStyle: TextStyle(
-            color: Colors.grey.shade600,
-            fontSize: 14,
-          ),
+          hintStyle: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: Colors.grey.shade600),
           border: _border,
           enabledBorder: _border,
           focusedBorder: _border.copyWith(

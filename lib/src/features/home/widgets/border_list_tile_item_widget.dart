@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/shared/widgets/list_tile_item_widget.dart';
 
 /// A bordered [ListTileItemWidget] with a trailing chevron.
@@ -28,13 +30,13 @@ class BorderListTileItemWidget extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.symmetric(
-        horizontal: 12,
+        horizontal: AppSpacing.md,
       ),
       decoration: BoxDecoration(
         border: Border.all(
           color: isDark ? Colors.grey.shade600 : Colors.grey.shade300,
         ),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(AppRadius.small),
       ),
       child: ListTileItemWidget(
         onTap: onTap,

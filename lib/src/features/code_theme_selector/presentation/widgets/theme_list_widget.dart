@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/enums/theme_type_enum.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/features/code_theme_selector/presentation/widgets/theme_card_widget.dart';
 import 'package:flutter_syntax_highlighter/flutter_syntax_highlighter.dart';
 
@@ -38,10 +39,10 @@ class ThemeListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.only(
-        top: 20,
-        right: 16,
-        bottom: 36,
-        left: 16,
+        top: AppSpacing.xl,
+        right: AppSpacing.lg,
+        bottom: AppSpacing.huge,
+        left: AppSpacing.lg,
       ),
       itemCount: themes.length,
       separatorBuilder: (context, index) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_group/component_group_widget.dart';
 import 'package:flutter_guide/src/features/home/widgets/component_groups/component_groups.dart';
 
@@ -15,14 +16,12 @@ class ComponentGroupsWidget extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(
-            left: 12,
+            left: AppSpacing.md,
           ),
           child: Text(
             AppLocalizations.of(context).components,
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Colors.grey.shade600,
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
             ),
           ),
         ),

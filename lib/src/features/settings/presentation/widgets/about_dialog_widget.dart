@@ -38,21 +38,16 @@ class AboutDialogWidget extends StatelessWidget {
           excludeFromSemantics: true,
         ),
         const SizedBox(height: 16),
-        const Text(
+        Text(
           'FlutterGuide',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 12),
         Text(
           appLocalizations.aboutDescription,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 14,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
     );

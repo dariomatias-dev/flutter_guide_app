@@ -53,9 +53,8 @@ class SelectLanguageWidget extends ConsumerWidget {
               value: language,
               child: Text(
                 language.name,
-                style: TextStyle(
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Theme.of(context).colorScheme.primary,
-                  fontSize: 14,
                 ),
               ),
             );
@@ -83,10 +82,9 @@ class SelectLanguageWidget extends ConsumerWidget {
           children: <Widget>[
             Text(
               selectedLanguage.name,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 14,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: textColor),
             ),
             Icon(
               Icons.arrow_drop_down,

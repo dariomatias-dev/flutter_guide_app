@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/links/app_links.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_spacing.dart';
 import 'package:flutter_guide/src/shared/utils/open_url/open_url.dart';
 
 /// Button that opens the app's source code repository.
@@ -11,7 +13,7 @@ class SourceCodeButtonWidget extends StatelessWidget {
   const SourceCodeButtonWidget({super.key});
 
   /// Corner radius of the button.
-  BorderRadius get borderRadius => BorderRadius.circular(20);
+  BorderRadius get borderRadius => BorderRadius.circular(AppRadius.large);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class SourceCodeButtonWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 36,
+        horizontal: AppSpacing.huge,
       ),
       child: InkWell(
         onTap: () {

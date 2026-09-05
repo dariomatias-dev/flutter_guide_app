@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide/src/core/shell/widgets/bottom_navigation_bar/navigation_bar_widget.dart';
 import 'package:flutter_guide/src/core/theme/tokens/app_colors.dart';
+import 'package:flutter_guide/src/core/theme/tokens/app_radius.dart';
 
 /// Rounded, elevated container wrapping the [NavigationBarWidget].
 class BottomNavigationBarWidget extends StatelessWidget {
@@ -34,7 +35,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? null : FlutterGuideColors.white,
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(AppRadius.full),
         boxShadow: <BoxShadow>[
           BoxShadow(
             blurRadius: 0.5,
@@ -46,7 +47,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
         ],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(AppRadius.full),
         child: NavigationBarWidget(
           screenIndex: screenIndex,
           updateScreenIndex: updateScreenIndex,
