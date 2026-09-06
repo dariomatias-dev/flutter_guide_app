@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_guide/l10n/app_localizations.dart';
 import 'package:flutter_guide/src/core/constants/languages_app.dart';
+import 'package:flutter_guide/src/core/di/deep_link_source_provider.dart';
 import 'package:flutter_guide/src/core/di/logger_provider.dart';
 import 'package:flutter_guide/src/core/di/theme_notifier_provider.dart';
 import 'package:flutter_guide/src/core/helpers/deep_link_handler.dart';
@@ -43,6 +44,7 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
 
         _deepLinkService = DeepLinkService(
           handler: handler,
+          source: ref.read(deepLinkSourceProvider),
           logger: ref.read(loggerProvider),
           router: router,
           scaffoldMessengerKey: _scaffoldMessengerKey,
@@ -51,6 +53,13 @@ class _FlutterGuideAppState extends ConsumerState<FlutterGuideApp> {
         unawaited(_deepLinkService?.init());
       },
     );
+  }
+
+  @override
+  void dispose() {
+    unawaited(_deepLinkService?.dispose());
+
+    super.dispose();
   }
 
   @override
