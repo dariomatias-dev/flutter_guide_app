@@ -57,5 +57,29 @@ void main() {
 
       expect(taps, 1);
     });
+
+    testWidgets(
+      'ellipsizes a long title instead of overflowing the row',
+      (tester) async {
+        tester.view.physicalSize = const Size(640, 1280);
+        tester.view.devicePixelRatio = 2.0;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        await tester.pumpWidget(
+          wrap(
+            const ListTileItemWidget(
+              title: 'A reasonably long catalog component name',
+              icon: Icons.widgets,
+              trailingWidgets: [
+                Icon(Icons.arrow_forward_ios_rounded, size: 14),
+              ],
+            ),
+          ),
+        );
+
+        expect(tester.takeException(), isNull);
+      },
+    );
   });
 }

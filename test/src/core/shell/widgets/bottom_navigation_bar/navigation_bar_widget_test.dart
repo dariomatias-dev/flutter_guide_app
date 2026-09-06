@@ -7,6 +7,22 @@ import '../../../../../helpers/pump_app.dart';
 const _tabNames = <String>['Home', 'Elements', 'Packages', 'Settings'];
 const _lastIndex = 3;
 
+/// The Portuguese (BR) tab labels: the longest across the app's three
+/// supported locales, and the ones that overflowed the bar on a real device
+/// in production despite every widget test passing at the default,
+/// desktop-sized test viewport.
+const _longestTabNames = <String>[
+  'Início',
+  'Elementos',
+  'Pacotes',
+  'Configurações',
+];
+
+/// A narrow phone's logical width, the tightest fit the app is expected to
+/// render on.
+const _narrowLogicalWidth = 320.0;
+const _devicePixelRatio = 2.0;
+
 void main() {
   late List<int> requestedIndices;
 
@@ -50,6 +66,56 @@ void main() {
       await tester.pump();
 
       expect(requestedIndices, <int>[_lastIndex]);
+    });
+  });
+
+  group('NavigationBarWidget on a narrow phone', () {
+    testWidgets('never overflows selecting the longest label per tab', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(
+        _narrowLogicalWidth * _devicePixelRatio,
+        1280,
+      );
+      tester.view.devicePixelRatio = _devicePixelRatio;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: Stack(
+              children: [
+                Positioned(
+                  right: 16,
+                  left: 16,
+                  bottom: 8,
+                  child: SafeArea(
+                    child: NavigationBarWidget(
+                      screenIndex: 0,
+                      updateScreenIndex: requestedIndices.add,
+                      getBottomNavigationBarName: (index) =>
+                          _longestTabNames[index],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      for (final icon in const [
+        Icons.widgets_outlined,
+        Icons.archive_outlined,
+        Icons.settings_outlined,
+        Icons.home_outlined,
+      ]) {
+        await tester.tap(find.byIcon(icon));
+        await tester.pumpAndSettle();
+
+        expect(tester.takeException(), isNull);
+      }
     });
   });
 
