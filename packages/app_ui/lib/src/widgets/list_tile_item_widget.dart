@@ -68,12 +68,16 @@ class ListTileItemWidget extends StatelessWidget {
                           size: 20,
                         ),
                       const SizedBox(width: 12),
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: primaryColor.withAlpha(
-                            onTap == null ? 153 : 255,
-                          ),
+                      Flexible(
+                        child: Text(
+                          title,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: primaryColor.withAlpha(
+                                  onTap == null ? 153 : 255,
+                                ),
+                              ),
                         ),
                       ),
                     ],

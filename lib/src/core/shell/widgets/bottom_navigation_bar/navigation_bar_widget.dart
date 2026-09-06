@@ -53,18 +53,19 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         backgroundColor: Theme.of(context).colorScheme.secondary,
         currentIndex: widget.screenIndex,
         onTap: widget.updateScreenIndex,
+        textFontSize: 13,
         itemPadding: const EdgeInsets.only(
           top: AppSpacing.xxs,
-          right: AppSpacing.md,
+          right: AppSpacing.sm,
           bottom: AppSpacing.xxs,
-          left: AppSpacing.xs,
+          left: AppSpacing.xxs,
         ),
         items: List.generate(
           _icons.length,
           (index) {
             return SalomonBottomBarItem(
               icon: Padding(
-                padding: const EdgeInsets.all(AppSpacing.sm),
+                padding: const EdgeInsets.all(AppSpacing.xxs),
                 child: Icon(
                   _icons[index],
                 ),
