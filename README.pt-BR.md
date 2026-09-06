@@ -118,15 +118,18 @@ Para as regras de camada, os subsistemas e as decisões por trás deles, veja
 
 ## Testes
 
-O projeto tem 59 arquivos de teste e 326 casos, cobrindo repositórios,
-view models, notifiers, tratamento de deep link, localização e widgets
-compartilhados, usando `mocktail` para mocks e overrides de
-`ProviderContainer` para estado do Riverpod. O código segue o conjunto
-rigoroso de lints `very_good_analysis`.
+O app tem 68 arquivos de teste e 378 casos, cobrindo repositórios, view
+models, notifiers, o widget raiz, tratamento de deep link, localização e
+widgets compartilhados, usando `mocktail` para mocks e overrides de
+`ProviderContainer` para estado do Riverpod. O `packages/app_ui` soma
+outros 7 arquivos e 24 casos. O código segue o conjunto rigoroso de lints
+`very_good_analysis`.
 
-A cobertura de linhas é de 96%, medida sobre `lib/` menos as fontes
-geradas e os samples do catálogo, que são código didático exibido ao
-usuário, não lógica do app. O gate reprova abaixo de 95%.
+A cobertura de linhas é de 97,8% para o app, medida sobre `lib/` menos as
+fontes geradas e os samples do catálogo, que são código didático exibido
+ao usuário, não lógica do app, e de 100% para o `packages/app_ui`. Os dois
+gates reprovam abaixo de 95% e de 98%, e cada pacote é medido por conta
+própria.
 
 Um comando roda tudo o que a CI roda, na mesma ordem:
 
@@ -207,6 +210,8 @@ Scripts utilitários ficam em `scripts/`.
 | [Contribuindo](docs/contributing.pt-BR.md) | Configuração, o gate local, o que a CI verifica, releases e a convenção de commits |
 | [Política de segurança](docs/security.pt-BR.md) | Como relatar uma vulnerabilidade em privado, e o que está no escopo |
 | [Código de Conduta](docs/code_of_conduct.pt-BR.md) | O comportamento esperado nos espaços do projeto |
+| [Acordo de trabalho](CLAUDE.md) | O processo que toda mudança segue, venha de uma pessoa ou de um agente (em inglês) |
+| [Design system](packages/app_ui/README.md) | O que o `packages/app_ui` contém e o limite que o mantém sem acoplamento ao app (em inglês) |
 
 Cada um também está disponível em [English](docs/architecture.md) e
 [Español](docs/architecture.es.md), com um seletor de idioma no topo de cada

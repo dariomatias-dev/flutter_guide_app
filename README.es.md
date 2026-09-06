@@ -118,15 +118,18 @@ mira [docs/architecture.es.md](docs/architecture.es.md).
 
 ## Pruebas
 
-El proyecto tiene 59 archivos de prueba y 326 casos, que cubren
-repositorios, view models, notifiers, manejo de deep links, localización y
-widgets compartidos, usando `mocktail` para mocks y overrides de
-`ProviderContainer` para el estado de Riverpod. El código sigue el
-conjunto estricto de lints `very_good_analysis`.
+La app tiene 68 archivos de prueba y 378 casos, que cubren repositorios,
+view models, notifiers, el widget raíz, manejo de deep links, localización
+y widgets compartidos, usando `mocktail` para mocks y overrides de
+`ProviderContainer` para el estado de Riverpod. `packages/app_ui` suma 7
+archivos y 24 casos propios. El código sigue el conjunto estricto de lints
+`very_good_analysis`.
 
-La cobertura de líneas es del 96%, medida sobre `lib/` menos las fuentes
-generadas y las muestras del catálogo, que son código didáctico mostrado
-al usuario y no lógica de la app. El gate reprueba por debajo del 95%.
+La cobertura de líneas es del 97,8% para la app, medida sobre `lib/` menos
+las fuentes generadas y las muestras del catálogo, que son código
+didáctico mostrado al usuario y no lógica de la app, y del 100% para
+`packages/app_ui`. Los dos gates reprueban por debajo del 95% y del 98%, y
+cada paquete se mide por su cuenta.
 
 Un solo comando ejecuta todo lo que ejecuta la CI, en el mismo orden:
 
@@ -207,6 +210,8 @@ Los scripts utilitarios están en `scripts/`.
 | [Contribuir](docs/contributing.es.md) | Configuración, el gate local, qué verifica la CI, publicaciones y la convención de commits |
 | [Política de seguridad](docs/security.es.md) | Cómo reportar una vulnerabilidad en privado, y qué está dentro del alcance |
 | [Código de Conducta](docs/code_of_conduct.es.md) | El comportamiento esperado en los espacios del proyecto |
+| [Acuerdo de trabajo](CLAUDE.md) | El proceso que sigue todo cambio, venga de una persona o de un agente (en inglés) |
+| [Sistema de diseño](packages/app_ui/README.md) | Qué contiene `packages/app_ui` y el límite que lo mantiene sin acoplamiento a la app (en inglés) |
 
 Cada uno también está disponible en [English](docs/architecture.md) y
 [Português (BR)](docs/architecture.pt-BR.md), con un selector de idioma en la

@@ -18,9 +18,11 @@ lib/
 └── src/
     ├── flutter_guide_app.dart Widget raiz: tema, locale, router
     ├── core/                  Tudo de que mais de uma feature depende
+    │   ├── config/            O contrato de ambiente e seu leitor de dotenv
     │   ├── constants/         Códigos de idioma, links externos
     │   ├── di/                Providers de dependências entre features
     │   ├── enums/             Tipos de componente, de interface e de tema
+    │   ├── errors/            A fronteira de falhas e o reporter de erros
     │   ├── extensions/        Extensões sobre tipos do Dart e do Flutter
     │   ├── helpers/           Parsing e tratamento de deep links
     │   ├── models/            Modelos compartilhados entre features
@@ -28,7 +30,8 @@ lib/
     │   ├── router/            O provider do GoRouter, montado a partir dessas rotas
     │   ├── services/          Invólucros sobre SDKs de plataforma
     │   ├── shell/             Scaffold raiz: app bar e barra inferior
-    │   └── theme/             ThemeData e o notifier de tema
+    │   ├── theme/             ThemeData e o notifier de tema
+    │   └── widgets/           Telas exibidas quando o próprio app falha
     ├── features/              Um diretório por feature, três camadas cada
     │   ├── catalog/           O catálogo de componentes e os samples
     │   ├── code_theme_selector/
@@ -64,6 +67,30 @@ guarda widgets e helpers sem feature própria, como o
 samples fica na camada de apresentação, em
 [`sample_registry.dart`](../lib/src/features/catalog/presentation/samples/sample_registry.dart),
 mesmo que as listas de samples que ele lê sejam dado.
+
+## Inicialização e falhas
+
+O [`main.dart`](../lib/main.dart) instala os handlers de erro antes de
+qualquer coisa que possa falhar, e só então roda a sequência de inicialização
+dentro de uma guarda.
+
+- O [`installErrorHandlers`](../lib/src/core/errors/error_handlers.dart) liga
+  os dois canais pelos quais o Flutter reporta: `FlutterError.onError` para
+  build, layout e paint, e `PlatformDispatcher.instance.onError` para os erros
+  assíncronos que escapam de um future. Ligar só o primeiro deixa o segundo
+  mudo.
+- O `ErrorWidget.builder` é trocado pela
+  [`AppFailureScreen`](../lib/src/core/widgets/app_failure_screen.dart), para
+  que um widget que lança em build de release mostre algo inteligível em vez de
+  um retângulo cinza, e nunca um stack trace.
+- A sequência de inicialização, o ambiente, as preferências e o SDK de
+  anúncios, roda dentro de um `try`. Sem guarda, qualquer um dos três aborta
+  antes do `runApp` e deixa uma tela preta sem nada a fazer. O catch reporta a
+  falha e exibe a mesma tela com um retry que roda a sequência inteira de novo.
+- As falhas trafegam pelo
+  [`ErrorReporter`](../lib/src/core/errors/error_reporter.dart), um contrato
+  com implementação sobre `Logger` atrás do `errorReporterProvider`, então o
+  destino de um relato muda sem tocar em nenhum call site.
 
 ## Gerenciamento de estado
 
@@ -127,6 +154,15 @@ resolve em um
 parsing é a parte com casos de borda, então está separado da navegação e da
 localização e é testado sozinho; ao handler sobra a parte que precisa de
 `BuildContext`.
+
+O plugin em si fica atrás do
+[`DeepLinkSource`](../lib/src/core/services/deep_link_source.dart), resolvido
+pelo `deepLinkSourceProvider`. Por dois motivos: a camada de widgets não tem por
+que saber qual plugin entrega um link, e o `AppLinks` é um singleton de processo
+que para de repassar eventos quando o último ouvinte cancela, o que o torna
+impossível de dirigir a partir de mais de um teste. O widget raiz
+cancela a assinatura no `dispose`, já que o handler segura o router e o
+container de providers da árvore que o criou.
 
 ## Persistência
 
@@ -215,6 +251,17 @@ de propósito.
 O `sample_registry_test.dart` resolve todo componente registrado, então um
 sample ausente de uma lista de definição falha ali, e não em tempo de execução.
 
+## Configuração
+
+Os ids de unidade de anúncio e de dispositivo de teste vêm de um asset `.env`,
+lido pelo [`AppEnv`](../lib/src/core/config/app_env.dart) em vez de uma chamada
+ao `flutter_dotenv` no ponto onde o valor é usado.
+
+Chave ausente é valor ausente, nunca exceção. Um clone novo e a CI não têm
+`.env` e o app precisa rodar mesmo assim, então o `BannerAdWidget` não
+renderiza nada quando o id falta, que é o mesmo resultado de um escopo com
+anúncios desligados.
+
 ## Anúncios
 
 `google_mobile_ads`, inicializado no `main.dart` e lido do `.env` pelo
@@ -224,6 +271,14 @@ para o app rodar, e é por isso que o `contributing.pt-BR.md` traz um bloco
 
 A inicialização deliberadamente não é aguardada: um SDK de anúncios lento para
 responder não deve segurar o primeiro frame.
+
+O `BannerAdWidget` é o único widget que importa um SDK de plataforma direto, em
+vez de alcançá-lo por um contrato em `core/services/` como fazem os links e as
+preferências. O `google_mobile_ads` renderiza por uma platform view que a camada
+de widgets precisa segurar, então o invólucro seria um pass-through em volta de
+um `Widget`. Ele fica cercado de outro jeito: o `adsEnabledProvider` o desliga,
+e com anúncios desligados nada na árvore toca o SDK, que é o que permite a todo
+teste de widget e à captura de telas renderizarem sem ele.
 
 ## Testes
 

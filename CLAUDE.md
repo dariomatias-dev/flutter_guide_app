@@ -37,7 +37,11 @@ initiative. The commit is the maintainer's.
 | Kind of code | Directory |
 | --- | --- |
 | Cross-feature infrastructure: services, theme, router, shell, enums, extensions, constants | `lib/src/core/` |
-| Providers that wire core dependencies (preferences, theme, navigation) | `lib/src/core/di/` |
+| A wrapper over a third-party platform SDK, always behind a contract so a test can substitute it | `lib/src/core/services/` |
+| Values read from the `.env` asset | `lib/src/core/config/`, behind `AppEnv`, never `flutter_dotenv` at the call site |
+| The failure boundary: error handlers, the reporter, and what a report carries | `lib/src/core/errors/` |
+| A screen shown when the app itself failed, before or instead of the tree | `lib/src/core/widgets/` |
+| Providers that wire core dependencies (preferences, theme, navigation, links) | `lib/src/core/di/` |
 | A feature's screens, widgets, view models and its providers | `lib/src/features/<feature>/presentation/` |
 | A feature's repository contracts and entities | `lib/src/features/<feature>/domain/` |
 | A feature's repository implementations, data sources and models | `lib/src/features/<feature>/data/` |

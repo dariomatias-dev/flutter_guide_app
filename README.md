@@ -117,15 +117,17 @@ For the layering rules, the subsystems and the decisions behind them, see
 
 ## Testing
 
-The project has 59 test files and 326 test cases covering repositories,
-view models, notifiers, deep link handling, localization and shared
-widgets, using `mocktail` for mocking and `ProviderContainer` overrides
-for Riverpod state. Code is linted against the strict `very_good_analysis`
+The app has 68 test files and 378 test cases covering repositories, view
+models, notifiers, the root widget, deep link handling, localization and
+shared widgets, using `mocktail` for mocking and `ProviderContainer`
+overrides for Riverpod state. `packages/app_ui` has 7 more files and 24
+cases of its own. Code is linted against the strict `very_good_analysis`
 rule set.
 
-Line coverage is 96%, measured over `lib/` minus the generated sources and
-the catalog samples, which are teaching code rendered to the user rather
-than app logic. The gate fails below 95%.
+Line coverage is 97.8% for the app, measured over `lib/` minus the generated
+sources and the catalog samples, which are teaching code rendered to the
+user rather than app logic, and 100% for `packages/app_ui`. The two gates
+fail below 95% and 98%, and each package is measured on its own.
 
 One command runs everything CI runs, in the same order:
 
@@ -206,6 +208,8 @@ Utility scripts live under `scripts/`.
 | [Contributing](docs/contributing.md) | Setup, the local gate, what CI checks, releases, and the commit convention |
 | [Security policy](docs/security.md) | How to report a vulnerability privately, and what is in scope |
 | [Code of Conduct](docs/code_of_conduct.md) | Behaviour expected in project spaces |
+| [Working agreement](CLAUDE.md) | The process every change follows, whether it comes from a person or an agent |
+| [Design system](packages/app_ui/README.md) | What `packages/app_ui` holds, and the boundary that keeps it app-agnostic |
 
 Each is also available in [Español](docs/architecture.es.md) and
 [Português (BR)](docs/architecture.pt-BR.md), with a language switcher at the

@@ -18,9 +18,11 @@ lib/
 └── src/
     ├── flutter_guide_app.dart Root widget: theme, locale, router
     ├── core/                  Anything more than one feature depends on
+    │   ├── config/            The environment contract and its dotenv reader
     │   ├── constants/         Language codes, external links
     │   ├── di/                Providers for cross-feature dependencies
     │   ├── enums/             Component, interface and theme types
+    │   ├── errors/            The failure boundary and the error reporter
     │   ├── extensions/        Extensions on Dart and Flutter types
     │   ├── helpers/           Deep link parsing and handling
     │   ├── models/            Models shared across features
@@ -28,7 +30,8 @@ lib/
     │   ├── router/            The GoRouter provider, built from those routes
     │   ├── services/          Wrappers over platform SDKs
     │   ├── shell/             Root scaffold: app bar and bottom bar
-    │   └── theme/             ThemeData and the theme notifier
+    │   ├── theme/             ThemeData and the theme notifier
+    │   └── widgets/           Screens shown when the app itself fails
     ├── features/              One directory per feature, three layers each
     │   ├── catalog/           The component catalog and the samples
     │   ├── code_theme_selector/
@@ -65,6 +68,28 @@ widgets and helpers with no feature of their own, such as
 lives in the presentation layer, in
 [`sample_registry.dart`](../lib/src/features/catalog/presentation/samples/sample_registry.dart),
 even though the sample lists it reads are data.
+
+## Startup and failures
+
+[`main.dart`](../lib/main.dart) installs the error handlers before anything
+that can fail, then runs the startup sequence inside a guard.
+
+- [`installErrorHandlers`](../lib/src/core/errors/error_handlers.dart) wires
+  both channels Flutter reports through: `FlutterError.onError` for build,
+  layout and paint, and `PlatformDispatcher.instance.onError` for asynchronous
+  errors that escape a future. Wiring only the first leaves the second silent.
+- `ErrorWidget.builder` is replaced with
+  [`AppFailureScreen`](../lib/src/core/widgets/app_failure_screen.dart), so a
+  widget that throws in a release build shows something intelligible instead of
+  a grey box, and never a stack trace.
+- The startup sequence itself, the environment, preferences and the ad SDK,
+  runs inside a `try`. Unguarded, any of the three aborts before `runApp` and
+  leaves a black screen with nothing to act on. The catch reports the failure
+  and runs the same screen with a retry that re-runs the whole sequence.
+- Failures travel through
+  [`ErrorReporter`](../lib/src/core/errors/error_reporter.dart), a contract
+  with a `Logger` implementation behind `errorReporterProvider`, so where a
+  report goes can change without touching a call site.
 
 ## State management
 
@@ -128,6 +153,15 @@ resolves it into a
 parsing is the part with edge cases, so it is separated from navigation and
 localization and unit tested on its own; the handler is left with the part that
 needs a `BuildContext`.
+
+The plugin itself sits behind
+[`DeepLinkSource`](../lib/src/core/services/deep_link_source.dart), resolved
+through `deepLinkSourceProvider`. Two reasons: the widget layer has no business
+knowing which plugin delivers a link, and `AppLinks` is a process-wide singleton
+that stops relaying once its last listener cancels, which leaves it impossible
+to drive from more than one test. The root widget cancels the subscription in
+`dispose`, since the handler holds the router and the provider container of the
+tree that created it.
 
 ## Persistence
 
@@ -214,6 +248,17 @@ purpose.
 `sample_registry_test.dart` resolves every registered component, so a sample
 missing from a definition list fails there rather than at runtime.
 
+## Configuration
+
+Ad unit ids and test device ids come from a `.env` asset, read through
+[`AppEnv`](../lib/src/core/config/app_env.dart) instead of by calling
+`flutter_dotenv` where the value is needed.
+
+A missing key is an absent value, never an exception. A fresh clone and CI
+carry no `.env` and the app still has to run there, so `BannerAdWidget` renders
+nothing when the id is absent, which is the same thing a scope with ads
+disabled produces.
+
 ## Ads
 
 `google_mobile_ads`, initialized in `main.dart` and read from `.env` through
@@ -223,6 +268,14 @@ block with empty values.
 
 The initialization is deliberately not awaited: an ad SDK that is slow to
 answer should not hold up the first frame.
+
+`BannerAdWidget` is the one widget that imports a platform SDK directly, rather
+than reaching it through a contract in `core/services/` the way links and
+preferences do. `google_mobile_ads` renders through a platform view the widget
+layer has to hold, so the wrapper would be a pass-through around a `Widget`. It
+is fenced instead: `adsEnabledProvider` turns it off, and with ads off nothing
+in the tree touches the SDK, which is what lets every widget test and the
+screenshot run render without it.
 
 ## Testing
 
