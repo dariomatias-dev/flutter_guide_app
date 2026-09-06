@@ -4,6 +4,7 @@
 
 import 'package:flutter_guide/src/core/config/app_env_providers.dart';
 import 'package:flutter_guide/src/core/di/ads_enabled_provider.dart';
+import 'package:flutter_guide/src/core/di/deep_link_source_provider.dart';
 import 'package:flutter_guide/src/core/di/floating_bar_clearance_provider.dart';
 import 'package:flutter_guide/src/core/di/logger_provider.dart';
 import 'package:flutter_guide/src/core/di/main_navigation_notifier_provider.dart';
@@ -65,6 +66,7 @@ void main() {
       container.read(codeThemeRepositoryProvider);
       container.read(codeThemeViewModelProvider);
       container.read(componentsRepositoryProvider);
+      container.read(deepLinkSourceProvider);
       container.read(elementsScreenTabIndexNotifierProvider);
       container.read(errorReporterProvider);
       container.read(favoritesRepositoryProvider);
