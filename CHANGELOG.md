@@ -2,6 +2,22 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.4.0](https://github.com/dariomatias-dev/flutter_guide_app/compare/flutter_guide-v1.3.0...flutter_guide-v1.4.0) (2026-09-06)
+
+
+### Features
+
+* **core:** install the error boundary and guard startup ([4b888d3](https://github.com/dariomatias-dev/flutter_guide_app/commit/4b888d31a0b78227dbcffeb4930f37f4d28224a5))
+* **core:** read env configuration through a contract ([06027b0](https://github.com/dariomatias-dev/flutter_guide_app/commit/06027b097399b0049dbed328ae45571c0a57c1a2))
+* **design-system:** extract packages/app_ui ([8919e71](https://github.com/dariomatias-dev/flutter_guide_app/commit/8919e71e6c3b61f6cce4f2f6dc4205412b64e31e))
+* **theme:** introduce design tokens ([0c7e0b5](https://github.com/dariomatias-dev/flutter_guide_app/commit/0c7e0b5fddbbb17bd396c59278b24b27078cdffa))
+
+
+### Bug Fixes
+
+* **shell:** honor system insets under edge-to-edge ([215905c](https://github.com/dariomatias-dev/flutter_guide_app/commit/215905c8b8335f6eeb122a9cccbb846c7321e7b4))
+* **shell:** stop narrow-screen overflow in the bottom bar and list rows ([6664dfc](https://github.com/dariomatias-dev/flutter_guide_app/commit/6664dfc127cc3a2cc4e94d557702fbf47eec86c4))
+
 ## [Unreleased]
 
 ## [1.3.0] - 2026-08-01
