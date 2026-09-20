@@ -1,233 +1,194 @@
 <br>
 <div align="center">
-<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
-<img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
-<img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
 </div>
 <br>
+
 <div align="center">
-<a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml"><img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI"></a>
-<a href="https://codecov.io/gh/dariomatias-dev/flutter_guide_app"><img src="https://codecov.io/gh/dariomatias-dev/flutter_guide_app/branch/main/graph/badge.svg" alt="Coverage"></a>
-<img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Licença MIT"></a>
+  <a href="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml">
+    <img src="https://github.com/dariomatias-dev/flutter_guide_app/actions/workflows/ci.yaml/badge.svg" alt="CI">
+  </a>
+  <a href="https://codecov.io/gh/dariomatias-dev/flutter_guide_app">
+    <img src="https://codecov.io/gh/dariomatias-dev/flutter_guide_app/branch/main/graph/badge.svg" alt="Cobertura">
+  </a>
+  <img src="https://img.shields.io/badge/lints-very__good__analysis-blueviolet?style=flat" alt="very_good_analysis">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Licença MIT">
+  </a>
 </div>
 <br>
 
 <p align="center">
-<a href="README.md">English</a> · <a href="README.es.md">Español</a> · <strong>Português (BR)</strong>
+  <a href="README.md">English</a> · <a href="README.es.md">Español</a> · <strong>Português (BR)</strong>
 </p>
 
-<h1 align="center">FlutterGuide: Aplicativo Mobile</h1>
+<h1 align="center">FlutterGuide</h1>
 
 <p align="center">
-Um aplicativo Android para explorar widgets, funções e pacotes do Flutter/Dart, cada um com código executável e uma prévia ao vivo.
-<br>
-<a href="#sobre-o-projeto"><strong>Explore a documentação »</strong></a>
-<br>
-<br>
-<a href="https://flutterguide.app">Ver Site</a>
-·
-<a href="https://github.com/dariomatias-dev/flutter_guide_app/issues">Reportar Bug</a>
-·
-<a href="https://github.com/dariomatias-dev/flutter_guide_app/issues">Solicitar Funcionalidade</a>
+  Um aplicativo Android para explorar widgets, funções e pacotes do Flutter/Dart, cada um com código executável e uma prévia ao vivo.
+  <br>
+  <a href="#sobre-o-projeto"><strong>Explore a documentação »</strong></a>
+  <br>
+  <br>
+  <a href="https://github.com/dariomatias-dev/flutter_guide_app/issues">Reportar Bug</a>
+  ·
+  <a href="https://github.com/dariomatias-dev/flutter_guide_app/issues">Solicitar Funcionalidade</a>
 </p>
 
 ## Sumário
 
-- [Sobre O Projeto](#sobre-o-projeto)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Prévia](#prévia)
 - [Funcionalidades](#funcionalidades)
-- [Construído Com](#construído-com)
+- [O Catálogo](#o-catálogo)
+- [Tecnologias](#tecnologias)
 - [Arquitetura](#arquitetura)
-- [Testes](#testes)
-- [Capturas de Tela](#capturas-de-tela)
-- [Baixar o App](#baixar-o-app)
 - [Começando](#começando)
 - [Scripts](#scripts)
+- [Testes](#testes)
+- [Publicação](#publicação)
 - [Documentação](#documentação)
 - [Contribuindo](#contribuindo)
-- [Changelog](#changelog)
+- [Segurança](#segurança)
 - [Licença](#licença)
 - [Autor](#autor)
 
-## Sobre O Projeto
+## Sobre o Projeto
 
-**FlutterGuide** é um catálogo mobile de peças do Flutter e do Dart, criado para ajudar tanto desenvolvedores iniciantes quanto experientes a aprender por meio de exemplos.
+**FlutterGuide** é um catálogo mobile de peças do Flutter e do Dart para desenvolvedores que aprendem por exemplos. Cada item (widget, função ou pacote) vem com seu código-fonte e uma prévia interativa ao vivo renderizada dentro do próprio app, para ver o comportamento antes de copiá-lo para outro projeto.
 
-Cada item (widget, função ou pacote) vem com seu código-fonte e uma prévia interativa renderizada dentro do próprio app, para você ver o comportamento antes de copiar para o seu projeto. O catálogo também inclui telas de UI prontas e elementos de interface reutilizáveis para padrões comuns de app.
+O app está publicado no [Google Play](https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide), e o site está em [flutterguide.app](https://flutterguide.app).
 
-O catálogo cobre atualmente:
+## Prévia
 
-| Categoria      | Quantidade |
-| -------------- | ---------- |
-| Widgets        | 131        |
-| Pacotes        | 42         |
-| Funções        | 13         |
-| Elementos      | 10         |
-| Exemplos de UI | 6          |
-| **Total**      | **202**    |
+<div align="center">
+  <img src="screenshots/en/01_home.png" width="200" alt="Início">
+  <img src="screenshots/en/05_component_detail.png" width="200" alt="Prévia do componente">
+  <img src="screenshots/en/06_component_code.png" width="200" alt="Código do componente">
+  <br>
+  <sub>A tela inicial, a prévia de um componente e seu código-fonte.</sub>
+</div>
 
 ## Funcionalidades
 
-- **Catálogo de Widgets, Funções e Pacotes**: Navegue por widgets Material e Cupertino, funções essenciais do Dart e pacotes populares, cada um com código, prévia interativa e link para a documentação oficial.
-- **Elementos e Exemplos de UI**: Telas de exemplo completas (login, chat, cliente de email e mais) e elementos de interface reutilizáveis para estudar ou copiar.
-- **Favoritos**: Salve qualquer widget, função ou pacote para acesso rápido depois.
-- **Busca**: Filtre cada catálogo pelo nome enquanto digita.
-- **Deep Linking**: Abra um componente ou exemplo específico direto de um link compartilhado.
-- **Múltiplos Idiomas**: Interface completa em inglês, português (Brasil) e espanhol.
-- **Seletor de Tema de Código**: Escolha o tema de destaque de sintaxe usado nos exemplos de código, com variantes claro e escuro.
-- **Tema Claro e Escuro**: Temas em todo o app, com preferência salva.
-- **Acessibilidade**: Labels semânticos em elementos interativos para leitores de tela.
+- **Prévias ao vivo com código-fonte**: cada widget, função e pacote mostra seu código executável ao lado de uma prévia interativa e um link para a documentação oficial.
+- **Elementos e exemplos de UI**: telas de exemplo completas (login, chat, cliente de email e outras) e elementos de interface reutilizáveis para estudar ou copiar.
+- **Deep linking**: abra um componente ou exemplo específico a partir de um link compartilhado.
+- **Seletor de tema de código**: escolha o tema de destaque de sintaxe dos exemplos de código, com variantes claro e escuro.
+- **Favoritos**: salve qualquer widget, função ou pacote para depois.
+- **Busca**: filtre cada catálogo pelo nome enquanto digita.
+- **Idiomas**: inglês, português (Brasil) e espanhol.
+- **Tema claro e escuro**, com a escolha salva.
+- **Acessibilidade**: labels semânticos nos elementos interativos para leitores de tela.
 
-## Construído Com
+## O Catálogo
 
-- **[Flutter](https://flutter.dev/)**: Kit de ferramentas de UI do Google para construir aplicações nativas a partir de uma única base de código.
-- **[Dart](https://dart.dev/)**: A linguagem de programação por trás do Flutter.
-- **[Riverpod](https://riverpod.dev/)**: Gerenciamento de estado e injeção de dependência.
-- **[go_router](https://pub.dev/packages/go_router)**: Roteamento declarativo e tratamento de deep links.
-- **[flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)**: Destaque de sintaxe para os exemplos de código.
-- **[shared_preferences](https://pub.dev/packages/shared_preferences)**: Persistência de tema, idioma e tema de código selecionados.
-- **[google_mobile_ads](https://pub.dev/packages/google_mobile_ads)**: Monetização via anúncios.
-- **[app_links](https://pub.dev/packages/app_links)**: Tratamento de deep links.
-- **[intl](https://pub.dev/packages/intl)** e o suporte nativo de `l10n` do Flutter: localização em inglês, português (BR) e espanhol.
-- **[mocktail](https://pub.dev/packages/mocktail)**: Mocks na suíte de testes.
+Os widgets são Material e Cupertino, as funções são funções essenciais do Dart e os pacotes são bibliotecas de terceiros, entre eles `dio`, `http`, `cached_network_image`, `flutter_svg`, `video_player`, `flutter_animate`, `photo_view` e `shimmer`. Os elementos são peças de interface reutilizáveis e os exemplos de UI são telas completas.
 
-O catálogo dentro do app também demonstra dezenas de outros pacotes, como
-`dio`, `http`, `cached_network_image`, `flutter_svg`, `video_player`,
-`flutter_animate`, `photo_view` e `shimmer`; abra a aba de Pacotes no app
-para ver a lista completa e executável.
+| Categoria      | Quantidade |
+| -------------- | ---------- |
+| Widgets        | 142        |
+| Pacotes        | 46         |
+| Funções        | 13         |
+| Elementos      | 9          |
+| Exemplos de UI | 5          |
+| **Total**      | **215**    |
+
+## Tecnologias
+
+- **Framework**: [Flutter](https://flutter.dev/) e [Dart](https://dart.dev/)
+- **Estado e injeção de dependência**: [Riverpod](https://riverpod.dev/)
+- **Roteamento e deep links**: [go_router](https://pub.dev/packages/go_router) e [app_links](https://pub.dev/packages/app_links)
+- **Persistência**: [shared_preferences](https://pub.dev/packages/shared_preferences)
+- **Localização**: [intl](https://pub.dev/packages/intl) e o suporte nativo de `l10n` do Flutter
+- **Exemplos de código**: [flutter_syntax_highlighter](https://pub.dev/packages/flutter_syntax_highlighter)
+- **Monetização**: [google_mobile_ads](https://pub.dev/packages/google_mobile_ads)
+- **Qualidade**: [mocktail](https://pub.dev/packages/mocktail), [very_good_analysis](https://pub.dev/packages/very_good_analysis) e [FVM](https://fvm.app/) para fixar o SDK
 
 ## Arquitetura
 
-O app é organizado por feature (`lib/src/features/`), cada uma com suas
-próprias camadas `data`, `domain` e `presentation`:
+O app é organizado por feature (`lib/src/features/`: `catalog`, `home`, `settings` e `code_theme_selector`), cada uma dividida em `data`, `domain` e `presentation`, com Riverpod para o estado e go_router para o roteamento. O código transversal fica em `lib/src/core`, e o design system em `packages/app_ui`, um pacote separado cujo `pubspec.yaml` não depende do app, então o compilador rejeita qualquer import de volta para ele.
 
-- **catalog**: o catálogo de widgets/funções/pacotes/elementos/UIs, busca e favoritos.
-- **home**: a tela inicial e os grupos de componentes.
-- **settings**: seleção de idioma e informações do app.
-- **code_theme_selector**: o seletor de tema de destaque de sintaxe dos exemplos de código.
-
-O estado é gerenciado com Riverpod (classes `ViewModel`/`Notifier`
-expostas via providers), o roteamento com `go_router`, e a persistência
-por uma camada de serviço baseada em `SharedPreferences`. Widgets
-compartilhados e independentes de feature ficam em `lib/src/shared`;
-responsabilidades transversais (DI, roteamento, tema) ficam em
-`lib/src/core`.
-
-Para as regras de camada, os subsistemas e as decisões por trás deles, veja
-[docs/architecture.pt-BR.md](docs/architecture.pt-BR.md).
-
-## Testes
-
-O app tem 68 arquivos de teste e 378 casos, cobrindo repositórios, view
-models, notifiers, o widget raiz, tratamento de deep link, localização e
-widgets compartilhados, usando `mocktail` para mocks e overrides de
-`ProviderContainer` para estado do Riverpod. O `packages/app_ui` soma
-outros 7 arquivos e 24 casos. O código segue o conjunto rigoroso de lints
-`very_good_analysis`.
-
-A cobertura de linhas é de 97,8% para o app, medida sobre `lib/` menos as
-fontes geradas e os samples do catálogo, que são código didático exibido
-ao usuário, não lógica do app, e de 100% para o `packages/app_ui`. Os dois
-gates reprovam abaixo de 95% e de 98%, e cada pacote é medido por conta
-própria.
-
-Um comando roda tudo o que a CI roda, na mesma ordem:
-
-```sh
-./scripts/verify.sh
-```
-
-Veja o [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para o que
-cada etapa detecta e qual job da CI bloqueia o merge.
-
-## Capturas de Tela
-
-<div align="center">
-<img src="screenshots/en/01_home.png" width="200" alt="Início"/>
-<img src="screenshots/en/02_catalog_elements.png" width="200" alt="Catálogo de elementos"/>
-<img src="screenshots/en/03_catalog_uis.png" width="200" alt="Catálogo de UIs"/>
-<img src="screenshots/en/04_elements_tab.png" width="200" alt="Aba de elementos"/>
-<img src="screenshots/en/05_component_detail.png" width="200" alt="Prévia do componente"/>
-<img src="screenshots/en/06_component_code.png" width="200" alt="Código do componente"/>
-<img src="screenshots/en/07_packages_tab.png" width="200" alt="Aba de pacotes"/>
-<img src="screenshots/en/08_settings.png" width="200" alt="Configurações"/>
-<img src="screenshots/en/09_code_theme_selector.png" width="200" alt="Seletor de tema de código"/>
-</div>
-
-## Baixar o App
-
-Obtenha o **FlutterGuide** diretamente na **Google Play Store**:
-
-<a href="https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponível no Google Play" width="200">
-</a>
+As regras de camada, os subsistemas e as decisões por trás deles estão em [docs/architecture.pt-BR.md](docs/architecture.pt-BR.md).
 
 ## Começando
 
-O projeto fixa a versão do Flutter SDK via [FVM](https://fvm.app/), por isso todos os comandos abaixo usam `fvm flutter` em vez de um `flutter` instalado direto.
+Requisitos: [FVM](https://fvm.app/), que fixa a versão do Flutter SDK do projeto, Git, e um dispositivo ou emulador Android. Todos os comandos abaixo usam `fvm flutter` em vez de um `flutter` avulso.
+
+O arquivo `.env` é git-ignored; deixe os valores vazios para rodar sem anúncios.
 
 ```sh
 git clone https://github.com/dariomatias-dev/flutter_guide_app.git
 cd flutter_guide_app
 fvm install
 fvm flutter pub get
-```
-
-Crie um arquivo `.env` na raiz do projeto (ele é git-ignored) com as chaves abaixo; deixe os valores vazios para rodar localmente sem anúncios:
-
-```
+cat > .env <<'EOF'
 DEVICE_ID=
 BANNER_AD_ID=
 BANNER_AD_SAMPLE_ID=
 INTERSTICIAL_AD_SAMPLE_ID=
 REWARDED_AD_SAMPLE_ID=
 APP_OPEN_AD_SAMPLE_ID=
-```
-
-Depois rode o app em um dispositivo ou emulador conectado:
-
-```sh
+EOF
 fvm flutter run
 ```
 
 ## Scripts
 
-Scripts utilitários ficam em `scripts/`.
+Os scripts de apoio ficam em `scripts/`, na ordem de uso: primeiro desenvolvimento, depois qualidade.
 
-| Script       | Comando                             | Descrição                                                                                                                                                    |
-| ------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `verify` | `scripts/verify.sh [--all] [--skip-tests]` | Roda o mesmo gate que a CI exige: regenera as localizações e falha se a saída commitada estava desatualizada, confere a paridade dos ARB e então format, analyze, testes e o limiar de cobertura. Só roda quando há mudanças pendentes no código que ele cobre, a menos que `--all` seja passado. |
-| `check_coverage` | `scripts/check_coverage.sh <arquivo-lcov> <mínimo>` | Falha quando a cobertura de linhas fica abaixo do mínimo, excluindo fontes geradas e os samples do catálogo em `lib/src/features/catalog/data/samples/`, que são material didático exibido ao usuário, não lógica do app. |
-| `check_l10n` | `scripts/check_l10n.sh [dir-arb]` | Falha quando os arquivos ARB divergem nas chaves, ou quando uma chave do template não tem `description`. O `gen-l10n` cai no template em silêncio, então nada mais detecta uma tradução pela metade. |
-| `workspace_hash` | `scripts/workspace_hash.sh` | Imprime um hash das fontes cobertas pelo gate. O `verify.sh` grava esse hash em `.dart_tool/verify_stamp`, para que ferramentas saibam se a árvore ainda corresponde a uma execução aprovada. |
-| `screenshot` | `scripts/screenshot.sh [device-id]` | Percorre as principais telas do app em um dispositivo ou emulador conectado, nos três idiomas, salvando cada captura em `screenshots/<idioma>/`. O conjunto em inglês é o que este README, a Play Store e o site oficial usam. Rode `fvm flutter devices` para listar os ids de dispositivos disponíveis. |
+| Comando                                           | Descrição                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/screenshot.sh [device-id]`               | Percorre as principais telas do app em um dispositivo conectado, nos três idiomas, salvando as capturas em `screenshots/<locale>/`. Rode `fvm flutter devices` para listar os ids de dispositivos.                                                                         |
+| `scripts/verify.sh [--all] [--skip-tests]`        | Roda o que a CI roda: regenera código e localizações (falhando se a saída commitada estava desatualizada), depois paridade dos ARB, format, analyze, testes e cobertura. `--all` verifica tudo; `--skip-tests` serve para checagens no meio de uma mudança, nunca a final. |
+| `scripts/check_l10n.sh [arb-dir]`                 | Falha quando os arquivos ARB divergem nas chaves ou quando uma chave do template não tem descrição. O `gen-l10n` cai no template em silêncio, então nada mais detecta isso.                                                                                                |
+| `scripts/check_coverage.sh <lcov-file> <minimum>` | Falha quando a cobertura de linhas fica abaixo do mínimo, excluindo fontes geradas e os samples do catálogo, que são material didático, não lógica do app.                                                                                                                 |
+
+## Testes
+
+Os testes unitários e de widget ficam em `test/`, espelhando `lib/src/`, e usam `mocktail` com overrides de `ProviderContainer`. O `packages/app_ui` se testa sozinho, e um teste de integração percorre o app em um dispositivo para capturar as telas.
+
+```sh
+fvm flutter test                                                       # o app
+(cd packages/app_ui && fvm flutter test)                               # o design system
+fvm flutter test integration_test/screenshot_test.dart -d <device-id>  # capturas, em um dispositivo conectado
+./scripts/verify.sh                                                    # o mesmo gate que a CI roda
+```
+
+O gate falha diante de código ou localizações gerados desatualizados, arquivos ARB divergentes, formatação, avisos do analisador, testes falhando e cobertura abaixo do limiar. Veja [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para os limiares e para saber qual job da CI bloqueia um merge.
+
+## Publicação
+
+O FlutterGuide roda em Android e está publicado no Google Play. Todo pull request e todo push para `main` executa o pipeline de CI, e cada job bloqueia o merge (o gate de qualidade do app e do `packages/app_ui`, a varredura de vulnerabilidades das dependências, o build do APK de release e a execução do teste de integração em um emulador), exceto o envio de cobertura, que apenas reporta.
+
+As releases são geradas pelo release-please: ele lê os Conventional Commits que chegaram em `main`, mantém aberto um pull request com a próxima versão e a entrada do `CHANGELOG.md`, e no merge marca o commit e anexa o APK assinado e o app bundle à release do GitHub. Enviar o bundle ao Google Play é manual. Os detalhes estão em [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md).
 
 ## Documentação
 
-| Documento | O que cobre |
-| --- | --- |
-| [Arquitetura](docs/architecture.pt-BR.md) | Estrutura, regras de camada e a decisão por trás de cada subsistema |
-| [Contribuindo](docs/contributing.pt-BR.md) | Configuração, o gate local, o que a CI verifica, releases e a convenção de commits |
-| [Política de segurança](docs/security.pt-BR.md) | Como relatar uma vulnerabilidade em privado, e o que está no escopo |
-| [Código de Conduta](docs/code_of_conduct.pt-BR.md) | O comportamento esperado nos espaços do projeto |
-| [Acordo de trabalho](CLAUDE.md) | O processo que toda mudança segue, venha de uma pessoa ou de um agente (em inglês) |
-| [Design system](packages/app_ui/README.md) | O que o `packages/app_ui` contém e o limite que o mantém sem acoplamento ao app (em inglês) |
-
-Cada um também está disponível em [English](docs/architecture.md) e
-[Español](docs/architecture.es.md), com um seletor de idioma no topo de cada
-página.
+| Documento                                          | O que cobre                                                                                 |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [Arquitetura](docs/architecture.pt-BR.md)          | Estrutura, regras de camada e a decisão por trás de cada subsistema                         |
+| [Contribuindo](docs/contributing.pt-BR.md)         | Configuração, o gate local, o que a CI verifica, releases e a convenção de commits          |
+| [Política de segurança](docs/security.pt-BR.md)    | Como relatar uma vulnerabilidade em privado, e o que está no escopo                         |
+| [Código de Conduta](docs/code_of_conduct.pt-BR.md) | O comportamento esperado nos espaços do projeto                                             |
+| [Acordo de trabalho](CLAUDE.md)                    | O processo que toda mudança segue, venha de uma pessoa ou de um agente (em inglês)          |
+| [Design system](packages/app_ui/README.md)         | O que o `packages/app_ui` contém e o limite que o mantém sem acoplamento ao app (em inglês) |
 
 ## Contribuindo
 
-Contribuições tornam a comunidade open-source um lugar incrível para aprender e criar. Qualquer contribuição que você fizer será muito bem-vinda.
+Contribuições são bem-vindas. Antes de abrir um pull request, rode o gate local, que executa as mesmas verificações da CI:
 
-Antes de abrir um pull request, veja o [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para a configuração local, o gate de qualidade, a convenção de mensagens de commit (Conventional Commits) e as regras de branch deste projeto. A participação é regida pelo [Código de Conduta](docs/code_of_conduct.pt-BR.md).
+```sh
+./scripts/verify.sh
+```
 
-Encontrou um problema de segurança? Não abra uma issue pública: siga a [política de segurança](docs/security.pt-BR.md).
+Veja [docs/contributing.pt-BR.md](docs/contributing.pt-BR.md) para a configuração, a convenção de commits e as regras de branch. A participação é regida pelo [Código de Conduta](docs/code_of_conduct.pt-BR.md).
 
-## Changelog
+## Segurança
 
-Todas as mudanças notáveis são documentadas em [CHANGELOG.md](CHANGELOG.md) (em inglês), seguindo o formato [Keep a Changelog](https://keepachangelog.com).
+Encontrou uma vulnerabilidade? Não abra uma issue pública: siga a [política de segurança](docs/security.pt-BR.md).
 
 ## Licença
 
