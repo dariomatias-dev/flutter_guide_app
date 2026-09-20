@@ -101,7 +101,7 @@ by reaching into the widget tree.
 | An ARB key | All three language files, then `fvm flutter gen-l10n`, and commit the regenerated output |
 | A route in `core/navigation/navigators/` | `dart run build_runner build`, and commit the regenerated `.g.dart` |
 | `pubspec.yaml` | `pubspec.lock`, via `fvm flutter pub get` |
-| A script in `scripts/` | Its row in all three README tables, and `docs/contributing.md` in all three languages if the gate's behaviour changed |
+| A script in `scripts/` that a person runs by hand | Its row in all three README tables, and `docs/contributing.md` in all three languages if the gate's behaviour changed. Helpers only called by tooling, such as `workspace_hash.sh`, have no row |
 | A CI job | `docs/contributing.md` in all three languages, which names the jobs and says which ones block a merge |
 | A user-visible feature | `CHANGELOG.md` is written by release-please from the commits: no manual entry, but the commit type decides the version bump |
 | Anything under `lib/` | The mirroring file under `test/` |
