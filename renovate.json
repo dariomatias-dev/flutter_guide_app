@@ -13,6 +13,13 @@
       "enabled": false
     },
     {
+      "description": "The Flutter plugin loader is served by the SDK's own flutter_tools build, not by any Maven repository, so a lookup can never resolve and its version moves with the pinned SDK.",
+      "matchPackageNames": [
+        "dev.flutter.flutter-plugin-loader:dev.flutter.flutter-plugin-loader.gradle.plugin"
+      ],
+      "enabled": false
+    },
+    {
       "description": "go_router and its route generator read the same route classes, and a version skew between them fails code generation rather than analysis.",
       "groupName": "go_router",
       "matchPackageNames": ["go_router", "go_router_builder"]
